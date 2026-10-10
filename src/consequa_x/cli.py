@@ -148,31 +148,21 @@ def _explain(args):
     return 0
 
 
-def _model_eval(args):
-    from .adapters.ollama import OllamaPolicy
-    from .benchmark.evaluation import evaluate_policy, evaluation_sample_record
-    from .benchmark.policy_runner import MAX_TRIAL_SEED
-    from .policies import ScriptedRefundPolicy
-
+def _new_output(args, command):
     output = Path(args.output)
     if output.exists() and (not output.is_dir() or any(output.iterdir())):
-        raise ValueError("model-eval requires a new or empty output directory to preserve each evaluation")
-    configurations = demo_scenarios()
-    if args.cases:
-        names = args.cases.split(",")
-        by_name = {config.name: config for config in configurations}
-        if any(name not in by_name for name in names) or len(set(names)) != len(names):
-            raise ValueError("cases must be unique known demo names, separated by commas")
-        configurations = tuple(by_name[name] for name in names)
+        raise ValueError(f"{command} requires a new or empty output directory to preserve each run")
+    return output
+
+
+def _prepare_policy(args):
+    from .adapters.ollama import OllamaPolicy
+    from .policies import ScriptedRefundPolicy
+
     if args.provider == "ollama" and not args.model:
         raise ValueError("--model is required with --provider ollama")
     if args.provider == "scripted" and args.model:
         raise ValueError("--model requires --provider ollama; scripted is an offline fixture")
-    # Validate the schedule before contacting a provider or writing artifacts.
-    if args.samples < 1 or args.seed < 0 or args.max_calls < 1 or not 1 <= args.max_attempts <= 5:
-        raise ValueError("samples/max-calls must be positive, seed nonnegative, max-attempts in 1..5")
-    if args.seed + len(configurations) * args.samples - 1 > MAX_TRIAL_SEED:
-        raise ValueError("Evaluation seed schedule exceeds the model seed range")
     model_record = None
     if args.provider == "ollama":
         policy = OllamaPolicy(args.model, base_url=args.base_url, temperature=args.temperature,
@@ -185,6 +175,27 @@ def _model_eval(args):
         policy.validate_local_model()
     else:
         policy = ScriptedRefundPolicy()
+    return policy, model_record
+
+
+def _model_eval(args):
+    from .benchmark.evaluation import evaluate_policy, evaluation_sample_record
+    from .benchmark.policy_runner import MAX_TRIAL_SEED
+
+    output = _new_output(args, "model-eval")
+    configurations = demo_scenarios()
+    if args.cases:
+        names = args.cases.split(",")
+        by_name = {config.name: config for config in configurations}
+        if any(name not in by_name for name in names) or len(set(names)) != len(names):
+            raise ValueError("cases must be unique known demo names, separated by commas")
+        configurations = tuple(by_name[name] for name in names)
+    # Validate the schedule before contacting a provider or writing artifacts.
+    if args.samples < 1 or args.seed < 0 or args.max_calls < 1 or not 1 <= args.max_attempts <= 5:
+        raise ValueError("samples/max-calls must be positive, seed nonnegative, max-attempts in 1..5")
+    if args.seed + len(configurations) * args.samples - 1 > MAX_TRIAL_SEED:
+        raise ValueError("Evaluation seed schedule exceeds the model seed range")
+    policy, model_record = _prepare_policy(args)
     evaluation = evaluate_policy(policy, configurations, samples=args.samples, seed=args.seed,
                                  max_calls=args.max_calls, max_attempts=args.max_attempts)
     artifacts = []
@@ -254,6 +265,140 @@ def _model_eval(args):
     return 2 if evaluation.budget_exhausted or summary["failed_samples"] else 0
 
 
+def _model_experiment(args):
+    from .benchmark.policy_experiment import branch_record, experiment_policy
+    from .benchmark.policy_runner import MAX_TRIAL_SEED
+
+    output = _new_output(args, "model-experiment")
+    config = next(config for config in demo_scenarios() if config.name == args.case)
+    names = args.candidates.split(",")
+    if any(name not in RefundContext.__dataclass_fields__ for name in names) or len(set(names)) != len(names):
+        raise ValueError("candidates must be unique declared context names, separated by commas")
+    if args.samples < 2 or args.seed < 0 or args.max_calls < 1 or not 1 <= args.max_attempts <= 5:
+        raise ValueError("samples must be at least 2, max-calls positive, seed nonnegative, max-attempts in 1..5")
+    if args.seed + args.samples - 1 > MAX_TRIAL_SEED:
+        raise ValueError("Paired seed schedule exceeds the model seed range")
+    candidates = tuple(Intervention(name) for name in names)
+    policy, model_record = _prepare_policy(args)
+    experiment = experiment_policy(policy, config, candidates, samples=args.samples, seed=args.seed,
+                                   max_calls=args.max_calls, max_attempts=args.max_attempts)
+    artifacts = []
+    receipts = []
+
+    def save(relative, value):
+        path = output / relative
+        _write_json(path, value)
+        artifacts.append({"path": relative, "sha256": sha256(path.read_bytes()).hexdigest()})
+
+    by_candidate = {item.event_id: item for item in experiment.interventions}
+    for branch in experiment.branches:
+        receipt = branch_record(branch, root=output)
+        receipts.append(receipt)
+        if branch.episode is None:
+            continue
+        episode = branch.episode
+        save(receipt["trace"], episode.trace)
+        save(receipt["explanation"], episode.explanation)
+        save(receipt["evaluator_truth"], {
+            "scenario": config.name, "seed": branch.seed, "branch_index": branch.index,
+            "intervention": to_dict(by_candidate.get(branch.candidate_id)),
+            "config": to_dict(episode.config), "records": episode.ground_truth,
+        })
+    estimates = tuple(item.estimate for item in experiment.results if item.estimate is not None)
+    factual = next((branch for branch in experiment.branches
+                    if branch.candidate_id is None and branch.episode is not None), None)
+    attribution_path = None
+    attribution_trace = None
+    if factual is not None and estimates:
+        attribution_path = "attribution-explanation.json"
+        attribution_trace = branch_record(factual, root=output)["trace"]
+        save(attribution_path, explain(factual.episode.trace, estimates))
+    summary = experiment.summary()
+    save("results.json", {
+        "package_version": __version__, "evaluation_kind": (
+            "local_model_replay" if args.provider == "ollama" else "scripted_replay"
+        ),
+        "policy": experiment.policy_metadata, "installed_model": model_record,
+        "scenario": config.name, "samples_per_condition": experiment.samples_per_condition,
+        "initial_seed": args.seed, "seeds": experiment.seeds, "max_attempts": experiment.max_attempts,
+        "interventions": experiment.interventions, "replay_mode": "isolated_simulation",
+        "branch_order": "factual seeds, then each candidate's seeds in declaration order",
+        "summary": summary, "branches": receipts, "estimates": experiment.results,
+        "attribution_trace": attribution_trace, "attribution_explanation": attribution_path,
+        "claim": "Single-template integration experiment; no method superiority or task generalization tested.",
+    })
+    save("trace-schema.json", get_trace_schema())
+    rows = []
+    for item in experiment.results:
+        values = [item.event_id, item.target, item.status]
+        if item.estimate is None:
+            values += ["—", "—", "—", "—"]
+        else:
+            estimate = item.estimate
+            lower, upper = estimate.confidence_interval
+            values += [f"{estimate.baseline_rate:.3f}", f"{estimate.intervention_rate:.3f}",
+                       f"{estimate.effect:+.3f}", f"[{lower:+.3f}, {upper:+.3f}]"]
+        values += [str(value) for value in (
+            item.known_pairs, item.unknown_pairs, item.failed_pairs, item.unstarted_pairs,
+        )]
+        rows.append("| " + " | ".join(values) + " |")
+    report = (
+        "# Paired policy replay\n\n"
+        f"Provider: **{args.provider}**; case: **{config.name}**. "
+        f"{experiment.samples_per_condition} paired seeds per condition. "
+        f"Completed {summary['completed_branches']} of {summary['planned_branches']} branches; "
+        f"failed {summary['failed_branches']}, not started {summary['not_started_branches']}. "
+        f"Policy calls: {summary['policy_calls']} / {summary['max_calls']}.\n\n"
+        + ("This is a scripted integration fixture. No language model was run.\n\n"
+           if args.provider == "scripted" else
+           "This calls a selected local Ollama model against simulated payments. "
+           "A single-template replay does not establish generalization.\n\n")
+        + "Each factual seed runs once and is reused across candidates and both targets. "
+        "Each changed branch starts a fresh simulated world under the same fixed contract. "
+        "Estimates read the collected episodes and make no additional policy calls.\n\n"
+        "| Context | Target | Status | Original rate | Changed rate | Signed effect | Approx. 95% interval | Known pairs | Unknown | Failed | Unstarted |\n"
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
+        + "\n".join(rows) + "\n\n"
+        "Effects are original minus changed target probability, not responsibility shares. "
+        "The consequence target is verified state satisfaction; another actor can satisfy "
+        "that state. Each approximate conservative Wilson-difference interval applies to "
+        "one estimate, without simultaneous coverage across candidates.\n\n"
+        "A target estimate requires every planned pair to be usable. Unknown consequence "
+        "pairs, provider/protocol failures, and unstarted pairs are recorded separately; "
+        "none are dropped, redrawn, or assigned a fabricated outcome. Known action selection "
+        "can still be estimated when consequence readback is unknown.\n\n"
+        "Model phase seeds are a pairing control, not a guarantee of deterministic "
+        "generation. Simulation deadlines exclude inference latency. "
+        "The optional attribution explanation attaches only available estimates to a "
+        "representative factual trace; its influence edges describe the replay distribution.\n\n"
+        "Keep evaluator truth and run-level labels out of policy and explainer inputs. "
+        "The manifest covers branch artifacts, estimates, schema, report, and any attribution "
+        "explanation. Hashes detect changed files, not evidence authenticity. "
+        "Actual model measurements, held-out tasks, and matched strong baselines remain "
+        "necessary for the research paper.\n"
+    )
+    report_path = output / "README.md"
+    report_path.write_text(report, encoding="utf-8", newline="\n")
+    artifacts.append({"path": "README.md", "sha256": sha256(report_path.read_bytes()).hexdigest()})
+    _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": artifacts})
+    print(f"Saved {summary['completed_branches']} completed and {summary['failed_branches']} failed "
+          f"replay branches in {output.resolve()}")
+    return 2 if experiment.budget_exhausted or summary["failed_branches"] else 0
+
+
+def _add_policy_arguments(parser, *, samples, max_calls):
+    parser.add_argument("--provider", choices=("scripted", "ollama"), default="scripted")
+    parser.add_argument("--model")
+    parser.add_argument("--base-url", default="http://127.0.0.1:11434")
+    parser.add_argument("--temperature", type=float, default=0.2)
+    parser.add_argument("--timeout", type=float, default=120)
+    parser.add_argument("--num-predict", type=int, default=512)
+    parser.add_argument("--samples", type=int, default=samples)
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--max-calls", type=int, default=max_calls)
+    parser.add_argument("--max-attempts", type=int, default=2)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -272,19 +417,16 @@ def main(argv=None):
     command.add_argument("--output")
     command.set_defaults(handler=_explain)
     evaluation = commands.add_parser("model-eval", help="Evaluate a bounded scripted or local model policy")
-    evaluation.add_argument("--provider", choices=("scripted", "ollama"), default="scripted")
-    evaluation.add_argument("--model")
-    evaluation.add_argument("--base-url", default="http://127.0.0.1:11434")
-    evaluation.add_argument("--temperature", type=float, default=0.2)
-    evaluation.add_argument("--timeout", type=float, default=120)
-    evaluation.add_argument("--num-predict", type=int, default=512)
-    evaluation.add_argument("--samples", type=int, default=2)
-    evaluation.add_argument("--seed", type=int, default=0)
-    evaluation.add_argument("--max-calls", type=int, default=100)
-    evaluation.add_argument("--max-attempts", type=int, default=2)
+    _add_policy_arguments(evaluation, samples=2, max_calls=100)
     evaluation.add_argument("--cases")
     evaluation.add_argument("--output", default="output/model-evaluation")
     evaluation.set_defaults(handler=_model_eval)
+    replay = commands.add_parser("model-experiment", help="Run bounded paired policy context replays")
+    _add_policy_arguments(replay, samples=20, max_calls=400)
+    replay.add_argument("--case", choices=tuple(config.name for config in demo_scenarios()), default="unsafe_retry")
+    replay.add_argument("--candidates", default="vip_policy,vip_memory,retry_instruction,distractor")
+    replay.add_argument("--output", default="output/model-experiment")
+    replay.set_defaults(handler=_model_experiment)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

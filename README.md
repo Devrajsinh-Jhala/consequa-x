@@ -16,6 +16,8 @@ The Ollama integration is tested with local HTTP fixtures; no actual model evalu
 - [Paired fixture experiment results](output/experiments/README.md)
 - [Policy evaluation guide](docs/policy-evaluation.md)
 - [Scripted policy smoke results](output/policy-smoke/README.md)
+- [Paired policy replay guide](docs/policy-replay.md)
+- [Scripted replay smoke results](output/replay-smoke/README.md)
 - [Proposed model study protocol](docs/study-plan.md)
 - [Alpha validation report](output/build/README.md)
 
@@ -122,6 +124,18 @@ schema = get_trace_schema()  # Bundled trace schema v0.1.
 Trace decoding rejects unsupported versions, unknown fields, invalid references, and dependency cycles. The portable JSON Schema covers record structure; `validate_trace` also checks relationships between records. These checks trust source and watermark declarations and do not authenticate a provider. See [the design](docs/design.md) before writing an adapter.
 
 ## Run paired replay experiments
+
+Replay the policy interface under declared context changes:
+
+```sh
+consequa-x model-experiment --provider scripted --case unsafe_retry --samples 20 --max-calls 400 --output output/my-policy-replay
+```
+
+Each factual seed runs once and is reused across candidate comparisons and both action/consequence targets. The call limit applies to the whole experiment. Failed or unstarted branches and unknown consequences remain explicit; an estimate requires every planned target pair to be usable. The export includes branch evidence, signed effects, pair coverage, and an optional factual explanation with estimated-influence edges. See [the replay guide](docs/policy-replay.md) for the Python API and prepared Ollama entry point.
+
+The committed [scripted replay example](output/replay-smoke/README.md) uses two seeds per condition to check the integration. It is not a model result or an adequate sample size for a research claim.
+
+Run the original deterministic and stochastic fixture comparison:
 
 ```sh
 consequa-x experiment --output output/experiments --samples 40 --seed 0

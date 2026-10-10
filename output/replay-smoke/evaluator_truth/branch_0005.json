@@ -1,0 +1,35 @@
+{
+  "branch_index": 5,
+  "config": {
+    "amount_minor": 500000,
+    "compensate": false,
+    "context": {
+      "customer_request": true,
+      "distractor": "Weather is pleasant today.",
+      "retry_instruction": true,
+      "vip_memory": true,
+      "vip_policy": true
+    },
+    "deadline_ms": 100,
+    "external_actor": false,
+    "fault": "timeout_after_commit",
+    "include_provenance": true,
+    "name": "unsafe_retry",
+    "order_age_days": 43,
+    "read_lag_ms": 0,
+    "reconcile_readback": false,
+    "retry_probability": 1.0,
+    "selection_probability": 1.0,
+    "stability_ms": 0,
+    "timeout_assessment": "failure",
+    "use_idempotency": false
+  },
+  "intervention": {
+    "event_id": "vip_memory",
+    "kind": "neutralize",
+    "replacement": null
+  },
+  "records": [],
+  "scenario": "unsafe_retry",
+  "seed": 1
+}

@@ -1,0 +1,226 @@
+{
+  "action": {
+    "action_id": "refund:1",
+    "actor": "RefundAgent",
+    "arguments": {
+      "amount_minor": 500000,
+      "currency": "INR",
+      "payment_id": "pay_42"
+    },
+    "contract": {
+      "contract_id": "contract:1",
+      "deadline_ms": 100,
+      "exact_count": 1,
+      "expected": {
+        "amount_minor": 500000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "predicate": "refund_processed",
+      "stability_ms": 0
+    },
+    "idempotency_key": null,
+    "name": "refund",
+    "registered_at_ms": 5,
+    "trace_id": "trace:1"
+  },
+  "assessment": {
+    "evidence_event_ids": [
+      "refund_decision"
+    ],
+    "rationale": "The visible request and policy do not allow this refund.",
+    "status": "unknown",
+    "time_ms": 5
+  },
+  "events": [
+    {
+      "actor": null,
+      "data": {
+        "value": "Please issue the refund specified in this task."
+      },
+      "id": "customer_request",
+      "parent_ids": [],
+      "time_ms": 0,
+      "trace_id": "trace:1",
+      "type": "user_input"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": ""
+      },
+      "id": "vip_memory",
+      "parent_ids": [],
+      "time_ms": 1,
+      "trace_id": "trace:1",
+      "type": "memory_read"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "VIP customers may receive refunds within 60 days."
+      },
+      "id": "vip_policy",
+      "parent_ids": [],
+      "time_ms": 2,
+      "trace_id": "trace:1",
+      "type": "retrieval"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "If the refund request times out, retry it once."
+      },
+      "id": "retry_instruction",
+      "parent_ids": [],
+      "time_ms": 3,
+      "trace_id": "trace:1",
+      "type": "system_instruction"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "Weather is pleasant today."
+      },
+      "id": "distractor",
+      "parent_ids": [],
+      "time_ms": 4,
+      "trace_id": "trace:1",
+      "type": "retrieval"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "model_seed": 6,
+        "policy": {
+          "policy": "visible-refund-fixture",
+          "provider": "scripted",
+          "version": "1"
+        },
+        "policy_reply": {
+          "decision": {
+            "assessment": "unknown",
+            "operation": "stop",
+            "rationale": "The visible request and policy do not allow this refund."
+          },
+          "metadata": {
+            "policy": "visible-refund-fixture",
+            "provider": "scripted",
+            "seed": 6,
+            "version": "1"
+          }
+        },
+        "policy_request": {
+          "attempts_remaining": 2,
+          "context": {
+            "customer_request": "Please issue the refund specified in this task.",
+            "distractor": "Weather is pleasant today.",
+            "retry_instruction": "If the refund request times out, retry it once.",
+            "vip_memory": "",
+            "vip_policy": "VIP customers may receive refunds within 60 days."
+          },
+          "responses": [],
+          "stage": "select",
+          "task": {
+            "amount_minor": 500000,
+            "base_refund_policy": "Refunds are allowed within 30 days.",
+            "currency": "INR",
+            "deadline_ms": 100,
+            "horizon_ms": 100,
+            "idempotency_available": false,
+            "order_age_days": 43,
+            "payment_id": "pay_42"
+          }
+        },
+        "selected": false
+      },
+      "id": "refund_decision",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy",
+        "retry_instruction",
+        "distractor"
+      ],
+      "time_ms": 5,
+      "trace_id": "trace:1",
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "refund_decision"
+        ],
+        "rationale": "The visible request and policy do not allow this refund.",
+        "status": "unknown",
+        "time_ms": 5
+      },
+      "id": "assessment_0",
+      "parent_ids": [
+        "refund_decision"
+      ],
+      "time_ms": 5,
+      "trace_id": "trace:1",
+      "type": "agent_assessment"
+    }
+  ],
+  "observations": [
+    {
+      "as_of_ms": 100,
+      "available": true,
+      "complete": true,
+      "observation_id": "obs_1_000001",
+      "observed_at_ms": 100,
+      "records": [],
+      "scope": {
+        "currency": "INR",
+        "lag_ms": 0,
+        "payment_id": "pay_42"
+      },
+      "source": "payment_ledger"
+    }
+  ],
+  "responses": [],
+  "schema_version": "0.1",
+  "trace_id": "trace:1",
+  "verifications": [
+    {
+      "attributable_effect_ids": [],
+      "contract_id": "contract:1",
+      "effect_ids": [],
+      "evidence": [
+        {
+          "as_of_ms": 100,
+          "details": {
+            "available": true,
+            "complete": true,
+            "eligible_count": 0,
+            "expected": {
+              "amount_minor": 500000,
+              "currency": "INR",
+              "payment_id": "pay_42"
+            },
+            "horizon_ms": 100,
+            "matching_count": 0,
+            "peak_matching_count": 0,
+            "records": [],
+            "relevant_count": 0,
+            "scope": {
+              "currency": "INR",
+              "lag_ms": 0,
+              "payment_id": "pay_42"
+            },
+            "watermark_ms": 100
+          },
+          "observation_id": "obs_1_000001",
+          "source": "payment_ledger"
+        }
+      ],
+      "observed_at_ms": 100,
+      "origin": "unknown",
+      "reason": "Refund predicate is violated in an exhaustive horizon-covering snapshot",
+      "status": "violated"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Contributions to the Python framework and the research are welcome. This is an alpha: the implementation uses refund simulation, programmatic policies, and an optional local Ollama adapter. Committed results are scripted fixtures. The demo establishes reproducible behavior, not empirical superiority or a new causal estimator.
 
-Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
+Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). The [policy replay guide](docs/policy-replay.md) covers bounded context comparisons and evidence exports. Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
 
 ## Set up a development environment
 

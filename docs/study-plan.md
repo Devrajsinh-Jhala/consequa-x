@@ -1,9 +1,10 @@
 # Study plan
 
-Status: proposed protocol, 10 October 2026. This document contains no empirical
-LLM results. The current scripted fixtures and mocked Ollama tests establish
-implementation behavior only. Installing a model and recording its evaluation
-are separate milestones.
+Status: proposed research protocol with implemented evaluation and paired-replay
+entry points, 10 October 2026. This document contains no empirical LLM results.
+The current scripted fixtures and mocked Ollama tests establish implementation
+behavior only. Installing or downloading a model and recording its evaluation
+remain deferred milestones.
 
 ## Research question and scope
 
@@ -32,6 +33,18 @@ even if the last advantage does not appear. The
 [initial literature assessment](../output/research/Consequa-X_Research_Assessment.md)
 records the wider related-work audit; refresh it before submission.
 
+The implemented [policy evaluation](policy-evaluation.md) and
+[paired policy replay](policy-replay.md) provide a structured local-model
+boundary, isolated simulated worlds, a global call budget, paired visible
+context interventions, and separate action/consequence estimates. One factual
+branch per seed is reused across candidates, and both targets reuse the same
+recorded branches. Provider failures, unstarted branches, and unknown
+verification remain explicit; a candidate/target estimate is refused unless
+all planned target pairs are known. The cached estimator is the existing
+leave-one-out baseline. Current support covers single-context changes, not
+joint context/fault interventions or faithful implementations of the required
+strong comparison methods.
+
 ## Hypotheses to preregister
 
 | Hypothesis | Required evidence |
@@ -48,8 +61,9 @@ claiming broad long-horizon or multi-domain coverage.
 
 ## Freeze the pilot protocol
 
-Use a small local Ollama pilot to verify data capture and choose an attainable
-call budget. Keep pilot templates and seeds out of the final held-out set.
+When model setup resumes, use a small local Ollama pilot to verify data capture,
+measure replay fidelity, and choose an attainable call budget. Keep pilot
+templates and seeds out of the final held-out set.
 Do not use pilot rates as final evidence or select the primary metric after
 seeing which one favors Consequa-X.
 
@@ -126,14 +140,23 @@ oracle condition.
 
 Hold the continuation policy fixed within a paired intervention. Reset the
 world for every branch. Reuse factual samples only under a declared estimator
-and include their calls in the budget. Seeds improve pairing but do not prove
-identical LLM randomness across divergent histories; measure replay fidelity.
+and include their calls in the budget. The current paired-policy command shares
+one factual branch per seed across candidates and both targets, counts attempted
+policy calls including errors, and makes no additional provider calls during
+estimation. Its budget is a policy-call limit; preflight inspections, token cost,
+and wall time require separate accounting. Seeds improve pairing but do not
+prove identical LLM randomness across divergent histories; measure replay
+fidelity. Record branch order because an exhausted budget can leave different
+candidates with different coverage.
 
 ## Targets, reference effects, and metrics
 
 Predeclare each target. At minimum, keep selected initial action, verified
 contract satisfaction, and action-linked contract satisfaction separate.
-State satisfaction by another actor is not the current agent's success.
+State satisfaction by another actor is not the current agent's success. The
+current paired-policy `consequence` target measures state-contract satisfaction,
+with origin reported separately. An action-linked target must be implemented
+and its unknown treatment specified before using it in the final comparison.
 Reported assessment is an observable response, not a measured internal belief.
 
 For known simulator states, evaluate supported conclusions against gold

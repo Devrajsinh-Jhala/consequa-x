@@ -1,0 +1,105 @@
+{
+  "build": {
+    "artifacts": [
+      {
+        "name": "consequa_x-0.1.0a1-py3-none-any.whl",
+        "sha256": "1b6268f3d2de56a36fbe4fe98a0d6f25cd6f844ab9a3ca9689cf058b55bd221b",
+        "size_bytes": 63034
+      },
+      {
+        "name": "consequa_x-0.1.0a1.tar.gz",
+        "sha256": "16716824e6e651ffe333af442f6fc28c045ed022e7f8415104422eb140524b50",
+        "size_bytes": 120650
+      }
+    ],
+    "exit_code": 0
+  },
+  "exports": {
+    "scripted-eval": {
+      "command_exit_code": 0,
+      "draft_2020_12_trace_validations_passed": 12,
+      "manifest_artifacts_verified": 36,
+      "manifest_sha256": "c546831f644f9b256718dc7fc02bdcc5336f585d73009b2a13b26ef93a5a5140",
+      "packaged_schema_matches_export": true,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 4,
+          "contradicted": 5,
+          "unassessable": 3
+        },
+        "attempted_samples": 12,
+        "budget_exhausted": false,
+        "completed_samples": 12,
+        "failed_samples": 0,
+        "known_outcome_samples": 11,
+        "max_calls": 30,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 7,
+          "other_actor": 1,
+          "unknown": 4
+        },
+        "planned_samples": 12,
+        "policy_calls": 26,
+        "verification": {
+          "satisfied": 6,
+          "unknown": 1,
+          "violated": 5
+        }
+      },
+      "trace_roundtrips_passed": 12
+    },
+    "scripted-experiment": {
+      "command_exit_code": 0,
+      "draft_2020_12_trace_validations_passed": 10,
+      "manifest_artifacts_verified": 34,
+      "manifest_sha256": "a42ad06947da850197f4b2c62bc8e5682a23a181eb443e96ff2a1bd38072f86f",
+      "packaged_schema_matches_export": true,
+      "summary": {
+        "attempted_branches": 10,
+        "budget_exhausted": false,
+        "candidate_count": 4,
+        "completed_branches": 10,
+        "condition_count": 5,
+        "estimates": {
+          "action": {
+            "estimated": 4,
+            "refused": 0
+          },
+          "consequence": {
+            "estimated": 4,
+            "refused": 0
+          }
+        },
+        "failed_branches": 0,
+        "max_calls": 30,
+        "not_started_branches": 0,
+        "planned_branches": 10,
+        "policy_calls": 20,
+        "samples_per_condition": 2
+      },
+      "trace_roundtrips_passed": 10
+    }
+  },
+  "ollama_calls": 0,
+  "pytest": {
+    "duration_seconds": 54.23,
+    "exit_code": 0,
+    "passed": 505,
+    "subtests_passed": 240
+  },
+  "python_version": "3.12.14",
+  "ruff": {
+    "exit_code": 0,
+    "result": "All checks passed"
+  },
+  "source_commit": "5dbc46debaedbaa9ff49f42c9158766065dfd34d",
+  "validated_at_utc": "2026-10-10T16:50:19.545367+00:00",
+  "wheel": {
+    "fresh_virtualenv": true,
+    "install_exit_code": 0,
+    "installed_without_dependencies": true,
+    "isolated_python": true,
+    "package_version": "0.1.0a1"
+  }
+}

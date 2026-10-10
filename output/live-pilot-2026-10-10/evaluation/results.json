@@ -1,0 +1,107 @@
+{
+  "cases": [
+    "clean",
+    "timeout_after_commit"
+  ],
+  "claim": "Adapter evaluation only; no attribution-method superiority or task generalization tested.",
+  "evaluation_kind": "local_model",
+  "initial_seed": 0,
+  "installed_model": {
+    "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "name": "qwen3:4b-instruct-2507-q4_K_M"
+  },
+  "max_attempts": 2,
+  "package_version": "0.1.0a1",
+  "policy": {
+    "base_url": "http://127.0.0.1:11434",
+    "local_inspection": {
+      "capabilities": [
+        "tools",
+        "thinking",
+        "completion"
+      ],
+      "details": {
+        "families": [
+          "qwen3"
+        ],
+        "family": "qwen3",
+        "format": "gguf",
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "endpoint": "/api/show",
+      "inspection_sha256": "e9256d2b8a92abc8f172e0d252e6575b5c3ed2062fc9c8de98fb98c94959ea20",
+      "no_declared_remote_routing": true,
+      "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+      "routing_fields_present": []
+    },
+    "num_predict": 512,
+    "prompt_version": "refund-policy-v1",
+    "provider": "ollama",
+    "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "temperature": 0.0,
+    "timeout_seconds": 180.0
+  },
+  "samples": [
+    {
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "diagnosis": "ASSESSMENT_DIVERGENCE",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 3,
+      "reported_assessment": "failure",
+      "scenario": "clean",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied"
+    },
+    {
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "diagnosis": "BELIEF / RESPONSE DIVERGENCE",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0001.json",
+      "explanation": "explanations/episode_0001.json",
+      "index": 1,
+      "policy_calls": 2,
+      "reported_assessment": "failure",
+      "scenario": "timeout_after_commit",
+      "seed": 1,
+      "status": "completed",
+      "trace": "traces/episode_0001.json",
+      "verified_outcome": "satisfied"
+    }
+  ],
+  "samples_per_case": 1,
+  "summary": {
+    "assessment_alignment": {
+      "consistent": 0,
+      "contradicted": 2,
+      "unassessable": 0
+    },
+    "attempted_samples": 2,
+    "budget_exhausted": false,
+    "completed_samples": 2,
+    "failed_samples": 0,
+    "known_outcome_samples": 2,
+    "max_calls": 6,
+    "not_started_samples": 0,
+    "origin": {
+      "confirmed": 2,
+      "other_actor": 0,
+      "unknown": 0
+    },
+    "planned_samples": 2,
+    "policy_calls": 5,
+    "verification": {
+      "satisfied": 2,
+      "unknown": 0,
+      "violated": 0
+    }
+  }
+}

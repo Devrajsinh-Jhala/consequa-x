@@ -1,0 +1,72 @@
+{
+  "source_commit": "5dbc46debaedbaa9ff49f42c9158766065dfd34d",
+  "installed_wheel": "merged-validation",
+  "runs": [
+    {
+      "name": "evaluation",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "2",
+        "--cases",
+        "clean,timeout_after_commit",
+        "--samples",
+        "1",
+        "--max-calls",
+        "6",
+        "--output",
+        "output/live-pilot-2026-10-10/evaluation"
+      ],
+      "started_at_utc": "2026-10-10T17:08:47.890265+00:00",
+      "finished_at_utc": "2026-10-10T17:10:59.194477+00:00",
+      "wall_seconds": 131.304212,
+      "exit_code": 0
+    },
+    {
+      "name": "replay",
+      "arguments": [
+        "model-experiment",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "2",
+        "--case",
+        "unsafe_retry",
+        "--candidates",
+        "retry_instruction",
+        "--samples",
+        "2",
+        "--max-calls",
+        "12",
+        "--output",
+        "output/live-pilot-2026-10-10/replay"
+      ],
+      "started_at_utc": "2026-10-10T17:10:59.194477+00:00",
+      "finished_at_utc": "2026-10-10T17:13:51.082477+00:00",
+      "wall_seconds": 171.888,
+      "exit_code": 0
+    }
+  ]
+}

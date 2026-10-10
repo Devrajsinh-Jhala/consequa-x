@@ -1,0 +1,69 @@
+{
+  "artifacts": [
+    {
+      "path": "traces/branch_0000.json",
+      "sha256": "703ee541aae3a65737ac2f3fffd7e8cd37dca7595cf3862d4bf4b6f54d0b6840"
+    },
+    {
+      "path": "explanations/branch_0000.json",
+      "sha256": "7044ae665d0e1313515d2b89d410a6ee92fd473e5ecd5f323cb7cba0e16f4899"
+    },
+    {
+      "path": "evaluator_truth/branch_0000.json",
+      "sha256": "cb820c016b2b4dbc7aac552bcdec998ffccd70b4abcb09f06eca753994f5fa00"
+    },
+    {
+      "path": "traces/branch_0001.json",
+      "sha256": "9a6f56b38e0676beafd3e14e508d98212b0bd2585166c327713cb57174b511d2"
+    },
+    {
+      "path": "explanations/branch_0001.json",
+      "sha256": "3f97ff61e6277d253c34ed77881c192d82c44c41e9fbf56a52a39bd626b45219"
+    },
+    {
+      "path": "evaluator_truth/branch_0001.json",
+      "sha256": "8e759cdf37d4b0b71ec0bfaf826cfc8354aeccb824304c48decbcdebf96783fe"
+    },
+    {
+      "path": "traces/branch_0002.json",
+      "sha256": "8817516058ed4a894ee3930bef0e4a5fb75d6878ca3120303f0692d7eba1b4b5"
+    },
+    {
+      "path": "explanations/branch_0002.json",
+      "sha256": "c5fda49061bf21789270c1a44bf931612526f8f698b11928aa750279b4002212"
+    },
+    {
+      "path": "evaluator_truth/branch_0002.json",
+      "sha256": "4eeba6de8a0bf6d1adb2c03a9f0708df04e41e3cdadc128788a546bb7a46bd26"
+    },
+    {
+      "path": "traces/branch_0003.json",
+      "sha256": "0b24d6da316f28bc2bfb810e678c1b164120f155f4996fba4998929ddec22293"
+    },
+    {
+      "path": "explanations/branch_0003.json",
+      "sha256": "d18227abe80b18298137e114f87cd53c741a4f2143c9202787a2f30a0a595323"
+    },
+    {
+      "path": "evaluator_truth/branch_0003.json",
+      "sha256": "21adb8480c1ebaf69e2346c01a364d45d280f237465598377980b282df0d1c67"
+    },
+    {
+      "path": "attribution-explanation.json",
+      "sha256": "f1a92b76d9f66679e5dff29c7c1fff621030d830f5be58e0b6a841aaf67e9df5"
+    },
+    {
+      "path": "results.json",
+      "sha256": "6d9b5437d008b7bab1f3fdff01b7780546151110a155f6d494a63d999c1e9165"
+    },
+    {
+      "path": "trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c3aecc90bb4d15ad5751ddecef22f7f87324ec91e8eb0e70a33232f9fcf355d8"
+    }
+  ],
+  "package_version": "0.1.0a1"
+}

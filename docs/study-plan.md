@@ -1,10 +1,10 @@
 # Study plan
 
 Status: proposed research protocol with implemented evaluation and paired-replay
-entry points, 10 October 2026. This document contains no empirical LLM results.
-The current scripted fixtures and mocked Ollama tests establish implementation
-behavior only. Installing or downloading a model and recording its evaluation
-remain deferred milestones.
+entry points, 10 October 2026. A [first live pilot](../output/live-pilot-2026-10-10/README.md)
+has completed; this document specifies the stronger research study still needed.
+Scripted fixtures, mocked Ollama tests, and the small local-model pilot establish
+integration behavior, without demonstrating method superiority or generalization.
 
 ## Research question and scope
 
@@ -61,9 +61,12 @@ claiming broad long-horizon or multi-domain coverage.
 
 ## Freeze the pilot protocol
 
-When model setup resumes, use a small local Ollama pilot to verify data capture,
-measure replay fidelity, and choose an attainable call budget. Keep pilot
-templates and seeds out of the final held-out set.
+The first local Ollama pilot verified data capture and observed model misreadings
+of assessments, response timing, and remaining attempts. The default v1 prompt
+is preserved. Opt-in v2 clarifies those fields and refines continuation guidance;
+it is an exploratory adaptation informed by that pilot. Measure replay fidelity
+and choose an attainable study budget. Keep all pilot templates and seeds out
+of the final held-out set.
 Do not use pilot rates as final evidence or select the primary metric after
 seeing which one favors Consequa-X.
 

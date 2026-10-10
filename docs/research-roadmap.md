@@ -15,18 +15,19 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - Offline deterministic and stochastic programmatic policy experiments.
 - Visible-context policy interface, structured local Ollama adapter, and bounded evaluations.
 - Bounded paired policy experiments with one factual branch per seed, cached action/consequence estimates, and explicit refusals for incomplete pairs.
-- Scripted policy smoke exports and HTTP fixture tests; no actual model results yet.
+- Scripted policy smoke exports, HTTP fixture tests, and a [first live Qwen3 4B pilot](../output/live-pilot-2026-10-10/README.md).
+- Versioned opt-in prompt refinement with the original profile preserved, and assessment coverage/abstention metrics with explicit denominators.
 - Proposed matched-baseline study protocol in [study-plan.md](study-plan.md).
 
 ## Next research milestone
 
-1. When model setup resumes, run the implemented local Ollama evaluation and paired-replay entry points with an installed model, then evaluate actual stochastic LLM policies across several task templates. The adapter exposes declared task/context and public responses; independent readback follows the final assessment, and evaluator truth stays outside policy inputs. Measure replay fidelity rather than treating shared requested seeds as a determinism guarantee.
+1. Extend the recorded local pilot to actual stochastic LLM policies across several task templates and models. The adapter exposes declared task/context and public responses; independent readback follows the final assessment, and evaluator truth stays outside policy inputs. Measure replay fidelity rather than treating shared requested seeds as a determinism guarantee. Prompt changes informed by the pilot are exploratory adaptations and need independent held-out evaluation.
 2. Specify context and fault intervention families and targets before running the study. Hold out templates and fault compositions, not just random seeds.
 3. Compare with verifier-plus-CAR using identical evidence, origin information, candidate variables, snapshots and budget. Add a faithfully adapted joint-fault comparator where applicable.
 4. Measure false consequence/origin claims and factor recovery against independent intervention estimates. Report abstention coverage and error together; report model-specific results and cost.
 5. Expand domains only after a substantive gap remains in the strong baseline. An engineering framework can still be released if the methodological advantage does not emerge.
 
-The current 40-sample fixture report, scripted policy smoke report, and scripted paired-policy examples validate plumbing. They cannot be used as real-model research results. The recency heuristic is explicitly noncausal, and leave-one-out is a baseline rather than a claimed new estimator. Current paired policy experiments change one visible context field at a time; joint context/fault analysis and the strong comparison methods remain unimplemented research milestones. Model installation, weight downloads, and the first live pilot are deferred; see [policy-evaluation.md](policy-evaluation.md) and [policy-replay.md](policy-replay.md) for the prepared entry points. All payment effects remain simulated.
+The current 40-sample fixture report, scripted policy smoke report, and scripted paired-policy examples validate plumbing. They cannot be used as real-model research results. The first live pilot completed six runs and 13 policy calls without provider errors; all six final assessments contradicted successful action-linked readback. The recency heuristic is explicitly noncausal, and leave-one-out is a baseline rather than a claimed new estimator. Current paired policy experiments change one visible context field at a time; joint context/fault analysis and the strong comparison methods remain unimplemented research milestones. See [policy-evaluation.md](policy-evaluation.md) and [policy-replay.md](policy-replay.md) for entry points. All payment effects remain simulated.
 
 ## Registry release
 

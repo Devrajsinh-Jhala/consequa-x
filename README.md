@@ -6,7 +6,7 @@ Consequa-X explains consequential agent actions using captured history and indep
 
 The working prototype uses an isolated payment simulator with scripted policies and an optional local Ollama adapter. It keeps the tool response, the agent's reported assessment, the observed outcome, and effect origin separate. A timeout can coexist with a completed refund; another actor can satisfy the desired state after the agent's attempt fails.
 
-The Ollama integration is tested with local HTTP fixtures; no actual model evaluation has been run for the committed results. Payments remain simulated. The fixture experiments validate the framework's plumbing; they do not establish a new attribution method or empirical superiority. See [the design](docs/design.md) for exact semantics and [the research roadmap](docs/research-roadmap.md) for the paper and release milestones.
+The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) completed six runs with Qwen3 4B. All refunds were independently verified as successful, while the model reported failure in every run; changing the retry instruction produced no observed effect in two replay pairs. This is a small integration result. Payments remain simulated, and neither fixture experiments nor the pilot establish a new attribution method or empirical superiority. See [the design](docs/design.md) for exact semantics and [the research roadmap](docs/research-roadmap.md) for the paper and release milestones.
 
 ## Research materials and contributions
 
@@ -18,6 +18,7 @@ The Ollama integration is tested with local HTTP fixtures; no actual model evalu
 - [Scripted policy smoke results](output/policy-smoke/README.md)
 - [Paired policy replay guide](docs/policy-replay.md)
 - [Scripted replay smoke results](output/replay-smoke/README.md)
+- [First live-model pilot and audit](output/live-pilot-2026-10-10/README.md)
 - [Proposed model study protocol](docs/study-plan.md)
 - [Alpha validation report](output/build/README.md)
 
@@ -95,6 +96,8 @@ consequa-x model-eval --provider ollama --model YOUR_INSTALLED_MODEL --cases cle
 ```
 
 The adapter checks installed models and declared local routing before generation, uses structured decisions, and records model identity and request hashes. It performs no model installation or download. See [the evaluation guide](docs/policy-evaluation.md) for setup, limits, API examples, and trust assumptions. The [study protocol](docs/study-plan.md) defines the stronger comparisons and held-out tasks still needed for a research paper.
+
+The original `refund-policy-v1` prompt remains the default. Select the opt-in `--prompt-version refund-policy-v2` to clarify assessment, timing, and attempt-budget semantics and add stop-after-success guidance. This is a pilot-informed policy refinement; comparison results are exploratory. Both evaluation and replay record the chosen version and its exact prompt hash. Reports also expose assessment abstention, claim coverage, and contradictions with explicit denominators. Hindsight alignment with verified state does not establish what a policy could know from an ambiguous response.
 
 ## Use the Python API
 
@@ -186,4 +189,4 @@ python -m pip install dist/consequa_x-0.1.0a1-py3-none-any.whl
 
 `requirements-dev.lock` captures the development environment used for this build. Public interfaces are alpha and may change. The Python requirement is declared as 3.11+, with local validation currently on Python 3.12; broader compatibility remains a release check.
 
-The package has not been published to PyPI or npm. The first registry target is PyPI; a later npm adapter can share the trace schema and conformance fixtures. The repository includes MIT licensing, author metadata, contributor guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Registry availability, broader compatibility, and the final release process remain to be verified. Actual LLM evaluations, held-out task templates, and comparisons against strong existing methods remain necessary for the research paper.
+The package has not been published to PyPI or npm. The first registry target is PyPI; a later npm adapter can share the trace schema and conformance fixtures. The repository includes MIT licensing, author metadata, contributor guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Registry availability, broader compatibility, and the final release process remain to be verified. Broader model evaluations, held-out task templates, and comparisons against strong existing methods remain necessary for the research paper.

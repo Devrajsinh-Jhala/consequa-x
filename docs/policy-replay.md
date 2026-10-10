@@ -6,10 +6,11 @@ Every branch uses a fresh simulated payment world and the same outcome contract.
 It uses the existing paired leave-one-out estimator; this is a prepared research
 entry point, not a new attribution method.
 
-Current examples and tests use scripted policies or HTTP fixtures. They contain
-no actual LLM results. Model installation, downloading weights, and the first
-live model pilot remain deferred. Payment operations are simulated even when a
-local language model supplies the decisions.
+Examples include scripted policies, HTTP fixtures, and a recorded
+[first local-model pilot](../output/live-pilot-2026-10-10/README.md).
+That pilot observed no action or consequence change from removing the retry
+instruction in two Qwen3 4B pairs. It is an integration measurement, not a
+generalization result. Payment operations remain simulated.
 
 ## Run the offline experiment
 
@@ -55,7 +56,10 @@ consequa-x model-experiment --provider ollama --model YOUR_INSTALLED_MODEL --cas
 ```
 
 Replace `YOUR_INSTALLED_MODEL` with its installed name. Provider options match
-`model-eval`: `--base-url`, `--temperature`, `--timeout`, and `--num-predict`.
+`model-eval`: `--base-url`, `--temperature`, `--timeout`, `--num-predict`, and
+`--prompt-version`. The default prompt remains `refund-policy-v1`; the opt-in
+`refund-policy-v2` is a pilot-informed policy refinement. Keep the selected
+profile fixed across factual and changed branches.
 The command checks installed-model metadata and rejects declared remote routing
 before generation. It does not install Ollama, pull weights, or select a model.
 Loopback access and server-declared metadata require trust in the local server;

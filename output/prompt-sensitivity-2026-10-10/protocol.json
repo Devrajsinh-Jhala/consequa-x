@@ -1,0 +1,40 @@
+{
+  "status": "declared_before_live_generation",
+  "declared_at_utc": "2026-10-10T17:28:52.428275+00:00",
+  "source_commit": "f7a38f3a6648ccce4d381ca8f004e5909b454656",
+  "purpose": "Exploratory pilot-informed prompt sensitivity under one attempt; no hidden-state knowledge, method superiority, stochastic independence or held-out task generalization claim.",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "profiles": [
+    {
+      "id": "v1",
+      "version": "refund-policy-v1",
+      "sha256": "c5e9c07829c569b7382d0187e278c533d450e30c39038e49367f66ceb2468a74"
+    },
+    {
+      "id": "v2",
+      "version": "refund-policy-v2",
+      "sha256": "141ab9ae275703cdbe23bd55376f40ce0069bb67a172d8af65ee852d577be6ed"
+    }
+  ],
+  "cases": [
+    "clean",
+    "timeout_before_commit",
+    "timeout_after_commit",
+    "false_success",
+    "partial_effect",
+    "missing_provenance"
+  ],
+  "order": "profile blocks v1 then v2, cases in declared order",
+  "sampling": "one run per case/profile, same trial seed0 and phase keys0/1 across all cases; repeats are controls, not independent tasks",
+  "temperature": 0,
+  "num_predict": 512,
+  "timeout_seconds": 180,
+  "max_attempts": 1,
+  "samples_per_case": 1,
+  "max_calls_per_case": 2,
+  "maximum_total_policy_calls": 24,
+  "interpretation": "One attempt suppresses retry differences. Report claim/abstention/partial counts and coverage with hindsight alignment; visible evidence can be identical across different hidden outcomes.",
+  "failure_handling": "Retain failures and unknowns; no redraws or replacement samples. Preflight failure is separate from completed episodes.",
+  "payment_scope": "Synthetic isolated payments; local Ollama only."
+}

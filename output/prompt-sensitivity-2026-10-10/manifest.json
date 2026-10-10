@@ -1,0 +1,606 @@
+{
+  "source_commit": "f7a38f3a6648ccce4d381ca8f004e5909b454656",
+  "scope": "All evidence-folder files except this root manifest; exact byte hashes.",
+  "artifacts": [
+    {
+      "path": "audit-findings.md",
+      "sha256": "a67ac7e47567835beeabb8e0e0c01661aa716669d0e2b44e841c160b4c6d7bf5",
+      "size_bytes": 5364
+    },
+    {
+      "path": "audit.json",
+      "sha256": "49ca86104294474e6e8c2bbcfd214a0616d6f7524f552742fe23db5b98589610",
+      "size_bytes": 17877
+    },
+    {
+      "path": "comparison.json",
+      "sha256": "35ec79df36bbfc9123c44e480376e79fba2355719170a98b8c8f98ae8ecd4cc2",
+      "size_bytes": 14387
+    },
+    {
+      "path": "diagnostic-audit.json",
+      "sha256": "a217bdfa2fb49391234f22035528f6ed34214d47e2aaa9338afc5a8fc31116ac",
+      "size_bytes": 4064
+    },
+    {
+      "path": "diagnostic-console.txt",
+      "sha256": "837f2d5694ca9bea02bd24235b544ebe86d414a241dfc6dc98b3d7a1d315a257",
+      "size_bytes": 105
+    },
+    {
+      "path": "diagnostic-execution.json",
+      "sha256": "a3b1a47c9d06c1e84933fc4dd477966c09d1d6facbf5c013f0777fc9d4f724d1",
+      "size_bytes": 754
+    },
+    {
+      "path": "execution.json",
+      "sha256": "f19d21f6bcb414170d1384425dd52b503b13cf3d2545ccb3730d47a12b500cae",
+      "size_bytes": 29628
+    },
+    {
+      "path": "hardware.json",
+      "sha256": "ea762717e310e27bdadc0bf46b18fc2a2ecbfc4458cfb56e1f1d9648bd30abb2",
+      "size_bytes": 463
+    },
+    {
+      "path": "package-validation.json",
+      "sha256": "85cc76abdf190ccd69a0da18c42a6330b31366cf02607bdf3a0acb797f60ce78",
+      "size_bytes": 12582
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "f326796b22d114cac2919b78fdec36a3b00306f7d24ecdd7ffbec54ee03966f6",
+      "size_bytes": 1817
+    },
+    {
+      "path": "README.md",
+      "sha256": "9a261572eee9a786de268e10dc6c93aa7b619505937181f8f3dd3c78cc6c6412",
+      "size_bytes": 8394
+    },
+    {
+      "path": "runtime-after.json",
+      "sha256": "fed1c1e68b7b164a745f6646d4a9c89341fa72a955d222c20ffccd00b45e1bfa",
+      "size_bytes": 1214
+    },
+    {
+      "path": "runtime-before.json",
+      "sha256": "71cafbc712ff003700e4ddfcbe15dde6bb56cce088b8f13eead4fd1d12a561b8",
+      "size_bytes": 711
+    },
+    {
+      "path": "two-attempt-diagnostic-protocol.json",
+      "sha256": "8f2d2d699148c8c378e3ede88a5dadb14bb590c275bec067e411e1a05e8e7a10",
+      "size_bytes": 804
+    },
+    {
+      "path": "v1/clean/evaluator_truth/episode_0000.json",
+      "sha256": "c9fc21fe252437537ed79938eda2b8dc75fe112e671c29a3d711ae6a3c86221d",
+      "size_bytes": 2034
+    },
+    {
+      "path": "v1/clean/explanations/episode_0000.json",
+      "sha256": "841e372c27f24d1d210eebc944a9a2025c3fb9f07ec0d7d83b3342e63541d89a",
+      "size_bytes": 24946
+    },
+    {
+      "path": "v1/clean/manifest.json",
+      "sha256": "fe07599827519c07fafcfe840bc2c4f70086990d810ee4463a1acad9ffdc0f57",
+      "size_bytes": 894
+    },
+    {
+      "path": "v1/clean/README.md",
+      "sha256": "0609fa9c12d10cc734304fdabcbf7a0f1a0fd8ee8fb39b5de7e2e4516dd48e5e",
+      "size_bytes": 1600
+    },
+    {
+      "path": "v1/clean/results.json",
+      "sha256": "143d5e7f7dc09ef6ac2b46bacb04bf3cd6c2c12046126caf2ce1b09188dd047f",
+      "size_bytes": 3269
+    },
+    {
+      "path": "v1/clean/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v1/clean/traces/episode_0000.json",
+      "sha256": "5fc1f54a7e86790fb62c9991039f37b8a1db8de6df580adf583925d93f53d77c",
+      "size_bytes": 17202
+    },
+    {
+      "path": "v1/false_success/evaluator_truth/episode_0000.json",
+      "sha256": "dd2a6b3ab0e9e94dc54935ff9912afb9728f15f58437f7aad36dfc9f9a2a0e09",
+      "size_bytes": 1683
+    },
+    {
+      "path": "v1/false_success/explanations/episode_0000.json",
+      "sha256": "bca65140529ce3081e0411be3d4bb8e35e242964cbd01285df983f3e37e814f3",
+      "size_bytes": 22592
+    },
+    {
+      "path": "v1/false_success/manifest.json",
+      "sha256": "657bbeb5fd210e981acd410b085e293596a38517a2d0f83c5666e11f6715c729",
+      "size_bytes": 894
+    },
+    {
+      "path": "v1/false_success/README.md",
+      "sha256": "7c5e1b738c203ffb4ee9292200043ff3a4d866bec2f0439d76fc1c0d4031bdd8",
+      "size_bytes": 1609
+    },
+    {
+      "path": "v1/false_success/results.json",
+      "sha256": "0a78d6f987b7601031eb9082282efd8724b8263a43095b33807d8f78ca760c30",
+      "size_bytes": 3340
+    },
+    {
+      "path": "v1/false_success/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v1/false_success/traces/episode_0000.json",
+      "sha256": "e90fe2fc0e3484a3e3470e4885dd5fb7cdaa84f6def0b5acef405d221a58b966",
+      "size_bytes": 16381
+    },
+    {
+      "path": "v1/missing_provenance/evaluator_truth/episode_0000.json",
+      "sha256": "b6c4a875322bc8298281079986dca318d7de8a81b8e13d36a7338403faefcc5c",
+      "size_bytes": 2061
+    },
+    {
+      "path": "v1/missing_provenance/explanations/episode_0000.json",
+      "sha256": "81bcac2d02f4fbda960de811be57b0c552988b822b1798fd6293ae9c998b5ecf",
+      "size_bytes": 24188
+    },
+    {
+      "path": "v1/missing_provenance/manifest.json",
+      "sha256": "b9615a90b22eeea64024f86b8d825373138380d30f99efc5f73459c143b9806f",
+      "size_bytes": 894
+    },
+    {
+      "path": "v1/missing_provenance/README.md",
+      "sha256": "46073b513044e8796c6308c01550d6ce6714971f07e98e503f5c91374d9909cb",
+      "size_bytes": 1620
+    },
+    {
+      "path": "v1/missing_provenance/results.json",
+      "sha256": "fb5925aaa99a79dce13213c766efeb633c1c5a8d489cff3481531cf8a1254a87",
+      "size_bytes": 3296
+    },
+    {
+      "path": "v1/missing_provenance/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v1/missing_provenance/traces/episode_0000.json",
+      "sha256": "9929eaf4440a40b2f1aae1c41f74eb32d4a5389b58bd9dfd2e847134b9f5909c",
+      "size_bytes": 16925
+    },
+    {
+      "path": "v1/partial_effect/evaluator_truth/episode_0000.json",
+      "sha256": "51c5470b6db37756ba2ebd79f4e53a3c5ed468d57794adf98d1693765db9b289",
+      "size_bytes": 2069
+    },
+    {
+      "path": "v1/partial_effect/explanations/episode_0000.json",
+      "sha256": "fcf0c025369702e20b7239b4af436b30b9bdeb5534033636e42e5bfd061d968d",
+      "size_bytes": 25179
+    },
+    {
+      "path": "v1/partial_effect/manifest.json",
+      "sha256": "b4bce6ae61c58b5c8e402ed3b5df401f2ccf33d1b2fbb6f82a4b9479b5b50c6f",
+      "size_bytes": 894
+    },
+    {
+      "path": "v1/partial_effect/README.md",
+      "sha256": "8c1c1978a9be34e4704e6412a2e8efd5d8b36678af7ea06487fc201f7a5cea03",
+      "size_bytes": 1612
+    },
+    {
+      "path": "v1/partial_effect/results.json",
+      "sha256": "52a21976b31feb59a21fdcf0c2fb287d91614689e28d04c9be15e2c863769b9f",
+      "size_bytes": 3382
+    },
+    {
+      "path": "v1/partial_effect/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v1/partial_effect/traces/episode_0000.json",
+      "sha256": "06d0cab7530631fe5099fcd911c7b1dc0e42e80ac980cef14834a37e752ae663",
+      "size_bytes": 17210
+    },
+    {
+      "path": "v1/timeout_after_commit/evaluator_truth/episode_0000.json",
+      "sha256": "e73d8721d665cd9117672ed5d0653dfaef74d3c31cae9d8760d338a9f9b9c715",
+      "size_bytes": 1958
+    },
+    {
+      "path": "v1/timeout_after_commit/explanations/episode_0000.json",
+      "sha256": "219fd76ad49fe910f57b5b07aceca3006d4d35386d17f5b59ad7ea18c9ab26a7",
+      "size_bytes": 24693
+    },
+    {
+      "path": "v1/timeout_after_commit/manifest.json",
+      "sha256": "ef2b5a3a8c5d9ac5d0e9c409c65988a856c6544b1fada6ca957175ae71ba5bdc",
+      "size_bytes": 894
+    },
+    {
+      "path": "v1/timeout_after_commit/README.md",
+      "sha256": "409109f2e994332d6fc407fa94b4ab6debb345af460855ebf6131818a3958c4c",
+      "size_bytes": 1619
+    },
+    {
+      "path": "v1/timeout_after_commit/results.json",
+      "sha256": "25fce1cc22d5ae01c00b8e42670025e858172f91fe53c7822de486b354bd0ad4",
+      "size_bytes": 3311
+    },
+    {
+      "path": "v1/timeout_after_commit/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v1/timeout_after_commit/traces/episode_0000.json",
+      "sha256": "f8902ceeb21556ed268abad842fa81ef9b926bd3720e3e447a812120a823ec39",
+      "size_bytes": 16773
+    },
+    {
+      "path": "v1/timeout_before_commit/evaluator_truth/episode_0000.json",
+      "sha256": "ce4450de75f98bc8b2324a630e1c5ba625451c5cc4ac4d28a18ffd979a37ec48",
+      "size_bytes": 1580
+    },
+    {
+      "path": "v1/timeout_before_commit/explanations/episode_0000.json",
+      "sha256": "5c162c5a2a3705403a8f8839a28eb68c0efa937d4fadeac34a60936d47751206",
+      "size_bytes": 22167
+    },
+    {
+      "path": "v1/timeout_before_commit/manifest.json",
+      "sha256": "2c3888b582d49d014124b6aa52b3f733c1b14ad7d3c31a4c0fb7a187e17353fd",
+      "size_bytes": 894
+    },
+    {
+      "path": "v1/timeout_before_commit/README.md",
+      "sha256": "f1df479b754cb134684130216a953bb7b2ef20431585090563e440b4ec9a25c8",
+      "size_bytes": 1613
+    },
+    {
+      "path": "v1/timeout_before_commit/results.json",
+      "sha256": "4caaa9b0bbb09fc3a51c1c76c80038218b0793ff7d6743cf5d0a1a91d41873a1",
+      "size_bytes": 3301
+    },
+    {
+      "path": "v1/timeout_before_commit/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v1/timeout_before_commit/traces/episode_0000.json",
+      "sha256": "a0b6f94ca5d6c77c67eaae73a20ba9ef197e91dc92c76dbe5056338195429943",
+      "size_bytes": 15957
+    },
+    {
+      "path": "v1-clean-console.txt",
+      "sha256": "7be66ed2dbee75660e25eca07877c2909c2b12f79a04376ee741c8ff4548f585",
+      "size_bytes": 98
+    },
+    {
+      "path": "v1-false_success-console.txt",
+      "sha256": "b2679f5fcb5f1e6aaeb34a0e5b25d3a2bbf8a4f61ed89925f836c2cd2d98a6f1",
+      "size_bytes": 106
+    },
+    {
+      "path": "v1-missing_provenance-console.txt",
+      "sha256": "aeb157839db6075fb95b5f7829bf6c0ed2eee9a1065ea68e1e807ad2f10dc6f6",
+      "size_bytes": 111
+    },
+    {
+      "path": "v1-partial_effect-console.txt",
+      "sha256": "40f8c72b2d37e9e60450313e42dc8b2a92897caa3e77639f1ed86a9573bf777a",
+      "size_bytes": 107
+    },
+    {
+      "path": "v1-timeout_after_commit-console.txt",
+      "sha256": "41dadc971891a582528abdce433d738ec988362ee053c4e344f809700d9ec87e",
+      "size_bytes": 113
+    },
+    {
+      "path": "v1-timeout_before_commit-console.txt",
+      "sha256": "771fcf30d7f81f52daf120aca1be9ed7df303f1e13c51848ad9786bb4f82c380",
+      "size_bytes": 114
+    },
+    {
+      "path": "v2/clean/evaluator_truth/episode_0000.json",
+      "sha256": "c9fc21fe252437537ed79938eda2b8dc75fe112e671c29a3d711ae6a3c86221d",
+      "size_bytes": 2034
+    },
+    {
+      "path": "v2/clean/explanations/episode_0000.json",
+      "sha256": "208e618ecacfe2173f0af43d9b3816cbe3fba1ca76ac40d51c15974f9697ebe0",
+      "size_bytes": 24633
+    },
+    {
+      "path": "v2/clean/manifest.json",
+      "sha256": "d578fd4ee2b23c48fa1e40dd1d0d22315465a3d8b77416696df54284caebfee7",
+      "size_bytes": 894
+    },
+    {
+      "path": "v2/clean/README.md",
+      "sha256": "ff7aacde40424d7529b61c56c35383e31e188d765e844d6c2c5db6c6e0bb30ee",
+      "size_bytes": 1607
+    },
+    {
+      "path": "v2/clean/results.json",
+      "sha256": "0b37fe30a3b9f28dd186de986e42ebf06a455a938c556cf4961ff12c1894e6d9",
+      "size_bytes": 3272
+    },
+    {
+      "path": "v2/clean/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2/clean/traces/episode_0000.json",
+      "sha256": "034f34bbb4176f279b1a823c49293f7332b8df85487004852e72f05eb55add09",
+      "size_bytes": 16887
+    },
+    {
+      "path": "v2/false_success/evaluator_truth/episode_0000.json",
+      "sha256": "dd2a6b3ab0e9e94dc54935ff9912afb9728f15f58437f7aad36dfc9f9a2a0e09",
+      "size_bytes": 1683
+    },
+    {
+      "path": "v2/false_success/explanations/episode_0000.json",
+      "sha256": "7be9f07454fbee102850a0254ff157773e785e5c52ccd303cfa2ea98acf83f24",
+      "size_bytes": 22228
+    },
+    {
+      "path": "v2/false_success/manifest.json",
+      "sha256": "2c40307ae94971a33a1f81934f44becc5db12eef51adc94d8f93b034f797e895",
+      "size_bytes": 894
+    },
+    {
+      "path": "v2/false_success/README.md",
+      "sha256": "f5ecbf57a7d6e4c400d56cbda8ba3ccfe85a264983315e1ad04058ceaa260ba2",
+      "size_bytes": 1612
+    },
+    {
+      "path": "v2/false_success/results.json",
+      "sha256": "f48f480ca45806c3a7667f209bc525221dbd18b328519226efac6883b5853a4d",
+      "size_bytes": 3317
+    },
+    {
+      "path": "v2/false_success/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2/false_success/traces/episode_0000.json",
+      "sha256": "f253ca564d302839ecb103947abb860f6962e20ebc2f35651bb183ce0074fb78",
+      "size_bytes": 16071
+    },
+    {
+      "path": "v2/missing_provenance/evaluator_truth/episode_0000.json",
+      "sha256": "b6c4a875322bc8298281079986dca318d7de8a81b8e13d36a7338403faefcc5c",
+      "size_bytes": 2061
+    },
+    {
+      "path": "v2/missing_provenance/explanations/episode_0000.json",
+      "sha256": "8889b88410c4f6458d893556b623a825f041df91b54417672370f1e79e81a814",
+      "size_bytes": 23877
+    },
+    {
+      "path": "v2/missing_provenance/manifest.json",
+      "sha256": "70aedb0f19bac8753da63729a7028d71e645c858793b8d53c8042a42bc36ac9a",
+      "size_bytes": 894
+    },
+    {
+      "path": "v2/missing_provenance/README.md",
+      "sha256": "efa3d779bd092e54ecbf089c308ee239f241900b44a5f116b720a4b2c01654ad",
+      "size_bytes": 1618
+    },
+    {
+      "path": "v2/missing_provenance/results.json",
+      "sha256": "cce9e8bad4df12e436617a524ed078592363a56b72332152c5d866bb2c53c0d4",
+      "size_bytes": 3296
+    },
+    {
+      "path": "v2/missing_provenance/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2/missing_provenance/traces/episode_0000.json",
+      "sha256": "652987a0ae29c0fe5fff5f5d7eda87632dd93e1012c0377d4a47e465ffd3fc03",
+      "size_bytes": 16614
+    },
+    {
+      "path": "v2/partial_effect/evaluator_truth/episode_0000.json",
+      "sha256": "51c5470b6db37756ba2ebd79f4e53a3c5ed468d57794adf98d1693765db9b289",
+      "size_bytes": 2069
+    },
+    {
+      "path": "v2/partial_effect/explanations/episode_0000.json",
+      "sha256": "198a75e36e9fd09ee7655fc50809a612845d62f5b2627e924a2cdc08e4283d65",
+      "size_bytes": 24814
+    },
+    {
+      "path": "v2/partial_effect/manifest.json",
+      "sha256": "f3c9a652b817567faaf3c5c4d5f39662b30bd5a358ceabe031770becc728049c",
+      "size_bytes": 894
+    },
+    {
+      "path": "v2/partial_effect/README.md",
+      "sha256": "23c4d72162403e046edcf56e0ac79b504e44ec8ee6cd58ea80af642f9e1a8906",
+      "size_bytes": 1615
+    },
+    {
+      "path": "v2/partial_effect/results.json",
+      "sha256": "aa29ac772abd78047337462200f612d85b60b1035942299bf2bc6bf52d4566e7",
+      "size_bytes": 3359
+    },
+    {
+      "path": "v2/partial_effect/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2/partial_effect/traces/episode_0000.json",
+      "sha256": "b66a85be31ba3f840945b9183c9921b8b4121efff7e2a40652e750b5feaab79a",
+      "size_bytes": 16899
+    },
+    {
+      "path": "v2/timeout_after_commit/evaluator_truth/episode_0000.json",
+      "sha256": "e73d8721d665cd9117672ed5d0653dfaef74d3c31cae9d8760d338a9f9b9c715",
+      "size_bytes": 1958
+    },
+    {
+      "path": "v2/timeout_after_commit/explanations/episode_0000.json",
+      "sha256": "185232beff7eecc8aadb13d540c4f1e964b9d32a7e9e1c9f8cf4cd05845ffdf1",
+      "size_bytes": 24761
+    },
+    {
+      "path": "v2/timeout_after_commit/manifest.json",
+      "sha256": "d34cc8e0e7beccd56c2edac14b5acb235db43357dbd17079d4305e2c6056be7b",
+      "size_bytes": 894
+    },
+    {
+      "path": "v2/timeout_after_commit/README.md",
+      "sha256": "5b412185789a0b678db48a0b824a29d4744b93d2bdec1e9dbec1c2f6fcb8a5f2",
+      "size_bytes": 1622
+    },
+    {
+      "path": "v2/timeout_after_commit/results.json",
+      "sha256": "be8b399978d9c7684c86490f6d1cd3bba34f4b8ef2c97fef364bf38344299e01",
+      "size_bytes": 3317
+    },
+    {
+      "path": "v2/timeout_after_commit/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2/timeout_after_commit/traces/episode_0000.json",
+      "sha256": "c7bfd259bd56383c4627496d76868f4e2692e87f44958f7a29e7287933436844",
+      "size_bytes": 16866
+    },
+    {
+      "path": "v2/timeout_before_commit/evaluator_truth/episode_0000.json",
+      "sha256": "ce4450de75f98bc8b2324a630e1c5ba625451c5cc4ac4d28a18ffd979a37ec48",
+      "size_bytes": 1580
+    },
+    {
+      "path": "v2/timeout_before_commit/explanations/episode_0000.json",
+      "sha256": "aefc147ca7a030bd9705614c09a75569658918ddbcffc8455d922ac0e4afd4fe",
+      "size_bytes": 22260
+    },
+    {
+      "path": "v2/timeout_before_commit/manifest.json",
+      "sha256": "bd2fd17415be6750541642a4cc7856a1cb722d6b0afb6a05668f73406bb7ea78",
+      "size_bytes": 894
+    },
+    {
+      "path": "v2/timeout_before_commit/README.md",
+      "sha256": "7db368e47ba384adec60e019b75fc821a1dcaceedd41329d4f2c987a5000f7d7",
+      "size_bytes": 1620
+    },
+    {
+      "path": "v2/timeout_before_commit/results.json",
+      "sha256": "3b13c840f591fee9289b3a3fec2f210202f2d328e32bb901b8bcebf76ce4a3ef",
+      "size_bytes": 3304
+    },
+    {
+      "path": "v2/timeout_before_commit/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2/timeout_before_commit/traces/episode_0000.json",
+      "sha256": "470aa4295bc2274188949c152c039379101e252ddaf12a0bfa4688fd4b1cbda2",
+      "size_bytes": 16048
+    },
+    {
+      "path": "v2-clean-console.txt",
+      "sha256": "bde47cc811a9e145982d54fac85622c6d0b9b0ddfc2dfb8d3c71045034b086bb",
+      "size_bytes": 98
+    },
+    {
+      "path": "v2-false_success-console.txt",
+      "sha256": "535fc81367b1ef7eb368c6cebc7bc9bc0155a7ae229f2903cc401c906f608fd2",
+      "size_bytes": 106
+    },
+    {
+      "path": "v2-missing_provenance-console.txt",
+      "sha256": "4c283da85534428581b1040b432b175eeb8baa3d51550806f18e79a640dee1e1",
+      "size_bytes": 111
+    },
+    {
+      "path": "v2-partial_effect-console.txt",
+      "sha256": "131b505a004db4b90f2e9f47619c92595dd369fd0e9171c927786d940e714390",
+      "size_bytes": 107
+    },
+    {
+      "path": "v2-timeout_after_commit-console.txt",
+      "sha256": "7e6d80eaefb7cbee32ed4a8253709eeb35d1b8ffc4e52c1e6e0e2b3b3adabb4c",
+      "size_bytes": 113
+    },
+    {
+      "path": "v2-timeout_before_commit-console.txt",
+      "sha256": "dac3ad5bfb079ab91a49a7873912c7cfb96be7c14238747296b44b450d9b0d71",
+      "size_bytes": 114
+    },
+    {
+      "path": "v2-two-attempts/evaluator_truth/episode_0000.json",
+      "sha256": "c9fc21fe252437537ed79938eda2b8dc75fe112e671c29a3d711ae6a3c86221d",
+      "size_bytes": 2034
+    },
+    {
+      "path": "v2-two-attempts/evaluator_truth/episode_0001.json",
+      "sha256": "02671c7fc851f5bd3cf37d2b4bd5b0224e956759b2a8707effd2fef74bd83e5b",
+      "size_bytes": 1958
+    },
+    {
+      "path": "v2-two-attempts/explanations/episode_0000.json",
+      "sha256": "040701171a4d5ae9b49f8ad642dfc9f54bba854cd83d6fd1ba5f745c1fb06ef0",
+      "size_bytes": 24911
+    },
+    {
+      "path": "v2-two-attempts/explanations/episode_0001.json",
+      "sha256": "c2e7298885731ce7287268673d6eb2a490cbc4d8f04d1615ce0094661cf0b1ae",
+      "size_bytes": 24955
+    },
+    {
+      "path": "v2-two-attempts/manifest.json",
+      "sha256": "f3b4262908589ae7a2b3e0ac954a145206d01869d97155f90929361f0912183d",
+      "size_bytes": 1335
+    },
+    {
+      "path": "v2-two-attempts/README.md",
+      "sha256": "6614a8b22d8f34cb9fffc80b2ccdb5716e32f474ce91bad0960d0464af101afb",
+      "size_bytes": 1705
+    },
+    {
+      "path": "v2-two-attempts/results.json",
+      "sha256": "405e48f0f2b57bdf20f5363e785c92df495a3b5ae720f62fd958a52e62091ffa",
+      "size_bytes": 3868
+    },
+    {
+      "path": "v2-two-attempts/trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f",
+      "size_bytes": 12678
+    },
+    {
+      "path": "v2-two-attempts/traces/episode_0000.json",
+      "sha256": "70212debad0b3fd3d0ffe724a1765b7141abef8b249f4ab2aeafc8bbc605e8dd",
+      "size_bytes": 17165
+    },
+    {
+      "path": "v2-two-attempts/traces/episode_0001.json",
+      "sha256": "b719b5bf393835eb18039ad0fa256b8863b6ff434ec8c006eeab3fd8a9b778b0",
+      "size_bytes": 17060
+    }
+  ]
+}

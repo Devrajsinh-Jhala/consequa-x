@@ -171,6 +171,8 @@ def _assessment_report(summary):
         f"assessable claim coverage: {rate('assessable_claim_coverage')}; "
         f"contradictions among assessable claims: {rate('contradiction_rate')}. "
         "Unknown assessments are abstentions; partial assessments remain separate. "
+        "These counts score the structured status only; an unknown status can coexist "
+        "with definite claims in the rationale, which requires separate review. "
         "These are hindsight comparisons with supported action-linked state, not a "
         "grade of what an ambiguous public response lets the policy know. Failed and "
         "unstarted runs have no final assessment and remain outside these denominators.\n\n"

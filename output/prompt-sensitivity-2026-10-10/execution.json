@@ -1,0 +1,1110 @@
+{
+  "source_commit": "f7a38f3a6648ccce4d381ca8f004e5909b454656",
+  "runs": [
+    {
+      "profile": "refund-policy-v1",
+      "case": "clean",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--cases",
+        "clean",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v1/clean"
+      ],
+      "started_at_utc": "2026-10-10T17:30:08.984091+00:00",
+      "finished_at_utc": "2026-10-10T17:31:20.735722+00:00",
+      "wall_seconds": 71.751631,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 1,
+          "contradicted": 0,
+          "unassessable": 0
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "assessable_claims": 1,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 1,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "definite_claims": 1,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 1,
+            "unknown": 0
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 1,
+          "other_actor": 0,
+          "unknown": 0
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 1,
+          "unknown": 0,
+          "violated": 0
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v1",
+      "case": "timeout_before_commit",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--cases",
+        "timeout_before_commit",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v1/timeout_before_commit"
+      ],
+      "started_at_utc": "2026-10-10T17:31:20.741336+00:00",
+      "finished_at_utc": "2026-10-10T17:32:06.540054+00:00",
+      "wall_seconds": 45.798718,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 1,
+          "contradicted": 0,
+          "unassessable": 0
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "assessable_claims": 1,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 1,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "definite_claims": 1,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 1,
+            "partial": 0,
+            "success": 0,
+            "unknown": 0
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 0,
+          "other_actor": 0,
+          "unknown": 1
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 0,
+          "unknown": 0,
+          "violated": 1
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v1",
+      "case": "timeout_after_commit",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--cases",
+        "timeout_after_commit",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v1/timeout_after_commit"
+      ],
+      "started_at_utc": "2026-10-10T17:32:06.543057+00:00",
+      "finished_at_utc": "2026-10-10T17:32:52.010043+00:00",
+      "wall_seconds": 45.466986,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 1,
+          "unassessable": 0
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "assessable_claims": 1,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 1,
+          "contradiction_rate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "definite_claims": 1,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 1,
+            "partial": 0,
+            "success": 0,
+            "unknown": 0
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 1,
+          "other_actor": 0,
+          "unknown": 0
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 1,
+          "unknown": 0,
+          "violated": 0
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v1",
+      "case": "false_success",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--cases",
+        "false_success",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v1/false_success"
+      ],
+      "started_at_utc": "2026-10-10T17:32:52.014016+00:00",
+      "finished_at_utc": "2026-10-10T17:33:35.875883+00:00",
+      "wall_seconds": 43.861867,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 1,
+          "unassessable": 0
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "assessable_claims": 1,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 1,
+          "contradiction_rate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "definite_claims": 1,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 1,
+            "unknown": 0
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 0,
+          "other_actor": 0,
+          "unknown": 1
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 0,
+          "unknown": 0,
+          "violated": 1
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v1",
+      "case": "partial_effect",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--cases",
+        "partial_effect",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v1/partial_effect"
+      ],
+      "started_at_utc": "2026-10-10T17:33:35.880408+00:00",
+      "finished_at_utc": "2026-10-10T17:34:23.146120+00:00",
+      "wall_seconds": 47.265712,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 1,
+          "unassessable": 0
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "assessable_claims": 1,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 1,
+          "contradiction_rate": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "definite_claims": 1,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 1,
+            "unknown": 0
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 1,
+          "other_actor": 0,
+          "unknown": 0
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 0,
+          "unknown": 0,
+          "violated": 1
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v1",
+      "case": "missing_provenance",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--cases",
+        "missing_provenance",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v1/missing_provenance"
+      ],
+      "started_at_utc": "2026-10-10T17:34:23.162917+00:00",
+      "finished_at_utc": "2026-10-10T17:35:11.546648+00:00",
+      "wall_seconds": 48.383731,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 1,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 1,
+            "unknown": 0
+          },
+          "unassessable_claims": 1
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 0,
+          "other_actor": 0,
+          "unknown": 1
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 1,
+          "unknown": 0,
+          "violated": 0
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v2",
+      "case": "clean",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--cases",
+        "clean",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v2/clean"
+      ],
+      "started_at_utc": "2026-10-10T17:35:11.549900+00:00",
+      "finished_at_utc": "2026-10-10T17:36:11.230088+00:00",
+      "wall_seconds": 59.680188,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 1
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 1,
+          "other_actor": 0,
+          "unknown": 0
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 1,
+          "unknown": 0,
+          "violated": 0
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v2",
+      "case": "timeout_before_commit",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--cases",
+        "timeout_before_commit",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v2/timeout_before_commit"
+      ],
+      "started_at_utc": "2026-10-10T17:36:11.233924+00:00",
+      "finished_at_utc": "2026-10-10T17:36:57.160270+00:00",
+      "wall_seconds": 45.926346,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 1
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 0,
+          "other_actor": 0,
+          "unknown": 1
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 0,
+          "unknown": 0,
+          "violated": 1
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v2",
+      "case": "timeout_after_commit",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--cases",
+        "timeout_after_commit",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v2/timeout_after_commit"
+      ],
+      "started_at_utc": "2026-10-10T17:36:57.164564+00:00",
+      "finished_at_utc": "2026-10-10T17:37:49.346939+00:00",
+      "wall_seconds": 52.182375,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 1
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 1,
+          "other_actor": 0,
+          "unknown": 0
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 1,
+          "unknown": 0,
+          "violated": 0
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v2",
+      "case": "false_success",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--cases",
+        "false_success",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v2/false_success"
+      ],
+      "started_at_utc": "2026-10-10T17:37:49.352590+00:00",
+      "finished_at_utc": "2026-10-10T17:38:40.848575+00:00",
+      "wall_seconds": 51.495985,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 1
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 0,
+          "other_actor": 0,
+          "unknown": 1
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 0,
+          "unknown": 0,
+          "violated": 1
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v2",
+      "case": "partial_effect",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--cases",
+        "partial_effect",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v2/partial_effect"
+      ],
+      "started_at_utc": "2026-10-10T17:38:40.854159+00:00",
+      "finished_at_utc": "2026-10-10T17:39:22.733404+00:00",
+      "wall_seconds": 41.879245,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 1
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 1,
+          "other_actor": 0,
+          "unknown": 0
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 0,
+          "unknown": 0,
+          "violated": 1
+        }
+      }
+    },
+    {
+      "profile": "refund-policy-v2",
+      "case": "missing_provenance",
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--cases",
+        "missing_provenance",
+        "--samples",
+        "1",
+        "--seed",
+        "0",
+        "--temperature",
+        "0",
+        "--timeout",
+        "180",
+        "--num-predict",
+        "512",
+        "--max-attempts",
+        "1",
+        "--max-calls",
+        "2",
+        "--output",
+        "output/prompt-sensitivity-2026-10-10/v2/missing_provenance"
+      ],
+      "started_at_utc": "2026-10-10T17:39:22.745599+00:00",
+      "finished_at_utc": "2026-10-10T17:40:07.690702+00:00",
+      "wall_seconds": 44.945103,
+      "exit_code": 0,
+      "summary": {
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 1,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 1,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 1
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 1,
+        "budget_exhausted": false,
+        "completed_samples": 1,
+        "failed_samples": 0,
+        "known_outcome_samples": 1,
+        "max_calls": 2,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 0,
+          "other_actor": 0,
+          "unknown": 1
+        },
+        "planned_samples": 1,
+        "policy_calls": 2,
+        "verification": {
+          "satisfied": 1,
+          "unknown": 0,
+          "violated": 0
+        }
+      }
+    }
+  ],
+  "recorded_policy_calls": 24
+}

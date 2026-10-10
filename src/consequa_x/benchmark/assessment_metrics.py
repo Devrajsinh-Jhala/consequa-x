@@ -19,6 +19,7 @@ def assessment_metrics(records: Iterable[tuple[AssessmentStatus, str]]) -> dict:
     Alignment must be the existing origin-aware explanation result, rather than
     a comparison with state satisfaction alone. These are hindsight alignment
     metrics, not oracle-policy correctness or policy-visible evidence support.
+    Counts describe the structured status field, not claims in rationale text.
     Unknown assessments are abstentions, never consistent claims. Partial
     assessments remain separate from definite success/failure claims. Callers
     omit failed and unstarted runs, which have no completed final assessment.

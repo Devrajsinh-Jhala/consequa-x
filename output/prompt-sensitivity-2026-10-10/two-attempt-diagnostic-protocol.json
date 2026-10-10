@@ -1,0 +1,21 @@
+{
+  "status": "declared_before_diagnostic_generation_after_one_attempt_baseline_started",
+  "declared_at_utc": "2026-10-10T17:32:35.014474+00:00",
+  "source_commit": "f7a38f3a6648ccce4d381ca8f004e5909b454656",
+  "purpose": "Exploratory v2 check at the original two-attempt pilot settings; historical v1 comparison is descriptive, not a randomized paired estimate.",
+  "cases": [
+    "clean",
+    "timeout_after_commit"
+  ],
+  "prompt_version": "refund-policy-v2",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "temperature": 0,
+  "initial_seed": 0,
+  "samples_per_case": 1,
+  "max_attempts": 2,
+  "maximum_policy_calls": 6,
+  "num_predict": 512,
+  "timeout_seconds": 180,
+  "output": "v2-two-attempts",
+  "failure_handling": "Retain first samples, failures, unknowns; no redraws."
+}

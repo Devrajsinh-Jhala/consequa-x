@@ -1,0 +1,41 @@
+{
+  "artifacts": [
+    {
+      "path": "traces/episode_0000.json",
+      "sha256": "70212debad0b3fd3d0ffe724a1765b7141abef8b249f4ab2aeafc8bbc605e8dd"
+    },
+    {
+      "path": "explanations/episode_0000.json",
+      "sha256": "040701171a4d5ae9b49f8ad642dfc9f54bba854cd83d6fd1ba5f745c1fb06ef0"
+    },
+    {
+      "path": "evaluator_truth/episode_0000.json",
+      "sha256": "c9fc21fe252437537ed79938eda2b8dc75fe112e671c29a3d711ae6a3c86221d"
+    },
+    {
+      "path": "traces/episode_0001.json",
+      "sha256": "b719b5bf393835eb18039ad0fa256b8863b6ff434ec8c006eeab3fd8a9b778b0"
+    },
+    {
+      "path": "explanations/episode_0001.json",
+      "sha256": "c2e7298885731ce7287268673d6eb2a490cbc4d8f04d1615ce0094661cf0b1ae"
+    },
+    {
+      "path": "evaluator_truth/episode_0001.json",
+      "sha256": "02671c7fc851f5bd3cf37d2b4bd5b0224e956759b2a8707effd2fef74bd83e5b"
+    },
+    {
+      "path": "results.json",
+      "sha256": "405e48f0f2b57bdf20f5363e785c92df495a3b5ae720f62fd958a52e62091ffa"
+    },
+    {
+      "path": "trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6614a8b22d8f34cb9fffc80b2ccdb5716e32f474ce91bad0960d0464af101afb"
+    }
+  ],
+  "package_version": "0.1.0a1"
+}

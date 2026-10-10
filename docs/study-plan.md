@@ -2,9 +2,13 @@
 
 Status: proposed research protocol with implemented evaluation and paired-replay
 entry points, 10 October 2026. A [first live pilot](../output/live-pilot-2026-10-10/README.md)
-has completed; this document specifies the stronger research study still needed.
+and an [exploratory prompt follow-up](../output/prompt-sensitivity-2026-10-10/README.md)
+have completed; this document specifies the stronger research study still needed.
 Scripted fixtures, mocked Ollama tests, and the small local-model pilot establish
 integration behavior, without demonstrating method superiority or generalization.
+The follow-up found that structured unknown assessments can coexist with definite
+rationale claims. A final study must assess those claims separately; field-level
+abstention alone does not establish calibrated uncertainty or improved accuracy.
 
 ## Research question and scope
 

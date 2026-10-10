@@ -145,12 +145,19 @@ value when the denominator is zero. Definite claims with unknown verification
 or insufficient origin remain unassessable. Provider failures and unstarted
 episodes stay in their separate run counts.
 
+These counts evaluate the structured assessment status only. They do not score
+the free-text rationale: an `unknown` status can coexist with an affirmative
+claim in the explanation. Review rationale claims separately before interpreting
+field-level abstention as evidence that a policy avoids unsupported assertions.
+
 These metrics describe hindsight alignment with supported action-linked state.
 They do not grade what the policy could know from public responses: a timeout
 can justify unknown even when later readback resolves success. Report coverage,
 abstention, and contradiction together; blanket abstention is not improved
 accuracy. The [first live pilot](../output/live-pilot-2026-10-10/README.md) preserves
 the original v1 observations used to motivate this exploratory refinement.
+The [prompt-sensitivity follow-up](../output/prompt-sensitivity-2026-10-10/README.md)
+records this status/rationale mismatch and reports the separate retry diagnostic.
 
 Simulation time determines the contract deadline and stability horizon.
 Provider-reported inference duration, when available, is recorded separately

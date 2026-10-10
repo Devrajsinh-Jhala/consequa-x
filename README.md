@@ -19,6 +19,7 @@ The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) c
 - [Paired policy replay guide](docs/policy-replay.md)
 - [Scripted replay smoke results](output/replay-smoke/README.md)
 - [First live-model pilot and audit](output/live-pilot-2026-10-10/README.md)
+- [Exploratory prompt comparison and retry diagnostic](output/prompt-sensitivity-2026-10-10/README.md)
 - [Proposed model study protocol](docs/study-plan.md)
 - [Alpha validation report](output/build/README.md)
 
@@ -97,7 +98,7 @@ consequa-x model-eval --provider ollama --model YOUR_INSTALLED_MODEL --cases cle
 
 The adapter checks installed models and declared local routing before generation, uses structured decisions, and records model identity and request hashes. It performs no model installation or download. See [the evaluation guide](docs/policy-evaluation.md) for setup, limits, API examples, and trust assumptions. The [study protocol](docs/study-plan.md) defines the stronger comparisons and held-out tasks still needed for a research paper.
 
-The original `refund-policy-v1` prompt remains the default. Select the opt-in `--prompt-version refund-policy-v2` to clarify assessment, timing, and attempt-budget semantics and add stop-after-success guidance. This is a pilot-informed policy refinement; comparison results are exploratory. Both evaluation and replay record the chosen version and its exact prompt hash. Reports also expose assessment abstention, claim coverage, and contradictions with explicit denominators. Hindsight alignment with verified state does not establish what a policy could know from an ambiguous response.
+The original `refund-policy-v1` prompt remains the default. Select the opt-in `--prompt-version refund-policy-v2` to clarify assessment, timing, and attempt-budget semantics and add stop-after-success guidance. This is a pilot-informed policy refinement; comparison results are exploratory. Both evaluation and replay record the chosen version and its exact prompt hash. Reports also expose assessment abstention, claim coverage, and contradictions with explicit denominators. These metrics score the structured status, while rationale text requires separate review. The [follow-up pilot](output/prompt-sensitivity-2026-10-10/README.md) found unknown status fields alongside affirmative rationale claims, so it does not establish an accuracy gain. Hindsight alignment with verified state does not establish what a policy could know from an ambiguous response.
 
 ## Use the Python API
 

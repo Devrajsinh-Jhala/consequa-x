@@ -1,0 +1,29 @@
+{
+  "artifacts": [
+    {
+      "path": "traces/episode_0000.json",
+      "sha256": "f253ca564d302839ecb103947abb860f6962e20ebc2f35651bb183ce0074fb78"
+    },
+    {
+      "path": "explanations/episode_0000.json",
+      "sha256": "7be9f07454fbee102850a0254ff157773e785e5c52ccd303cfa2ea98acf83f24"
+    },
+    {
+      "path": "evaluator_truth/episode_0000.json",
+      "sha256": "dd2a6b3ab0e9e94dc54935ff9912afb9728f15f58437f7aad36dfc9f9a2a0e09"
+    },
+    {
+      "path": "results.json",
+      "sha256": "f48f480ca45806c3a7667f209bc525221dbd18b328519226efac6883b5853a4d"
+    },
+    {
+      "path": "trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f5ecbf57a7d6e4c400d56cbda8ba3ccfe85a264983315e1ad04058ceaa260ba2"
+    }
+  ],
+  "package_version": "0.1.0a1"
+}

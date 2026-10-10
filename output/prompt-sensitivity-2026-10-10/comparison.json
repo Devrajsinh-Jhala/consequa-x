@@ -1,0 +1,359 @@
+{
+  "source_commit": "f7a38f3a6648ccce4d381ca8f004e5909b454656",
+  "profiles": {
+    "v1": {
+      "completed_runs": 6,
+      "failed_runs": 0,
+      "preflight_failures": 0,
+      "policy_calls": 12,
+      "assessment_metrics": {
+        "completed_assessments": 6,
+        "reported_assessment": {
+          "success": 4,
+          "failure": 2,
+          "partial": 0,
+          "unknown": 0
+        },
+        "definite_claims": 6,
+        "abstentions": 0,
+        "partial_assessments": 0,
+        "assessable_claims": 5,
+        "unassessable_claims": 1,
+        "consistent_claims": 2,
+        "contradicted_claims": 3,
+        "claim_coverage": {
+          "numerator": 6,
+          "denominator": 6,
+          "value": 1.0
+        },
+        "assessable_claim_coverage": {
+          "numerator": 5,
+          "denominator": 6,
+          "value": 0.8333333333333334
+        },
+        "contradiction_rate": {
+          "numerator": 3,
+          "denominator": 5,
+          "value": 0.6
+        }
+      }
+    },
+    "v2": {
+      "completed_runs": 6,
+      "failed_runs": 0,
+      "preflight_failures": 0,
+      "policy_calls": 12,
+      "assessment_metrics": {
+        "completed_assessments": 6,
+        "reported_assessment": {
+          "success": 0,
+          "failure": 0,
+          "partial": 0,
+          "unknown": 6
+        },
+        "definite_claims": 0,
+        "abstentions": 6,
+        "partial_assessments": 0,
+        "assessable_claims": 0,
+        "unassessable_claims": 0,
+        "consistent_claims": 0,
+        "contradicted_claims": 0,
+        "claim_coverage": {
+          "numerator": 0,
+          "denominator": 6,
+          "value": 0.0
+        },
+        "assessable_claim_coverage": {
+          "numerator": 0,
+          "denominator": 6,
+          "value": 0.0
+        },
+        "contradiction_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        }
+      }
+    }
+  },
+  "observations": [
+    {
+      "profile": "v1",
+      "case": "clean",
+      "action_selected": true,
+      "assessment_alignment": "consistent",
+      "diagnosis": "CONSISTENT_OUTCOME",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "clean",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The order is 43 days old, which exceeds the standard 30-day refund policy. However, the customer is VIP, and the VIP policy allows refunds within 60 days. The refund was successfully processed within the allowed timeframe for VIP customers, so the request is valid and the operation concludes successfully."
+    },
+    {
+      "profile": "v1",
+      "case": "timeout_before_commit",
+      "action_selected": true,
+      "assessment_alignment": "consistent",
+      "diagnosis": "CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "failure",
+      "scenario": "timeout_before_commit",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The order is 43 days old, exceeding the standard 30-day refund policy. Although the customer is VIP and the VIP policy allows refunds within 60 days, the system timeout during the response handling indicates no successful processing of the refund request, and no retry is available due to zero attempts remaining."
+    },
+    {
+      "profile": "v1",
+      "case": "timeout_after_commit",
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "diagnosis": "BELIEF / RESPONSE DIVERGENCE",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "failure",
+      "scenario": "timeout_after_commit",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The order is 43 days old, exceeding the standard 30-day refund policy. Although the customer is VIP and the VIP policy allows refunds within 60 days, the system timeout during the response handling indicates no successful processing of the refund request, and no retry is available due to zero attempts remaining."
+    },
+    {
+      "profile": "v1",
+      "case": "false_success",
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "false_success",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The order is 43 days old, which exceeds the standard 30-day refund policy. However, the customer is VIP, and the VIP policy allows refunds within 60 days. The refund was successfully processed within the allowed timeframe for VIP customers, so the request is valid and the operation concludes successfully."
+    },
+    {
+      "profile": "v1",
+      "case": "partial_effect",
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / PARAMETER_MISMATCH / PARTIAL_EFFECT",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "partial_effect",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The order is 43 days old, which exceeds the standard 30-day refund policy. However, the customer is VIP, and the VIP policy allows refunds within 60 days. The refund was successfully processed within the allowed timeframe for VIP customers, so the request is valid and the operation concludes successfully."
+    },
+    {
+      "profile": "v1",
+      "case": "missing_provenance",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "UNCONFIRMED_ORIGIN",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "missing_provenance",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The order is 43 days old, which exceeds the standard 30-day refund policy. However, the customer is VIP, and the VIP policy allows refunds within 60 days. The refund was successfully processed within the allowed timeframe for VIP customers, so the request is valid and the operation concludes successfully."
+    },
+    {
+      "profile": "v2",
+      "case": "clean",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "CONSISTENT_OUTCOME",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "clean",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The refund was successfully processed within the VIP eligibility window (60 days), and no further attempts are available. The operation is stopped as there are no remaining attempts to retry."
+    },
+    {
+      "profile": "v2",
+      "case": "timeout_before_commit",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "timeout_before_commit",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The refund request is from a VIP customer, and the VIP policy allows refunds within 60 days. The order is 43 days old, which falls within the VIP eligibility window. However, the attempts_remaining is 0, and the previous attempt timed out. Since no further attempts are available, the operation must stop without executing a refund."
+    },
+    {
+      "profile": "v2",
+      "case": "timeout_after_commit",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "timeout_after_commit",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The refund request is from a VIP customer, and the VIP policy allows refunds within 60 days. The order is 43 days old, which falls within the VIP eligibility window. However, the attempts_remaining is 0, and the previous attempt timed out. Since no further attempts are available, the operation must stop without executing a refund."
+    },
+    {
+      "profile": "v2",
+      "case": "false_success",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "false_success",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The refund was successfully processed within the VIP eligibility window (60 days), and no further attempts are available. The operation is stopped as there are no remaining attempts to retry."
+    },
+    {
+      "profile": "v2",
+      "case": "partial_effect",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / PARAMETER_MISMATCH / PARTIAL_EFFECT",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "partial_effect",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The refund was successfully processed within the VIP eligibility window (60 days), and no further attempts are available. The operation is stopped as there are no remaining attempts to retry."
+    },
+    {
+      "profile": "v2",
+      "case": "missing_provenance",
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "UNCONFIRMED_ORIGIN",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "missing_provenance",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied",
+      "operations": [
+        "refund",
+        "stop"
+      ],
+      "final_rationale": "The refund was successfully processed within the VIP eligibility window (60 days), and no further attempts are available. The operation is stopped as there are no remaining attempts to retry."
+    }
+  ],
+  "interpretation": "Exploratory one-attempt comparison. Hindsight alignment is not evidence-visible correctness. No independent task sampling or significance claim.",
+  "measurement_scope": "Metrics count the structured final assessment status only; rationale claims require separate review. Unknown fields can coexist with affirmative assertions."
+}

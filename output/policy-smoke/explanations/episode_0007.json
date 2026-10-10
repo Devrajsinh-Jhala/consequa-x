@@ -1,0 +1,571 @@
+{
+  "action_id": "refund:7",
+  "agent_assessment": {
+    "evidence_event_ids": [
+      "response_1"
+    ],
+    "rationale": "The tool returned a successful response.",
+    "status": "success",
+    "time_ms": 6
+  },
+  "assessment_alignment": "contradicted",
+  "attribution": [],
+  "consequence": {
+    "attributable_effect_ids": [],
+    "contract_id": "contract:7",
+    "effect_ids": [],
+    "evidence": [
+      {
+        "as_of_ms": 100,
+        "details": {
+          "available": true,
+          "complete": true,
+          "eligible_count": 0,
+          "expected": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42"
+          },
+          "horizon_ms": 100,
+          "matching_count": 0,
+          "peak_matching_count": 0,
+          "records": [],
+          "relevant_count": 0,
+          "scope": {
+            "currency": "INR",
+            "lag_ms": 0,
+            "payment_id": "pay_42"
+          },
+          "watermark_ms": 100
+        },
+        "observation_id": "obs_7_000001",
+        "source": "payment_ledger"
+      }
+    ],
+    "observed_at_ms": 100,
+    "origin": "unknown",
+    "reason": "Refund predicate is violated in an exhaustive horizon-covering snapshot",
+    "status": "violated"
+  },
+  "diagnoses": [
+    "ASSESSMENT_DIVERGENCE",
+    "RESPONSE_EFFECT_DIVERGENCE",
+    "CONSEQUENCE_VIOLATION"
+  ],
+  "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION",
+  "graph": {
+    "edges": [
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "customer_request",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "vip_memory",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "vip_policy",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "retry_instruction",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "distractor",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "refund_decision",
+        "target": "assessment_0"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "refund_decision",
+        "target": "refund_intent"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "refund_intent",
+        "target": "dispatch_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "dispatch_1",
+        "target": "response_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "customer_request",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "vip_memory",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "vip_policy",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "retry_instruction",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "distractor",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "response_1",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "response_decision_1",
+        "target": "assessment_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "customer_request",
+        "target": "vip_memory"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "vip_memory",
+        "target": "vip_policy"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "vip_policy",
+        "target": "retry_instruction"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "retry_instruction",
+        "target": "distractor"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "distractor",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "refund_decision",
+        "target": "assessment_0"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "assessment_0",
+        "target": "refund_intent"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "refund_intent",
+        "target": "dispatch_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "dispatch_1",
+        "target": "response_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "response_1",
+        "target": "response_decision_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "response_decision_1",
+        "target": "assessment_1"
+      },
+      {
+        "basis": "captured_attempt_identity",
+        "data": {},
+        "kind": "RESPONSE",
+        "source": "dispatch_1",
+        "target": "response_1"
+      },
+      {
+        "basis": "declared_predicate",
+        "data": {},
+        "kind": "CONTRACT",
+        "source": "contract:contract:7",
+        "target": "verification:contract:7:0"
+      },
+      {
+        "basis": "read_only_verifier",
+        "data": {},
+        "kind": "VERIFICATION",
+        "source": "observation:obs_7_000001",
+        "target": "verification:contract:7:0"
+      }
+    ],
+    "nodes": [
+      {
+        "data": {
+          "value": "Please issue the refund specified in this task."
+        },
+        "id": "customer_request",
+        "kind": "user_input",
+        "time_ms": 0
+      },
+      {
+        "data": {
+          "value": "Customer tier: VIP."
+        },
+        "id": "vip_memory",
+        "kind": "memory_read",
+        "time_ms": 1
+      },
+      {
+        "data": {
+          "value": "VIP customers may receive refunds within 60 days."
+        },
+        "id": "vip_policy",
+        "kind": "retrieval",
+        "time_ms": 2
+      },
+      {
+        "data": {
+          "value": ""
+        },
+        "id": "retry_instruction",
+        "kind": "system_instruction",
+        "time_ms": 3
+      },
+      {
+        "data": {
+          "value": "Weather is pleasant today."
+        },
+        "id": "distractor",
+        "kind": "retrieval",
+        "time_ms": 4
+      },
+      {
+        "data": {
+          "model_seed": 42,
+          "policy": {
+            "policy": "visible-refund-fixture",
+            "provider": "scripted",
+            "version": "1"
+          },
+          "policy_reply": {
+            "decision": {
+              "assessment": "unknown",
+              "operation": "refund",
+              "rationale": "The visible request and refund policy allow this order."
+            },
+            "metadata": {
+              "policy": "visible-refund-fixture",
+              "provider": "scripted",
+              "seed": 42,
+              "version": "1"
+            }
+          },
+          "policy_request": {
+            "attempts_remaining": 2,
+            "context": {
+              "customer_request": "Please issue the refund specified in this task.",
+              "distractor": "Weather is pleasant today.",
+              "retry_instruction": "",
+              "vip_memory": "Customer tier: VIP.",
+              "vip_policy": "VIP customers may receive refunds within 60 days."
+            },
+            "responses": [],
+            "stage": "select",
+            "task": {
+              "amount_minor": 500000,
+              "base_refund_policy": "Refunds are allowed within 30 days.",
+              "currency": "INR",
+              "deadline_ms": 100,
+              "horizon_ms": 100,
+              "idempotency_available": true,
+              "order_age_days": 43,
+              "payment_id": "pay_42"
+            }
+          },
+          "selected": true
+        },
+        "id": "refund_decision",
+        "kind": "agent_decision",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "evidence_event_ids": [
+            "refund_decision"
+          ],
+          "rationale": "The visible request and refund policy allow this order.",
+          "status": "unknown",
+          "time_ms": 5
+        },
+        "id": "assessment_0",
+        "kind": "agent_assessment",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "action_id": "refund:7",
+          "arguments": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42"
+          }
+        },
+        "id": "refund_intent",
+        "kind": "action_intent",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "action_id": "refund:7",
+          "attempt_id": "attempt:7:1"
+        },
+        "id": "dispatch_1",
+        "kind": "action_dispatch",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "attempt_id": "attempt:7:1",
+          "provider_request_id": "req_7_000001",
+          "result": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42",
+            "refund_id": "rf_7_000001",
+            "status": "processed"
+          },
+          "status": "success",
+          "time_ms": 6
+        },
+        "id": "response_1",
+        "kind": "tool_response",
+        "time_ms": 6
+      },
+      {
+        "data": {
+          "model_seed": 43,
+          "policy": {
+            "policy": "visible-refund-fixture",
+            "provider": "scripted",
+            "version": "1"
+          },
+          "policy_reply": {
+            "decision": {
+              "assessment": "success",
+              "operation": "stop",
+              "rationale": "The tool returned a successful response."
+            },
+            "metadata": {
+              "policy": "visible-refund-fixture",
+              "provider": "scripted",
+              "seed": 43,
+              "version": "1"
+            }
+          },
+          "policy_request": {
+            "attempts_remaining": 1,
+            "context": {
+              "customer_request": "Please issue the refund specified in this task.",
+              "distractor": "Weather is pleasant today.",
+              "retry_instruction": "",
+              "vip_memory": "Customer tier: VIP.",
+              "vip_policy": "VIP customers may receive refunds within 60 days."
+            },
+            "responses": [
+              {
+                "attempt_id": "attempt:7:1",
+                "provider_request_id": "req_7_000001",
+                "result": {
+                  "amount_minor": 500000,
+                  "currency": "INR",
+                  "payment_id": "pay_42",
+                  "refund_id": "rf_7_000001",
+                  "status": "processed"
+                },
+                "status": "success",
+                "time_ms": 6
+              }
+            ],
+            "stage": "after_response",
+            "task": {
+              "amount_minor": 500000,
+              "base_refund_policy": "Refunds are allowed within 30 days.",
+              "currency": "INR",
+              "deadline_ms": 100,
+              "horizon_ms": 100,
+              "idempotency_available": true,
+              "order_age_days": 43,
+              "payment_id": "pay_42"
+            }
+          },
+          "selected": false
+        },
+        "id": "response_decision_1",
+        "kind": "agent_decision",
+        "time_ms": 6
+      },
+      {
+        "data": {
+          "evidence_event_ids": [
+            "response_1"
+          ],
+          "rationale": "The tool returned a successful response.",
+          "status": "success",
+          "time_ms": 6
+        },
+        "id": "assessment_1",
+        "kind": "agent_assessment",
+        "time_ms": 6
+      },
+      {
+        "data": {
+          "contract_id": "contract:7",
+          "deadline_ms": 100,
+          "exact_count": 1,
+          "expected": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42"
+          },
+          "predicate": "refund_processed",
+          "stability_ms": 0
+        },
+        "id": "contract:contract:7",
+        "kind": "postcondition",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "as_of_ms": 100,
+          "available": true,
+          "complete": true,
+          "observation_id": "obs_7_000001",
+          "observed_at_ms": 100,
+          "records": [],
+          "scope": {
+            "currency": "INR",
+            "lag_ms": 0,
+            "payment_id": "pay_42"
+          },
+          "source": "payment_ledger"
+        },
+        "id": "observation:obs_7_000001",
+        "kind": "external_observation",
+        "time_ms": 100
+      },
+      {
+        "data": {
+          "attributable_effect_ids": [],
+          "contract_id": "contract:7",
+          "effect_ids": [],
+          "evidence": [
+            {
+              "as_of_ms": 100,
+              "details": {
+                "available": true,
+                "complete": true,
+                "eligible_count": 0,
+                "expected": {
+                  "amount_minor": 500000,
+                  "currency": "INR",
+                  "payment_id": "pay_42"
+                },
+                "horizon_ms": 100,
+                "matching_count": 0,
+                "peak_matching_count": 0,
+                "records": [],
+                "relevant_count": 0,
+                "scope": {
+                  "currency": "INR",
+                  "lag_ms": 0,
+                  "payment_id": "pay_42"
+                },
+                "watermark_ms": 100
+              },
+              "observation_id": "obs_7_000001",
+              "source": "payment_ledger"
+            }
+          ],
+          "observed_at_ms": 100,
+          "origin": "unknown",
+          "reason": "Refund predicate is violated in an exhaustive horizon-covering snapshot",
+          "status": "violated"
+        },
+        "id": "verification:contract:7:0",
+        "kind": "verification",
+        "time_ms": 100
+      }
+    ]
+  },
+  "recency_candidate_id": "distractor",
+  "schema_version": "0.1",
+  "summary": "Agent reported success; independent verification is violated; effect origin is unknown."
+}

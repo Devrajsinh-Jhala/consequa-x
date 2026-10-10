@@ -1,4 +1,4 @@
-"""Offline demonstration, trace explanation, and fixture replay experiments."""
+"""Trace explanation, offline replay, and bounded policy evaluations."""
 
 import argparse
 from hashlib import sha256
@@ -148,6 +148,112 @@ def _explain(args):
     return 0
 
 
+def _model_eval(args):
+    from .adapters.ollama import OllamaPolicy
+    from .benchmark.evaluation import evaluate_policy, evaluation_sample_record
+    from .benchmark.policy_runner import MAX_TRIAL_SEED
+    from .policies import ScriptedRefundPolicy
+
+    output = Path(args.output)
+    if output.exists() and (not output.is_dir() or any(output.iterdir())):
+        raise ValueError("model-eval requires a new or empty output directory to preserve each evaluation")
+    configurations = demo_scenarios()
+    if args.cases:
+        names = args.cases.split(",")
+        by_name = {config.name: config for config in configurations}
+        if any(name not in by_name for name in names) or len(set(names)) != len(names):
+            raise ValueError("cases must be unique known demo names, separated by commas")
+        configurations = tuple(by_name[name] for name in names)
+    if args.provider == "ollama" and not args.model:
+        raise ValueError("--model is required with --provider ollama")
+    if args.provider == "scripted" and args.model:
+        raise ValueError("--model requires --provider ollama; scripted is an offline fixture")
+    # Validate the schedule before contacting a provider or writing artifacts.
+    if args.samples < 1 or args.seed < 0 or args.max_calls < 1 or not 1 <= args.max_attempts <= 5:
+        raise ValueError("samples/max-calls must be positive, seed nonnegative, max-attempts in 1..5")
+    if args.seed + len(configurations) * args.samples - 1 > MAX_TRIAL_SEED:
+        raise ValueError("Evaluation seed schedule exceeds the model seed range")
+    model_record = None
+    if args.provider == "ollama":
+        policy = OllamaPolicy(args.model, base_url=args.base_url, temperature=args.temperature,
+                              timeout=args.timeout, num_predict=args.num_predict)
+        requested = args.model if ":" in args.model else args.model + ":latest"
+        model_record = next((record for record in policy.list_models()
+                             if record["name"] in (args.model, requested)), None)
+        if model_record is None:
+            raise ValueError("The selected model is not installed in local Ollama; no model was downloaded")
+        policy.validate_local_model()
+    else:
+        policy = ScriptedRefundPolicy()
+    evaluation = evaluate_policy(policy, configurations, samples=args.samples, seed=args.seed,
+                                 max_calls=args.max_calls, max_attempts=args.max_attempts)
+    artifacts = []
+    receipts = []
+    for sample in evaluation.samples:
+        receipt = evaluation_sample_record(sample, root=output)
+        receipts.append(receipt)
+        if sample.episode is None:
+            continue
+        episode = sample.episode
+        values = {
+            receipt["trace"]: episode.trace,
+            receipt["explanation"]: episode.explanation,
+            receipt["evaluator_truth"]: {
+                "scenario": sample.scenario, "seed": sample.seed,
+                "config": to_dict(episode.config), "records": episode.ground_truth,
+            },
+        }
+        for relative, value in values.items():
+            path = output / relative
+            _write_json(path, value)
+            artifacts.append({"path": relative, "sha256": sha256(path.read_bytes()).hexdigest()})
+    summary = evaluation.summary()
+    _write_json(output / "results.json", {
+        "package_version": __version__, "evaluation_kind": (
+            "local_model" if args.provider == "ollama" else "scripted_smoke"
+        ),
+        "policy": evaluation.policy_metadata, "installed_model": model_record,
+        "samples_per_case": args.samples, "initial_seed": args.seed,
+        "max_attempts": args.max_attempts, "cases": [config.name for config in configurations],
+        "summary": summary, "samples": receipts,
+        "claim": "Adapter evaluation only; no attribution-method superiority or task generalization tested.",
+    })
+    _write_json(output / "trace-schema.json", get_trace_schema())
+    _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": artifacts})
+    rows = []
+    for receipt in receipts:
+        rows.append("| " + " | ".join(str(receipt.get(key, "—")) for key in (
+            "index", "scenario", "seed", "status", "policy_calls", "reported_assessment",
+            "verified_outcome", "effect_origin", "assessment_alignment",
+        )) + " |")
+    report = (
+        "# Policy evaluation\n\n"
+        f"Provider: **{args.provider}**. Planned {summary['planned_samples']} samples; "
+        f"completed {summary['completed_samples']}, failed {summary['failed_samples']}, "
+        f"not started {summary['not_started_samples']}. "
+        f"Policy calls: {summary['policy_calls']} / {summary['max_calls']}.\n\n"
+        + ("This is an offline scripted-policy smoke evaluation. No language model was run.\n\n"
+           if args.provider == "scripted" else
+           "This evaluation calls a selected local Ollama model against simulated payments. "
+           "It is a template-level smoke evaluation, not a held-out research study.\n\n")
+        + "| Sample | Case | Seed | Status | Calls | Reported assessment | Verified outcome | Origin | Alignment |\n"
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
+        + "\n".join(rows) + "\n\n"
+        "Provider/protocol failures and unstarted samples are separate from consequence "
+        "violations. Unknown readback remains unknown. Model seed settings are a "
+        "reproducibility control, not a guarantee across models, servers, or hardware. "
+        "Virtual payment deadlines exclude inference latency.\n\n"
+        "The model receives declared task/context and public tool responses. Independent "
+        "readback is revealed only after its final assessment. Evaluator labels and truth "
+        "are in separate files and must not be passed to a policy or explainer. "
+        "Manifest hashes check file integrity, not evidence authenticity.\n"
+    )
+    (output / "README.md").write_text(report, encoding="utf-8", newline="\n")
+    print(f"Saved {summary['completed_samples']} completed and {summary['failed_samples']} failed "
+          f"policy samples in {output.resolve()}")
+    return 2 if evaluation.budget_exhausted or summary["failed_samples"] else 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -165,6 +271,20 @@ def main(argv=None):
     command.add_argument("trace")
     command.add_argument("--output")
     command.set_defaults(handler=_explain)
+    evaluation = commands.add_parser("model-eval", help="Evaluate a bounded scripted or local model policy")
+    evaluation.add_argument("--provider", choices=("scripted", "ollama"), default="scripted")
+    evaluation.add_argument("--model")
+    evaluation.add_argument("--base-url", default="http://127.0.0.1:11434")
+    evaluation.add_argument("--temperature", type=float, default=0.2)
+    evaluation.add_argument("--timeout", type=float, default=120)
+    evaluation.add_argument("--num-predict", type=int, default=512)
+    evaluation.add_argument("--samples", type=int, default=2)
+    evaluation.add_argument("--seed", type=int, default=0)
+    evaluation.add_argument("--max-calls", type=int, default=100)
+    evaluation.add_argument("--max-attempts", type=int, default=2)
+    evaluation.add_argument("--cases")
+    evaluation.add_argument("--output", default="output/model-evaluation")
+    evaluation.set_defaults(handler=_model_eval)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

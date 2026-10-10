@@ -1,0 +1,79 @@
+{
+  "config": {
+    "amount_minor": 500000,
+    "compensate": false,
+    "context": {
+      "customer_request": true,
+      "distractor": "Weather is pleasant today.",
+      "retry_instruction": false,
+      "vip_memory": true,
+      "vip_policy": true
+    },
+    "deadline_ms": 100,
+    "external_actor": false,
+    "fault": "clean",
+    "include_provenance": false,
+    "name": "missing_provenance",
+    "order_age_days": 43,
+    "read_lag_ms": 0,
+    "reconcile_readback": false,
+    "retry_probability": 1.0,
+    "selection_probability": 1.0,
+    "stability_ms": 0,
+    "timeout_assessment": "failure",
+    "use_idempotency": true
+  },
+  "records": [
+    {
+      "action_id": "refund:20",
+      "actor": "RefundAgent",
+      "amount_minor": 500000,
+      "attempt_id": "attempt:20:1",
+      "committed_at_ms": 6,
+      "currency": "INR",
+      "effect_id": "rf_20_000001",
+      "kind": "refund",
+      "payment_id": "pay_42",
+      "status": "processed"
+    },
+    {
+      "action_id": "refund:20",
+      "actor": "RefundAgent",
+      "attempt_id": "attempt:20:1",
+      "cache_hit": false,
+      "cache_origin": null,
+      "committed_effect_ids": [
+        "rf_20_000001"
+      ],
+      "fault": "clean",
+      "fault_applied": false,
+      "kind": "execution_attempt",
+      "provider_request_id": "req_20_000001",
+      "request": {
+        "arguments": {
+          "amount_minor": 500000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "idempotency_key": "consequa-refund-20",
+        "name": "refund"
+      },
+      "request_payload_valid": true,
+      "response_result": {
+        "amount_minor": 500000,
+        "currency": "INR",
+        "payment_id": "pay_42",
+        "refund_id": "rf_20_000001",
+        "status": "processed"
+      },
+      "response_status": "success",
+      "result_effect_ids": [
+        "rf_20_000001"
+      ],
+      "time_ms": 6,
+      "trace_id": "trace:20"
+    }
+  ],
+  "scenario": "missing_provenance",
+  "seed": 20
+}

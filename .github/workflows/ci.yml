@@ -47,3 +47,5 @@ jobs:
         run: python -m pip install --force-reinstall --no-deps --no-index --find-links dist consequa-x
       - name: Check installed package and bundled schema
         run: python -I -c "from consequa_x.schema import get_trace_schema; from consequa_x.benchmark.runner import run_scenario; from consequa_x import Trace, explain; schema = get_trace_schema(); trace = run_scenario(seed=0).trace; assert Trace.from_json(trace.to_json()) == trace; assert schema[chr(36) + 'schema'].endswith('/2020-12/schema'); assert explain(trace).diagnosis == 'BELIEF / RESPONSE DIVERGENCE'"
+      - name: Check installed policy evaluation without a model
+        run: python -I -m consequa_x model-eval --provider scripted --samples 1 --max-calls 30 --output output/ci-policy-smoke

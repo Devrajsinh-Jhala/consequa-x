@@ -1,6 +1,6 @@
 # Contributing to Consequa-X
 
-Contributions to the Python framework and the research are welcome. This is an alpha: the working implementation uses offline refund simulation and programmatic policies. The demo establishes reproducible behavior, not empirical superiority or a new causal estimator.
+Contributions to the Python framework and the research are welcome. This is an alpha: the implementation uses refund simulation, programmatic policies, and an optional local Ollama adapter. Committed results are scripted fixtures. The demo establishes reproducible behavior, not empirical superiority or a new causal estimator.
 
 Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
 
@@ -36,6 +36,7 @@ CI runs tests, lint, and package builds on Ubuntu and Windows with Python 3.11 a
 | --- | --- |
 | `src/consequa_x/` | Public records, validation, verification, graphs, explanations, attribution, and CLI |
 | `src/consequa_x/benchmark/` | Offline simulator, scenarios, and replay runner |
+| `src/consequa_x/adapters/` | Provider policy adapters with strict visible-input boundaries |
 | `src/consequa_x/schemas/` | Versioned portable trace schema |
 | `tests/` | Behavioral, conformance, integration, and export checks |
 | `docs/` | Contracts, architecture, research plan, and supporting documents |
@@ -64,7 +65,7 @@ Use synthetic or appropriately shareable examples in issues and fixtures. Do not
 
 ## Research contributions
 
-Useful contributions include related-work corrections, stronger baselines, actual LLM policy adapters, held-out task designs, independent outcome-verification adapters, and reproducible evaluations. An issue should state the research question, primary sources, proposed comparison, and evidence needed to support the claim.
+Useful contributions include related-work corrections, stronger baselines, additional LLM policy adapters, held-out task designs, independent outcome-verification adapters, and reproducible evaluations. Start with the [policy evaluation guide](docs/policy-evaluation.md) and [proposed study protocol](docs/study-plan.md). An issue should state the research question, primary sources, proposed comparison, and evidence needed to support the claim.
 
 For experiments, report the model/provider and version where applicable, task templates and splits, seeds, interventions, verifier and origin assumptions, sample size, uncertainty, abstention/error coverage, and budget. Compare methods with equivalent evidence and resources. Distinguish simulator fixture results from actual model results, and distinguish a framework improvement from a methodological novelty claim.
 

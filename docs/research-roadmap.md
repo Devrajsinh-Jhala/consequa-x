@@ -13,16 +13,19 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - Recency heuristic and paired leave-one-out effect estimates.
 - Separate demo trace, explanation and evaluator-truth exports.
 - Offline deterministic and stochastic programmatic policy experiments.
+- Visible-context policy interface, structured local Ollama adapter, and bounded evaluations.
+- Scripted policy smoke exports and HTTP fixture tests; no actual model results yet.
+- Proposed matched-baseline study protocol in [study-plan.md](study-plan.md).
 
 ## Next research milestone
 
-1. Add a policy adapter that exposes only supported observations, without accessing evaluator truth. Evaluate actual stochastic LLM policies across several task templates.
+1. Run the implemented local Ollama adapter with an installed model, then evaluate actual stochastic LLM policies across several task templates. The adapter exposes declared task/context and public responses; independent readback follows the final assessment, and evaluator truth stays outside policy inputs.
 2. Specify context and fault intervention families and targets before running the study. Hold out templates and fault compositions, not just random seeds.
 3. Compare with verifier-plus-CAR using identical evidence, origin information, candidate variables, snapshots and budget. Add a faithfully adapted joint-fault comparator where applicable.
 4. Measure false consequence/origin claims and factor recovery against independent intervention estimates. Report abstention coverage and error together; report model-specific results and cost.
 5. Expand domains only after a substantive gap remains in the strong baseline. An engineering framework can still be released if the methodological advantage does not emerge.
 
-The current 40-sample fixture report validates plumbing. It cannot be used as a real-model research result. The recency heuristic is explicitly noncausal, and leave-one-out is a baseline rather than a claimed new estimator.
+The current 40-sample fixture report and scripted policy smoke report validate plumbing. They cannot be used as real-model research results. The recency heuristic is explicitly noncausal, and leave-one-out is a baseline rather than a claimed new estimator. Model installation and the first live pilot are deferred; see [policy-evaluation.md](policy-evaluation.md) for the prepared entry point.
 
 ## Registry release
 

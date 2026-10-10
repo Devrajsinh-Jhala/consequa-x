@@ -1,0 +1,22 @@
+{
+  "package_version": "0.1.0a1",
+  "clean_install": true,
+  "runtime_dependencies": 0,
+  "demo_trace_roundtrips": 12,
+  "explanation_equivalence": true,
+  "manifest_hashes_checked": 36,
+  "bundled_schema": true,
+  "sdist_contains_documentation_and_tests": true,
+  "artifacts": [
+    {
+      "path": "dist/consequa_x-0.1.0a1-py3-none-any.whl",
+      "sha256": "2b4c16df80651e6d825bab79158c1e690b1b05083ac6f6e28ecf821c0797e39d",
+      "size_bytes": 40368
+    },
+    {
+      "path": "dist/consequa_x-0.1.0a1.tar.gz",
+      "sha256": "f22eed1dfd031112cef81133811ce7dad3c37878add99e9427436f9c01e51fab",
+      "size_bytes": 68244
+    }
+  ]
+}

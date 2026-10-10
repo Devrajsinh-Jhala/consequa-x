@@ -1,0 +1,273 @@
+{
+  "action": {
+    "action_id": "refund:1",
+    "actor": "RefundAgent",
+    "arguments": {
+      "amount_minor": 500000,
+      "currency": "INR",
+      "payment_id": "pay_42"
+    },
+    "contract": {
+      "contract_id": "contract:1",
+      "deadline_ms": 100,
+      "exact_count": 1,
+      "expected": {
+        "amount_minor": 500000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "predicate": "refund_processed",
+      "stability_ms": 0
+    },
+    "idempotency_key": "consequa-refund-1",
+    "name": "refund",
+    "registered_at_ms": 5,
+    "trace_id": "trace:1"
+  },
+  "assessment": {
+    "evidence_event_ids": [
+      "response_1"
+    ],
+    "rationale": "Fixture assessment based only on the returned response.",
+    "status": "failure",
+    "time_ms": 6
+  },
+  "events": [
+    {
+      "actor": null,
+      "data": {
+        "value": true
+      },
+      "id": "customer_request",
+      "parent_ids": [],
+      "time_ms": 0,
+      "trace_id": "trace:1",
+      "type": "user_input"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": true
+      },
+      "id": "vip_memory",
+      "parent_ids": [],
+      "time_ms": 1,
+      "trace_id": "trace:1",
+      "type": "memory_read"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": true
+      },
+      "id": "vip_policy",
+      "parent_ids": [],
+      "time_ms": 2,
+      "trace_id": "trace:1",
+      "type": "retrieval"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": false
+      },
+      "id": "retry_instruction",
+      "parent_ids": [],
+      "time_ms": 3,
+      "trace_id": "trace:1",
+      "type": "system_instruction"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "Weather is pleasant today."
+      },
+      "id": "distractor",
+      "parent_ids": [],
+      "time_ms": 4,
+      "trace_id": "trace:1",
+      "type": "retrieval"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "order_age_days": 43,
+        "selected": true
+      },
+      "id": "refund_decision",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy"
+      ],
+      "time_ms": 5,
+      "trace_id": "trace:1",
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:1",
+        "arguments": {
+          "amount_minor": 500000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        }
+      },
+      "id": "refund_intent",
+      "parent_ids": [
+        "refund_decision"
+      ],
+      "time_ms": 5,
+      "trace_id": "trace:1",
+      "type": "action_intent"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:1",
+        "attempt_id": "attempt:1:1"
+      },
+      "id": "dispatch_1",
+      "parent_ids": [
+        "refund_intent"
+      ],
+      "time_ms": 5,
+      "trace_id": "trace:1",
+      "type": "action_dispatch"
+    },
+    {
+      "actor": null,
+      "data": {
+        "attempt_id": "attempt:1:1",
+        "provider_request_id": "req_1_000001",
+        "result": {
+          "code": "timeout"
+        },
+        "status": "timeout",
+        "time_ms": 6
+      },
+      "id": "response_1",
+      "parent_ids": [
+        "dispatch_1"
+      ],
+      "time_ms": 6,
+      "trace_id": "trace:1",
+      "type": "tool_response"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "response_1"
+        ],
+        "rationale": "Fixture assessment based only on the returned response.",
+        "status": "failure",
+        "time_ms": 6
+      },
+      "id": "assessment_1",
+      "parent_ids": [
+        "response_1"
+      ],
+      "time_ms": 6,
+      "trace_id": "trace:1",
+      "type": "agent_assessment"
+    }
+  ],
+  "observations": [
+    {
+      "as_of_ms": 100,
+      "available": true,
+      "complete": true,
+      "observation_id": "obs_1_000001",
+      "observed_at_ms": 100,
+      "records": [
+        {
+          "action_id": "refund:1",
+          "actor": "RefundAgent",
+          "amount_minor": 500000,
+          "attempt_id": "attempt:1:1",
+          "committed_at_ms": 6,
+          "currency": "INR",
+          "effect_id": "rf_1_000001",
+          "payment_id": "pay_42",
+          "status": "processed"
+        }
+      ],
+      "scope": {
+        "currency": "INR",
+        "lag_ms": 0,
+        "payment_id": "pay_42"
+      },
+      "source": "payment_ledger"
+    }
+  ],
+  "responses": [
+    {
+      "attempt_id": "attempt:1:1",
+      "provider_request_id": "req_1_000001",
+      "result": {
+        "code": "timeout"
+      },
+      "status": "timeout",
+      "time_ms": 6
+    }
+  ],
+  "schema_version": "0.1",
+  "trace_id": "trace:1",
+  "verifications": [
+    {
+      "attributable_effect_ids": [
+        "rf_1_000001"
+      ],
+      "contract_id": "contract:1",
+      "effect_ids": [
+        "rf_1_000001"
+      ],
+      "evidence": [
+        {
+          "as_of_ms": 100,
+          "details": {
+            "available": true,
+            "complete": true,
+            "eligible_count": 1,
+            "expected": {
+              "amount_minor": 500000,
+              "currency": "INR",
+              "payment_id": "pay_42"
+            },
+            "horizon_ms": 100,
+            "matching_count": 1,
+            "peak_matching_count": 1,
+            "records": [
+              {
+                "action_id": "refund:1",
+                "actor": "RefundAgent",
+                "amount_minor": 500000,
+                "attempt_id": "attempt:1:1",
+                "committed_at_ms": 6,
+                "currency": "INR",
+                "effect_id": "rf_1_000001",
+                "payment_id": "pay_42",
+                "status": "processed"
+              }
+            ],
+            "relevant_count": 1,
+            "scope": {
+              "currency": "INR",
+              "lag_ms": 0,
+              "payment_id": "pay_42"
+            },
+            "watermark_ms": 100
+          },
+          "observation_id": "obs_1_000001",
+          "source": "payment_ledger"
+        }
+      ],
+      "observed_at_ms": 100,
+      "origin": "confirmed",
+      "reason": "Refund predicate is satisfied through the declared horizon",
+      "status": "satisfied"
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "action_id": "refund:10",
+  "agent_assessment": {
+    "evidence_event_ids": [
+      "response_1"
+    ],
+    "rationale": "Fixture assessment based only on the returned response.",
+    "status": "success",
+    "time_ms": 6
+  },
+  "assessment_alignment": "unassessable",
+  "attribution": [],
+  "consequence": {
+    "attributable_effect_ids": [],
+    "contract_id": "contract:10",
+    "effect_ids": [
+      "rf_10_000001"
+    ],
+    "evidence": [
+      {
+        "as_of_ms": 100,
+        "details": {
+          "available": true,
+          "complete": true,
+          "eligible_count": 1,
+          "expected": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42"
+          },
+          "horizon_ms": 100,
+          "matching_count": 1,
+          "peak_matching_count": 1,
+          "records": [
+            {
+              "amount_minor": 500000,
+              "committed_at_ms": 6,
+              "currency": "INR",
+              "effect_id": "rf_10_000001",
+              "payment_id": "pay_42",
+              "status": "processed"
+            }
+          ],
+          "relevant_count": 1,
+          "scope": {
+            "currency": "INR",
+            "lag_ms": 0,
+            "payment_id": "pay_42"
+          },
+          "watermark_ms": 100
+        },
+        "observation_id": "obs_10_000001",
+        "source": "payment_ledger"
+      }
+    ],
+    "observed_at_ms": 100,
+    "origin": "unknown",
+    "reason": "Refund predicate is satisfied through the declared horizon",
+    "status": "satisfied"
+  },
+  "diagnoses": [
+    "UNCONFIRMED_ORIGIN"
+  ],
+  "diagnosis": "UNCONFIRMED_ORIGIN",
+  "graph": {
+    "edges": [
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "customer_request",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "vip_memory",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "vip_policy",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "refund_decision",
+        "target": "refund_intent"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "refund_intent",
+        "target": "dispatch_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "dispatch_1",
+        "target": "response_1"
+      },
+      {
+        "basis": "declared_trace_dependency",
+        "data": {},
+        "kind": "DEPENDENCY",
+        "source": "response_1",
+        "target": "assessment_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "customer_request",
+        "target": "vip_memory"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "vip_memory",
+        "target": "vip_policy"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "vip_policy",
+        "target": "retry_instruction"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "retry_instruction",
+        "target": "distractor"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "distractor",
+        "target": "refund_decision"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "refund_decision",
+        "target": "refund_intent"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "refund_intent",
+        "target": "dispatch_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "dispatch_1",
+        "target": "response_1"
+      },
+      {
+        "basis": "captured_order",
+        "data": {},
+        "kind": "TEMPORAL",
+        "source": "response_1",
+        "target": "assessment_1"
+      },
+      {
+        "basis": "captured_attempt_identity",
+        "data": {},
+        "kind": "RESPONSE",
+        "source": "dispatch_1",
+        "target": "response_1"
+      },
+      {
+        "basis": "readback_record",
+        "data": {},
+        "kind": "OBSERVATION",
+        "source": "effect:rf_10_000001",
+        "target": "observation:obs_10_000001"
+      },
+      {
+        "basis": "declared_predicate",
+        "data": {},
+        "kind": "CONTRACT",
+        "source": "contract:contract:10",
+        "target": "verification:contract:10:0"
+      },
+      {
+        "basis": "read_only_verifier",
+        "data": {},
+        "kind": "VERIFICATION",
+        "source": "observation:obs_10_000001",
+        "target": "verification:contract:10:0"
+      },
+      {
+        "basis": "predicate_evidence",
+        "data": {},
+        "kind": "VERIFICATION",
+        "source": "effect:rf_10_000001",
+        "target": "verification:contract:10:0"
+      }
+    ],
+    "nodes": [
+      {
+        "data": {
+          "value": true
+        },
+        "id": "customer_request",
+        "kind": "user_input",
+        "time_ms": 0
+      },
+      {
+        "data": {
+          "value": true
+        },
+        "id": "vip_memory",
+        "kind": "memory_read",
+        "time_ms": 1
+      },
+      {
+        "data": {
+          "value": true
+        },
+        "id": "vip_policy",
+        "kind": "retrieval",
+        "time_ms": 2
+      },
+      {
+        "data": {
+          "value": false
+        },
+        "id": "retry_instruction",
+        "kind": "system_instruction",
+        "time_ms": 3
+      },
+      {
+        "data": {
+          "value": "Weather is pleasant today."
+        },
+        "id": "distractor",
+        "kind": "retrieval",
+        "time_ms": 4
+      },
+      {
+        "data": {
+          "order_age_days": 43,
+          "selected": true
+        },
+        "id": "refund_decision",
+        "kind": "agent_decision",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "action_id": "refund:10",
+          "arguments": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42"
+          }
+        },
+        "id": "refund_intent",
+        "kind": "action_intent",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "action_id": "refund:10",
+          "attempt_id": "attempt:10:1"
+        },
+        "id": "dispatch_1",
+        "kind": "action_dispatch",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "attempt_id": "attempt:10:1",
+          "provider_request_id": "req_10_000001",
+          "result": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42",
+            "refund_id": "rf_10_000001",
+            "status": "processed"
+          },
+          "status": "success",
+          "time_ms": 6
+        },
+        "id": "response_1",
+        "kind": "tool_response",
+        "time_ms": 6
+      },
+      {
+        "data": {
+          "evidence_event_ids": [
+            "response_1"
+          ],
+          "rationale": "Fixture assessment based only on the returned response.",
+          "status": "success",
+          "time_ms": 6
+        },
+        "id": "assessment_1",
+        "kind": "agent_assessment",
+        "time_ms": 6
+      },
+      {
+        "data": {
+          "contract_id": "contract:10",
+          "deadline_ms": 100,
+          "exact_count": 1,
+          "expected": {
+            "amount_minor": 500000,
+            "currency": "INR",
+            "payment_id": "pay_42"
+          },
+          "predicate": "refund_processed",
+          "stability_ms": 0
+        },
+        "id": "contract:contract:10",
+        "kind": "postcondition",
+        "time_ms": 5
+      },
+      {
+        "data": {
+          "as_of_ms": 100,
+          "available": true,
+          "complete": true,
+          "observation_id": "obs_10_000001",
+          "observed_at_ms": 100,
+          "records": [
+            {
+              "amount_minor": 500000,
+              "committed_at_ms": 6,
+              "currency": "INR",
+              "effect_id": "rf_10_000001",
+              "payment_id": "pay_42",
+              "status": "processed"
+            }
+          ],
+          "scope": {
+            "currency": "INR",
+            "lag_ms": 0,
+            "payment_id": "pay_42"
+          },
+          "source": "payment_ledger"
+        },
+        "id": "observation:obs_10_000001",
+        "kind": "external_observation",
+        "time_ms": 100
+      },
+      {
+        "data": {
+          "amount_minor": 500000,
+          "committed_at_ms": 6,
+          "currency": "INR",
+          "effect_id": "rf_10_000001",
+          "payment_id": "pay_42",
+          "status": "processed",
+          "witness_observation_id": "obs_10_000001"
+        },
+        "id": "effect:rf_10_000001",
+        "kind": "observed_external_effect",
+        "time_ms": 6
+      },
+      {
+        "data": {
+          "attributable_effect_ids": [],
+          "contract_id": "contract:10",
+          "effect_ids": [
+            "rf_10_000001"
+          ],
+          "evidence": [
+            {
+              "as_of_ms": 100,
+              "details": {
+                "available": true,
+                "complete": true,
+                "eligible_count": 1,
+                "expected": {
+                  "amount_minor": 500000,
+                  "currency": "INR",
+                  "payment_id": "pay_42"
+                },
+                "horizon_ms": 100,
+                "matching_count": 1,
+                "peak_matching_count": 1,
+                "records": [
+                  {
+                    "amount_minor": 500000,
+                    "committed_at_ms": 6,
+                    "currency": "INR",
+                    "effect_id": "rf_10_000001",
+                    "payment_id": "pay_42",
+                    "status": "processed"
+                  }
+                ],
+                "relevant_count": 1,
+                "scope": {
+                  "currency": "INR",
+                  "lag_ms": 0,
+                  "payment_id": "pay_42"
+                },
+                "watermark_ms": 100
+              },
+              "observation_id": "obs_10_000001",
+              "source": "payment_ledger"
+            }
+          ],
+          "observed_at_ms": 100,
+          "origin": "unknown",
+          "reason": "Refund predicate is satisfied through the declared horizon",
+          "status": "satisfied"
+        },
+        "id": "verification:contract:10:0",
+        "kind": "verification",
+        "time_ms": 100
+      }
+    ]
+  },
+  "recency_candidate_id": "distractor",
+  "schema_version": "0.1",
+  "summary": "Agent reported success; independent verification is satisfied; effect origin is unknown."
+}

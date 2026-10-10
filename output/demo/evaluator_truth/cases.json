@@ -1,0 +1,74 @@
+[
+  {
+    "diagnosis": "CONSISTENT_OUTCOME",
+    "explanation": "explanations/episode_00.json",
+    "scenario": "clean",
+    "trace": "traces/episode_00.json"
+  },
+  {
+    "diagnosis": "BELIEF / RESPONSE DIVERGENCE",
+    "explanation": "explanations/episode_01.json",
+    "scenario": "timeout_after_commit",
+    "trace": "traces/episode_01.json"
+  },
+  {
+    "diagnosis": "CONSEQUENCE_VIOLATION",
+    "explanation": "explanations/episode_02.json",
+    "scenario": "timeout_before_commit",
+    "trace": "traces/episode_02.json"
+  },
+  {
+    "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION",
+    "explanation": "explanations/episode_03.json",
+    "scenario": "false_success",
+    "trace": "traces/episode_03.json"
+  },
+  {
+    "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / PARAMETER_MISMATCH / PARTIAL_EFFECT",
+    "explanation": "explanations/episode_04.json",
+    "scenario": "partial_effect",
+    "trace": "traces/episode_04.json"
+  },
+  {
+    "diagnosis": "UNKNOWN_OUTCOME / UNVERIFIED_ASSESSMENT",
+    "explanation": "explanations/episode_05.json",
+    "scenario": "delayed_visibility",
+    "trace": "traces/episode_05.json"
+  },
+  {
+    "diagnosis": "CONSISTENT_OUTCOME",
+    "explanation": "explanations/episode_06.json",
+    "scenario": "delayed_reconciled",
+    "trace": "traces/episode_06.json"
+  },
+  {
+    "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / EXCESS_EFFECTS / DUPLICATE_EFFECT",
+    "explanation": "explanations/episode_07.json",
+    "scenario": "unsafe_retry",
+    "trace": "traces/episode_07.json"
+  },
+  {
+    "diagnosis": "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
+    "explanation": "explanations/episode_08.json",
+    "scenario": "safe_retry",
+    "trace": "traces/episode_08.json"
+  },
+  {
+    "diagnosis": "EXTERNAL_ACTOR_EFFECT",
+    "explanation": "explanations/episode_09.json",
+    "scenario": "external_actor",
+    "trace": "traces/episode_09.json"
+  },
+  {
+    "diagnosis": "UNCONFIRMED_ORIGIN",
+    "explanation": "explanations/episode_10.json",
+    "scenario": "missing_provenance",
+    "trace": "traces/episode_10.json"
+  },
+  {
+    "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / REVERSED_EFFECT",
+    "explanation": "explanations/episode_11.json",
+    "scenario": "synthetic_compensation",
+    "trace": "traces/episode_11.json"
+  }
+]

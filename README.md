@@ -4,9 +4,9 @@
 
 Consequa-X explains consequential agent actions using captured history and independent outcome evidence. Its first Python alpha (`0.1.0a1`) provides a versioned trace format, refund verification, evidence graphs, and isolated replay experiments.
 
-The working prototype uses an offline payment simulator and transparent programmatic policies. It keeps the tool response, the agent's reported assessment, the observed outcome, and effect origin separate. A timeout can coexist with a completed refund; another actor can satisfy the desired state after the agent's attempt fails.
+The working prototype uses an isolated payment simulator with scripted policies and an optional local Ollama adapter. It keeps the tool response, the agent's reported assessment, the observed outcome, and effect origin separate. A timeout can coexist with a completed refund; another actor can satisfy the desired state after the agent's attempt fails.
 
-This alpha has no LLM or real payment-provider adapter. The fixture experiments validate the framework's plumbing; they do not establish a new attribution method or empirical superiority. See [the design](docs/design.md) for exact semantics and [the research roadmap](docs/research-roadmap.md) for the paper and release milestones.
+The Ollama integration is tested with local HTTP fixtures; no actual model evaluation has been run for the committed results. Payments remain simulated. The fixture experiments validate the framework's plumbing; they do not establish a new attribution method or empirical superiority. See [the design](docs/design.md) for exact semantics and [the research roadmap](docs/research-roadmap.md) for the paper and release milestones.
 
 ## Research materials and contributions
 
@@ -14,9 +14,14 @@ This alpha has no LLM or real payment-provider adapter. The fixture experiments 
 - [Initial literature assessment](output/research/Consequa-X_Research_Assessment.md)
 - [Demo results and evidence exports](output/demo/README.md)
 - [Paired fixture experiment results](output/experiments/README.md)
+- [Policy evaluation guide](docs/policy-evaluation.md)
+- [Scripted policy smoke results](output/policy-smoke/README.md)
+- [Paired policy replay guide](docs/policy-replay.md)
+- [Scripted replay smoke results](output/replay-smoke/README.md)
+- [Proposed model study protocol](docs/study-plan.md)
 - [Alpha validation report](output/build/README.md)
 
-Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](LICENSE). Useful next contributions include policy adapters, additional verified domains, stronger baseline comparisons, and held-out task templates.
+Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
 
 ## Install locally
 
@@ -73,6 +78,24 @@ Explain a saved trace without replaying a policy or executing a provider call:
 consequa-x explain output/demo/traces/episode_01.json --output output/explanation.json
 ```
 
+## Evaluate a policy
+
+Run the policy interface without installing a model:
+
+```sh
+consequa-x model-eval --provider scripted --samples 2 --max-calls 100 --output output/my-policy-smoke
+```
+
+The policy chooses whether to refund, retry, or stop, then reports its assessment before independent verification. Each trial starts a fresh simulated world. Reports include completed, failed, and unstarted samples; provider/protocol errors stay separate from verified consequence violations and unknown readback. Use a fresh output directory for each run.
+
+Once you have installed Ollama and a local model, replace `YOUR_INSTALLED_MODEL` with its name:
+
+```sh
+consequa-x model-eval --provider ollama --model YOUR_INSTALLED_MODEL --cases clean,timeout_after_commit --samples 1 --max-calls 6 --output output/my-local-model
+```
+
+The adapter checks installed models and declared local routing before generation, uses structured decisions, and records model identity and request hashes. It performs no model installation or download. See [the evaluation guide](docs/policy-evaluation.md) for setup, limits, API examples, and trust assumptions. The [study protocol](docs/study-plan.md) defines the stronger comparisons and held-out tasks still needed for a research paper.
+
 ## Use the Python API
 
 ```python
@@ -101,6 +124,18 @@ schema = get_trace_schema()  # Bundled trace schema v0.1.
 Trace decoding rejects unsupported versions, unknown fields, invalid references, and dependency cycles. The portable JSON Schema covers record structure; `validate_trace` also checks relationships between records. These checks trust source and watermark declarations and do not authenticate a provider. See [the design](docs/design.md) before writing an adapter.
 
 ## Run paired replay experiments
+
+Replay the policy interface under declared context changes:
+
+```sh
+consequa-x model-experiment --provider scripted --case unsafe_retry --samples 20 --max-calls 400 --output output/my-policy-replay
+```
+
+Each factual seed runs once and is reused across candidate comparisons and both action/consequence targets. The call limit applies to the whole experiment. Failed or unstarted branches and unknown consequences remain explicit; an estimate requires every planned target pair to be usable. The export includes branch evidence, signed effects, pair coverage, and an optional factual explanation with estimated-influence edges. See [the replay guide](docs/policy-replay.md) for the Python API and prepared Ollama entry point.
+
+The committed [scripted replay example](output/replay-smoke/README.md) uses two seeds per condition to check the integration. It is not a model result or an adequate sample size for a research claim.
+
+Run the original deterministic and stochastic fixture comparison:
 
 ```sh
 consequa-x experiment --output output/experiments --samples 40 --seed 0
@@ -151,4 +186,4 @@ python -m pip install dist/consequa_x-0.1.0a1-py3-none-any.whl
 
 `requirements-dev.lock` captures the development environment used for this build. Public interfaces are alpha and may change. The Python requirement is declared as 3.11+, with local validation currently on Python 3.12; broader compatibility remains a release check.
 
-The package has not been published to PyPI or npm. The first registry target is PyPI; a later npm adapter can share the trace schema and conformance fixtures. The repository includes MIT licensing, author metadata, contributor guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Registry availability, broader compatibility, and the final release process remain to be verified. Actual LLM policies, held-out task templates, and comparisons against strong existing methods remain necessary for the research paper.
+The package has not been published to PyPI or npm. The first registry target is PyPI; a later npm adapter can share the trace schema and conformance fixtures. The repository includes MIT licensing, author metadata, contributor guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Registry availability, broader compatibility, and the final release process remain to be verified. Actual LLM evaluations, held-out task templates, and comparisons against strong existing methods remain necessary for the research paper.

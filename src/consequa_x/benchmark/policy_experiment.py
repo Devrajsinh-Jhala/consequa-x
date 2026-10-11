@@ -14,6 +14,7 @@ from typing import Iterable, Literal
 from ..attribution import EffectEstimate, Intervention, ReplayOutcome, leave_one_out
 from ..models import VerificationStatus
 from ..policies import Policy, PolicyError
+from .assessment_metrics import assessment_metrics
 from .evaluation import BudgetedPolicy, CallBudgetExceeded
 from .policy_runner import MAX_TRIAL_SEED, run_policy_scenario
 from .runner import Episode, ScenarioConfig, _intervene
@@ -86,6 +87,11 @@ class PolicyExperiment:
             "max_calls": self.max_calls,
             "budget_exhausted": self.budget_exhausted,
             "estimates": estimates,
+            "assessment_metrics": assessment_metrics(
+                (branch.episode.trace.assessment.status,
+                 branch.episode.explanation.assessment_alignment)
+                for branch in self.branches if branch.episode is not None
+            ),
         }
 
 

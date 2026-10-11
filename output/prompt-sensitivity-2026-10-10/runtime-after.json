@@ -1,0 +1,45 @@
+{
+  "recorded_at_utc": "2026-10-10T17:40:07.696707+00:00",
+  "ollama_version": "0.40.2",
+  "installed_models": [
+    {
+      "name": "qwen3:4b-instruct-2507-q4_K_M",
+      "model": "qwen3:4b-instruct-2507-q4_K_M",
+      "size": 2497293803,
+      "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560,
+        "runner": "ggml"
+      }
+    }
+  ],
+  "loaded_models": [
+    {
+      "name": "qwen3:4b-instruct-2507-q4_K_M",
+      "size": 3184001022,
+      "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "size_vram": 0,
+      "context_length": 4096,
+      "runner": "llamacpp"
+    }
+  ]
+}

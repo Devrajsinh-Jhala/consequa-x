@@ -1,6 +1,6 @@
 # Contributing to Consequa-X
 
-Contributions to the Python framework and the research are welcome. This is an alpha: the implementation uses refund simulation, programmatic policies, and an optional local Ollama adapter. Committed results are scripted fixtures. The demo establishes reproducible behavior, not empirical superiority or a new causal estimator.
+Contributions to the Python framework and the research are welcome. This is an alpha: the implementation uses refund simulation, programmatic policies, and an optional local Ollama adapter. Recorded results include scripted fixtures and a small [local-model pilot](output/live-pilot-2026-10-10/README.md). These establish implementation behavior, not empirical superiority or a new causal estimator. Preserve original live samples when adding exploratory prompt profiles or new evaluations.
 
 Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). The [policy replay guide](docs/policy-replay.md) covers bounded context comparisons and evidence exports. Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
 

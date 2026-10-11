@@ -7,7 +7,9 @@ from unittest.mock import patch
 
 import pytest
 
-from consequa_x.adapters.ollama import MAX_RESPONSE_BYTES, OllamaPolicy, PROMPT_VERSION
+from consequa_x.adapters.ollama import (
+    MAX_RESPONSE_BYTES, OllamaPolicy, PROMPT_PROFILES, PROMPT_VERSION, _SYSTEM_PROMPT,
+)
 from consequa_x.models import AssessmentStatus, ResponseStatus, ToolResponse
 from consequa_x.policies import PolicyError, PolicyRequest
 
@@ -149,6 +151,104 @@ def test_chat_sends_public_structured_request_and_records_declared_metadata():
         repeated = policy.decide(request(), seed=15)
         assert repeated.metadata["request_sha256"] == reply.metadata["request_sha256"]
         assert [entry["path"] for entry in recorded] == ["/api/show", "/api/chat", "/api/chat"]
+
+
+def test_default_and_explicit_v1_preserve_original_chat_payload_bytes():
+    original_prompt_hash = "c5e9c07829c569b7382d0187e278c533d450e30c39038e49367f66ceb2468a74"
+    original_request_text = (
+        '{"attempts_remaining":2,"context":{"customer_request":"Please refund.",'
+        '"vip_memory":"VIP status","vip_policy":"VIP refunds allowed through 60 days."},'
+        '"responses":[],"stage":"select","task":{"order_age_days":43,"payment_id":"pay_42"}}'
+    )
+    original_payload = {
+        "model": "tiny", "stream": False, "think": False,
+        "format": {
+            "type": "object",
+            "properties": {
+                "operation": {"type": "string", "enum": ["refund", "stop"]},
+                "assessment": {"type": "string", "enum": ["success", "failure", "partial", "unknown"]},
+                "rationale": {"type": "string"},
+            },
+            "required": ["operation", "assessment", "rationale"],
+            "additionalProperties": False,
+        },
+        "messages": [{"role": "system", "content": _SYSTEM_PROMPT},
+                     {"role": "user", "content": original_request_text}],
+        "options": {"seed": 15, "temperature": 0.1, "num_predict": 128},
+    }
+    original_body = json.dumps(original_payload, ensure_ascii=False, allow_nan=False,
+                               separators=(",", ":")).encode("utf-8")
+    with server() as (url, recorded):
+        default = OllamaPolicy("tiny", base_url=url, temperature=0.1, timeout=2, num_predict=128)
+        explicit = OllamaPolicy("tiny", base_url=url, temperature=0.1, timeout=2, num_predict=128,
+                                prompt_version="refund-policy-v1")
+        for policy in (default, explicit):
+            reply = policy.decide(request(), seed=15)
+            assert reply.metadata["prompt_version"] == "refund-policy-v1"
+            assert reply.metadata["system_prompt_sha256"] == original_prompt_hash
+            assert reply.metadata["request_payload_sha256"] == hashlib.sha256(original_body).hexdigest()
+        assert [entry["body"] for entry in recorded if entry["path"] == "/api/chat"] == [
+            original_body, original_body,
+        ]
+
+
+@pytest.mark.parametrize("stage", ["select", "after_response"])
+def test_opt_in_v2_changes_only_system_prompt_and_records_selected_profile(stage):
+    reported = envelope(message={"role": "assistant", "content": json.dumps({
+        "operation": "refund" if stage == "select" else "retry", "assessment": "failure",
+        "rationale": "Model-reported judgement."
+    })})
+    with server(reported) as (url, recorded):
+        replies = []
+        for version in PROMPT_PROFILES:
+            policy = OllamaPolicy("tiny", base_url=url, prompt_version=version)
+            assert policy.metadata["prompt_version"] == version
+            reply = policy.decide(request(stage), seed=7)
+            assert reply.metadata["prompt_version"] == version
+            replies.append(reply)
+        first, second = [json.loads(entry["body"]) for entry in recorded
+                         if entry["path"] == "/api/chat"]
+        assert first["messages"][0]["content"] == _SYSTEM_PROMPT
+        assert second["messages"][0]["content"] == PROMPT_PROFILES["refund-policy-v2"]
+        assert second["messages"][0]["content"] != first["messages"][0]["content"]
+        second["messages"][0] = first["messages"][0]
+        assert second == first  # Request serialization, schema, and generation controls are unchanged.
+        assert replies[1].metadata["system_prompt_sha256"] == hashlib.sha256(
+            PROMPT_PROFILES["refund-policy-v2"].encode("utf-8")
+        ).hexdigest()
+        assert replies[1].metadata["system_prompt_sha256"] != replies[0].metadata["system_prompt_sha256"]
+        chat_body = [entry["body"] for entry in recorded if entry["path"] == "/api/chat"][-1]
+        assert replies[1].metadata["request_payload_sha256"] == hashlib.sha256(chat_body).hexdigest()
+        assert replies[1].metadata["request_sha256"] == replies[0].metadata["request_sha256"]
+        # Profiles guide generation; the adapter preserves valid model decisions
+        # even when their assessments do not follow the selected prompt guidance.
+        assert replies[0].decision == replies[1].decision
+        assert replies[1].decision.assessment is AssessmentStatus.FAILURE
+
+
+@pytest.mark.parametrize("version", [
+    "refund-policy-v3", "", " refund-policy-v1", "refund-policy-v2 ",
+    None, True, 2, [], {}, b"refund-policy-v1",
+])
+def test_prompt_version_is_validated_before_creating_transport(version):
+    with patch("consequa_x.adapters.ollama.build_opener") as opener:
+        with pytest.raises(PolicyError, match="prompt_version"):
+            OllamaPolicy("tiny", prompt_version=version)
+        opener.assert_not_called()
+
+
+def test_prompt_profiles_and_selected_public_properties_are_immutable():
+    policy = OllamaPolicy("tiny", prompt_version="refund-policy-v2")
+    with pytest.raises(TypeError):
+        PROMPT_PROFILES["refund-policy-v2"] = "changed"
+    with pytest.raises(AttributeError):
+        policy.prompt_version = "refund-policy-v1"
+    with pytest.raises(AttributeError):
+        policy.system_prompt = "changed"
+    exported = policy.metadata
+    exported["prompt_version"] = "refund-policy-v1"
+    assert policy.metadata["prompt_version"] == "refund-policy-v2"
+    assert policy.system_prompt == PROMPT_PROFILES["refund-policy-v2"]
 
 
 def test_read_only_model_listing_preserves_identities_without_loading_models():

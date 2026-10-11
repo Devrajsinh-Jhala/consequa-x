@@ -1,0 +1,30 @@
+{
+  "protocol_status": "declared_before_live_generation",
+  "purpose": "First bounded local-model integration smoke test of merged main; no attribution-method superiority or task-generalization claim.",
+  "source_commit": "5dbc46debaedbaa9ff49f42c9158766065dfd34d",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "model_source": "https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M",
+  "provider": "ollama",
+  "base_url": "http://127.0.0.1:11434",
+  "temperature": 0,
+  "initial_seed": 0,
+  "num_predict": 512,
+  "timeout_seconds": 180,
+  "max_attempts": 2,
+  "evaluation": {
+    "cases": ["clean", "timeout_after_commit"],
+    "samples_per_case": 1,
+    "max_policy_calls": 6,
+    "output": "evaluation"
+  },
+  "replay": {
+    "case": "unsafe_retry",
+    "candidates": ["retry_instruction"],
+    "samples_per_condition": 2,
+    "max_policy_calls": 12,
+    "output": "replay"
+  },
+  "sampling_note": "Temperature zero and paired requested seeds are integration controls; two seeds are not independent stochastic or held-out task observations.",
+  "payments": "Isolated synthetic payment worlds only. No real payment service is connected.",
+  "failure_handling": "Retain provider/protocol failure receipts and unknown outcomes. Refuse incomplete target estimates. Do not redraw a failed branch within a run."
+}

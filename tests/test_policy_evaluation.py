@@ -92,7 +92,10 @@ def test_cli_exports_a_reproducible_scripted_evaluation(tmp_path, capsys):
                     assert "fault" not in request["task"]
                     assert "ground_truth" not in request["task"]
         manifest = read_json(output / "manifest.json")
-        assert len(manifest["artifacts"]) == 36
+        assert len(manifest["artifacts"]) == 39
+        assert {"results.json", "trace-schema.json", "README.md"} <= {
+            artifact["path"] for artifact in manifest["artifacts"]
+        }
         for artifact in manifest["artifacts"]:
             assert sha256((output / artifact["path"]).read_bytes()).hexdigest() == artifact["sha256"]
     assert (outputs[0] / "results.json").read_bytes() == (outputs[1] / "results.json").read_bytes()

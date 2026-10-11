@@ -155,18 +155,45 @@ def _new_output(args, command):
     return output
 
 
+def _assessment_report(summary):
+    metrics = summary["assessment_metrics"]
+
+    def rate(name):
+        item = metrics[name]
+        value = "not available" if item["value"] is None else f"{100 * item['value']:.1f}%"
+        return f"{value} ({item['numerator']}/{item['denominator']})"
+
+    counts = metrics["reported_assessment"]
+    return (
+        "Reported assessments: " + ", ".join(f"{name} {count}" for name, count in counts.items())
+        + ".\n\n"
+        f"Definite claim coverage: {rate('claim_coverage')}; "
+        f"assessable claim coverage: {rate('assessable_claim_coverage')}; "
+        f"contradictions among assessable claims: {rate('contradiction_rate')}. "
+        "Unknown assessments are abstentions; partial assessments remain separate. "
+        "These counts score the structured status only; an unknown status can coexist "
+        "with definite claims in the rationale, which requires separate review. "
+        "These are hindsight comparisons with supported action-linked state, not a "
+        "grade of what an ambiguous public response lets the policy know. Failed and "
+        "unstarted runs have no final assessment and remain outside these denominators.\n\n"
+    )
+
+
 def _prepare_policy(args):
-    from .adapters.ollama import OllamaPolicy
+    from .adapters.ollama import OllamaPolicy, PROMPT_VERSION
     from .policies import ScriptedRefundPolicy
 
     if args.provider == "ollama" and not args.model:
         raise ValueError("--model is required with --provider ollama")
     if args.provider == "scripted" and args.model:
         raise ValueError("--model requires --provider ollama; scripted is an offline fixture")
+    if args.provider == "scripted" and args.prompt_version is not None:
+        raise ValueError("--prompt-version requires --provider ollama; scripted has no model prompt")
     model_record = None
     if args.provider == "ollama":
         policy = OllamaPolicy(args.model, base_url=args.base_url, temperature=args.temperature,
-                              timeout=args.timeout, num_predict=args.num_predict)
+                              timeout=args.timeout, num_predict=args.num_predict,
+                              prompt_version=args.prompt_version or PROMPT_VERSION)
         requested = args.model if ":" in args.model else args.model + ":latest"
         model_record = next((record for record in policy.list_models()
                              if record["name"] in (args.model, requested)), None)
@@ -230,7 +257,6 @@ def _model_eval(args):
         "claim": "Adapter evaluation only; no attribution-method superiority or task generalization tested.",
     })
     _write_json(output / "trace-schema.json", get_trace_schema())
-    _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": artifacts})
     rows = []
     for receipt in receipts:
         rows.append("| " + " | ".join(str(receipt.get(key, "—")) for key in (
@@ -247,6 +273,7 @@ def _model_eval(args):
            if args.provider == "scripted" else
            "This evaluation calls a selected local Ollama model against simulated payments. "
            "It is a template-level smoke evaluation, not a held-out research study.\n\n")
+        + _assessment_report(summary)
         + "| Sample | Case | Seed | Status | Calls | Reported assessment | Verified outcome | Origin | Alignment |\n"
         "| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
         + "\n".join(rows) + "\n\n"
@@ -260,6 +287,9 @@ def _model_eval(args):
         "Manifest hashes check file integrity, not evidence authenticity.\n"
     )
     (output / "README.md").write_text(report, encoding="utf-8", newline="\n")
+    for relative in ("results.json", "trace-schema.json", "README.md"):
+        artifacts.append({"path": relative, "sha256": sha256((output / relative).read_bytes()).hexdigest()})
+    _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": artifacts})
     print(f"Saved {summary['completed_samples']} completed and {summary['failed_samples']} failed "
           f"policy samples in {output.resolve()}")
     return 2 if evaluation.budget_exhausted or summary["failed_samples"] else 0
@@ -353,6 +383,7 @@ def _model_experiment(args):
            if args.provider == "scripted" else
            "This calls a selected local Ollama model against simulated payments. "
            "A single-template replay does not establish generalization.\n\n")
+        + _assessment_report(summary)
         + "Each factual seed runs once and is reused across candidates and both targets. "
         "Each changed branch starts a fresh simulated world under the same fixed contract. "
         "Estimates read the collected episodes and make no additional policy calls.\n\n"
@@ -387,12 +418,16 @@ def _model_experiment(args):
 
 
 def _add_policy_arguments(parser, *, samples, max_calls):
+    from .adapters.ollama import PROMPT_PROFILES
+
     parser.add_argument("--provider", choices=("scripted", "ollama"), default="scripted")
     parser.add_argument("--model")
     parser.add_argument("--base-url", default="http://127.0.0.1:11434")
     parser.add_argument("--temperature", type=float, default=0.2)
     parser.add_argument("--timeout", type=float, default=120)
     parser.add_argument("--num-predict", type=int, default=512)
+    parser.add_argument("--prompt-version", choices=tuple(PROMPT_PROFILES),
+                        help="Ollama prompt profile; defaults to refund-policy-v1")
     parser.add_argument("--samples", type=int, default=samples)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--max-calls", type=int, default=max_calls)

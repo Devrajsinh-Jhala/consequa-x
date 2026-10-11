@@ -45,6 +45,16 @@ consequa-x model-eval --provider ollama --model YOUR_INSTALLED_MODEL --samples 2
 Replace `YOUR_INSTALLED_MODEL` with the exact installed model name. The default
 service address is `http://127.0.0.1:11434`. The adapter accepts a local
 `--base-url`, plus `--temperature`, `--timeout`, and `--num-predict` controls.
+`--prompt-version refund-policy-v2` selects an opt-in prompt profile. The default
+remains the exact original `refund-policy-v1`. V2 clarifies that context strings
+are visible facts, `attempts_remaining` counts additional attempts, timestamps
+are simulated time, and a timeout warrants an unknown assessment without a
+successful acknowledgement. It also adds stop-after-success and retry guidance.
+This is a pilot-informed policy refinement, not a fix to a request-encoding bug;
+comparisons are exploratory. It receives no hidden readback or evaluator labels,
+and the adapter never rewrites a valid model decision to enforce the guidance.
+The Python constructor accepts `prompt_version="refund-policy-v2"` too.
+
 It uses the Ollama chat endpoint with a JSON Schema output format and validates
 the returned decision locally. Ollama documents these interfaces in its
 [chat API](https://docs.ollama.com/api/chat) and
@@ -124,6 +134,31 @@ agent's failure assessment incorrect. Missing or stale readback gives
 faces the same fixed consequence contract. This avoids scoring only episodes
 in which a model happened to choose the original action.
 
+Both evaluation and replay summaries include `assessment_metrics`. Counts cover
+completed episodes only: `success`, `failure`, `partial`, and `unknown` remain
+distinct. Definite claims are success/failure; unknown is abstention, and partial
+is retained separately. Claim coverage divides definite claims by completed
+assessments. Assessable claim coverage divides consistent/contradicted definite
+claims by completed assessments. Contradiction rate divides contradictions by
+assessable claims. Each rate records its numerator and denominator, with a null
+value when the denominator is zero. Definite claims with unknown verification
+or insufficient origin remain unassessable. Provider failures and unstarted
+episodes stay in their separate run counts.
+
+These counts evaluate the structured assessment status only. They do not score
+the free-text rationale: an `unknown` status can coexist with an affirmative
+claim in the explanation. Review rationale claims separately before interpreting
+field-level abstention as evidence that a policy avoids unsupported assertions.
+
+These metrics describe hindsight alignment with supported action-linked state.
+They do not grade what the policy could know from public responses: a timeout
+can justify unknown even when later readback resolves success. Report coverage,
+abstention, and contradiction together; blanket abstention is not improved
+accuracy. The [first live pilot](../output/live-pilot-2026-10-10/README.md) preserves
+the original v1 observations used to motivate this exploratory refinement.
+The [prompt-sensitivity follow-up](../output/prompt-sensitivity-2026-10-10/README.md)
+records this status/rationale mismatch and reports the separate retry diagnostic.
+
 Simulation time determines the contract deadline and stability horizon.
 Provider-reported inference duration, when available, is recorded separately
 and does not advance the simulator clock. Results therefore do not measure
@@ -151,7 +186,7 @@ responses, seeds, and failures. A model tag alone is insufficient provenance.
 Current trace events record the visible policy request, parsed decision,
 requested settings, prompt version, returned model identity, and three hashes:
 `request_sha256` for the public request JSON, `system_prompt_sha256` for the
-fixed system prompt, and `request_payload_sha256` for the full encoded request
+selected versioned system prompt, and `request_payload_sha256` for the full encoded request
 including messages, schema, and generation options. The adapter also records
 its local-model inspection and provider token counts and timings when supplied.
 It checks that the returned model identity matches the requested one, allowing

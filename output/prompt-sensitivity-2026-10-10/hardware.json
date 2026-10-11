@@ -1,0 +1,13 @@
+{
+  "architecture": "AMD64",
+  "cpu": "Intel Core i5-8365U",
+  "cpu_logical_processors": 8,
+  "cpu_physical_cores": 4,
+  "graphics": "Intel UHD Graphics 620",
+  "observed_at_utc": "2026-10-10T16:53:45.937754+00:00",
+  "operating_system": "Windows",
+  "operating_system_release": "11",
+  "operating_system_version": "10.0.26300",
+  "ram_gib": 15.78,
+  "test_device_note": "Laptop with integrated graphics; record observed Ollama execution placement separately."
+}

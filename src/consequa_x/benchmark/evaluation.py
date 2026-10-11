@@ -6,6 +6,7 @@ from typing import Iterable
 
 from ..models import to_dict
 from ..policies import Policy, PolicyError
+from .assessment_metrics import assessment_metrics
 from .policy_runner import MAX_TRIAL_SEED, run_policy_scenario
 from .runner import Episode, ScenarioConfig, demo_scenarios
 
@@ -81,6 +82,11 @@ class PolicyEvaluation:
             "verification": counts,
             "origin": origin,
             "assessment_alignment": alignment,
+            "assessment_metrics": assessment_metrics(
+                (sample.episode.trace.assessment.status,
+                 sample.episode.explanation.assessment_alignment)
+                for sample in self.samples if sample.episode is not None
+            ),
             "known_outcome_samples": counts["satisfied"] + counts["violated"],
         }
 

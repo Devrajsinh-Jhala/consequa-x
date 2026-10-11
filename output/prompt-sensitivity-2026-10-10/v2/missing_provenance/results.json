@@ -1,0 +1,121 @@
+{
+  "cases": [
+    "missing_provenance"
+  ],
+  "claim": "Adapter evaluation only; no attribution-method superiority or task generalization tested.",
+  "evaluation_kind": "local_model",
+  "initial_seed": 0,
+  "installed_model": {
+    "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "name": "qwen3:4b-instruct-2507-q4_K_M"
+  },
+  "max_attempts": 1,
+  "package_version": "0.1.0a1",
+  "policy": {
+    "base_url": "http://127.0.0.1:11434",
+    "local_inspection": {
+      "capabilities": [
+        "tools",
+        "thinking",
+        "completion"
+      ],
+      "details": {
+        "families": [
+          "qwen3"
+        ],
+        "family": "qwen3",
+        "format": "gguf",
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "endpoint": "/api/show",
+      "inspection_sha256": "e9256d2b8a92abc8f172e0d252e6575b5c3ed2062fc9c8de98fb98c94959ea20",
+      "no_declared_remote_routing": true,
+      "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+      "routing_fields_present": []
+    },
+    "num_predict": 512,
+    "prompt_version": "refund-policy-v2",
+    "provider": "ollama",
+    "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "temperature": 0.0,
+    "timeout_seconds": 180.0
+  },
+  "samples": [
+    {
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "diagnosis": "UNCONFIRMED_ORIGIN",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "unknown",
+      "scenario": "missing_provenance",
+      "seed": 0,
+      "status": "completed",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "satisfied"
+    }
+  ],
+  "samples_per_case": 1,
+  "summary": {
+    "assessment_alignment": {
+      "consistent": 0,
+      "contradicted": 0,
+      "unassessable": 1
+    },
+    "assessment_metrics": {
+      "abstentions": 1,
+      "assessable_claim_coverage": {
+        "denominator": 1,
+        "numerator": 0,
+        "value": 0.0
+      },
+      "assessable_claims": 0,
+      "claim_coverage": {
+        "denominator": 1,
+        "numerator": 0,
+        "value": 0.0
+      },
+      "completed_assessments": 1,
+      "consistent_claims": 0,
+      "contradicted_claims": 0,
+      "contradiction_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "value": null
+      },
+      "definite_claims": 0,
+      "partial_assessments": 0,
+      "reported_assessment": {
+        "failure": 0,
+        "partial": 0,
+        "success": 0,
+        "unknown": 1
+      },
+      "unassessable_claims": 0
+    },
+    "attempted_samples": 1,
+    "budget_exhausted": false,
+    "completed_samples": 1,
+    "failed_samples": 0,
+    "known_outcome_samples": 1,
+    "max_calls": 2,
+    "not_started_samples": 0,
+    "origin": {
+      "confirmed": 0,
+      "other_actor": 0,
+      "unknown": 1
+    },
+    "planned_samples": 1,
+    "policy_calls": 2,
+    "verification": {
+      "satisfied": 1,
+      "unknown": 0,
+      "violated": 0
+    }
+  }
+}

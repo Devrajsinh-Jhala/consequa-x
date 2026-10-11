@@ -1,0 +1,63 @@
+{
+  "config": {
+    "amount_minor": 225000,
+    "compensate": false,
+    "context": {
+      "customer_request": true,
+      "distractor": "Weather is pleasant today.",
+      "retry_instruction": false,
+      "vip_memory": true,
+      "vip_policy": true
+    },
+    "deadline_ms": 100,
+    "external_actor": false,
+    "fault": "false_success",
+    "include_provenance": true,
+    "name": "tuning.false-acknowledgement",
+    "order_age_days": 43,
+    "read_lag_ms": 0,
+    "reconcile_readback": false,
+    "retry_probability": 1.0,
+    "selection_probability": 1.0,
+    "stability_ms": 0,
+    "timeout_assessment": "failure",
+    "use_idempotency": true
+  },
+  "records": [
+    {
+      "action_id": "refund:103",
+      "actor": "RefundAgent",
+      "attempt_id": "attempt:103:1",
+      "cache_hit": false,
+      "cache_origin": null,
+      "committed_effect_ids": [],
+      "fault": "false_success",
+      "fault_applied": true,
+      "kind": "execution_attempt",
+      "provider_request_id": "req_103_000001",
+      "request": {
+        "arguments": {
+          "amount_minor": 225000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "idempotency_key": "consequa-refund-103",
+        "name": "refund"
+      },
+      "request_payload_valid": true,
+      "response_result": {
+        "amount_minor": 225000,
+        "currency": "INR",
+        "payment_id": "pay_42",
+        "refund_id": "rf_103_000001",
+        "status": "processed"
+      },
+      "response_status": "success",
+      "result_effect_ids": [],
+      "time_ms": 6,
+      "trace_id": "trace:103"
+    }
+  ],
+  "scenario": "tuning.false-acknowledgement",
+  "seed": 103
+}

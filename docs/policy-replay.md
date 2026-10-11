@@ -1,7 +1,7 @@
 # Paired policy replay
 
 `model-experiment` tests whether a declared change in visible context changes a
-policy's initial action selection or the independently verified consequence.
+policy's initial action selection or the selected evidence target.
 Every branch uses a fresh simulated payment world and the same outcome contract.
 It uses the existing paired leave-one-out estimator; this is a prepared research
 entry point, not a new attribution method.
@@ -96,7 +96,7 @@ limit, simulated starting state, and consequence contract stay fixed.
 | `retry_instruction` | Remove the visible retry instruction. | Boolean: present or absent canonical retry instruction. |
 | `distractor` | Replace its text with an empty string. | A string containing the replacement text. |
 
-The four Boolean context fields are rendered as their declared canonical text
+The four Boolean context fields are rendered as the selected template's text
 or an empty string. Replacing `vip_policy` with an arbitrary policy paragraph is
 therefore not supported by this API. Changing arbitrary history records,
 execution faults, model prompts, refund parameters, or several factors jointly
@@ -111,8 +111,8 @@ a language model interprets arbitrary wording.
 
 The trial seeds are `seed` through `seed + samples - 1`. Each seed has one
 factual branch and one changed branch per candidate. The factual branch is
-reused across candidates, and both estimator targets use the same completed
-branch data. Estimating the second target never makes additional policy calls.
+reused across candidates, and all selected targets use the same completed
+branch data. Adding a target never makes additional policy calls.
 Execution order is fixed: all factual seeds first, then all seeds for the first
 candidate, then each subsequent candidate in the supplied order. This order is
 part of the run record and affects which conditions remain covered when the
@@ -138,12 +138,13 @@ prompts, model or server versions, hardware, and generation behavior can defeat
 exact replay. The policy should be stateless over its request and seed. Record
 replay fidelity before treating paired model runs as reproducible samples.
 
-## Interpret the two targets
+## Interpret the selected targets
 
 | Target | Measurement |
 | --- | --- |
 | `action` | Whether the initial policy decision selected the refund. Later retries are separate decisions. |
 | `consequence` | Whether the unchanged state contract was independently verified as satisfied. Unknown verification remains unknown. |
+| `action_linked_consequence` | Whether satisfied state has qualifying action-linked refund witnesses. External-only effects are false; insufficient provenance is unknown. Opt-in. |
 
 The consequence target remains defined when a changed context causes the policy
 to stop. It is not conditioned on the policy choosing the original action.
@@ -176,12 +177,13 @@ categories are mutually exclusive: a failed branch takes precedence over an
 unstarted branch, then an unknown consequence, then a known pair.
 
 - A provider or protocol error fails the branch; it never becomes a negative
-  action or consequence outcome.
+  outcome for any target.
 - Reaching the global call limit can fail a branch already in progress and
   leave later branches unstarted. The partial report retains this distinction.
 - Completed episodes with unknown verification still support an action target
   if both initial decisions are known. They cannot support a complete
-  consequence-target estimate.
+  consequence-target estimate. Insufficient provenance can also refuse an
+  action-linked estimate while the state target remains known.
 - Any non-known planned pair refuses that candidate/target's entire estimate.
   The runner does not redraw a failed trial, drop unknown pairs, or calculate a
   complete-case rate. Other candidates or targets can remain estimable if all
@@ -201,7 +203,7 @@ contract success or available attribution evidence.
 
 When a completed factual trace and at least one estimate are available, the
 export includes `attribution-explanation.json`, an evidence explanation with
-the available action and consequence estimates added as influence edges.
+the available selected-target estimates added as influence edges.
 `results.json` links the representative factual trace and this optional file.
 These edges describe the declared replay distribution, not counterfactual
 necessity in that representative execution. A run with no usable estimate or
@@ -213,7 +215,7 @@ Complete pairs are passed from the cache to the existing `leave_one_out`
 estimator. Its intervals subtract Bonferroni-adjusted marginal Wilson bounds
 for an approximate conservative 95% interval on each rate difference. They do
 not model within-pair covariance, offer an exact finite-sample guarantee, or
-provide simultaneous coverage across all candidates and both targets. Shared
+provide simultaneous coverage across all candidates and targets. Shared
 factual samples also make estimates dependent on one another.
 
 These intervals describe the declared seed experiment on one case. Repeating

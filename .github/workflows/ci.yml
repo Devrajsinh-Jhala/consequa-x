@@ -43,6 +43,8 @@ jobs:
         run: python -m ruff check src tests
       - name: Build wheel and source distribution
         run: python -m build
+      - name: Check candidate manifest in source distribution
+        run: python -I -c "import tarfile; from pathlib import Path; archives = list(Path('dist').glob('*.tar.gz')); assert len(archives) == 1; archive = tarfile.open(archives[0]); assert any(name.endswith('/docs/studies/refund-family-candidates-v1.json') for name in archive.getnames()); archive.close()"
       - name: Install built wheel
         run: python -m pip install --force-reinstall --no-deps --no-index --find-links dist consequa-x
       - name: Check installed package and bundled schema
@@ -51,3 +53,9 @@ jobs:
         run: python -I -m consequa_x model-eval --provider scripted --samples 1 --max-calls 30 --output output/ci-policy-smoke
       - name: Check installed paired replay without a model
         run: python -I -m consequa_x model-experiment --provider scripted --samples 2 --max-calls 30 --output output/ci-policy-replay
+      - name: Check installed candidate split without a model
+        run: python -I -m consequa_x model-eval --provider scripted --study docs/studies/refund-family-candidates-v1.json --split tuning --samples 1 --seed 100 --order-seed 7 --max-calls 30 --output output/ci-study-tuning
+      - name: Check installed three-target replay without a model
+        run: python -I -m consequa_x model-experiment --provider scripted --case clean --candidates vip_policy --samples 2 --seed 200 --targets action,consequence,action_linked_consequence --template refund-support-note-v1 --max-calls 12 --output output/ci-three-target-replay
+      - name: Check installed decision-prefix replay without a model
+        run: python -I -c "from consequa_x.benchmark.decision_replay import replay_decision_prefix; from consequa_x.benchmark.evaluation import BudgetedPolicy; from consequa_x.benchmark.payments import Fault; from consequa_x.benchmark.policy_runner import run_policy_scenario; from consequa_x.benchmark.runner import ScenarioConfig; from consequa_x.policies import ScriptedRefundPolicy; policy = ScriptedRefundPolicy(); factual = run_policy_scenario(ScenarioConfig(fault=Fault.CLEAN), policy, seed=0); bounded = BudgetedPolicy(policy, max_calls=1); held = replay_decision_prefix(factual, bounded, hold_count=2, continuation_seed=100); assert held.episode is not None and held.policy_calls == bounded.calls == 0; suffix = replay_decision_prefix(factual, bounded, hold_count=1, continuation_seed=101); assert suffix.episode is not None and suffix.policy_calls == bounded.calls == 1"

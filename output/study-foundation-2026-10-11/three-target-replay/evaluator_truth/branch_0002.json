@@ -1,0 +1,35 @@
+{
+  "branch_index": 2,
+  "config": {
+    "amount_minor": 500000,
+    "compensate": false,
+    "context": {
+      "customer_request": true,
+      "distractor": "Weather is pleasant today.",
+      "retry_instruction": false,
+      "vip_memory": true,
+      "vip_policy": true
+    },
+    "deadline_ms": 100,
+    "external_actor": false,
+    "fault": "clean",
+    "include_provenance": true,
+    "name": "clean",
+    "order_age_days": 43,
+    "read_lag_ms": 0,
+    "reconcile_readback": false,
+    "retry_probability": 1.0,
+    "selection_probability": 1.0,
+    "stability_ms": 0,
+    "timeout_assessment": "failure",
+    "use_idempotency": true
+  },
+  "intervention": {
+    "event_id": "vip_policy",
+    "kind": "neutralize",
+    "replacement": null
+  },
+  "records": [],
+  "scenario": "clean",
+  "seed": 200
+}

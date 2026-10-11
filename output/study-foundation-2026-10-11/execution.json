@@ -1,0 +1,59 @@
+{
+  "runs": [
+    {
+      "arguments": [
+        "model-eval",
+        "--provider",
+        "scripted",
+        "--study",
+        "docs/studies/refund-family-candidates-v1.json",
+        "--split",
+        "tuning",
+        "--samples",
+        "1",
+        "--seed",
+        "100",
+        "--order-seed",
+        "7",
+        "--max-calls",
+        "30",
+        "--output",
+        "output/study-foundation-2026-10-11/tuning"
+      ],
+      "exit_code": 0,
+      "finished_at_utc": "2026-10-11T07:24:43.842359+00:00",
+      "name": "tuning",
+      "started_at_utc": "2026-10-11T07:24:42.534854+00:00",
+      "wall_seconds": 1.307505
+    },
+    {
+      "arguments": [
+        "model-experiment",
+        "--provider",
+        "scripted",
+        "--case",
+        "clean",
+        "--candidates",
+        "vip_policy",
+        "--samples",
+        "2",
+        "--seed",
+        "200",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--template",
+        "refund-support-note-v1",
+        "--max-calls",
+        "12",
+        "--output",
+        "output/study-foundation-2026-10-11/three-target-replay"
+      ],
+      "exit_code": 0,
+      "finished_at_utc": "2026-10-11T07:24:44.984348+00:00",
+      "name": "three-target-replay",
+      "started_at_utc": "2026-10-11T07:24:43.850164+00:00",
+      "wall_seconds": 1.134184
+    }
+  ],
+  "source_commit": "0c0413b8f6d3ec976962cd443d751385c528ecc7"
+}

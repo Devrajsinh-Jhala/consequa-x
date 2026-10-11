@@ -24,6 +24,7 @@ The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) c
 - [Candidate task-family splits and evidence targets](docs/study-manifests.md)
 - [Decision-prefix replay](docs/decision-replay.md)
 - [Strong baseline reproduction plan](docs/car-reproduction-plan.md)
+- [Installed-package study and replay checks](output/study-foundation-2026-10-11/README.md)
 - [Alpha validation report](output/build/README.md)
 
 Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
@@ -148,7 +149,7 @@ Replay the policy interface under declared context changes:
 consequa-x model-experiment --provider scripted --case unsafe_retry --samples 20 --max-calls 400 --output output/my-policy-replay
 ```
 
-Each factual seed runs once and is reused across candidate comparisons and both action/consequence targets. The call limit applies to the whole experiment. Failed or unstarted branches and unknown consequences remain explicit; an estimate requires every planned target pair to be usable. The export includes branch evidence, signed effects, pair coverage, and an optional factual explanation with estimated-influence edges. See [the replay guide](docs/policy-replay.md) for the Python API and prepared Ollama entry point.
+Each factual seed runs once and is reused across candidate comparisons and all selected targets. The call limit applies to the whole experiment. Failed or unstarted branches and unknown consequences remain explicit; an estimate requires every planned target pair to be usable. The export includes branch evidence, signed effects, pair coverage, and an optional factual explanation with estimated-influence edges. See [the replay guide](docs/policy-replay.md) for the Python API and prepared Ollama entry point.
 
 The committed [scripted replay example](output/replay-smoke/README.md) uses two seeds per condition to check the integration. It is not a model result or an adequate sample size for a research claim.
 

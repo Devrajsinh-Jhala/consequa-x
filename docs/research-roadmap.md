@@ -21,12 +21,13 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - Proposed matched-baseline study protocol in [study-plan.md](study-plan.md).
 - Validated evaluator-owned task-family manifests with explicit split and order metadata; an 18-case candidate allocation is available in [study-manifests.md](study-manifests.md).
 - A supported action-linked refund target distinct from state satisfaction, plus [decision-prefix replay](decision-replay.md) with factual boundary checks and separate continuation seeds.
+- Independent CAR-style [decision contrastive replay](decision-contrastive.md) with one observed factual baseline, explicit bootstrap limits, and complete-coverage locus/refusal receipts.
 
 ## Next research milestone
 
 1. Extend the recorded local pilot to actual stochastic LLM policies across several task templates and models. The adapter exposes declared task/context and public responses; independent readback follows the final assessment, and evaluator truth stays outside policy inputs. Measure replay fidelity rather than treating shared requested seeds as a determinism guarantee. Prompt changes informed by the pilot are exploratory adaptations and need independent held-out evaluation.
 2. Specify context and fault intervention families and targets before running the study. Hold out templates and fault compositions, not just random seeds.
-3. Complete the [CAR reproduction](car-reproduction-plan.md) using the new decision-prefix primitive, then compare with identical evidence, origin information, intervention units, snapshots and budget. Add a faithfully adapted joint-fault comparator where applicable.
+3. Complete positional coalition replay and antithetic Shapley allocation in the [CAR reproduction](car-reproduction-plan.md), validate the contrastive adaptation, then compare with identical evidence, origin information, intervention units, snapshots and budget. Add a faithfully adapted joint-fault comparator where applicable.
 4. Measure false consequence/origin claims and factor recovery against independent intervention estimates. Report abstention coverage and error together; audit rationale assertions separately from structured status and report model-specific results and cost.
 5. Expand domains only after a substantive gap remains in the strong baseline. An engineering framework can still be released if the methodological advantage does not emerge.
 

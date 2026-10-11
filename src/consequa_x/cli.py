@@ -3,6 +3,7 @@
 import argparse
 from hashlib import sha256
 import json
+import math
 from pathlib import Path
 import sys
 
@@ -501,6 +502,287 @@ def _add_policy_arguments(parser, *, samples, max_calls):
     parser.add_argument("--max-attempts", type=int, default=2)
 
 
+def _decision_experiment(args):
+    """Export bounded decision continuations separately from context effects."""
+    from copy import deepcopy
+
+    from .attribution import REPLAY_TARGETS
+    from .benchmark.decision_contrastive import contrastive_decisions
+    from .benchmark.evaluation import BudgetedPolicy, CallBudgetExceeded
+    from .benchmark.policy_runner import MAX_TRIAL_SEED, run_policy_scenario
+    from .benchmark.targets import episode_outcome
+    from .benchmark.templates import REFUND_TASK_TEMPLATES
+    from .policies import PolicyError, validate_reply
+
+    output = _new_output(args, "decision-experiment")
+    if args.samples < 2 or args.max_calls < 1 or not 1 <= args.max_attempts <= 5:
+        raise ValueError("samples must be at least 2, max-calls positive, max-attempts in 1..5")
+    if not 0 <= args.factual_seed <= MAX_TRIAL_SEED:
+        raise ValueError("factual-seed exceeds the model seed range")
+    # Preflight the longest possible factual capture before contacting a provider.
+    if args.seed < 0 or args.seed + (args.max_attempts + 1) * args.samples - 1 > MAX_TRIAL_SEED:
+        raise ValueError("Conservative continuation seed schedule exceeds the model seed range")
+    if args.seed <= args.factual_seed <= args.seed + (args.max_attempts + 1) * args.samples - 1:
+        raise ValueError("Conservative continuation seed schedule overlaps the factual seed")
+    if not math.isfinite(args.confidence) or not 0 < args.confidence < 1:
+        raise ValueError("confidence must be a finite number strictly between 0 and 1")
+    if args.bootstrap_samples < 2 or args.bootstrap_seed < 0:
+        raise ValueError("bootstrap-samples must be at least 2 and bootstrap-seed nonnegative")
+    targets = tuple(args.targets.split(","))
+    if not targets or len(set(targets)) != len(targets) or any(
+        target not in REPLAY_TARGETS for target in targets
+    ):
+        raise ValueError("targets must be unique supported replay target names, separated by commas")
+    config = next(config for config in demo_scenarios() if config.name == args.case)
+    template = REFUND_TASK_TEMPLATES[args.template]
+    policy, model_record = _prepare_policy(args)
+    bounded = BudgetedPolicy(policy, args.max_calls)
+
+    class FactualRecorder:
+        def __init__(self):
+            self.decisions = []
+
+        @property
+        def metadata(self):
+            return bounded.metadata
+
+        def decide(self, request, *, seed):
+            receipt = {"index": len(self.decisions), "stage": request.stage,
+                       "model_seed": seed, "request": to_dict(request), "reply": None}
+            before = bounded.calls
+            try:
+                reply = bounded.decide(deepcopy(request), seed=seed)
+                validate_reply(request, reply)
+                receipt["reply"] = to_dict(reply)
+                return reply
+            except PolicyError as error:
+                receipt.update(error_type=type(error).__name__, error=str(error))
+                raise
+            finally:
+                receipt["policy_calls"] = bounded.calls - before
+                self.decisions.append(receipt)
+
+    recorder = FactualRecorder()
+    factual = None
+    factual_error = None
+    try:
+        factual = run_policy_scenario(config, recorder, seed=args.factual_seed,
+                                      max_attempts=args.max_attempts, template=template)
+    except PolicyError as error:
+        factual_error = error
+    factual_calls = bounded.calls
+    experiment = None
+    estimator_error = None
+    if factual is not None:
+        try:
+            experiment = contrastive_decisions(
+                factual, bounded, samples=args.samples, seed=args.seed, targets=targets,
+                template=template, confidence=args.confidence,
+                bootstrap_samples=args.bootstrap_samples, bootstrap_seed=args.bootstrap_seed,
+            )
+        except (ValueError, TypeError) as error:
+            # A complete recorded factual episode may fail replay identity or
+            # capture validation. Preserve its evidence without making a draw.
+            if bounded.calls != factual_calls:
+                raise
+            estimator_error = error
+    artifacts = []
+
+    def save(relative, value):
+        path = output / relative
+        _write_json(path, value)
+        artifacts.append({"path": relative, "sha256": sha256(path.read_bytes()).hexdigest()})
+
+    def save_episode(episode, stem, extra_truth):
+        paths = {"trace": f"traces/{stem}.json", "explanation": f"explanations/{stem}.json",
+                 "evaluator_truth": f"evaluator_truth/{stem}.json"}
+        save(paths["trace"], episode.trace)
+        save(paths["explanation"], episode.explanation)
+        save(paths["evaluator_truth"], {
+            "scenario": config.name, "seed": episode.seed, "config": to_dict(episode.config),
+            "records": episode.ground_truth, **extra_truth,
+        })
+        return paths
+
+    factual_receipt = {
+        "status": "completed" if factual is not None else "failed", "seed": args.factual_seed,
+        "policy_calls": factual_calls, "decisions": recorder.decisions,
+    }
+    if factual is None:
+        factual_receipt.update(error_type=type(factual_error).__name__, error=str(factual_error))
+    else:
+        factual_receipt.update(save_episode(factual, "factual", {"role": "factual"}))
+        factual_receipt["trace_sha256"] = sha256(
+            (output / factual_receipt["trace"]).read_bytes()
+        ).hexdigest()
+        factual_receipt["outcome"] = to_dict(episode_outcome(factual))
+    receipts = []
+    planned_schedule = []
+    if experiment is not None:
+        by_branch = {(branch.decision_index, branch.continuation_seed): branch
+                     for branch in experiment.branches}
+        for decision_index, seeds in enumerate(experiment.planned_seeds):
+            for continuation_seed in seeds:
+                planned_schedule.append({"index": len(planned_schedule),
+                                         "decision_index": decision_index,
+                                         "continuation_seed": continuation_seed,
+                                         "hold_count": decision_index})
+        for planned in planned_schedule:
+            branch = by_branch.get((planned["decision_index"], planned["continuation_seed"]))
+            replay = branch.replay if branch is not None else None
+            receipt = dict(planned)
+            if replay is None:
+                receipt.update(status="not_started", policy_calls=0, decisions=[],
+                               reason="Shared policy-call budget exhausted before this branch")
+            else:
+                receipt.update(replay.summary(), decisions=to_dict(replay.decisions))
+                if replay.episode is not None:
+                    receipt.update(save_episode(replay.episode, f"branch_{branch.index:05d}", {
+                        "role": "continuation", "branch_index": branch.index,
+                        "decision_index": branch.decision_index,
+                        "continuation_seed": branch.continuation_seed,
+                        "hold_count": replay.hold_count,
+                    }))
+                    receipt["outcome"] = to_dict(episode_outcome(replay.episode))
+            receipts.append(receipt)
+    completed = sum(receipt["status"] == "completed" for receipt in receipts)
+    failed = sum(receipt["status"] == "failed" for receipt in receipts)
+    not_started = sum(receipt["status"] == "not_started" for receipt in receipts)
+    continuation_calls = bounded.calls - factual_calls
+    exhausted = (isinstance(factual_error, CallBudgetExceeded)
+                 or (experiment is not None and experiment.budget_exhausted))
+    settings = {
+        "scenario": config.name, "template": template.to_dict(), "targets": targets,
+        "factual_seed": args.factual_seed, "initial_continuation_seed": args.seed,
+        "samples_per_decision": args.samples, "max_attempts": args.max_attempts,
+        "confidence": args.confidence, "bootstrap_samples": args.bootstrap_samples,
+        "bootstrap_seed": args.bootstrap_seed,
+        "seed_preflight": "seed + (max_attempts + 1) * samples - 1 <= MAX_TRIAL_SEED",
+    }
+    availability = {
+        "status": "available" if experiment is not None else
+                  "refused" if estimator_error is not None else "unavailable",
+        "reason": None if experiment is not None else
+                  "Completed factual capture failed estimator preflight; no continuations were drawn"
+                  if estimator_error is not None else "Factual capture failed; no estimator was run",
+        "error_type": type(estimator_error).__name__ if estimator_error is not None else None,
+        "error": str(estimator_error) if estimator_error is not None else None,
+    }
+    planning = {
+        "source": "validated_capture" if experiment is not None else
+                  "unvalidated_capture" if factual is not None else "incomplete_capture",
+        "recorded_factual_decisions": len(recorder.decisions),
+        "conservative_max_positions": args.max_attempts + 1,
+        "conservative_max_branches": (args.max_attempts + 1) * args.samples,
+        "conservative_seed_range": [args.seed, args.seed + (args.max_attempts + 1) * args.samples - 1],
+        "scope": "Conservative preflight bounds; a decision-specific schedule exists only after factual validation",
+    }
+    save("results.json", {
+        "package_version": __version__, "evaluation_kind": (
+            "local_model_decision_replay" if args.provider == "ollama"
+            else "scripted_decision_replay"
+        ),
+        "status": "available" if experiment is not None else "unavailable",
+        "reason": availability["reason"], "estimator_availability": availability,
+        "planning": planning,
+        "policy": bounded.metadata, "installed_model": model_record, "settings": settings,
+        "factual": factual_receipt, "branches": receipts,
+        "planned_seeds": experiment.planned_seeds if experiment is not None else None,
+        "planned_schedule": planned_schedule if experiment is not None else None,
+        "planned_branches": experiment.planned_branches if experiment is not None else None,
+        "branch_order": "factual decision index, then continuation seeds in declaration order",
+        "summary": experiment.summary() if experiment is not None else None,
+        "method": experiment.method_record() if experiment is not None else None,
+        "estimates": [item.to_dict() for item in experiment.results] if experiment is not None else [],
+        "loci": experiment.loci if experiment is not None else [],
+        "calls": {"total": bounded.calls, "factual": factual_calls,
+                  "continuation": continuation_calls, "max_calls": args.max_calls,
+                  "budget_exhausted": exhausted},
+        "signed_effect": "changed bad-outcome probability minus observed factual bad-outcome indicator",
+        "claim": "Binary decision-resampling adaptation; no Shapley allocation, method superiority, or task generalization tested.",
+    })
+    save("trace-schema.json", get_trace_schema())
+    rows = []
+    if experiment is not None:
+        for item in experiment.results:
+            interval = ("—" if item.confidence_interval is None else
+                        f"[{item.confidence_interval[0]:+.3f}, {item.confidence_interval[1]:+.3f}]")
+            changed = "—" if item.changed_bad_rate is None else f"{item.changed_bad_rate:.3f}"
+            effect = "—" if item.effect is None else f"{item.effect:+.3f}"
+            rows.append("| " + " | ".join(str(value) for value in (
+                item.decision_index, item.event_id, item.target, item.status, item.factual_bad,
+                changed, effect, interval, item.known_samples, item.unknown_samples,
+                item.failed_samples, item.unstarted_samples, item.significant_rescue,
+            )) + " |")
+    report = (
+        "# Decision contrastive experiment\n\n"
+        f"Provider: **{args.provider}**; case: **{config.name}**. "
+        f"One factual capture; {args.samples} planned continuations per reached factual decision. "
+        f"Continuation branches: {completed} completed, {failed} failed, {not_started} not started. "
+        f"Shared policy-call budget: {bounded.calls} / {args.max_calls} "
+        f"({factual_calls} factual, {continuation_calls} continuation calls).\n\n"
+        + ("This is a scripted integration fixture. No language model was run.\n\n"
+           if args.provider == "scripted" else
+           "This calls a selected local Ollama model against simulated payments. "
+           "A single observed factual trajectory does not establish task generalization.\n\n")
+        + ("The factual capture failed. Its reached requests and errors are recorded; "
+           "there is no factual trace, estimator result, or invented outcome. The planned "
+           "decision schedule is unavailable because no complete factual trace exists.\n\n"
+           if factual is None else "")
+        + ("The factual capture completed, but estimator preflight was refused. "
+           "Its original trace, explanation, and evaluator record are preserved along "
+           "with the typed validation error. No continuation was drawn or redrawn. "
+           "Recorded position counts and conservative bounds are marked "
+           "`unvalidated_capture`; no decision-specific schedule or estimate is invented.\n\n"
+           if estimator_error is not None else "")
+        + "Each changed branch resets the factual payment world, holds decisions before "
+        "the tested index, and resamples that decision and its suffix with the same declared "
+        "policy. All selected targets use the same collected branches. Held decisions cost "
+        "no provider call; actual attempted fresh calls, including failures, consume the "
+        "shared budget. Model phase seeds are reproducibility controls, not guarantees.\n\n"
+        "| Decision | Event | Target | Status | Factual bad | Changed bad rate | Signed effect | Percentile interval | Known | Unknown | Failed | Unstarted | Significant rescue |\n"
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
+        + "\n".join(rows) + "\n\n"
+        "Bad means the selected target is false; unknown target values remain unknown. "
+        "Signed effects are changed bad-outcome probability minus the single observed "
+        "factual bad-outcome indicator. Negative effects mean the changed distribution "
+        "reduces bad outcomes. These are distinct from context neutralization effects and "
+        "are not responsibility shares.\n\n"
+        f"Intervals use {args.bootstrap_samples} pure-Python random bootstrap resamples, "
+        f"seed {args.bootstrap_seed}, confidence {args.confidence:g}, and linearly interpolated "
+        "percentiles. The random stream differs from the upstream NumPy implementation. "
+        "Every planned continuation must be usable and at least two samples are required; "
+        "unknowns, failures, and unstarted branches refuse the whole estimate. A locus is "
+        "refused unless every tested decision for that target is usable. The latest "
+        "decision with a negative point effect and strictly negative interval upper bound "
+        "is a significant rescue. "
+        "Intervals do not provide simultaneous coverage across decisions or targets.\n\n"
+        "The factual baseline is one observed indicator, not a separately estimated "
+        "rate. The bootstrap resets its random seed at each position and makes no "
+        "baseline draws; identical observed samples can produce degenerate intervals.\n\n"
+        "A degenerate interval does not establish zero population variance or certain "
+        "rescue. The nominal locus rule does not prove unique causation, and requested "
+        "seeds do not establish independent samples or equal hidden model state.\n\n"
+        "This independently written CAR-style binary adaptation adds contrastive "
+        "decision localization; Shapley estimation and a matched baseline comparison "
+        "remain research work. No attribution overlay is attached to these signed effects.\n\n"
+        "`traces/` contains completed factual and branch evidence only. `explanations/` "
+        "is independently derived from each trace, while `evaluator_truth/` contains "
+        "simulator labels that must not enter the policy or explainer. `results.json` "
+        "preserves every reached request/reply, failures, the complete planned continuation "
+        "seed schedule, per-target coverage, and loci. `trace-schema.json` describes each "
+        "trace. `manifest.json` covers every other exported file; hashes detect changed "
+        "bytes and do not establish authenticity.\n"
+    )
+    report_path = output / "README.md"
+    report_path.write_text(report, encoding="utf-8", newline="\n")
+    artifacts.append({"path": "README.md", "sha256": sha256(report_path.read_bytes()).hexdigest()})
+    _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": artifacts})
+    print(f"Saved decision experiment with {completed} completed, {failed} failed, and "
+          f"{not_started} unstarted continuations in {output.resolve()}")
+    return 2 if factual is None or estimator_error is not None or failed or exhausted else 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -538,6 +820,21 @@ def main(argv=None):
                         default=DEFAULT_REFUND_TEMPLATE.template_id)
     replay.add_argument("--output", default="output/model-experiment")
     replay.set_defaults(handler=_model_experiment)
+    decision = commands.add_parser("decision-experiment", help="Run bounded contrastive decision continuations")
+    _add_policy_arguments(decision, samples=16, max_calls=400)
+    decision.set_defaults(seed=100)
+    decision.add_argument("--case", choices=tuple(config.name for config in demo_scenarios()),
+                          default="unsafe_retry")
+    decision.add_argument("--template", choices=tuple(REFUND_TASK_TEMPLATES),
+                          default=DEFAULT_REFUND_TEMPLATE.template_id)
+    decision.add_argument("--targets", default="consequence",
+                          help="Comma-separated action, consequence, action_linked_consequence")
+    decision.add_argument("--factual-seed", type=int, default=0)
+    decision.add_argument("--confidence", type=float, default=0.95)
+    decision.add_argument("--bootstrap-samples", type=int, default=2000)
+    decision.add_argument("--bootstrap-seed", type=int, default=0)
+    decision.add_argument("--output", default="output/decision-experiment")
+    decision.set_defaults(handler=_decision_experiment)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

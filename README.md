@@ -23,6 +23,7 @@ The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) c
 - [Proposed model study protocol](docs/study-plan.md)
 - [Candidate task-family splits and evidence targets](docs/study-manifests.md)
 - [Decision-prefix replay](docs/decision-replay.md)
+- [Decision contrastive replay](docs/decision-contrastive.md)
 - [Strong baseline reproduction plan](docs/car-reproduction-plan.md)
 - [Installed-package study and replay checks](output/study-foundation-2026-10-11/README.md)
 - [Alpha validation report](output/build/README.md)
@@ -113,8 +114,10 @@ reserve. This assignment is not a claim of held-out model performance.
 `model-experiment --targets action,consequence,action_linked_consequence` adds
 qualifying action-linked outcomes without additional replay calls. The
 [decision replay API](docs/decision-replay.md) holds factual prefixes for future
-baseline implementations; CAR attribution and the final comparison study remain
-research milestones.
+baseline implementations. [Decision contrastive replay](docs/decision-contrastive.md)
+now estimates suffix effects against one recorded factual outcome. Positional
+coalitions, Shapley allocation, and the final matched comparison remain research
+milestones.
 
 ```python
 from consequa_x import Trace, explain, verify
@@ -152,6 +155,20 @@ consequa-x model-experiment --provider scripted --case unsafe_retry --samples 20
 Each factual seed runs once and is reused across candidate comparisons and all selected targets. The call limit applies to the whole experiment. Failed or unstarted branches and unknown consequences remain explicit; an estimate requires every planned target pair to be usable. The export includes branch evidence, signed effects, pair coverage, and an optional factual explanation with estimated-influence edges. See [the replay guide](docs/policy-replay.md) for the Python API and prepared Ollama entry point.
 
 The committed [scripted replay example](output/replay-smoke/README.md) uses two seeds per condition to check the integration. It is not a model result or an adequate sample size for a research claim.
+
+Test recorded decision boundaries using one factual capture and fresh suffixes:
+
+```sh
+consequa-x decision-experiment --provider scripted --case unsafe_retry --samples 16 --seed 100 --factual-seed 0 --max-calls 400 --output output/my-decision-replay
+```
+
+This independently written CAR-style binary adaptation estimates changed-minus-factual
+bad-outcome probability and reports the latest nominal rescue position. Its shared
+call budget includes the factual recording. Unknowns, failures, and unstarted
+samples refuse affected estimates; incomplete decision coverage refuses the final
+locus. Bootstrap intervals condition on one observed factual episode and may
+collapse for homogeneous samples. See [the decision guide](docs/decision-contrastive.md)
+for signs, reference version, implementation deviations, and statistical limits.
 
 Run the original deterministic and stochastic fixture comparison:
 

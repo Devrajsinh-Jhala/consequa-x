@@ -58,5 +58,6 @@ Factual validation uses captured decisions and simulated payments, so it makes
 no provider calls; its local compute cost is still real and separately measurable.
 
 The [CAR reproduction plan](car-reproduction-plan.md) describes the estimators
-and matching requirements still needed. The existing context leave-one-out
-estimator remains a distinct baseline.
+and matching requirements still needed. [Decision contrastive replay](decision-contrastive.md)
+uses this primitive to estimate suffix effects against a single observed outcome.
+The existing context leave-one-out estimator remains a distinct baseline.

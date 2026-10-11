@@ -23,11 +23,20 @@ public inputs, separates the world seed from continuation model keys, checks
 declared policy identity, and counts only fresh continuation calls. It makes no
 claim to be a complete CAR implementation. No upstream source is vendored.
 
+[Decision contrastive replay](decision-contrastive.md) now implements the binary
+suffix estimand, observed factual baseline, ascending decision tests, and latest
+nominal negative-rescue rule. It records explicit deviations for its Python
+bootstrap stream, minimum two samples, actual-call budget, missing-evidence
+refusals, and incomplete-locus refusal. Its intervals are conditional and have
+no multiplicity adjustment. It remains an independently written adaptation,
+not a complete upstream numerical reproduction or a matched-baseline result.
+
 ## Required next implementation
 
-1. Implement decision-level contrastive effects with a declared outcome
-   encoding, observed factual baseline, suffix sample count, intervals, and
-   latest significant rescue rule. Preserve unknown evidence and failed draws.
+1. Validate the contrastive adaptation on frozen independent mechanisms and
+   measure interval coverage, erroneous locus selection, and refusal coverage.
+   Homogeneous bootstrap draws may produce zero-width intervals; nominal rescue
+   is not proof of population certainty or unique causation.
 2. Define valid positional coalitions for variable-length typed trajectories.
    A changed branch may stop before a factual position or reach it in an
    incompatible stage. Record unreachable/invalid coalitions explicitly; do not

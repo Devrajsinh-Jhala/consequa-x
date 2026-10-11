@@ -1,0 +1,29 @@
+{
+  "diff_check": "passed",
+  "final_branch_receipt_checks": {
+    "duration_seconds": 1.66,
+    "passed": 71
+  },
+  "independent_review": {
+    "attempt_budgets": [
+      1,
+      2,
+      5
+    ],
+    "cases": 12,
+    "comparison_base": "6f8168de30de39a6b39e0078a37b24973a370af4",
+    "default_episode_comparisons": 36,
+    "default_episode_exact_equality": true,
+    "targeted_tests_passed": 162
+  },
+  "packaging_change": "Added the candidate study JSON to the source distribution; runtime unchanged.",
+  "ruff": "passed",
+  "runtime_source_commit": "1b1ad6530fcd78afc51d0863fe53b762f9278504",
+  "source_commit": "0c0413b8f6d3ec976962cd443d751385c528ecc7",
+  "source_suite": {
+    "duration_seconds": 84.35,
+    "passed": 776,
+    "scope": "Full runtime suite before the final additive branch-receipt field; the following focused checks cover that field.",
+    "subtests_passed": 240
+  }
+}

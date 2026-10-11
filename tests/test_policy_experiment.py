@@ -10,6 +10,7 @@ from consequa_x.benchmark.payments import Fault
 from consequa_x.benchmark.policy_experiment import branch_record, experiment_policy
 from consequa_x.benchmark.policy_runner import MAX_TRIAL_SEED, RefundPolicyReplayRunner
 from consequa_x.benchmark.runner import RefundContext, ScenarioConfig, demo_scenarios
+from consequa_x.benchmark.templates import DEFAULT_REFUND_TEMPLATE, REFUND_TASK_TEMPLATES
 from consequa_x.models import EventType, Trace, VerificationStatus, to_dict
 from consequa_x.policies import PolicyError, ScriptedRefundPolicy
 
@@ -320,4 +321,120 @@ def test_one_off_invalid_metadata_is_rejected_before_a_generation_call():
     policy = BadMetadata()
     with pytest.raises(PolicyError, match="finite JSON"):
         experiment_policy(policy, scenario("clean"), (Intervention("vip_policy"),), samples=2)
+    assert policy.requests == []
+
+
+def test_optional_action_linked_target_reuses_the_exact_collected_policy_calls():
+    targets = ("action", "consequence", "action_linked_consequence")
+    policy, default_policy = CountingPolicy(), CountingPolicy()
+    candidates = (Intervention("retry_instruction"), Intervention("vip_policy"))
+    default = experiment_policy(default_policy, scenario("unsafe_retry"), candidates,
+                                samples=2, seed=7)
+    expanded = experiment_policy(policy, scenario("unsafe_retry"), candidates,
+                                 samples=2, seed=7, targets=targets)
+    assert expanded.targets == targets
+    assert policy.requests == default_policy.requests
+    assert expanded.calls == default.calls == 12
+    assert expanded.branches == default.branches
+    assert len(default.results) == 4 and len(expanded.results) == 6
+    assert [result for result in expanded.results if result.target in default.targets] == list(
+        default.results
+    )
+    linked = result_for(expanded, "retry_instruction", "action_linked_consequence")
+    assert linked.status == "estimated" and linked.estimate.effect == -1
+    assert expanded.summary()["estimates"]["action_linked_consequence"] == {
+        "estimated": 2, "refused": 0,
+    }
+
+
+@pytest.mark.parametrize("name,status,known,unknown,rate", [
+    ("clean", "estimated", 2, 0, 1),
+    ("external_actor", "estimated", 2, 0, 0),
+    ("missing_provenance", "refused", 0, 2, None),
+    ("false_success", "estimated", 2, 0, 0),
+    ("delayed_visibility", "refused", 0, 2, None),
+])
+def test_action_linked_pairs_keep_origin_and_readback_semantics(name, status, known, unknown, rate):
+    experiment = experiment_policy(
+        ScriptedRefundPolicy(), scenario(name), (Intervention("distractor"),), samples=2,
+        targets=("consequence", "action_linked_consequence"),
+    )
+    linked = result_for(experiment, "distractor", "action_linked_consequence")
+    assert linked.status == status
+    assert linked.known_pairs == known and linked.unknown_pairs == unknown
+    assert linked.failed_pairs == linked.unstarted_pairs == 0
+    if rate is None:
+        assert linked.estimate is None
+    else:
+        assert linked.estimate.baseline_rate == linked.estimate.intervention_rate == rate
+        assert linked.estimate.effect == 0
+    if name in {"external_actor", "missing_provenance"}:
+        world = result_for(experiment, "distractor", "consequence")
+        assert world.estimate.baseline_rate == world.estimate.intervention_rate == 1
+
+
+def test_optional_target_retains_failed_and_unstarted_pairs_without_reclassification():
+    experiment = experiment_policy(
+        ScriptedRefundPolicy(), scenario("clean"), (Intervention("vip_policy"),),
+        samples=2, max_calls=3,
+        targets=("action", "consequence", "action_linked_consequence"),
+    )
+    linked = result_for(experiment, "vip_policy", "action_linked_consequence")
+    assert linked.status == "refused" and linked.estimate is None
+    assert linked.failed_pairs == linked.unstarted_pairs == 1
+    assert linked.known_pairs == linked.unknown_pairs == 0
+    assert experiment.calls == 3
+
+
+def test_optional_target_keeps_failure_and_unknown_pair_categories_disjoint():
+    experiment = experiment_policy(
+        FactualFirstSeedFails(), scenario("delayed_visibility"), (Intervention("vip_policy"),),
+        samples=2, targets=("action_linked_consequence",),
+    )
+    linked, = experiment.results
+    assert linked.failed_pairs == linked.unknown_pairs == 1
+    assert linked.known_pairs == linked.unstarted_pairs == 0
+    assert linked.estimate is None
+
+
+@pytest.mark.parametrize("targets", [(), "action", ("action", "action"), ("missing",),
+                                     (True,), (["action"],)])
+def test_invalid_target_selection_is_rejected_before_any_policy_call(targets):
+    policy = CountingPolicy()
+    with pytest.raises(ValueError, match="distinct replay targets"):
+        experiment_policy(policy, scenario("clean"), (Intervention("vip_policy"),),
+                          samples=2, targets=targets)
+    assert policy.requests == []
+
+
+def test_custom_template_is_forwarded_to_all_cached_branches_without_added_calls():
+    template = REFUND_TASK_TEMPLATES["refund-support-note-v1"]
+    policy = CountingPolicy()
+    candidates = (Intervention("vip_policy"),)
+    targets = ("action", "consequence", "action_linked_consequence")
+    experiment = experiment_policy(policy, scenario("clean"), candidates, samples=2,
+                                   template=template, targets=targets)
+    assert experiment.template == template
+    assert experiment.calls == len(policy.requests) == 6
+    assert all(request.task["base_refund_policy"] == template.base_refund_policy
+               for request, _ in policy.requests)
+    assert all(request.context["customer_request"] == template.customer_request
+               for request, _ in policy.requests)
+    assert [branch.episode.trace.events[2].data["value"]
+            for branch in experiment.branches] == [template.vip_policy, template.vip_policy, "", ""]
+    for target in targets:
+        expected, = leave_one_out(RefundPolicyReplayRunner(
+            scenario("clean"), ScriptedRefundPolicy(), template=template,
+        ), candidates, samples=2, target=target)
+        assert result_for(experiment, "vip_policy", target).estimate == expected
+    default = experiment_policy(ScriptedRefundPolicy(), scenario("clean"), candidates, samples=2)
+    assert default.template == DEFAULT_REFUND_TEMPLATE
+
+
+@pytest.mark.parametrize("template", [None, "refund-support-note-v1", {}])
+def test_invalid_template_is_rejected_before_policy_calls(template):
+    policy = CountingPolicy()
+    with pytest.raises(TypeError, match="RefundTaskTemplate"):
+        experiment_policy(policy, scenario("clean"), (Intervention("vip_policy"),),
+                          samples=2, template=template)
     assert policy.requests == []

@@ -218,9 +218,9 @@ class RefundReplayRunner:
 
     def run(self, intervention: Intervention | None, seed: int) -> ReplayOutcome:
         episode = run_scenario(self.config, seed=seed, intervention=intervention)
-        status = episode.trace.verifications[-1].status
-        consequence = None if status is VerificationStatus.UNKNOWN else status is VerificationStatus.SATISFIED
-        return ReplayOutcome(episode.action_selected, consequence)
+        from .targets import episode_outcome
+
+        return episode_outcome(episode)
 
 
 def demo_scenarios() -> tuple[ScenarioConfig, ...]:

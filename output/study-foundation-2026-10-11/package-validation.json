@@ -1,0 +1,378 @@
+{
+  "build": {
+    "artifacts": [
+      {
+        "name": "consequa_x-0.1.0a1-py3-none-any.whl",
+        "sha256": "307cbe455f853b4698f4ecf318c8ef285e9e5b36fffaf4bef0b3989eadd3c0f3",
+        "size_bytes": 80215
+      },
+      {
+        "name": "consequa_x-0.1.0a1.tar.gz",
+        "sha256": "6d4e847d6d3857b6b16cd0886f58ce3aab1c47ee75a8f0508a7628791f40caf0",
+        "size_bytes": 159766
+      }
+    ],
+    "exit_code": 0,
+    "sdist_candidate_manifest_exact_bytes_verified": true,
+    "wheel_study_template_target_prefix_modules_present": true
+  },
+  "decision_prefix_replay": {
+    "budget_failure": {
+      "episode_absent": true,
+      "fresh_calls": 1,
+      "refused_call_does_not_invoke_provider": true,
+      "semantic_outcome_absent": true
+    },
+    "checks": [
+      {
+        "fresh_policy_calls": 2,
+        "hold_count": 0,
+        "world_and_receipts_preserved": true
+      },
+      {
+        "fresh_policy_calls": 1,
+        "hold_count": 1,
+        "world_and_receipts_preserved": true
+      },
+      {
+        "fresh_policy_calls": 0,
+        "hold_count": 2,
+        "world_and_receipts_preserved": true
+      }
+    ],
+    "full_hold_with_exhausted_budget_uses_zero_fresh_calls": true,
+    "provider_failure": {
+      "episode_absent": true,
+      "error_type": "PolicyError",
+      "fresh_calls": 1,
+      "semantic_outcome_absent": true
+    }
+  },
+  "default_compatibility": {
+    "default_trace_identical_to_previous_installed_wheel": true,
+    "implicit_and_explicit_default_episodes_identical": true,
+    "legacy_wording_exact": true,
+    "previous_wheel_source_commit": "f7a38f3a6648ccce4d381ca8f004e5909b454656"
+  },
+  "exports": {
+    "held_out": {
+      "command_exit_code": 0,
+      "manifest_artifacts_verified": 22,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "b8559053d0393ea3feda8cf1bc2a9657c24d6bd0a42973a18e0e74a2ef7d5eb6",
+      "policy_requests_without_evaluator_labels": 10,
+      "receipts_verified": 6,
+      "strict_trace_roundtrips": 6,
+      "summary": {
+        "action_linked_consequence": {
+          "not_satisfied": 3,
+          "satisfied": 2,
+          "unknown": 1
+        },
+        "assessment_alignment": {
+          "consistent": 2,
+          "contradicted": 1,
+          "unassessable": 3
+        },
+        "assessment_metrics": {
+          "abstentions": 2,
+          "assessable_claim_coverage": {
+            "denominator": 6,
+            "numerator": 3,
+            "value": 0.5
+          },
+          "assessable_claims": 3,
+          "claim_coverage": {
+            "denominator": 6,
+            "numerator": 4,
+            "value": 0.6666666666666666
+          },
+          "completed_assessments": 6,
+          "consistent_claims": 2,
+          "contradicted_claims": 1,
+          "contradiction_rate": {
+            "denominator": 3,
+            "numerator": 1,
+            "value": 0.3333333333333333
+          },
+          "definite_claims": 4,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 4,
+            "unknown": 2
+          },
+          "unassessable_claims": 1
+        },
+        "attempted_samples": 6,
+        "budget_exhausted": false,
+        "completed_samples": 6,
+        "failed_samples": 0,
+        "known_outcome_samples": 6,
+        "max_calls": 30,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 2,
+          "other_actor": 0,
+          "unknown": 4
+        },
+        "planned_samples": 6,
+        "policy_calls": 10,
+        "verification": {
+          "satisfied": 3,
+          "unknown": 0,
+          "violated": 3
+        }
+      },
+      "traces_validated": 6,
+      "verifier_and_explainer_recomputations": 6
+    },
+    "tuning": {
+      "command_exit_code": 0,
+      "manifest_artifacts_verified": 22,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "cfd8e26653c4d3bec16fd705fd346b616a8df0ffade6146e50aed0493aa0207c",
+      "policy_requests_without_evaluator_labels": 12,
+      "receipts_verified": 6,
+      "strict_trace_roundtrips": 6,
+      "summary": {
+        "action_linked_consequence": {
+          "not_satisfied": 3,
+          "satisfied": 2,
+          "unknown": 1
+        },
+        "assessment_alignment": {
+          "consistent": 2,
+          "contradicted": 3,
+          "unassessable": 1
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 6,
+            "numerator": 5,
+            "value": 0.8333333333333334
+          },
+          "assessable_claims": 5,
+          "claim_coverage": {
+            "denominator": 6,
+            "numerator": 6,
+            "value": 1.0
+          },
+          "completed_assessments": 6,
+          "consistent_claims": 2,
+          "contradicted_claims": 3,
+          "contradiction_rate": {
+            "denominator": 5,
+            "numerator": 3,
+            "value": 0.6
+          },
+          "definite_claims": 6,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 2,
+            "partial": 0,
+            "success": 4,
+            "unknown": 0
+          },
+          "unassessable_claims": 1
+        },
+        "attempted_samples": 6,
+        "budget_exhausted": false,
+        "completed_samples": 6,
+        "failed_samples": 0,
+        "known_outcome_samples": 6,
+        "max_calls": 30,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 3,
+          "other_actor": 0,
+          "unknown": 3
+        },
+        "planned_samples": 6,
+        "policy_calls": 12,
+        "verification": {
+          "satisfied": 3,
+          "unknown": 0,
+          "violated": 3
+        }
+      },
+      "traces_validated": 6,
+      "verifier_and_explainer_recomputations": 6
+    },
+    "validation": {
+      "command_exit_code": 0,
+      "manifest_artifacts_verified": 22,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "84b1289854bd2f4d35719ce5373bb8d80f28a8337986cf955c4b181d53557b1e",
+      "policy_requests_without_evaluator_labels": 12,
+      "receipts_verified": 6,
+      "strict_trace_roundtrips": 6,
+      "summary": {
+        "action_linked_consequence": {
+          "not_satisfied": 3,
+          "satisfied": 2,
+          "unknown": 1
+        },
+        "assessment_alignment": {
+          "consistent": 2,
+          "contradicted": 1,
+          "unassessable": 3
+        },
+        "assessment_metrics": {
+          "abstentions": 1,
+          "assessable_claim_coverage": {
+            "denominator": 6,
+            "numerator": 3,
+            "value": 0.5
+          },
+          "assessable_claims": 3,
+          "claim_coverage": {
+            "denominator": 6,
+            "numerator": 5,
+            "value": 0.8333333333333334
+          },
+          "completed_assessments": 6,
+          "consistent_claims": 2,
+          "contradicted_claims": 1,
+          "contradiction_rate": {
+            "denominator": 3,
+            "numerator": 1,
+            "value": 0.3333333333333333
+          },
+          "definite_claims": 5,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 1,
+            "partial": 0,
+            "success": 4,
+            "unknown": 1
+          },
+          "unassessable_claims": 2
+        },
+        "attempted_samples": 6,
+        "budget_exhausted": false,
+        "completed_samples": 6,
+        "failed_samples": 0,
+        "known_outcome_samples": 5,
+        "max_calls": 30,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 3,
+          "other_actor": 1,
+          "unknown": 2
+        },
+        "planned_samples": 6,
+        "policy_calls": 12,
+        "verification": {
+          "satisfied": 3,
+          "unknown": 1,
+          "violated": 2
+        }
+      },
+      "traces_validated": 6,
+      "verifier_and_explainer_recomputations": 6
+    }
+  },
+  "ollama_network_calls": 0,
+  "package_version": "0.1.0a1",
+  "platform": "Windows",
+  "python_version": "3.12.14",
+  "scope": "Installed-package scripted integrity checks only; no model performance or study generalization claims.",
+  "source_commit": "0c0413b8f6d3ec976962cd443d751385c528ecc7",
+  "study_manifest": {
+    "cases": 18,
+    "exact_source_bytes_preserved_in_all_three_exports": true,
+    "families": 3,
+    "path": "docs/studies/refund-family-candidates-v1.json",
+    "sha256": "1f4950498761f46b75a336b6e901413eaadc3d16e45137e69e39f0294e4d4522",
+    "size_bytes": 15434,
+    "strict_loader_roundtrip": true
+  },
+  "three_target_replay": {
+    "command_exit_code": 0,
+    "estimation_uses_no_additional_calls": true,
+    "manifest_artifacts_verified": 16,
+    "manifest_covers_all_files": true,
+    "manifest_sha256": "8cf4edff5f7e59ec194860cdf391b2c5cce3ec8f4787532ea52f16c8c8f86d52",
+    "policy_requests_without_evaluator_labels": 10,
+    "receipts_verified": 4,
+    "strict_trace_roundtrips": 4,
+    "summary": {
+      "assessment_metrics": {
+        "abstentions": 0,
+        "assessable_claim_coverage": {
+          "denominator": 4,
+          "numerator": 4,
+          "value": 1.0
+        },
+        "assessable_claims": 4,
+        "claim_coverage": {
+          "denominator": 4,
+          "numerator": 4,
+          "value": 1.0
+        },
+        "completed_assessments": 4,
+        "consistent_claims": 0,
+        "contradicted_claims": 4,
+        "contradiction_rate": {
+          "denominator": 4,
+          "numerator": 4,
+          "value": 1.0
+        },
+        "definite_claims": 4,
+        "partial_assessments": 0,
+        "reported_assessment": {
+          "failure": 2,
+          "partial": 0,
+          "success": 2,
+          "unknown": 0
+        },
+        "unassessable_claims": 0
+      },
+      "attempted_branches": 4,
+      "budget_exhausted": false,
+      "candidate_count": 1,
+      "completed_branches": 4,
+      "condition_count": 2,
+      "estimates": {
+        "action": {
+          "estimated": 1,
+          "refused": 0
+        },
+        "action_linked_consequence": {
+          "estimated": 1,
+          "refused": 0
+        },
+        "consequence": {
+          "estimated": 1,
+          "refused": 0
+        }
+      },
+      "failed_branches": 0,
+      "max_calls": 12,
+      "not_started_branches": 0,
+      "planned_branches": 4,
+      "policy_calls": 10,
+      "samples_per_condition": 2
+    },
+    "three_effects": [
+      0.0,
+      -1.0,
+      -1.0
+    ],
+    "traces_validated": 4,
+    "verifier_and_explainer_recomputations": 4
+  },
+  "validated_at_utc": "2026-10-11T07:24:43.727235+00:00",
+  "validation_passed": true,
+  "wheel": {
+    "fresh_virtualenv": true,
+    "imports_from_fresh_virtualenv_site_packages": true,
+    "installed_without_project_dependencies": true,
+    "isolated_python": true,
+    "python_path": "tmp/study-package-validation/env/Scripts/python.exe",
+    "validation_dependency": "jsonschema==4.26.0"
+  }
+}

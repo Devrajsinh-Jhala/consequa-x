@@ -26,10 +26,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 from math import isclose, isfinite, sqrt
 from statistics import NormalDist
-from typing import Any, Iterable, Protocol, runtime_checkable
+from typing import Any, Iterable, Literal, Protocol, runtime_checkable
 
 
-_TARGETS = frozenset({"action", "consequence"})
+ReplayTarget = Literal["action", "consequence", "action_linked_consequence"]
+REPLAY_TARGETS = ("action", "consequence", "action_linked_consequence")
+_TARGETS = frozenset(REPLAY_TARGETS)
+_TARGET_ATTRIBUTES = {
+    "action": "action_selected",
+    "consequence": "consequence_satisfied",
+    "action_linked_consequence": "action_linked_consequence_satisfied",
+}
 _INTERVENTION_KINDS = frozenset({"neutralize", "replace"})
 _CONTEXT_TYPES = frozenset({"user_input", "system_instruction", "retrieval", "memory_read"})
 # Two two-sided 97.5% Wilson intervals form a nominal 95% joint bound.
@@ -126,10 +133,14 @@ class ReplayOutcome:
 
     ``None`` means the consequence remains unknown. A runner must not report
     a tool's response status or an agent's self-assessment as verification.
+    The optional action-linked target requires evidence tying a qualifying
+    consequence to the registered action. Ordinary state satisfaction alone
+    does not establish that link. Older runners leave this target unknown.
     """
 
     action_selected: bool
     consequence_satisfied: bool | None
+    action_linked_consequence_satisfied: bool | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.action_selected, bool):
@@ -138,11 +149,26 @@ class ReplayOutcome:
             self.consequence_satisfied, bool
         ):
             raise ValueError("consequence_satisfied must be a boolean or None")
+        if self.action_linked_consequence_satisfied is not None and not isinstance(
+            self.action_linked_consequence_satisfied, bool
+        ):
+            raise ValueError("action_linked_consequence_satisfied must be a boolean or None")
+
+    def target_value(self, target: str) -> bool | None:
+        """Read one declared replay target without deriving unknown outcomes."""
+        if not isinstance(target, str) or target not in _TARGETS:
+            raise ValueError(f"target must be one of {REPLAY_TARGETS!r}")
+        return getattr(self, _TARGET_ATTRIBUTES[target])
 
     def to_dict(self) -> dict[str, Any]:
         from .models import to_dict
 
-        return to_dict(self)
+        record = to_dict(self)
+        # Preserve the original two-field export for old runners. The optional
+        # target is absent when unsupported or unknown, never encoded as false.
+        if self.action_linked_consequence_satisfied is None:
+            record.pop("action_linked_consequence_satisfied")
+        return record
 
 
 @runtime_checkable
@@ -175,7 +201,7 @@ class EffectEstimate:
     def __post_init__(self) -> None:
         _nonempty_string(self.event_id, "event_id")
         if not isinstance(self.target, str) or self.target not in _TARGETS:
-            raise ValueError("target must be 'action' or 'consequence'")
+            raise ValueError(f"target must be one of {REPLAY_TARGETS!r}")
         baseline = _finite_number(self.baseline_rate, "baseline_rate", 0.0, 1.0)
         changed = _finite_number(self.intervention_rate, "intervention_rate", 0.0, 1.0)
         effect = _finite_number(self.effect, "effect", -1.0, 1.0)
@@ -284,7 +310,7 @@ def leave_one_out(
     """Replay each single intervention against the same factual seed schedule.
 
     The output preserves intervention order and contains no responsibility
-    normalization. For the consequence target, even one unknown pair raises
+    normalization. For either consequence target, even one unknown pair raises
     :class:`InsufficientEvidenceError`; no partial tuple is returned. For the
     action target, an unknown consequence does not obscure a known decision.
     No intervention or baseline replay is run when candidates are empty.
@@ -296,7 +322,7 @@ def leave_one_out(
     _integer(samples, "samples", minimum=2)
     _integer(seed, "seed")
     if not isinstance(target, str) or target not in _TARGETS:
-        raise ValueError("target must be 'action' or 'consequence'")
+        raise ValueError(f"target must be one of {REPLAY_TARGETS!r}")
     if not callable(getattr(runner, "run", None)):
         raise TypeError("runner must implement run(intervention, seed)")
     candidates = tuple(interventions)
@@ -318,12 +344,9 @@ def leave_one_out(
     estimates: list[EffectEstimate] = []
     for candidate in candidates:
         changed = tuple(_checked_run(runner, candidate, replay_seed) for replay_seed in seeds)
-        if target == "action":
-            factual_values = tuple(outcome.action_selected for outcome in originals)
-            changed_values = tuple(outcome.action_selected for outcome in changed)
-        else:
-            factual_values = tuple(outcome.consequence_satisfied for outcome in originals)
-            changed_values = tuple(outcome.consequence_satisfied for outcome in changed)
+        factual_values = tuple(outcome.target_value(target) for outcome in originals)
+        changed_values = tuple(outcome.target_value(target) for outcome in changed)
+        if target != "action":
             unknown_pairs = sum(
                 factual is None or counterfactual is None
                 for factual, counterfactual in zip(factual_values, changed_values)

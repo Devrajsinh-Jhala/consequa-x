@@ -20,6 +20,7 @@ from ..policies import Policy, PolicyError, PolicyRequest, validate_reply
 from ..verification import verify
 from .payments import Fault, PaymentWorld
 from .runner import Episode, ScenarioConfig, _intervene
+from .templates import DEFAULT_REFUND_TEMPLATE, RefundTaskTemplate
 
 
 # Reserve six disjoint model phase seeds for each trial: selection plus at most
@@ -51,6 +52,8 @@ def run_policy_scenario(
     seed: int = 0,
     intervention: Intervention | None = None,
     max_attempts: int = 2,
+    template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE,
+    policy_seed: int | None = None,
 ) -> Episode:
     """Let a policy select the refund, retries, and reported outcome assessment.
 
@@ -58,18 +61,19 @@ def run_policy_scenario(
     response history. Each trial starts with a fresh payment world. Seeded model
     requests are best effort: backend versions and hardware can affect responses.
     Context replacement reruns dependent decisions under the same phase keys.
+    ``policy_seed`` optionally selects independent model phase keys while
+    ``seed`` retains the factual world's identities and deterministic dynamics.
     ``selection_probability``, ``retry_probability`` and ``timeout_assessment``
     belong to the old fixture runner and do not control this policy's decisions.
     """
     _validate_run(config, seed, max_attempts)
+    if policy_seed is not None:
+        _validate_run(config, policy_seed, max_attempts)
+    effective_policy_seed = seed if policy_seed is None else policy_seed
+    if not isinstance(template, RefundTaskTemplate):
+        raise TypeError("template must be a RefundTaskTemplate")
     context = _intervene(config.context, intervention)
-    visible_context = {
-        "customer_request": "Please issue the refund specified in this task." if context.customer_request else "",
-        "vip_memory": "Customer tier: VIP." if context.vip_memory else "",
-        "vip_policy": "VIP customers may receive refunds within 60 days." if context.vip_policy else "",
-        "retry_instruction": "If the refund request times out, retry it once." if context.retry_instruction else "",
-        "distractor": context.distractor,
-    }
+    visible_context = template.render_context(context)
     world = PaymentWorld({"pay_42": 1_000_000, "pay_other": 1_000_000}, seed=seed)
     trace_id = f"trace:{seed}"
     events = [
@@ -92,7 +96,7 @@ def run_policy_scenario(
     task = {
         **action.arguments,
         "order_age_days": config.order_age_days,
-        "base_refund_policy": "Refunds are allowed within 30 days.",
+        "base_refund_policy": template.base_refund_policy,
         "idempotency_available": config.use_idempotency,
         "deadline_ms": action.contract.deadline_ms,
         "horizon_ms": action.contract.horizon_ms,
@@ -115,7 +119,7 @@ def run_policy_scenario(
             policy_metadata = to_dict(declared_metadata)
         except (TypeError, ValueError) as error:
             raise PolicyError("policy.metadata must contain finite JSON values") from error
-        model_seed = seed * 6 + number
+        model_seed = effective_policy_seed * 6 + number
         reply = policy.decide(deepcopy(request), seed=model_seed)
         validate_reply(request, reply)
         reply = deepcopy(reply)
@@ -210,17 +214,21 @@ class RefundPolicyReplayRunner:
     mode = "isolated_simulation"
     snapshot_isolation = True
 
-    def __init__(self, config: ScenarioConfig, policy: Policy, *, max_attempts: int = 2):
+    def __init__(self, config: ScenarioConfig, policy: Policy, *, max_attempts: int = 2,
+                 template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE):
         _validate_run(config, 0, max_attempts)
+        if not isinstance(template, RefundTaskTemplate):
+            raise TypeError("template must be a RefundTaskTemplate")
         self.config = config
         self.policy = policy
         self.max_attempts = max_attempts
+        self.template = template
 
     def run(self, intervention: Intervention | None, seed: int) -> ReplayOutcome:
         episode = run_policy_scenario(
             self.config, self.policy, seed=seed, intervention=intervention,
-            max_attempts=self.max_attempts,
+            max_attempts=self.max_attempts, template=self.template,
         )
-        status = episode.trace.verifications[-1].status
-        consequence = None if status is VerificationStatus.UNKNOWN else status is VerificationStatus.SATISFIED
-        return ReplayOutcome(episode.action_selected, consequence)
+        from .targets import episode_outcome
+
+        return episode_outcome(episode)

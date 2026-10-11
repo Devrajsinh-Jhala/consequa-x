@@ -45,9 +45,11 @@ branch per seed is reused across candidates, and both targets reuse the same
 recorded branches. Provider failures, unstarted branches, and unknown
 verification remain explicit; a candidate/target estimate is refused unless
 all planned target pairs are known. The cached estimator is the existing
-leave-one-out baseline. Current support covers single-context changes, not
-joint context/fault interventions or faithful implementations of the required
-strong comparison methods.
+leave-one-out baseline. [Task-family manifests](study-manifests.md) now support
+declared split isolation, and [decision-prefix replay](decision-replay.md)
+preserves factual prefixes for separately seeded continuations. Current support
+still lacks joint context/fault attribution and faithful implementations of the
+required strong comparison methods; see the [CAR reproduction plan](car-reproduction-plan.md).
 
 ## Hypotheses to preregister
 
@@ -148,7 +150,7 @@ oracle condition.
 Hold the continuation policy fixed within a paired intervention. Reset the
 world for every branch. Reuse factual samples only under a declared estimator
 and include their calls in the budget. The current paired-policy command shares
-one factual branch per seed across candidates and both targets, counts attempted
+one factual branch per seed across candidates and all selected targets, counts attempted
 policy calls including errors, and makes no additional provider calls during
 estimation. Its budget is a policy-call limit; preflight inspections, token cost,
 and wall time require separate accounting. Seeds improve pairing but do not
@@ -162,8 +164,13 @@ Predeclare each target. At minimum, keep selected initial action, verified
 contract satisfaction, and action-linked contract satisfaction separate.
 State satisfaction by another actor is not the current agent's success. The
 current paired-policy `consequence` target measures state-contract satisfaction,
-with origin reported separately. An action-linked target must be implemented
-and its unknown treatment specified before using it in the final comparison.
+with origin reported separately. The opt-in `action_linked_consequence` target
+additionally requires supported qualifying action-linked refund witnesses.
+State violation is false, exclusively external satisfied state is false, and
+missing or insufficient provenance is unknown. It combines global state
+satisfaction with qualifying linked evidence rather than verifying a filtered
+agent-only world. Its positive-witness/count semantics and unknown treatment
+must be frozen before the final comparison; see [study-manifests.md](study-manifests.md).
 Reported assessment is an observable response, not a measured internal belief.
 
 For known simulator states, evaluate supported conclusions against gold

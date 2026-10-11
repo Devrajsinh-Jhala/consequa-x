@@ -40,6 +40,12 @@ prevent attribution on variable-length refund trajectories. Mathematical
 interaction oracles validate the estimator separately from the refund adapter;
 they do not establish domain interaction recovery or calibrated inference.
 
+The [synthetic calibration probe](attribution-calibration.md) now repeats these
+production estimators against independently specified refund references. It
+retains every planned draw and reports conditional error/coverage alongside
+availability, invalid positional games, unknown evidence and exhausted budgets.
+Its evidence remains specific to fixed factual synthetic mechanisms.
+
 ## Required next implementation
 
 1. Validate the contrastive adaptation on frozen independent mechanisms and

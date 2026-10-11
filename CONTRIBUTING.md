@@ -69,6 +69,13 @@ Useful contributions include related-work corrections, stronger baselines, addit
 
 For experiments, report the model/provider and version where applicable, task templates and splits, seeds, interventions, verifier and origin assumptions, sample size, uncertainty, abstention/error coverage, and budget. Compare methods with equivalent evidence and resources. Distinguish simulator fixture results from actual model results, and distinguish a framework improvement from a methodological novelty claim.
 
+The [attribution calibration guide](docs/attribution-calibration.md) describes
+the offline repeated-mechanism command and its compressed evidence exports.
+Preserve the predeclared protocol and all refused trials when extending it.
+Keep analytic reference labels separate from the production outcome adapter;
+do not redesign intervals after viewing a retained study and score the same
+study as an independent validation.
+
 The research brief is a proposal. Its claims should be checked against the literature and results before appearing as findings in a paper.
 
 ## Submit a pull request

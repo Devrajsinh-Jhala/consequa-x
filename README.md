@@ -187,6 +187,18 @@ path evidence refuses the affected target vector. See the
 [Shapley guide](docs/decision-shapley.md) for intervention validity, signs,
 budgets, and conditional normal-interval limits.
 
+Probe both decision estimators against declared analytic refund mechanisms:
+
+```sh
+consequa-x calibrate-attribution --replicates 32 --output output/my-calibration
+```
+
+This offline experiment reports error, interval coverage, false nonzero flags,
+locus recovery and refusals with explicit denominators. It saves its protocol
+before execution, every planned draw in compressed JSONL, and full evidence
+for a preselected repetition. See [the calibration design](docs/attribution-calibration.md)
+for analytic references, budget controls and interpretation limits.
+
 Run the original deterministic and stochastic fixture comparison:
 
 ```sh

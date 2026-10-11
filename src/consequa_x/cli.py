@@ -1010,6 +1010,21 @@ def _decision_shapley(args):
     return 2 if experiment is None or exhausted or counts["invalid"] or counts["failed"] else 0
 
 
+def _calibrate_attribution(args):
+    from .benchmark.calibration import CalibrationPlan
+    from .benchmark.calibration_export import export_calibration
+
+    settings = {"repeats": args.replicates, "samples": args.samples, "pairs": args.pairs,
+                "samples_per_eval": args.samples_per_eval,
+                "endpoint_samples": args.endpoint_samples,
+                "bootstrap_samples": args.bootstrap_samples,
+                "confidence": args.confidence, "seed": args.seed, "max_calls": args.max_calls}
+    if args.mechanisms is not None:
+        settings["mechanisms"] = tuple(args.mechanisms.split(","))
+    export_calibration(CalibrationPlan(**settings), args.output, source_revision=args.source_revision)
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -1078,6 +1093,21 @@ def main(argv=None):
     shapley.add_argument("--confidence", type=float, default=0.95)
     shapley.add_argument("--output", default="output/decision-shapley")
     shapley.set_defaults(handler=_decision_shapley)
+    calibration = commands.add_parser("calibrate-attribution",
+                                      help="Probe attribution error and coverage offline")
+    calibration.add_argument("--replicates", type=int, default=32)
+    calibration.add_argument("--mechanisms", help="Comma-separated registered synthetic mechanisms")
+    calibration.add_argument("--samples", type=int, default=16)
+    calibration.add_argument("--pairs", type=int, default=16)
+    calibration.add_argument("--samples-per-eval", type=int, default=1)
+    calibration.add_argument("--endpoint-samples", type=int, default=16)
+    calibration.add_argument("--bootstrap-samples", type=int, default=2000)
+    calibration.add_argument("--confidence", type=float, default=0.95)
+    calibration.add_argument("--seed", type=int, default=100)
+    calibration.add_argument("--max-calls", type=int, default=400)
+    calibration.add_argument("--source-revision", help="Caller-supplied source identifier for the protocol")
+    calibration.add_argument("--output", default="output/attribution-calibration")
+    calibration.set_defaults(handler=_calibrate_attribution)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

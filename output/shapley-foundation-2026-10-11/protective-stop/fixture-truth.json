@@ -1,0 +1,34 @@
+{
+  "declared_before_policy_calls": true,
+  "factual_roles": [
+    "initial selection",
+    "timeout stop"
+  ],
+  "invalid_reference": null,
+  "mechanism": "One refund commits before an ambiguous timeout. A non-idempotent retry commits a duplicate; stopping preserves one refund. Initial selection always refunds; new post-success decisions stop.",
+  "reference": {
+    "action": {
+      "endpoint_difference": 0.0,
+      "population_shapley": [
+        0.0,
+        0.0
+      ]
+    },
+    "action_linked_consequence": {
+      "endpoint_difference": -0.5,
+      "population_shapley": [
+        0.0,
+        -0.5
+      ]
+    },
+    "consequence": {
+      "endpoint_difference": -0.5,
+      "population_shapley": [
+        0.0,
+        -0.5
+      ]
+    }
+  },
+  "reference_limit": "Bernoulli idealization, not guaranteed finite seeded estimates. An irrelevant player can receive finite fresh-sampling noise. This refund example does not test recovery of interacting decisions.",
+  "retry_coin_idealization": 0.5
+}

@@ -1,0 +1,13 @@
+{
+  "declared_before_policy_calls": true,
+  "factual_roles": [
+    "initial selection",
+    "timeout retry",
+    "post-success stop"
+  ],
+  "invalid_reference": "Holding post-success position 2 after resampling position 1 can be unreachable. Such samples invalidate the positional coalition and refuse its whole path vector; no population shares are declared.",
+  "mechanism": "One refund commits before an ambiguous timeout. A non-idempotent retry commits a duplicate; stopping preserves one refund. Initial selection always refunds; new post-success decisions stop.",
+  "reference": null,
+  "reference_limit": "Bernoulli idealization, not guaranteed finite seeded estimates. An irrelevant player can receive finite fresh-sampling noise. This refund example does not test recovery of interacting decisions.",
+  "retry_coin_idealization": 0.5
+}

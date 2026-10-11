@@ -1,0 +1,413 @@
+{
+  "validation_passed": true,
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+  "audit_scope": "Read-only bytes, receipts, evidence, and independent numerical reconstruction; no inference or replay draws",
+  "completed_traces": 151,
+  "total_actual_policy_calls": 193,
+  "live_model_calls": 0,
+  "redraws": 0,
+  "runs": {
+    "scripted-control": {
+      "validation_passed": true,
+      "manifest_artifacts": 54,
+      "completed_traces": 17,
+      "schema_strict_verifier_checks": 17,
+      "explanation_recomputations": 17,
+      "full_schedule_slots": 16,
+      "branch_status_counts": {
+        "completed": 16
+      },
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 16,
+        "factual": 2,
+        "max_calls": 30,
+        "total": 18
+      },
+      "estimates_recomputed": 6,
+      "endpoint_checks_recomputed": 3,
+      "pair_vectors_checked": 6,
+      "mathematical_results": {
+        "action": {
+          "shares": [
+            0.0,
+            0.0
+          ],
+          "intervals": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coefficient_sum": 0.0,
+          "independent_endpoint_difference": 0,
+          "discrepancy": 0.0,
+          "path_coverage": {
+            "planned": 12,
+            "known": 12,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 0
+          }
+        },
+        "consequence": {
+          "shares": [
+            0.0,
+            0.0
+          ],
+          "intervals": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coefficient_sum": 0.0,
+          "independent_endpoint_difference": 0,
+          "discrepancy": 0.0,
+          "path_coverage": {
+            "planned": 12,
+            "known": 12,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 0
+          }
+        },
+        "action_linked_consequence": {
+          "shares": [
+            0.0,
+            0.0
+          ],
+          "intervals": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coefficient_sum": 0.0,
+          "independent_endpoint_difference": 0,
+          "discrepancy": 0.0,
+          "path_coverage": {
+            "planned": 12,
+            "known": 12,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 0
+          }
+        }
+      },
+      "manifest_sha256": "57c188da39b7810eb4a0456e83f9ea1723f542f61ecd0bc98e3d39dc095b94cd"
+    },
+    "budget-limit": {
+      "validation_passed": true,
+      "manifest_artifacts": 6,
+      "completed_traces": 1,
+      "schema_strict_verifier_checks": 1,
+      "explanation_recomputations": 1,
+      "full_schedule_slots": 16,
+      "branch_status_counts": {
+        "failed": 1,
+        "not_started": 15
+      },
+      "calls": {
+        "budget_exhausted": true,
+        "continuation": 1,
+        "factual": 2,
+        "max_calls": 3,
+        "total": 3
+      },
+      "estimates_recomputed": 6,
+      "endpoint_checks_recomputed": 3,
+      "pair_vectors_checked": 0,
+      "mathematical_results": {
+        "action": {
+          "shares": [
+            null,
+            null
+          ],
+          "intervals": [
+            null,
+            null
+          ],
+          "coefficient_sum": null,
+          "independent_endpoint_difference": null,
+          "discrepancy": null,
+          "path_coverage": {
+            "planned": 12,
+            "known": 0,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 12
+          }
+        },
+        "consequence": {
+          "shares": [
+            null,
+            null
+          ],
+          "intervals": [
+            null,
+            null
+          ],
+          "coefficient_sum": null,
+          "independent_endpoint_difference": null,
+          "discrepancy": null,
+          "path_coverage": {
+            "planned": 12,
+            "known": 0,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 12
+          }
+        },
+        "action_linked_consequence": {
+          "shares": [
+            null,
+            null
+          ],
+          "intervals": [
+            null,
+            null
+          ],
+          "coefficient_sum": null,
+          "independent_endpoint_difference": null,
+          "discrepancy": null,
+          "path_coverage": {
+            "planned": 12,
+            "known": 0,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 12
+          }
+        }
+      },
+      "manifest_sha256": "56ad695471f055d04e5485f09b60fe32b7091b1a16e50ce0048d3d857cf8a726"
+    },
+    "protective-stop": {
+      "validation_passed": true,
+      "manifest_artifacts": 117,
+      "completed_traces": 113,
+      "schema_strict_verifier_checks": 113,
+      "explanation_recomputations": 0,
+      "full_schedule_slots": 112,
+      "branch_status_counts": {
+        "completed": 112
+      },
+      "calls": {
+        "continuation": 141,
+        "factual": 2,
+        "max_calls": 400,
+        "total": 143
+      },
+      "estimates_recomputed": 6,
+      "endpoint_checks_recomputed": 3,
+      "pair_vectors_checked": 24,
+      "mathematical_results": {
+        "action": {
+          "shares": [
+            0.0,
+            0.0
+          ],
+          "intervals": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coefficient_sum": 0.0,
+          "independent_endpoint_difference": 0,
+          "discrepancy": 0.0,
+          "path_coverage": {
+            "planned": 96,
+            "known": 96,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 0
+          }
+        },
+        "consequence": {
+          "shares": [
+            -0.125,
+            -0.5
+          ],
+          "intervals": [
+            [
+              -0.28538720211682234,
+              0.035387202116822364
+            ],
+            [
+              -0.7070589875810853,
+              -0.2929410124189147
+            ]
+          ],
+          "coefficient_sum": -0.625,
+          "independent_endpoint_difference": -0.375,
+          "discrepancy": -0.25,
+          "path_coverage": {
+            "planned": 96,
+            "known": 96,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 0
+          }
+        },
+        "action_linked_consequence": {
+          "shares": [
+            -0.125,
+            -0.5
+          ],
+          "intervals": [
+            [
+              -0.28538720211682234,
+              0.035387202116822364
+            ],
+            [
+              -0.7070589875810853,
+              -0.2929410124189147
+            ]
+          ],
+          "coefficient_sum": -0.625,
+          "independent_endpoint_difference": -0.375,
+          "discrepancy": -0.25,
+          "path_coverage": {
+            "planned": 96,
+            "known": 96,
+            "unknown": 0,
+            "invalid": 0,
+            "failed": 0,
+            "unstarted": 0
+          }
+        }
+      },
+      "manifest_sha256": "a59a14e5f69d1f53c206d41b092d598f4348e17a4ef826be177639ee4fcdb885"
+    },
+    "invalid-coalitions": {
+      "validation_passed": true,
+      "manifest_artifacts": 24,
+      "completed_traces": 20,
+      "schema_strict_verifier_checks": 20,
+      "explanation_recomputations": 0,
+      "full_schedule_slots": 20,
+      "branch_status_counts": {
+        "completed": 19,
+        "invalid": 1
+      },
+      "calls": {
+        "continuation": 26,
+        "factual": 3,
+        "max_calls": 400,
+        "total": 29
+      },
+      "estimates_recomputed": 9,
+      "endpoint_checks_recomputed": 3,
+      "pair_vectors_checked": 3,
+      "mathematical_results": {
+        "action": {
+          "shares": [
+            null,
+            null,
+            null
+          ],
+          "intervals": [
+            null,
+            null,
+            null
+          ],
+          "coefficient_sum": null,
+          "independent_endpoint_difference": 0,
+          "discrepancy": null,
+          "path_coverage": {
+            "planned": 16,
+            "known": 15,
+            "unknown": 0,
+            "invalid": 1,
+            "failed": 0,
+            "unstarted": 0
+          }
+        },
+        "consequence": {
+          "shares": [
+            null,
+            null,
+            null
+          ],
+          "intervals": [
+            null,
+            null,
+            null
+          ],
+          "coefficient_sum": null,
+          "independent_endpoint_difference": 0.5,
+          "discrepancy": null,
+          "path_coverage": {
+            "planned": 16,
+            "known": 15,
+            "unknown": 0,
+            "invalid": 1,
+            "failed": 0,
+            "unstarted": 0
+          }
+        },
+        "action_linked_consequence": {
+          "shares": [
+            null,
+            null,
+            null
+          ],
+          "intervals": [
+            null,
+            null,
+            null
+          ],
+          "coefficient_sum": null,
+          "independent_endpoint_difference": 0.5,
+          "discrepancy": null,
+          "path_coverage": {
+            "planned": 16,
+            "known": 15,
+            "unknown": 0,
+            "invalid": 1,
+            "failed": 0,
+            "unstarted": 0
+          }
+        }
+      },
+      "manifest_sha256": "d0e403a08ec4bb43d8efdf62d2c42c0168be8e40d71a3906f86fb21c536af11c"
+    }
+  },
+  "root_protocol_and_source_hashes_verified": true,
+  "recipe_sha256": "1eaba58b962410bd43ecd24e10e1b61b898699a62c0082410449ff3dbc7f1bdc",
+  "private_absolute_paths_found": false,
+  "truth_separation": "Policy requests inspected; evaluator labels and analytic references are absent from public policy fields. Fixture and CLI source keep truth outside policy and explainer inputs.",
+  "limitations": [
+    "Manifest hashes detect changed bytes, not authenticity.",
+    "Retained examples do not demonstrate interval calibration, refund interaction recovery, or language-model performance."
+  ],
+  "open_blockers": [],
+  "readme_sha256": "707fa87f3e9a289a73eb4163358bdd4c5f0fd040c3fc2d814f62081a76a52de3",
+  "readme_quantitative_claims_verified": true,
+  "readme_review": "Counts, signed protective shares and intervals, independent endpoint discrepancy, invalid-mode refusals, expected exit codes, source tests, package checks, and statistical limitations agree with the retained artifacts. No open blockers."
+}

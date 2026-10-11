@@ -1,0 +1,25 @@
+{
+  "confidence": 0.95,
+  "continuation_seed": 100,
+  "declared_at_utc": "2026-10-11T12:16:23.862522+00:00",
+  "endpoint_samples": 2,
+  "factual_policy_seed": 0,
+  "max_attempts": 2,
+  "mode": "invalid",
+  "model_calls": 0,
+  "package_version": "0.1.0a1",
+  "pairs": 2,
+  "permutation_seed": 0,
+  "recipe_sha256": "1eaba58b962410bd43ecd24e10e1b61b898699a62c0082410449ff3dbc7f1bdc",
+  "redraws": 0,
+  "samples_per_eval": 1,
+  "scope": "Fixed synthetic mechanism integrity example, not calibration or model performance.",
+  "shared_max_calls": 400,
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+  "targets": [
+    "action",
+    "consequence",
+    "action_linked_consequence"
+  ],
+  "world_seed": 0
+}

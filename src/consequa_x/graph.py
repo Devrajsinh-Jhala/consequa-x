@@ -56,7 +56,10 @@ def build_graph(trace: Trace, estimates: Iterable[EffectEstimate] = ()) -> Conse
     def edge(source, target, kind, basis, data=None):
         if source not in nodes or target not in nodes:
             raise ValueError(f"Graph link has an absent endpoint: {source!r} -> {target!r}")
-        key = (source, target, kind)
+        # State and action-linked estimates can point to the same contract.
+        # Their distinct estimands must survive edge deduplication.
+        estimate_target = data.get("target") if kind == "ESTIMATED_INFLUENCE" and data else None
+        key = (source, target, kind, estimate_target)
         if key not in edge_keys:
             edge_keys.add(key)
             edges.append(GraphEdge(source, target, kind, basis, to_dict(data or {})))

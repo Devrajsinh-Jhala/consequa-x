@@ -25,6 +25,18 @@ command keeps the factual and changed branches, their evidence, evaluator truth,
 failure receipts, pair counts, and estimates in a report with an integrity
 manifest. Evaluator material must stay outside policy and explainer inputs.
 
+`--targets action,consequence,action_linked_consequence` adds the supported
+action-linked target using the same collected branches and no extra policy
+calls. It requires qualifying linked refund witnesses; another actor's satisfied
+state is false, and insufficient provenance remains unknown. The default keeps
+the original two targets. `--template refund-support-note-v1` selects a curated
+wording variant without changing context intervention semantics. See
+[study-manifests.md](study-manifests.md) for the target's precise limits.
+
+[Decision-prefix replay](decision-replay.md) is a separate Python primitive for
+holding recorded decisions and resampling continuations. It does not replace
+the context leave-one-out estimator or implement CAR's attribution algorithms.
+
 `results.json` records the run settings, summary, attempted branch receipts,
 interventions, planned seed schedule, and `estimated` or `refused` results.
 Completed branches have globally unique paths such as

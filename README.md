@@ -21,6 +21,9 @@ The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) c
 - [First live-model pilot and audit](output/live-pilot-2026-10-10/README.md)
 - [Exploratory prompt comparison and retry diagnostic](output/prompt-sensitivity-2026-10-10/README.md)
 - [Proposed model study protocol](docs/study-plan.md)
+- [Candidate task-family splits and evidence targets](docs/study-manifests.md)
+- [Decision-prefix replay](docs/decision-replay.md)
+- [Strong baseline reproduction plan](docs/car-reproduction-plan.md)
 - [Alpha validation report](output/build/README.md)
 
 Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
@@ -101,6 +104,16 @@ The adapter checks installed models and declared local routing before generation
 The original `refund-policy-v1` prompt remains the default. Select the opt-in `--prompt-version refund-policy-v2` to clarify assessment, timing, and attempt-budget semantics and add stop-after-success guidance. This is a pilot-informed policy refinement; comparison results are exploratory. Both evaluation and replay record the chosen version and its exact prompt hash. Reports also expose assessment abstention, claim coverage, and contradictions with explicit denominators. These metrics score the structured status, while rationale text requires separate review. The [follow-up pilot](output/prompt-sensitivity-2026-10-10/README.md) found unknown status fields alongside affirmative rationale claims, so it does not establish an accuracy gain. Hindsight alignment with verified state does not establish what a policy could know from an ambiguous response.
 
 ## Use the Python API
+
+For study preparation, `model-eval --study docs/studies/refund-family-candidates-v1.json --split tuning`
+selects a validated candidate wording family and records the planned order and
+exact manifest hash. The original pilot family is excluded from the held-out
+reserve. This assignment is not a claim of held-out model performance.
+`model-experiment --targets action,consequence,action_linked_consequence` adds
+qualifying action-linked outcomes without additional replay calls. The
+[decision replay API](docs/decision-replay.md) holds factual prefixes for future
+baseline implementations; CAR attribution and the final comparison study remain
+research milestones.
 
 ```python
 from consequa_x import Trace, explain, verify

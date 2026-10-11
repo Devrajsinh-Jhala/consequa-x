@@ -208,10 +208,34 @@ def _prepare_policy(args):
 def _model_eval(args):
     from .benchmark.evaluation import evaluate_policy, evaluation_sample_record
     from .benchmark.policy_runner import MAX_TRIAL_SEED
+    from .benchmark.study import STUDY_SCHEMA_VERSION, study_plan_from_json, template_wording_sha256
 
     output = _new_output(args, "model-eval")
     configurations = demo_scenarios()
-    if args.cases:
+    template_map = None
+    study_plan = None
+    study_metadata = None
+    selected = ()
+    if args.study:
+        if args.cases or args.split is None:
+            raise ValueError("--study requires --split and cannot be combined with --cases")
+        study_bytes = Path(args.study).read_bytes()
+        study_text = study_bytes.decode("utf-8")
+        study_plan = study_plan_from_json(study_text)
+        order_seed = args.seed if args.order_seed is None else args.order_seed
+        selected = study_plan.select(args.split, order_seed=order_seed)
+        configurations = tuple(case.config for case in selected)
+        template_map = {case.case_id: case.template for case in selected}
+        study_metadata = {
+            "schema_version": STUDY_SCHEMA_VERSION, "study_id": study_plan.study_id,
+            "manifest_sha256": sha256(study_bytes).hexdigest(),
+            "split": args.split, "order_seed": order_seed,
+            "case_order": [case.case_id for case in selected],
+            "split_scope": "Declared template-family split, not a certification of prior exposure or held-out fault compositions.",
+        }
+    elif args.split is not None or args.order_seed is not None:
+        raise ValueError("--split and --order-seed require --study")
+    elif args.cases:
         names = args.cases.split(",")
         by_name = {config.name: config for config in configurations}
         if any(name not in by_name for name in names) or len(set(names)) != len(names):
@@ -222,13 +246,27 @@ def _model_eval(args):
         raise ValueError("samples/max-calls must be positive, seed nonnegative, max-attempts in 1..5")
     if args.seed + len(configurations) * args.samples - 1 > MAX_TRIAL_SEED:
         raise ValueError("Evaluation seed schedule exceeds the model seed range")
+    if study_metadata is not None:
+        study_metadata["planned_schedule"] = [
+            {"index": index, "case_id": case.case_id, "template_id": case.template.template_id,
+             "family_id": case.template.family_id, "seed": args.seed + index,
+             "wording_sha256": template_wording_sha256(case.template)}
+            for index, case in enumerate(case for case in selected for _ in range(args.samples))
+        ]
     policy, model_record = _prepare_policy(args)
     evaluation = evaluate_policy(policy, configurations, samples=args.samples, seed=args.seed,
-                                 max_calls=args.max_calls, max_attempts=args.max_attempts)
+                                 max_calls=args.max_calls, max_attempts=args.max_attempts,
+                                 templates=template_map)
     artifacts = []
     receipts = []
+    by_case = {case.case_id: case for case in selected}
     for sample in evaluation.samples:
         receipt = evaluation_sample_record(sample, root=output)
+        if study_plan is not None:
+            case = by_case[sample.scenario]
+            receipt.update(case_id=case.case_id, split=case.split,
+                           template_id=case.template.template_id, family_id=case.template.family_id,
+                           wording_sha256=template_wording_sha256(case.template))
         receipts.append(receipt)
         if sample.episode is None:
             continue
@@ -245,6 +283,11 @@ def _model_eval(args):
             path = output / relative
             _write_json(path, value)
             artifacts.append({"path": relative, "sha256": sha256(path.read_bytes()).hexdigest()})
+    if study_plan is not None:
+        output.mkdir(parents=True, exist_ok=True)
+        (output / "study-plan.json").write_bytes(study_bytes)
+        artifacts.append({"path": "study-plan.json",
+                          "sha256": sha256((output / "study-plan.json").read_bytes()).hexdigest()})
     summary = evaluation.summary()
     _write_json(output / "results.json", {
         "package_version": __version__, "evaluation_kind": (
@@ -255,6 +298,7 @@ def _model_eval(args):
         "max_attempts": args.max_attempts, "cases": [config.name for config in configurations],
         "summary": summary, "samples": receipts,
         "claim": "Adapter evaluation only; no attribution-method superiority or task generalization tested.",
+        **({"study": study_metadata} if study_metadata is not None else {}),
     })
     _write_json(output / "trace-schema.json", get_trace_schema())
     rows = []
@@ -262,6 +306,7 @@ def _model_eval(args):
         rows.append("| " + " | ".join(str(receipt.get(key, "—")) for key in (
             "index", "scenario", "seed", "status", "policy_calls", "reported_assessment",
             "verified_outcome", "effect_origin", "assessment_alignment",
+            "action_linked_consequence_satisfied",
         )) + " |")
     report = (
         "# Policy evaluation\n\n"
@@ -274,13 +319,21 @@ def _model_eval(args):
            "This evaluation calls a selected local Ollama model against simulated payments. "
            "It is a template-level smoke evaluation, not a held-out research study.\n\n")
         + _assessment_report(summary)
-        + "| Sample | Case | Seed | Status | Calls | Reported assessment | Verified outcome | Origin | Alignment |\n"
-        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
+        + (f"Study: **{study_plan.study_id}**; declared split: **{args.split}**; "
+           f"case-order seed: {study_metadata['order_seed']}. Template families are confined "
+           "to one split. This assignment does not certify unseen model inputs or held-out "
+           "fault compositions; final study scope still requires an exposure audit.\n\n"
+           if study_plan is not None else "")
+        + "| Sample | Case | Seed | Status | Calls | Reported assessment | Verified outcome | Origin | Alignment | Linked contract satisfied |\n"
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
         + "\n".join(rows) + "\n\n"
         "Provider/protocol failures and unstarted samples are separate from consequence "
         "violations. Unknown readback remains unknown. Model seed settings are a "
         "reproducibility control, not a guarantee across models, servers, or hardware. "
         "Virtual payment deadlines exclude inference latency.\n\n"
+        "The linked-contract target requires qualifying action-linked refund witnesses "
+        "as well as satisfied state; another actor's refund is not agent success. "
+        "Missing provenance leaves this target unknown.\n\n"
         "The model receives declared task/context and public tool responses. Independent "
         "readback is revealed only after its final assessment. Evaluator labels and truth "
         "are in separate files and must not be passed to a policy or explainer. "
@@ -298,6 +351,8 @@ def _model_eval(args):
 def _model_experiment(args):
     from .benchmark.policy_experiment import branch_record, experiment_policy
     from .benchmark.policy_runner import MAX_TRIAL_SEED
+    from .attribution import REPLAY_TARGETS
+    from .benchmark.templates import REFUND_TASK_TEMPLATES
 
     output = _new_output(args, "model-experiment")
     config = next(config for config in demo_scenarios() if config.name == args.case)
@@ -309,9 +364,16 @@ def _model_experiment(args):
     if args.seed + args.samples - 1 > MAX_TRIAL_SEED:
         raise ValueError("Paired seed schedule exceeds the model seed range")
     candidates = tuple(Intervention(name) for name in names)
+    targets = tuple(args.targets.split(","))
+    if not targets or len(set(targets)) != len(targets) or any(
+        target not in REPLAY_TARGETS for target in targets
+    ):
+        raise ValueError("targets must be unique supported replay target names, separated by commas")
+    template = REFUND_TASK_TEMPLATES[args.template]
     policy, model_record = _prepare_policy(args)
     experiment = experiment_policy(policy, config, candidates, samples=args.samples, seed=args.seed,
-                                   max_calls=args.max_calls, max_attempts=args.max_attempts)
+                                   max_calls=args.max_calls, max_attempts=args.max_attempts,
+                                   targets=targets, template=template)
     artifacts = []
     receipts = []
 
@@ -352,6 +414,7 @@ def _model_experiment(args):
         "scenario": config.name, "samples_per_condition": experiment.samples_per_condition,
         "initial_seed": args.seed, "seeds": experiment.seeds, "max_attempts": experiment.max_attempts,
         "interventions": experiment.interventions, "replay_mode": "isolated_simulation",
+        "targets": experiment.targets, "template": experiment.template.to_dict(),
         "branch_order": "factual seeds, then each candidate's seeds in declaration order",
         "summary": summary, "branches": receipts, "estimates": experiment.results,
         "attribution_trace": attribution_trace, "attribution_explanation": attribution_path,
@@ -384,7 +447,7 @@ def _model_experiment(args):
            "This calls a selected local Ollama model against simulated payments. "
            "A single-template replay does not establish generalization.\n\n")
         + _assessment_report(summary)
-        + "Each factual seed runs once and is reused across candidates and both targets. "
+        + "Each factual seed runs once and is reused across candidates and all selected targets. "
         "Each changed branch starts a fresh simulated world under the same fixed contract. "
         "Estimates read the collected episodes and make no additional policy calls.\n\n"
         "| Context | Target | Status | Original rate | Changed rate | Signed effect | Approx. 95% interval | Known pairs | Unknown | Failed | Unstarted |\n"
@@ -394,6 +457,10 @@ def _model_experiment(args):
         "The consequence target is verified state satisfaction; another actor can satisfy "
         "that state. Each approximate conservative Wilson-difference interval applies to "
         "one estimate, without simultaneous coverage across candidates.\n\n"
+        "The optional action_linked_consequence target additionally requires qualifying "
+        "action-linked witnesses; satisfied state with exclusively external origin is "
+        "false, and insufficient provenance is unknown. This is a supported-evidence "
+        "target, not causal responsibility.\n\n"
         "A target estimate requires every planned pair to be usable. Unknown consequence "
         "pairs, provider/protocol failures, and unstarted pairs are recorded separately; "
         "none are dropped, redrawn, or assigned a fabricated outcome. Known action selection "
@@ -454,12 +521,21 @@ def main(argv=None):
     evaluation = commands.add_parser("model-eval", help="Evaluate a bounded scripted or local model policy")
     _add_policy_arguments(evaluation, samples=2, max_calls=100)
     evaluation.add_argument("--cases")
+    evaluation.add_argument("--study", help="Evaluator-only refund-study-v1 JSON manifest")
+    evaluation.add_argument("--split", choices=("tuning", "validation", "held_out"))
+    evaluation.add_argument("--order-seed", type=int, help="Study case-order seed; defaults to --seed")
     evaluation.add_argument("--output", default="output/model-evaluation")
     evaluation.set_defaults(handler=_model_eval)
     replay = commands.add_parser("model-experiment", help="Run bounded paired policy context replays")
     _add_policy_arguments(replay, samples=20, max_calls=400)
     replay.add_argument("--case", choices=tuple(config.name for config in demo_scenarios()), default="unsafe_retry")
     replay.add_argument("--candidates", default="vip_policy,vip_memory,retry_instruction,distractor")
+    replay.add_argument("--targets", default="action,consequence",
+                        help="Comma-separated action, consequence, action_linked_consequence")
+    from .benchmark.templates import DEFAULT_REFUND_TEMPLATE, REFUND_TASK_TEMPLATES
+
+    replay.add_argument("--template", choices=tuple(REFUND_TASK_TEMPLATES),
+                        default=DEFAULT_REFUND_TEMPLATE.template_id)
     replay.add_argument("--output", default="output/model-experiment")
     replay.set_defaults(handler=_model_experiment)
     args = parser.parse_args(argv)

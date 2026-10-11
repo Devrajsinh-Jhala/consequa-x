@@ -12,8 +12,9 @@ This independently written CAR-style binary adaptation builds on the
 [contrastive implementation at revision
 db90fa28b97164c35e7c524e4597b8cbdb3035af](https://github.com/jaineet17/causal-agent-replay/blob/db90fa28b97164c35e7c524e4597b8cbdb3035af/src/car/attribute/contrastive.py),
 read alongside the [CAR paper](https://arxiv.org/abs/2606.08275). This implementation
-does not reproduce the upstream numerical random stream and does not implement
-Shapley allocation. The [comparison plan](car-reproduction-plan.md) describes the
+does not reproduce the upstream numerical random stream. The separate
+[Shapley estimator](decision-shapley.md) allocates a held-decision coalition game;
+these suffix effects are not its shares. The [comparison plan](car-reproduction-plan.md) describes the
 remaining work. No method superiority or attribution novelty follows from these
 integration fixtures.
 

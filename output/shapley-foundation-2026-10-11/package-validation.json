@@ -1,0 +1,251 @@
+{
+  "build": {
+    "artifacts": [
+      {
+        "name": "consequa_x-0.1.0a1-py3-none-any.whl",
+        "sha256": "92ceb98ea8c5a1ce1413cd2c6f46759f1f3192b5cc9d42c5b0e8c658d9988f43",
+        "size_bytes": 101507
+      },
+      {
+        "name": "consequa_x-0.1.0a1.tar.gz",
+        "sha256": "80855faec6ed83f83861de9ac5968bcc176e28cbc4dadb88821ffe229a54d3b3",
+        "size_bytes": 207365
+      }
+    ],
+    "mit_license_and_type_marker_verified": true,
+    "new_docs_example_tests_and_candidate_manifest_in_sdist": true,
+    "new_wheel_and_sdist_all_modules_exact_bytes_verified": true,
+    "required_runtime_dependencies": 0
+  },
+  "completed_traces_validated": 128,
+  "default_compatibility": {
+    "ordinary_default_traces_identical_to_previous_wheel": 12,
+    "previous_wheel_source_commit": "2a17931536701bfb24e0cdc2c2c032cd613b7da1"
+  },
+  "installed_commands": {
+    "complete-clean": {
+      "branch_status_counts": {
+        "completed": 16
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 16,
+        "factual": 2,
+        "max_calls": 100,
+        "total": 18
+      },
+      "exit_code": 0,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 54,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "f3166ff1ec99b61fb436f4424972e335b96f3ec6c7bc5bcb68dfd8d8cec006d1",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 17,
+      "traces_validated": 17,
+      "verifier_and_explainer_recomputations": 17
+    },
+    "complete-unsafe-retry": {
+      "branch_status_counts": {
+        "completed": 20
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 30,
+        "factual": 3,
+        "max_calls": 100,
+        "total": 33
+      },
+      "exit_code": 0,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 66,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "23e744f530c908d0df37675d0a4687b7e5c3ec786ae10216d28ae7eed1b408e2",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 21,
+      "traces_validated": 21,
+      "verifier_and_explainer_recomputations": 21
+    },
+    "continuation-budget": {
+      "branch_status_counts": {
+        "failed": 1,
+        "not_started": 15
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": true,
+        "continuation": 1,
+        "factual": 2,
+        "max_calls": 3,
+        "total": 3
+      },
+      "exit_code": 2,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 6,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "56ad695471f055d04e5485f09b60fe32b7091b1a16e50ce0048d3d857cf8a726",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 1,
+      "traces_validated": 1,
+      "verifier_and_explainer_recomputations": 1
+    },
+    "exact-ci-command": {
+      "branch_status_counts": {
+        "completed": 16
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 16,
+        "factual": 2,
+        "max_calls": 30,
+        "total": 18
+      },
+      "exit_code": 0,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 54,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "6b4173d19cb759254b6a17624018ccbaa60600bb53534dac3dcd6aac991a9329",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 17,
+      "traces_validated": 17,
+      "verifier_and_explainer_recomputations": 17
+    },
+    "factual-budget": {
+      "branch_status_counts": {},
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": true,
+        "continuation": 0,
+        "factual": 1,
+        "max_calls": 1,
+        "total": 1
+      },
+      "exit_code": 2,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 3,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "44afdc68661cf4928a6b8d0c50db6a74ca8a74becbabf0a61f27ec073729c6d5",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 0,
+      "traces_validated": 0,
+      "verifier_and_explainer_recomputations": 0
+    },
+    "invalid-unreachable": {
+      "branch_status_counts": {
+        "completed": 18,
+        "invalid": 2
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 22,
+        "factual": 3,
+        "max_calls": 100,
+        "total": 25
+      },
+      "exit_code": 2,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 60,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "a4401c7ed658f48010b9336dfad27a810692cac10ca7c5e075a3fc4906faabf4",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 19,
+      "traces_validated": 19,
+      "verifier_and_explainer_recomputations": 19
+    },
+    "multiple-evaluations": {
+      "branch_status_counts": {
+        "completed": 28
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 28,
+        "factual": 2,
+        "max_calls": 100,
+        "total": 30
+      },
+      "exit_code": 0,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 90,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "69800bbbb642baf2c2f014070a38f39eb34aae4c343d676ae34715c17fa825c0",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 29,
+      "traces_validated": 29,
+      "verifier_and_explainer_recomputations": 29
+    },
+    "provider-failure": {
+      "branch_status_counts": {
+        "completed": 6,
+        "failed": 10
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 10,
+        "factual": 2,
+        "max_calls": 100,
+        "total": 12
+      },
+      "exit_code": 2,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 24,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "552bbfe8f447a43d58820698e7390d17aca850784fef9d1119d896fb1bba3891",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 7,
+      "traces_validated": 7,
+      "verifier_and_explainer_recomputations": 7
+    },
+    "unknown-linked": {
+      "branch_status_counts": {
+        "completed": 16
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 16,
+        "factual": 2,
+        "max_calls": 100,
+        "total": 18
+      },
+      "exit_code": 0,
+      "export_paths_portable": true,
+      "invalid_failed_unstarted_outcomes_absent": true,
+      "manifest_artifacts_verified": 54,
+      "manifest_covers_all_files": true,
+      "manifest_sha256": "f5635a4b4848cc55e1c8ad4f833f527952d4d4dd4d10db1f934694e0e9cac14e",
+      "pair_unit_and_endpoint_math_recomputed": true,
+      "strict_roundtrips": 17,
+      "traces_validated": 17,
+      "verifier_and_explainer_recomputations": 17
+    }
+  },
+  "ollama_network_calls": 0,
+  "package_version": "0.1.0a1",
+  "platform": "Windows",
+  "python_version": "3.12.14",
+  "scope": "Installed-package scripted integrity and independent arithmetic checks only; no live model, interval calibration or generalization claims.",
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+  "validated_at_utc": "2026-10-11T12:15:27.124718+00:00",
+  "validation_passed": true,
+  "wheel": {
+    "fresh_virtualenv": true,
+    "imports_from_fresh_virtualenv_site_packages": true,
+    "installed_without_project_dependencies": true,
+    "isolated_python": true,
+    "python_path": "tmp/shapley-package-validation/env/Scripts/python.exe",
+    "validation_dependency": "jsonschema==4.26.0"
+  }
+}

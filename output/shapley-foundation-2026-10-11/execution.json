@@ -1,0 +1,109 @@
+{
+  "runs": [
+    {
+      "completed_at_utc": "2026-10-11T12:16:20.208352+00:00",
+      "duration_seconds": 1.0049505999995745,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "scripted-control",
+      "python_arguments": [
+        "-I",
+        "-m",
+        "consequa_x",
+        "decision-shapley",
+        "--provider",
+        "scripted",
+        "--case",
+        "clean",
+        "--pairs",
+        "2",
+        "--samples",
+        "1",
+        "--endpoint-samples",
+        "2",
+        "--seed",
+        "100",
+        "--factual-seed",
+        "0",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--max-calls",
+        "30",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\scripted-control"
+      ],
+      "started_at_utc": "2026-10-11T12:16:19.210413+00:00"
+    },
+    {
+      "completed_at_utc": "2026-10-11T12:16:20.583997+00:00",
+      "duration_seconds": 0.3665928000009444,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "name": "budget-limit",
+      "python_arguments": [
+        "-I",
+        "-m",
+        "consequa_x",
+        "decision-shapley",
+        "--provider",
+        "scripted",
+        "--case",
+        "clean",
+        "--pairs",
+        "2",
+        "--samples",
+        "1",
+        "--endpoint-samples",
+        "2",
+        "--seed",
+        "100",
+        "--factual-seed",
+        "0",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--max-calls",
+        "3",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\budget-limit"
+      ],
+      "started_at_utc": "2026-10-11T12:16:20.208352+00:00"
+    },
+    {
+      "completed_at_utc": "2026-10-11T12:16:23.607220+00:00",
+      "duration_seconds": 3.0263543000000936,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "protective-stop",
+      "python_arguments": [
+        "-I",
+        "examples/decision_shapley_fixture.py",
+        "--mode",
+        "protection",
+        "--source-commit",
+        "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\protective-stop"
+      ],
+      "started_at_utc": "2026-10-11T12:16:20.585469+00:00"
+    },
+    {
+      "completed_at_utc": "2026-10-11T12:16:24.641553+00:00",
+      "duration_seconds": 1.0279879000008805,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "invalid-coalitions",
+      "python_arguments": [
+        "-I",
+        "examples/decision_shapley_fixture.py",
+        "--mode",
+        "invalid",
+        "--source-commit",
+        "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\invalid-coalitions"
+      ],
+      "started_at_utc": "2026-10-11T12:16:23.613428+00:00"
+    }
+  ],
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce"
+}

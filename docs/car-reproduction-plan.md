@@ -31,19 +31,29 @@ refusals, and incomplete-locus refusal. Its intervals are conditional and have
 no multiplicity adjustment. It remains an independently written adaptation,
 not a complete upstream numerical reproduction or a matched-baseline result.
 
+[Positional coalition and Shapley replay](decision-shapley.md) now forces
+captured decisions at compatible typed stages and records unreachable held
+positions as invalid. Fresh forward/reverse coalition chains yield one paired
+contribution vector, with normal intervals and independent endpoint diagnostics.
+This strict invalid-coalition refusal is a declared game restriction and can
+prevent attribution on variable-length refund trajectories. Mathematical
+interaction oracles validate the estimator separately from the refund adapter;
+they do not establish domain interaction recovery or calibrated inference.
+
 ## Required next implementation
 
 1. Validate the contrastive adaptation on frozen independent mechanisms and
    measure interval coverage, erroneous locus selection, and refusal coverage.
    Homogeneous bootstrap draws may produce zero-width intervals; nominal rescue
    is not proof of population certainty or unique causation.
-2. Define valid positional coalitions for variable-length typed trajectories.
+2. Extend and validate positional coalitions for variable-length typed trajectories.
    A changed branch may stop before a factual position or reach it in an
    incompatible stage. Record unreachable/invalid coalitions explicitly; do not
    force a refund into a retry slot or manufacture an outcome.
-3. Implement fresh antithetic permutation Shapley sampling and independent
-   endpoint checks. A cache across coalition evaluations can change the sampled
-   game and must not silently replace the specified stochastic estimator.
+3. Validate the fresh antithetic permutation Shapley adaptation and independent
+   endpoint diagnostics on fixed-length and variable-length mechanisms. Measure
+   bias, interval coverage, and refusal coverage without silently changing the
+   game or caching fresh coalition evaluations.
 4. Validate recovery on independently planted pivotal decisions, interaction
    mechanisms, irrelevant factors, incomplete readback, and budget exhaustion
    before declaring a live comparison.

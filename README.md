@@ -24,9 +24,11 @@ The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) c
 - [Candidate task-family splits and evidence targets](docs/study-manifests.md)
 - [Decision-prefix replay](docs/decision-replay.md)
 - [Decision contrastive replay](docs/decision-contrastive.md)
+- [Positional decision coalitions and Shapley replay](docs/decision-shapley.md)
 - [Strong baseline reproduction plan](docs/car-reproduction-plan.md)
 - [Installed-package study and replay checks](output/study-foundation-2026-10-11/README.md)
 - [Decision contrastive controls and seeded fixture](output/contrastive-foundation-2026-10-11/README.md)
+- [Shapley controls, protective decision, and unavailable coalitions](output/shapley-foundation-2026-10-11/README.md)
 - [Alpha validation report](output/build/README.md)
 
 Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
@@ -116,9 +118,11 @@ reserve. This assignment is not a claim of held-out model performance.
 qualifying action-linked outcomes without additional replay calls. The
 [decision replay API](docs/decision-replay.md) holds factual prefixes for future
 baseline implementations. [Decision contrastive replay](docs/decision-contrastive.md)
-now estimates suffix effects against one recorded factual outcome. Positional
-coalitions, Shapley allocation, and the final matched comparison remain research
-milestones.
+now estimates suffix effects against one recorded factual outcome.
+[Positional Shapley replay](docs/decision-shapley.md) adds fresh coalition walks,
+paired contribution estimates, and independent endpoint diagnostics. Strict
+unreachable-position refusal can make variable-length games unavailable;
+calibration and the final matched comparison remain research milestones.
 
 ```python
 from consequa_x import Trace, explain, verify
@@ -170,6 +174,18 @@ samples refuse affected estimates; incomplete decision coverage refuses the fina
 locus. Bootstrap intervals condition on one observed factual episode and may
 collapse for homogeneous samples. See [the decision guide](docs/decision-contrastive.md)
 for signs, reference version, implementation deviations, and statistical limits.
+
+Allocate signed contributions with fresh held-decision coalition walks:
+
+```sh
+consequa-x decision-shapley --provider scripted --case clean --pairs 16 --samples 1 --endpoint-samples 16 --seed 100 --max-calls 2000 --output output/my-decision-shapley
+```
+
+One permutation and its reverse form one observation. Separate endpoint draws
+check the total scale without normalizing the shares. Unknown or unavailable
+path evidence refuses the affected target vector. See the
+[Shapley guide](docs/decision-shapley.md) for intervention validity, signs,
+budgets, and conditional normal-interval limits.
 
 Run the original deterministic and stochastic fixture comparison:
 

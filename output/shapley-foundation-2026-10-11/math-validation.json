@@ -1,0 +1,70 @@
+{
+  "validation_passed": true,
+  "independent_checks": 14,
+  "scope": "Independent estimator mathematics and positional coalition boundary audit",
+  "live_model_calls": 0,
+  "checks": {
+    "core_oracle_audit.py": {
+      "validation_passed": true,
+      "checks": [
+        "fixed_length_AND_exact_half_half_dummy_zero",
+        "signed_protective_decision_minus_one_and_dummies",
+        "two_pair_exact_normal_CI_unclipped_and_independent_efficiency_discrepancy",
+        "fresh_keys_for_every_repeated_coalition_and_endpoint",
+        "unknown_path_refuses_whole_affected_vector_targets_reuse_calls",
+        "unknown_endpoint_retains_complete_coefficients_refuses_independent_diagnostic",
+        "exact_call_limit_runs_zero_call_full_endpoints_then_records_blocked_slot",
+        "inclusive_maximum_seed_schedule_valid",
+        "valid_confidence_nextafter_one_remains_finite"
+      ],
+      "limitations": [
+        "Estimator-only outcome-adapter oracle; no refund interaction recovery",
+        "No live model calls"
+      ]
+    },
+    "coalition_boundary_audit.py": {
+      "validation_passed": true,
+      "checks": [
+        "held_factual_action_allowed_under_changed_public_response_without_calls",
+        "unreachable_held_member_invalidates_without_episode_or_redraw",
+        "unreached_unheld_member_allows_early_terminal_outcome",
+        "longer_than_factual_trajectory_resamples_extra_positions",
+        "factual_recording_unchanged"
+      ],
+      "live_model_calls": 0
+    }
+  },
+  "source_sha256": {
+    "src/consequa_x/benchmark/decision_coalition.py": "66210093534a990ee29415d024ef76f2cfeb4cc132e0f344fcdec4db35df314d",
+    "src/consequa_x/benchmark/decision_shapley.py": "7607fbaa969cd8d4eb4e31d391479323c623bae8f1caaf8b46f8fe4b844347a8"
+  },
+  "references": {
+    "revision": "db90fa28b97164c35e7c524e4597b8cbdb3035af",
+    "paper": "https://arxiv.org/html/2606.08275v1",
+    "shapley": "https://github.com/jaineet17/causal-agent-replay/blob/db90fa28b97164c35e7c524e4597b8cbdb3035af/src/car/attribute/shapley.py",
+    "forward": "https://github.com/jaineet17/causal-agent-replay/blob/db90fa28b97164c35e7c524e4597b8cbdb3035af/src/car/replay/forward.py",
+    "effects": "https://github.com/jaineet17/causal-agent-replay/blob/db90fa28b97164c35e7c524e4597b8cbdb3035af/src/car/attribute/effects.py"
+  },
+  "resolved_findings": [
+    "Valid confidence immediately below 1 previously rounded normal quantile to 1; fixed with lower-tail quantile and audited."
+  ],
+  "open_blockers": [],
+  "limitations": [
+    "AND and protective games use a declared synthetic outcome adapter for estimator-only validation.",
+    "These checks do not establish refund interaction recovery or interval coverage."
+  ],
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+  "read_only_review_sha256": {
+    "examples/decision_shapley_fixture.py": "1eaba58b962410bd43ecd24e10e1b61b898699a62c0082410449ff3dbc7f1bdc",
+    "src/consequa_x/cli.py": "fbd27ee7e37e88b262646f6ca1dbfd4c6e8c00315ab82567862f6679c63c8b2f",
+    "docs/decision-shapley.md": "915e8e392ab833e6ee6b45533c61abb1c9bbd491c714d888995671253c0b2838",
+    "docs/car-reproduction-plan.md": "974e471cd5424989a13b250f8a784d5d2935d11b0a263e3543bda52085115a30",
+    "docs/research-roadmap.md": "934ecc010e20972e732a02fd9591d4a3c99b0915abc8e8c13c456f34fc20128d"
+  },
+  "read_only_review": {
+    "fixture": "Factual policy seed 3 stops at the timeout; seed 0 retries. The declared protective player 1 ideal of -0.5 and the invalid-coalition mode correctly distinguish finite seeded estimates from the analytic idealization. Protocol and truth are written before policy calls and never passed to the policy or explainer.",
+    "cli": "The conservative seed bound and settings are checked before provider preparation or file creation. Factual and continuation receipts and costs are retained. The complete schedule is exported separately. Invalid or failure results return status 2; unknown-only refusal returns status 0.",
+    "docs": "The held-decision sign, pair-unit normal intervals, endpoint independence, descriptive discrepancy, conservative positional restriction, and absence of domain interaction or calibration claims are consistent with the source.",
+    "blockers": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "cli_focused_passed": 21,
+  "coalition_focused_passed": 60,
+  "core_focused_passed": 69,
+  "diff_check": "passed",
+  "junit": {
+    "duration_seconds": 87.274,
+    "errors": 0,
+    "failures": 0,
+    "test_and_subtest_records": 1260
+  },
+  "ruff": "passed",
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+  "source_suite": {
+    "passed": 1020,
+    "subtests_passed": 240
+  }
+}

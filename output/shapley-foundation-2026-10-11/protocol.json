@@ -1,0 +1,98 @@
+{
+  "claim": "Offline source/package integrity and declared mechanism examples only; no calibration or model claim.",
+  "declared_at_utc": "2026-10-11T12:16:19.208122+00:00",
+  "plan": [
+    {
+      "expected_exit_code": 0,
+      "name": "scripted-control",
+      "python_arguments": [
+        "-I",
+        "-m",
+        "consequa_x",
+        "decision-shapley",
+        "--provider",
+        "scripted",
+        "--case",
+        "clean",
+        "--pairs",
+        "2",
+        "--samples",
+        "1",
+        "--endpoint-samples",
+        "2",
+        "--seed",
+        "100",
+        "--factual-seed",
+        "0",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--max-calls",
+        "30",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\scripted-control"
+      ]
+    },
+    {
+      "expected_exit_code": 2,
+      "name": "budget-limit",
+      "python_arguments": [
+        "-I",
+        "-m",
+        "consequa_x",
+        "decision-shapley",
+        "--provider",
+        "scripted",
+        "--case",
+        "clean",
+        "--pairs",
+        "2",
+        "--samples",
+        "1",
+        "--endpoint-samples",
+        "2",
+        "--seed",
+        "100",
+        "--factual-seed",
+        "0",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--max-calls",
+        "3",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\budget-limit"
+      ]
+    },
+    {
+      "expected_exit_code": 0,
+      "name": "protective-stop",
+      "python_arguments": [
+        "-I",
+        "examples/decision_shapley_fixture.py",
+        "--mode",
+        "protection",
+        "--source-commit",
+        "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\protective-stop"
+      ]
+    },
+    {
+      "expected_exit_code": 0,
+      "name": "invalid-coalitions",
+      "python_arguments": [
+        "-I",
+        "examples/decision_shapley_fixture.py",
+        "--mode",
+        "invalid",
+        "--source-commit",
+        "ee1a4062fb6b6b111fb2990cd51b649b403d38ce",
+        "--output",
+        "output\\shapley-foundation-2026-10-11\\invalid-coalitions"
+      ]
+    }
+  ],
+  "provider_mode": "scripted and seeded synthetic; no model calls",
+  "recipe_sha256": "1eaba58b962410bd43ecd24e10e1b61b898699a62c0082410449ff3dbc7f1bdc",
+  "redraws": 0,
+  "source_commit": "ee1a4062fb6b6b111fb2990cd51b649b403d38ce"
+}

@@ -783,6 +783,233 @@ def _decision_experiment(args):
     return 2 if factual is None or estimator_error is not None or failed or exhausted else 0
 
 
+def _decision_shapley(args):
+    """Export fresh positional coalition walks and separate endpoint diagnostics."""
+    from copy import deepcopy
+
+    from .attribution import REPLAY_TARGETS
+    from .benchmark.decision_shapley import shapley_decisions
+    from .benchmark.evaluation import BudgetedPolicy, CallBudgetExceeded
+    from .benchmark.policy_runner import MAX_TRIAL_SEED, run_policy_scenario
+    from .benchmark.targets import episode_outcome
+    from .benchmark.templates import REFUND_TASK_TEMPLATES
+    from .policies import PolicyError, validate_reply
+
+    output = _new_output(args, "decision-shapley")
+    if args.pairs < 2 or args.samples < 1 or args.endpoint_samples < 2:
+        raise ValueError("pairs and endpoint-samples must be at least 2; samples must be positive")
+    if args.max_calls < 1 or not 1 <= args.max_attempts <= 5:
+        raise ValueError("max-calls must be positive and max-attempts in 1..5")
+    if not 0 <= args.factual_seed <= MAX_TRIAL_SEED:
+        raise ValueError("factual-seed exceeds the model seed range")
+    if not 0 <= args.permutation_seed <= 2**31 - 1:
+        raise ValueError("permutation-seed must be in 0..2147483647")
+    planned_bound = 2 * args.endpoint_samples + 2 * args.pairs * (args.max_attempts + 2) * args.samples
+    if args.seed < 0 or args.seed + planned_bound - 1 > MAX_TRIAL_SEED:
+        raise ValueError("Conservative coalition seed schedule exceeds the model seed range")
+    if args.seed <= args.factual_seed <= args.seed + planned_bound - 1:
+        raise ValueError("Conservative coalition seed schedule overlaps the factual seed")
+    if not math.isfinite(args.confidence) or not 0 < args.confidence < 1:
+        raise ValueError("confidence must be finite and strictly between 0 and 1")
+    targets = tuple(args.targets.split(","))
+    if not targets or len(set(targets)) != len(targets) or any(
+        target not in REPLAY_TARGETS for target in targets
+    ):
+        raise ValueError("targets must be unique supported replay target names, separated by commas")
+    config = next(config for config in demo_scenarios() if config.name == args.case)
+    template = REFUND_TASK_TEMPLATES[args.template]
+    policy, model_record = _prepare_policy(args)
+    bounded = BudgetedPolicy(policy, args.max_calls)
+
+    class FactualRecorder:
+        def __init__(self):
+            self.decisions = []
+
+        @property
+        def metadata(self):
+            return bounded.metadata
+
+        def decide(self, request, *, seed):
+            receipt = {"index": len(self.decisions), "stage": request.stage,
+                       "model_seed": seed, "request": to_dict(request), "reply": None}
+            before = bounded.calls
+            try:
+                reply = bounded.decide(deepcopy(request), seed=seed)
+                validate_reply(request, reply)
+                receipt["reply"] = to_dict(reply)
+                return reply
+            except (PolicyError, ValueError, TypeError) as error:
+                receipt.update(error_type=type(error).__name__, error=str(error))
+                raise
+            finally:
+                receipt["policy_calls"] = bounded.calls - before
+                self.decisions.append(receipt)
+
+    recorder = FactualRecorder()
+    factual = experiment = factual_error = estimator_error = None
+    try:
+        factual = run_policy_scenario(config, recorder, seed=args.factual_seed,
+                                      max_attempts=args.max_attempts, template=template)
+    except (PolicyError, ValueError, TypeError) as error:
+        factual_error = error
+    factual_calls = bounded.calls
+    if factual is not None:
+        try:
+            experiment = shapley_decisions(
+                factual, bounded, pairs=args.pairs, samples_per_eval=args.samples,
+                endpoint_samples=args.endpoint_samples, seed=args.seed,
+                permutation_seed=args.permutation_seed, confidence=args.confidence,
+                targets=targets, template=template,
+            )
+        except (PolicyError, ValueError, TypeError) as error:
+            if bounded.calls != factual_calls:
+                raise
+            estimator_error = error
+    artifacts = []
+
+    def save(relative, value):
+        path = output / relative
+        _write_json(path, value)
+        artifacts.append({"path": relative, "sha256": sha256(path.read_bytes()).hexdigest()})
+
+    def save_episode(episode, stem, extra_truth):
+        paths = {"trace": f"traces/{stem}.json", "explanation": f"explanations/{stem}.json",
+                 "evaluator_truth": f"evaluator_truth/{stem}.json"}
+        save(paths["trace"], episode.trace)
+        save(paths["explanation"], episode.explanation)
+        save(paths["evaluator_truth"], {"scenario": config.name, "seed": episode.seed,
+                                      "config": to_dict(episode.config),
+                                      "records": episode.ground_truth, **extra_truth})
+        return paths
+
+    factual_receipt = {"status": "completed" if factual is not None else "failed",
+                       "seed": args.factual_seed, "policy_calls": factual_calls,
+                       "decisions": recorder.decisions}
+    if factual is None:
+        factual_receipt.update(error_type=type(factual_error).__name__, error=str(factual_error))
+    else:
+        factual_receipt.update(save_episode(factual, "factual", {"role": "factual"}))
+        factual_receipt["trace_sha256"] = sha256(
+            (output / factual_receipt["trace"]).read_bytes()
+        ).hexdigest()
+        factual_receipt["outcome"] = to_dict(episode_outcome(factual))
+    schedule = to_dict(experiment.slots) if experiment is not None else None
+    receipts = []
+    if experiment is not None:
+        by_index = {branch.slot.index: branch for branch in experiment.branches}
+        for slot in experiment.slots:
+            receipt = to_dict(slot)
+            branch = by_index.get(slot.index)
+            if branch is None:
+                receipt.update(status="not_started", policy_calls=0, decisions=[],
+                               reason="Shared policy-call budget blocked an earlier planned branch")
+            else:
+                replay = branch.replay
+                receipt.update(replay.summary(), decisions=to_dict(replay.decisions))
+                if replay.episode is not None:
+                    receipt.update(save_episode(replay.episode, f"branch_{slot.index:05d}", {
+                        "role": slot.role, "slot": to_dict(slot),
+                    }))
+                    receipt["outcome"] = to_dict(episode_outcome(replay.episode))
+            receipts.append(receipt)
+    counts = {status: sum(item["status"] == status for item in receipts)
+              for status in ("completed", "invalid", "failed", "not_started")}
+    exhausted = (isinstance(factual_error, CallBudgetExceeded)
+                 or (experiment is not None and experiment.budget_exhausted))
+    availability = {"status": "available" if experiment is not None else
+                             "refused" if estimator_error is not None else "unavailable",
+                    "reason": None if experiment is not None else
+                              "Completed factual capture failed estimator preflight"
+                              if estimator_error is not None else "Factual capture failed",
+                    "error_type": type(estimator_error).__name__ if estimator_error else None,
+                    "error": str(estimator_error) if estimator_error else None}
+    save("results.json", {
+        "package_version": __version__, "evaluation_kind": (
+            "local_model_decision_shapley" if args.provider == "ollama"
+            else "scripted_decision_shapley"),
+        "estimator_availability": availability,
+        "planning": {"source": "validated_capture" if experiment is not None else
+                              "unvalidated_capture" if factual is not None else "incomplete_capture",
+                     "recorded_factual_decisions": len(recorder.decisions),
+                     "conservative_max_positions": args.max_attempts + 1,
+                     "conservative_max_branches": planned_bound,
+                     "conservative_seed_range": [args.seed, args.seed + planned_bound - 1]},
+        "policy": bounded.metadata, "installed_model": model_record,
+        "settings": {"scenario": config.name, "template": template.to_dict(), "targets": targets,
+                     "factual_seed": args.factual_seed, "initial_continuation_seed": args.seed,
+                     "pairs": args.pairs, "samples_per_eval": args.samples,
+                     "endpoint_samples": args.endpoint_samples,
+                     "permutation_seed": args.permutation_seed, "confidence": args.confidence,
+                     "max_attempts": args.max_attempts},
+        "factual": factual_receipt, "planned_schedule": schedule, "branches": receipts,
+        "permutations": experiment.permutations if experiment is not None else None,
+        "summary": experiment.summary() if experiment is not None else None,
+        "method": experiment.method_record() if experiment is not None else None,
+        "estimates": [item.to_dict() for item in experiment.results] if experiment is not None else [],
+        "endpoint_checks": experiment.endpoint_checks if experiment is not None else [],
+        "calls": {"total": bounded.calls, "factual": factual_calls,
+                  "continuation": bounded.calls - factual_calls, "max_calls": args.max_calls,
+                  "budget_exhausted": exhausted},
+        "signed_contribution": "held-factual coalition bad probability minus preceding coalition bad probability",
+        "claim": "Conservative positional coalition adaptation; no interval calibration, model superiority, or task generalization established.",
+    })
+    save("trace-schema.json", get_trace_schema())
+    rows = []
+    if experiment is not None:
+        for item in experiment.results:
+            interval = "—" if item.confidence_interval is None else str(item.confidence_interval)
+            rows.append(f"| {item.decision_index} | {item.target} | {item.status} | "
+                        f"{item.shapley_value} | {interval} | {item.known_pairs} / {args.pairs} |")
+    report = (
+        "# Decision Shapley experiment\n\n"
+        f"Provider: **{args.provider}**; case: **{config.name}**. "
+        f"{args.pairs} planned antithetic pairs, {args.samples} draws per coalition evaluation. "
+        f"Branches: {counts['completed']} completed, {counts['invalid']} invalid, "
+        f"{counts['failed']} failed, {counts['not_started']} not started. "
+        f"Actual calls: {bounded.calls} / {args.max_calls}, including {factual_calls} factual calls.\n\n"
+        + ("Scripted integration example; no language model was run.\n\n"
+           if args.provider == "scripted" else "Local model calls act only on simulated payments.\n\n")
+        + ("Factual recording or estimator preflight was unavailable. Original completed "
+           "evidence or reached failure receipts are retained; no coalition schedule, "
+           "outcome, or estimate is fabricated.\n\n" if experiment is None else "")
+        + "A coalition holds its recorded decisions at compatible positional stages and "
+        "resamples other decisions. Changed public inputs are allowed. A requested held "
+        "position that is not reached invalidates that branch; only completed valid "
+        "branches have outcome labels. Every evaluation is fresh, including repeated "
+        "coalitions. All requested targets reuse each branch without additional calls.\n\n"
+        "| Decision | Target | Status | Signed contribution | Normal interval | Known pairs |\n"
+        "| --- | --- | --- | --- | --- | --- |\n"
+        + "\n".join(rows) + "\n\n"
+        "Positive contributions mean holding a factual decision increases bad-outcome "
+        "probability; negative contributions mean it is protective. Values are not "
+        "normalized responsibility shares. Normal approximation intervals use the "
+        "averaged forward/reverse vector as one unit, sample variance, and the planned "
+        "pair count. Incomplete target path coverage refuses its whole vector; unknown, "
+        "invalid, failed, and unstarted draws remain separate, with no redraws.\n\n"
+        "Independent empty/full endpoint samples lie outside the permutation walks. "
+        "The discrepancy is coefficient sum minus that independently sampled endpoint "
+        "difference, not a forced efficiency identity or a statistical pass/fail test. "
+        "Endpoint refusal is separate from coefficient refusal.\n\n"
+        "These conditional intervals have no multiplicity adjustment or calibrated "
+        "coverage guarantee. Homogeneous samples can collapse intervals; a small pair "
+        "count and requested seeds do not establish certainty or independence. Strict "
+        "unreachable-position refusal makes some variable-length refund games unavailable. "
+        "A fixed-length mathematical interaction oracle is a different mechanism from "
+        "this refund adapter. The implementation is independently written and declares "
+        "its differences from the pinned CAR reference.\n\n"
+        "Evaluator truth stays separate from policy/explainer inputs. Manifests detect "
+        "changed bytes, not authenticity. No context-effect graph overlay is produced.\n"
+    )
+    report_path = output / "README.md"
+    report_path.write_text(report, encoding="utf-8", newline="\n")
+    artifacts.append({"path": "README.md", "sha256": sha256(report_path.read_bytes()).hexdigest()})
+    _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": artifacts})
+    print(f"Saved Shapley experiment with {counts['completed']} completed, "
+          f"{counts['invalid']} invalid, {counts['failed']} failed, "
+          f"{counts['not_started']} unstarted branches in {output.resolve()}")
+    return 2 if experiment is None or exhausted or counts["invalid"] or counts["failed"] else 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -835,6 +1062,22 @@ def main(argv=None):
     decision.add_argument("--bootstrap-seed", type=int, default=0)
     decision.add_argument("--output", default="output/decision-experiment")
     decision.set_defaults(handler=_decision_experiment)
+    shapley = commands.add_parser("decision-shapley", help="Run fresh antithetic decision coalition walks")
+    _add_policy_arguments(shapley, samples=1, max_calls=2000)
+    shapley.set_defaults(seed=100)
+    shapley.add_argument("--case", choices=tuple(config.name for config in demo_scenarios()),
+                         default="clean")
+    shapley.add_argument("--template", choices=tuple(REFUND_TASK_TEMPLATES),
+                         default=DEFAULT_REFUND_TEMPLATE.template_id)
+    shapley.add_argument("--targets", default="consequence",
+                         help="Comma-separated action, consequence, action_linked_consequence")
+    shapley.add_argument("--factual-seed", type=int, default=0)
+    shapley.add_argument("--pairs", type=int, default=16)
+    shapley.add_argument("--endpoint-samples", type=int, default=16)
+    shapley.add_argument("--permutation-seed", type=int, default=0)
+    shapley.add_argument("--confidence", type=float, default=0.95)
+    shapley.add_argument("--output", default="output/decision-shapley")
+    shapley.set_defaults(handler=_decision_shapley)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

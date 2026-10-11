@@ -119,6 +119,12 @@ applies the configured age limits; it does not interpret arbitrary language.
 
 ## Outcomes and interpretation
 
+To evaluate declared wording-family splits, use `--study path/to/manifest.json`
+with `--split tuning`, `validation`, or `held_out`. See
+[study-manifests.md](study-manifests.md) for validation, exact-byte provenance,
+case-order controls, and the limits of those labels. Ordinary demo evaluation
+retains its original task wording and defaults.
+
 Three different measurements must remain separate:
 
 1. **Consequence:** the fixed refund contract is `satisfied`, `violated`, or

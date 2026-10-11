@@ -1,6 +1,7 @@
 """Bounded policy evaluation with failures separate from verified outcomes."""
 
 from dataclasses import dataclass
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Iterable
 
@@ -9,6 +10,8 @@ from ..policies import Policy, PolicyError
 from .assessment_metrics import assessment_metrics
 from .policy_runner import MAX_TRIAL_SEED, run_policy_scenario
 from .runner import Episode, ScenarioConfig, demo_scenarios
+from .templates import DEFAULT_REFUND_TEMPLATE, RefundTaskTemplate
+from .targets import action_linked_consequence
 
 
 class CallBudgetExceeded(PolicyError):
@@ -60,6 +63,7 @@ class PolicyEvaluation:
         counts = {name: 0 for name in ("satisfied", "violated", "unknown")}
         origin = {name: 0 for name in ("confirmed", "other_actor", "unknown")}
         alignment = {name: 0 for name in ("consistent", "contradicted", "unassessable")}
+        linked = {name: 0 for name in ("satisfied", "not_satisfied", "unknown")}
         completed = 0
         for sample in self.samples:
             if sample.episode is None:
@@ -70,6 +74,8 @@ class PolicyEvaluation:
             origin[verification.origin.value] += 1
             label = sample.episode.explanation.assessment_alignment
             alignment[label] = alignment.get(label, 0) + 1
+            value = action_linked_consequence(sample.episode.trace.action, verification)
+            linked["unknown" if value is None else "satisfied" if value else "not_satisfied"] += 1
         return {
             "planned_samples": self.planned_samples,
             "attempted_samples": len(self.samples),
@@ -82,6 +88,7 @@ class PolicyEvaluation:
             "verification": counts,
             "origin": origin,
             "assessment_alignment": alignment,
+            "action_linked_consequence": linked,
             "assessment_metrics": assessment_metrics(
                 (sample.episode.trace.assessment.status,
                  sample.episode.explanation.assessment_alignment)
@@ -93,7 +100,8 @@ class PolicyEvaluation:
 
 def evaluate_policy(policy: Policy, configs: Iterable[ScenarioConfig] | None = None, *,
                     samples: int = 2, seed: int = 0, max_calls: int = 100,
-                    max_attempts: int = 2) -> PolicyEvaluation:
+                    max_attempts: int = 2,
+                    templates: Mapping[str, RefundTaskTemplate] | None = None) -> PolicyEvaluation:
     """Evaluate fresh worlds; provider/protocol failures never become violations.
 
     Model calls are serial and bounded. A failed episode is retained as a failure
@@ -111,6 +119,14 @@ def evaluate_policy(policy: Policy, configs: Iterable[ScenarioConfig] | None = N
         raise ValueError("configs must contain at least one ScenarioConfig")
     if len({config.name for config in configurations}) != len(configurations):
         raise ValueError("scenario names must be unique")
+    if templates is None:
+        template_map = {config.name: DEFAULT_REFUND_TEMPLATE for config in configurations}
+    else:
+        if not isinstance(templates, Mapping) or set(templates) != {
+            config.name for config in configurations
+        } or any(not isinstance(item, RefundTaskTemplate) for item in templates.values()):
+            raise ValueError("templates must map every scenario name to a RefundTaskTemplate")
+        template_map = dict(templates)
     if seed + len(configurations) * samples - 1 > MAX_TRIAL_SEED:
         raise ValueError("Evaluation seed schedule exceeds the model seed range")
     bounded = BudgetedPolicy(policy, max_calls)
@@ -125,7 +141,8 @@ def evaluate_policy(policy: Policy, configs: Iterable[ScenarioConfig] | None = N
             calls_before = bounded.calls
             try:
                 episode = run_policy_scenario(config, bounded, seed=seed + index,
-                                              max_attempts=max_attempts)
+                                              max_attempts=max_attempts,
+                                              template=template_map[config.name])
                 record = EvaluationSample(index, config.name, seed + index,
                                           bounded.calls - calls_before, episode)
             except PolicyError as error:
@@ -161,6 +178,7 @@ def evaluation_sample_record(sample: EvaluationSample, *, root: Path | None = No
             reported_assessment=episode.trace.assessment.status.value,
             assessment_alignment=episode.explanation.assessment_alignment,
             diagnosis=episode.explanation.diagnosis,
+            action_linked_consequence_satisfied=action_linked_consequence(episode.trace.action, result),
         )
         if root is not None:
             stem = f"episode_{sample.index:04d}.json"

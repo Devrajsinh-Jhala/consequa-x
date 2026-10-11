@@ -1,0 +1,209 @@
+{
+  "build": {
+    "artifacts": [
+      {
+        "name": "consequa_x-0.1.0a1-py3-none-any.whl",
+        "sha256": "8bb483d501b22fd0d720e0ec1279c5a373bd45da24145e217aa93192f4a2be00",
+        "size_bytes": 89807
+      },
+      {
+        "name": "consequa_x-0.1.0a1.tar.gz",
+        "sha256": "2fcb20d66ac7bf730749dd1e6eab8bc677990417ba3bb5755178c49058eb9e9d",
+        "size_bytes": 179766
+      }
+    ],
+    "exit_code": 0,
+    "new_wheel_and_sdist_modules_exact_bytes_verified": true,
+    "sdist_candidate_manifest_and_new_docs_exact_bytes_verified": true
+  },
+  "continuation_budget_refusal": {
+    "branch_status_counts": {
+      "completed": 1,
+      "failed": 0,
+      "not_started": 5
+    },
+    "call_receipts_reconciled": true,
+    "calls": {
+      "budget_exhausted": true,
+      "continuation": 3,
+      "factual": 3,
+      "max_calls": 6,
+      "total": 6
+    },
+    "exit_code": 2,
+    "export_paths_portable": true,
+    "failed_and_unstarted_outcomes_absent": true,
+    "loci": [
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "3 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+        "status": "refused",
+        "target": "action"
+      },
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "3 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+        "status": "refused",
+        "target": "consequence"
+      },
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "3 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+        "status": "refused",
+        "target": "action_linked_consequence"
+      }
+    ],
+    "manifest_artifacts_verified": 9,
+    "manifest_covers_all_files": true,
+    "manifest_sha256": "f11d50833cc8d56e3cb0d9500c507c0b6fdd3a6a1511ac3790dd9d96c1b248e3",
+    "signed_estimate_coverage_recomputed": true,
+    "strict_roundtrips": 2,
+    "traces_validated": 2,
+    "verifier_and_explainer_recomputations": 2
+  },
+  "decision_experiment": {
+    "branch_status_counts": {
+      "completed": 6,
+      "failed": 0,
+      "not_started": 0
+    },
+    "call_receipts_reconciled": true,
+    "calls": {
+      "budget_exhausted": false,
+      "continuation": 12,
+      "factual": 3,
+      "max_calls": 30,
+      "total": 15
+    },
+    "exit_code": 0,
+    "export_paths_portable": true,
+    "failed_and_unstarted_outcomes_absent": true,
+    "loci": [
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "No position satisfies the declared negative effect and interval criterion.",
+        "status": "no_rescue",
+        "target": "action"
+      },
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "No position satisfies the declared negative effect and interval criterion.",
+        "status": "no_rescue",
+        "target": "consequence"
+      },
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "No position satisfies the declared negative effect and interval criterion.",
+        "status": "no_rescue",
+        "target": "action_linked_consequence"
+      }
+    ],
+    "manifest_artifacts_verified": 24,
+    "manifest_covers_all_files": true,
+    "manifest_sha256": "31f2460350c75d2be8bf3eb73590fac1d8886188bc2a9c504d9bdde337d3d0bf",
+    "signed_estimate_coverage_recomputed": true,
+    "strict_roundtrips": 7,
+    "traces_validated": 7,
+    "verifier_and_explainer_recomputations": 7
+  },
+  "default_compatibility": {
+    "ordinary_default_traces_identical_to_previous_wheel": 12,
+    "previous_wheel_source_commit": "0c0413b8f6d3ec976962cd443d751385c528ecc7"
+  },
+  "factual_budget_failure": {
+    "branch_status_counts": {
+      "completed": 0,
+      "failed": 0,
+      "not_started": 0
+    },
+    "call_receipts_reconciled": true,
+    "calls": {
+      "budget_exhausted": true,
+      "continuation": 0,
+      "factual": 2,
+      "max_calls": 2,
+      "total": 2
+    },
+    "exit_code": 2,
+    "export_paths_portable": true,
+    "failed_and_unstarted_outcomes_absent": true,
+    "loci": [],
+    "manifest_artifacts_verified": 3,
+    "manifest_covers_all_files": true,
+    "manifest_sha256": "691cf710c32716345f78411cc6d83ef6250d07996b989b15ac56eef8ac3352c9",
+    "signed_estimate_coverage_recomputed": true,
+    "strict_roundtrips": 0,
+    "traces_validated": 0,
+    "verifier_and_explainer_recomputations": 0
+  },
+  "known_state_unknown_linked_refusal": {
+    "branch_status_counts": {
+      "completed": 4,
+      "failed": 0,
+      "not_started": 0
+    },
+    "call_receipts_reconciled": true,
+    "calls": {
+      "budget_exhausted": false,
+      "continuation": 6,
+      "factual": 2,
+      "max_calls": 30,
+      "total": 8
+    },
+    "exit_code": 0,
+    "export_paths_portable": true,
+    "failed_and_unstarted_outcomes_absent": true,
+    "loci": [
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "No position satisfies the declared negative effect and interval criterion.",
+        "status": "no_rescue",
+        "target": "action"
+      },
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "No position satisfies the declared negative effect and interval criterion.",
+        "status": "no_rescue",
+        "target": "consequence"
+      },
+      {
+        "decision_index": null,
+        "event_id": null,
+        "reason": "2 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+        "status": "refused",
+        "target": "action_linked_consequence"
+      }
+    ],
+    "manifest_artifacts_verified": 18,
+    "manifest_covers_all_files": true,
+    "manifest_sha256": "c249ba6687954e55c455b3e4c9ede6f13c62e77c80366534b4fbc81d00abcc49",
+    "signed_estimate_coverage_recomputed": true,
+    "strict_roundtrips": 5,
+    "traces_validated": 5,
+    "verifier_and_explainer_recomputations": 5
+  },
+  "ollama_network_calls": 0,
+  "package_version": "0.1.0a1",
+  "platform": "Windows",
+  "python_version": "3.12.14",
+  "scope": "Installed-package scripted integrity checks only; no upstream numerical fidelity, statistical calibration, model performance, or study generalization claims.",
+  "source_commit": "2a17931536701bfb24e0cdc2c2c032cd613b7da1",
+  "validated_at_utc": "2026-10-11T07:55:19.137787+00:00",
+  "validation_passed": true,
+  "wheel": {
+    "fresh_virtualenv": true,
+    "imports_from_fresh_virtualenv_site_packages": true,
+    "installed_without_project_dependencies": true,
+    "isolated_python": true,
+    "python_path": "tmp/contrastive-package-validation/env/Scripts/python.exe",
+    "validation_dependency": "jsonschema==4.26.0"
+  }
+}

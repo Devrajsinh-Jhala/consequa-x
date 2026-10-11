@@ -1,0 +1,95 @@
+{
+  "audit_passed": true,
+  "audited_at_utc": "2026-10-11T07:30:22.143381+00:00",
+  "claim_limit": "Fixture integrity only; no model performance, held-out model study, CAR reproduction, or causal responsibility result is established.",
+  "decision_prefix": {
+    "completed_branches": 2,
+    "factual_calls_separate": 3,
+    "failed_branches": 1,
+    "failure_has_no_trace_or_outcome": true,
+    "hold_counts": [
+      3,
+      1,
+      0
+    ],
+    "new_call_budget": 4,
+    "new_calls_per_branch": [
+      0,
+      2,
+      2
+    ],
+    "new_calls_total": 4,
+    "refused_provider_calls": 1
+  },
+  "ollama_calls": 0,
+  "private_absolute_paths_found": 0,
+  "retained_files_scanned": 48,
+  "root_readme_quantitative_claims_match_retained_receipts": true,
+  "runtime": {
+    "isolated_installed_wheel": true,
+    "package_version": "0.1.0a1"
+  },
+  "saved_explanation_recomputations": 10,
+  "scope": "Independent read-only audit of retained scripted evidence. No policy execution, model calls, or regenerated traces.",
+  "source_commit": "0c0413b8f6d3ec976962cd443d751385c528ecc7",
+  "strict_json_files_decoded": 43,
+  "strict_trace_roundtrips": 13,
+  "study_manifest": {
+    "candidate_cases": 18,
+    "cases_per_split": 6,
+    "exact_source_bytes_verified": true,
+    "families": 3,
+    "policy_inputs_exclude_evaluator_labels": true,
+    "sha256": "1f4950498761f46b75a336b6e901413eaadc3d16e45137e69e39f0294e4d4522"
+  },
+  "three_target_replay": {
+    "artifacts_verified": 16,
+    "cache_lookups_for_recomputation": 12,
+    "complete_coverage": true,
+    "completed_branches": 4,
+    "effects": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "estimates_recomputed": 3,
+    "manifest_sha256": "1ab534f43bf3da3a811cacc811fb428c03989e0156ab9015d80de8c1f2b306a8",
+    "policy_calls": 6,
+    "recomputation_provider_calls": 0,
+    "targets": [
+      "action",
+      "consequence",
+      "action_linked_consequence"
+    ]
+  },
+  "total_retained_scripted_policy_calls": 25,
+  "trace_schema_validations": 13,
+  "tuning": {
+    "artifacts_verified": 22,
+    "complete_coverage": true,
+    "episodes": 6,
+    "manifest_sha256": "a3b714c2f0deb3f9a17b48d02f1cfd099207b0755addf2a88c0ea338dababa6a",
+    "policy_calls": 12,
+    "recomputed_counts": {
+      "action_linked_consequence": {
+        "not_satisfied": 3,
+        "satisfied": 2,
+        "unknown": 1
+      },
+      "assessment_alignment": {
+        "consistent": 2,
+        "contradicted": 3,
+        "unassessable": 1
+      },
+      "origin": {
+        "confirmed": 3,
+        "unknown": 3
+      },
+      "verification": {
+        "satisfied": 3,
+        "violated": 3
+      }
+    }
+  },
+  "verification_recomputations": 13
+}

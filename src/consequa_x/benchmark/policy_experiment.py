@@ -1,7 +1,7 @@
 """Bounded paired context replay from one collection of policy episodes.
 
 Every factual seed is generated once. The same completed episode cache supports
-both action and consequence estimates; estimation makes no policy calls. Failed,
+all selected target estimates; estimation makes no policy calls. Failed,
 unstarted, and unknown pairs remain separate and refuse the affected estimate.
 """
 
@@ -11,13 +11,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Literal
 
-from ..attribution import EffectEstimate, Intervention, ReplayOutcome, leave_one_out
-from ..models import VerificationStatus
+from ..attribution import (
+    REPLAY_TARGETS, EffectEstimate, Intervention, ReplayOutcome, ReplayTarget, leave_one_out,
+)
 from ..policies import Policy, PolicyError
 from .assessment_metrics import assessment_metrics
 from .evaluation import BudgetedPolicy, CallBudgetExceeded
 from .policy_runner import MAX_TRIAL_SEED, run_policy_scenario
 from .runner import Episode, ScenarioConfig, _intervene
+from .targets import episode_outcome
+from .templates import DEFAULT_REFUND_TEMPLATE, RefundTaskTemplate
 
 
 @dataclass(frozen=True)
@@ -38,7 +41,7 @@ class ExperimentEstimate:
     """Coverage over every planned pair, including refused whole estimates."""
 
     event_id: str
-    target: Literal["action", "consequence"]
+    target: ReplayTarget
     status: Literal["estimated", "refused"]
     estimate: EffectEstimate | None
     known_pairs: int
@@ -63,6 +66,8 @@ class PolicyExperiment:
     config: ScenarioConfig
     interventions: tuple[Intervention, ...]
     max_attempts: int
+    targets: tuple[ReplayTarget, ...] = ("action", "consequence")
+    template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE
 
     def summary(self) -> dict:
         completed = sum(branch.episode is not None for branch in self.branches)
@@ -72,7 +77,7 @@ class PolicyExperiment:
                             for result in self.results)
                 for status in ("estimated", "refused")
             }
-            for target in ("action", "consequence")
+            for target in self.targets
         }
         return {
             "samples_per_condition": self.samples_per_condition,
@@ -96,11 +101,7 @@ class PolicyExperiment:
 
 
 def _episode_outcome(episode: Episode) -> ReplayOutcome:
-    status = episode.trace.verifications[-1].status
-    consequence = None if status is VerificationStatus.UNKNOWN else (
-        status is VerificationStatus.SATISFIED
-    )
-    return ReplayOutcome(episode.action_selected, consequence)
+    return episode_outcome(episode)
 
 
 def _policy_metadata(bounded: BudgetedPolicy) -> dict:
@@ -133,7 +134,7 @@ class _CachedReplayRunner:
 
 def _estimate_from_cache(branches: dict[tuple[str | None, int], ExperimentBranch],
                          candidate: Intervention, seeds: tuple[int, ...],
-                         target: Literal["action", "consequence"]) -> ExperimentEstimate:
+                         target: ReplayTarget) -> ExperimentEstimate:
     counts = {name: 0 for name in ("known", "unknown", "failed", "unstarted")}
     for seed in seeds:
         pair = (branches.get((None, seed)), branches.get((candidate.event_id, seed)))
@@ -143,8 +144,8 @@ def _estimate_from_cache(branches: dict[tuple[str | None, int], ExperimentBranch
             counts["failed"] += 1
         elif any(branch is None for branch in pair):
             counts["unstarted"] += 1
-        elif target == "consequence" and any(
-            _episode_outcome(branch.episode).consequence_satisfied is None for branch in pair
+        elif target != "action" and any(
+            _episode_outcome(branch.episode).target_value(target) is None for branch in pair
         ):
             counts["unknown"] += 1
         else:
@@ -175,8 +176,11 @@ def _estimate_from_cache(branches: dict[tuple[str | None, int], ExperimentBranch
 def experiment_policy(policy: Policy, config: ScenarioConfig,
                       interventions: Iterable[Intervention], *, samples: int = 20,
                       seed: int = 0, max_calls: int = 400,
-                      max_attempts: int = 2) -> PolicyExperiment:
-    """Collect isolated paired branches before estimating either target.
+                      max_attempts: int = 2,
+                      targets: Iterable[ReplayTarget] = ("action", "consequence"),
+                      template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE,
+                      ) -> PolicyExperiment:
+    """Collect isolated paired branches before estimating the selected targets.
 
     Execution order is all factual seeds, then all seeds for each candidate in
     input order. The generation budget spans the complete experiment. Provider
@@ -196,6 +200,16 @@ def experiment_policy(policy: Policy, config: ScenarioConfig,
         raise ValueError(f"Paired seed schedule must stay in 0..{MAX_TRIAL_SEED}")
     if type(max_attempts) is not int or not 1 <= max_attempts <= 5:
         raise ValueError("max_attempts must be an integer in 1..5")
+    if not isinstance(template, RefundTaskTemplate):
+        raise TypeError("template must be a RefundTaskTemplate")
+    if isinstance(targets, str):
+        raise ValueError("targets must be a nonempty iterable of distinct replay targets")
+    selected_targets = tuple(targets)
+    if (not selected_targets
+            or any(not isinstance(target, str) or target not in REPLAY_TARGETS
+                   for target in selected_targets)
+            or len(set(selected_targets)) != len(selected_targets)):
+        raise ValueError("targets must be a nonempty iterable of distinct replay targets")
     candidates = tuple(interventions)
     if not candidates:
         raise ValueError("interventions must contain at least one candidate")
@@ -224,7 +238,7 @@ def experiment_policy(policy: Policy, config: ScenarioConfig,
             try:
                 episode = run_policy_scenario(
                     config, bounded, seed=replay_seed, intervention=candidate,
-                    max_attempts=max_attempts,
+                    max_attempts=max_attempts, template=template,
                 )
                 branch = ExperimentBranch(index, candidate_id, replay_seed,
                                           bounded.calls - calls_before, episode)
@@ -242,12 +256,13 @@ def experiment_policy(policy: Policy, config: ScenarioConfig,
     cache = {(branch.candidate_id, branch.seed): branch for branch in records}
     results = tuple(
         _estimate_from_cache(cache, candidate, seeds, target)
-        for candidate in candidates for target in ("action", "consequence")
+        for candidate in candidates for target in selected_targets
     )
     return PolicyExperiment(
         tuple(records), results, _policy_metadata(bounded), samples, seeds,
         samples * (len(candidates) + 1),
         bounded.calls, max_calls, exhausted, config, candidates, max_attempts,
+        selected_targets, template,
     )
 
 
@@ -274,6 +289,7 @@ def branch_record(branch: ExperimentBranch, *, root: Path | None = None) -> dict
             reported_assessment=episode.trace.assessment.status.value,
             assessment_alignment=episode.explanation.assessment_alignment,
             diagnosis=episode.explanation.diagnosis,
+            action_linked_consequence_satisfied=episode_outcome(episode).action_linked_consequence_satisfied,
         )
         if root is not None:
             stem = f"branch_{branch.index:04d}.json"

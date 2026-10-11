@@ -1,0 +1,275 @@
+{
+  "attribution_explanation": "attribution-explanation.json",
+  "attribution_trace": "traces/branch_0000.json",
+  "branch_order": "factual seeds, then each candidate's seeds in declaration order",
+  "branches": [
+    {
+      "action_linked_consequence_satisfied": true,
+      "action_selected": true,
+      "assessment_alignment": "consistent",
+      "candidate_id": null,
+      "condition": "factual",
+      "diagnosis": "CONSISTENT_OUTCOME",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/branch_0000.json",
+      "explanation": "explanations/branch_0000.json",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "clean",
+      "seed": 200,
+      "status": "completed",
+      "trace": "traces/branch_0000.json",
+      "verified_outcome": "satisfied"
+    },
+    {
+      "action_linked_consequence_satisfied": true,
+      "action_selected": true,
+      "assessment_alignment": "consistent",
+      "candidate_id": null,
+      "condition": "factual",
+      "diagnosis": "CONSISTENT_OUTCOME",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/branch_0001.json",
+      "explanation": "explanations/branch_0001.json",
+      "index": 1,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "clean",
+      "seed": 201,
+      "status": "completed",
+      "trace": "traces/branch_0001.json",
+      "verified_outcome": "satisfied"
+    },
+    {
+      "action_linked_consequence_satisfied": false,
+      "action_selected": false,
+      "assessment_alignment": "unassessable",
+      "candidate_id": "vip_policy",
+      "condition": "intervened",
+      "diagnosis": "CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/branch_0002.json",
+      "explanation": "explanations/branch_0002.json",
+      "index": 2,
+      "policy_calls": 1,
+      "reported_assessment": "unknown",
+      "scenario": "clean",
+      "seed": 200,
+      "status": "completed",
+      "trace": "traces/branch_0002.json",
+      "verified_outcome": "violated"
+    },
+    {
+      "action_linked_consequence_satisfied": false,
+      "action_selected": false,
+      "assessment_alignment": "unassessable",
+      "candidate_id": "vip_policy",
+      "condition": "intervened",
+      "diagnosis": "CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/branch_0003.json",
+      "explanation": "explanations/branch_0003.json",
+      "index": 3,
+      "policy_calls": 1,
+      "reported_assessment": "unknown",
+      "scenario": "clean",
+      "seed": 201,
+      "status": "completed",
+      "trace": "traces/branch_0003.json",
+      "verified_outcome": "violated"
+    }
+  ],
+  "claim": "Single-template integration experiment; no method superiority or task generalization tested.",
+  "estimates": [
+    {
+      "estimate": {
+        "baseline_rate": 1.0,
+        "confidence_interval": [
+          -0.4305146903968942,
+          1.0
+        ],
+        "effect": 1.0,
+        "event_id": "vip_policy",
+        "intervention_rate": 0.0,
+        "samples": 2,
+        "seeds": [
+          200,
+          201
+        ],
+        "target": "action",
+        "unknown_pairs": 0
+      },
+      "event_id": "vip_policy",
+      "failed_pairs": 0,
+      "known_pairs": 2,
+      "reason": null,
+      "seeds": [
+        200,
+        201
+      ],
+      "status": "estimated",
+      "target": "action",
+      "unknown_pairs": 0,
+      "unstarted_pairs": 0
+    },
+    {
+      "estimate": {
+        "baseline_rate": 1.0,
+        "confidence_interval": [
+          -0.4305146903968942,
+          1.0
+        ],
+        "effect": 1.0,
+        "event_id": "vip_policy",
+        "intervention_rate": 0.0,
+        "samples": 2,
+        "seeds": [
+          200,
+          201
+        ],
+        "target": "consequence",
+        "unknown_pairs": 0
+      },
+      "event_id": "vip_policy",
+      "failed_pairs": 0,
+      "known_pairs": 2,
+      "reason": null,
+      "seeds": [
+        200,
+        201
+      ],
+      "status": "estimated",
+      "target": "consequence",
+      "unknown_pairs": 0,
+      "unstarted_pairs": 0
+    },
+    {
+      "estimate": {
+        "baseline_rate": 1.0,
+        "confidence_interval": [
+          -0.4305146903968942,
+          1.0
+        ],
+        "effect": 1.0,
+        "event_id": "vip_policy",
+        "intervention_rate": 0.0,
+        "samples": 2,
+        "seeds": [
+          200,
+          201
+        ],
+        "target": "action_linked_consequence",
+        "unknown_pairs": 0
+      },
+      "event_id": "vip_policy",
+      "failed_pairs": 0,
+      "known_pairs": 2,
+      "reason": null,
+      "seeds": [
+        200,
+        201
+      ],
+      "status": "estimated",
+      "target": "action_linked_consequence",
+      "unknown_pairs": 0,
+      "unstarted_pairs": 0
+    }
+  ],
+  "evaluation_kind": "scripted_replay",
+  "initial_seed": 200,
+  "installed_model": null,
+  "interventions": [
+    {
+      "event_id": "vip_policy",
+      "kind": "neutralize",
+      "replacement": null
+    }
+  ],
+  "max_attempts": 2,
+  "package_version": "0.1.0a1",
+  "policy": {
+    "policy": "visible-refund-fixture",
+    "provider": "scripted",
+    "version": "1"
+  },
+  "replay_mode": "isolated_simulation",
+  "samples_per_condition": 2,
+  "scenario": "clean",
+  "seeds": [
+    200,
+    201
+  ],
+  "summary": {
+    "assessment_metrics": {
+      "abstentions": 2,
+      "assessable_claim_coverage": {
+        "denominator": 4,
+        "numerator": 2,
+        "value": 0.5
+      },
+      "assessable_claims": 2,
+      "claim_coverage": {
+        "denominator": 4,
+        "numerator": 2,
+        "value": 0.5
+      },
+      "completed_assessments": 4,
+      "consistent_claims": 2,
+      "contradicted_claims": 0,
+      "contradiction_rate": {
+        "denominator": 2,
+        "numerator": 0,
+        "value": 0.0
+      },
+      "definite_claims": 2,
+      "partial_assessments": 0,
+      "reported_assessment": {
+        "failure": 0,
+        "partial": 0,
+        "success": 2,
+        "unknown": 2
+      },
+      "unassessable_claims": 0
+    },
+    "attempted_branches": 4,
+    "budget_exhausted": false,
+    "candidate_count": 1,
+    "completed_branches": 4,
+    "condition_count": 2,
+    "estimates": {
+      "action": {
+        "estimated": 1,
+        "refused": 0
+      },
+      "action_linked_consequence": {
+        "estimated": 1,
+        "refused": 0
+      },
+      "consequence": {
+        "estimated": 1,
+        "refused": 0
+      }
+    },
+    "failed_branches": 0,
+    "max_calls": 12,
+    "not_started_branches": 0,
+    "planned_branches": 4,
+    "policy_calls": 6,
+    "samples_per_condition": 2
+  },
+  "targets": [
+    "action",
+    "consequence",
+    "action_linked_consequence"
+  ],
+  "template": {
+    "base_refund_policy": "Support policy: standard refunds are permitted for orders no more than 30 days old.",
+    "customer_request": "Customer support note: the customer requests a refund of the payment in the task.",
+    "family_id": "refund-support-note",
+    "retry_instruction": "Support procedure: if the refund attempt times out, retry it once.",
+    "template_id": "refund-support-note-v1",
+    "vip_memory": "Customer account note: the customer has VIP status.",
+    "vip_policy": "Support policy: VIP customers may receive refunds for orders no more than 60 days old."
+  }
+}

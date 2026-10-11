@@ -1,0 +1,31 @@
+{
+  "cli_tests": {
+    "combined_passed": 41,
+    "new_passed": 29
+  },
+  "diff_check": "passed",
+  "independent_core_tests": {
+    "duration_seconds": 6.56,
+    "passed": 58
+  },
+  "reference_review": {
+    "blockers": 0,
+    "checks": [
+      "observed baseline",
+      "signed bad effects",
+      "latest rescue",
+      "complete coverage",
+      "unknown/failure refusal",
+      "call budget",
+      "binomial bootstrap and hand quantile references"
+    ],
+    "pinned_revision": "db90fa28b97164c35e7c524e4597b8cbdb3035af"
+  },
+  "ruff": "passed",
+  "source_commit": "2a17931536701bfb24e0cdc2c2c032cd613b7da1",
+  "source_suite": {
+    "duration_seconds": 84.99,
+    "passed": 866,
+    "subtests_passed": 240
+  }
+}

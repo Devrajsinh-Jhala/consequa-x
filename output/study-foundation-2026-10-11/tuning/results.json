@@ -1,0 +1,284 @@
+{
+  "cases": [
+    "tuning.partial-refund",
+    "tuning.ordinary",
+    "tuning.missing-provenance",
+    "tuning.false-acknowledgement",
+    "tuning.timeout-before",
+    "tuning.timeout-after"
+  ],
+  "claim": "Adapter evaluation only; no attribution-method superiority or task generalization tested.",
+  "evaluation_kind": "scripted_smoke",
+  "initial_seed": 100,
+  "installed_model": null,
+  "max_attempts": 2,
+  "package_version": "0.1.0a1",
+  "policy": {
+    "policy": "visible-refund-fixture",
+    "provider": "scripted",
+    "version": "1"
+  },
+  "samples": [
+    {
+      "action_linked_consequence_satisfied": false,
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "case_id": "tuning.partial-refund",
+      "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / PARAMETER_MISMATCH / PARTIAL_EFFECT",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0000.json",
+      "explanation": "explanations/episode_0000.json",
+      "family_id": "refund-support-note",
+      "index": 0,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "tuning.partial-refund",
+      "seed": 100,
+      "split": "tuning",
+      "status": "completed",
+      "template_id": "refund-support-note-v1",
+      "trace": "traces/episode_0000.json",
+      "verified_outcome": "violated",
+      "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+    },
+    {
+      "action_linked_consequence_satisfied": true,
+      "action_selected": true,
+      "assessment_alignment": "consistent",
+      "case_id": "tuning.ordinary",
+      "diagnosis": "CONSISTENT_OUTCOME",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0001.json",
+      "explanation": "explanations/episode_0001.json",
+      "family_id": "refund-support-note",
+      "index": 1,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "tuning.ordinary",
+      "seed": 101,
+      "split": "tuning",
+      "status": "completed",
+      "template_id": "refund-support-note-v1",
+      "trace": "traces/episode_0001.json",
+      "verified_outcome": "satisfied",
+      "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+    },
+    {
+      "action_linked_consequence_satisfied": null,
+      "action_selected": true,
+      "assessment_alignment": "unassessable",
+      "case_id": "tuning.missing-provenance",
+      "diagnosis": "UNCONFIRMED_ORIGIN",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0002.json",
+      "explanation": "explanations/episode_0002.json",
+      "family_id": "refund-support-note",
+      "index": 2,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "tuning.missing-provenance",
+      "seed": 102,
+      "split": "tuning",
+      "status": "completed",
+      "template_id": "refund-support-note-v1",
+      "trace": "traces/episode_0002.json",
+      "verified_outcome": "satisfied",
+      "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+    },
+    {
+      "action_linked_consequence_satisfied": false,
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "case_id": "tuning.false-acknowledgement",
+      "diagnosis": "ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0003.json",
+      "explanation": "explanations/episode_0003.json",
+      "family_id": "refund-support-note",
+      "index": 3,
+      "policy_calls": 2,
+      "reported_assessment": "success",
+      "scenario": "tuning.false-acknowledgement",
+      "seed": 103,
+      "split": "tuning",
+      "status": "completed",
+      "template_id": "refund-support-note-v1",
+      "trace": "traces/episode_0003.json",
+      "verified_outcome": "violated",
+      "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+    },
+    {
+      "action_linked_consequence_satisfied": false,
+      "action_selected": true,
+      "assessment_alignment": "consistent",
+      "case_id": "tuning.timeout-before",
+      "diagnosis": "CONSEQUENCE_VIOLATION",
+      "effect_origin": "unknown",
+      "evaluator_truth": "evaluator_truth/episode_0004.json",
+      "explanation": "explanations/episode_0004.json",
+      "family_id": "refund-support-note",
+      "index": 4,
+      "policy_calls": 2,
+      "reported_assessment": "failure",
+      "scenario": "tuning.timeout-before",
+      "seed": 104,
+      "split": "tuning",
+      "status": "completed",
+      "template_id": "refund-support-note-v1",
+      "trace": "traces/episode_0004.json",
+      "verified_outcome": "violated",
+      "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+    },
+    {
+      "action_linked_consequence_satisfied": true,
+      "action_selected": true,
+      "assessment_alignment": "contradicted",
+      "case_id": "tuning.timeout-after",
+      "diagnosis": "BELIEF / RESPONSE DIVERGENCE",
+      "effect_origin": "confirmed",
+      "evaluator_truth": "evaluator_truth/episode_0005.json",
+      "explanation": "explanations/episode_0005.json",
+      "family_id": "refund-support-note",
+      "index": 5,
+      "policy_calls": 2,
+      "reported_assessment": "failure",
+      "scenario": "tuning.timeout-after",
+      "seed": 105,
+      "split": "tuning",
+      "status": "completed",
+      "template_id": "refund-support-note-v1",
+      "trace": "traces/episode_0005.json",
+      "verified_outcome": "satisfied",
+      "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+    }
+  ],
+  "samples_per_case": 1,
+  "study": {
+    "case_order": [
+      "tuning.partial-refund",
+      "tuning.ordinary",
+      "tuning.missing-provenance",
+      "tuning.false-acknowledgement",
+      "tuning.timeout-before",
+      "tuning.timeout-after"
+    ],
+    "manifest_sha256": "1f4950498761f46b75a336b6e901413eaadc3d16e45137e69e39f0294e4d4522",
+    "order_seed": 7,
+    "planned_schedule": [
+      {
+        "case_id": "tuning.partial-refund",
+        "family_id": "refund-support-note",
+        "index": 0,
+        "seed": 100,
+        "template_id": "refund-support-note-v1",
+        "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+      },
+      {
+        "case_id": "tuning.ordinary",
+        "family_id": "refund-support-note",
+        "index": 1,
+        "seed": 101,
+        "template_id": "refund-support-note-v1",
+        "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+      },
+      {
+        "case_id": "tuning.missing-provenance",
+        "family_id": "refund-support-note",
+        "index": 2,
+        "seed": 102,
+        "template_id": "refund-support-note-v1",
+        "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+      },
+      {
+        "case_id": "tuning.false-acknowledgement",
+        "family_id": "refund-support-note",
+        "index": 3,
+        "seed": 103,
+        "template_id": "refund-support-note-v1",
+        "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+      },
+      {
+        "case_id": "tuning.timeout-before",
+        "family_id": "refund-support-note",
+        "index": 4,
+        "seed": 104,
+        "template_id": "refund-support-note-v1",
+        "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+      },
+      {
+        "case_id": "tuning.timeout-after",
+        "family_id": "refund-support-note",
+        "index": 5,
+        "seed": 105,
+        "template_id": "refund-support-note-v1",
+        "wording_sha256": "902d7699500ff7834b0647c4dd2642c27dbd3b1044beb18533ba96324fefb35b"
+      }
+    ],
+    "schema_version": "refund-study-v1",
+    "split": "tuning",
+    "split_scope": "Declared template-family split, not a certification of prior exposure or held-out fault compositions.",
+    "study_id": "refund-family-candidates-v1"
+  },
+  "summary": {
+    "action_linked_consequence": {
+      "not_satisfied": 3,
+      "satisfied": 2,
+      "unknown": 1
+    },
+    "assessment_alignment": {
+      "consistent": 2,
+      "contradicted": 3,
+      "unassessable": 1
+    },
+    "assessment_metrics": {
+      "abstentions": 0,
+      "assessable_claim_coverage": {
+        "denominator": 6,
+        "numerator": 5,
+        "value": 0.8333333333333334
+      },
+      "assessable_claims": 5,
+      "claim_coverage": {
+        "denominator": 6,
+        "numerator": 6,
+        "value": 1.0
+      },
+      "completed_assessments": 6,
+      "consistent_claims": 2,
+      "contradicted_claims": 3,
+      "contradiction_rate": {
+        "denominator": 5,
+        "numerator": 3,
+        "value": 0.6
+      },
+      "definite_claims": 6,
+      "partial_assessments": 0,
+      "reported_assessment": {
+        "failure": 2,
+        "partial": 0,
+        "success": 4,
+        "unknown": 0
+      },
+      "unassessable_claims": 1
+    },
+    "attempted_samples": 6,
+    "budget_exhausted": false,
+    "completed_samples": 6,
+    "failed_samples": 0,
+    "known_outcome_samples": 6,
+    "max_calls": 30,
+    "not_started_samples": 0,
+    "origin": {
+      "confirmed": 3,
+      "other_actor": 0,
+      "unknown": 3
+    },
+    "planned_samples": 6,
+    "policy_calls": 12,
+    "verification": {
+      "satisfied": 3,
+      "unknown": 0,
+      "violated": 3
+    }
+  }
+}

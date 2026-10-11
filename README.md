@@ -26,6 +26,7 @@ The first [recorded local-model pilot](output/live-pilot-2026-10-10/README.md) c
 - [Decision contrastive replay](docs/decision-contrastive.md)
 - [Strong baseline reproduction plan](docs/car-reproduction-plan.md)
 - [Installed-package study and replay checks](output/study-foundation-2026-10-11/README.md)
+- [Decision contrastive controls and seeded fixture](output/contrastive-foundation-2026-10-11/README.md)
 - [Alpha validation report](output/build/README.md)
 
 Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.

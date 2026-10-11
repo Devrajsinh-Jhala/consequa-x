@@ -1,0 +1,507 @@
+{
+  "absolute_user_paths_absent": true,
+  "audit_passed": true,
+  "audited_at_utc": "2026-10-11T07:57:43.161496+00:00",
+  "estimator_calls": 0,
+  "mode": "Independent retained-byte read-only audit",
+  "model_or_policy_calls": 0,
+  "nested_manifests": [
+    {
+      "analytic_reference": null,
+      "artifacts_verified": 6,
+      "branch_status_counts": {
+        "completed": 0,
+        "failed": 1,
+        "not_started": 5
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": true,
+        "continuation": 2,
+        "factual": 3,
+        "max_calls": 5,
+        "total": 5
+      },
+      "estimate_and_locus_coverage_recomputed": 9,
+      "exact_coverage": true,
+      "explainer_recomputations": 1,
+      "independent_bootstrap_intervals_recomputed": 0,
+      "loci": [
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "3 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+          "status": "refused",
+          "target": "action"
+        },
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "3 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+          "status": "refused",
+          "target": "consequence"
+        },
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "3 factual decision positions lack complete estimates; a latest rescue locus cannot be declared.",
+          "status": "refused",
+          "target": "action_linked_consequence"
+        }
+      ],
+      "manifest_sha256": "996470aa54f4a838c40f0559a1fa9b15388446a6394174422ebe4f06c55c6098",
+      "path": "budget-limit",
+      "recomputed_estimates": [
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 0,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 0,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 0,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "action_linked_consequence"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 1,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 1,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 1,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "action_linked_consequence"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 2,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 2,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": null,
+          "confidence_interval": null,
+          "decision_index": 2,
+          "effect": null,
+          "significant_rescue": null,
+          "status": "refused",
+          "target": "action_linked_consequence"
+        }
+      ],
+      "saved_explanations_compared": 1,
+      "trace_roundtrips_and_schema_validations": 1,
+      "verifier_recomputations": 1
+    },
+    {
+      "analytic_reference": {
+        "analytic_truth_not_used_to_recompute_estimates": true,
+        "declared_rates_reviewed_against_mechanism": true,
+        "finite_seed_draws_reconciled_without_policy_calls": 48,
+        "population_latest_rescue_position": 1,
+        "scope": "Bernoulli idealization; no score against noisy estimates, calibration, or model claim."
+      },
+      "artifacts_verified": 53,
+      "branch_status_counts": {
+        "completed": 48,
+        "failed": 0,
+        "not_started": 0
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "continuation": 81,
+        "factual": 3,
+        "max_calls": 400,
+        "total": 84
+      },
+      "estimate_and_locus_coverage_recomputed": 9,
+      "exact_coverage": true,
+      "explainer_recomputations": 49,
+      "independent_bootstrap_intervals_recomputed": 9,
+      "loci": [
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "No position satisfies the declared negative effect and interval criterion.",
+          "status": "no_rescue",
+          "target": "action"
+        },
+        {
+          "decision_index": 1,
+          "event_id": "response_decision_1",
+          "reason": null,
+          "status": "identified",
+          "target": "consequence"
+        },
+        {
+          "decision_index": 1,
+          "event_id": "response_decision_1",
+          "reason": null,
+          "status": "identified",
+          "target": "action_linked_consequence"
+        }
+      ],
+      "manifest_sha256": "014f4f8048e873b94524e9a1e0309e7e0f561e68bafdc4805c4475e92545f499",
+      "path": "planted-retry",
+      "recomputed_estimates": [
+        {
+          "changed_bad_rate": 0.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 0,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": 0.375,
+          "confidence_interval": [
+            -0.875,
+            -0.375
+          ],
+          "decision_index": 0,
+          "effect": -0.625,
+          "significant_rescue": true,
+          "status": "estimated",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": 0.375,
+          "confidence_interval": [
+            -0.875,
+            -0.375
+          ],
+          "decision_index": 0,
+          "effect": -0.625,
+          "significant_rescue": true,
+          "status": "estimated",
+          "target": "action_linked_consequence"
+        },
+        {
+          "changed_bad_rate": 0.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 1,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": 0.6875,
+          "confidence_interval": [
+            -0.5625,
+            -0.125
+          ],
+          "decision_index": 1,
+          "effect": -0.3125,
+          "significant_rescue": true,
+          "status": "estimated",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": 0.6875,
+          "confidence_interval": [
+            -0.5625,
+            -0.125
+          ],
+          "decision_index": 1,
+          "effect": -0.3125,
+          "significant_rescue": true,
+          "status": "estimated",
+          "target": "action_linked_consequence"
+        },
+        {
+          "changed_bad_rate": 0.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 2,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 2,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 2,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action_linked_consequence"
+        }
+      ],
+      "saved_explanations_compared": 0,
+      "trace_roundtrips_and_schema_validations": 49,
+      "verifier_recomputations": 49
+    },
+    {
+      "analytic_reference": null,
+      "artifacts_verified": 24,
+      "branch_status_counts": {
+        "completed": 6,
+        "failed": 0,
+        "not_started": 0
+      },
+      "call_receipts_reconciled": true,
+      "calls": {
+        "budget_exhausted": false,
+        "continuation": 12,
+        "factual": 3,
+        "max_calls": 30,
+        "total": 15
+      },
+      "estimate_and_locus_coverage_recomputed": 9,
+      "exact_coverage": true,
+      "explainer_recomputations": 7,
+      "independent_bootstrap_intervals_recomputed": 9,
+      "loci": [
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "No position satisfies the declared negative effect and interval criterion.",
+          "status": "no_rescue",
+          "target": "action"
+        },
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "No position satisfies the declared negative effect and interval criterion.",
+          "status": "no_rescue",
+          "target": "consequence"
+        },
+        {
+          "decision_index": null,
+          "event_id": null,
+          "reason": "No position satisfies the declared negative effect and interval criterion.",
+          "status": "no_rescue",
+          "target": "action_linked_consequence"
+        }
+      ],
+      "manifest_sha256": "31f2460350c75d2be8bf3eb73590fac1d8886188bc2a9c504d9bdde337d3d0bf",
+      "path": "scripted-control",
+      "recomputed_estimates": [
+        {
+          "changed_bad_rate": 0.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 0,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 0,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 0,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action_linked_consequence"
+        },
+        {
+          "changed_bad_rate": 0.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 1,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 1,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 1,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action_linked_consequence"
+        },
+        {
+          "changed_bad_rate": 0.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 2,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 2,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "consequence"
+        },
+        {
+          "changed_bad_rate": 1.0,
+          "confidence_interval": [
+            0.0,
+            0.0
+          ],
+          "decision_index": 2,
+          "effect": 0.0,
+          "significant_rescue": false,
+          "status": "estimated",
+          "target": "action_linked_consequence"
+        }
+      ],
+      "saved_explanations_compared": 7,
+      "trace_roundtrips_and_schema_validations": 7,
+      "verifier_recomputations": 7
+    }
+  ],
+  "old_effect_estimate_overlays_absent": true,
+  "private_evaluator_keys_absent_from_traces_and_policy_requests": true,
+  "recipe_sha256": "ccd3e7756195b02e3ec3bfabfcf7ecf6a712a9c546f1e7ea0a039243576e5b57",
+  "retained_exports_modified": false,
+  "root_manifest": "Parent writes the final root manifest after this audit; nested export coverage audited here.",
+  "root_protocol_execution_check": {
+    "all_declared_source_revisions_match": true,
+    "exact_declared_commands_and_exit_codes_verified": true,
+    "files": [
+      {
+        "path": "protocol.json",
+        "sha256": "1f2a0acb02b72291eb983e4b35308298f3b3c51c704060eadd82f208bbdf4e0c"
+      },
+      {
+        "path": "execution.json",
+        "sha256": "73cf2052887cae6b7f92a90391586c3e29b33bb968fcd026c40374e93da7caa7"
+      },
+      {
+        "path": "package-validation.json",
+        "sha256": "49e347075c8b5b621d0200b9720bdd027e2d8adbf38c13202bd5d8a448dbfb4c"
+      },
+      {
+        "path": "source-validation.json",
+        "sha256": "8a54afb2bc779c1e094fae1bd887e009885f1afeb8e25792fbf34f7307ba8204"
+      },
+      {
+        "path": "reproduce_fixture.py",
+        "sha256": "ccd3e7756195b02e3ec3bfabfcf7ecf6a712a9c546f1e7ea0a039243576e5b57"
+      }
+    ],
+    "package_and_source_validation_receipts_match": true,
+    "timestamp_limit": "Recorded timestamps and reviewed write-before-call recipe are integrity evidence, not trusted timestamp authentication.",
+    "timestamp_order_consistent_with_predeclaration": true
+  },
+  "scope": "Synthetic and scripted integrity/localization examples only. No language model inference, statistical calibration, upstream numerical equivalence, or method superiority demonstrated.",
+  "source_commit": "2a17931536701bfb24e0cdc2c2c032cd613b7da1",
+  "source_revision_limit": "Source SHA is a caller declaration; hashes check retained bytes, not package authenticity.",
+  "strict_json_files_checked_before_audit": 88,
+  "total_bootstrap_intervals_recomputed": 18,
+  "total_estimate_coverage_records_recomputed": 27,
+  "total_retained_policy_calls": 104,
+  "total_trace_roundtrips": 57
+}

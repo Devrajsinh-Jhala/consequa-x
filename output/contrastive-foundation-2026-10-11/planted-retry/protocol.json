@@ -1,0 +1,23 @@
+{
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 0,
+  "confidence": 0.95,
+  "continuation_seed": 100,
+  "declared_at_utc": "2026-10-11T07:55:41.387780+00:00",
+  "factual_policy_seed": 0,
+  "max_attempts": 2,
+  "max_calls_shared": 400,
+  "model_calls": 0,
+  "package_version": "0.1.0a1",
+  "provider": "synthetic",
+  "recipe_sha256": "ccd3e7756195b02e3ec3bfabfcf7ecf6a712a9c546f1e7ea0a039243576e5b57",
+  "samples_per_decision": 16,
+  "scope": "Fixed synthetic mechanism; no redraw, tuning, or model inference.",
+  "source_commit": "2a17931536701bfb24e0cdc2c2c032cd613b7da1",
+  "targets": [
+    "action",
+    "consequence",
+    "action_linked_consequence"
+  ],
+  "world_seed": 0
+}

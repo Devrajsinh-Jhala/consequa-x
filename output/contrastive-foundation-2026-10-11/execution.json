@@ -1,0 +1,85 @@
+{
+  "runs": [
+    {
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "finished_at_utc": "2026-10-11T07:55:40.393906+00:00",
+      "name": "scripted-control",
+      "python_arguments": [
+        "-I",
+        "-m",
+        "consequa_x",
+        "decision-experiment",
+        "--provider",
+        "scripted",
+        "--case",
+        "unsafe_retry",
+        "--samples",
+        "2",
+        "--seed",
+        "100",
+        "--factual-seed",
+        "0",
+        "--max-calls",
+        "30",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--bootstrap-samples",
+        "200",
+        "--output",
+        "output/contrastive-foundation-2026-10-11/scripted-control"
+      ],
+      "started_at_utc": "2026-10-11T07:55:39.299825+00:00",
+      "wall_seconds": 1.094081
+    },
+    {
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "finished_at_utc": "2026-10-11T07:55:41.079967+00:00",
+      "name": "budget-limit",
+      "python_arguments": [
+        "-I",
+        "-m",
+        "consequa_x",
+        "decision-experiment",
+        "--provider",
+        "scripted",
+        "--case",
+        "unsafe_retry",
+        "--samples",
+        "2",
+        "--seed",
+        "100",
+        "--factual-seed",
+        "0",
+        "--max-calls",
+        "5",
+        "--targets",
+        "action,consequence,action_linked_consequence",
+        "--bootstrap-samples",
+        "200",
+        "--output",
+        "output/contrastive-foundation-2026-10-11/budget-limit"
+      ],
+      "started_at_utc": "2026-10-11T07:55:40.397930+00:00",
+      "wall_seconds": 0.682037
+    },
+    {
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "finished_at_utc": "2026-10-11T07:55:44.759458+00:00",
+      "name": "planted-retry",
+      "python_arguments": [
+        "-I",
+        "output/contrastive-foundation-2026-10-11/reproduce_fixture.py",
+        "--output",
+        "output/contrastive-foundation-2026-10-11/planted-retry",
+        "--source-commit",
+        "2a17931536701bfb24e0cdc2c2c032cd613b7da1"
+      ],
+      "started_at_utc": "2026-10-11T07:55:41.079967+00:00",
+      "wall_seconds": 3.679491
+    }
+  ],
+  "source_commit": "2a17931536701bfb24e0cdc2c2c032cd613b7da1"
+}

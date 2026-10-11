@@ -1,0 +1,29 @@
+{
+  "decision_roles": [
+    "initial selection",
+    "timeout retry/stop",
+    "terminal stop"
+  ],
+  "declared_before_sampling": true,
+  "intended_latest_population_rescue_position": 1,
+  "mechanism": "A timeout follows one committed refund. A non-idempotent retry commits a duplicate; stopping after the timeout preserves exactly one refund.",
+  "population_changed_bad_rates": {
+    "action": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "action_linked_consequence": [
+      0.5,
+      0.5,
+      1.0
+    ],
+    "consequence": [
+      0.5,
+      0.5,
+      1.0
+    ]
+  },
+  "population_retry_probability": 0.5,
+  "reference_limit": "Analytic Bernoulli idealization of a seeded pseudorandom coin; not a guarantee for the finite declared seed schedule. The observed factual seed is fixed and is not a population baseline estimate."
+}

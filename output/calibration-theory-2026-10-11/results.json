@@ -1,0 +1,996 @@
+{
+  "action_zero_control": {
+    "bad_probability": 0,
+    "contrastive_effects": [
+      0,
+      0
+    ],
+    "endpoint_difference": 0,
+    "false_nonzero_probability": 0,
+    "interval": [
+      0,
+      0
+    ],
+    "interval_coverage": 1,
+    "meaning": "Deterministic known selection target only; degenerate coverage does not validate stochastic intervals.",
+    "shapley_values": [
+      0,
+      0
+    ]
+  },
+  "artifact": "finite_conditional_refund_interval_theory",
+  "audit_passed": true,
+  "consequa_x_reference_source_revision": "9e2dcbb4190d0629cf06ac7485a83e762ad7d7a0",
+  "derivation": {
+    "coins": "A,B,C independently Bernoulli(q); newly evaluated coalitions use fresh draws",
+    "coverage_rule": "inclusive lower <= true parameter <= upper",
+    "endpoint_interval": "D plus/minus z * sqrt((s_empty^2+s_full^2)/E); s_full^2=0",
+    "endpoint_weight": "choose(E,k) * q^k * (1-q)^(E-k)",
+    "exactness": "All finite count cells and probability/moment arithmetic use exact fractions. Normal quantiles and boundary classification use floating-point arithmetic; nonzero boundaries exceed 1e-12 from truth.",
+    "pair_interval": "mean(X) plus/minus z * sqrt(sample_variance(X,ddof=1)/P)",
+    "pair_selection": "(B-A)/2",
+    "pair_stop": "-(B+C)/2",
+    "trinomial_weight": "P!/(a!b!c!) * p0^a * p1^b * p2^c, a+b+c=P"
+  },
+  "enumerator_sha256": "333edf4102cf88d59600fcdd68b25ee652b97ea1c9a7352d814107f5df68b5af",
+  "limits": [
+    "This enumerates the declared Consequa-X binary refund adaptation, not upstream CAR or a language model.",
+    "Independent Bernoulli draws are mathematical assumptions; requested seeds do not establish independence.",
+    "The factual stop is planted, so inference is conditional on its mechanism and capture.",
+    "No three-player invalid positional game, missing evidence, budget failure or interaction recovery is covered.",
+    "State and linked consequence targets share outcomes and are not independent observations.",
+    "The bootstrap expression is an upper bound, not enumeration of bootstrap Monte Carlo coverage.",
+    "An audited finite calculation does not establish live-model accuracy, superiority or publication readiness."
+  ],
+  "mechanism": {
+    "coalition_assumption": "all two-player positional coalitions valid; extra fresh terminal decisions are unheld",
+    "evidence_assumption": "complete timely readback with supported action provenance",
+    "factual_intervention": "timeout stop forced at a declared phase key",
+    "full_minus_empty": "-q",
+    "game": "v(S)=q if stop player 1 is unheld; v(S)=0 if player 1 is held",
+    "players": [
+      "deterministic refund selection",
+      "planted timeout stop"
+    ],
+    "population_shapley": [
+      "0",
+      "-q"
+    ],
+    "supported_targets": [
+      "consequence",
+      "action_linked_consequence"
+    ],
+    "world": "One non-idempotent refund commits before timeout; fresh retry commits a duplicate; stopping preserves one refund."
+  },
+  "model_calls": 0,
+  "production_code_imported": false,
+  "random_draws": 0,
+  "results": [
+    {
+      "empirical_percentile_bootstrap": {
+        "bound_is_exact_coverage": false,
+        "coverage_upper_bound": {
+          "decimal": 0.8146979811148158,
+          "denominator": 5000000000000000,
+          "numerator": 4073489905574079
+        },
+        "proof": "All-zero and all-one samples produce constant empirical bootstrap resamples. Their intervals exclude interior q, or q minus a constant factual label. Other samples may also miss truth.",
+        "samples": 16,
+        "wrong_constant_interval_probability": {
+          "decimal": 0.1853020188851842,
+          "denominator": 5000000000000000,
+          "numerator": 926510094425921
+        }
+      },
+      "independent_endpoint": {
+        "count_cells_enumerated": 17,
+        "degenerate_interval_probability": {
+          "decimal": 0.1853020188851842,
+          "denominator": 5000000000000000,
+          "numerator": 926510094425921
+        },
+        "enumerated_estimator_mean": {
+          "decimal": -0.1,
+          "denominator": 10,
+          "numerator": -1
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.005625,
+          "denominator": 1600,
+          "numerator": 9
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.09,
+          "denominator": 100,
+          "numerator": 9
+        },
+        "interval_coverage": {
+          "decimal": 0.8114012296741476,
+          "denominator": 2500000000000000,
+          "numerator": 2028503074185369
+        },
+        "interval_exclusion": {
+          "decimal": 0.1885987703258524,
+          "denominator": 2500000000000000,
+          "numerator": 471496925814631
+        },
+        "minimum_nonzero_boundary_distance": 0.0220653311280965,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": -0.1,
+          "denominator": 10,
+          "numerator": -1
+        }
+      },
+      "joint_pair_audit": {
+        "all_moment_identities_passed": true,
+        "each_pair_marginal_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "endpoint_difference_variance": {
+          "decimal": 0.005625,
+          "denominator": 1600,
+          "numerator": 9
+        },
+        "independent_discrepancy_variance": {
+          "decimal": 0.0084375,
+          "denominator": 3200,
+          "numerator": 27
+        },
+        "joint_bernoulli_configurations": 8,
+        "mean_coefficient_variance": {
+          "decimal": 0.0028125,
+          "denominator": 3200,
+          "numerator": 9
+        },
+        "pair_covariance": {
+          "decimal": -0.0225,
+          "denominator": 400,
+          "numerator": -9
+        },
+        "pair_sum_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "selection_mean": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "stop_mean": {
+          "decimal": -0.1,
+          "denominator": 10,
+          "numerator": -1
+        }
+      },
+      "protective_stop_coefficient": {
+        "count_cells_enumerated": 153,
+        "covered_degenerate_interval_probability": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "degenerate_interval_probability": {
+          "decimal": 0.03433683820413952,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1716841910206976007877221670529
+        },
+        "enumerated_estimator_mean": {
+          "decimal": -0.1,
+          "denominator": 10,
+          "numerator": -1
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.0028125,
+          "denominator": 3200,
+          "numerator": 9
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "exact_boundary_equality_probability": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "interval_coverage": {
+          "decimal": 0.8377753691943397,
+          "denominator": 25000000000000000000000000000000,
+          "numerator": 20944384229858492110508709478641
+        },
+        "interval_exclusion": {
+          "decimal": 0.16222463080566032,
+          "denominator": 25000000000000000000000000000000,
+          "numerator": 4055615770141507889491290521359
+        },
+        "minimum_nonzero_boundary_distance": 0.0030308599958688565,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": -0.1,
+          "denominator": 10,
+          "numerator": -1
+        },
+        "support": [
+          {
+            "decimal": -1.0,
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "decimal": -0.5,
+            "denominator": 2,
+            "numerator": -1
+          },
+          {
+            "decimal": 0.0,
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "support_probabilities": [
+          {
+            "decimal": 0.01,
+            "denominator": 100,
+            "numerator": 1
+          },
+          {
+            "decimal": 0.18,
+            "denominator": 50,
+            "numerator": 9
+          },
+          {
+            "decimal": 0.81,
+            "denominator": 100,
+            "numerator": 81
+          }
+        ],
+        "uncovered_degenerate_interval_probability": {
+          "decimal": 0.03433683820413952,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1716841910206976007877221670529
+        }
+      },
+      "retry_probability": {
+        "decimal": 0.1,
+        "denominator": 10,
+        "numerator": 1
+      },
+      "selection_coefficient": {
+        "count_cells_enumerated": 153,
+        "covered_degenerate_interval_probability": {
+          "decimal": 0.04178511850022702,
+          "denominator": 1525878906250000000000000000,
+          "numerator": 63759030914653054346432641
+        },
+        "degenerate_interval_probability": {
+          "decimal": 0.041785118500227064,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 2089255925011353137844093632129
+        },
+        "enumerated_estimator_mean": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.0028125,
+          "denominator": 3200,
+          "numerator": 9
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "exact_boundary_equality_probability": {
+          "decimal": 0.04178511850022702,
+          "denominator": 1525878906250000000000000000,
+          "numerator": 63759030914653054346432641
+        },
+        "interval_coverage": {
+          "decimal": 0.9692406337899633,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 48462031689498164519902027952267
+        },
+        "interval_exclusion": {
+          "decimal": 0.03075936621003671,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1537968310501835480097972047733
+        },
+        "minimum_nonzero_boundary_distance": 0.00019076253022171086,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "support": [
+          {
+            "decimal": -0.5,
+            "denominator": 2,
+            "numerator": -1
+          },
+          {
+            "decimal": 0.0,
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "decimal": 0.5,
+            "denominator": 2,
+            "numerator": 1
+          }
+        ],
+        "support_probabilities": [
+          {
+            "decimal": 0.09,
+            "denominator": 100,
+            "numerator": 9
+          },
+          {
+            "decimal": 0.82,
+            "denominator": 50,
+            "numerator": 41
+          },
+          {
+            "decimal": 0.09,
+            "denominator": 100,
+            "numerator": 9
+          }
+        ],
+        "uncovered_degenerate_interval_probability": {
+          "decimal": 3.706040377703682e-17,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1853020188851841
+        }
+      }
+    },
+    {
+      "empirical_percentile_bootstrap": {
+        "bound_is_exact_coverage": false,
+        "coverage_upper_bound": {
+          "decimal": 0.999969482421875,
+          "denominator": 32768,
+          "numerator": 32767
+        },
+        "proof": "All-zero and all-one samples produce constant empirical bootstrap resamples. Their intervals exclude interior q, or q minus a constant factual label. Other samples may also miss truth.",
+        "samples": 16,
+        "wrong_constant_interval_probability": {
+          "decimal": 3.0517578125e-05,
+          "denominator": 32768,
+          "numerator": 1
+        }
+      },
+      "independent_endpoint": {
+        "count_cells_enumerated": 17,
+        "degenerate_interval_probability": {
+          "decimal": 3.0517578125e-05,
+          "denominator": 32768,
+          "numerator": 1
+        },
+        "enumerated_estimator_mean": {
+          "decimal": -0.5,
+          "denominator": 2,
+          "numerator": -1
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.015625,
+          "denominator": 64,
+          "numerator": 1
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.25,
+          "denominator": 4,
+          "numerator": 1
+        },
+        "interval_coverage": {
+          "decimal": 0.923187255859375,
+          "denominator": 32768,
+          "numerator": 30251
+        },
+        "interval_exclusion": {
+          "decimal": 0.076812744140625,
+          "denominator": 32768,
+          "numerator": 2517
+        },
+        "minimum_nonzero_boundary_distance": 0.030869364855854675,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": -0.5,
+          "denominator": 2,
+          "numerator": -1
+        }
+      },
+      "joint_pair_audit": {
+        "all_moment_identities_passed": true,
+        "each_pair_marginal_variance": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "endpoint_difference_variance": {
+          "decimal": 0.015625,
+          "denominator": 64,
+          "numerator": 1
+        },
+        "independent_discrepancy_variance": {
+          "decimal": 0.0234375,
+          "denominator": 128,
+          "numerator": 3
+        },
+        "joint_bernoulli_configurations": 8,
+        "mean_coefficient_variance": {
+          "decimal": 0.0078125,
+          "denominator": 128,
+          "numerator": 1
+        },
+        "pair_covariance": {
+          "decimal": -0.0625,
+          "denominator": 16,
+          "numerator": -1
+        },
+        "pair_sum_variance": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "selection_mean": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "stop_mean": {
+          "decimal": -0.5,
+          "denominator": 2,
+          "numerator": -1
+        }
+      },
+      "protective_stop_coefficient": {
+        "count_cells_enumerated": 153,
+        "covered_degenerate_interval_probability": {
+          "decimal": 1.52587890625e-05,
+          "denominator": 65536,
+          "numerator": 1
+        },
+        "degenerate_interval_probability": {
+          "decimal": 1.5259254723787308e-05,
+          "denominator": 2147483648,
+          "numerator": 32769
+        },
+        "enumerated_estimator_mean": {
+          "decimal": -0.5,
+          "denominator": 2,
+          "numerator": -1
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.0078125,
+          "denominator": 128,
+          "numerator": 1
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "exact_boundary_equality_probability": {
+          "decimal": 1.52587890625e-05,
+          "denominator": 65536,
+          "numerator": 1
+        },
+        "interval_coverage": {
+          "decimal": 0.9263769439421594,
+          "denominator": 2147483648,
+          "numerator": 1989379339
+        },
+        "interval_exclusion": {
+          "decimal": 0.07362305605784059,
+          "denominator": 2147483648,
+          "numerator": 158104309
+        },
+        "minimum_nonzero_boundary_distance": 0.00019076253022171086,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": -0.5,
+          "denominator": 2,
+          "numerator": -1
+        },
+        "support": [
+          {
+            "decimal": -1.0,
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "decimal": -0.5,
+            "denominator": 2,
+            "numerator": -1
+          },
+          {
+            "decimal": 0.0,
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "support_probabilities": [
+          {
+            "decimal": 0.25,
+            "denominator": 4,
+            "numerator": 1
+          },
+          {
+            "decimal": 0.5,
+            "denominator": 2,
+            "numerator": 1
+          },
+          {
+            "decimal": 0.25,
+            "denominator": 4,
+            "numerator": 1
+          }
+        ],
+        "uncovered_degenerate_interval_probability": {
+          "decimal": 4.656612873077393e-10,
+          "denominator": 2147483648,
+          "numerator": 1
+        }
+      },
+      "retry_probability": {
+        "decimal": 0.5,
+        "denominator": 2,
+        "numerator": 1
+      },
+      "selection_coefficient": {
+        "count_cells_enumerated": 153,
+        "covered_degenerate_interval_probability": {
+          "decimal": 1.52587890625e-05,
+          "denominator": 65536,
+          "numerator": 1
+        },
+        "degenerate_interval_probability": {
+          "decimal": 1.5259254723787308e-05,
+          "denominator": 2147483648,
+          "numerator": 32769
+        },
+        "enumerated_estimator_mean": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.0078125,
+          "denominator": 128,
+          "numerator": 1
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.125,
+          "denominator": 8,
+          "numerator": 1
+        },
+        "exact_boundary_equality_probability": {
+          "decimal": 1.52587890625e-05,
+          "denominator": 65536,
+          "numerator": 1
+        },
+        "interval_coverage": {
+          "decimal": 0.9263769439421594,
+          "denominator": 2147483648,
+          "numerator": 1989379339
+        },
+        "interval_exclusion": {
+          "decimal": 0.07362305605784059,
+          "denominator": 2147483648,
+          "numerator": 158104309
+        },
+        "minimum_nonzero_boundary_distance": 0.00019076253022171086,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "support": [
+          {
+            "decimal": -0.5,
+            "denominator": 2,
+            "numerator": -1
+          },
+          {
+            "decimal": 0.0,
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "decimal": 0.5,
+            "denominator": 2,
+            "numerator": 1
+          }
+        ],
+        "support_probabilities": [
+          {
+            "decimal": 0.25,
+            "denominator": 4,
+            "numerator": 1
+          },
+          {
+            "decimal": 0.5,
+            "denominator": 2,
+            "numerator": 1
+          },
+          {
+            "decimal": 0.25,
+            "denominator": 4,
+            "numerator": 1
+          }
+        ],
+        "uncovered_degenerate_interval_probability": {
+          "decimal": 4.656612873077393e-10,
+          "denominator": 2147483648,
+          "numerator": 1
+        }
+      }
+    },
+    {
+      "empirical_percentile_bootstrap": {
+        "bound_is_exact_coverage": false,
+        "coverage_upper_bound": {
+          "decimal": 0.8146979811148158,
+          "denominator": 5000000000000000,
+          "numerator": 4073489905574079
+        },
+        "proof": "All-zero and all-one samples produce constant empirical bootstrap resamples. Their intervals exclude interior q, or q minus a constant factual label. Other samples may also miss truth.",
+        "samples": 16,
+        "wrong_constant_interval_probability": {
+          "decimal": 0.1853020188851842,
+          "denominator": 5000000000000000,
+          "numerator": 926510094425921
+        }
+      },
+      "independent_endpoint": {
+        "count_cells_enumerated": 17,
+        "degenerate_interval_probability": {
+          "decimal": 0.1853020188851842,
+          "denominator": 5000000000000000,
+          "numerator": 926510094425921
+        },
+        "enumerated_estimator_mean": {
+          "decimal": -0.9,
+          "denominator": 10,
+          "numerator": -9
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.005625,
+          "denominator": 1600,
+          "numerator": 9
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.09,
+          "denominator": 100,
+          "numerator": 9
+        },
+        "interval_coverage": {
+          "decimal": 0.8114012296741476,
+          "denominator": 2500000000000000,
+          "numerator": 2028503074185369
+        },
+        "interval_exclusion": {
+          "decimal": 0.1885987703258524,
+          "denominator": 2500000000000000,
+          "numerator": 471496925814631
+        },
+        "minimum_nonzero_boundary_distance": 0.0220653311280965,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": -0.9,
+          "denominator": 10,
+          "numerator": -9
+        }
+      },
+      "joint_pair_audit": {
+        "all_moment_identities_passed": true,
+        "each_pair_marginal_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "endpoint_difference_variance": {
+          "decimal": 0.005625,
+          "denominator": 1600,
+          "numerator": 9
+        },
+        "independent_discrepancy_variance": {
+          "decimal": 0.0084375,
+          "denominator": 3200,
+          "numerator": 27
+        },
+        "joint_bernoulli_configurations": 8,
+        "mean_coefficient_variance": {
+          "decimal": 0.0028125,
+          "denominator": 3200,
+          "numerator": 9
+        },
+        "pair_covariance": {
+          "decimal": -0.0225,
+          "denominator": 400,
+          "numerator": -9
+        },
+        "pair_sum_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "selection_mean": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "stop_mean": {
+          "decimal": -0.9,
+          "denominator": 10,
+          "numerator": -9
+        }
+      },
+      "protective_stop_coefficient": {
+        "count_cells_enumerated": 153,
+        "covered_degenerate_interval_probability": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "degenerate_interval_probability": {
+          "decimal": 0.03433683820413952,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1716841910206976007877221670529
+        },
+        "enumerated_estimator_mean": {
+          "decimal": -0.9,
+          "denominator": 10,
+          "numerator": -9
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.0028125,
+          "denominator": 3200,
+          "numerator": 9
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "exact_boundary_equality_probability": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "interval_coverage": {
+          "decimal": 0.8377753691943397,
+          "denominator": 25000000000000000000000000000000,
+          "numerator": 20944384229858492110508709478641
+        },
+        "interval_exclusion": {
+          "decimal": 0.16222463080566032,
+          "denominator": 25000000000000000000000000000000,
+          "numerator": 4055615770141507889491290521359
+        },
+        "minimum_nonzero_boundary_distance": 0.0030308599958689397,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": -0.9,
+          "denominator": 10,
+          "numerator": -9
+        },
+        "support": [
+          {
+            "decimal": -1.0,
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "decimal": -0.5,
+            "denominator": 2,
+            "numerator": -1
+          },
+          {
+            "decimal": 0.0,
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "support_probabilities": [
+          {
+            "decimal": 0.81,
+            "denominator": 100,
+            "numerator": 81
+          },
+          {
+            "decimal": 0.18,
+            "denominator": 50,
+            "numerator": 9
+          },
+          {
+            "decimal": 0.01,
+            "denominator": 100,
+            "numerator": 1
+          }
+        ],
+        "uncovered_degenerate_interval_probability": {
+          "decimal": 0.03433683820413952,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1716841910206976007877221670529
+        }
+      },
+      "retry_probability": {
+        "decimal": 0.9,
+        "denominator": 10,
+        "numerator": 9
+      },
+      "selection_coefficient": {
+        "count_cells_enumerated": 153,
+        "covered_degenerate_interval_probability": {
+          "decimal": 0.04178511850022702,
+          "denominator": 1525878906250000000000000000,
+          "numerator": 63759030914653054346432641
+        },
+        "degenerate_interval_probability": {
+          "decimal": 0.041785118500227064,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 2089255925011353137844093632129
+        },
+        "enumerated_estimator_mean": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "enumerated_estimator_variance": {
+          "decimal": 0.0028125,
+          "denominator": 3200,
+          "numerator": 9
+        },
+        "enumerated_expected_sample_variance": {
+          "decimal": 0.045,
+          "denominator": 200,
+          "numerator": 9
+        },
+        "exact_boundary_equality_probability": {
+          "decimal": 0.04178511850022702,
+          "denominator": 1525878906250000000000000000,
+          "numerator": 63759030914653054346432641
+        },
+        "interval_coverage": {
+          "decimal": 0.9692406337899633,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 48462031689498164519902027952267
+        },
+        "interval_exclusion": {
+          "decimal": 0.03075936621003671,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1537968310501835480097972047733
+        },
+        "minimum_nonzero_boundary_distance": 0.00019076253022171086,
+        "probability_and_moment_checks_passed": true,
+        "probability_mass": {
+          "decimal": 1.0,
+          "denominator": 1,
+          "numerator": 1
+        },
+        "reference": {
+          "decimal": 0.0,
+          "denominator": 1,
+          "numerator": 0
+        },
+        "support": [
+          {
+            "decimal": -0.5,
+            "denominator": 2,
+            "numerator": -1
+          },
+          {
+            "decimal": 0.0,
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "decimal": 0.5,
+            "denominator": 2,
+            "numerator": 1
+          }
+        ],
+        "support_probabilities": [
+          {
+            "decimal": 0.09,
+            "denominator": 100,
+            "numerator": 9
+          },
+          {
+            "decimal": 0.82,
+            "denominator": 50,
+            "numerator": 41
+          },
+          {
+            "decimal": 0.09,
+            "denominator": 100,
+            "numerator": 9
+          }
+        ],
+        "uncovered_degenerate_interval_probability": {
+          "decimal": 3.706040377703682e-17,
+          "denominator": 50000000000000000000000000000000,
+          "numerator": 1853020188851841
+        }
+      }
+    }
+  ],
+  "settings": {
+    "confidence": 0.95,
+    "contrastive_samples_per_position": 16,
+    "draws_per_coalition_occurrence": 1,
+    "endpoint_samples_per_coalition": 16,
+    "independent_inference_unit": "one averaged forward/reverse pair vector",
+    "interval_clipping": false,
+    "multiplicity_correction": false,
+    "normal_z": 1.9599639845400538,
+    "pairs": 16,
+    "variance_ddof": 1,
+    "walks_per_pair": 2
+  },
+  "version": 1
+}

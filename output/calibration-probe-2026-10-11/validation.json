@@ -1,0 +1,35 @@
+{
+  "candidate_sdist_sha256": "b74282a46ad36b6d11d8c69b2f5bc8855f94e0a81529c1fe7c0d750e0ee79933",
+  "candidate_source_modules_byte_verified": 29,
+  "candidate_wheel_sha256": "c7ea2687b29afe59a9bc0ee195a67cba0be66d6fb20614f14d31b69b0d72704a",
+  "clean_installed_wheel": {
+    "all_ten_strata_completed": true,
+    "dependency_check": "passed",
+    "offline_smoke_trials": 20,
+    "paired_factual_disagreements": 0
+  },
+  "evidence_audit": {
+    "full_traces_checked": 1569,
+    "passed": true
+  },
+  "finite_enumeration": "all exact probability and moment checks passed",
+  "github_actions": {
+    "automatic_triggers_removed": true,
+    "remaining_validation": "local only; no dispatch or re-enable authorized",
+    "state": "disabled_manually"
+  },
+  "lint": "all source, tests, retained auditors and finite enumeration passed",
+  "local_tests": {
+    "elapsed_seconds": 147.14,
+    "passed": 1146,
+    "subtests_passed": 240
+  },
+  "scope": "synthetic validation; no live model, registry publication or superiority claim",
+  "statistics_audit": {
+    "assertions": 7309606,
+    "passed": true
+  },
+  "study_source_revision": "9e2dcbb4190d0629cf06ac7485a83e762ad7d7a0",
+  "validated_at_utc": "2026-10-11T17:25:07.822869+00:00",
+  "wheel_and_source_distribution": "built successfully"
+}

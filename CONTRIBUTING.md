@@ -30,6 +30,11 @@ python -m build
 
 CI runs tests, lint, and package builds on Ubuntu and Windows with Python 3.11 and 3.12. A wheel installation check verifies that the bundled trace schema is available. CI does not publish packages to a registry.
 
+GitHub Actions is currently disabled because the account quota is exhausted.
+Automatic push and pull-request triggers have been removed; use the local
+checks above. The retained workflow is manual only and must not be re-enabled
+or dispatched without the maintainer's authorization.
+
 ## Where changes belong
 
 | Location | Purpose |

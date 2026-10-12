@@ -141,3 +141,8 @@ This probe can reveal weaknesses of the current intervals. It does not modify
 them after inspecting results. Interval redesign, interaction mechanisms,
 matched local-model comparisons and held-out task studies remain subsequent
 research work.
+
+The [retained 128-repetition run](../output/calibration-probe-2026-10-11/FINDINGS.md)
+and [independent finite calculation](../output/calibration-theory-2026-10-11/README.md)
+are available. Their undercoverage findings motivate the
+[separately planned interval comparison](interval-followup-plan.md).

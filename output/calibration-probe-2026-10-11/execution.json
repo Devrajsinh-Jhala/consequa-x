@@ -1,0 +1,30 @@
+{
+  "arguments": [
+    "calibrate-attribution",
+    "--replicates",
+    "128",
+    "--source-revision",
+    "9e2dcbb4190d0629cf06ac7485a83e762ad7d7a0",
+    "--output",
+    "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\calibration-probe-2026-10-11"
+  ],
+  "elapsed_seconds": 6684.0,
+  "execution": "isolated installed wheel",
+  "exit_code": 0,
+  "finished_at_utc": "2026-10-11T14:41:16.810571+00:00",
+  "module_sha256": {
+    "consequa_x/benchmark/calibration.py": "6fbfc6caf11042d0a7e62056cd6e47da8bf24495bb861054163ac6014e9a5ed9",
+    "consequa_x/benchmark/calibration_export.py": "1d2cceea2c18ce5bf64e5386aedda0e892479f61ac8296b6a738d8a59c12cab3",
+    "consequa_x/benchmark/calibration_mechanisms.py": "84debd9ad20b88398760ee7aa95be4afc38e4ccc835da4a52358a48e00205cb2",
+    "consequa_x/cli.py": "9473a0efe9afddbf923646e92d686c2593d647838778a3127a53d80ce4ed5ba1"
+  },
+  "package_version": "0.1.0a1",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.14",
+  "python_executable": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\calibration-wheel-env\\Scripts\\python.exe",
+  "selection": "all ten frozen mechanisms, 128 repetitions each; no filtering or redraws",
+  "source_revision": "9e2dcbb4190d0629cf06ac7485a83e762ad7d7a0",
+  "source_status_before_run": "clean frozen source",
+  "started_at_utc": "2026-10-11T12:49:52.803534+00:00",
+  "wheel_sha256": "14c87ce1fe9332eebdd891233f3c13029ac3f1045136989b29a74cf95dbafc8a"
+}

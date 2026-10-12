@@ -1,0 +1,465 @@
+{
+  "actual_policy_calls": {
+    "contrastive": 79910,
+    "factual": 5888,
+    "shapley": 203911,
+    "total": 289709
+  },
+  "all_planned_branch_receipts": 223232,
+  "analytic_bootstrap_coverage_ceilings": [
+    {
+      "coverage_ceiling": 0.8146979811148157,
+      "mechanism": "protective-stop-q10",
+      "reason": "All-zero or all-one Bernoulli samples produce a constant bootstrap interval that excludes interior probability truth.",
+      "retry_probability": 0.1,
+      "samples_per_position": 16,
+      "scope": "stochastic prefix positions 0 and 1; consequence and linked consequence"
+    },
+    {
+      "coverage_ceiling": 0.999969482421875,
+      "mechanism": "protective-stop-q50",
+      "reason": "All-zero or all-one Bernoulli samples produce a constant bootstrap interval that excludes interior probability truth.",
+      "retry_probability": 0.5,
+      "samples_per_position": 16,
+      "scope": "stochastic prefix positions 0 and 1; consequence and linked consequence"
+    },
+    {
+      "coverage_ceiling": 0.8146979811148157,
+      "mechanism": "protective-stop-q90",
+      "reason": "All-zero or all-one Bernoulli samples produce a constant bootstrap interval that excludes interior probability truth.",
+      "retry_probability": 0.9,
+      "samples_per_position": 16,
+      "scope": "stochastic prefix positions 0 and 1; consequence and linked consequence"
+    },
+    {
+      "coverage_ceiling": 0.8146979811148157,
+      "mechanism": "retry-pivot-q10",
+      "reason": "All-zero or all-one Bernoulli samples produce a constant bootstrap interval that excludes interior probability truth.",
+      "retry_probability": 0.1,
+      "samples_per_position": 16,
+      "scope": "stochastic prefix positions 0 and 1; consequence and linked consequence"
+    },
+    {
+      "coverage_ceiling": 0.999969482421875,
+      "mechanism": "retry-pivot-q50",
+      "reason": "All-zero or all-one Bernoulli samples produce a constant bootstrap interval that excludes interior probability truth.",
+      "retry_probability": 0.5,
+      "samples_per_position": 16,
+      "scope": "stochastic prefix positions 0 and 1; consequence and linked consequence"
+    },
+    {
+      "coverage_ceiling": 0.8146979811148157,
+      "mechanism": "retry-pivot-q90",
+      "reason": "All-zero or all-one Bernoulli samples produce a constant bootstrap interval that excludes interior probability truth.",
+      "retry_probability": 0.9,
+      "samples_per_position": 16,
+      "scope": "stochastic prefix positions 0 and 1; consequence and linked consequence"
+    }
+  ],
+  "analytic_normal_interval_behavior": [
+    {
+      "available": true,
+      "confidence": 0.95,
+      "endpoint_samples": 16,
+      "independent_endpoint_interval_coverage": 0.811401229674148,
+      "irrelevant_selection_false_nonzero_probability": 0.030759366210037165,
+      "meaning": "exact finite multinomial/binomial enumeration under ideal independent Bernoulli draws; no observed outcomes used",
+      "mechanism": "protective-stop-q10",
+      "pairs": 16,
+      "protective_stop_coefficient_interval_coverage": 0.8377753691943407,
+      "retry_probability": 0.1,
+      "samples_per_coalition": 1
+    },
+    {
+      "available": true,
+      "confidence": 0.95,
+      "endpoint_samples": 16,
+      "independent_endpoint_interval_coverage": 0.923187255859375,
+      "irrelevant_selection_false_nonzero_probability": 0.07362305605784059,
+      "meaning": "exact finite multinomial/binomial enumeration under ideal independent Bernoulli draws; no observed outcomes used",
+      "mechanism": "protective-stop-q50",
+      "pairs": 16,
+      "protective_stop_coefficient_interval_coverage": 0.9263769439421594,
+      "retry_probability": 0.5,
+      "samples_per_coalition": 1
+    },
+    {
+      "available": true,
+      "confidence": 0.95,
+      "endpoint_samples": 16,
+      "independent_endpoint_interval_coverage": 0.8114012296741475,
+      "irrelevant_selection_false_nonzero_probability": 0.030759366210036276,
+      "meaning": "exact finite multinomial/binomial enumeration under ideal independent Bernoulli draws; no observed outcomes used",
+      "mechanism": "protective-stop-q90",
+      "pairs": 16,
+      "protective_stop_coefficient_interval_coverage": 0.8377753691943398,
+      "retry_probability": 0.9,
+      "samples_per_coalition": 1
+    }
+  ],
+  "assertions": 7309606,
+  "audit_passed": true,
+  "audited_at_utc": "2026-10-11T17:12:02.151598+00:00",
+  "auditor": "independent standard-library numerical and mechanism audit",
+  "auditor_script_sha256": "4c16ca4798de5eff500a4f4b63acd2b4c470f507b10d5ae83cb089b3c09c6842",
+  "checks": [
+    "independently derived analytic refund truth and coalition availability",
+    "all declared trial, phase and inference seed ranges",
+    "paired factual captures and actual call budgets",
+    "all branch outcomes from reached decision lengths and mechanism evidence rules",
+    "contrastive bad rates, bootstrap intervals, refusals and latest nominal rescue loci",
+    "Shapley forward/reverse walk marginals, pair values, sample variance and normal intervals",
+    "independent endpoint estimates, normal intervals and descriptive discrepancy",
+    "every score/refusal/eligibility denominator and Wilson interval",
+    "bias, RMSE, Monte Carlo uncertainty, zero-width and null-flag rates",
+    "conditional and marginal positional structural availability"
+  ],
+  "elapsed_seconds": 154.88999999999942,
+  "limits": [
+    "Audit confirms exported calculations, not nominal coverage or true RNG independence.",
+    "Full public traces are retained for predeclared replicate 0; other repetitions retain compact receipts.",
+    "Refund policy uses a declared factual intervention; these are conditional synthetic mechanisms.",
+    "State and linked targets share outcomes and cannot count as independent samples.",
+    "Undefined retry coalition games have no fabricated Shapley population values.",
+    "Synthetic interval behavior cannot establish model accuracy, interaction recovery or superiority."
+  ],
+  "manifest_artifacts_checked": 34,
+  "model_calls": 0,
+  "production_analytic_reference_imported": false,
+  "production_analyzer_imported": false,
+  "redraws": 0,
+  "scientific_findings": [
+    {
+      "bias": -0.0033203125000000056,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.7020157030455345,
+          0.8440947590506169
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 100,
+        "rate": 0.78125
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "protective-stop-q10",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.07032985896829312,
+      "target": "consequence",
+      "truth": 0.1
+    },
+    {
+      "bias": 0.003662109375,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.9448190233201829,
+          0.9957045502898559
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 126,
+        "rate": 0.984375
+      },
+      "false_nonzero_flags": 2,
+      "mechanism": "protective-stop-q10",
+      "method": "shapley",
+      "position": 0,
+      "rmse": 0.05145289012624801,
+      "target": "consequence",
+      "truth": 0.0
+    },
+    {
+      "bias": 0.0011230468750000056,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.7621819239629298,
+          0.8901166835408066
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 107,
+        "rate": 0.8359375
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "protective-stop-q10",
+      "method": "shapley",
+      "position": 1,
+      "rmse": 0.05267792117107745,
+      "target": "consequence",
+      "truth": -0.1
+    },
+    {
+      "bias": -0.02294921875,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.9015024775490568,
+          0.9783421558280763
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 122,
+        "rate": 0.953125
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "protective-stop-q50",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.12536567606157198,
+      "target": "consequence",
+      "truth": 0.5
+    },
+    {
+      "bias": 0.00390625,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.8914150997002529,
+          0.9732597986186536
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 121,
+        "rate": 0.9453125
+      },
+      "false_nonzero_flags": 7,
+      "mechanism": "protective-stop-q50",
+      "method": "shapley",
+      "position": 0,
+      "rmse": 0.09060479300580626,
+      "target": "consequence",
+      "truth": 0.0
+    },
+    {
+      "bias": -0.0009765625,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.8914150997002529,
+          0.9732597986186536
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 121,
+        "rate": 0.9453125
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "protective-stop-q50",
+      "method": "shapley",
+      "position": 1,
+      "rmse": 0.08734640537108554,
+      "target": "consequence",
+      "truth": -0.5
+    },
+    {
+      "bias": -0.004980468750000022,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.7275592800992087,
+          0.864060387171622
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 103,
+        "rate": 0.8046875
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "protective-stop-q90",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.07668198584494927,
+      "target": "consequence",
+      "truth": 0.9
+    },
+    {
+      "bias": -0.00244140625,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.9224023687386392,
+          0.9877817347549466
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 124,
+        "rate": 0.96875
+      },
+      "false_nonzero_flags": 4,
+      "mechanism": "protective-stop-q90",
+      "method": "shapley",
+      "position": 0,
+      "rmse": 0.05700984187236884,
+      "target": "consequence",
+      "truth": 0.0
+    },
+    {
+      "bias": 0.004003906250000022,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.7275592800992087,
+          0.864060387171622
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 103,
+        "rate": 0.8046875
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "protective-stop-q90",
+      "method": "shapley",
+      "position": 1,
+      "rmse": 0.05861457963094592,
+      "target": "consequence",
+      "truth": -0.9
+    },
+    {
+      "bias": -0.015039062499999978,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.6435923144931467,
+          0.7963300021954197
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 93,
+        "rate": 0.7265625
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "retry-pivot-q10",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.07305418579725599,
+      "target": "consequence",
+      "truth": -0.9
+    },
+    {
+      "bias": 0.005859375,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.9333562549485678,
+          0.9919975836032445
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 125,
+        "rate": 0.9765625
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "retry-pivot-q50",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.1197633571621554,
+      "target": "consequence",
+      "truth": -0.5
+    },
+    {
+      "bias": 0.006738281249999978,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.7020157030455345,
+          0.8440947590506169
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 100,
+        "rate": 0.78125
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "retry-pivot-q90",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.07400874895493775,
+      "target": "consequence",
+      "truth": -0.09999999999999998
+    },
+    {
+      "bias": 0.0,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "false_nonzero_flags": 0,
+      "mechanism": "idempotent-stop-q50",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.0,
+      "target": "consequence",
+      "truth": 0.0
+    },
+    {
+      "bias": -0.013671875,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": [
+          0.9224023687386392,
+          0.9877817347549466
+        ],
+        "denominator": 128,
+        "interval_method": "Wilson score",
+        "numerator": 124,
+        "rate": 0.96875
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "unknown-provenance-stop-q50",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": 0.1307281291459493,
+      "target": "consequence",
+      "truth": 0.5
+    },
+    {
+      "bias": null,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": null,
+        "denominator": 0,
+        "interval_method": "Wilson score",
+        "numerator": 0,
+        "rate": null
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "lagged-readback-stop-q50",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": null,
+      "target": "consequence",
+      "truth": null
+    },
+    {
+      "bias": null,
+      "coverage": {
+        "confidence": 0.95,
+        "confidence_interval": null,
+        "denominator": 0,
+        "interval_method": "Wilson score",
+        "numerator": 0,
+        "rate": null
+      },
+      "false_nonzero_flags": null,
+      "mechanism": "budget-stop-q50",
+      "method": "contrastive",
+      "position": 1,
+      "rmse": null,
+      "target": "consequence",
+      "truth": 0.5
+    }
+  ],
+  "source_revision": "9e2dcbb4190d0629cf06ac7485a83e762ad7d7a0",
+  "trial_count": 1280
+}

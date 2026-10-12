@@ -1,0 +1,48 @@
+{
+  "actual_policy_calls": {
+    "contrastive": 79910,
+    "factual": 5888,
+    "shapley": 203911,
+    "total": 289709
+  },
+  "audit_passed": true,
+  "counts": {
+    "contrastive_estimates": 8832,
+    "endpoint_checks": 3840,
+    "factual_captures": 2560,
+    "full_evidence_strata": 10,
+    "full_partial_receipts": 37,
+    "independent_bootstrap_intervals": 20,
+    "independent_target_labels": 596070,
+    "manifest_artifacts": 34,
+    "paired_factual_matches": 1280,
+    "planned_branches": 223232,
+    "recomputed_explanations": 1569,
+    "recomputed_verifications": 1569,
+    "schema_strict_roundtrip_traces": 1569,
+    "separate_gold_records": 1569,
+    "shapley_estimates": 8832,
+    "summary_endpoint_rows": 30,
+    "summary_estimate_rows": 138,
+    "summary_locus_rows": 30,
+    "trials": 1280
+  },
+  "independent_checks": [
+    "complete globally disjoint factual, continuation, permutation and bootstrap schedule",
+    "all compact phase-key coin outcomes, typed targets and unreachable held tails",
+    "paired factual equality, reached receipt identities, zero held calls and budget sums",
+    "all contrastive points/refusals/loci; representative bootstrap intervals plus all degenerate intervals",
+    "all pair-level Shapley values, nominal intervals and independent endpoints",
+    "population reference eligibility, bias, RMSE, MCSE, coverage and Wilson denominators",
+    "all replicate-0 schemas, strict trace roundtrips, verifier and explanation recomputation",
+    "separate evaluator truth; every attempted partial branch retained without invented trace",
+    "completed exporter byte manifest and deterministic gzip headers"
+  ],
+  "limitations": [
+    "Nondegenerate contrastive bootstrap intervals are independently recomputed for preselected replicate 0 only.",
+    "Strict and verifier checks reuse public production record/evidence validators, not analytic or scoring helpers.",
+    "Byte hashes identify retained bytes, not authenticity or population generalization."
+  ],
+  "scope": "independent saved-evidence audit; no inference or redraw",
+  "source_revision": "9e2dcbb4190d0629cf06ac7485a83e762ad7d7a0"
+}

@@ -24,6 +24,7 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - Independent CAR-style [decision contrastive replay](decision-contrastive.md) with one observed factual baseline, explicit bootstrap limits, and complete-coverage locus/refusal receipts.
 - Conservative [positional coalition and Shapley replay](decision-shapley.md), with fresh antithetic walks, signed pair estimates, independent endpoint diagnostics, and unavailable-coalition refusal.
 - An offline [attribution calibration probe](attribution-calibration.md) with predeclared synthetic mechanisms, separate analytic references, repeated error/coverage scoring, and complete refusal denominators.
+- An audited [1,280-trial calibration run](../output/calibration-probe-2026-10-11/FINDINGS.md) and [finite interval enumeration](../output/calibration-theory-2026-10-11/README.md). Both expose uncertainty limitations; a [separate interval comparison](interval-followup-plan.md) is the next step before calibrated-coverage claims.
 
 ## Next research milestone
 

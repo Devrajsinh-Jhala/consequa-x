@@ -30,6 +30,11 @@ python -m build
 
 CI runs tests, lint, and package builds on Ubuntu and Windows with Python 3.11 and 3.12. A wheel installation check verifies that the bundled trace schema is available. CI does not publish packages to a registry.
 
+GitHub Actions is currently disabled because the account quota is exhausted.
+Automatic push and pull-request triggers have been removed; use the local
+checks above. The retained workflow is manual only and must not be re-enabled
+or dispatched without the maintainer's authorization.
+
 ## Where changes belong
 
 | Location | Purpose |
@@ -68,6 +73,13 @@ Use synthetic or appropriately shareable examples in issues and fixtures. Do not
 Useful contributions include related-work corrections, stronger baselines, additional LLM policy adapters, held-out task designs, independent outcome-verification adapters, and reproducible evaluations. Start with the [policy evaluation guide](docs/policy-evaluation.md) and [proposed study protocol](docs/study-plan.md). An issue should state the research question, primary sources, proposed comparison, and evidence needed to support the claim.
 
 For experiments, report the model/provider and version where applicable, task templates and splits, seeds, interventions, verifier and origin assumptions, sample size, uncertainty, abstention/error coverage, and budget. Compare methods with equivalent evidence and resources. Distinguish simulator fixture results from actual model results, and distinguish a framework improvement from a methodological novelty claim.
+
+The [attribution calibration guide](docs/attribution-calibration.md) describes
+the offline repeated-mechanism command and its compressed evidence exports.
+Preserve the predeclared protocol and all refused trials when extending it.
+Keep analytic reference labels separate from the production outcome adapter;
+do not redesign intervals after viewing a retained study and score the same
+study as an independent validation.
 
 The research brief is a proposal. Its claims should be checked against the literature and results before appearing as findings in a paper.
 

@@ -193,10 +193,11 @@ def export_refund_interactions(output, *, source_revision, seed=4_000_000, mecha
         "A positive invalid, unknown, failed or unstarted mixture weight refuses the numerical vector. Budget controls retain the reference law while refusing incomplete enumerations. Zero-weight components remain in the evidence but do not affect that law.", "",
         "Run the independent auditor in `scripts/audit_refund_interactions.py` against this directory. Permutation-sampler accuracy, live-model studies, context/fault attribution and cross-domain recovery require separate experiments."]
     (root / "README.md").write_text("\n".join(text) + "\n", encoding="utf-8", newline="\n")
-    _write(root / "manifest.json", {"completed": True, "files": {
-        path.relative_to(root).as_posix(): {"sha256": sha256(path.read_bytes()).hexdigest(),
-                                         "bytes": path.stat().st_size}
-        for path in sorted(root.rglob("*")) if path.is_file() and path.name != "manifest.json"}})
+    _write(root / "manifest.json", {"package_version": __version__,
+        "completed": True, "status": "completed", "artifacts": [
+            {"path": path.relative_to(root).as_posix(),
+             "sha256": sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size}
+            for path in sorted(root.rglob("*")) if path.is_file() and path != root / "manifest.json"]})
     return summary
 
 

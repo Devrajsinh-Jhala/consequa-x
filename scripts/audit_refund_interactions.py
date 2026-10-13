@@ -77,26 +77,49 @@ def audit(root, expected_source=None):
             return [_decode(line) for line in stream]
 
     manifest = _decode((root / "manifest.json").read_text(encoding="utf-8"))
-    check(manifest["completed"] is True, "completion manifest")
-    check(type(manifest["files"]) is dict, "manifest file object")
+    check(type(manifest) is dict, "manifest object")
+    check(("artifacts" in manifest) != ("files" in manifest), "exactly one manifest inventory format")
+    if "artifacts" in manifest:
+        check(manifest.get("status") == "completed", "completion manifest")
+        if "completed" in manifest:
+            check(manifest["completed"] is True, "completion manifest Boolean")
+        check(type(manifest["artifacts"]) is list and bool(manifest["artifacts"]),
+              "manifest nonempty artifact list")
+        entries = []
+        for item in manifest["artifacts"]:
+            check(type(item) is dict and set(item) == {"path", "bytes", "sha256"},
+                  "manifest exact artifact entry fields")
+            entries.append((item["path"], {"bytes": item["bytes"], "sha256": item["sha256"]}))
+    else:
+        check(manifest.get("completed") is True, "completion manifest")
+        if "status" in manifest:
+            check(manifest["status"] == "completed", "completion manifest status")
+        check(type(manifest["files"]) is dict and bool(manifest["files"]), "manifest nonempty file object")
+        entries = list(manifest["files"].items())
     inventory = {p.relative_to(root).as_posix() for p in root.rglob("*")
                  if p.is_file() and p != root/"manifest.json"}
-    resolved = set()
-    for name, item in manifest["files"].items():
+    resolved, names = set(), set()
+    for name, item in entries:
+        check(type(name) is str, "manifest path string")
         canonical = PurePosixPath(name)
         check(bool(name) and not canonical.is_absolute() and canonical.as_posix() == name
               and all(part not in ("", ".", "..") and ":" not in part and "\\" not in part
                       for part in name.split("/")), "manifest safe canonical relative path")
         path = (root/name).resolve()
         check(path.is_relative_to(root) and path != root/"manifest.json", "manifest contained path")
-        check(path not in resolved, "manifest unique resolved path")
+        check(name not in names and path not in resolved, "manifest unique resolved path")
+        names.add(name)
         resolved.add(path)
-        check(type(item) is dict and type(item.get("bytes")) is int and item["bytes"] >= 0,
+        check(type(item) is dict and set(item) == {"bytes", "sha256"}, "manifest exact file entry fields")
+        check(type(item["bytes"]) is int and item["bytes"] >= 0,
               "manifest nonnegative integer byte size")
+        check(type(item["sha256"]) is str and len(item["sha256"]) == 64
+              and all(character in "0123456789abcdef" for character in item["sha256"]),
+              "manifest SHA256 lowercase hexadecimal string")
         data = path.read_bytes()
         check(len(data) == item["bytes"], "manifest artifact byte size: " + name)
         check(sha256(data).hexdigest() == item["sha256"], "manifest artifact hash: " + name)
-    check(inventory == set(manifest["files"]), "manifest exhaustive inventory")
+    check(inventory == names, "manifest exhaustive inventory")
     protocol = _decode((root / "protocol.json").read_text(encoding="utf-8"))
     summary = _decode((root / "summary.json").read_text(encoding="utf-8"))
     check(type(protocol["source_revision"]) is str and bool(protocol["source_revision"].strip()),
@@ -365,7 +388,7 @@ def audit(root, expected_source=None):
             "source_revision": protocol["source_revision"],
             "audited_at_utc": datetime.now(timezone.utc).isoformat(),
             "auditor_script_sha256": sha256(Path(__file__).read_bytes()).hexdigest(),
-            "manifest_files_checked": len(manifest["files"]),
+            "manifest_files_checked": len(entries),
             "manifest_sha256": sha256((root/"manifest.json").read_bytes()).hexdigest(),
             "auditor": "stdlib independent raw readback, costs, mixture and six-permutation calculation"}
 

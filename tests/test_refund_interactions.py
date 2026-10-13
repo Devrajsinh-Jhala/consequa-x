@@ -6,6 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import random
+import shutil
 
 import pytest
 from jsonschema.validators import validator_for
@@ -86,6 +87,9 @@ def test_frozen_export_all_evidence_separate_gold_and_independent_audit(tmp_path
     assert result["additional_reference_policy_calls"] == 0
     audited = _audit(tmp_path)
     assert audited["passed"] and audited["planned_branches"] == 512
+    manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["status"] == "completed" and manifest["completed"] is True
+    assert "files" not in manifest and len(manifest["artifacts"]) == 6
     schema = json.loads((tmp_path / "trace-schema.json").read_text(encoding="utf-8"))
     validator = validator_for(schema)(schema)
     with gzip.open(tmp_path / "evidence.jsonl.gz", "rt", encoding="utf-8") as stream:
@@ -177,3 +181,118 @@ def test_seeded_public_choices_match_declared_rng_and_do_not_read_hidden_fields(
 def test_invalid_mechanism(kwargs):
     with pytest.raises(ValueError):
         RefundInteractionMechanism("invalid", **kwargs)
+
+
+@pytest.fixture(scope="module")
+def manifest_artifact(tmp_path_factory):
+    root = tmp_path_factory.mktemp("refund-manifest-source")
+    export_refund_interactions(root, source_revision="manifest-source", mechanisms=("refund-p50-q50",))
+    return root
+
+
+@pytest.mark.parametrize("kind", ("canonical", "canonical-status-only", "legacy", "legacy-with-status", "preserved-envelope"))
+def test_auditor_accepts_unambiguous_canonical_and_legacy_manifests(tmp_path, manifest_artifact, kind):
+    from hashlib import sha256
+
+    root = tmp_path / "artifact"
+    shutil.copytree(manifest_artifact, root)
+    path = root / "manifest.json"
+    canonical = json.loads(path.read_text(encoding="utf-8"))
+    legacy = {"completed": True, "files": {
+        item["path"]: {key: item[key] for key in ("bytes", "sha256")}
+        for item in canonical["artifacts"]}}
+    if kind == "canonical":
+        manifest = canonical
+    elif kind == "canonical-status-only":
+        manifest = {"status": "completed", "artifacts": canonical["artifacts"]}
+    elif kind == "legacy":
+        manifest = legacy
+    elif kind == "legacy-with-status":
+        manifest = {**legacy, "status": "completed"}
+    else:
+        backup = root / "export-manifest.json"
+        backup.write_text(json.dumps(legacy), encoding="utf-8")
+        canonical["artifacts"].append({"path": backup.name, "bytes": backup.stat().st_size,
+            "sha256": sha256(backup.read_bytes()).hexdigest()})
+        manifest = canonical
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+    result = _audit(root)
+    assert result["passed"] and result["actual_policy_calls"] == 98
+    assert result["manifest_files_checked"] == (7 if kind == "preserved-envelope" else 6)
+
+
+@pytest.mark.parametrize("mutation", (
+    "both-formats", "neither-format", "duplicate-path", "duplicate-resolved-path", "unsafe-path",
+    "path-nonstr", "extra-entry-field", "missing-entry-field", "artifacts-not-list", "empty-artifacts",
+    "files-not-dict", "legacy-extra-entry-field", "boolean-bytes", "negative-bytes", "wrong-bytes",
+    "nonstring-hash", "uppercase-hash", "wrong-hash", "missing-artifact", "extra-file", "missing-status",
+    "incomplete-status", "false-completed", "integer-completed", "legacy-incomplete-status", "legacy-incomplete",
+    "duplicate-json-key",
+))
+def test_manifest_validation_rejects_ambiguous_unsafe_or_incomplete_inventory(tmp_path, manifest_artifact, mutation):
+    root = tmp_path / "artifact"
+    shutil.copytree(manifest_artifact, root)
+    path = root / "manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    items = manifest["artifacts"]
+    if mutation in ("files-not-dict", "legacy-extra-entry-field", "legacy-incomplete-status", "legacy-incomplete"):
+        manifest = {"completed": True, "files": {
+            item["path"]: {key: item[key] for key in ("bytes", "sha256")} for item in items}}
+    if mutation == "both-formats":
+        manifest["files"] = {}
+    elif mutation == "neither-format":
+        manifest.pop("artifacts")
+    elif mutation == "duplicate-path":
+        items.append(dict(items[0]))
+    elif mutation == "duplicate-resolved-path":
+        items.append({**items[0], "path": items[0]["path"].upper()})
+    elif mutation == "unsafe-path":
+        items[0]["path"] = "../README.md"
+    elif mutation == "path-nonstr":
+        items[0]["path"] = 1
+    elif mutation == "extra-entry-field":
+        items[0]["extra"] = True
+    elif mutation == "missing-entry-field":
+        items[0].pop("bytes")
+    elif mutation == "artifacts-not-list":
+        manifest["artifacts"] = {}
+    elif mutation == "empty-artifacts":
+        manifest["artifacts"] = []
+    elif mutation == "files-not-dict":
+        manifest["files"] = []
+    elif mutation == "legacy-extra-entry-field":
+        next(iter(manifest["files"].values()))["extra"] = True
+    elif mutation == "boolean-bytes":
+        items[0]["bytes"] = True
+    elif mutation == "negative-bytes":
+        items[0]["bytes"] = -1
+    elif mutation == "wrong-bytes":
+        items[0]["bytes"] += 1
+    elif mutation == "nonstring-hash":
+        items[0]["sha256"] = 1
+    elif mutation == "uppercase-hash":
+        items[0]["sha256"] = items[0]["sha256"].upper()
+    elif mutation == "wrong-hash":
+        items[0]["sha256"] = "0" * 64
+    elif mutation == "missing-artifact":
+        items.pop()
+    elif mutation == "extra-file":
+        (root / "extra.txt").write_text("unlisted", encoding="utf-8")
+    elif mutation == "missing-status":
+        manifest.pop("status")
+    elif mutation == "incomplete-status":
+        manifest["status"] = "partial"
+    elif mutation == "false-completed":
+        manifest["completed"] = False
+    elif mutation == "integer-completed":
+        manifest["completed"] = 1
+    elif mutation == "legacy-incomplete-status":
+        manifest["status"] = "partial"
+    elif mutation == "legacy-incomplete":
+        manifest["completed"] = False
+    encoded = json.dumps(manifest)
+    if mutation == "duplicate-json-key":
+        encoded = encoded.replace('"status": "completed"', '"status": "completed", "status": "completed"')
+    path.write_text(encoded, encoding="utf-8")
+    with pytest.raises((AssertionError, OSError)):
+        _audit(root)

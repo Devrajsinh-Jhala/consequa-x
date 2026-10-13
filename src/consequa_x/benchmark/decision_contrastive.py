@@ -300,7 +300,7 @@ def contrastive_decisions(
     confidence: float = 0.95,
     bootstrap_samples: int = 2000,
     bootstrap_seed: int = 0,
-    interval_method: str = "percentile_bootstrap",
+    interval_method: str = "clopper_pearson",
 ) -> DecisionContrastiveResult:
     """Sample every factual decision's suffix and estimate binary bad outcomes.
 

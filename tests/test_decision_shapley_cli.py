@@ -19,7 +19,8 @@ def read(path):
 
 def run(output, *extra):
     return cli.main(["decision-shapley", "--output", str(output), "--pairs", "2",
-                     "--endpoint-samples", "2", *extra])
+                     "--endpoint-samples", "2", "--interval-method", "normal",
+                     "--endpoint-interval-method", "normal", *extra])
 
 
 def check_manifest(output):
@@ -57,6 +58,19 @@ def test_complete_control_schedule_and_independent_endpoints(tmp_path):
     assert result["factual"]["trace_sha256"] == sha256(
         (output / result["factual"]["trace"]).read_bytes()).hexdigest()
     check_manifest(output)
+
+
+def test_default_cli_uses_conservative_pair_and_endpoint_bounds(tmp_path):
+    output = tmp_path/"conservative-default"
+    assert cli.main(["decision-shapley", "--pairs", "2", "--endpoint-samples", "2",
+                     "--output", str(output)]) == 0
+    result = read(output/"results.json")
+    assert result["settings"]["interval_method"] == "hoeffding"
+    assert result["settings"]["endpoint_interval_method"] == "clopper_pearson_difference"
+    assert result["settings"]["coalition_game"] == "strict"
+    assert all(item["shapley_value"] == 0 and item["confidence_interval"][0] < 0
+               < item["confidence_interval"][1] for item in result["estimates"])
+    assert result["calls"]["total"] == 18
 
 
 def test_three_targets_share_calls_and_every_completed_trace_is_explainable(tmp_path):
@@ -143,6 +157,33 @@ def test_provider_failure_is_not_a_bad_label_and_does_not_redraw(tmp_path, monke
     assert all("trace" not in branch and "outcome" not in branch for branch in failed)
     assert len(result["branches"]) == len(result["planned_schedule"]) == 16
     assert all(item["status"] == "refused" for item in result["estimates"])
+    check_manifest(output)
+
+
+def test_on_reach_exports_actual_early_termination_and_inactive_players(tmp_path, monkeypatch):
+    class ShortPolicy(ScriptedRefundPolicy):
+        def decide(self, request, *, seed):
+            if seed >= 600 and request.stage == "after_response":
+                return PolicyReply(PolicyDecision("stop"), self.metadata)
+            return super().decide(request, seed=seed)
+
+    monkeypatch.setattr(cli, "_prepare_policy", lambda args: (ShortPolicy(), None))
+    output = tmp_path/"on-reach"
+    assert run(output, "--case", "unsafe_retry", "--coalition-game", "on_reach",
+               "--interval-method", "hoeffding",
+               "--endpoint-interval-method", "clopper_pearson_difference") == 0
+    result = read(output/"results.json")
+    assert result["method"]["name"] == "binary_on_reach_decision_shapley"
+    assert result["settings"]["coalition_game"] == "on_reach"
+    inactive = [branch for branch in result["branches"] if branch["inactive_held_indices"]]
+    assert inactive and all(branch["status"] == "completed" for branch in inactive)
+    for branch in inactive:
+        trace = Trace.from_dict(read(output/branch["trace"]))
+        assert len(trace.responses) == 1
+        assert len(branch["decisions"]) == 2
+        assert branch["inactive_held_indices"] == [2]
+        assert read(output/branch["explanation"]) == explain(trace).to_dict()
+    assert all(item["status"] == "estimated" for item in result["estimates"])
     check_manifest(output)
 
 

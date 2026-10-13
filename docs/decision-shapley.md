@@ -72,11 +72,18 @@ replaced, or assigned a good/bad label.
 
 This conservative rule changes the game from implementations that silently
 ignore held positions after termination. It can make a variable-length refund
-game unavailable. The payment mechanism has limited fixed-length variation:
-an operation change can stop a trajectory, while rationale changes alone do
-not change payment effects. A mathematical fixed-length interaction oracle
-tests the allocation algorithm separately; it does not demonstrate recovery
-of interacting refund decisions or language-model behavior.
+game unavailable. It remains the default `--coalition-game strict`.
+
+The explicit `--coalition-game on_reach` option defines a different game. A
+normally completed branch keeps its actual trajectory and verified outcome,
+while later held positions are recorded as `inactive_held_indices`. No decision
+or tool effect is added at an unreached position. Provider/budget failures and
+reached but incompatible held decisions remain failures/invalid draws. The
+method name and each receipt identify the chosen game; rescoring intervals
+cannot convert one game into the other. See [refund interactions](refund-interactions.md)
+for a physical selection/retry interaction and controls, separately from the
+original mathematical payoff oracles. These checks do not establish model
+behavior or joint context/fault attribution.
 
 The primitive API is
 `consequa_x.benchmark.decision_coalition.replay_decision_coalition(factual,
@@ -107,14 +114,21 @@ the walk telescopes; each completed branch's allowed outcome is computed once
 and reused across selected targets, requiring no extra policy calls.
 
 The forward and reverse marginal vectors are averaged into one pair vector.
-The point estimate is the mean over planned pair vectors. A nominal normal
-interval uses the sample variance (`ddof=1`) of those pair values divided by
-the pair count, with the normal quantile for the requested confidence. At least
-two pairs are required. Intervals are not clipped and can extend beyond the
-range of the parameter. They condition on one factual trajectory and world,
-have no multiplicity correction, and have no demonstrated coverage calibration.
-Few pairs make the normal approximation especially fragile. Identical samples
-can yield a degenerate interval without establishing population certainty.
+The point estimate is the mean over planned pair vectors. At least two pairs
+are required. Alpha `0.1.0a2` defaults to a two-sided Hoeffding interval for
+independent pair observations in `[-1,1]`. Its half-width before clipping is
+`2 * sqrt(log(2/(1-confidence))/(2*pairs))`; endpoints are clipped to `[-1,1]`.
+At confidence `.95` and 16 pairs, the half-width is about `.6791`. These bounds
+retain uncertainty at constant samples and can need substantially more calls
+to detect modest effects. They require a defined coalition game and independent
+bounded pair vectors, assumptions that requested live-model seeds do not prove.
+
+`--interval-method normal` preserves the approximate sample-variance comparator
+(`ddof=1`, divided by pairs, with a normal quantile). It is not clipped, can
+exceed the parameter range and can collapse at homogeneous samples. The
+[same-draw comparison](../output/interval-comparison-2026-10-13/README.md) reports
+coverage alongside width and reference-sign detection. Every interval conditions
+on a captured factual trajectory/world and has no multiplicity correction.
 
 Any unknown, invalid, failed, or unstarted **path** draw refuses the entire
 affected target's contribution vector. Complete pair values remain visible in
@@ -126,8 +140,12 @@ can still be known when provenance or readback prevents one target's estimate.
 Separate empty and full coalition draws run first, outside every permutation
 walk, with disjoint continuation keys. Each endpoint uses at least two draws.
 Their independently estimated difference is full-held bad rate minus
-empty-held bad rate. Its nominal normal interval combines the independent
-endpoint sample variance terms. A full-held world is deterministic under this
+empty-held bad rate. The default `clopper_pearson_difference` interval assigns
+half the failure allowance to each exact binomial marginal and subtracts their
+opposing bounds. The union bound does not require independence between the two
+marginals; each marginal still requires independent known binary draws.
+`--endpoint-interval-method normal` retains the original independent
+sample-variance approximation. A full-held world is deterministic under this
 simulator; its repeated evaluations still do not substitute for fresh walk
 endpoints.
 

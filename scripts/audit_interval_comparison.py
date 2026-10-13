@@ -14,7 +14,7 @@ from hashlib import sha256
 import importlib.util
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import platform
 
 import scipy
@@ -72,6 +72,10 @@ def audit_math():
                                   "SciPy simultaneous marginal difference")
                 cases += 1
     return {"audit_passed": True, "binomial_cases": cases, "difference_cases": cases,
+            "audited_at_utc": datetime.now(timezone.utc).isoformat(),
+            "auditor_script_sha256": sha256(Path(__file__).read_bytes()).hexdigest(),
+            "numeric_implementation_sha256": sha256(
+                (REPOSITORY/"src/consequa_x/benchmark/intervals.py").read_bytes()).hexdigest(),
             "maximum_binomial_absolute_error": maximum_error,
             "confidence_levels": [.5, .9, .95, .99, math.nextafter(1., 0.)],
             "python": platform.python_version(), "scipy": scipy.__version__,
@@ -118,6 +122,122 @@ def unchanged(before, after, omitted, label):
                       {k: v for k, v in before.items() if k not in omitted}, label)
 
 
+def check_row_inventory(rows, plan, method, label):
+    """Reject missing, duplicate or unexpected rows before checking values."""
+    reference.checked(type(rows) is list, label + ": row list")
+    positioned = method in ("contrastive", "shapley")
+    expected = Counter(
+        (name, target, position)
+        for name in plan["mechanisms"] for target in plan["targets"]
+        for position in (range(reference.mechanism(name)["n"]) if positioned else (None,)))
+    actual = Counter()
+    for row in rows:
+        reference.checked(type(row) is dict, label + ": row object")
+        position = row.get("decision_index")
+        reference.checked((type(position) is int if positioned else position is None),
+                          label + ": position type")
+        if positioned:
+            reference.compare(row.get("method"), method, label + ": declared method")
+        reference.checked(type(row.get("mechanism")) is str and type(row.get("target")) is str,
+                          label + ": mechanism and target types")
+        actual[row["mechanism"], row["target"], position] += 1
+    reference.checked(actual == expected, label + ": complete unique row inventory")
+
+
+def check_variant_inventory(protocol, summary):
+    plan = protocol["plan"]
+    for field in ("mechanisms", "targets"):
+        values = plan[field]
+        reference.checked(type(values) is list and all(type(value) is str for value in values)
+                          and len(values) == len(set(values)) and bool(values),
+                          "protocol unique nonempty " + field)
+    for family, expected in (
+        ("contrastive", {"percentile_bootstrap", "wilson", "clopper_pearson"}),
+        ("shapley", {"normal", "hoeffding_exact_endpoints"}),
+    ):
+        variants = protocol[family + "_variants"]
+        reference.checked(type(variants) is list and all(type(value) is str for value in variants)
+                          and len(variants) == len(set(variants)), "protocol unique " + family + " variants")
+        reference.compare(set(variants), expected, "supported " + family + " variants")
+        reference.checked(type(summary[family]) is dict, family + " summary object")
+        reference.compare(set(summary[family]), set(variants), "summary matches protocol " + family + " variants")
+        for variant in variants:
+            group = summary[family][variant]
+            reference.checked(type(group) is dict, family + "/" + variant + " summary object")
+            check_row_inventory(group["estimates"], plan, family, family + "/" + variant + " estimates")
+            field, method = ("loci", "locus") if family == "contrastive" else ("endpoints", "endpoint")
+            check_row_inventory(group[field], plan, method, family + "/" + variant + " " + field)
+
+
+def check_loci(rows, trial_results, name, plan):
+    """Derive each latest-selection aggregate directly from checked estimates."""
+    n, c = plan["repeats"], plan["confidence"]
+    reference.compare(len(trial_results), n, "all locus trials retained")
+    for target in plan["targets"]:
+        truth = reference.truth(name, target)
+        eligible = all(value is not None for value in truth["effects"])
+        expected_index = truth["latest"] if eligible else None
+        selections = {"refused": 0, "no_rescue": 0,
+                      **{str(position): 0 for position in range(reference.mechanism(name)["n"])}}
+        for results in trial_results:
+            candidates = [row for row in results if row["target"] == target]
+            if any(row["status"] == "refused" for row in candidates):
+                key = "refused"
+            else:
+                rescues = [row["decision_index"] for row in candidates if row["significant_rescue"]]
+                key = str(max(rescues)) if rescues else "no_rescue"
+            selections[key] += 1
+        match_key = str(expected_index) if expected_index is not None else "no_rescue"
+        matches = selections[match_key] if eligible else 0
+        row = next(row for row in rows if row["mechanism"] == name and row["target"] == target)
+        reference.compare(row, {
+            "mechanism": name, "target": target, "planned_trials": n,
+            "reference_eligible_trials": n if eligible else 0,
+            "reference_reason": None if eligible else "independent outcome evidence is unknown",
+            "latest_population_rescue": expected_index,
+            "selection_counts": selections,
+            "population_rule_match_including_refusals": reference.wilson(matches, n if eligible else 0, c),
+            "population_rule_match_given_available": reference.wilson(
+                matches, n-selections["refused"] if eligible else 0, c),
+            "interpretation": "latest position with strictly negative population effect; nominal selection rule",
+        }, "independent variant aggregate latest locus")
+
+
+def check_manifest(root):
+    """Check every present artifact with canonical, contained, unique paths."""
+    manifest = reference.load(root/"manifest.json")
+    reference.compare(manifest["status"], "completed", "comparison export completion")
+    artifacts = manifest["artifacts"]
+    reference.checked(type(artifacts) is list, "comparison manifest artifact list")
+    paths, resolved_paths = set(), set()
+    for item in artifacts:
+        reference.checked(type(item) is dict, "comparison manifest entry object")
+        path = item.get("path")
+        reference.checked(type(path) is str and bool(path), "comparison manifest path string")
+        canonical = PurePosixPath(path)
+        reference.checked(not canonical.is_absolute() and canonical.as_posix() == path
+                          and all(part not in ("", ".", "..") and ":" not in part
+                                  and "\\" not in part for part in path.split("/")),
+                          "comparison manifest safe canonical relative path")
+        absolute = (root/path).resolve()
+        reference.checked(absolute.is_relative_to(root) and absolute != root/"manifest.json",
+                          "comparison manifest path contained in root")
+        reference.checked(path not in paths and absolute not in resolved_paths,
+                          "comparison manifest unique artifact path")
+        paths.add(path)
+        resolved_paths.add(absolute)
+        reference.checked(absolute.is_file(), "comparison manifest artifact exists")
+        reference.checked(type(item.get("bytes")) is int and item["bytes"] >= 0,
+                          "comparison manifest nonnegative integer byte size")
+        payload = absolute.read_bytes()
+        reference.compare(len(payload), item["bytes"], "comparison artifact byte size")
+        reference.compare(sha256(payload).hexdigest(), item["sha256"], "comparison artifact hash")
+    inventory = {path.relative_to(root).as_posix() for path in root.rglob("*")
+                 if path.is_file() and path != root/"manifest.json"}
+    reference.checked(paths == inventory, "comparison manifest exhaustive artifact inventory")
+    return len(artifacts)
+
+
 def check_summary(rows, results, name, method, plan):
     n, c = plan["repeats"], plan["confidence"]
     for row in rows:
@@ -149,9 +269,15 @@ def check_summary(rows, results, name, method, plan):
 def audit(root, expected_source):
     root = root.resolve()
     protocol, summary = reference.load(root/"protocol.json"), reference.load(root/"summary.json")
+    manifest_artifacts = check_manifest(root)
+    check_variant_inventory(protocol, summary)
     # Reuse frozen auditor code, without modifying any old retained report.
     raw_audit = reference.audit(root/"raw", expected_source)
+    raw_protocol = reference.load(root/"raw/protocol.json")
+    reference.compare(protocol["plan"], raw_protocol["plan"], "comparison plan matches raw replay plan")
+    reference.compare(raw_protocol["plan"], protocol["plan"], "raw replay plan matches comparison plan")
     reference.compare(protocol["source_revision"], expected_source, "comparison frozen source")
+    reference.compare(summary["source_revision"], expected_source, "comparison summary frozen source")
     grid = audit_grid(root)
     plan, c = protocol["plan"], protocol["plan"]["confidence"]
     totals, comparison_count = Counter(), 0
@@ -195,6 +321,11 @@ def audit(root, expected_source):
                     reference.compare(new["confidence_interval"], ci, "new contrastive numeric bound")
                     reference.compare(new["interval_degenerate"], ci[0] == ci[1], "new collapse flag")
                     reference.compare(new["significant_rescue"], new["effect"] < 0 and ci[1] < 0, "nominal rescue criterion")
+                reference.checked(type(records["loci"]) is list
+                                  and all(type(locus) is dict and type(locus.get("target")) is str
+                                          for locus in records["loci"]), "variant locus receipt list")
+                reference.checked(Counter(locus["target"] for locus in records["loci"])
+                                  == Counter(plan["targets"]), "complete unique variant locus receipts")
                 for locus in records["loci"]:
                     items = [r for r in records["results"] if r["target"] == locus["target"]]
                     candidates = [r["decision_index"] for r in items if r["significant_rescue"]]
@@ -235,14 +366,15 @@ def audit(root, expected_source):
                 rows = (summary["contrastive"][variant]["estimates"] if method == "contrastive" else
                         summary["shapley"][variant]["endpoints" if method == "endpoint" else "estimates"])
                 check_summary(rows, results, name, method, plan)
+                if method == "contrastive":
+                    check_loci(summary["contrastive"][variant]["loci"], results, name, plan)
     reference.compare(summary["actual_policy_calls"], {k: totals[k] for k in ("factual", "contrastive", "shapley", "total")}, "comparison total calls")
-    manifest = reference.load(root/"manifest.json")
-    for item in manifest["artifacts"]:
-        reference.compare(sha256((root/item["path"]).read_bytes()).hexdigest(), item["sha256"], "comparison artifact hash")
     return {"audit_passed": True, "audited_at_utc": datetime.now(timezone.utc).isoformat(),
             "source_revision": expected_source, "python": platform.python_version(), "scipy": scipy.__version__,
             "auditor_script_sha256": sha256(Path(__file__).read_bytes()).hexdigest(),
             "frozen_raw_auditor": raw_audit, "comparison_trials": comparison_count,
+            "manifest_artifacts_checked": manifest_artifacts,
+            "aggregate_locus_rows_checked": sum(len(group["loci"]) for group in summary["contrastive"].values()),
             "assertions": reference.CHECKS, "finite_grid_minimum_coverage": grid,
             "additional_policy_calls": 0, "production_analyzer_imported": False,
             "limits": ["Numerical consistency does not prove live-model independence or calibrated coverage.",

@@ -20,6 +20,7 @@ def setup(name="protective-stop-q50", max_calls=400):
 def test_contrastive_variants_share_every_draw_and_point_without_new_calls():
     factual, policy = setup()
     original = contrastive_decisions(factual, policy, samples=16, bootstrap_samples=200,
+                                     interval_method="percentile_bootstrap",
                                      targets=("action", "consequence", "action_linked_consequence"))
     before = policy.calls
     for method in ("wilson", "clopper_pearson", "percentile_bootstrap"):
@@ -66,6 +67,7 @@ def test_changed_saved_contrastive_mean_rejects_the_comparison():
 def test_shapley_variants_preserve_signed_points_pair_units_and_endpoint_discrepancy():
     factual, policy = setup()
     original = shapley_decisions(factual, policy, pairs=4, endpoint_samples=4,
+                                 interval_method="normal", endpoint_interval_method="normal",
                                  targets=("action", "consequence", "action_linked_consequence"))
     before = policy.calls
     updated = with_shapley_intervals(original, interval_method="hoeffding",
@@ -120,6 +122,37 @@ def test_new_options_validate_before_policy_calls_and_can_run_directly():
     assert result.method_record()["interval_clipping"] is True
 
 
+@pytest.mark.parametrize("mutation", ["point_and_pairs", "pairs_same_mean", "missing_branch",
+                                      "coefficient_sum", "coverage", "game"])
+def test_shapley_rescoring_rejects_stale_vectors_and_receipts(mutation):
+    factual, policy = setup()
+    original = shapley_decisions(factual, policy, pairs=4, endpoint_samples=4)
+    altered = original
+    if mutation == "point_and_pairs":
+        item = replace(original.results[0], shapley_value=1., pair_values=(1.,)*4)
+        altered = replace(original, results=(item, *original.results[1:]))
+    elif mutation == "pairs_same_mean":
+        old = original.results[0]
+        values = (old.pair_values[0]+.125, old.pair_values[1]-.125, *old.pair_values[2:])
+        altered = replace(original, results=(replace(old, pair_values=values), *original.results[1:]))
+    elif mutation == "missing_branch":
+        index = next(i for i, branch in enumerate(original.branches) if branch.slot.role == "walk")
+        altered = replace(original, branches=original.branches[:index]+original.branches[index+1:])
+    elif mutation == "coefficient_sum":
+        altered = replace(original, endpoint_checks=(replace(original.endpoint_checks[0], coefficient_sum=9.),))
+    elif mutation == "coverage":
+        endpoint = original.endpoint_checks[0]
+        altered = replace(original, endpoint_checks=(replace(endpoint,
+            empty_coverage=replace(endpoint.empty_coverage, known=0, unknown=4)),))
+    else:
+        altered = replace(original, coalition_game="on_reach")
+    before = policy.calls
+    with pytest.raises(ValueError):
+        with_shapley_intervals(altered, interval_method="hoeffding",
+                              endpoint_interval_method="clopper_pearson_difference")
+    assert policy.calls == before
+
+
 def test_annotation_cache_preserves_value_and_type_validation_on_every_trace():
     factual, _ = setup()
     raw = factual.trace.to_dict()
@@ -132,3 +165,20 @@ def test_annotation_cache_preserves_value_and_type_validation_on_every_trace():
     invalid["assessment"]["time_ms"] = True
     with pytest.raises(TypeError):
         Trace.from_dict(invalid)
+
+
+def test_public_defaults_preserve_uncertainty_in_constant_real_replays():
+    factual, policy = setup("idempotent-stop-q50")
+    contrastive = contrastive_decisions(factual, policy, samples=2)
+    assert contrastive.interval_method == "clopper_pearson"
+    assert all(item.effect == 0 and item.confidence_interval[0] == 0
+               and item.confidence_interval[1] > 0 for item in contrastive.results)
+    factual, policy = setup("idempotent-stop-q50")
+    shapley = shapley_decisions(factual, policy, pairs=2, endpoint_samples=2)
+    assert shapley.interval_method == "hoeffding"
+    assert shapley.endpoint_interval_method == "clopper_pearson_difference"
+    assert shapley.coalition_game == "strict"
+    assert all(item.shapley_value == 0 and item.confidence_interval[0] < 0
+               < item.confidence_interval[1] for item in shapley.results)
+    assert all(item.endpoint_difference == 0 and item.confidence_interval[0] < 0
+               < item.confidence_interval[1] for item in shapley.endpoint_checks)

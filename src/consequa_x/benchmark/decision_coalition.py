@@ -3,7 +3,8 @@
 A held position forces its captured decision at the same typed policy stage.
 Earlier fresh decisions may change its public request, so this intervention does
 not require the exact request equality used by decision-prefix replay. An absent
-held position invalidates a branch; it never receives a fabricated outcome.
+held position invalidates a branch by default. The separate on-reach game
+records normally terminated later held positions as inactive.
 """
 
 from __future__ import annotations
@@ -21,6 +22,14 @@ from .evaluation import BudgetedPolicy, CallBudgetExceeded
 from .policy_runner import MAX_TRIAL_SEED, run_policy_scenario
 from .runner import Episode
 from .templates import DEFAULT_REFUND_TEMPLATE, RefundTaskTemplate
+
+
+COALITION_GAMES = ("strict", "on_reach")
+
+
+def validate_coalition_game(game):
+    if type(game) is not str or game not in COALITION_GAMES:
+        raise ValueError("coalition_game must be strict or on_reach")
 
 
 class DecisionCoalitionIncompatible(PolicyError):
@@ -46,6 +55,7 @@ class DecisionCoalitionReplay:
     error_type: str | None = None
     error: str | None = None
     budget_exhausted: bool = False
+    coalition_game: str = "strict"
 
     @property
     def status(self) -> Literal["completed", "invalid", "failed"]:
@@ -66,9 +76,17 @@ class DecisionCoalitionReplay:
     def unreached_held_indices(self) -> tuple[int, ...]:
         return tuple(index for index in self.held_indices if index >= len(self.decisions))
 
+    @property
+    def inactive_held_indices(self) -> tuple[int, ...]:
+        """Only normal termination in the declared on-reach game is inactivity."""
+        return (self.unreached_held_indices
+                if self.coalition_game == "on_reach" and self.episode is not None else ())
+
     def summary(self) -> dict:
         return {
             "status": self.status,
+            "coalition_game": self.coalition_game,
+            "inactive_held_indices": list(self.inactive_held_indices),
             "held_indices": list(self.held_indices),
             "continuation_seed": self.continuation_seed,
             "factual_seed": self.factual_seed,
@@ -163,6 +181,7 @@ def replay_decision_coalition(
     held_indices: Iterable[int],
     continuation_seed: int,
     template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE,
+    coalition_game: str = "strict",
 ) -> DecisionCoalitionReplay:
     """Reset the factual world and force the requested positional decisions.
 
@@ -170,7 +189,10 @@ def replay_decision_coalition(
     provider calls before running a branch. Held decisions consume zero calls;
     fresh decisions use a shared actual-call budget. New reached positions beyond
     the factual trace are fresh. A branch may stop before unheld positions, but
-    stopping before any held position invalidates the entire branch.
+    stopping before a held position invalidates a strict-game branch. In the
+    explicit on-reach game, normally unreached held positions are inactive;
+    the completed episode and its verified outcome remain the actual rollout.
+    A reached but incompatible held decision is invalid under either game.
 
     Forced decisions are positional interventions, including their captured
     assessment and reported rationale. They need not be decisions the policy
@@ -180,6 +202,7 @@ def replay_decision_coalition(
     """
     if not isinstance(factual, Episode):
         raise TypeError("factual must be an Episode")
+    validate_coalition_game(coalition_game)
     if not isinstance(continuation_policy, BudgetedPolicy):
         raise TypeError("continuation_policy must be a BudgetedPolicy")
     if (type(continuation_policy.max_calls) is not int or continuation_policy.max_calls < 1
@@ -217,7 +240,7 @@ def replay_decision_coalition(
             max_attempts=captures[0].request.attempts_remaining, template=template,
         )
         unreached = tuple(index for index in held if index >= len(coalition_policy.receipts))
-        if unreached:
+        if unreached and coalition_game == "strict":
             raise DecisionCoalitionUnreachable(f"Held decision positions were not reached: {unreached}")
     except (PolicyError, TypeError, ValueError) as caught:
         error = caught
@@ -227,4 +250,5 @@ def replay_decision_coalition(
         tuple(coalition_policy.receipts), continuation_policy.calls - before, episode,
         type(error).__name__ if error else None, str(error) if error else None,
         isinstance(error, CallBudgetExceeded),
+        coalition_game,
     )

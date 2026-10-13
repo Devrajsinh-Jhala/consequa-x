@@ -870,6 +870,7 @@ def _decision_shapley(args):
                 targets=targets, template=template,
                 interval_method=args.interval_method,
                 endpoint_interval_method=args.endpoint_interval_method,
+                coalition_game=args.coalition_game,
             )
         except (PolicyError, ValueError, TypeError) as error:
             if bounded.calls != factual_calls:
@@ -950,7 +951,9 @@ def _decision_shapley(args):
                      "pairs": args.pairs, "samples_per_eval": args.samples,
                      "endpoint_samples": args.endpoint_samples,
                      "permutation_seed": args.permutation_seed, "confidence": args.confidence,
-                     "max_attempts": args.max_attempts},
+                     "max_attempts": args.max_attempts, "coalition_game": args.coalition_game,
+                     "interval_method": args.interval_method,
+                     "endpoint_interval_method": args.endpoint_interval_method},
         "factual": factual_receipt, "planned_schedule": schedule, "branches": receipts,
         "permutations": experiment.permutations if experiment is not None else None,
         "summary": experiment.summary() if experiment is not None else None,
@@ -983,9 +986,12 @@ def _decision_shapley(args):
            "evidence or reached failure receipts are retained; no coalition schedule, "
            "outcome, or estimate is fabricated.\n\n" if experiment is None else "")
         + "A coalition holds its recorded decisions at compatible positional stages and "
-        "resamples other decisions. Changed public inputs are allowed. A requested held "
-        "position that is not reached invalidates that branch; only completed valid "
-        "branches have outcome labels. Every evaluation is fresh, including repeated "
+        f"resamples other decisions. Changed public inputs are allowed. Game: `{args.coalition_game}`. "
+        + ("A requested held position that is not reached invalidates that branch. "
+           if args.coalition_game == "strict" else
+           "Normally unreached held positions are recorded as inactive; the completed "
+           "trajectory supplies the actual outcome. Reached incompatible decisions stay invalid. ")
+        + "Only completed valid branches have outcome labels. Every evaluation is fresh, including repeated "
         "coalitions. All requested targets reuse each branch without additional calls.\n\n"
         "| Decision | Target | Status | Signed contribution | Interval | Known pairs |\n"
         "| --- | --- | --- | --- | --- | --- |\n"
@@ -1052,6 +1058,16 @@ def _compare_intervals(args):
     return 0
 
 
+def _refund_interactions(args):
+    from .benchmark.interaction_export import export_refund_interactions
+
+    result = export_refund_interactions(args.output, source_revision=args.source_revision,
+                                        seed=args.seed, mechanisms=args.mechanism)
+    print(f"Saved refund interaction enumeration in {Path(args.output).resolve()}; "
+          f"{result['actual_policy_calls']} actual synthetic policy calls")
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -1103,7 +1119,7 @@ def main(argv=None):
     decision.add_argument("--bootstrap-samples", type=int, default=2000)
     decision.add_argument("--bootstrap-seed", type=int, default=0)
     decision.add_argument("--interval-method", choices=("percentile_bootstrap", "wilson", "clopper_pearson"),
-                          default="percentile_bootstrap")
+                          default="clopper_pearson")
     decision.add_argument("--output", default="output/decision-experiment")
     decision.set_defaults(handler=_decision_experiment)
     shapley = commands.add_parser("decision-shapley", help="Run fresh antithetic decision coalition walks")
@@ -1120,9 +1136,11 @@ def main(argv=None):
     shapley.add_argument("--endpoint-samples", type=int, default=16)
     shapley.add_argument("--permutation-seed", type=int, default=0)
     shapley.add_argument("--confidence", type=float, default=0.95)
-    shapley.add_argument("--interval-method", choices=("normal", "hoeffding"), default="normal")
+    shapley.add_argument("--interval-method", choices=("normal", "hoeffding"), default="hoeffding")
     shapley.add_argument("--endpoint-interval-method", choices=("normal", "clopper_pearson_difference"),
-                         default="normal")
+                         default="clopper_pearson_difference")
+    shapley.add_argument("--coalition-game", choices=("strict", "on_reach"), default="strict",
+                         help="strict refuses unreached held positions; on_reach records them as inactive")
     shapley.add_argument("--output", default="output/decision-shapley")
     shapley.set_defaults(handler=_decision_shapley)
     calibration = commands.add_parser("calibrate-attribution",
@@ -1154,6 +1172,13 @@ def main(argv=None):
     comparison.add_argument("--theory-only", action="store_true")
     comparison.add_argument("--output", default="output/interval-comparison")
     comparison.set_defaults(handler=_compare_intervals)
+    from .benchmark.interaction_mechanisms import INTERACTION_MECHANISMS
+    interactions = commands.add_parser("refund-interactions", help="Enumerate physical refund decision games")
+    interactions.add_argument("--source-revision", required=True)
+    interactions.add_argument("--seed", type=int, default=4_000_000)
+    interactions.add_argument("--mechanism", action="append", choices=tuple(INTERACTION_MECHANISMS))
+    interactions.add_argument("--output", default="output/refund-interactions")
+    interactions.set_defaults(handler=_refund_interactions)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

@@ -18,7 +18,9 @@ from typing import Iterable, Literal
 from ..attribution import ReplayTarget
 from ..models import EventType, Trace, to_dict
 from ..policies import PolicyError
-from .decision_coalition import DecisionCoalitionReplay, replay_decision_coalition
+from .decision_coalition import (
+    DecisionCoalitionReplay, replay_decision_coalition, validate_coalition_game,
+)
 from .decision_contrastive import REFERENCE_REVISION, _selected_targets
 from .evaluation import BudgetedPolicy, CallBudgetExceeded
 from .intervals import binomial_difference_interval, bounded_mean_interval
@@ -130,10 +132,13 @@ class DecisionShapleyResult:
     permutation_seed: int
     interval_method: str = "normal"
     endpoint_interval_method: str = "normal"
+    coalition_game: str = "strict"
 
     def method_record(self) -> dict:
         return {
-            "name": "car_style_binary_decision_shapley",
+            "name": ("car_style_binary_decision_shapley" if self.coalition_game == "strict" else
+                     "binary_on_reach_decision_shapley"),
+            "coalition_game": self.coalition_game,
             "reference_revision": REFERENCE_REVISION,
             "game": "bad outcome probability with a positional factual held-decision coalition",
             "bad_encoding": "not target_value; unknown remains unknown",
@@ -173,7 +178,9 @@ class DecisionShapleyResult:
                 "Python RNG and disjoint continuation seeds differ from upstream streams.",
                 "Minimum two pairs and endpoint samples, with 16-pair default and strict input checks.",
                 "Actual call budgets retain invalid, partial failure and unstarted receipts.",
-                "Unreached or stage-incompatible held positions invalidate their planned sample.",
+                ("Unreached or stage-incompatible held positions invalidate their planned sample."
+                 if self.coalition_game == "strict" else
+                 "Normally unreached held positions are inactive; reached incompatible positions remain invalid."),
                 "Unknown or incomplete path evidence refuses the whole target attribution vector.",
                 "Independent endpoint diagnostics do not normalize the sampled coefficients.",
             ],
@@ -217,7 +224,9 @@ class DecisionShapleyResult:
                 "Requested seeds do not establish independent model draws or hidden-state equality.",
                 "Signed shares are neither probabilities nor normalized responsibility percentages.",
                 "Independent endpoint discrepancy is a descriptive diagnostic, not a calibrated test.",
-                "The positional adapter may invalidate coalitions after changed stopping behavior.",
+                ("The strict positional game invalidates unreached held positions."
+                 if self.coalition_game == "strict" else
+                 "The on-reach game treats normally unreached held positions as inactive; it is a different intervention game."),
             ],
         }
 
@@ -258,6 +267,52 @@ def _endpoint_interval(empty, full, confidence, method):
     return point - margin, point + margin
 
 
+def _sample_values(slots, cache, target):
+    values, statuses = {}, {}
+    for slot in slots:
+        item = cache.get(slot.index)
+        value = None
+        if item is None:
+            status = "unstarted"
+        elif item[0].replay.status == "invalid":
+            status = "invalid"
+        elif item[0].replay.episode is None:
+            status = "failed"
+        else:
+            target_value = item[1].target_value(target)
+            status = "unknown" if target_value is None else "known"
+            if target_value is not None:
+                value = not target_value
+        values[slot.index], statuses[slot.index] = value, status
+    return values, statuses
+
+
+def _pair_observations(permutations, path_slots, values, statuses, samples_per_eval, count):
+    vectors, labels = [], []
+    for pair_index, forward in enumerate(permutations):
+        pair_slots = tuple(slot for slot in path_slots if slot.pair_index == pair_index)
+        pair_labels = tuple(statuses[slot.index] for slot in pair_slots)
+        status = next((name for name in ("unstarted", "failed", "invalid", "unknown")
+                       if name in pair_labels), "known")
+        labels.append(status)
+        if status != "known":
+            vectors.append(None)
+            continue
+        vector = [0.] * count
+        for walk, order in (("forward", forward), ("reverse", tuple(reversed(forward)))):
+            means = []
+            for step in range(count+1):
+                draws = tuple(values[slot.index] for slot in pair_slots
+                              if slot.walk == walk and slot.step == step)
+                if len(draws) != samples_per_eval:
+                    raise ValueError("Pair walk has an incomplete declared sample block")
+                means.append(sum(draws) / samples_per_eval)
+            for step, position in enumerate(order):
+                vector[position] += (means[step+1]-means[step])/2
+        vectors.append(tuple(vector))
+    return vectors, labels
+
+
 def with_shapley_intervals(result: DecisionShapleyResult, *, interval_method: str,
                            endpoint_interval_method: str) -> DecisionShapleyResult:
     """Compare pair/endpoint intervals on the same draws, keeping all refusals.
@@ -268,30 +323,89 @@ def with_shapley_intervals(result: DecisionShapleyResult, *, interval_method: st
     if not isinstance(result, DecisionShapleyResult):
         raise TypeError("result must be a DecisionShapleyResult")
     _interval_methods(interval_method, endpoint_interval_method)
+    validate_coalition_game(result.coalition_game)
+    events = tuple(event for event in result.factual.trace.events
+                   if event.type is EventType.AGENT_DECISION)
+    count = len(events)
+    expected = {(target, i) for target in result.targets for i in range(count)}
+    if (len(result.results) != len(expected)
+            or {(item.target, item.decision_index) for item in result.results} != expected
+            or len(result.permutations) != result.pairs
+            or any(len(order) != count or set(order) != set(range(count))
+                   for order in result.permutations)):
+        raise ValueError("Result inventory or permutation schedule changed after estimation")
+    planned = {slot.index: slot for slot in result.slots}
+    if len(planned) != len(result.slots) or set(planned) != set(range(len(result.slots))):
+        raise ValueError("Result slot inventory is incomplete or duplicated")
+    if (len({branch.slot.index for branch in result.branches}) != len(result.branches)
+            or any(planned.get(branch.slot.index) != branch.slot
+                   or branch.replay.coalition_game != result.coalition_game
+                   for branch in result.branches)):
+        raise ValueError("Branch receipts no longer match their declared schedule/game")
+    cache = {branch.slot.index: (branch, episode_outcome(branch.replay.episode)
+                                if branch.replay.episode is not None else None)
+             for branch in result.branches}
+    path_slots = tuple(slot for slot in result.slots if slot.role == "walk")
+    recomputed = {}
+    for target in result.targets:
+        target_items = [item for item in result.results if item.target == target]
+        if any(item.status == "estimated" for item in target_items) and not all(
+            item.status == "estimated" for item in target_items
+        ):
+            raise ValueError("A stored target vector has mixed estimate/refusal statuses")
+        if not any(item.status == "estimated" for item in target_items):
+            continue
+        values, statuses = _sample_values(result.slots, cache, target)
+        vectors, labels = _pair_observations(result.permutations, path_slots, values, statuses,
+                                              result.samples_per_eval, count)
+        recomputed[target] = (vectors, _coverage(labels),
+                              _coverage(statuses[slot.index] for slot in path_slots))
     estimates = []
     for item in result.results:
         if item.status == "refused":
             estimates.append(item)
             continue
-        if (len(item.pair_values) != result.pairs or any(value is None for value in item.pair_values)
-                or sum(item.pair_values) / result.pairs != item.shapley_value):
-            raise ValueError("Estimated pair vector no longer matches its recorded point")
+        vectors, coverage, path_coverage = recomputed[item.target]
+        pair_values = tuple(vector[item.decision_index] if vector is not None else None
+                            for vector in vectors)
+        if (coverage.known != result.pairs or pair_values != item.pair_values
+                or sum(pair_values) / result.pairs != item.shapley_value
+                or path_coverage != item.coverage or item.event_id != events[item.decision_index].id
+                or (item.known_pairs, item.unknown_pairs, item.invalid_pairs,
+                    item.failed_pairs, item.unstarted_pairs) !=
+                   (coverage.known, coverage.unknown, coverage.invalid, coverage.failed, coverage.unstarted)):
+            raise ValueError("Estimated pair vector or point no longer matches replay evidence")
         estimates.append(replace(item, confidence_interval=_pair_interval(
             item.pair_values, result.confidence, interval_method)))
     endpoints = []
-    cache = {branch.slot.index: episode_outcome(branch.replay.episode)
-             if branch.replay.episode is not None else None for branch in result.branches}
+    if (len(result.endpoint_checks) != len(result.targets)
+            or {item.target for item in result.endpoint_checks} != set(result.targets)):
+        raise ValueError("Endpoint inventory changed after estimation")
     for item in result.endpoint_checks:
+        target_estimates = [entry for entry in estimates if entry.target == item.target]
+        coefficient_sum = (sum(entry.shapley_value for entry in target_estimates)
+                           if all(entry.status == "estimated" for entry in target_estimates) else None)
+        discrepancy = (coefficient_sum-item.endpoint_difference
+                       if coefficient_sum is not None and item.endpoint_difference is not None else None)
+        if coefficient_sum != item.coefficient_sum or discrepancy != item.discrepancy:
+            raise ValueError("Recorded endpoint coefficient sum/discrepancy changed after estimation")
         if item.status == "refused":
             endpoints.append(item)
             continue
+        _, statuses = _sample_values(result.slots, cache, item.target)
         by_role = {}
         for role in ("endpoint_empty", "endpoint_full"):
             values = []
+            expected_coverage = _coverage(statuses[slot.index] for slot in result.slots
+                                          if slot.role == role)
+            stored_coverage = item.empty_coverage if role == "endpoint_empty" else item.full_coverage
+            if expected_coverage != stored_coverage:
+                raise ValueError("Recorded endpoint coverage no longer matches replay evidence")
             for slot in result.slots:
                 if slot.role != role:
                     continue
-                outcome = cache.get(slot.index)
+                stored = cache.get(slot.index)
+                outcome = stored[1] if stored is not None else None
                 value = outcome.target_value(item.target) if outcome is not None else None
                 if value is None:
                     raise ValueError("Previously estimated endpoint evidence became unavailable")
@@ -337,8 +451,9 @@ def shapley_decisions(
     confidence: float = 0.95,
     targets: Iterable[ReplayTarget] = ("consequence",),
     template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE,
-    interval_method: str = "normal",
-    endpoint_interval_method: str = "normal",
+    interval_method: str = "hoeffding",
+    endpoint_interval_method: str = "clopper_pearson_difference",
+    coalition_game: str = "strict",
 ) -> DecisionShapleyResult:
     """Estimate signed decision contributions using fresh positional coalitions.
 
@@ -346,7 +461,10 @@ def shapley_decisions(
     Each pair shuffles a uniform permutation, evaluates its complete coalition
     chain, and evaluates its reversed chain with fresh seeds. Coalition means
     use all ``samples_per_eval`` draws; marginal vectors are averaged within a
-    pair before nominal normal intervals treat the pairs as independent units.
+    pair before intervals treat the pairs as independent units. The default
+    Hoeffding bound uses their declared [-1,1] range; normal is an explicit
+    approximate comparator. Endpoint bounds default to two exact binomial
+    marginals with a split failure allowance.
 
     A target's whole coefficient vector requires every path draw to be known.
     Independent endpoint failures do not erase otherwise complete coefficients.
@@ -359,6 +477,7 @@ def shapley_decisions(
     if not isinstance(continuation_policy, BudgetedPolicy):
         raise TypeError("continuation_policy must be a BudgetedPolicy")
     _interval_methods(interval_method, endpoint_interval_method)
+    validate_coalition_game(coalition_game)
     for name, value, minimum in (("pairs", pairs, 2),
                                  ("samples_per_eval", samples_per_eval, 1),
                                  ("endpoint_samples", endpoint_samples, 2)):
@@ -391,7 +510,7 @@ def shapley_decisions(
         raise ValueError(f"Continuation seed schedule must stay in 0..{MAX_TRIAL_SEED}")
     probe = replay_decision_coalition(
         factual, continuation_policy, held_indices=range(count),
-        continuation_seed=seed, template=template,
+        continuation_seed=seed, template=template, coalition_game=coalition_game,
     )
     if probe.episode is None:
         raise ValueError("Full factual reconstruction failed: " + (probe.error or "unknown error"))
@@ -428,6 +547,7 @@ def shapley_decisions(
             replay = replay_decision_coalition(
                 factual, continuation_policy, held_indices=slot.held_indices,
                 continuation_seed=slot.continuation_seed, template=template,
+                coalition_game=coalition_game,
             )
         except (PolicyError, ValueError, TypeError) as error:
             replay = DecisionCoalitionReplay(
@@ -435,6 +555,7 @@ def shapley_decisions(
                 (), continuation_policy.calls - before,
                 error_type=type(error).__name__, error=str(error),
                 budget_exhausted=isinstance(error, CallBudgetExceeded),
+                coalition_game=coalition_game,
             )
         branches.append(DecisionShapleyBranch(slot, replay))
         if replay.budget_exhausted:
@@ -450,45 +571,10 @@ def shapley_decisions(
     endpoint_checks = []
     path_slots = tuple(slot for slot in slots if slot.role == "walk")
     for target in selected:
-        values = {}
-        statuses = {}
-        for slot in slots:
-            item = cache.get(slot.index)
-            value = None
-            if item is None:
-                status = "unstarted"
-            elif item[0].replay.status == "invalid":
-                status = "invalid"
-            elif item[0].replay.episode is None:
-                status = "failed"
-            else:
-                target_value = item[1].target_value(target)
-                status = "unknown" if target_value is None else "known"
-                if target_value is not None:
-                    value = not target_value
-            values[slot.index], statuses[slot.index] = value, status
+        values, statuses = _sample_values(slots, cache, target)
         path_coverage = _coverage(statuses[slot.index] for slot in path_slots)
-        pair_vectors = []
-        pair_statuses = []
-        for pair_index, forward in enumerate(permutations):
-            pair_slots = tuple(slot for slot in path_slots if slot.pair_index == pair_index)
-            labels = tuple(statuses[slot.index] for slot in pair_slots)
-            pair_status = next((name for name in ("unstarted", "failed", "invalid", "unknown")
-                                if name in labels), "known")
-            pair_statuses.append(pair_status)
-            if pair_status != "known":
-                pair_vectors.append(None)
-                continue
-            vector = [0.0] * count
-            for walk, order in (("forward", forward), ("reverse", tuple(reversed(forward)))):
-                means = []
-                for step in range(count + 1):
-                    draws = tuple(values[slot.index] for slot in pair_slots
-                                  if slot.walk == walk and slot.step == step)
-                    means.append(sum(draws) / samples_per_eval)
-                for step, decision_index in enumerate(order):
-                    vector[decision_index] += (means[step + 1] - means[step]) / 2
-            pair_vectors.append(tuple(vector))
+        pair_vectors, pair_statuses = _pair_observations(
+            permutations, path_slots, values, statuses, samples_per_eval, count)
         pair_counts = _coverage(pair_statuses)
         estimable = pair_counts.known == pairs
         for decision_index, event in enumerate(events):
@@ -538,5 +624,5 @@ def shapley_decisions(
         tuple(permutations), metadata, selected, pairs, samples_per_eval, endpoint_samples,
         continuation_policy.calls - initial_calls, initial_calls, continuation_policy.max_calls,
         exhausted, template, float(confidence), permutation_seed,
-        interval_method, endpoint_interval_method,
+        interval_method, endpoint_interval_method, coalition_game,
     )

@@ -1,7 +1,8 @@
 # Separate interval follow-up
 
-This is a proposed next study, separate from the frozen percentile-bootstrap
-and normal-pair calibration probe. It changes no retained estimate or interval.
+This follow-up is separate from the frozen percentile-bootstrap and normal-pair
+calibration probe. The [fresh comparison](../output/interval-comparison-2026-10-13/README.md)
+has completed; the original probe remains unchanged.
 
 ## Contrastive binary target
 

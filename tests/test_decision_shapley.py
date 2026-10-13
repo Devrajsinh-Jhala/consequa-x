@@ -68,6 +68,8 @@ def analyze(original=None, policy=None, **kwargs):
     return subject.shapley_decisions(
         original or recorded(), BudgetedPolicy(policy or FixedLengthPolicy(), 1000),
         pairs=kwargs.pop("pairs", 2), endpoint_samples=kwargs.pop("endpoint_samples", 2),
+        interval_method=kwargs.pop("interval_method", "normal"),
+        endpoint_interval_method=kwargs.pop("endpoint_interval_method", "normal"),
         **kwargs,
     )
 

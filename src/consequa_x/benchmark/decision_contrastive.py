@@ -9,7 +9,7 @@ probability. Missing evidence refuses inference; it never becomes a good draw.
 from __future__ import annotations
 
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import math
 import random
 from typing import Iterable, Literal
@@ -19,6 +19,7 @@ from ..models import EventType, Trace, to_dict
 from ..policies import PolicyError
 from .decision_replay import DecisionPrefixReplay, replay_decision_prefix
 from .evaluation import BudgetedPolicy, CallBudgetExceeded
+from .intervals import binomial_interval
 from .policy_runner import MAX_TRIAL_SEED
 from .runner import Episode
 from .targets import episode_outcome
@@ -26,6 +27,7 @@ from .templates import DEFAULT_REFUND_TEMPLATE, RefundTaskTemplate
 
 
 REFERENCE_REVISION = "db90fa28b97164c35e7c524e4597b8cbdb3035af"
+CONTRASTIVE_INTERVAL_METHODS = ("percentile_bootstrap", "wilson", "clopper_pearson")
 
 
 @dataclass(frozen=True)
@@ -96,8 +98,10 @@ class DecisionContrastiveResult:
     confidence: float
     bootstrap_samples: int
     bootstrap_seed: int
+    interval_method: str = "percentile_bootstrap"
 
     def method_record(self) -> dict:
+        bootstrap = self.interval_method == "percentile_bootstrap"
         return {
             "name": "car_style_binary_decision_contrastive",
             "reference_revision": REFERENCE_REVISION,
@@ -107,13 +111,18 @@ class DecisionContrastiveResult:
             "intervention": "hold decisions before position; resample position and suffix",
             "decision_order": "ascending factual decision positions",
             "continuation_seed_schedule": "seed + decision_index * samples + sample_index",
-            "interval_method": "conditional_percentile_bootstrap",
+            "interval_method": ("conditional_percentile_bootstrap" if bootstrap else self.interval_method),
             "confidence": self.confidence,
-            "bootstrap_samples": self.bootstrap_samples,
-            "bootstrap_seed": self.bootstrap_seed,
-            "bootstrap_rng": "python.random.Random (MT19937), reset per estimate",
+            "bootstrap_samples": self.bootstrap_samples if bootstrap else None,
+            "bootstrap_seed": self.bootstrap_seed if bootstrap else None,
+            "bootstrap_rng": "python.random.Random (MT19937), reset per estimate" if bootstrap else None,
             "bootstrap_baseline": "constant observed label; no RNG draws for baseline",
-            "quantile_method": "linear interpolation between sorted bootstrap effects",
+            "quantile_method": "linear interpolation between sorted bootstrap effects" if bootstrap else None,
+            "interval_target": "known changed bad-outcome probability minus constant factual label",
+            "interval_assumptions": "independent known binary draws from the declared continuation law",
+            "binomial_coverage": ("equal-tailed exact binomial, conservative under its assumptions"
+                                  if self.interval_method == "clopper_pearson" else
+                                  "score approximation" if self.interval_method == "wilson" else None),
             "multiplicity_adjustment": "none",
             "rescue_rule": "effect < 0 and confidence_interval upper bound < 0",
             "locus_rule": "latest rescuing position; every position must be estimable",
@@ -154,8 +163,11 @@ class DecisionContrastiveResult:
             "statistical_limits": [
                 "Intervals condition on one observed factual episode and world.",
                 "There is no multiplicity correction across positions or targets.",
-                "Homogeneous binary samples can yield zero-width bootstrap intervals; "
-                "this does not prove zero population variance or certain rescue.",
+                ("Homogeneous binary samples can yield zero-width bootstrap intervals; "
+                 "this does not prove zero population variance or certain rescue."
+                 if self.interval_method == "percentile_bootstrap" else
+                 "Binomial intervals do not collapse at homogeneous observations; "
+                 "coverage statements require their independent binomial assumptions."),
                 "Requested seeds do not establish independent samples or hidden-state equality.",
                 "The selected locus is a nominal statistical rule, not proof of unique causation.",
             ],
@@ -177,6 +189,9 @@ def _bootstrap_interval(values: tuple[bool, ...], factual_bad: bool, *,
     # One observed factual label stays constant in every bootstrap replicate.
     rng = random.Random(bootstrap_seed)
     count = len(values)
+    if all(value == values[0] for value in values):
+        point = int(values[0]) - int(factual_bad)
+        return float(point), float(point)
     effects = sorted(
         sum(values[rng.randrange(count)] for _ in range(count)) / count - int(factual_bad)
         for _ in range(bootstrap_samples)
@@ -195,6 +210,85 @@ def _selected_targets(targets: Iterable[ReplayTarget]) -> tuple[ReplayTarget, ..
     return selected
 
 
+def _interval_method(method):
+    if type(method) is not str or method not in CONTRASTIVE_INTERVAL_METHODS:
+        raise ValueError("interval_method must be percentile_bootstrap, wilson or clopper_pearson")
+
+
+def _changed_interval(values, factual_bad, *, confidence, interval_method,
+                      bootstrap_samples, bootstrap_seed):
+    if interval_method == "percentile_bootstrap":
+        return _bootstrap_interval(tuple(values), factual_bad, confidence=confidence,
+                                   bootstrap_samples=bootstrap_samples, bootstrap_seed=bootstrap_seed)
+    lower, upper = binomial_interval(sum(values), len(values), confidence=confidence,
+                                     method=interval_method)
+    return lower - int(factual_bad), upper - int(factual_bad)
+
+
+def _loci(results, targets):
+    loci = []
+    for target in targets:
+        candidates = tuple(result for result in results if result.target == target)
+        refused = sum(result.status == "refused" for result in candidates)
+        if refused:
+            loci.append(DecisionContrastiveLocus(
+                target, "refused", reason=f"{refused} factual decision positions lack complete "
+                "estimates; a latest rescue locus cannot be declared."))
+        else:
+            rescues = tuple(result for result in candidates if result.significant_rescue)
+            if rescues:
+                latest = max(rescues, key=lambda result: result.decision_index)
+                loci.append(DecisionContrastiveLocus(target, "identified", latest.decision_index,
+                                                     latest.event_id))
+            else:
+                loci.append(DecisionContrastiveLocus(
+                    target, "no_rescue", reason="No position satisfies the declared negative "
+                    "effect and interval criterion."))
+    return tuple(loci)
+
+
+def with_contrastive_interval(result: DecisionContrastiveResult, *,
+                              interval_method: str) -> DecisionContrastiveResult:
+    """Compare intervals on the same completed samples, without new policy calls.
+
+    Original refusals stay refused. Evidence is recomputed through the allowed
+    outcome adapter; changed factual labels or sample means reject the rescore.
+    """
+    if not isinstance(result, DecisionContrastiveResult):
+        raise TypeError("result must be a DecisionContrastiveResult")
+    _interval_method(interval_method)
+    factual = episode_outcome(result.factual)
+    cache = {(branch.decision_index, branch.continuation_seed):
+             episode_outcome(branch.replay.episode) if branch.replay.episode is not None else None
+             for branch in result.branches}
+    estimates = []
+    for item in result.results:
+        if item.status == "refused":
+            estimates.append(item)
+            continue
+        factual_value = factual.target_value(item.target)
+        changed = []
+        for seed in item.seeds:
+            outcome = cache.get((item.decision_index, seed))
+            value = outcome.target_value(item.target) if outcome is not None else None
+            if value is None:
+                raise ValueError("Previously estimated sample evidence became unavailable")
+            changed.append(not value)
+        if (factual_value is None or (not factual_value) != item.factual_bad
+                or len(changed) != result.samples_per_decision
+                or sum(changed) / len(changed) != item.changed_bad_rate
+                or item.changed_bad_rate - int(item.factual_bad) != item.effect):
+            raise ValueError("Factual label or sampled mean changed after the original estimate")
+        interval = _changed_interval(changed, item.factual_bad, confidence=result.confidence,
+                                    interval_method=interval_method,
+                                    bootstrap_samples=result.bootstrap_samples,
+                                    bootstrap_seed=result.bootstrap_seed)
+        estimates.append(replace(item, confidence_interval=interval,
+                                 significant_rescue=item.effect < 0 and interval[1] < 0))
+    return replace(result, results=tuple(estimates), loci=_loci(estimates, result.targets),
+                   interval_method=interval_method)
+
+
 def contrastive_decisions(
     factual: Episode,
     continuation_policy: BudgetedPolicy,
@@ -206,6 +300,7 @@ def contrastive_decisions(
     confidence: float = 0.95,
     bootstrap_samples: int = 2000,
     bootstrap_seed: int = 0,
+    interval_method: str = "percentile_bootstrap",
 ) -> DecisionContrastiveResult:
     """Sample every factual decision's suffix and estimate binary bad outcomes.
 
@@ -226,6 +321,7 @@ def contrastive_decisions(
         raise TypeError("factual.trace must be a Trace")
     if not isinstance(continuation_policy, BudgetedPolicy):
         raise TypeError("continuation_policy must be a BudgetedPolicy")
+    _interval_method(interval_method)
     if type(samples) is not int or samples < 2:
         raise ValueError("samples must be an integer of at least 2")
     if type(seed) is not int or not 0 <= seed <= MAX_TRIAL_SEED:
@@ -325,8 +421,8 @@ def contrastive_decisions(
             if factual_bad is not None and counts["known"] == samples:
                 rate = sum(changed) / samples
                 point = rate - int(factual_bad)
-                interval = _bootstrap_interval(
-                    tuple(changed), factual_bad, confidence=confidence,
+                interval = _changed_interval(
+                    tuple(changed), factual_bad, confidence=confidence, interval_method=interval_method,
                     bootstrap_samples=bootstrap_samples, bootstrap_seed=bootstrap_seed,
                 )
                 rescue = point < 0 and interval[1] < 0
@@ -344,29 +440,9 @@ def contrastive_decisions(
                 counts["known"], counts["unknown"], counts["failed"], counts["unstarted"],
                 seeds, rescue, reason,
             ))
-    loci = []
-    for target in selected:
-        candidates = tuple(result for result in results if result.target == target)
-        refused = sum(result.status == "refused" for result in candidates)
-        if refused:
-            loci.append(DecisionContrastiveLocus(
-                target, "refused", reason=f"{refused} factual decision positions lack complete "
-                "estimates; a latest rescue locus cannot be declared.",
-            ))
-        else:
-            rescues = tuple(result for result in candidates if result.significant_rescue)
-            if rescues:
-                latest = rescues[-1]
-                loci.append(DecisionContrastiveLocus(target, "identified", latest.decision_index,
-                                                     latest.event_id))
-            else:
-                loci.append(DecisionContrastiveLocus(
-                    target, "no_rescue", reason="No position satisfies the declared negative "
-                    "effect and interval criterion.",
-                ))
     return DecisionContrastiveResult(
-        factual, tuple(branches), tuple(results), tuple(loci), metadata, selected, samples,
+        factual, tuple(branches), tuple(results), _loci(results, selected), metadata, selected, samples,
         planned_seeds, planned_branches, continuation_policy.calls - initial_calls, initial_calls,
         continuation_policy.max_calls, exhausted, template, float(confidence), bootstrap_samples,
-        bootstrap_seed,
+        bootstrap_seed, interval_method,
     )

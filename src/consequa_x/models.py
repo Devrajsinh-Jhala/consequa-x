@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from dataclasses import MISSING, dataclass, field, fields, is_dataclass
 from enum import Enum
+from functools import lru_cache
 import json
 import math
 import types
@@ -458,6 +459,12 @@ def _serialize(value: Any, path: str, active: set[int]) -> Any:
     return _json_copy(value, path, active)
 
 
+@lru_cache(maxsize=64)
+def _record_annotations(record_type: type) -> dict:
+    """Resolve static schema annotations once; record values are never cached."""
+    return get_type_hints(record_type)
+
+
 def _decode_record(record_type: type, value: Any, path: str) -> Any:
     if type(value) is not dict:
         raise TypeError(f"{path} must be a JSON object")
@@ -473,7 +480,7 @@ def _decode_record(record_type: type, value: Any, path: str) -> Any:
     ]
     if missing:
         raise ValueError(f"{path} is missing required fields: {missing}")
-    annotations = get_type_hints(record_type)
+    annotations = _record_annotations(record_type)
     arguments = {
         name: _decode_field(annotations[name], item, f"{path}.{name}")
         for name, item in value.items()

@@ -9,7 +9,7 @@ target vector, and an independent endpoint experiment checks its total scale.
 from __future__ import annotations
 
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import math
 import random
 from statistics import NormalDist
@@ -21,10 +21,15 @@ from ..policies import PolicyError
 from .decision_coalition import DecisionCoalitionReplay, replay_decision_coalition
 from .decision_contrastive import REFERENCE_REVISION, _selected_targets
 from .evaluation import BudgetedPolicy, CallBudgetExceeded
+from .intervals import binomial_difference_interval, bounded_mean_interval
 from .policy_runner import MAX_TRIAL_SEED
 from .runner import Episode
 from .targets import episode_outcome
 from .templates import DEFAULT_REFUND_TEMPLATE, RefundTaskTemplate
+
+
+SHAPLEY_INTERVAL_METHODS = ("normal", "hoeffding")
+ENDPOINT_INTERVAL_METHODS = ("normal", "clopper_pearson_difference")
 
 
 @dataclass(frozen=True)
@@ -123,6 +128,8 @@ class DecisionShapleyResult:
     template: RefundTaskTemplate
     confidence: float
     permutation_seed: int
+    interval_method: str = "normal"
+    endpoint_interval_method: str = "normal"
 
     def method_record(self) -> dict:
         return {
@@ -136,7 +143,11 @@ class DecisionShapleyResult:
             "pairs": self.pairs,
             "samples_per_eval": self.samples_per_eval,
             "fresh_coalition_sampling": "every occurrence and sample has its own replay seed; no cache",
-            "interval_method": "normal pair-mean interval; sample variance ddof=1 divided by pairs",
+            "interval_method": ("normal pair-mean interval; sample variance ddof=1 divided by pairs"
+                                if self.interval_method == "normal" else "two-sided Hoeffding pair-mean bound"),
+            "pair_value_bounds": [-1., 1.],
+            "interval_assumptions": "independent known pair vectors from the defined coalition game",
+            "interval_clipping": self.interval_method == "hoeffding",
             "confidence": self.confidence,
             "independent_unit": "one averaged forward/reverse contribution vector",
             "permutation_seed": self.permutation_seed,
@@ -145,7 +156,11 @@ class DecisionShapleyResult:
             "schedule_order": "empty endpoints, full endpoints, then forward/reverse walks per pair",
             "endpoint_samples": self.endpoint_samples,
             "endpoint_difference": "independent full-held mean minus independent empty-held mean",
-            "endpoint_interval": "normal interval with independent full/empty variance contributions",
+            "endpoint_interval": ("normal interval with independent full/empty variance contributions"
+                                  if self.endpoint_interval_method == "normal" else
+                                  "two exact binomial marginal intervals with split failure allowance"),
+            "endpoint_interval_method": self.endpoint_interval_method,
+            "endpoint_interval_assumptions": "independent known binary draws within each endpoint law",
             "discrepancy": "sum of estimated signed shares minus independent endpoint difference",
             "discrepancy_inference": "descriptive point only; no interval or forced normalization",
             "multiplicity_adjustment": "none",
@@ -195,9 +210,10 @@ class DecisionShapleyResult:
             "statistical_limits": [
                 "Intervals condition on one captured factual episode and simulator world.",
                 "Forward and reverse walks within a pair are correlated and count as one unit.",
-                "Normal intervals are approximate, especially with small pair or endpoint counts.",
+                "Normal intervals are approximate; bounded/exact alternatives can be conservative and wide.",
                 "There is no multiplicity correction across decisions or targets.",
-                "Homogeneous observations can yield zero-width intervals without proving certainty.",
+                "Only the normal options yield zero-width intervals at homogeneous samples; this does not prove certainty.",
+                "Concentration and binomial statements require their declared sampling assumptions.",
                 "Requested seeds do not establish independent model draws or hidden-state equality.",
                 "Signed shares are neither probabilities nor normalized responsibility percentages.",
                 "Independent endpoint discrepancy is a descriptive diagnostic, not a calibrated test.",
@@ -217,6 +233,81 @@ def _normal_interval(values: tuple[float, ...], confidence: float) -> tuple[floa
         _variance(values) / len(values)
     )
     return mean - margin, mean + margin
+
+
+def _interval_methods(interval_method, endpoint_interval_method):
+    if type(interval_method) is not str or interval_method not in SHAPLEY_INTERVAL_METHODS:
+        raise ValueError("interval_method must be normal or hoeffding")
+    if (type(endpoint_interval_method) is not str
+            or endpoint_interval_method not in ENDPOINT_INTERVAL_METHODS):
+        raise ValueError("endpoint_interval_method must be normal or clopper_pearson_difference")
+
+
+def _pair_interval(values, confidence, method):
+    return (_normal_interval(tuple(values), confidence) if method == "normal" else
+            bounded_mean_interval(values, confidence=confidence))
+
+
+def _endpoint_interval(empty, full, confidence, method):
+    if method == "clopper_pearson_difference":
+        return binomial_difference_interval(sum(full), len(full), sum(empty), len(empty),
+                                             confidence=confidence)
+    point = sum(full) / len(full) - sum(empty) / len(empty)
+    margin = -NormalDist().inv_cdf((1 - confidence) / 2) * math.sqrt(
+        _variance(tuple(empty)) / len(empty) + _variance(tuple(full)) / len(full))
+    return point - margin, point + margin
+
+
+def with_shapley_intervals(result: DecisionShapleyResult, *, interval_method: str,
+                           endpoint_interval_method: str) -> DecisionShapleyResult:
+    """Compare pair/endpoint intervals on the same draws, keeping all refusals.
+
+    No new policy calls occur. Signed points, pair vectors, coverage, budgets
+    and the independent endpoint discrepancy remain unchanged.
+    """
+    if not isinstance(result, DecisionShapleyResult):
+        raise TypeError("result must be a DecisionShapleyResult")
+    _interval_methods(interval_method, endpoint_interval_method)
+    estimates = []
+    for item in result.results:
+        if item.status == "refused":
+            estimates.append(item)
+            continue
+        if (len(item.pair_values) != result.pairs or any(value is None for value in item.pair_values)
+                or sum(item.pair_values) / result.pairs != item.shapley_value):
+            raise ValueError("Estimated pair vector no longer matches its recorded point")
+        estimates.append(replace(item, confidence_interval=_pair_interval(
+            item.pair_values, result.confidence, interval_method)))
+    endpoints = []
+    cache = {branch.slot.index: episode_outcome(branch.replay.episode)
+             if branch.replay.episode is not None else None for branch in result.branches}
+    for item in result.endpoint_checks:
+        if item.status == "refused":
+            endpoints.append(item)
+            continue
+        by_role = {}
+        for role in ("endpoint_empty", "endpoint_full"):
+            values = []
+            for slot in result.slots:
+                if slot.role != role:
+                    continue
+                outcome = cache.get(slot.index)
+                value = outcome.target_value(item.target) if outcome is not None else None
+                if value is None:
+                    raise ValueError("Previously estimated endpoint evidence became unavailable")
+                values.append(not value)
+            if len(values) != result.endpoint_samples:
+                raise ValueError("Endpoint sample count differs from the declared plan")
+            by_role[role] = values
+        empty, full = by_role["endpoint_empty"], by_role["endpoint_full"]
+        if (sum(empty) / len(empty) != item.empty_bad_rate
+                or sum(full) / len(full) != item.full_bad_rate
+                or item.full_bad_rate - item.empty_bad_rate != item.endpoint_difference):
+            raise ValueError("Endpoint mean changed after the original estimate")
+        endpoints.append(replace(item, confidence_interval=_endpoint_interval(
+            empty, full, result.confidence, endpoint_interval_method)))
+    return replace(result, results=tuple(estimates), endpoint_checks=tuple(endpoints),
+                   interval_method=interval_method, endpoint_interval_method=endpoint_interval_method)
 
 
 def _coverage(statuses: Iterable[str]) -> DecisionShapleyCoverage:
@@ -246,6 +337,8 @@ def shapley_decisions(
     confidence: float = 0.95,
     targets: Iterable[ReplayTarget] = ("consequence",),
     template: RefundTaskTemplate = DEFAULT_REFUND_TEMPLATE,
+    interval_method: str = "normal",
+    endpoint_interval_method: str = "normal",
 ) -> DecisionShapleyResult:
     """Estimate signed decision contributions using fresh positional coalitions.
 
@@ -265,6 +358,7 @@ def shapley_decisions(
         raise TypeError("factual.trace must be a Trace")
     if not isinstance(continuation_policy, BudgetedPolicy):
         raise TypeError("continuation_policy must be a BudgetedPolicy")
+    _interval_methods(interval_method, endpoint_interval_method)
     for name, value, minimum in (("pairs", pairs, 2),
                                  ("samples_per_eval", samples_per_eval, 1),
                                  ("endpoint_samples", endpoint_samples, 2)):
@@ -371,7 +465,7 @@ def shapley_decisions(
                 target_value = item[1].target_value(target)
                 status = "unknown" if target_value is None else "known"
                 if target_value is not None:
-                    value = float(not target_value)
+                    value = not target_value
             values[slot.index], statuses[slot.index] = value, status
         path_coverage = _coverage(statuses[slot.index] for slot in path_slots)
         pair_vectors = []
@@ -404,7 +498,7 @@ def shapley_decisions(
             reason = None
             if estimable:
                 point = sum(pair_values) / pairs
-                interval = _normal_interval(pair_values, float(confidence))
+                interval = _pair_interval(pair_values, float(confidence), interval_method)
             else:
                 reason = _missing_reason(f"the complete {target} Shapley vector", path_coverage)
             results.append(DecisionShapleyEstimate(
@@ -425,10 +519,7 @@ def shapley_decisions(
             empty_rate = sum(empty) / endpoint_samples
             full_rate = sum(full) / endpoint_samples
             endpoint_difference = full_rate - empty_rate
-            margin = -NormalDist().inv_cdf((1 - confidence) / 2) * math.sqrt(
-                (_variance(empty) + _variance(full)) / endpoint_samples
-            )
-            interval = (endpoint_difference - margin, endpoint_difference + margin)
+            interval = _endpoint_interval(empty, full, float(confidence), endpoint_interval_method)
         else:
             reason = _missing_reason(f"{target} empty endpoint", empty_coverage) + " " + (
                 _missing_reason(f"{target} full endpoint", full_coverage)
@@ -447,4 +538,5 @@ def shapley_decisions(
         tuple(permutations), metadata, selected, pairs, samples_per_eval, endpoint_samples,
         continuation_policy.calls - initial_calls, initial_calls, continuation_policy.max_calls,
         exhausted, template, float(confidence), permutation_seed,
+        interval_method, endpoint_interval_method,
     )

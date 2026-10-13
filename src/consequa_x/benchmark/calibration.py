@@ -19,9 +19,13 @@ from typing import Callable
 from ..attribution import ReplayTarget
 from ..models import EventType, to_dict
 from ..policies import PolicyError
-from .calibration_mechanisms import CALIBRATION_MECHANISMS, get_calibration_mechanism
-from .decision_contrastive import DecisionContrastiveResult, _selected_targets, contrastive_decisions
-from .decision_shapley import DecisionShapleyResult, shapley_decisions
+from .calibration_mechanisms import (
+    CALIBRATION_MECHANISMS, CalibrationMechanism, get_calibration_mechanism,
+)
+from .decision_contrastive import (
+    DecisionContrastiveResult, _interval_method, _selected_targets, contrastive_decisions,
+)
+from .decision_shapley import DecisionShapleyResult, _interval_methods, shapley_decisions
 from .evaluation import BudgetedPolicy
 from .policy_runner import MAX_TRIAL_SEED, run_policy_scenario
 from .runner import Episode
@@ -29,9 +33,12 @@ from .targets import episode_outcome
 
 
 CALIBRATION_CASES = tuple(CALIBRATION_MECHANISMS) + ("budget-stop-q50",)
+INTERVAL_COMPARISON_CASES = CALIBRATION_CASES + ("protective-stop-q0", "protective-stop-q100")
 
 
 def _mechanism(name):
+    if name in ("protective-stop-q0", "protective-stop-q100"):
+        return CalibrationMechanism(name, 0. if name.endswith("q0") else 1.)
     return get_calibration_mechanism("protective-stop-q50" if name == "budget-stop-q50" else name)
 
 
@@ -55,10 +62,13 @@ class CalibrationPlan:
     seed: int = 100
     max_calls: int = 400
     targets: tuple[ReplayTarget, ...] = ("action", "consequence", "action_linked_consequence")
+    contrastive_interval_method: str = "percentile_bootstrap"
+    shapley_interval_method: str = "normal"
+    endpoint_interval_method: str = "normal"
 
     def __post_init__(self):
         if (not isinstance(self.mechanisms, tuple) or not self.mechanisms
-                or any(not isinstance(name, str) or name not in CALIBRATION_CASES
+                or any(not isinstance(name, str) or name not in INTERVAL_COMPARISON_CASES
                        for name in self.mechanisms)
                 or len(set(self.mechanisms)) != len(self.mechanisms)):
             raise ValueError("mechanisms must be a nonempty tuple of distinct registered names")
@@ -79,6 +89,8 @@ class CalibrationPlan:
         if not isinstance(self.targets, tuple):
             raise ValueError("targets must be a tuple of distinct replay targets")
         _selected_targets(self.targets)
+        _interval_method(self.contrastive_interval_method)
+        _interval_methods(self.shapley_interval_method, self.endpoint_interval_method)
         # Bound the entire declared experiment before allocating its schedule.
         total = sum(_trial_seed_count(self, _mechanism(name).decision_count)
                     for name in self.mechanisms) * self.repeats
@@ -403,6 +415,7 @@ def run_calibration(plan: CalibrationPlan, *,
                     factual, budgets["contrastive"], samples=plan.samples,
                     seed=item.contrastive_seed, targets=plan.targets, confidence=plan.confidence,
                     bootstrap_samples=plan.bootstrap_samples, bootstrap_seed=item.bootstrap_seed,
+                    interval_method=plan.contrastive_interval_method,
                 )
             except (PolicyError, ValueError, TypeError) as error:
                 errors.append(CalibrationError("contrastive", type(error).__name__, str(error)))
@@ -414,6 +427,8 @@ def run_calibration(plan: CalibrationPlan, *,
                     endpoint_samples=plan.endpoint_samples, seed=item.shapley_seed,
                     permutation_seed=item.permutation_seed, confidence=plan.confidence,
                     targets=plan.targets,
+                    interval_method=plan.shapley_interval_method,
+                    endpoint_interval_method=plan.endpoint_interval_method,
                 )
             except (PolicyError, ValueError, TypeError) as error:
                 errors.append(CalibrationError("shapley", type(error).__name__, str(error)))
@@ -483,6 +498,9 @@ def _numeric_metrics(observations: list[tuple[float, tuple[float, float] | None]
         rmse_mcse = squared_mcse / (2 * rmse) if rmse else None
     all_intervals = [interval for _, interval in observations if interval is not None]
     all_degenerate = sum(lower == upper for lower, upper in all_intervals)
+    sign_eligible = reference is not None and reference != 0
+    sign_detected = sum((lower > 0 if reference > 0 else upper < 0)
+                        for lower, upper in all_intervals) if sign_eligible else 0
     return {
         "reference": reference,
         "scored_estimates": len(errors),
@@ -491,6 +509,10 @@ def _numeric_metrics(observations: list[tuple[float, tuple[float, float] | None]
         "interval_coverage": wilson_rate(covered, len(intervals), confidence),
         "available_estimates": len(observations),
         "available_intervals": len(all_intervals),
+        "mean_interval_width": (sum(upper-lower for lower, upper in all_intervals) / len(all_intervals)
+                                if all_intervals else None),
+        "reference_sign_detection": wilson_rate(sign_detected, len(all_intervals) if sign_eligible else 0,
+                                                 confidence),
         "degenerate_intervals": all_degenerate,
         "degenerate_interval_rate": wilson_rate(all_degenerate, len(all_intervals), confidence),
     }

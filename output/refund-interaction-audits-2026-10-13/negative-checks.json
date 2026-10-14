@@ -1,0 +1,167 @@
+{
+  "all_rejected": true,
+  "clean_export": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\refund-interaction-audit-_xkghm9n\\clean",
+  "negative_checks": [
+    {
+      "case": "empty_coefficient_vector",
+      "rejected": true,
+      "rejection": "permutation-defined coefficient: complete vector length"
+    },
+    {
+      "case": "short_coefficient_vector",
+      "rejected": true,
+      "rejection": "permutation-defined coefficient: complete vector length"
+    },
+    {
+      "case": "extra_coefficient_vector",
+      "rejected": true,
+      "rejection": "permutation-defined coefficient: complete vector length"
+    },
+    {
+      "case": "short_coalition_vector",
+      "rejected": true,
+      "rejection": "reported coalition vector length"
+    },
+    {
+      "case": "short_mass_vector",
+      "rejected": true,
+      "rejection": "reported mask mass vector length"
+    },
+    {
+      "case": "reference_empty_shares",
+      "rejected": true,
+      "rejection": "reference coefficient vector length"
+    },
+    {
+      "case": "reference_short_coalitions",
+      "rejected": true,
+      "rejection": "reference coalition vector length"
+    },
+    {
+      "case": "reference_short_unknown",
+      "rejected": true,
+      "rejection": "reference unknown vector length"
+    },
+    {
+      "case": "reference_short_validity",
+      "rejected": true,
+      "rejection": "reference validity vector length"
+    },
+    {
+      "case": "same_total_wrong_status_mass",
+      "rejected": true,
+      "rejection": "independent status mass: known_mass"
+    },
+    {
+      "case": "missing_status_mass_field",
+      "rejected": true,
+      "rejection": "complete status mass inventory"
+    },
+    {
+      "case": "false_numeric_availability",
+      "rejected": true,
+      "rejection": "whole-vector numeric availability"
+    },
+    {
+      "case": "wrong_branch_status_count",
+      "rejected": true,
+      "rejection": "independent branch status counts"
+    },
+    {
+      "case": "wrong_inactive_branch_count",
+      "rejected": true,
+      "rejection": "independent inactive held branch count"
+    },
+    {
+      "case": "missing_zero_weight_group",
+      "rejected": true,
+      "rejection": "complete unique case/game/component schedule"
+    },
+    {
+      "case": "duplicate_schedule_group",
+      "rejected": true,
+      "rejection": "complete unique case/game/component schedule"
+    },
+    {
+      "case": "missing_evidence_mask",
+      "rejected": true,
+      "rejection": "complete unique evidence record/mask inventory"
+    },
+    {
+      "case": "duplicate_evidence_mask",
+      "rejected": true,
+      "rejection": "complete unique evidence record/mask inventory"
+    },
+    {
+      "case": "missing_game_summary",
+      "rejected": true,
+      "rejection": "summary exact game inventory"
+    },
+    {
+      "case": "missing_case_summary",
+      "rejected": true,
+      "rejection": "summary exact case inventory"
+    },
+    {
+      "case": "wrong_case_call_count",
+      "rejected": true,
+      "rejection": "per-case actual calls"
+    },
+    {
+      "case": "missing_manifest_entry",
+      "rejected": true,
+      "rejection": "manifest exhaustive inventory"
+    },
+    {
+      "case": "unsafe_manifest_path",
+      "rejected": true,
+      "rejection": "manifest safe canonical relative path"
+    },
+    {
+      "case": "duplicate_manifest_json_key",
+      "rejected": true,
+      "rejection": "duplicate JSON key: README.md"
+    },
+    {
+      "case": "wrong_manifest_size",
+      "rejected": true,
+      "rejection": "manifest artifact byte size: README.md"
+    },
+    {
+      "case": "boolean_manifest_size",
+      "rejected": true,
+      "rejection": "manifest nonnegative integer byte size"
+    },
+    {
+      "case": "wrong_manifest_hash",
+      "rejected": true,
+      "rejection": "manifest artifact hash: README.md"
+    },
+    {
+      "case": "partial_manifest",
+      "rejected": true,
+      "rejection": "completion manifest"
+    },
+    {
+      "case": "unlisted_file",
+      "rejected": true,
+      "rejection": "manifest exhaustive inventory"
+    }
+  ],
+  "positive_audit": {
+    "actual_policy_calls": 718,
+    "assertions": 27240,
+    "audited_at_utc": "2026-10-13T18:13:56.357168+00:00",
+    "auditor": "stdlib independent raw readback, costs, mixture and six-permutation calculation",
+    "auditor_script_sha256": "803efc85121db150a61d96386a5ebb4ea7ca327d4b7bf3594556364aaeee45b7",
+    "case_count": 8,
+    "manifest_files_checked": 6,
+    "manifest_sha256": "c62cfae7b57de71389357dee09d85553d411f1221dde47bdb2f6e6497a2f5e31",
+    "passed": true,
+    "planned_branches": 512,
+    "source_revision": "audit-integration-fixture"
+  },
+  "retained_artifacts_changed": false,
+  "script_sha256": "803efc85121db150a61d96386a5ebb4ea7ca327d4b7bf3594556364aaeee45b7",
+  "semantic_edits_rehashed": true
+}

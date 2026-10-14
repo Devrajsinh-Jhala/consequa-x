@@ -27,6 +27,14 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - An audited [1,280-trial calibration run](../output/calibration-probe-2026-10-11/FINDINGS.md), [finite interval enumeration](../output/calibration-theory-2026-10-11/README.md), and fresh [384-trial same-draw comparison](../output/interval-comparison-2026-10-13/FINDINGS.md). Conservative interval defaults retain uncertainty at constant observations, with width and detection tradeoffs explicit.
 - Separate strict and [on-reach positional games](decision-shapley.md), plus [physical refund selection/retry interactions](refund-interactions.md), idempotency and evidence/budget controls. Exact component enumeration establishes the declared physical game; repeated permutation-sampler calibration remains separate.
 - A [working manuscript and evidence ledger](../paper/README.md), with completed preliminary evidence and pending held-out, matched-baseline and joint-fault experiments identified.
+- A [24-episode local Qwen3 validation](../output/local-validation-2026-10-14/FINDINGS.md)
+  comparing both existing prompt profiles across six validation cases with
+  59 actual model calls. Structured abstention, assessable-claim contradictions
+  and manual rationale clauses are reported separately; the held-out reserve
+  remains untouched.
+- [Reviewed alpha 2 distributions](../output/release-alpha-2026-10-14/README.md),
+  bound to the final source revision, with local tests, strict metadata checks,
+  independent archive inspection and fresh wheel/sdist installation checks.
 
 ## Next research milestone
 

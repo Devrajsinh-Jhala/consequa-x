@@ -1,0 +1,13 @@
+{
+  "actual_policy_calls": 718,
+  "assertions": 27277,
+  "audited_at_utc": "2026-10-13T18:36:15.219249+00:00",
+  "auditor": "stdlib independent raw readback, costs, mixture and six-permutation calculation",
+  "auditor_script_sha256": "2b5f427e3e9d920c1c10a9b81d683a860ecb43017fd0b781f73a39c878b5e528",
+  "case_count": 8,
+  "manifest_files_checked": 7,
+  "manifest_sha256": "6cfa2b89782d3a58fe295d7f79034a5fec4fb5f7cb53d9d2a881fde15e1a8bcb",
+  "passed": true,
+  "planned_branches": 512,
+  "source_revision": "2c4adfeb2a364a8116d6edbccbbdac64b413fc9c"
+}

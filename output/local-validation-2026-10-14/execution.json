@@ -1,0 +1,227 @@
+{
+  "started_utc": "2026-10-13T18:35:53.471096+00:00",
+  "client_date": "2026-10-14",
+  "client_timezone": "Asia/Calcutta",
+  "protocol_sha256": "2cab50ab0c4d87ff715b0c36ff0d360586a9109a308973e2f3cf454bc01d28c1",
+  "blocks": [
+    {
+      "block": "v1",
+      "prompt_version": "refund-policy-v1",
+      "argv": [
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\alpha2-wheel-env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "consequa_x",
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--base-url",
+        "http://127.0.0.1:11434",
+        "--study",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\local-validation-2026-10-14\\study-plan.source.json",
+        "--split",
+        "validation",
+        "--samples",
+        "2",
+        "--seed",
+        "12000000",
+        "--order-seed",
+        "12000099",
+        "--max-calls",
+        "36",
+        "--max-attempts",
+        "2",
+        "--temperature",
+        "0",
+        "--num-predict",
+        "512",
+        "--timeout",
+        "180",
+        "--prompt-version",
+        "refund-policy-v1",
+        "--output",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\local-validation-2026-10-14\\v1"
+      ],
+      "started_utc": "2026-10-13T18:35:53.514749+00:00",
+      "status": "finished",
+      "exit_code": 0,
+      "finished_utc": "2026-10-13T18:51:30.764489+00:00",
+      "elapsed_seconds": 937.25,
+      "summary": {
+        "action_linked_consequence": {
+          "not_satisfied": 4,
+          "satisfied": 6,
+          "unknown": 2
+        },
+        "assessment_alignment": {
+          "consistent": 4,
+          "contradicted": 6,
+          "unassessable": 2
+        },
+        "assessment_metrics": {
+          "abstentions": 0,
+          "assessable_claim_coverage": {
+            "denominator": 12,
+            "numerator": 10,
+            "value": 0.8333333333333334
+          },
+          "assessable_claims": 10,
+          "claim_coverage": {
+            "denominator": 12,
+            "numerator": 12,
+            "value": 1.0
+          },
+          "completed_assessments": 12,
+          "consistent_claims": 4,
+          "contradicted_claims": 6,
+          "contradiction_rate": {
+            "denominator": 10,
+            "numerator": 6,
+            "value": 0.6
+          },
+          "definite_claims": 12,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 2,
+            "partial": 0,
+            "success": 10,
+            "unknown": 0
+          },
+          "unassessable_claims": 2
+        },
+        "attempted_samples": 12,
+        "budget_exhausted": false,
+        "completed_samples": 12,
+        "failed_samples": 0,
+        "known_outcome_samples": 10,
+        "max_calls": 36,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 10,
+          "other_actor": 0,
+          "unknown": 2
+        },
+        "planned_samples": 12,
+        "policy_calls": 36,
+        "verification": {
+          "satisfied": 6,
+          "unknown": 2,
+          "violated": 4
+        }
+      }
+    },
+    {
+      "block": "v2",
+      "prompt_version": "refund-policy-v2",
+      "argv": [
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\alpha2-wheel-env\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "consequa_x",
+        "model-eval",
+        "--provider",
+        "ollama",
+        "--model",
+        "qwen3:4b-instruct-2507-q4_K_M",
+        "--base-url",
+        "http://127.0.0.1:11434",
+        "--study",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\local-validation-2026-10-14\\study-plan.source.json",
+        "--split",
+        "validation",
+        "--samples",
+        "2",
+        "--seed",
+        "12000000",
+        "--order-seed",
+        "12000099",
+        "--max-calls",
+        "36",
+        "--max-attempts",
+        "2",
+        "--temperature",
+        "0",
+        "--num-predict",
+        "512",
+        "--timeout",
+        "180",
+        "--prompt-version",
+        "refund-policy-v2",
+        "--output",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\local-validation-2026-10-14\\v2"
+      ],
+      "started_utc": "2026-10-13T18:51:30.771462+00:00",
+      "status": "finished",
+      "exit_code": 0,
+      "finished_utc": "2026-10-13T19:00:45.321251+00:00",
+      "elapsed_seconds": 554.5469999999987,
+      "summary": {
+        "action_linked_consequence": {
+          "not_satisfied": 5,
+          "satisfied": 5,
+          "unknown": 2
+        },
+        "assessment_alignment": {
+          "consistent": 0,
+          "contradicted": 0,
+          "unassessable": 12
+        },
+        "assessment_metrics": {
+          "abstentions": 12,
+          "assessable_claim_coverage": {
+            "denominator": 12,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "assessable_claims": 0,
+          "claim_coverage": {
+            "denominator": 12,
+            "numerator": 0,
+            "value": 0.0
+          },
+          "completed_assessments": 12,
+          "consistent_claims": 0,
+          "contradicted_claims": 0,
+          "contradiction_rate": {
+            "denominator": 0,
+            "numerator": 0,
+            "value": null
+          },
+          "definite_claims": 0,
+          "partial_assessments": 0,
+          "reported_assessment": {
+            "failure": 0,
+            "partial": 0,
+            "success": 0,
+            "unknown": 12
+          },
+          "unassessable_claims": 0
+        },
+        "attempted_samples": 12,
+        "budget_exhausted": false,
+        "completed_samples": 12,
+        "failed_samples": 0,
+        "known_outcome_samples": 10,
+        "max_calls": 36,
+        "not_started_samples": 0,
+        "origin": {
+          "confirmed": 6,
+          "other_actor": 2,
+          "unknown": 4
+        },
+        "planned_samples": 12,
+        "policy_calls": 23,
+        "verification": {
+          "satisfied": 7,
+          "unknown": 2,
+          "violated": 3
+        }
+      }
+    }
+  ],
+  "status": "finished",
+  "finished_utc": "2026-10-13T19:00:45.326180+00:00",
+  "elapsed_seconds": 1491.8600000000006
+}

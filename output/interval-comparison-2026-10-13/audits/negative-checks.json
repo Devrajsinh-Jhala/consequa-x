@@ -1,0 +1,113 @@
+{
+  "all_rejected": true,
+  "audit_script": "scripts/audit_interval_comparison.py",
+  "negative_copy_directory": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\interval-audit-negative-fwrwor9w",
+  "rerun_current_script": true,
+  "retained_reports_changed": false,
+  "script_sha256": "85b601ce963e90fec505a3b3aa5e30a41b5ee624ec583764ee33ec2e73258e10",
+  "semantic_edits_rehashed": true,
+  "source_fixture": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\interval-audit-smoke",
+  "source_revision": "audit-integration-fixture",
+  "tests": [
+    {
+      "case": "missing_estimate_row",
+      "rejected": true,
+      "rejection": "contrastive/wilson estimates: complete unique row inventory"
+    },
+    {
+      "case": "duplicate_estimate_row",
+      "rejected": true,
+      "rejection": "shapley/normal estimates: complete unique row inventory"
+    },
+    {
+      "case": "missing_endpoint_row",
+      "rejected": true,
+      "rejection": "shapley/hoeffding_exact_endpoints endpoints: complete unique row inventory"
+    },
+    {
+      "case": "duplicate_endpoint_row",
+      "rejected": true,
+      "rejection": "shapley/normal endpoints: complete unique row inventory"
+    },
+    {
+      "case": "missing_locus_row",
+      "rejected": true,
+      "rejection": "contrastive/clopper_pearson loci: complete unique row inventory"
+    },
+    {
+      "case": "duplicate_locus_row",
+      "rejected": true,
+      "rejection": "contrastive/wilson loci: complete unique row inventory"
+    },
+    {
+      "case": "altered_aggregate_locus",
+      "rejected": true,
+      "rejection": "independent variant aggregate latest locus/selection_counts/no_rescue: 999 != 1"
+    },
+    {
+      "case": "missing_summary_variant",
+      "rejected": true,
+      "rejection": "summary matches protocol contrastive variants: {'clopper_pearson', 'percentile_bootstrap'} != {'clopper_pearson', 'wilson', 'percentile_bootstrap'}"
+    },
+    {
+      "case": "duplicate_protocol_variant",
+      "rejected": true,
+      "rejection": "protocol unique shapley variants"
+    },
+    {
+      "case": "comparison_raw_plan_mismatch",
+      "rejected": true,
+      "rejection": "comparison plan matches raw replay plan/repeats: 2 != 1"
+    },
+    {
+      "case": "missing_manifest_entry",
+      "rejected": true,
+      "rejection": "comparison manifest exhaustive artifact inventory"
+    },
+    {
+      "case": "unsafe_parent_manifest_path",
+      "rejected": true,
+      "rejection": "comparison manifest safe canonical relative path"
+    },
+    {
+      "case": "unsafe_absolute_manifest_path",
+      "rejected": true,
+      "rejection": "comparison manifest safe canonical relative path"
+    },
+    {
+      "case": "unsafe_backslash_manifest_path",
+      "rejected": true,
+      "rejection": "comparison manifest safe canonical relative path"
+    },
+    {
+      "case": "duplicate_manifest_entry",
+      "rejected": true,
+      "rejection": "comparison manifest unique artifact path"
+    },
+    {
+      "case": "wrong_manifest_byte_size",
+      "rejected": true,
+      "rejection": "comparison artifact byte size: 3807 != 3808"
+    },
+    {
+      "case": "boolean_manifest_byte_size",
+      "rejected": true,
+      "rejection": "comparison manifest nonnegative integer byte size"
+    },
+    {
+      "case": "incomplete_manifest_status",
+      "rejected": true,
+      "rejection": "comparison export completion: 'partial' != 'completed'"
+    },
+    {
+      "case": "wrong_manifest_digest",
+      "rejected": true,
+      "rejection": "comparison artifact hash: '77b228a1f907cf7606e30345da08d039aca0c2d9568f98c323f4b7434625cfd2' != '0000000000000000000000000000000000000000000000000000000000000000'"
+    },
+    {
+      "case": "unlisted_present_artifact",
+      "rejected": true,
+      "rejection": "comparison manifest exhaustive artifact inventory"
+    }
+  ]
+}

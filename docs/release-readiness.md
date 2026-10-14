@@ -1,6 +1,6 @@
 # Python alpha release readiness
 
-Drafted 13 October 2026. The first distribution target is PyPI. A later npm
+Drafted 13 October 2026, updated 14 October 2026. The first distribution target is PyPI. A later npm
 adapter can share trace schemas and conformance fixtures after the Python
 interface settles. A registry alpha is an engineering release; it does not
 require or establish research-paper superiority.
@@ -15,7 +15,7 @@ require or establish research-paper superiority.
 | Distribution name | `consequa-x`; project API returned 404 on 13 October 2026, which does not establish name claimability or ownership |
 | Python import | `consequa_x` |
 | Command | `consequa-x` |
-| Current alpha metadata | `0.1.0a2`; bind the actual final build to its frozen source revision |
+| Reviewed alpha metadata | `0.1.0a2`, final runtime source `40fa9bc7612c249dc33899a2ad6a6a12b5087ec4` |
 | Python requirement | `>=3.11`; classifiers currently list 3.11 and 3.12 |
 | Runtime dependencies | None required in current `pyproject.toml` |
 | Included interface assets | `py.typed` and bundled JSON trace schemas |
@@ -66,11 +66,14 @@ The public profile check confirmed the supplied username and display name on
 That establishes that no public project record was returned by that endpoint;
 it does not prove the name is claimable or establish account ownership of it.
 Standard local environment and `.pypirc` checks found no configured upload
-authentication. A working secure authentication path remains necessary.
+authentication. The maintainer selected local authentication setup so the
+reviewed artifacts can be uploaded. The [local setup guide](local-pypi-setup.md)
+uses masked input and the local credential store; setup confirmation remains
+pending.
 
 Check the intended project's name/ownership in the maintainer's PyPI account.
 Having an account does not establish that this distribution name can be created
-or updated. Then use the actual reviewed artifacts and the maintainer's secure
+or updated. Then use the actual reviewed artifacts and the maintainer's
 secure upload authentication. Keep credentials out of chat, source, shell output,
 study exports and release manifests. This document neither requests credentials
 nor creates or modifies authentication.
@@ -90,23 +93,27 @@ public project/version link, tag/revision and final release checks. Until then,
 describe the package as source-installable or locally built, not publicly
 published on PyPI.
 
-## Release receipt template
+## Reviewed local release receipt
 
-Complete this record with actual observed values; blank fields are pending.
+The [retained receipt](../output/release-alpha-2026-10-14/checks.json) binds the
+reviewed wheel and source distribution to the actual final runtime source.
+Standalone upload helpers and research/paper additions after that source freeze
+do not identify a different runtime artifact. The local-model validation used a
+separately retained earlier candidate checkpoint and must keep its own hashes.
 
 | Item | Value |
 | --- | --- |
-| Version / source revision / tag | Pending final freeze |
-| Python, operating system, build tooling | Pending local release record |
-| Local tests and lint | Pending final validation |
-| Wheel file and SHA-256 | Pending artifact build/check |
-| Sdist file and SHA-256 | Pending artifact build/check |
-| Fresh wheel and sdist installation results | Pending checks |
-| Tested compatibility and known limits | Pending record |
-| Package inventory and metadata check | Pending check |
+| Version / source revision / tag | `0.1.0a2`; `40fa9bc7612c249dc33899a2ad6a6a12b5087ec4`; GitHub tag/release operation pending |
+| Python, operating system, build tooling | Windows 11, Python 3.12.14; build 1.6.1, setuptools 84.0.0, Twine 7.0.0 |
+| Local tests and lint | Observed full final source suite: 1,274 passed + 240 subtests in 261.21 seconds; 14 focused standalone release-helper tests; Ruff passed. The full suite console output was not retained as a separate log. |
+| Wheel file and SHA-256 | `consequa_x-0.1.0a2-py3-none-any.whl`, 140,336 bytes; `4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748` |
+| Sdist file and SHA-256 | `consequa_x-0.1.0a2.tar.gz`, 276,725 bytes; `08736ac0530b0b64aa82ca0ede98276825092f7ecec4e04b24d08349684a4fd8` |
+| Fresh wheel and sdist installation results | Each installed independently in a fresh environment without runtime dependencies; import, schema, CLI and twelve offline trace round-trip smoke checks passed. Wheel was built from the sdist. |
+| Tested compatibility and known limits | New checks cover Windows Python 3.12.14 only; the declared Python 3.11+ range and other platforms were not newly tested in this release run. |
+| Package inventory and metadata check | Twine strict wheel/sdist metadata checks passed; independent 14-check archive audit verifies packaged module payloads, schemas, typing marker, license and zero required runtime dependencies. |
 | Account identity | `devraj0502`, public display name Devrajsinh Jhala, checked 13 October 2026 |
 | Name/owner verification | Public project API 404 on 13 October 2026; name claimability/ownership pending |
-| Upload authentication | No configured standard local upload authentication found; working path pending |
+| Upload authentication | Maintainer chose local setup; [masked credential-store helper](local-pypi-setup.md) ready; working setup confirmation pending |
 | Production upload and registry installation | Pending |
 | Public release URL | Pending actual upload |
 
@@ -126,6 +133,13 @@ comparators. The [audited comparison](../output/interval-comparison-2026-10-13/F
 retained 384 new trials and found a substantial interval-width/detection tradeoff.
 The strict intervention game's semantics remain unchanged; conservative bounds
 do not make invalid games or unknown evidence numerically defined.
+
+The retained [24-episode local validation](../output/local-validation-2026-10-14/README.md)
+completed with 59 local calls. It used the candidate wheel at source `2c4adfeb`,
+which is preserved separately. The revised profile abstained in every structured
+status; its contradiction rate is undefined and some rationales still contain
+positive processing clauses. The release must preserve those interpretation
+limits alongside the final artifact's distinct build identity.
 
 For npm, first specify the adapter's scope, schema compatibility/versioning,
 cross-language money/time/identity semantics and shared conformance fixtures.

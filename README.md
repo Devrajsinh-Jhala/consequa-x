@@ -226,6 +226,11 @@ A [working research paper](https://github.com/Devrajsinh-Jhala/consequa-x/blob/m
 the held-out studies still required. [Release readiness](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/release-readiness.md)
 distinguishes a locally installable alpha from a completed PyPI publication.
 
+The [24-episode local validation](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/local-validation-2026-10-14/FINDINGS.md)
+compares both existing prompt profiles on six validation cases using the same
+local Qwen3 4B model. Structured abstention and explanation claims are scored
+separately; the study does not establish improved accuracy or held-out superiority.
+
 Run the original deterministic and stochastic fixture comparison:
 
 ```sh
@@ -278,3 +283,10 @@ python -m pip install dist/consequa_x-0.1.0a2-py3-none-any.whl
 `requirements-dev.lock` captures the development environment used for this build. Public interfaces are alpha and may change. The Python requirement is declared as 3.11+, with local validation currently on Python 3.12; broader compatibility remains a release check.
 
 The package has not been published to PyPI or npm. The first registry target is PyPI; a later npm adapter can share the trace schema and conformance fixtures. The repository includes MIT licensing, author metadata, contributor guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Registry availability, broader compatibility, and the final release process remain to be verified. Broader model evaluations, held-out task templates, and comparisons against strong existing methods remain necessary for the research paper.
+
+The [reviewed alpha 2 artifacts and checks](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/release-alpha-2026-10-14/README.md)
+retain the wheel, source distribution and final build revision. Installation
+checks cover Windows Python 3.12.14. GitHub Actions stays disabled at the
+maintainer's request; this release uses local checks. The
+[local PyPI setup guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/local-pypi-setup.md)
+provides the remaining authentication step.

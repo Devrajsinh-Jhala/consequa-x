@@ -2,7 +2,7 @@
 
 Devrajsinh Jhala
 
-Working manuscript, 13 October 2026. This draft reports completed preliminary
+Working manuscript, updated 14 October 2026. This draft reports completed preliminary
 evidence and identifies experiments still required. It is not a submitted or
 accepted paper. The framework is an alpha research implementation.
 
@@ -23,10 +23,13 @@ synthetic calibration trials. Several nominal 95% intervals substantially
 undercovered analytically specified effects. A separate audited follow-up retained
 384 new trials comparing interval methods on shared draws: conservative bounds
 avoided homogeneous-sample certainty but substantially reduced weak-effect sign
-detection at the declared budget. A small local
-language-model pilot demonstrated auditable integration and assessment/effect
-disagreement, rather than generalization or attribution superiority. Held-out
-templates, matched strong baselines, interaction experiments and a final
+detection at the declared budget. Physical refund enumeration exposed a
+selection/retry interaction under an explicit on-reach game. A separate capped
+local-model validation completed 24 episodes with 59 calls: one profile made six
+contradicted status claims among ten assessable claims, while the revised profile
+abstained in all twelve statuses but retained positive processing language in
+some rationales. These are development and integration results. Held-out
+templates, matched strong baselines, repeated interaction sampling and a final
 statistical protocol remain necessary for stronger empirical claims.
 
 ## 1. Introduction
@@ -235,12 +238,12 @@ full-minus-empty difference diagnoses endpoint agreement; its discrepancy from
 the coefficient sum is descriptive. Contributions are not normalized to erase
 that discrepancy. Endpoint availability cannot repair an undefined path game.
 
-An optional **on-reach** game is under development. It applies a held decision
+An opt-in **on-reach** game applies a held decision
 only when the branch reaches its factual position and records inactive held
 positions after normal termination. This defines a different intervention game,
 rather than silently repairing the strict game. Reached incompatible operations
-remain invalid. Its implementation and the planned interacting refund mechanism
-must be validated separately before results are inserted here.
+remain invalid. Section 5.5 reports an independently audited physical refund
+enumeration for this distinct game; it does not reinterpret the strict data.
 
 ### 4.3 Uncertainty methods and assumptions
 
@@ -406,6 +409,97 @@ the framework still has no required runtime dependencies. These checks concern
 the specified implementation and evidence, not authentic provider origin or
 live-model independence.
 
+### 5.5 Physical refund interactions and variable-length games
+
+Collection source `2c4adfeb2a364a8116d6edbccbbdac64b413fc9c` enumerated four
+deterministic fresh-choice components, all eight held masks and both named games
+across eight declared cases. It retained all 512 planned branches and 718 actual
+scripted policy calls. Labels came from ordinary payment readback and verification;
+the estimator did not receive an injected mathematical payoff. Evaluator records
+remained separate. [Retained enumeration](../output/refund-interactions-2026-10-13/README.md).
+
+With initial selection and timeout retry probabilities p=q=.5, unsafe retry and
+exactly-one-refund verification, on-reach consequence shares were `[-.125,.375,0]`,
+with selection/retry interaction .25. The action-selection shares were
+`[-.5,0,0]`. With idempotency, consequence shares became `[-.5,0,0]` and the
+interaction disappeared. This demonstrates a consequence interaction in the
+refund adapter that differs from initial action attribution. It is a declared
+programmatic mixture, not observed stochastic language-model behavior.
+
+The strict population game remained undefined at interior probabilities because
+some requested later held decisions could be unreachable. Lagged readback and
+small-budget controls retained numerical refusals; incomplete provenance retained
+the linked target's evidence limits. A finite complete case or a valid endpoint
+does not supply the undefined strict game's Shapley reference.
+
+The independent audit checked coalition values, shares, interaction, labels,
+reachability, call accounting and manifests, passing 27,277 checks after the
+derived canonical manifest wrapper was aligned. Twenty-nine targeted corruptions
+were rejected. The original checkpoint export manifest and captured data were
+preserved; the wrapper fix required no new policy calls.
+[Audit receipts](../output/refund-interaction-audits-2026-10-13/independent.json).
+
+Separate engineering tests exercised the actual seeded permutation sampler in
+two controls with 32 pairs, one draw per coalition occurrence and 32 endpoint
+draws. Eighteen numeric coefficients fell within .3 of their references. This
+broad regression tolerance establishes integration behavior, not repeated
+coverage, precision or power. A retained stochastic sampler study and independent
+language-model interaction assessment remain necessary.
+
+### 5.6 Capped validation-family local-model run
+
+A separate protocol froze the source checkpoint
+`2c4adfeb2a364a8116d6edbccbbdac64b413fc9c` and its installed candidate wheel
+before generation. It completed six validation cases, two repetitions and two
+unchanged prompt profiles on the existing local Qwen3 4B model, using 59 actual
+calls within a 72-call cap. All 24 episodes completed; none failed or remained
+unstarted. The retained model digest, exact prompt/payload hashes, schedule,
+candidate wheel and public traces are in the
+[validation snapshot](../output/local-validation-2026-10-14/README.md).
+The final release artifact is distinct from this frozen candidate checkpoint.
+
+| Quantity | Original profile v1 | Revised profile v2 |
+| --- | --- | --- |
+| Completed episodes / planned | 12/12 | 12/12 |
+| Actual calls / profile cap | 36/36 | 23/36 |
+| Definite final status claims / completed | 12/12 | 0/12 |
+| Contradictions / assessable definite claims | 6/10 | 0/0, undefined |
+| Unassessable definite claims | 2 | 0 |
+| State satisfied / violated / unknown | 6/4/2 | 7/3/2 |
+| Action-linked satisfied / not satisfied / unknown | 6/4/2 | 5/5/2 |
+| Initial selection aligned with declared eligibility | 10/12 | 12/12 |
+
+The revised profile's zero definite-status coverage leaves its conditional
+contradiction rate undefined. It does not establish zero error, calibrated
+uncertainty or a quality/cost advantage. In the other-actor case, v2 stopped after
+a timeout-before-commit; independent readback showed one external refund, so
+state was satisfied but origin was other_actor and the action-linked target was
+false. v1 retried and added an agent effect, violating the exactly-one contract.
+At age 61, v1 issued and retried a refund even while explaining its ineligibility;
+its final failure contradicted satisfied readback. v2 initially stopped. Its unmet
+refund-effect contract is separate from correctly declining an ineligible request.
+
+A separate single unblinded manual reading annotated affirmative
+processed/completed/successful clauses in 10/12 v1 and 7/12 v2 final rationales.
+Five of the seven v2 rationales also explicitly qualified independent outcome
+verification. This is a clause annotation, not a validated language classifier
+or an inter-rater reliability result. In particular, v2's unsafe-retry rationale
+truthfully describes a second committed attempt even though two effects violate
+the requested exactly-one contract. The retained annotations distinguish that
+literal statement from interpreting the prose as task achievement. Unknown
+structured statuses do not by themselves ensure prose abstention.
+[Complete findings and manual annotations](../output/local-validation-2026-10-14/FINDINGS.md).
+
+The saved-data auditor passed 2,227 assertions covering complete inventories,
+candidate payloads, public requests, phase keys, independent state/origin/link
+formulas, aggregates and budgets. Seven targeted corrupted smoke copies were
+rejected; no additional generation calls were made. Matched initial inputs and
+seeds are best-effort controls, not evidence of model independence or determinism.
+Profile order was fixed v1 then v2. The validation family is now exposed; the
+held-out template reserve was not generated, and fault conditions overlap other
+splits. This experiment is not a matched attribution-method or held-out
+fault-composition comparison.
+
 ## 6. Pending experiments and analysis
 
 ### 6.1 Further uncertainty and precision assessment
@@ -417,19 +511,23 @@ eligibility alongside numeric results and evaluate effect detection together
 with coverage. Standard conservative methods and finite-grid checks do not
 constitute estimator novelty or a model-independent coverage guarantee.
 
-### 6.2 Variable-length interaction study
+### 6.2 Repeated interaction sampling and model validation
 
-The proposed on-reach refund mechanism has initial refund selection probability
-`p`, timeout retry probability `q`, exactly-one-refund verification and two
-attempts. Unsafe retry after a committed timeout can create a duplicate. Its
-declared selection/retry interaction is `(1-p)(1-q)`; idempotency should remove
-that interaction. Enumerate deterministic fresh choices through the actual
-payment simulator and verifier before using an analytic reference to assess
-the stochastic sampler. Retain strict-game results as a separate estimand.
+The physical enumeration establishes the declared refund mixture and its
+on-reach game. It does not establish stochastic sampler calibration or
+language-model factor recovery. Freeze a repeated sampler schedule, budgets,
+precision goals and controls before evaluating bias/RMSE, conservative interval
+width, sign detection and reference eligibility. Retain inactive held positions,
+strict-game results and all unknown, invalid, failed and unstarted receipts.
 
-**Pending insertion:** validated implementation revision, exact coalition
-enumeration, repeated schedule, interaction estimates, uncertainty, inactive
-position receipts, negative controls and independent audit.
+The [local-model validation proposal](protocol-next-validation.md) was completed
+under its separately frozen execution protocol and audit record (Section 5.6).
+It preserves the held-out reserve but exposes its existing validation family.
+Further live sampling needs a new protocol; this completed small exploratory
+run does not supply a matched attribution comparison or interaction recovery.
+
+**Pending:** repeated interaction sampling/uncertainty results and independent
+language-model interaction recovery, followed by the larger held-out comparison.
 
 ### 6.3 Held-out model study and matched comparisons
 

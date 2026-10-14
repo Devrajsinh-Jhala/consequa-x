@@ -1,0 +1,68 @@
+{
+  "artifacts": [
+    {
+      "bytes": 140336,
+      "path": "consequa_x-0.1.0a2-py3-none-any.whl",
+      "sha256": "4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748"
+    },
+    {
+      "bytes": 276725,
+      "path": "consequa_x-0.1.0a2.tar.gz",
+      "sha256": "08736ac0530b0b64aa82ca0ede98276825092f7ecec4e04b24d08349684a4fd8"
+    }
+  ],
+  "distribution": "consequa-x",
+  "environment": {
+    "build_tools": {
+      "build": "1.6.1",
+      "keyring": "25.7.0",
+      "setuptools": "84.0.0",
+      "twine": "7.0.0"
+    },
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.14"
+  },
+  "helper_sha256": {
+    "scripts/configure_pypi_auth.py": "25fa19e854caaafb9b0e331265b59bf742a87500d0501e91e6e703e6a900d21b",
+    "scripts/publish_alpha.py": "e75d980362fe92f4720e65fdab50b2421508159d9d69dc375b8d21e49e24804b",
+    "tests/test_release_helpers.py": "e571122304552e87b3bfd924ab43acb80ecddbf7440fcfb490bd4ea323ac2aa8"
+  },
+  "local_checks": {
+    "artifact_inventory": true,
+    "lint": true,
+    "release_helper_tests": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "notes": [
+    "Wheel was built from the source distribution, and both artifacts installed in separate fresh environments.",
+    "Windows Python 3.12.14 only was newly tested; broader declared Python 3.11+ compatibility remains unverified in this release run.",
+    "GitHub Actions is disabled and was not dispatched.",
+    "The model-validation checkpoint used the earlier source2c4adfeb and different preserved artifacts; these release hashes do not identify that checkpoint.",
+    "Registry upload and registry installation are separate operations, pending local authentication."
+  ],
+  "observed_test_results": {
+    "release_helper_tests": {
+      "passed": 14,
+      "scope": "Standalone authentication/upload helpers added after the runtime source freeze.",
+      "seconds": 0.45
+    },
+    "source_suite": {
+      "note": "Observed full local run in the continuing build session; source suite output was not saved to a separate log.",
+      "passed": 1274,
+      "seconds": 261.21,
+      "source_revision": "40fa9bc7612c249dc33899a2ad6a6a12b5087ec4",
+      "subtests_passed": 240
+    }
+  },
+  "recorded_at_utc": "2026-10-14T15:37:42.585980+00:00",
+  "source_revision": "40fa9bc7612c249dc33899a2ad6a6a12b5087ec4",
+  "strict_metadata": {
+    "sdist": "passed",
+    "tool": "twine check --strict",
+    "wheel": "passed"
+  },
+  "version": "0.1.0a2"
+}

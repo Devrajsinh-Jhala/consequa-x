@@ -1,0 +1,20 @@
+{
+  "assertions": 7740,
+  "audit_passed": true,
+  "audited_at_utc": "2026-10-13T18:02:50.309552+00:00",
+  "auditor_script_sha256": "85b601ce963e90fec505a3b3aa5e30a41b5ee624ec583764ee33ec2e73258e10",
+  "binomial_cases": 1290,
+  "confidence_levels": [
+    0.5,
+    0.9,
+    0.95,
+    0.99,
+    0.9999999999999999
+  ],
+  "difference_cases": 1290,
+  "maximum_binomial_absolute_error": 2.6645352591003757e-14,
+  "numeric_implementation_sha256": "13cfd6863e9224c0e609753435bf190f5695b98201d7ce8a8bd36917dfb3e85e",
+  "python": "3.12.14",
+  "reference": "scipy.stats.beta.ppf / isf; upper tails evaluated directly",
+  "scipy": "1.18.1"
+}

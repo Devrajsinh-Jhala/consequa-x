@@ -1,0 +1,5620 @@
+{
+  "actual_policy_calls": 718,
+  "additional_reference_policy_calls": 0,
+  "cases": {
+    "budget-p50-q50": {
+      "actual_policy_calls": 32,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 2,
+            "failed": 2,
+            "invalid": 0,
+            "unstarted": 28
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "budget-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0,
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.25,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.125,
+                  0.375,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0,
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.25,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.125,
+                  0.375,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.5,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.5,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.5,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 2,
+            "failed": 2,
+            "invalid": 0,
+            "unstarted": 28
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.5,
+              1.0,
+              0.25,
+              0.5,
+              0.5,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "budget-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.5,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.5,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.5,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 1.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    },
+    "idempotent-p50-q50": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "idempotent-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.5,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.5,
+                0.0,
+                0.0
+              ]
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.5,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.5,
+              1.0,
+              0.25,
+              0.5,
+              0.5,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "idempotent-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    },
+    "lagged-readback-p50-q50": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "lagged-readback-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "endpoint_difference": null,
+                "endpoint_eligible": false,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "endpoint_difference": null,
+                "endpoint_eligible": false,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.5,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.5,
+              1.0,
+              0.25,
+              0.5,
+              0.5,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "lagged-readback-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "endpoint_difference": null,
+                "endpoint_eligible": false,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "endpoint_difference": null,
+                "endpoint_eligible": false,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.25,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.25,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.0,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.0,
+                  "unknown_mass": 1.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    },
+    "refund-p100-q100": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p100-q100",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 1.0,
+            "selection_probability": 1.0,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "endpoint_difference": 0.0,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.0,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.0,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.0,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.0,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.0,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "endpoint_difference": 0.0,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.0,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.0,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p100-q100",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 1.0,
+            "selection_probability": 1.0,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "endpoint_difference": 0.0,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.0,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.0,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.0,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.0,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.0,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "endpoint_difference": 0.0,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.0,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.0,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "refund-p20-q80": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p20-q80",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.8,
+            "selection_probability": 0.2,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.8,
+                  0.0,
+                  0.8,
+                  0.0,
+                  0.8,
+                  0.0,
+                  0.8,
+                  0.0
+                ],
+                "endpoint_difference": -0.8,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.8,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.96,
+                  0.8,
+                  1.0,
+                  1.0,
+                  0.96,
+                  0.8,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.040000000000000036,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.15999999999999998,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.07999999999999999,
+                  0.11999999999999997,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.96,
+                  0.8,
+                  1.0,
+                  1.0,
+                  0.96,
+                  0.8,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.040000000000000036,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.15999999999999998,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.07999999999999999,
+                  0.11999999999999997,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.8,
+                0.0,
+                0.8,
+                0.0,
+                0.8,
+                0.0,
+                0.8,
+                0.0
+              ],
+              "endpoint_difference": -0.8,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.8,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.9600000000000002,
+                0.8000000000000002,
+                1.0000000000000002,
+                1.0000000000000002,
+                0.9600000000000002,
+                0.8000000000000002,
+                1.0000000000000002,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.040000000000000036,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.16000000000000003,
+              "shapley_values": [
+                -0.08000000000000002,
+                0.12000000000000004,
+                0.0
+              ]
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.9600000000000002,
+                0.8000000000000002,
+                1.0000000000000002,
+                1.0000000000000002,
+                0.9600000000000002,
+                0.8000000000000002,
+                1.0000000000000002,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.040000000000000036,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.16000000000000003,
+              "shapley_values": [
+                -0.08000000000000002,
+                0.12000000000000004,
+                0.0
+              ]
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.2,
+              1.0,
+              0.16000000000000003,
+              0.8,
+              0.2,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p20-q80",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.8,
+            "selection_probability": 0.2,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.8,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.8,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.96,
+                  0.8,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.040000000000000036,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.96,
+                  0.8,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.040000000000000036,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.8,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.8,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8400000000000001,
+                  "known_mass": 0.16000000000000003,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.9600000000000002,
+                0.8000000000000002,
+                null,
+                1.0000000000000002,
+                null,
+                null,
+                null,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.040000000000000036,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8400000000000001,
+                  "known_mass": 0.16000000000000003,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.9600000000000002,
+                0.8000000000000002,
+                null,
+                1.0000000000000002,
+                null,
+                null,
+                null,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.040000000000000036,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8400000000000001,
+                  "known_mass": 0.16000000000000003,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    },
+    "refund-p50-q50": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0,
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.25,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.125,
+                  0.375,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0,
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.25,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.125,
+                  0.375,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.5,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.75,
+                0.5,
+                1.0,
+                1.0,
+                0.75,
+                0.5,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.25,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.25,
+              "shapley_values": [
+                -0.125,
+                0.375,
+                0.0
+              ]
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.75,
+                0.5,
+                1.0,
+                1.0,
+                0.75,
+                0.5,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.25,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.25,
+              "shapley_values": [
+                -0.125,
+                0.375,
+                0.0
+              ]
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.5,
+              1.0,
+              0.25,
+              0.5,
+              0.5,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.75,
+                0.5,
+                null,
+                1.0,
+                null,
+                null,
+                null,
+                1.0
+              ],
+              "endpoint_difference": 0.25,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.75,
+                0.5,
+                null,
+                1.0,
+                null,
+                null,
+                null,
+                1.0
+              ],
+              "endpoint_difference": 0.25,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    },
+    "refund-p80-q20": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p80-q20",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.2,
+            "selection_probability": 0.8,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.19999999999999996,
+                  0.0,
+                  0.19999999999999996,
+                  0.0,
+                  0.19999999999999996,
+                  0.0,
+                  0.19999999999999996,
+                  0.0
+                ],
+                "endpoint_difference": -0.19999999999999996,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.19999999999999996,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.3599999999999999,
+                  0.19999999999999996,
+                  1.0,
+                  1.0,
+                  0.3599999999999999,
+                  0.19999999999999996,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.6400000000000001,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.15999999999999998,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.07999999999999999,
+                  0.7200000000000001,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.3599999999999999,
+                  0.19999999999999996,
+                  1.0,
+                  1.0,
+                  0.3599999999999999,
+                  0.19999999999999996,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.6400000000000001,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.15999999999999998,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.07999999999999999,
+                  0.7200000000000001,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.19999999999999996,
+                0.0,
+                0.19999999999999996,
+                0.0,
+                0.19999999999999996,
+                0.0,
+                0.19999999999999996,
+                0.0
+              ],
+              "endpoint_difference": -0.19999999999999996,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.19999999999999996,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.36,
+                0.2,
+                1.0000000000000002,
+                1.0000000000000002,
+                0.36,
+                0.2,
+                1.0000000000000002,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.6400000000000002,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.16000000000000003,
+              "shapley_values": [
+                -0.07999999999999999,
+                0.7200000000000002,
+                0.0
+              ]
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.36,
+                0.2,
+                1.0000000000000002,
+                1.0000000000000002,
+                0.36,
+                0.2,
+                1.0000000000000002,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.6400000000000002,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.16000000000000003,
+              "shapley_values": [
+                -0.07999999999999999,
+                0.7200000000000002,
+                0.0
+              ]
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.8,
+              1.0,
+              0.16000000000000003,
+              0.2,
+              0.8,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "refund-p80-q20",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.2,
+            "selection_probability": 0.8,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.19999999999999996,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.19999999999999996,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  0.3599999999999999,
+                  0.19999999999999996,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.6400000000000001,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.3599999999999999,
+                  0.19999999999999996,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.6400000000000001,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.19999999999999996,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.19999999999999996,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8400000000000001,
+                  "known_mass": 0.16000000000000003,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                0.36,
+                0.2,
+                null,
+                1.0000000000000002,
+                null,
+                null,
+                null,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.6400000000000002,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8400000000000001,
+                  "known_mass": 0.16000000000000003,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.36,
+                0.2,
+                null,
+                1.0000000000000002,
+                null,
+                null,
+                null,
+                1.0000000000000002
+              ],
+              "endpoint_difference": 0.6400000000000002,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8400000000000001,
+                  "known_mass": 0.16000000000000003,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.8,
+                  "known_mass": 0.2,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.19999999999999996,
+                  "known_mass": 0.8000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0000000000000002,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    },
+    "unknown-provenance-p50-q50": {
+      "actual_policy_calls": 98,
+      "games": {
+        "on_reach": {
+          "branch_status_counts": {
+            "completed": 32,
+            "failed": 0,
+            "invalid": 0,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 9,
+          "reference": {
+            "coalition_game": "on_reach",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "unknown-provenance-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.0,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.5,
+                  0.0,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  null,
+                  null,
+                  1.0,
+                  1.0,
+                  null,
+                  null,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": null,
+                "endpoint_eligible": false,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.25,
+                  0.5,
+                  0.0,
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0,
+                  0.75,
+                  0.5,
+                  1.0,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": null,
+                "selection_retry_interaction": 0.25,
+                "shapley_eligible": true,
+                "shapley_values": [
+                  -0.125,
+                  0.375,
+                  0.0
+                ],
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.0,
+              "shapley_values": [
+                -0.5,
+                0.0,
+                0.0
+              ]
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                1.0,
+                1.0,
+                null,
+                null,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.75,
+                  "unknown_mass": 0.25,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.75,
+                  "unknown_mass": 0.25,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.75,
+                0.5,
+                1.0,
+                1.0,
+                0.75,
+                0.5,
+                1.0,
+                1.0
+              ],
+              "endpoint_difference": 0.25,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": true,
+              "selection_retry_interaction": 0.25,
+              "shapley_values": [
+                -0.125,
+                0.375,
+                0.0
+              ]
+            }
+          }
+        },
+        "strict": {
+          "branch_status_counts": {
+            "completed": 23,
+            "failed": 0,
+            "invalid": 9,
+            "unstarted": 0
+          },
+          "inactive_held_branch_count": 0,
+          "reference": {
+            "coalition_game": "strict",
+            "coalition_valid_probabilities": [
+              1.0,
+              1.0,
+              0.5,
+              1.0,
+              0.25,
+              0.5,
+              0.5,
+              1.0
+            ],
+            "decision_count": 3,
+            "name": "unknown-provenance-p50-q50",
+            "population_not_finite_seed_claim": true,
+            "retry_probability": 0.5,
+            "selection_probability": 0.5,
+            "targets": {
+              "action": {
+                "coalition_bad_rates": [
+                  0.5,
+                  0.0,
+                  null,
+                  0.0,
+                  null,
+                  null,
+                  null,
+                  0.0
+                ],
+                "endpoint_difference": -0.5,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "action_linked_consequence": {
+                "coalition_bad_rates": [
+                  null,
+                  null,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": null,
+                "endpoint_eligible": false,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.25,
+                  0.5,
+                  0.0,
+                  0.0,
+                  0.25,
+                  0.5,
+                  0.0,
+                  0.0
+                ]
+              },
+              "consequence": {
+                "coalition_bad_rates": [
+                  0.75,
+                  0.5,
+                  null,
+                  1.0,
+                  null,
+                  null,
+                  null,
+                  1.0
+                ],
+                "endpoint_difference": 0.25,
+                "endpoint_eligible": true,
+                "reason": "positive invalid or unknown population mass",
+                "selection_retry_interaction": null,
+                "shapley_eligible": false,
+                "shapley_values": null,
+                "unknown_probabilities": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "targets": {
+            "action": {
+              "coalition_bad_rates": [
+                0.5,
+                0.0,
+                null,
+                0.0,
+                null,
+                null,
+                null,
+                0.0
+              ],
+              "endpoint_difference": -0.5,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "action_linked_consequence": {
+              "coalition_bad_rates": [
+                null,
+                null,
+                null,
+                1.0,
+                null,
+                null,
+                null,
+                1.0
+              ],
+              "endpoint_difference": null,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.75,
+                  "unknown_mass": 0.25,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.5,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            },
+            "consequence": {
+              "coalition_bad_rates": [
+                0.75,
+                0.5,
+                null,
+                1.0,
+                null,
+                null,
+                null,
+                1.0
+              ],
+              "endpoint_difference": 0.25,
+              "mass_by_mask": [
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.75,
+                  "known_mass": 0.25,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.5,
+                  "known_mass": 0.5,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                },
+                {
+                  "failed_mass": 0.0,
+                  "invalid_mass": 0.0,
+                  "known_mass": 1.0,
+                  "unknown_mass": 0.0,
+                  "unstarted_mass": 0.0
+                }
+              ],
+              "numeric_available": false,
+              "selection_retry_interaction": null,
+              "shapley_values": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "completed": true,
+  "design": "exact deterministic-mixture world enumeration"
+}

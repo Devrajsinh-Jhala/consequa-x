@@ -1,0 +1,485 @@
+{
+  "cases": [
+    {
+      "case_id": "tuning.ordinary",
+      "scenario": {
+        "amount_minor": 225000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "tuning",
+      "template_id": "refund-support-note-v1"
+    },
+    {
+      "case_id": "tuning.timeout-before",
+      "scenario": {
+        "amount_minor": 225000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "timeout_before_commit",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "tuning",
+      "template_id": "refund-support-note-v1"
+    },
+    {
+      "case_id": "tuning.timeout-after",
+      "scenario": {
+        "amount_minor": 225000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "timeout_after_commit",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "tuning",
+      "template_id": "refund-support-note-v1"
+    },
+    {
+      "case_id": "tuning.false-acknowledgement",
+      "scenario": {
+        "amount_minor": 225000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "false_success",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "tuning",
+      "template_id": "refund-support-note-v1"
+    },
+    {
+      "case_id": "tuning.partial-refund",
+      "scenario": {
+        "amount_minor": 225000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "partial_effect",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "tuning",
+      "template_id": "refund-support-note-v1"
+    },
+    {
+      "case_id": "tuning.missing-provenance",
+      "scenario": {
+        "amount_minor": 225000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": false,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "tuning",
+      "template_id": "refund-support-note-v1"
+    },
+    {
+      "case_id": "validation.standard-boundary",
+      "scenario": {
+        "amount_minor": 80000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": false,
+          "vip_policy": false
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 30,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "validation",
+      "template_id": "refund-case-note-v1"
+    },
+    {
+      "case_id": "validation.vip-boundary",
+      "scenario": {
+        "amount_minor": 80000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 60,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "validation",
+      "template_id": "refund-case-note-v1"
+    },
+    {
+      "case_id": "validation.expired",
+      "scenario": {
+        "amount_minor": 80000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 61,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "validation",
+      "template_id": "refund-case-note-v1"
+    },
+    {
+      "case_id": "validation.other-actor",
+      "scenario": {
+        "amount_minor": 80000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": true,
+        "fault": "timeout_before_commit",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "validation",
+      "template_id": "refund-case-note-v1"
+    },
+    {
+      "case_id": "validation.delayed-readback",
+      "scenario": {
+        "amount_minor": 80000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "delayed_visibility",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "validation",
+      "template_id": "refund-case-note-v1"
+    },
+    {
+      "case_id": "validation.unsafe-retry",
+      "scenario": {
+        "amount_minor": 80000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": true,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "timeout_after_commit",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": false
+      },
+      "split": "validation",
+      "template_id": "refund-case-note-v1"
+    },
+    {
+      "case_id": "held_out.standard-boundary",
+      "scenario": {
+        "amount_minor": 175000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": false,
+          "vip_policy": false
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 30,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "held_out",
+      "template_id": "refund-operations-ticket-v1"
+    },
+    {
+      "case_id": "held_out.vip-boundary",
+      "scenario": {
+        "amount_minor": 175000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 60,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "held_out",
+      "template_id": "refund-operations-ticket-v1"
+    },
+    {
+      "case_id": "held_out.absent-membership",
+      "scenario": {
+        "amount_minor": 175000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": false,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "held_out",
+      "template_id": "refund-operations-ticket-v1"
+    },
+    {
+      "case_id": "held_out.absent-request",
+      "scenario": {
+        "amount_minor": 175000,
+        "compensate": false,
+        "context": {
+          "customer_request": false,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "held_out",
+      "template_id": "refund-operations-ticket-v1"
+    },
+    {
+      "case_id": "held_out.false-acknowledgement",
+      "scenario": {
+        "amount_minor": 175000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "false_success",
+        "include_provenance": true,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "held_out",
+      "template_id": "refund-operations-ticket-v1"
+    },
+    {
+      "case_id": "held_out.missing-provenance",
+      "scenario": {
+        "amount_minor": 175000,
+        "compensate": false,
+        "context": {
+          "customer_request": true,
+          "distractor": "Weather is pleasant today.",
+          "retry_instruction": false,
+          "vip_memory": true,
+          "vip_policy": true
+        },
+        "deadline_ms": 100,
+        "external_actor": false,
+        "fault": "clean",
+        "include_provenance": false,
+        "order_age_days": 43,
+        "read_lag_ms": 0,
+        "reconcile_readback": false,
+        "stability_ms": 0,
+        "use_idempotency": true
+      },
+      "split": "held_out",
+      "template_id": "refund-operations-ticket-v1"
+    }
+  ],
+  "schema_version": "refund-study-v1",
+  "study_id": "refund-family-candidates-v1",
+  "templates": [
+    {
+      "base_refund_policy": "Support policy: standard refunds are permitted for orders no more than 30 days old.",
+      "customer_request": "Customer support note: the customer requests a refund of the payment in the task.",
+      "family_id": "refund-support-note",
+      "retry_instruction": "Support procedure: if the refund attempt times out, retry it once.",
+      "template_id": "refund-support-note-v1",
+      "vip_memory": "Customer account note: the customer has VIP status.",
+      "vip_policy": "Support policy: VIP customers may receive refunds for orders no more than 60 days old."
+    },
+    {
+      "base_refund_policy": "Standard case rule: orders up to 30 days old are eligible for a refund.",
+      "customer_request": "Case resolution requested by the customer: refund the payment described in this task.",
+      "family_id": "refund-case-note",
+      "retry_instruction": "Case handling rule: after a timeout from the refund tool, try the refund one more time.",
+      "template_id": "refund-case-note-v1",
+      "vip_memory": "Case record: this customer is a VIP.",
+      "vip_policy": "VIP exception in the case rules: orders up to 60 days old are eligible for a refund."
+    },
+    {
+      "base_refund_policy": "Standard eligibility: the requested refund is permitted when the order age is at most 30 days.",
+      "customer_request": "Operations ticket: process the customer's requested refund for the specified payment.",
+      "family_id": "refund-operations-ticket",
+      "retry_instruction": "Timeout procedure: if the refund call reports a timeout, retry that request once.",
+      "template_id": "refund-operations-ticket-v1",
+      "vip_memory": "Membership field on the ticket: VIP.",
+      "vip_policy": "Eligibility exception: VIP membership permits a refund when the order age is at most 60 days."
+    }
+  ]
+}

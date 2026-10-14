@@ -1,0 +1,53 @@
+{
+  "artifacts": [
+    {
+      "bytes": 19467,
+      "path": "build.log",
+      "sha256": "295981d29f0783369c01527152331a617d0e39773385625ef8045593fff068b7"
+    },
+    {
+      "bytes": 2536,
+      "path": "checks.json",
+      "sha256": "31ae07a4b26eedad1201858afaf4853d2481d88c62fd90b183e4fc12745db05c"
+    },
+    {
+      "bytes": 140336,
+      "path": "consequa_x-0.1.0a2-py3-none-any.whl",
+      "sha256": "4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748"
+    },
+    {
+      "bytes": 276725,
+      "path": "consequa_x-0.1.0a2.tar.gz",
+      "sha256": "08736ac0530b0b64aa82ca0ede98276825092f7ecec4e04b24d08349684a4fd8"
+    },
+    {
+      "bytes": 2752,
+      "path": "inventory.json",
+      "sha256": "74bc5889bb0a308f35e0af7f16e0eae6cc1cbd964feab9998e1ce83653f254a3"
+    },
+    {
+      "bytes": 2022,
+      "path": "README.md",
+      "sha256": "b58ad594ab3d664f99df78e7c71148fda2c0bda3e3c97b7256e3f0b486f26404"
+    },
+    {
+      "bytes": 3757,
+      "path": "sdist-smoke.json",
+      "sha256": "1bee66ba51db04d177cb2cf71d15f0070af268adda57d256cb6bd39c17dbad05"
+    },
+    {
+      "bytes": 2169,
+      "path": "verify_installed.py",
+      "sha256": "2f492d4b1c359ab636625fe29be3714fa891fcba11b7a8425ca6a1989284d658"
+    },
+    {
+      "bytes": 3757,
+      "path": "wheel-smoke.json",
+      "sha256": "1bee66ba51db04d177cb2cf71d15f0070af268adda57d256cb6bd39c17dbad05"
+    }
+  ],
+  "completed": true,
+  "scope": "Reviewed local distributions and release checks; registry publication is separate.",
+  "source_revision": "40fa9bc7612c249dc33899a2ad6a6a12b5087ec4",
+  "status": "completed"
+}

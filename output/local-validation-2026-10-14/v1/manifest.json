@@ -1,0 +1,165 @@
+{
+  "artifacts": [
+    {
+      "path": "traces/episode_0000.json",
+      "sha256": "f4bfc91f4237e377ebc54ec99e41d5215b8315d90347ae8ee9f4987b6a76cf7b"
+    },
+    {
+      "path": "explanations/episode_0000.json",
+      "sha256": "d11023bad466a5d9c0e701863478e1bf54acad20198e8e27a1c1f558085f90b0"
+    },
+    {
+      "path": "evaluator_truth/episode_0000.json",
+      "sha256": "59cf4ebef8b0ab2ca25b70344142116a94895e2399ca733cd8204c1a7357ad25"
+    },
+    {
+      "path": "traces/episode_0001.json",
+      "sha256": "c74fbe88598359cc30260a753b3a10a86dc09489387a6c66f01fdd278cb667b8"
+    },
+    {
+      "path": "explanations/episode_0001.json",
+      "sha256": "b005d003dbd125a0e991a5ab493a5c327069d62bd115fa269a4a2972d8354d48"
+    },
+    {
+      "path": "evaluator_truth/episode_0001.json",
+      "sha256": "1fd6e45f1bbb9c843fcbe0f4f5da1a6b75c28a272a27798fce4033124ce00cf6"
+    },
+    {
+      "path": "traces/episode_0002.json",
+      "sha256": "f5a15b3459eca27da84353d8ff348fdf0215452e1986140e1d865b8db5d7c5f1"
+    },
+    {
+      "path": "explanations/episode_0002.json",
+      "sha256": "218f0025c390f8135965e11cb3f6f21f55da15e1581076cb31c29d230d4dbe9c"
+    },
+    {
+      "path": "evaluator_truth/episode_0002.json",
+      "sha256": "9f3031e164238135c6847a10d74ce4caef5ed55e918cec621cc6f539d9bd059d"
+    },
+    {
+      "path": "traces/episode_0003.json",
+      "sha256": "ed44c3a27a8ca3ca27874d03f78264b9c2df2cb5d373a5ba6217289b639ffbda"
+    },
+    {
+      "path": "explanations/episode_0003.json",
+      "sha256": "e82b24a9f2acfbcec2220027b125bffcbc8c5432dc5eab2b363aaae458ff930c"
+    },
+    {
+      "path": "evaluator_truth/episode_0003.json",
+      "sha256": "5837fa49970bc2cc941169f6e410dfc6a2d2a4f13c0755ff3b47cfd731885367"
+    },
+    {
+      "path": "traces/episode_0004.json",
+      "sha256": "33c8da6191db37eabbd754c5727065563d26356aa867e29793239ce2f40f20a6"
+    },
+    {
+      "path": "explanations/episode_0004.json",
+      "sha256": "839809377c7d69062b96b0680cd928ba376bc5c3da3fe51d0741a7d7486d8a7a"
+    },
+    {
+      "path": "evaluator_truth/episode_0004.json",
+      "sha256": "a57ec42c41dd66b5b810ab8d3f5b1161ee055a24595a7b0ac766e042cbd95959"
+    },
+    {
+      "path": "traces/episode_0005.json",
+      "sha256": "2e45dfd66ef64a85bee8c2720582012c789c96795ab9348eead300b2e1803563"
+    },
+    {
+      "path": "explanations/episode_0005.json",
+      "sha256": "bfc15848156a17f065d86df2c9b42abddfd0de3a849ce4b2b26fa4d1a68624bc"
+    },
+    {
+      "path": "evaluator_truth/episode_0005.json",
+      "sha256": "ca76f36ad7888ae42564607c9cccb572580808355e993ee7ca54cd9aabef2284"
+    },
+    {
+      "path": "traces/episode_0006.json",
+      "sha256": "e5b66ee52c3f108128fdf48a934923fb95f5ef8b1dbfda23ae664c6b3852bf5c"
+    },
+    {
+      "path": "explanations/episode_0006.json",
+      "sha256": "238dd7ccb69ecd8b19597e4172efc295940cef870eef2c2a895a0c0fb3906789"
+    },
+    {
+      "path": "evaluator_truth/episode_0006.json",
+      "sha256": "e6f664f44cfb0847241b54f1acee42877a06f0f8ce054efe3a0abbcb1cdf2ddf"
+    },
+    {
+      "path": "traces/episode_0007.json",
+      "sha256": "86d5deec06cda3e75aa75ac31f1bb9d2002d3cddd332c52168fe013a6a945ccd"
+    },
+    {
+      "path": "explanations/episode_0007.json",
+      "sha256": "c030fb3b9d6f8e85b997550081dafa2a233e168e87e233774b2d29b7bcd78b76"
+    },
+    {
+      "path": "evaluator_truth/episode_0007.json",
+      "sha256": "1682bc53503a6f537b8755f324a1ae00e93d6eb10dde92b64d320ea91727c567"
+    },
+    {
+      "path": "traces/episode_0008.json",
+      "sha256": "81f1204b5e9b946c27fa147dd3a387c4bf5c634a982fee0a355b26630ff10d09"
+    },
+    {
+      "path": "explanations/episode_0008.json",
+      "sha256": "ce7a62cb68d7be226c505903d2047d237fdf884cfd6f15d47d840abb28a9ac6d"
+    },
+    {
+      "path": "evaluator_truth/episode_0008.json",
+      "sha256": "f02f489894e51b9e637365ba4d131498db27c03c5be42ee8d36ca3586041df53"
+    },
+    {
+      "path": "traces/episode_0009.json",
+      "sha256": "1c19834295cd8f90f663412b01ad0ec1c7b1ca8a02c47cb278320c75469cfc18"
+    },
+    {
+      "path": "explanations/episode_0009.json",
+      "sha256": "74b37858e2eebfbf74c8992edae3266d2e89132c6cdaa5307ca318b23a5e57b8"
+    },
+    {
+      "path": "evaluator_truth/episode_0009.json",
+      "sha256": "0343c3749b3dad003f4886643ad9de16cabf404572b0cad7b97279ada4dfc4db"
+    },
+    {
+      "path": "traces/episode_0010.json",
+      "sha256": "fabe4ce290109f866a6ac7745d30865125362c40df3bc5d65a514dcea4458bae"
+    },
+    {
+      "path": "explanations/episode_0010.json",
+      "sha256": "694a8298815907eec1fe3defca292bef1d07d5fbda63227e646f9a94063a7e2d"
+    },
+    {
+      "path": "evaluator_truth/episode_0010.json",
+      "sha256": "7f555be8a55e150ffae39ed1fe9b38b14f0fe3a580872d53be25d63254091408"
+    },
+    {
+      "path": "traces/episode_0011.json",
+      "sha256": "9c5c0c7609b819a4b8d1aeb341efc67df9259ced8a5715e78abc6365b84212d6"
+    },
+    {
+      "path": "explanations/episode_0011.json",
+      "sha256": "46001a76efe9394f25b690d441f3363d898a39c9d307c22264e3f0678dfa5a3e"
+    },
+    {
+      "path": "evaluator_truth/episode_0011.json",
+      "sha256": "e1bb6c80f95eec47c4d50e4022f26fa57e3be2fa2c9e77d743642445e25b16e0"
+    },
+    {
+      "path": "study-plan.json",
+      "sha256": "1f4950498761f46b75a336b6e901413eaadc3d16e45137e69e39f0294e4d4522"
+    },
+    {
+      "path": "results.json",
+      "sha256": "7a4cb9bd9b5b284188b61b60c8d78f7cf00619b803f21a97d22e9ccb30797373"
+    },
+    {
+      "path": "trace-schema.json",
+      "sha256": "5c048bf11f6e45da9ab9ff531cf0d5ef85dab1e031fc49af866b09de4916893f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6ae1815d5fbc241c25dfdbcaf8c3e9fb34d7ac1b5f641ca5611ec1254a382861"
+    }
+  ],
+  "package_version": "0.1.0a2"
+}

@@ -1,0 +1,543 @@
+{
+  "$defs": {
+    "Action": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "actor": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "type": "object"
+        },
+        "contract": {
+          "$ref": "#/$defs/OutcomeContract"
+        },
+        "idempotency_key": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "name": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "registered_at_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "trace_id": {
+          "pattern": "\\S",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_id",
+        "trace_id",
+        "actor",
+        "name",
+        "arguments",
+        "registered_at_ms",
+        "contract"
+      ],
+      "type": "object"
+    },
+    "AgentAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_event_ids": {
+          "default": [],
+          "items": {
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "rationale": {
+          "default": "",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "success",
+            "failure",
+            "partial",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "time_ms": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "status",
+        "time_ms"
+      ],
+      "type": "object"
+    },
+    "Event": {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "data": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "parent_ids": {
+          "default": [],
+          "items": {
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "time_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "trace_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "user_input",
+            "system_instruction",
+            "retrieval",
+            "memory_read",
+            "agent_decision",
+            "action_intent",
+            "action_dispatch",
+            "tool_response",
+            "agent_assessment",
+            "external_observation",
+            "verification",
+            "external_effect"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "trace_id",
+        "type",
+        "time_ms"
+      ],
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "as_of_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "details": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "type": "object"
+        },
+        "observation_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "source": {
+          "pattern": "\\S",
+          "type": "string"
+        }
+      },
+      "required": [
+        "observation_id",
+        "source",
+        "as_of_ms",
+        "details"
+      ],
+      "type": "object"
+    },
+    "JSONValue": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "type": "array"
+        },
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "type": "object"
+        }
+      ],
+      "description": "A JSON value; JSON numbers must be finite."
+    },
+    "Observation": {
+      "additionalProperties": false,
+      "properties": {
+        "as_of_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "available": {
+          "default": true,
+          "type": "boolean"
+        },
+        "complete": {
+          "default": true,
+          "type": "boolean"
+        },
+        "observation_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "observed_at_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "records": {
+          "default": [],
+          "items": {
+            "additionalProperties": {
+              "$ref": "#/$defs/JSONValue"
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "scope": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "type": "object"
+        },
+        "source": {
+          "pattern": "\\S",
+          "type": "string"
+        }
+      },
+      "required": [
+        "observation_id",
+        "source",
+        "observed_at_ms",
+        "as_of_ms",
+        "scope"
+      ],
+      "type": "object"
+    },
+    "OutcomeContract": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "deadline_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "exact_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 1
+        },
+        "expected": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "type": "object"
+        },
+        "predicate": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "stability_ms": {
+          "default": 0,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "contract_id",
+        "predicate",
+        "expected",
+        "deadline_ms"
+      ],
+      "type": "object"
+    },
+    "ToolResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "provider_request_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "result": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JSONValue"
+          },
+          "default": {},
+          "type": "object"
+        },
+        "status": {
+          "enum": [
+            "success",
+            "error",
+            "timeout"
+          ],
+          "type": "string"
+        },
+        "time_ms": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attempt_id",
+        "status",
+        "time_ms",
+        "provider_request_id"
+      ],
+      "type": "object"
+    },
+    "Trace": {
+      "additionalProperties": false,
+      "description": "Event and assessment references must resolve; event dependencies must be acyclic. Verification evidence must resolve to observations with matching source and watermark. Action, event and contract identities must agree. Validate these relationships with consequa_x.schema.validate_trace; JSON Schema covers record structure only.",
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/Action"
+        },
+        "assessment": {
+          "$ref": "#/$defs/AgentAssessment"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/Event"
+          },
+          "type": "array"
+        },
+        "observations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        },
+        "responses": {
+          "items": {
+            "$ref": "#/$defs/ToolResponse"
+          },
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "0.1",
+          "default": "0.1",
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "trace_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "verifications": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/VerificationResult"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "trace_id",
+        "action",
+        "events",
+        "responses",
+        "assessment"
+      ],
+      "type": "object"
+    },
+    "VerificationResult": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "else": {
+            "properties": {
+              "attributable_effect_ids": {
+                "maxItems": 0
+              }
+            }
+          },
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "confirmed"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "attributable_effect_ids": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "attributable_effect_ids"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "other_actor"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "effect_ids": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "effect_ids"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "attributable_effect_ids": {
+          "default": [],
+          "items": {
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "contract_id": {
+          "pattern": "\\S",
+          "type": "string"
+        },
+        "effect_ids": {
+          "default": [],
+          "items": {
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "observed_at_ms": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "origin": {
+          "default": "unknown",
+          "enum": [
+            "confirmed",
+            "other_actor",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "reason": {
+          "default": "",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "satisfied",
+            "violated",
+            "unknown"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_id",
+        "status",
+        "observed_at_ms",
+        "evidence"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:consequa-x:trace:0.1",
+  "$ref": "#/$defs/Trace",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Public evidence-aware trace. Evaluator-only simulator truth is excluded.",
+  "title": "Consequa-X Trace v0.1"
+}

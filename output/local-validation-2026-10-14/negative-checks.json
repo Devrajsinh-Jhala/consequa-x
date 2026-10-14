@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "generation_calls": 0,
+  "negative_cases": 7,
+  "audit_script_sha256": "27416ee81df2448d75852f541a7b75ef38db4235d37c5203e23cf30076f9ab38",
+  "scope": "Targeted corrupted temporary smoke copies, not an exhaustive security proof. Frozen evidence unchanged.",
+  "cases": [
+    {
+      "probe": "missing_completed_receipt",
+      "status": "rejected",
+      "expected_error": "complete episode inventory",
+      "return_code": 1,
+      "rehash_before_semantic_check": true
+    },
+    {
+      "probe": "duplicate_trial_index",
+      "status": "rejected",
+      "expected_error": "trial index/seed",
+      "return_code": 1,
+      "rehash_before_semantic_check": true
+    },
+    {
+      "probe": "incorrect_aggregate",
+      "status": "rejected",
+      "expected_error": "all independent assessment metrics",
+      "return_code": 1,
+      "rehash_before_semantic_check": true
+    },
+    {
+      "probe": "phase_seed_corruption",
+      "status": "rejected",
+      "expected_error": "phase key",
+      "return_code": 1,
+      "rehash_before_semantic_check": true
+    },
+    {
+      "probe": "verification_corruption",
+      "status": "rejected",
+      "expected_error": "fresh installed verifier",
+      "return_code": 1,
+      "rehash_before_semantic_check": true
+    },
+    {
+      "probe": "incomplete_manifest",
+      "status": "rejected",
+      "expected_error": "complete manifest inventory",
+      "return_code": 1,
+      "rehash_before_semantic_check": false
+    },
+    {
+      "probe": "checkpoint_wheel_corruption",
+      "status": "rejected",
+      "expected_error": "candidate wheel retained",
+      "return_code": 1,
+      "rehash_before_semantic_check": false
+    }
+  ]
+}

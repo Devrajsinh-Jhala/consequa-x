@@ -1,0 +1,29 @@
+{
+  "completed": true,
+  "files": {
+    "README.md": {
+      "bytes": 1859,
+      "sha256": "c130115afa861f931d87cf2b634a1970f4d23c6cbf629deaad3e7e931405c3a6"
+    },
+    "evaluator-truth.jsonl.gz": {
+      "bytes": 14244,
+      "sha256": "94f7932ff0b713a640b736397f599a7ab73a554c8da370beb9c6a9f26a49fa28"
+    },
+    "evidence.jsonl.gz": {
+      "bytes": 471234,
+      "sha256": "a9db476e82bc789a055b9569b5da975af2a624922e84d5d91a4cde6c80435bb3"
+    },
+    "protocol.json": {
+      "bytes": 78507,
+      "sha256": "2c6968fb3d811f8be50208716d29cf20e2e20ea37a1513719932801346eaaae0"
+    },
+    "summary.json": {
+      "bytes": 171811,
+      "sha256": "87a2be45fa34165a1f7fecbec952c24df97368fb529f9e16c6c50de81802d026"
+    },
+    "trace-schema.json": {
+      "bytes": 12135,
+      "sha256": "671ee88707235c63d7ae012c35942720cf8d40d39ad6519b8e1b62b3753f3e87"
+    }
+  }
+}

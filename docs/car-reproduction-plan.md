@@ -40,6 +40,17 @@ prevent attribution on variable-length refund trajectories. Mathematical
 interaction oracles validate the estimator separately from the refund adapter;
 they do not establish domain interaction recovery or calibrated inference.
 
+Alpha `0.1.0a2` keeps the original bootstrap/normal modes as explicit comparators
+and defaults to conservative binomial/bounded-mean alternatives. The
+[same-draw follow-up](../output/interval-comparison-2026-10-13/FINDINGS.md) retains
+the original points, seeds and refusals while reporting coverage, width and
+detection. The separate on-reach positional game records normally unreached
+held decisions as inactive. [Physical refund interactions](refund-interactions.md)
+now validate the selection/retry game through actual readback, rather than
+only injected payoff oracles. This is a different game from strict unreachable
+refusal and does not establish a complete upstream reproduction or joint
+context/fault baseline.
+
 The [synthetic calibration probe](attribution-calibration.md) now repeats these
 production estimators against independently specified refund references. It
 retains every planned draw and reports conditional error/coverage alongside

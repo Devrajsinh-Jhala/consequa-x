@@ -1,0 +1,68 @@
+{
+  "artifacts": [
+    {
+      "bytes": 140336,
+      "path": "consequa_x-0.1.0a2-py3-none-any.whl",
+      "sha256": "4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748"
+    },
+    {
+      "bytes": 276725,
+      "path": "consequa_x-0.1.0a2.tar.gz",
+      "sha256": "08736ac0530b0b64aa82ca0ede98276825092f7ecec4e04b24d08349684a4fd8"
+    }
+  ],
+  "checks": {
+    "sdist_license_matches_source": true,
+    "sdist_metadata_and_no_runtime_dependencies": true,
+    "sdist_paths_and_scope": true,
+    "sdist_runtime_payload_matches_source_revision": true,
+    "sdist_schema_and_type_marker_present": true,
+    "sdist_unique_members": true,
+    "wheel_license_matches_source": true,
+    "wheel_metadata_and_no_runtime_dependencies": true,
+    "wheel_paths_and_scope": true,
+    "wheel_readme_has_no_absolute_local_links": true,
+    "wheel_record_inventory_hashes_and_sizes": true,
+    "wheel_runtime_payload_matches_source_revision": true,
+    "wheel_schema_and_type_marker_present": true,
+    "wheel_unique_members": true
+  },
+  "distribution": "consequa-x",
+  "inventory": {
+    "sdist": {
+      "license_expression": "MIT",
+      "member_count": 115,
+      "regular_file_count": 104,
+      "requirements": [
+        "pytest>=8; extra == \"dev\"",
+        "build>=1.2; extra == \"dev\"",
+        "ruff>=0.8; extra == \"dev\"",
+        "jsonschema>=4.23; extra == \"dev\""
+      ],
+      "requires_python": ">=3.11",
+      "runtime_payload_count": 35
+    },
+    "wheel": {
+      "hashed_record_entry_count": 40,
+      "license_expression": "MIT",
+      "license_path": "consequa_x-0.1.0a2.dist-info/licenses/LICENSE",
+      "member_count": 41,
+      "record_entry_count": 41,
+      "requirements": [
+        "pytest>=8; extra == \"dev\"",
+        "build>=1.2; extra == \"dev\"",
+        "ruff>=0.8; extra == \"dev\"",
+        "jsonschema>=4.23; extra == \"dev\""
+      ],
+      "requires_python": ">=3.11",
+      "runtime_payload_count": 35,
+      "schema_path": "consequa_x/schemas/trace-v0.1.json",
+      "type_marker_path": "consequa_x/py.typed"
+    }
+  },
+  "observed_at_utc": "2026-10-14T15:36:33.443592+00:00",
+  "reviewer": "review_release subagent",
+  "scope": "Read-only archive inspection of the two final dist artifacts. Independently compared every packaged runtime file to immutable Git source, checked wheel RECORD hashes/sizes and inventories, metadata, license, schema, type marker, and archive paths. No package installation, runtime execution, cross-platform compatibility test, credential read, registry request, upload, or GitHub action is included in this report.",
+  "source_revision": "40fa9bc7612c249dc33899a2ad6a6a12b5087ec4",
+  "version": "0.1.0a2"
+}

@@ -34,10 +34,11 @@ def check_manifest(output):
 
 def run(output, *extra):
     return cli.main(["decision-experiment", "--output", str(output),
-                     "--samples", "2", "--bootstrap-samples", "20", *extra])
+                     "--samples", "2", "--bootstrap-samples", "20",
+                     "--interval-method", "percentile_bootstrap", *extra])
 
 
-def test_default_targets_and_distinct_seed_schedule(tmp_path):
+def test_legacy_bootstrap_targets_and_distinct_seed_schedule(tmp_path):
     output = tmp_path / "default"
     assert run(output, "--case", "clean") == 0
     result = read_json(output / "results.json")
@@ -58,6 +59,18 @@ def test_default_targets_and_distinct_seed_schedule(tmp_path):
     assert result["settings"]["confidence"] == 0.95
     assert result["loci"][0]["status"] == "no_rescue"
     check_manifest(output)
+
+
+def test_default_cli_uses_exact_binomial_uncertainty(tmp_path):
+    output = tmp_path/"exact-default"
+    assert cli.main(["decision-experiment", "--case", "clean", "--samples", "2",
+                     "--output", str(output)]) == 0
+    result = read_json(output/"results.json")
+    assert result["method"]["interval_method"] == "clopper_pearson"
+    assert result["method"]["bootstrap_samples"] is None
+    assert all(item["effect"] == 0 and item["confidence_interval"][0] == 0
+               and item["confidence_interval"][1] > 0 for item in result["estimates"])
+    assert result["calls"]["total"] == 8
 
 
 def test_three_targets_reuse_branches_and_independently_explain_each_trace(tmp_path):

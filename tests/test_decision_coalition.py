@@ -465,6 +465,7 @@ def test_summary_records_partial_intervention_without_truth_labels():
     )
     assert replay.summary() == {
         "status": "invalid", "held_indices": [0, 2], "continuation_seed": 4,
+        "coalition_game": "strict", "inactive_held_indices": [],
         "factual_seed": 7, "factual_decision_count": 3, "reached_decisions": 2,
         "held_decisions": 1, "resampled_decisions": 1, "held_requests": 1,
         "resampled_requests": 1, "failed_decisions": 0,

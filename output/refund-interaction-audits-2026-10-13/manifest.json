@@ -1,0 +1,23 @@
+{
+  "artifacts": [
+    {
+      "bytes": 565,
+      "path": "independent.json",
+      "sha256": "91f7ded22690a90344a956c29ded1887b1bd1b844dcebc5993ec9254deca0a08"
+    },
+    {
+      "bytes": 4995,
+      "path": "negative-checks.json",
+      "sha256": "ed4914da95532283594be0f7d9fc82fc899b15fb56da85a196f0683d361fb1b4"
+    },
+    {
+      "bytes": 835,
+      "path": "README.md",
+      "sha256": "7e5da4a2685e5ee2f82b671efef0d1613bfd43aab3145417330aee92b3c11c36"
+    }
+  ],
+  "completed": true,
+  "scope": "Independent audit receipts for the separately inventoried physical-interaction export.",
+  "source_revision": "2c4adfeb2a364a8116d6edbccbbdac64b413fc9c",
+  "status": "completed"
+}

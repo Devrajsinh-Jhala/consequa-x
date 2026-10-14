@@ -24,13 +24,23 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - Independent CAR-style [decision contrastive replay](decision-contrastive.md) with one observed factual baseline, explicit bootstrap limits, and complete-coverage locus/refusal receipts.
 - Conservative [positional coalition and Shapley replay](decision-shapley.md), with fresh antithetic walks, signed pair estimates, independent endpoint diagnostics, and unavailable-coalition refusal.
 - An offline [attribution calibration probe](attribution-calibration.md) with predeclared synthetic mechanisms, separate analytic references, repeated error/coverage scoring, and complete refusal denominators.
-- An audited [1,280-trial calibration run](../output/calibration-probe-2026-10-11/FINDINGS.md) and [finite interval enumeration](../output/calibration-theory-2026-10-11/README.md). Both expose uncertainty limitations; a [separate interval comparison](interval-followup-plan.md) is the next step before calibrated-coverage claims.
+- An audited [1,280-trial calibration run](../output/calibration-probe-2026-10-11/FINDINGS.md), [finite interval enumeration](../output/calibration-theory-2026-10-11/README.md), and fresh [384-trial same-draw comparison](../output/interval-comparison-2026-10-13/FINDINGS.md). Conservative interval defaults retain uncertainty at constant observations, with width and detection tradeoffs explicit.
+- Separate strict and [on-reach positional games](decision-shapley.md), plus [physical refund selection/retry interactions](refund-interactions.md), idempotency and evidence/budget controls. Exact component enumeration establishes the declared physical game; repeated permutation-sampler calibration remains separate.
+- A [working manuscript and evidence ledger](../paper/README.md), with completed preliminary evidence and pending held-out, matched-baseline and joint-fault experiments identified.
+- A [24-episode local Qwen3 validation](../output/local-validation-2026-10-14/FINDINGS.md)
+  comparing both existing prompt profiles across six validation cases with
+  59 actual model calls. Structured abstention, assessable-claim contradictions
+  and manual rationale clauses are reported separately; the held-out reserve
+  remains untouched.
+- [Reviewed alpha 2 distributions](../output/release-alpha-2026-10-14/README.md),
+  bound to the final source revision, with local tests, strict metadata checks,
+  independent archive inspection and fresh wheel/sdist installation checks.
 
 ## Next research milestone
 
 1. Extend the recorded local pilot to actual stochastic LLM policies across several task templates and models. The adapter exposes declared task/context and public responses; independent readback follows the final assessment, and evaluator truth stays outside policy inputs. Measure replay fidelity rather than treating shared requested seeds as a determinism guarantee. Prompt changes informed by the pilot are exploratory adaptations and need independent held-out evaluation.
 2. Specify context and fault intervention families and targets before running the study. Hold out templates and fault compositions, not just random seeds.
-3. Use the [synthetic calibration probe](attribution-calibration.md) to assess the contrastive and positional Shapley adaptations in the [CAR reproduction](car-reproduction-plan.md). Address interval weaknesses before confirmatory claims, extend typed mechanisms for domain interaction recovery, then compare with identical evidence, origin information, intervention units, snapshots and budget. Report how unavailable coalitions restrict each comparison. Add a faithfully adapted joint-fault comparator where applicable.
+3. Extend repeated sampler calibration beyond the exact physical interaction enumeration, then compare the [CAR adaptations](car-reproduction-plan.md) with identical evidence, origin information, intervention units, snapshots and budget. Conservative interval defaults address the previous homogeneous-sample collapse; they do not establish live-model coverage or resolve undefined strict games. Report unavailable coalitions and sampling assumptions, and add a faithfully adapted joint context/fault comparator.
 4. Measure false consequence/origin claims and factor recovery against independent intervention estimates. Report abstention coverage and error together; audit rationale assertions separately from structured status and report model-specific results and cost.
 5. Expand domains only after a substantive gap remains in the strong baseline. An engineering framework can still be released if the methodological advantage does not emerge.
 
@@ -40,6 +50,6 @@ The current 40-sample fixture report, scripted policy smoke report, and scripted
 
 The first distribution target is Python/PyPI. The local distribution name is `consequa-x`; registry availability and account ownership are unverified. A TypeScript/npm adapter can later share the schema and conformance fixtures without duplicating the Python estimators.
 
-The public source repository uses the MIT license and includes author metadata, contribution guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Before a registry release, confirm supported Python versions on clean hosts, document provider adapter trust assumptions, and verify release artifacts from a tagged revision. No PyPI/npm upload or package ownership claim is made by this alpha.
+The public source repository uses the MIT license and includes author metadata and contribution guides. GitHub Actions is disabled at the maintainer's request; validation and builds run locally. The source retains its Python 3.11/3.12 compatibility declarations, while new checks must identify the actual tested hosts/interpreters. See [release readiness](release-readiness.md) for artifact, ownership and authentication requirements. No PyPI/npm upload or package ownership claim is made by the source version alone.
 
 The selected workspace contains no existing Consequa runtime. Integration with that runtime requires the source repository and compatibility checks, rather than a rewrite based on the brief's assumed architecture.

@@ -24,7 +24,7 @@ def _write_json(path, value):
                     encoding="utf-8", newline="\n")
 
 
-def export_calibration(plan, output, *, source_revision=None):
+def export_calibration(plan, output, *, source_revision=None, on_trial=None):
     """Save the frozen protocol first; retain every compact trial and replicate 0.
 
     An existing nonempty directory is rejected. Partial exports survive an
@@ -32,6 +32,8 @@ def export_calibration(plan, output, *, source_revision=None):
     """
     output = Path(output)
     protocol = calibration_protocol(plan)
+    if on_trial is not None and not callable(on_trial):
+        raise TypeError("on_trial must be callable or None")
     if source_revision is not None and (not isinstance(source_revision, str)
                                         or not source_revision.strip()):
         raise ValueError("source_revision must be a nonempty identifier or None")
@@ -94,6 +96,8 @@ def export_calibration(plan, output, *, source_revision=None):
             streams[trial.seed_plan.mechanism].write((_json(record) + "\n").encode("utf-8"))
             if trial.seed_plan.replicate == 0:
                 evidence(trial)
+            if on_trial is not None:
+                on_trial(trial)
             if trial.seed_plan.replicate == plan.repeats - 1:
                 print(f"Completed {trial.seed_plan.mechanism}: {plan.repeats} planned trials",
                       flush=True)

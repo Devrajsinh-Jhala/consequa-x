@@ -81,7 +81,8 @@ def analyze(original=None, policy=None, **kwargs):
     return contrastive_decisions(
         original or recorded(), BudgetedPolicy(policy or SeedRetryPolicy(), 100),
         samples=kwargs.pop("samples", 2), seed=kwargs.pop("seed", 100),
-        bootstrap_samples=kwargs.pop("bootstrap_samples", 200), **kwargs,
+        bootstrap_samples=kwargs.pop("bootstrap_samples", 200),
+        interval_method=kwargs.pop("interval_method", "percentile_bootstrap"), **kwargs,
     )
 
 

@@ -71,9 +71,19 @@ These signs differ from the context neutralization estimator, and values are not
 responsibility shares. Every selected target reuses the same completed branches
 without additional policy calls.
 
-Intervals use a percentile bootstrap of the changed binary samples, conditional
-on the single factual label and world. Defaults are confidence 0.95, 2,000
-bootstrap resamples, and bootstrap seed 0. The implementation uses
+As of alpha `0.1.0a2`, intervals default to equal-tailed Clopper–Pearson bounds
+on the changed bad probability, minus the constant factual label. These retain
+uncertainty after all-zero or all-one observations. They are conservative under
+independent known Bernoulli draws; they do not infer uncertainty in the factual
+baseline, prove independence of requested model seeds or correct multiplicity.
+Confidence defaults to `.95`. See the [same-draw comparison](../output/interval-comparison-2026-10-13/README.md)
+for exact grid calculations, fresh integration coverage, width and limitations.
+
+`--interval-method wilson` selects the approximate score interval.
+`--interval-method percentile_bootstrap` preserves the original conditional
+bootstrap comparator, with defaults of 2,000 bootstrap resamples and seed zero.
+Those parameters are validated but unused under the binomial options. The
+bootstrap implementation uses
 `random.Random` (MT19937), resets the bootstrap seed at each estimate, holds the
 factual baseline constant without random draws, and linearly interpolates sorted
 bootstrap quantiles. The upstream implementation uses NumPy random draws, so
@@ -86,7 +96,8 @@ a locus can be identified or declared absent; otherwise the whole target's locus
 is refused. There is no multiplicity adjustment across positions or targets.
 The selected locus is a nominal statistical rule, not proof of unique causation.
 
-Identical observed samples can yield zero-width intervals. The export marks
+Under the bootstrap option, identical samples can yield zero-width intervals.
+The exact binomial and Wilson options do not collapse this way. The export marks
 `interval_degenerate` explicitly. Such intervals do not establish zero population
 variance or certain rescue. Requested seeds do not establish independence or
 equal hidden model state. A single-template result does not establish task

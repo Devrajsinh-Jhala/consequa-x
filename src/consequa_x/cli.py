@@ -579,6 +579,7 @@ def _decision_experiment(args):
                 factual, bounded, samples=args.samples, seed=args.seed, targets=targets,
                 template=template, confidence=args.confidence,
                 bootstrap_samples=args.bootstrap_samples, bootstrap_seed=args.bootstrap_seed,
+                interval_method=args.interval_method,
             )
         except (ValueError, TypeError) as error:
             # A complete recorded factual episode may fail replay identity or
@@ -657,6 +658,7 @@ def _decision_experiment(args):
         "samples_per_decision": args.samples, "max_attempts": args.max_attempts,
         "confidence": args.confidence, "bootstrap_samples": args.bootstrap_samples,
         "bootstrap_seed": args.bootstrap_seed,
+        "interval_method": args.interval_method,
         "seed_preflight": "seed + (max_attempts + 1) * samples - 1 <= MAX_TRIAL_SEED",
     }
     availability = {
@@ -740,7 +742,7 @@ def _decision_experiment(args):
         "policy. All selected targets use the same collected branches. Held decisions cost "
         "no provider call; actual attempted fresh calls, including failures, consume the "
         "shared budget. Model phase seeds are reproducibility controls, not guarantees.\n\n"
-        "| Decision | Event | Target | Status | Factual bad | Changed bad rate | Signed effect | Percentile interval | Known | Unknown | Failed | Unstarted | Significant rescue |\n"
+        "| Decision | Event | Target | Status | Factual bad | Changed bad rate | Signed effect | Interval | Known | Unknown | Failed | Unstarted | Significant rescue |\n"
         "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
         + "\n".join(rows) + "\n\n"
         "Bad means the selected target is false; unknown target values remain unknown. "
@@ -748,9 +750,14 @@ def _decision_experiment(args):
         "factual bad-outcome indicator. Negative effects mean the changed distribution "
         "reduces bad outcomes. These are distinct from context neutralization effects and "
         "are not responsibility shares.\n\n"
-        f"Intervals use {args.bootstrap_samples} pure-Python random bootstrap resamples, "
-        f"seed {args.bootstrap_seed}, confidence {args.confidence:g}, and linearly interpolated "
-        "percentiles. The random stream differs from the upstream NumPy implementation. "
+        f"Interval method: `{args.interval_method}`, confidence {args.confidence:g}. "
+        + (f"The percentile option uses {args.bootstrap_samples} pure-Python bootstrap resamples, "
+           f"seed {args.bootstrap_seed}, and linear interpolation. "
+           if args.interval_method == "percentile_bootstrap" else
+           "The binomial interval for the changed bad probability is shifted by the "
+           "constant observed factual label. Wilson is approximate; Clopper–Pearson "
+           "is conservative under independent known binomial draws. ")
+        +
         "Every planned continuation must be usable and at least two samples are required; "
         "unknowns, failures, and unstarted branches refuse the whole estimate. A locus is "
         "refused unless every tested decision for that target is usable. The latest "
@@ -758,14 +765,15 @@ def _decision_experiment(args):
         "is a significant rescue. "
         "Intervals do not provide simultaneous coverage across decisions or targets.\n\n"
         "The factual baseline is one observed indicator, not a separately estimated "
-        "rate. The bootstrap resets its random seed at each position and makes no "
-        "baseline draws; identical observed samples can produce degenerate intervals.\n\n"
+        "rate. The percentile option resets its random seed at each position and can "
+        "collapse for identical samples. The binomial options preserve uncertainty at "
+        "homogeneous samples and pin probability boundaries to zero and one.\n\n"
         "A degenerate interval does not establish zero population variance or certain "
         "rescue. The nominal locus rule does not prove unique causation, and requested "
         "seeds do not establish independent samples or equal hidden model state.\n\n"
         "This independently written CAR-style binary adaptation adds contrastive "
-        "decision localization; Shapley estimation and a matched baseline comparison "
-        "remain research work. No attribution overlay is attached to these signed effects.\n\n"
+        "decision localization; matched baseline comparison and domain interaction "
+        "recovery remain research work. No attribution overlay is attached to these signed effects.\n\n"
         "`traces/` contains completed factual and branch evidence only. `explanations/` "
         "is independently derived from each trace, while `evaluator_truth/` contains "
         "simulator labels that must not enter the policy or explainer. `results.json` "
@@ -860,6 +868,9 @@ def _decision_shapley(args):
                 endpoint_samples=args.endpoint_samples, seed=args.seed,
                 permutation_seed=args.permutation_seed, confidence=args.confidence,
                 targets=targets, template=template,
+                interval_method=args.interval_method,
+                endpoint_interval_method=args.endpoint_interval_method,
+                coalition_game=args.coalition_game,
             )
         except (PolicyError, ValueError, TypeError) as error:
             if bounded.calls != factual_calls:
@@ -940,7 +951,9 @@ def _decision_shapley(args):
                      "pairs": args.pairs, "samples_per_eval": args.samples,
                      "endpoint_samples": args.endpoint_samples,
                      "permutation_seed": args.permutation_seed, "confidence": args.confidence,
-                     "max_attempts": args.max_attempts},
+                     "max_attempts": args.max_attempts, "coalition_game": args.coalition_game,
+                     "interval_method": args.interval_method,
+                     "endpoint_interval_method": args.endpoint_interval_method},
         "factual": factual_receipt, "planned_schedule": schedule, "branches": receipts,
         "permutations": experiment.permutations if experiment is not None else None,
         "summary": experiment.summary() if experiment is not None else None,
@@ -973,25 +986,33 @@ def _decision_shapley(args):
            "evidence or reached failure receipts are retained; no coalition schedule, "
            "outcome, or estimate is fabricated.\n\n" if experiment is None else "")
         + "A coalition holds its recorded decisions at compatible positional stages and "
-        "resamples other decisions. Changed public inputs are allowed. A requested held "
-        "position that is not reached invalidates that branch; only completed valid "
-        "branches have outcome labels. Every evaluation is fresh, including repeated "
+        f"resamples other decisions. Changed public inputs are allowed. Game: `{args.coalition_game}`. "
+        + ("A requested held position that is not reached invalidates that branch. "
+           if args.coalition_game == "strict" else
+           "Normally unreached held positions are recorded as inactive; the completed "
+           "trajectory supplies the actual outcome. Reached incompatible decisions stay invalid. ")
+        + "Only completed valid branches have outcome labels. Every evaluation is fresh, including repeated "
         "coalitions. All requested targets reuse each branch without additional calls.\n\n"
-        "| Decision | Target | Status | Signed contribution | Normal interval | Known pairs |\n"
+        "| Decision | Target | Status | Signed contribution | Interval | Known pairs |\n"
         "| --- | --- | --- | --- | --- | --- |\n"
         + "\n".join(rows) + "\n\n"
         "Positive contributions mean holding a factual decision increases bad-outcome "
         "probability; negative contributions mean it is protective. Values are not "
-        "normalized responsibility shares. Normal approximation intervals use the "
-        "averaged forward/reverse vector as one unit, sample variance, and the planned "
-        "pair count. Incomplete target path coverage refuses its whole vector; unknown, "
+        "normalized responsibility shares. One averaged forward/reverse vector is one "
+        f"observation. Pair interval: `{args.interval_method}`; endpoint interval: "
+        f"`{args.endpoint_interval_method}`. Normal intervals use sample variance; "
+        "Hoeffding uses the declared [-1,1] pair range and can be wide. Exact endpoint "
+        "differences split the failure allowance across two binomial marginals. "
+        "Their statements require the declared independent sampling assumptions. "
+        "Incomplete target path coverage refuses its whole vector; unknown, "
         "invalid, failed, and unstarted draws remain separate, with no redraws.\n\n"
         "Independent empty/full endpoint samples lie outside the permutation walks. "
         "The discrepancy is coefficient sum minus that independently sampled endpoint "
         "difference, not a forced efficiency identity or a statistical pass/fail test. "
         "Endpoint refusal is separate from coefficient refusal.\n\n"
         "These conditional intervals have no multiplicity adjustment or calibrated "
-        "coverage guarantee. Homogeneous samples can collapse intervals; a small pair "
+        "coverage guarantee for live models. Homogeneous samples can collapse normal "
+        "intervals; a small pair "
         "count and requested seeds do not establish certainty or independence. Strict "
         "unreachable-position refusal makes some variable-length refund games unavailable. "
         "A fixed-length mathematical interaction oracle is a different mechanism from "
@@ -1022,6 +1043,28 @@ def _calibrate_attribution(args):
     if args.mechanisms is not None:
         settings["mechanisms"] = tuple(args.mechanisms.split(","))
     export_calibration(CalibrationPlan(**settings), args.output, source_revision=args.source_revision)
+    return 0
+
+
+def _compare_intervals(args):
+    from .benchmark.interval_comparison import comparison_plan, export_interval_comparison
+
+    settings = {"repeats": args.replicates, "samples": args.samples, "pairs": args.pairs,
+                "samples_per_eval": args.samples_per_eval, "endpoint_samples": args.endpoint_samples,
+                "bootstrap_samples": args.bootstrap_samples, "confidence": args.confidence,
+                "seed": args.seed, "max_calls": args.max_calls}
+    export_interval_comparison(comparison_plan(**settings), args.output,
+                               source_revision=args.source_revision, theory_only=args.theory_only)
+    return 0
+
+
+def _refund_interactions(args):
+    from .benchmark.interaction_export import export_refund_interactions
+
+    result = export_refund_interactions(args.output, source_revision=args.source_revision,
+                                        seed=args.seed, mechanisms=args.mechanism)
+    print(f"Saved refund interaction enumeration in {Path(args.output).resolve()}; "
+          f"{result['actual_policy_calls']} actual synthetic policy calls")
     return 0
 
 
@@ -1075,6 +1118,8 @@ def main(argv=None):
     decision.add_argument("--confidence", type=float, default=0.95)
     decision.add_argument("--bootstrap-samples", type=int, default=2000)
     decision.add_argument("--bootstrap-seed", type=int, default=0)
+    decision.add_argument("--interval-method", choices=("percentile_bootstrap", "wilson", "clopper_pearson"),
+                          default="clopper_pearson")
     decision.add_argument("--output", default="output/decision-experiment")
     decision.set_defaults(handler=_decision_experiment)
     shapley = commands.add_parser("decision-shapley", help="Run fresh antithetic decision coalition walks")
@@ -1091,6 +1136,11 @@ def main(argv=None):
     shapley.add_argument("--endpoint-samples", type=int, default=16)
     shapley.add_argument("--permutation-seed", type=int, default=0)
     shapley.add_argument("--confidence", type=float, default=0.95)
+    shapley.add_argument("--interval-method", choices=("normal", "hoeffding"), default="hoeffding")
+    shapley.add_argument("--endpoint-interval-method", choices=("normal", "clopper_pearson_difference"),
+                         default="clopper_pearson_difference")
+    shapley.add_argument("--coalition-game", choices=("strict", "on_reach"), default="strict",
+                         help="strict refuses unreached held positions; on_reach records them as inactive")
     shapley.add_argument("--output", default="output/decision-shapley")
     shapley.set_defaults(handler=_decision_shapley)
     calibration = commands.add_parser("calibrate-attribution",
@@ -1108,6 +1158,27 @@ def main(argv=None):
     calibration.add_argument("--source-revision", help="Caller-supplied source identifier for the protocol")
     calibration.add_argument("--output", default="output/attribution-calibration")
     calibration.set_defaults(handler=_calibrate_attribution)
+    comparison = commands.add_parser("compare-intervals", help="Compare intervals on shared fresh offline replays")
+    comparison.add_argument("--replicates", type=int, default=32)
+    comparison.add_argument("--samples", type=int, default=16)
+    comparison.add_argument("--pairs", type=int, default=16)
+    comparison.add_argument("--samples-per-eval", type=int, default=1)
+    comparison.add_argument("--endpoint-samples", type=int, default=16)
+    comparison.add_argument("--bootstrap-samples", type=int, default=2000)
+    comparison.add_argument("--confidence", type=float, default=.95)
+    comparison.add_argument("--seed", type=int, default=2_000_000)
+    comparison.add_argument("--max-calls", type=int, default=400)
+    comparison.add_argument("--source-revision")
+    comparison.add_argument("--theory-only", action="store_true")
+    comparison.add_argument("--output", default="output/interval-comparison")
+    comparison.set_defaults(handler=_compare_intervals)
+    from .benchmark.interaction_mechanisms import INTERACTION_MECHANISMS
+    interactions = commands.add_parser("refund-interactions", help="Enumerate physical refund decision games")
+    interactions.add_argument("--source-revision", required=True)
+    interactions.add_argument("--seed", type=int, default=4_000_000)
+    interactions.add_argument("--mechanism", action="append", choices=tuple(INTERACTION_MECHANISMS))
+    interactions.add_argument("--output", default="output/refund-interactions")
+    interactions.set_defaults(handler=_refund_interactions)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

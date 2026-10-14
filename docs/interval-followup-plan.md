@@ -1,7 +1,8 @@
 # Separate interval follow-up
 
-This is a proposed next study, separate from the frozen percentile-bootstrap
-and normal-pair calibration probe. It changes no retained estimate or interval.
+This follow-up is separate from the frozen percentile-bootstrap and normal-pair
+calibration probe. The [fresh comparison](../output/interval-comparison-2026-10-13/README.md)
+has completed; the original probe remains unchanged.
 
 ## Contrastive binary target
 
@@ -63,3 +64,57 @@ Choose a revised default only after the mathematical checks and fresh
 integration results are reviewed. Preserve the original interval method as an
 explicit comparator. Live-model inference and held-out task claims require
 additional studies beyond this synthetic interval comparison.
+
+## Implemented comparison protocol (13 October 2026)
+
+The `compare-intervals` command implements the finite grid above, then collects
+one fresh dataset through the production refund replayers. It compares
+percentile bootstrap, Wilson and Clopper–Pearson on the same contrastive draws.
+The Shapley comparison retains normal intervals and adds Hoeffding bounds on
+independent averaged forward/reverse pairs in `[-1,1]`. Its endpoint alternative
+uses two Clopper–Pearson marginals, each assigned half the failure allowance,
+and subtracts their opposing bounds. This union bound does not require
+independence between endpoint blocks; each binomial marginal requires
+independent binary samples. The original
+[Hoeffding paper](https://doi.org/10.1080/01621459.1963.10500830)
+supports the bounded-mean concentration calculation.
+
+The fresh run declares 32 repetitions for each of the original ten cases and
+two additional protective cases at `q=0` and `q=1`: 384 planned trials. Within
+each trial use `K=16`, `P=16`, `S=1`, `E=16`, 2,000 finite seeded bootstrap
+resamples and confidence `.95`. Each method has its own 400-call allowance
+including factual capture; the budget control retains its three-call limit.
+The first world/continuation key is `2_000_000`. Inference keys are reserved
+beyond the complete model-phase key window. No old samples are reused, and
+no new replay is run merely to compare intervals.
+
+The protocols are written before calls, with the frozen source commit recorded
+by the caller. All compact raw receipts and interval variants are retained;
+full public traces and separate evaluator truth are selected at replicate zero
+in advance. The repetition count validates integration and gives descriptive
+Monte Carlo estimates; it cannot establish nominal coverage empirically.
+Exact binomial enumeration and independent numerical checks support the
+conditional mathematical claims instead.
+
+Every eligible row reports covered/available and covered/planned, availability,
+width, bias/RMSE, null flags and detection of the reference sign. A zero or
+undefined reference has no sign-detection denominator. Unknown or incomplete
+evidence and population-undefined retry games keep the previous refusal and
+eligibility rules. Individual intervals have no multiplicity correction.
+
+Run the comparison with the Python environment used for local tests:
+
+```powershell
+$sourceCommit = git rev-parse HEAD
+consequa-x compare-intervals --replicates 32 --seed 2000000 --source-revision $sourceCommit --output output/interval-comparison-2026-10-13
+```
+
+`scripts/audit_interval_comparison.py` uses SciPy only as an independent audit
+dependency, alongside the frozen standard-library raw-draw auditor. It checks
+the new binomial endpoints against beta quantiles with direct upper tails and
+rederives the same-draw bounds and aggregate metrics. The framework still has
+no runtime dependency on SciPy. `scripts/plot_interval_comparison.py` exports a
+research figure using Matplotlib in a separate plotting environment. Versions,
+audit results and artifacts must be retained with the run. SciPy's
+[binomial documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binomtest.html)
+describes its exact reference interval.

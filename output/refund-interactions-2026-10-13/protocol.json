@@ -1,0 +1,3230 @@
+{
+  "budget_rule": "per component/game budget includes three factual calls; stop starting slots at exhaustion",
+  "cases": {
+    "budget-p50-q50": {
+      "include_provenance": true,
+      "max_calls": 4,
+      "name": "budget-p50-q50",
+      "read_lag_ms": 0,
+      "retry_probability": 0.5,
+      "selection_probability": 0.5,
+      "use_idempotency": false
+    },
+    "idempotent-p50-q50": {
+      "include_provenance": true,
+      "max_calls": 100,
+      "name": "idempotent-p50-q50",
+      "read_lag_ms": 0,
+      "retry_probability": 0.5,
+      "selection_probability": 0.5,
+      "use_idempotency": true
+    },
+    "lagged-readback-p50-q50": {
+      "include_provenance": true,
+      "max_calls": 100,
+      "name": "lagged-readback-p50-q50",
+      "read_lag_ms": 1000,
+      "retry_probability": 0.5,
+      "selection_probability": 0.5,
+      "use_idempotency": false
+    },
+    "refund-p100-q100": {
+      "include_provenance": true,
+      "max_calls": 100,
+      "name": "refund-p100-q100",
+      "read_lag_ms": 0,
+      "retry_probability": 1.0,
+      "selection_probability": 1.0,
+      "use_idempotency": false
+    },
+    "refund-p20-q80": {
+      "include_provenance": true,
+      "max_calls": 100,
+      "name": "refund-p20-q80",
+      "read_lag_ms": 0,
+      "retry_probability": 0.8,
+      "selection_probability": 0.2,
+      "use_idempotency": false
+    },
+    "refund-p50-q50": {
+      "include_provenance": true,
+      "max_calls": 100,
+      "name": "refund-p50-q50",
+      "read_lag_ms": 0,
+      "retry_probability": 0.5,
+      "selection_probability": 0.5,
+      "use_idempotency": false
+    },
+    "refund-p80-q20": {
+      "include_provenance": true,
+      "max_calls": 100,
+      "name": "refund-p80-q20",
+      "read_lag_ms": 0,
+      "retry_probability": 0.2,
+      "selection_probability": 0.8,
+      "use_idempotency": false
+    },
+    "unknown-provenance-p50-q50": {
+      "include_provenance": false,
+      "max_calls": 100,
+      "name": "unknown-provenance-p50-q50",
+      "read_lag_ms": 0,
+      "retry_probability": 0.5,
+      "selection_probability": 0.5,
+      "use_idempotency": false
+    }
+  },
+  "design": "full four-component deterministic mixture, each of eight held masks, both games",
+  "limitations": [
+    "synthetic public-only policy, no live model or independence claim",
+    "exact mixture law does not validate finite permutation sampling",
+    "held decision effects are positional policy interventions, not context/fault attribution",
+    "zero-weight components are evidence only and do not change the population expectation"
+  ],
+  "mask_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "model_phase_rule": "world/model schedule seed * 6 + reached position",
+  "package_version": "0.1.0a2",
+  "references": {
+    "budget-p50-q50": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "budget-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              1.0,
+              1.0,
+              0.75,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.25,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.125,
+              0.375,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              1.0,
+              1.0,
+              0.75,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.25,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.125,
+              0.375,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          0.25,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "budget-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "idempotent-p50-q50": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "idempotent-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          0.25,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "idempotent-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "lagged-readback-p50-q50": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "lagged-readback-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "endpoint_difference": null,
+            "endpoint_eligible": false,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "endpoint_difference": null,
+            "endpoint_eligible": false,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          0.25,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "lagged-readback-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "endpoint_difference": null,
+            "endpoint_eligible": false,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "endpoint_difference": null,
+            "endpoint_eligible": false,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        }
+      }
+    },
+    "refund-p100-q100": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p100-q100",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 1.0,
+        "selection_probability": 1.0,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "endpoint_difference": 0.0,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.0,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.0,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p100-q100",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 1.0,
+        "selection_probability": 1.0,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "endpoint_difference": 0.0,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.0,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.0,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "refund-p20-q80": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p20-q80",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.8,
+        "selection_probability": 0.2,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.8,
+              0.0,
+              0.8,
+              0.0,
+              0.8,
+              0.0,
+              0.8,
+              0.0
+            ],
+            "endpoint_difference": -0.8,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.8,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.96,
+              0.8,
+              1.0,
+              1.0,
+              0.96,
+              0.8,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.040000000000000036,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.15999999999999998,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.07999999999999999,
+              0.11999999999999997,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.96,
+              0.8,
+              1.0,
+              1.0,
+              0.96,
+              0.8,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.040000000000000036,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.15999999999999998,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.07999999999999999,
+              0.11999999999999997,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.2,
+          1.0,
+          0.16000000000000003,
+          0.8,
+          0.2,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p20-q80",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.8,
+        "selection_probability": 0.2,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.8,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.8,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.96,
+              0.8,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.040000000000000036,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.96,
+              0.8,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.040000000000000036,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "refund-p50-q50": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              1.0,
+              1.0,
+              0.75,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.25,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.125,
+              0.375,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              1.0,
+              1.0,
+              0.75,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.25,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.125,
+              0.375,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          0.25,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "refund-p80-q20": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p80-q20",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.2,
+        "selection_probability": 0.8,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.19999999999999996,
+              0.0,
+              0.19999999999999996,
+              0.0,
+              0.19999999999999996,
+              0.0,
+              0.19999999999999996,
+              0.0
+            ],
+            "endpoint_difference": -0.19999999999999996,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.19999999999999996,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.3599999999999999,
+              0.19999999999999996,
+              1.0,
+              1.0,
+              0.3599999999999999,
+              0.19999999999999996,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.6400000000000001,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.15999999999999998,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.07999999999999999,
+              0.7200000000000001,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.3599999999999999,
+              0.19999999999999996,
+              1.0,
+              1.0,
+              0.3599999999999999,
+              0.19999999999999996,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.6400000000000001,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.15999999999999998,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.07999999999999999,
+              0.7200000000000001,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.8,
+          1.0,
+          0.16000000000000003,
+          0.2,
+          0.8,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "refund-p80-q20",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.2,
+        "selection_probability": 0.8,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.19999999999999996,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.19999999999999996,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              0.3599999999999999,
+              0.19999999999999996,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.6400000000000001,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.3599999999999999,
+              0.19999999999999996,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.6400000000000001,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "unknown-provenance-p50-q50": {
+      "on_reach": {
+        "coalition_game": "on_reach",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "unknown-provenance-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.0,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.5,
+              0.0,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              null,
+              null,
+              1.0,
+              1.0,
+              null,
+              null,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": null,
+            "endpoint_eligible": false,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.25,
+              0.5,
+              0.0,
+              0.0,
+              0.25,
+              0.5,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              1.0,
+              1.0,
+              0.75,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": null,
+            "selection_retry_interaction": 0.25,
+            "shapley_eligible": true,
+            "shapley_values": [
+              -0.125,
+              0.375,
+              0.0
+            ],
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "strict": {
+        "coalition_game": "strict",
+        "coalition_valid_probabilities": [
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          0.25,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "decision_count": 3,
+        "name": "unknown-provenance-p50-q50",
+        "population_not_finite_seed_claim": true,
+        "retry_probability": 0.5,
+        "selection_probability": 0.5,
+        "targets": {
+          "action": {
+            "coalition_bad_rates": [
+              0.5,
+              0.0,
+              null,
+              0.0,
+              null,
+              null,
+              null,
+              0.0
+            ],
+            "endpoint_difference": -0.5,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "action_linked_consequence": {
+            "coalition_bad_rates": [
+              null,
+              null,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": null,
+            "endpoint_eligible": false,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.25,
+              0.5,
+              0.0,
+              0.0,
+              0.25,
+              0.5,
+              0.0,
+              0.0
+            ]
+          },
+          "consequence": {
+            "coalition_bad_rates": [
+              0.75,
+              0.5,
+              null,
+              1.0,
+              null,
+              null,
+              null,
+              1.0
+            ],
+            "endpoint_difference": 0.25,
+            "endpoint_eligible": true,
+            "reason": "positive invalid or unknown population mass",
+            "selection_retry_interaction": null,
+            "shapley_eligible": false,
+            "shapley_values": null,
+            "unknown_probabilities": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    }
+  },
+  "retention": "every planned branch including failed, invalid, unstarted and zero-weight components",
+  "sampling_claim": "finite enumeration of a declared Bernoulli population law; not stochastic observations",
+  "schedule": [
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000001,
+        4000002,
+        4000003,
+        4000004,
+        4000005,
+        4000006,
+        4000007,
+        4000008
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000000,
+      "factual_world_seed": 4000000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000101,
+        4000102,
+        4000103,
+        4000104,
+        4000105,
+        4000106,
+        4000107,
+        4000108
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000100,
+      "factual_world_seed": 4000100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000201,
+        4000202,
+        4000203,
+        4000204,
+        4000205,
+        4000206,
+        4000207,
+        4000208
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000200,
+      "factual_world_seed": 4000200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000301,
+        4000302,
+        4000303,
+        4000304,
+        4000305,
+        4000306,
+        4000307,
+        4000308
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000300,
+      "factual_world_seed": 4000300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000401,
+        4000402,
+        4000403,
+        4000404,
+        4000405,
+        4000406,
+        4000407,
+        4000408
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000400,
+      "factual_world_seed": 4000400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000501,
+        4000502,
+        4000503,
+        4000504,
+        4000505,
+        4000506,
+        4000507,
+        4000508
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000500,
+      "factual_world_seed": 4000500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000601,
+        4000602,
+        4000603,
+        4000604,
+        4000605,
+        4000606,
+        4000607,
+        4000608
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000600,
+      "factual_world_seed": 4000600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4000701,
+        4000702,
+        4000703,
+        4000704,
+        4000705,
+        4000706,
+        4000707,
+        4000708
+      ],
+      "case": "refund-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4000700,
+      "factual_world_seed": 4000700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001001,
+        4001002,
+        4001003,
+        4001004,
+        4001005,
+        4001006,
+        4001007,
+        4001008
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.15999999999999998,
+      "factual_policy_seed": 4001000,
+      "factual_world_seed": 4001000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001101,
+        4001102,
+        4001103,
+        4001104,
+        4001105,
+        4001106,
+        4001107,
+        4001108
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.6400000000000001,
+      "factual_policy_seed": 4001100,
+      "factual_world_seed": 4001100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001201,
+        4001202,
+        4001203,
+        4001204,
+        4001205,
+        4001206,
+        4001207,
+        4001208
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.039999999999999994,
+      "factual_policy_seed": 4001200,
+      "factual_world_seed": 4001200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001301,
+        4001302,
+        4001303,
+        4001304,
+        4001305,
+        4001306,
+        4001307,
+        4001308
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.16000000000000003,
+      "factual_policy_seed": 4001300,
+      "factual_world_seed": 4001300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001401,
+        4001402,
+        4001403,
+        4001404,
+        4001405,
+        4001406,
+        4001407,
+        4001408
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.15999999999999998,
+      "factual_policy_seed": 4001400,
+      "factual_world_seed": 4001400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001501,
+        4001502,
+        4001503,
+        4001504,
+        4001505,
+        4001506,
+        4001507,
+        4001508
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.6400000000000001,
+      "factual_policy_seed": 4001500,
+      "factual_world_seed": 4001500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001601,
+        4001602,
+        4001603,
+        4001604,
+        4001605,
+        4001606,
+        4001607,
+        4001608
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.039999999999999994,
+      "factual_policy_seed": 4001600,
+      "factual_world_seed": 4001600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4001701,
+        4001702,
+        4001703,
+        4001704,
+        4001705,
+        4001706,
+        4001707,
+        4001708
+      ],
+      "case": "refund-p20-q80",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.16000000000000003,
+      "factual_policy_seed": 4001700,
+      "factual_world_seed": 4001700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002001,
+        4002002,
+        4002003,
+        4002004,
+        4002005,
+        4002006,
+        4002007,
+        4002008
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.15999999999999998,
+      "factual_policy_seed": 4002000,
+      "factual_world_seed": 4002000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002101,
+        4002102,
+        4002103,
+        4002104,
+        4002105,
+        4002106,
+        4002107,
+        4002108
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.039999999999999994,
+      "factual_policy_seed": 4002100,
+      "factual_world_seed": 4002100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002201,
+        4002202,
+        4002203,
+        4002204,
+        4002205,
+        4002206,
+        4002207,
+        4002208
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.6400000000000001,
+      "factual_policy_seed": 4002200,
+      "factual_world_seed": 4002200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002301,
+        4002302,
+        4002303,
+        4002304,
+        4002305,
+        4002306,
+        4002307,
+        4002308
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.16000000000000003,
+      "factual_policy_seed": 4002300,
+      "factual_world_seed": 4002300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002401,
+        4002402,
+        4002403,
+        4002404,
+        4002405,
+        4002406,
+        4002407,
+        4002408
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.15999999999999998,
+      "factual_policy_seed": 4002400,
+      "factual_world_seed": 4002400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002501,
+        4002502,
+        4002503,
+        4002504,
+        4002505,
+        4002506,
+        4002507,
+        4002508
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.039999999999999994,
+      "factual_policy_seed": 4002500,
+      "factual_world_seed": 4002500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002601,
+        4002602,
+        4002603,
+        4002604,
+        4002605,
+        4002606,
+        4002607,
+        4002608
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.6400000000000001,
+      "factual_policy_seed": 4002600,
+      "factual_world_seed": 4002600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4002701,
+        4002702,
+        4002703,
+        4002704,
+        4002705,
+        4002706,
+        4002707,
+        4002708
+      ],
+      "case": "refund-p80-q20",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.16000000000000003,
+      "factual_policy_seed": 4002700,
+      "factual_world_seed": 4002700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003001,
+        4003002,
+        4003003,
+        4003004,
+        4003005,
+        4003006,
+        4003007,
+        4003008
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.0,
+      "factual_policy_seed": 4003000,
+      "factual_world_seed": 4003000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003101,
+        4003102,
+        4003103,
+        4003104,
+        4003105,
+        4003106,
+        4003107,
+        4003108
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.0,
+      "factual_policy_seed": 4003100,
+      "factual_world_seed": 4003100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003201,
+        4003202,
+        4003203,
+        4003204,
+        4003205,
+        4003206,
+        4003207,
+        4003208
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.0,
+      "factual_policy_seed": 4003200,
+      "factual_world_seed": 4003200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003301,
+        4003302,
+        4003303,
+        4003304,
+        4003305,
+        4003306,
+        4003307,
+        4003308
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 1.0,
+      "factual_policy_seed": 4003300,
+      "factual_world_seed": 4003300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003401,
+        4003402,
+        4003403,
+        4003404,
+        4003405,
+        4003406,
+        4003407,
+        4003408
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.0,
+      "factual_policy_seed": 4003400,
+      "factual_world_seed": 4003400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003501,
+        4003502,
+        4003503,
+        4003504,
+        4003505,
+        4003506,
+        4003507,
+        4003508
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.0,
+      "factual_policy_seed": 4003500,
+      "factual_world_seed": 4003500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003601,
+        4003602,
+        4003603,
+        4003604,
+        4003605,
+        4003606,
+        4003607,
+        4003608
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.0,
+      "factual_policy_seed": 4003600,
+      "factual_world_seed": 4003600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4003701,
+        4003702,
+        4003703,
+        4003704,
+        4003705,
+        4003706,
+        4003707,
+        4003708
+      ],
+      "case": "refund-p100-q100",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 1.0,
+      "factual_policy_seed": 4003700,
+      "factual_world_seed": 4003700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004001,
+        4004002,
+        4004003,
+        4004004,
+        4004005,
+        4004006,
+        4004007,
+        4004008
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004000,
+      "factual_world_seed": 4004000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004101,
+        4004102,
+        4004103,
+        4004104,
+        4004105,
+        4004106,
+        4004107,
+        4004108
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004100,
+      "factual_world_seed": 4004100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004201,
+        4004202,
+        4004203,
+        4004204,
+        4004205,
+        4004206,
+        4004207,
+        4004208
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004200,
+      "factual_world_seed": 4004200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004301,
+        4004302,
+        4004303,
+        4004304,
+        4004305,
+        4004306,
+        4004307,
+        4004308
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004300,
+      "factual_world_seed": 4004300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004401,
+        4004402,
+        4004403,
+        4004404,
+        4004405,
+        4004406,
+        4004407,
+        4004408
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004400,
+      "factual_world_seed": 4004400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004501,
+        4004502,
+        4004503,
+        4004504,
+        4004505,
+        4004506,
+        4004507,
+        4004508
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004500,
+      "factual_world_seed": 4004500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004601,
+        4004602,
+        4004603,
+        4004604,
+        4004605,
+        4004606,
+        4004607,
+        4004608
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004600,
+      "factual_world_seed": 4004600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4004701,
+        4004702,
+        4004703,
+        4004704,
+        4004705,
+        4004706,
+        4004707,
+        4004708
+      ],
+      "case": "idempotent-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4004700,
+      "factual_world_seed": 4004700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005001,
+        4005002,
+        4005003,
+        4005004,
+        4005005,
+        4005006,
+        4005007,
+        4005008
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005000,
+      "factual_world_seed": 4005000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005101,
+        4005102,
+        4005103,
+        4005104,
+        4005105,
+        4005106,
+        4005107,
+        4005108
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005100,
+      "factual_world_seed": 4005100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005201,
+        4005202,
+        4005203,
+        4005204,
+        4005205,
+        4005206,
+        4005207,
+        4005208
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005200,
+      "factual_world_seed": 4005200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005301,
+        4005302,
+        4005303,
+        4005304,
+        4005305,
+        4005306,
+        4005307,
+        4005308
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005300,
+      "factual_world_seed": 4005300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005401,
+        4005402,
+        4005403,
+        4005404,
+        4005405,
+        4005406,
+        4005407,
+        4005408
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005400,
+      "factual_world_seed": 4005400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005501,
+        4005502,
+        4005503,
+        4005504,
+        4005505,
+        4005506,
+        4005507,
+        4005508
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005500,
+      "factual_world_seed": 4005500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005601,
+        4005602,
+        4005603,
+        4005604,
+        4005605,
+        4005606,
+        4005607,
+        4005608
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005600,
+      "factual_world_seed": 4005600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4005701,
+        4005702,
+        4005703,
+        4005704,
+        4005705,
+        4005706,
+        4005707,
+        4005708
+      ],
+      "case": "unknown-provenance-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4005700,
+      "factual_world_seed": 4005700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006001,
+        4006002,
+        4006003,
+        4006004,
+        4006005,
+        4006006,
+        4006007,
+        4006008
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006000,
+      "factual_world_seed": 4006000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006101,
+        4006102,
+        4006103,
+        4006104,
+        4006105,
+        4006106,
+        4006107,
+        4006108
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006100,
+      "factual_world_seed": 4006100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006201,
+        4006202,
+        4006203,
+        4006204,
+        4006205,
+        4006206,
+        4006207,
+        4006208
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006200,
+      "factual_world_seed": 4006200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006301,
+        4006302,
+        4006303,
+        4006304,
+        4006305,
+        4006306,
+        4006307,
+        4006308
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006300,
+      "factual_world_seed": 4006300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006401,
+        4006402,
+        4006403,
+        4006404,
+        4006405,
+        4006406,
+        4006407,
+        4006408
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006400,
+      "factual_world_seed": 4006400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006501,
+        4006502,
+        4006503,
+        4006504,
+        4006505,
+        4006506,
+        4006507,
+        4006508
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006500,
+      "factual_world_seed": 4006500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006601,
+        4006602,
+        4006603,
+        4006604,
+        4006605,
+        4006606,
+        4006607,
+        4006608
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006600,
+      "factual_world_seed": 4006600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4006701,
+        4006702,
+        4006703,
+        4006704,
+        4006705,
+        4006706,
+        4006707,
+        4006708
+      ],
+      "case": "lagged-readback-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4006700,
+      "factual_world_seed": 4006700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 100
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007001,
+        4007002,
+        4007003,
+        4007004,
+        4007005,
+        4007006,
+        4007007,
+        4007008
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007000,
+      "factual_world_seed": 4007000,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007101,
+        4007102,
+        4007103,
+        4007104,
+        4007105,
+        4007106,
+        4007107,
+        4007108
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007100,
+      "factual_world_seed": 4007100,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007201,
+        4007202,
+        4007203,
+        4007204,
+        4007205,
+        4007206,
+        4007207,
+        4007208
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007200,
+      "factual_world_seed": 4007200,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007301,
+        4007302,
+        4007303,
+        4007304,
+        4007305,
+        4007306,
+        4007307,
+        4007308
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "strict",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007300,
+      "factual_world_seed": 4007300,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007401,
+        4007402,
+        4007403,
+        4007404,
+        4007405,
+        4007406,
+        4007407,
+        4007408
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 0,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007400,
+      "factual_world_seed": 4007400,
+      "fresh_retry": false,
+      "fresh_selection": false,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007501,
+        4007502,
+        4007503,
+        4007504,
+        4007505,
+        4007506,
+        4007507,
+        4007508
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 1,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007500,
+      "factual_world_seed": 4007500,
+      "fresh_retry": true,
+      "fresh_selection": false,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007601,
+        4007602,
+        4007603,
+        4007604,
+        4007605,
+        4007606,
+        4007607,
+        4007608
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 2,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007600,
+      "factual_world_seed": 4007600,
+      "fresh_retry": false,
+      "fresh_selection": true,
+      "max_calls": 4
+    },
+    {
+      "branch_continuation_seeds_by_mask": [
+        4007701,
+        4007702,
+        4007703,
+        4007704,
+        4007705,
+        4007706,
+        4007707,
+        4007708
+      ],
+      "case": "budget-p50-q50",
+      "coalition_game": "on_reach",
+      "component_index": 3,
+      "component_weight": 0.25,
+      "factual_policy_seed": 4007700,
+      "factual_world_seed": 4007700,
+      "fresh_retry": true,
+      "fresh_selection": true,
+      "max_calls": 4
+    }
+  ],
+  "seed": 4000000,
+  "source_revision": "2c4adfeb2a364a8116d6edbccbbdac64b413fc9c",
+  "source_revision_trust": "caller supplied; exporter does not inspect Git",
+  "targets": [
+    "action",
+    "consequence",
+    "action_linked_consequence"
+  ]
+}

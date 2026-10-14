@@ -1,0 +1,49 @@
+{
+  "version": "0.1.0a2",
+  "runtime_source_revision": "40fa9bc7612c249dc33899a2ad6a6a12b5087ec4",
+  "github": {
+    "status": "published_prerelease",
+    "release": {
+      "assets": [
+        {
+          "browser_download_url": "https://github.com/Devrajsinh-Jhala/consequa-x/releases/download/v0.1.0a2/checks.json",
+          "digest": "sha256:31ae07a4b26eedad1201858afaf4853d2481d88c62fd90b183e4fc12745db05c",
+          "name": "checks.json",
+          "size": 2536
+        },
+        {
+          "browser_download_url": "https://github.com/Devrajsinh-Jhala/consequa-x/releases/download/v0.1.0a2/consequa_x-0.1.0a2-py3-none-any.whl",
+          "digest": "sha256:4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748",
+          "name": "consequa_x-0.1.0a2-py3-none-any.whl",
+          "size": 140336
+        },
+        {
+          "browser_download_url": "https://github.com/Devrajsinh-Jhala/consequa-x/releases/download/v0.1.0a2/consequa_x-0.1.0a2.tar.gz",
+          "digest": "sha256:08736ac0530b0b64aa82ca0ede98276825092f7ecec4e04b24d08349684a4fd8",
+          "name": "consequa_x-0.1.0a2.tar.gz",
+          "size": 276725
+        }
+      ],
+      "draft": false,
+      "html_url": "https://github.com/Devrajsinh-Jhala/consequa-x/releases/tag/v0.1.0a2",
+      "id": 412896576,
+      "prerelease": true,
+      "published_at": "2026-10-14T15:46:17Z",
+      "tag_name": "v0.1.0a2",
+      "target_commitish": "40fa9bc7612c249dc33899a2ad6a6a12b5087ec4"
+    },
+    "merged_pull_request": "https://github.com/Devrajsinh-Jhala/consequa-x/pull/7",
+    "merge_revision": "671d4575cfadf5d2ae46750a3b843f6b63c943d1",
+    "verification_scope": "GitHub API-reported asset hashes and sizes matched retained local bytes; lightweight tag targets the reviewed runtime source."
+  },
+  "pypi": {
+    "status": "pending_local_authentication",
+    "account": "devraj0502",
+    "public_version_files": 0,
+    "registry_installation": "not_yet_performed"
+  },
+  "github_actions": {
+    "status": "disabled_manually",
+    "dispatched": false
+  }
+}

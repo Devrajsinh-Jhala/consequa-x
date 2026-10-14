@@ -1,6 +1,6 @@
 # Changes
 
-## 0.1.0a2 — 13 October 2026
+## 0.1.0a2 — 14 October 2026
 
 - Default decision-contrastive uncertainty now uses exact binomial intervals.
   Signed Shapley pair means use Hoeffding bounds; independent endpoint

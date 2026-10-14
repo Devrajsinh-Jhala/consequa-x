@@ -1,5 +1,11 @@
 # Reviewed Python alpha 2 artifacts
 
+The [GitHub alpha release](https://github.com/Devrajsinh-Jhala/consequa-x/releases/tag/v0.1.0a2)
+is published. Its three asset hashes and sizes match the retained local files,
+and the tag targets the reviewed runtime source. The
+[publication receipt](publication.json) records the GitHub verification and the
+separate pending PyPI upload.
+
 The files here are the reviewed `consequa-x 0.1.0a2` wheel and source distribution,
 built from source **40fa9bc7612c249dc33899a2ad6a6a12b5087ec4**. The
 [receipt](checks.json) binds both files to their hashes, sizes, source revision,

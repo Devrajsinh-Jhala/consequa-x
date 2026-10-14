@@ -103,7 +103,7 @@ separately retained earlier candidate checkpoint and must keep its own hashes.
 
 | Item | Value |
 | --- | --- |
-| Version / source revision / tag | `0.1.0a2`; `40fa9bc7612c249dc33899a2ad6a6a12b5087ec4`; GitHub tag/release operation pending |
+| Version / source revision / tag | `0.1.0a2`; `40fa9bc7612c249dc33899a2ad6a6a12b5087ec4`; [GitHub prerelease `v0.1.0a2`](https://github.com/Devrajsinh-Jhala/consequa-x/releases/tag/v0.1.0a2) published, tag and asset hashes verified |
 | Python, operating system, build tooling | Windows 11, Python 3.12.14; build 1.6.1, setuptools 84.0.0, Twine 7.0.0 |
 | Local tests and lint | Observed full final source suite: 1,274 passed + 240 subtests in 261.21 seconds; 14 focused standalone release-helper tests; Ruff passed. The full suite console output was not retained as a separate log. |
 | Wheel file and SHA-256 | `consequa_x-0.1.0a2-py3-none-any.whl`, 140,336 bytes; `4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748` |
@@ -115,7 +115,7 @@ separately retained earlier candidate checkpoint and must keep its own hashes.
 | Name/owner verification | Public project API 404 on 13 October 2026; name claimability/ownership pending |
 | Upload authentication | Maintainer chose local setup; [masked credential-store helper](local-pypi-setup.md) ready; working setup confirmation pending |
 | Production upload and registry installation | Pending |
-| Public release URL | Pending actual upload |
+| Public registry release URL | Pending actual PyPI upload; the GitHub prerelease is available |
 
 ## Research and npm follow-up
 

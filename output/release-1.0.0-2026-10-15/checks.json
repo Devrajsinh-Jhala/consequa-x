@@ -1,0 +1,75 @@
+{
+  "artifacts": [
+    {
+      "bytes": 151622,
+      "path": "consequa_x-1.0.0-py3-none-any.whl",
+      "sha256": "32880f4c808705d1199db687c9fcc083b6e08e6ae9dd931d00c5335caaa06f5d"
+    },
+    {
+      "bytes": 352389,
+      "path": "consequa_x-1.0.0.tar.gz",
+      "sha256": "05162e12de85652def8c468ee8133d8c5e4f6c01f433da571373d71936ca26f0"
+    }
+  ],
+  "distribution": "consequa-x",
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.14",
+    "tools": {
+      "build": "1.6.1",
+      "setuptools": "84.0.0",
+      "twine": "7.0.0"
+    }
+  },
+  "local_checks": {
+    "artifact_inventory": true,
+    "lint": true,
+    "python311_conformance": true,
+    "release_helper_tests": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "observed_tests": {
+    "frozen_source_suite": {
+      "errors": "0",
+      "failures": "0",
+      "junit_sha256": "10054b08f908b5cb2be6e973f3d8a6cbfe2453ba53b8470bdae879cc77e18496",
+      "skipped": "0",
+      "tests": "1720",
+      "time": "435.777"
+    },
+    "installed_python311_conformance": {
+      "errors": "0",
+      "failures": "0",
+      "junit_sha256": "2ed57e317eb7f6839282392ff9aa1e9638a4bbda05b01f5a9c97529420bc9ad8",
+      "skipped": "0",
+      "tests": "365",
+      "time": "17.949"
+    },
+    "stable_publisher": {
+      "errors": "0",
+      "failures": "0",
+      "junit_sha256": "6a34a98a35eb4969cb0aca325af8d1feb5dd227e518437b879b34a3fc2d66d9c",
+      "skipped": "0",
+      "tests": "20",
+      "time": "0.824"
+    }
+  },
+  "recorded_at_utc": "2026-10-15T14:01:07.704769+00:00",
+  "runtime_and_study_source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "scope": [
+    "Full source run: 1480 tests plus 240 subtests on frozen 0bd744df; all 36 final runtime files match it.",
+    "20 additional standalone publisher tests passed; source/build/docs changes follow runtime freeze.",
+    "Final installed wheel: Windows Python 3.11.9, 200 tests plus 165 subtests, no checkout import path.",
+    "Final wheel and sdist: separate fresh Windows Python 3.12.14 installations, no runtime dependencies.",
+    "All installs: 12 trace roundtrips, all 3 outcome statuses, 4 artifact adapter checks, no model calls.",
+    "Installed parallel CLI and preservation of existing/source evidence checked separately.",
+    "Public PyPI metadata/hash/download/installation verification follows upload; GitHub remains private.",
+    "GitHub Actions remains disabled and was not dispatched; broader platforms/interpreters not claimed.",
+    "The retained 2048-trial physical study is separate research evidence, with its original source identity."
+  ],
+  "source_revision": "85ce6c316838c995782aadc8c10770acc708339b",
+  "version": "1.0.0"
+}

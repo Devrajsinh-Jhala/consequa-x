@@ -1,0 +1,24 @@
+{
+  "artifact_example_checks": [
+    "neutral_without_matcher",
+    "contradicted_failure",
+    "unavailable_readback_unknown",
+    "captured_wrong_bytes_violated"
+  ],
+  "example_sha256": "0c40af6b4389512c92e812835a5a9043aa889c6a626a2409f79410be4d68f473",
+  "executable": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\stable-wheel-env\\Scripts\\python.exe",
+  "module_file": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\stable-wheel-env\\Lib\\site-packages\\consequa_x\\__init__.py",
+  "observed_statuses": [
+    "satisfied",
+    "unknown",
+    "violated"
+  ],
+  "passed": true,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "provider_calls": 0,
+  "python": "3.12.14",
+  "runtime_dependencies": 0,
+  "runtime_files_matching_study_checkpoint": 36,
+  "trace_roundtrips": 12,
+  "version": "1.0.0"
+}

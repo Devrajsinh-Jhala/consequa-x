@@ -1,7 +1,8 @@
 # Stable core API: version 1
 
-This is the core contract for the version `1.0.0` release candidate. Final release
-validation is in progress; the published public PyPI checkpoint is `0.1.0a2`.
+This is the core compatibility contract for version 1. Release-specific build,
+validation and publication status belong in [release readiness](release-readiness.md)
+and the release receipts.
 Version 1 freezes the evidence core after application integration, graph integrity
 fixes, output preservation and installation conformance checks. It supports
 captured application actions and explicitly supplied domain adapters.

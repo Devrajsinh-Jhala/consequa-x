@@ -1,308 +1,244 @@
 # Consequa-X
 
-Consequa-X explains consequential agent actions using captured history and independent outcome evidence. The version `1.0.0` candidate provides portable traces, explicit application verifiers, domain-specific target matching, and evidence graphs that preserve successive observations. Final release checks are in progress; the published PyPI checkpoint is `0.1.0a2`.
+Consequa-X explains consequential agent actions from captured history and
+independent outcome evidence. It keeps the tool response, the agent's reported
+assessment, the observed outcome, and effect origin separate. A timeout can
+coexist with a completed effect; another actor can satisfy the requested state.
 
-The GitHub repository is private; its source and research links require repository access. PyPI packages are public. GitHub Actions remains disabled, and validation runs locally.
+Version 1 provides a stable evidence core: portable typed traces, explicit
+application verifiers, domain-specific target matching, and evidence graphs that
+preserve successive observations. Research replay adapters have separately
+declared interfaces and assumptions.
 
-The core can consume captured application actions without importing the simulator.
-The [application guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/application-integration.md)
-and [offline artifact example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/artifact_delivery.py)
-show the complete integration. The [stable API contract](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/stable-api.md)
-defines version 1 compatibility and the unchanged trace schema `0.1`.
+The GitHub repository is private. Repository, issue and research links require
+access; the Python distributions on PyPI are public. The source distribution
+includes application examples, Markdown documentation, tests and study scripts
+so package users can work without GitHub access. Large retained research
+datasets and the original research PDF remain repository materials.
 
-Research adapters use an isolated payment simulator with scripted policies and an optional local Ollama adapter. They keep the tool response, the agent's reported assessment, the observed outcome, and effect origin separate. A timeout can coexist with a completed refund; another actor can satisfy the desired state after the agent's attempt fails.
+## Install
 
-The first [recorded local-model pilot](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/live-pilot-2026-10-10/README.md) completed six runs with Qwen3 4B. All refunds were independently verified as successful, while the model reported failure in every run; changing the retry instruction produced no observed effect in two replay pairs. This is a small integration result. Payments remain simulated, and neither fixture experiments nor the pilot establish a new attribution method or empirical superiority. See [the design](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/design.md) for exact semantics and [the research roadmap](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/research-roadmap.md) for the paper and release milestones.
-
-## Research materials and contributions
-
-- [Original research brief (PDF)](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/research/Consequa-X_Research_Brief.pdf)
-- [Initial literature assessment](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/research/Consequa-X_Research_Assessment.md)
-- [Demo results and evidence exports](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/demo/README.md)
-- [Paired fixture experiment results](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/experiments/README.md)
-- [Policy evaluation guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/policy-evaluation.md)
-- [Scripted policy smoke results](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/policy-smoke/README.md)
-- [Paired policy replay guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/policy-replay.md)
-- [Scripted replay smoke results](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/replay-smoke/README.md)
-- [First live-model pilot and audit](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/live-pilot-2026-10-10/README.md)
-- [Exploratory prompt comparison and retry diagnostic](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/prompt-sensitivity-2026-10-10/README.md)
-- [Proposed model study protocol](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/study-plan.md)
-- [Candidate task-family splits and evidence targets](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/study-manifests.md)
-- [Decision-prefix replay](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-replay.md)
-- [Decision contrastive replay](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-contrastive.md)
-- [Positional decision coalitions and Shapley replay](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-shapley.md)
-- [Strong baseline reproduction plan](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/car-reproduction-plan.md)
-- [Installed-package study and replay checks](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/study-foundation-2026-10-11/README.md)
-- [Decision contrastive controls and seeded fixture](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/contrastive-foundation-2026-10-11/README.md)
-- [Shapley controls, protective decision, and unavailable coalitions](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/shapley-foundation-2026-10-11/README.md)
-- [Alpha validation report](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/build/README.md)
-
-Collaborators with repository access can contribute to the framework and research. Read [CONTRIBUTING.md](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
-
-## Install locally
-
-With access to this private repository, use Python 3.11 or newer:
+Use Python 3.11 or newer:
 
 ```sh
-git clone https://github.com/Devrajsinh-Jhala/consequa-x.git
-cd consequa-x
-python -m venv .venv
-```
-
-Activate the environment in PowerShell:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Or on macOS/Linux:
-
-```sh
-source .venv/bin/activate
-```
-
-Then install the source and development tools:
-
-```sh
-python -m pip install -e ".[dev]"
+python -m pip install consequa-x
 consequa-x --version
 ```
 
-The installed framework has no required runtime dependencies and needs no provider credentials. Use `python -m consequa_x` wherever these examples use `consequa-x`.
+The examples below use the version 1 API. The framework has no required runtime
+dependencies. Importing the core and running offline examples require no model,
+API key, payment provider or network call. Use `python -m consequa_x` wherever an
+example uses `consequa-x`.
 
-## Run the demo
+Current validation covers Windows with Python 3.11 and 3.12; the declared
+Python 3.11+ range and pure-Python wheel are not test results on every platform.
+Release receipts identify the exact source, artifacts and checks. GitHub Actions
+remains disabled; release validation runs locally.
+
+## Capture, verify and explain
+
+The core accepts application records without importing the refund simulator.
+This minimal synthetic capture illustrates the built-in refund predicate:
+
+```python
+from consequa_x import (
+    Action, AgentAssessment, AssessmentStatus, Observation, OutcomeContract,
+    Trace, explain, verify,
+)
+from consequa_x.schema import get_trace_schema, validate_trace
+
+expected = {"payment_id": "p1", "amount_minor": 1000, "currency": "INR"}
+contract = OutcomeContract("contract-1", "refund_processed", expected,
+                           deadline_ms=50, stability_ms=20)
+action = Action("refund-1", "trace-1", "agent", "refund", expected, 0, contract)
+
+# In an application, capture this independently from a trusted read-only source.
+observation = Observation(
+    "readback-1", "independent-ledger", 100, 100, {"payment_id": "p1"},
+    ({**expected, "effect_id": "effect-1", "committed_at_ms": 25,
+      "status": "processed", "action_id": "refund-1", "actor": "agent"},),
+)
+receipt = verify(action, observation)
+trace = Trace("trace-1", action, (), (),
+              AgentAssessment(AssessmentStatus.FAILURE, 10),
+              (observation,), (receipt,))
+restored = Trace.from_json(trace.to_json())
+assert validate_trace(restored.to_json()) == trace
+assert receipt.status.value == "satisfied"
+assert receipt.origin.value == "confirmed"
+assert explain(restored).assessment_alignment == "contradicted"
+schema = get_trace_schema()  # Bundled portable trace schema 0.1.
+```
+
+Register the intended contract before the action. In a full capture, retain
+dispatch/response events, attempts and the agent's reported assessment, then
+obtain separate readback. The built-in verifier checks payment, integer amount,
+currency, exact count, commit deadline and persistence horizon. Incomplete,
+unavailable, stale or malformed readback produces `unknown` when the predicate
+cannot be established. Origin is a separate `confirmed`, `other_actor` or
+`unknown` conclusion.
+
+The wire schema remains `0.1`; software version and wire version are separate.
+Decoding rejects unsupported versions, unknown fields, invalid identity links
+and dependency cycles. Validation checks structure and declarations; it does
+not authenticate the source or establish that its records are truthful.
+
+## Integrate another application
+
+Supply `verify(action, observation, verifier=application_verifier)`. Its
+`verify` method returns a `VerificationResult` bound to the supplied contract,
+observation identity, source and watermark. The application owns source trust,
+scope, completeness, predicate semantics, time bounds and provenance.
+
+For another predicate, `explain(trace)` stays domain-neutral and leaves reported
+assessment alignment unassessable. Supply
+`explain(trace, target_matcher=application_target_matcher)` when the reported
+assessment concerns satisfaction of that contract. Its
+`matching_effect_ids(action, verification)` method returns a tuple of unique
+attributable effect IDs after checking requested payload, deadline and
+persistence. A propagated action ID alone does not qualify an unrelated effect.
+The matcher is never executed for an `unknown` receipt.
+
+The source archive contains a complete second domain in
+`examples/artifact_delivery.py`: capture an artifact-delivery timeout, hash the
+bytes independently read back, verify an exactly-one delivery contract, round-trip
+the trace, and explain the discrepancy using only the public API. Download and
+extract the version 1 source archive, then run the example:
+
+```sh
+python -m pip download --no-deps --no-binary=:all: consequa-x==1.0.0
+python -m tarfile -e consequa_x-1.0.0.tar.gz unpacked
+cd unpacked/consequa_x-1.0.0
+python -m pip install .
+python examples/artifact_delivery.py
+```
+
+The example performs no delivery or model call. Its fixture's persistence
+witness is a declared source responsibility; current existence alone would not
+prove historical stability. The packaged `docs/application-integration.md`,
+`docs/stable-api.md`, and `docs/graph-witnesses.md` describe the adapter boundary,
+version 1 compatibility and graph migration in detail.
+
+Repeated effect IDs retain an identity node and separate observation witnesses.
+Changed payload, actor or status in a later readback cannot overwrite an earlier
+witness or inherit its origin edge. Graph edges distinguish declared dependency,
+captured order, provider provenance and estimated intervention effects. A
+provenance edge does not prove counterfactual necessity.
+
+## Run offline demonstrations
 
 ```sh
 consequa-x demo --output output/my-demo --seed 0
+consequa-x explain output/my-demo/traces/episode_01.json --output output/my-explanation.json
+consequa-x experiment --output output/my-experiments --samples 40 --seed 0
 ```
 
-This writes 12 scenarios, including a timeout after commit, false success, partial refunds, delayed visibility, safe and unsafe retries, external-actor effects, and missing provenance. Open `output/my-demo/README.md` for the outcome table. Each run requires a new or empty output directory; choose another path when repeating a command.
+The demo exports twelve refund scenarios, including timeout after commit,
+false success, partial effects, delayed visibility, retries, other actors and
+missing provenance. Open `output/my-demo/README.md` for its outcome table.
+Every run requires a new or empty output directory. Explanation output must be
+a new file and cannot replace its source trace. Choose a different path when
+repeating a command.
 
 | Export | Purpose |
 | --- | --- |
-| `traces/` | Captured events, responses, assessments, observations, and verification records |
-| `explanations/` | Diagnoses and evidence graphs produced from those traces |
-| `evaluator_truth/` | Simulator truth, injection labels, and scenario configuration for evaluation only |
-| `trace-schema.json` | Portable JSON Schema for trace structure |
-| `manifest.json` | SHA-256 hashes of episode artifacts for integrity checks |
+| `traces/` | Captured events, responses, assessments, observations and receipts |
+| `explanations/` | Diagnoses and evidence graphs |
+| `evaluator_truth/` | Synthetic world state and fault labels for evaluation only |
+| `trace-schema.json` | Portable JSON Schema |
+| `manifest.json` | Artifact identities and hashes |
 
-Keep evaluator truth outside explainer and policy inputs. Manifest hashes detect file changes; they do not authenticate evidence sources. The simulator uses local synthetic funds, including synthetic compensation for temporal-contract tests.
+Keep evaluator truth outside policy and explainer inputs. Hashes detect changed
+bytes; they do not authenticate evidence sources. All payment effects in the
+research adapters use synthetic funds in isolated worlds.
 
-Explain a saved trace without replaying a policy or executing a provider call:
+## Research interfaces
 
-```sh
-consequa-x explain output/my-demo/traces/episode_01.json --output output/my-explanation.json
-```
-
-## Evaluate a policy
-
-Run the policy interface without installing a model:
+Modules under `consequa_x.benchmark`, study commands and exact policy prompts
+remain declared research interfaces. Their protocols pin source revisions and
+assumptions separately from the stable evidence core.
 
 ```sh
 consequa-x model-eval --provider scripted --samples 2 --max-calls 100 --output output/my-policy-smoke
+consequa-x decision-experiment --provider scripted --case unsafe_retry --samples 16 --seed 100 --factual-seed 0 --max-calls 400 --output output/my-decision-replay
+consequa-x decision-shapley --provider scripted --case clean --pairs 16 --samples 1 --endpoint-samples 16 --seed 100 --max-calls 2000 --output output/my-shapley-replay
 ```
 
-The policy chooses whether to refund, retry, or stop, then reports its assessment before independent verification. Each trial starts a fresh simulated world. Reports include completed, failed, and unstarted samples; provider/protocol errors stay separate from verified consequence violations and unknown readback. Use a fresh output directory for each run.
+Replay uses fresh isolated worlds, explicit targets and call budgets. Unknown
+outcomes, failures, invalid coalitions and unstarted branches remain visible;
+affected estimates are refused. Contrastive defaults use exact binomial
+intervals. Shapley pair means use Hoeffding bounds, with separate exact-binomial
+endpoint differences. These intervals can be wide at small budgets; their
+sampling assumptions and individual-interval scope remain explicit. Legacy
+bootstrap/normal modes remain named comparison options.
 
-Once you have installed Ollama and a local model, replace `YOUR_INSTALLED_MODEL` with its name:
+The default `strict` game refuses unreachable held positions. The separate
+`--coalition-game on_reach` game treats normally unreached held positions as
+inactive and uses the actual completed outcome. Reached incompatible decisions
+still invalidate a draw. The games have different population targets.
+
+`refund-interactions` enumerates physical selection/retry games.
+`calibrate-interactions` repeatedly samples them and rescores the same saved
+draws under normal versus conservative uncertainty methods. Both require
+`--source-revision`; see packaged `docs/refund-interactions.md` and
+`docs/interaction-sampling.md` before running a retained study. The full default
+sampling plan has 2,048 trials and 655,360 planned branches; it is not a quick demo.
+A sampling implementation or smoke test does not establish a completed,
+independently audited calibration result.
+
+An optional Ollama adapter uses an already installed local model and server:
 
 ```sh
 consequa-x model-eval --provider ollama --model YOUR_INSTALLED_MODEL --cases clean,timeout_after_commit --samples 1 --max-calls 6 --output output/my-local-model
 ```
 
-The adapter checks installed models and declared local routing before generation, uses structured decisions, and records model identity and request hashes. It performs no model installation or download. See [the evaluation guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/policy-evaluation.md) for setup, limits, API examples, and trust assumptions. The [study protocol](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/study-plan.md) defines the stronger comparisons and held-out tasks still needed for a research paper.
+This command does not install or download a model. The original
+`refund-policy-v1` profile remains the default; `--prompt-version refund-policy-v2`
+selects an exploratory refinement. Study exports record model identity, prompt
+hashes, requested seeds, ordering, failures and actual cost. A requested seed is
+not proof of model determinism or independent sampling.
 
-The original `refund-policy-v1` prompt remains the default. Select the opt-in `--prompt-version refund-policy-v2` to clarify assessment, timing, and attempt-budget semantics and add stop-after-success guidance. This is a pilot-informed policy refinement; comparison results are exploratory. Both evaluation and replay record the chosen version and its exact prompt hash. Reports also expose assessment abstention, claim coverage, and contradictions with explicit denominators. These metrics score the structured status, while rationale text requires separate review. The [follow-up pilot](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/prompt-sensitivity-2026-10-10/README.md) found unknown status fields alongside affirmative rationale claims, so it does not establish an accuracy gain. Hindsight alignment with verified state does not establish what a policy could know from an ambiguous response.
+The retained evidence includes an audited 384-trial synthetic interval comparison
+and a 24-episode local Qwen3 validation using 59 model calls. The latter compares
+two existing prompt profiles on exposed validation cases. The revised profile
+abstained in every structured status, so its conditional contradiction rate is
+undefined; some rationales still contained positive processing claims. Structured
+abstention, assessable-claim errors and rationale assertions must be scored
+separately. These results establish neither improved accuracy nor held-out
+superiority.
 
-## Use the Python API
+The paper is a protocol/software contribution with synthetic and exploratory
+local-model evidence. It does not claim a new attribution estimator, calibrated
+live-model confidence, broad domain generalization or superiority over a matched
+strong baseline. The IEEE draft and retained data remain private repository
+materials; no submission or acceptance is claimed. Joint context/fault methods,
+matched live baselines and held-out template/fault-composition studies remain
+future research. No npm package is published.
 
-For study preparation, `model-eval --study docs/studies/refund-family-candidates-v1.json --split tuning`
-selects a validated candidate wording family and records the planned order and
-exact manifest hash. The original pilot family is excluded from the held-out
-reserve. This assignment is not a claim of held-out model performance.
-`model-experiment --targets action,consequence,action_linked_consequence` adds
-qualifying action-linked outcomes without additional replay calls. The
-[decision replay API](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-replay.md) holds factual prefixes for future
-baseline implementations. [Decision contrastive replay](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-contrastive.md)
-now estimates suffix effects against one recorded factual outcome.
-[Positional Shapley replay](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-shapley.md) adds fresh coalition walks,
-paired contribution estimates, and independent endpoint diagnostics. Strict
-unreachable-position refusal can make variable-length games unavailable;
-calibration and the final matched comparison remain research milestones.
+## Develop and contribute
 
-```python
-from consequa_x import Trace, explain, verify
-from consequa_x.benchmark.runner import run_scenario
-from consequa_x.schema import get_trace_schema, validate_trace
-
-episode = run_scenario(seed=0)  # Default: timeout after the refund commits.
-trace = episode.trace
-
-receipt = verify(trace.action, trace.observations[-1])
-print(receipt.status.value)  # satisfied
-print(receipt.origin.value)  # confirmed
-print(explain(trace).diagnosis)  # BELIEF / RESPONSE DIVERGENCE
-
-encoded = trace.to_json()
-restored = Trace.from_json(encoded)
-assert validate_trace(encoded) == restored
-schema = get_trace_schema()  # Bundled trace schema v0.1.
-```
-
-`verify(action, observation)` is read-only. The built-in `refund_processed` contract checks the payment, amount, currency, count, deadline, and optional stability interval. Stale, incomplete, unavailable, or malformed readback produces `unknown` rather than a final success/failure claim. Origin is reported independently as `confirmed`, `other_actor`, or `unknown`.
-
-`explain(trace, estimates=())` uses the latest captured verification. It records reported-assessment alignment and graph edges with explicit meanings. A reported assessment is not a measurement of hidden reasoning; an origin link is not proof of counterfactual necessity. Supplied replay estimates add estimated-influence edges. Recency remains a labeled heuristic.
-
-Trace decoding rejects unsupported versions, unknown fields, invalid references, and dependency cycles. The portable JSON Schema covers record structure; `validate_trace` also checks relationships between records. These checks trust source and watermark declarations and do not authenticate a provider. See [the design](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/design.md) before writing an adapter.
-
-## Run paired replay experiments
-
-Replay the policy interface under declared context changes:
+From the extracted source archive or an authorized repository checkout:
 
 ```sh
-consequa-x model-experiment --provider scripted --case unsafe_retry --samples 20 --max-calls 400 --output output/my-policy-replay
-```
-
-Each factual seed runs once and is reused across candidate comparisons and all selected targets. The call limit applies to the whole experiment. Failed or unstarted branches and unknown consequences remain explicit; an estimate requires every planned target pair to be usable. The export includes branch evidence, signed effects, pair coverage, and an optional factual explanation with estimated-influence edges. See [the replay guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/policy-replay.md) for the Python API and prepared Ollama entry point.
-
-The committed [scripted replay example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/replay-smoke/README.md) uses two seeds per condition to check the integration. It is not a model result or an adequate sample size for a research claim.
-
-Test recorded decision boundaries using one factual capture and fresh suffixes:
-
-```sh
-consequa-x decision-experiment --provider scripted --case unsafe_retry --samples 16 --seed 100 --factual-seed 0 --max-calls 400 --output output/my-decision-replay
-```
-
-This independently written CAR-style binary adaptation estimates changed-minus-factual
-bad-outcome probability and reports the latest nominal rescue position. Its shared
-call budget includes the factual recording. Unknowns, failures, and unstarted
-samples refuse affected estimates; incomplete decision coverage refuses the final
-locus. The default exact binomial intervals retain uncertainty at homogeneous
-samples and condition on one observed factual episode. Legacy bootstrap and
-Wilson options remain explicit comparators. See [the decision guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-contrastive.md)
-for signs, reference version, implementation deviations, and statistical limits.
-
-Allocate signed contributions with fresh held-decision coalition walks:
-
-```sh
-consequa-x decision-shapley --provider scripted --case clean --pairs 16 --samples 1 --endpoint-samples 16 --seed 100 --max-calls 2000 --output output/my-decision-shapley
-```
-
-One permutation and its reverse form one observation. Separate endpoint draws
-check the total scale without normalizing the shares. Unknown or unavailable
-path evidence refuses the affected target vector. See the
-[Shapley guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/decision-shapley.md) for intervention validity, signs,
-budgets, and conditional interval limits. Defaults use Hoeffding bounds for
-pair means and two exact binomial marginals for endpoint differences. They can
-be wide at small budgets; normal intervals remain an explicit comparator.
-
-The default strict game refuses unreachable held positions. The separate
-`--coalition-game on_reach` option records normally unreached held positions as
-inactive and uses the actual completed trajectory. Reached incompatible
-decisions still invalidate a draw. See the
-[refund interaction guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/refund-interactions.md) for exact physical
-enumeration and the distinction between the two games.
-
-Probe both decision estimators against declared analytic refund mechanisms:
-
-```sh
-consequa-x calibrate-attribution --replicates 32 --output output/my-calibration
-```
-
-This offline experiment reports error, interval coverage, false nonzero flags,
-locus recovery and refusals with explicit denominators. It saves its protocol
-before execution, every planned draw in compressed JSONL, and full evidence
-for a preselected repetition. See [the calibration design](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/attribution-calibration.md)
-for analytic references, budget controls and interpretation limits.
-
-The [retained 1,280-trial probe](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/calibration-probe-2026-10-11/FINDINGS.md)
-and [independent finite interval analysis](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/calibration-theory-2026-10-11/README.md)
-show weak coverage for several original nominal 95% intervals. The
-[384-trial same-draw comparison](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/interval-comparison-2026-10-13/README.md)
-and [follow-up protocol](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/interval-followup-plan.md) compare revised bounds
-on fresh data, including width and detection strength. The original probe and
-its methods remain available; synthetic checks do not establish live-model
-coverage or superiority.
-
-```sh
-consequa-x compare-intervals --replicates 32 --seed 2000000 --output output/my-interval-comparison
-```
-
-A [working research paper](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/paper/manuscript.md) links the completed evidence and
-the held-out studies still required. [Release readiness](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/release-readiness.md)
-records completed publication checks and the remaining stable-release checks.
-
-The [24-episode local validation](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/local-validation-2026-10-14/FINDINGS.md)
-compares both existing prompt profiles on six validation cases using the same
-local Qwen3 4B model. Structured abstention and explanation claims are scored
-separately; the study does not establish improved accuracy or held-out superiority.
-
-Run the original deterministic and stochastic fixture comparison:
-
-```sh
-consequa-x experiment --output output/my-experiments --samples 40 --seed 0
-```
-
-The command requires at least 20 samples per condition. It writes `results.json` and a report comparing action selection and verified consequence under deterministic and stochastic programmatic policies. Both branches of each pair start in fresh simulated worlds with aligned random draws.
-
-The unsafe retry fixture illustrates why the targets differ: neutralizing the retry instruction leaves initial action selection unchanged, but prevents a second refund and restores exactly-once satisfaction.
-
-For a custom fixture experiment:
-
-```python
-from consequa_x import Intervention, explain, leave_one_out
-from consequa_x.benchmark.runner import (
-    RefundContext, RefundReplayRunner, ScenarioConfig, run_scenario,
-)
-
-config = ScenarioConfig(
-    context=RefundContext(retry_instruction=True),
-    use_idempotency=False,
-)
-estimates = leave_one_out(
-    RefundReplayRunner(config),
-    (Intervention("retry_instruction"), Intervention("distractor")),
-    target="consequence",
-    samples=40,
-    seed=0,
-)
-print(estimates[0].effect)  # -1.0: removing retry improves this target.
-explanation = explain(run_scenario(config, seed=0).trace, estimates)
-```
-
-An estimate is the original rate minus the intervened rate, with an approximate conservative 95% interval. It is a signed experimental effect, not a normalized responsibility share. Unknown consequence pairs refuse an estimate. Results describe the declared replay distribution; they do not demonstrate generalization across tasks or LLMs. A custom replay runner must reset its world, preserve the outcome contract, and supply independently verified outcomes. The current fixture runner supports neutralization or typed replacement of declared context fields.
-
-## Development and local distribution
-
-```sh
+python -m pip install -e ".[dev]"
 python -m pytest
-python -m ruff check src tests
+python -m ruff check src tests scripts
 python -m build
 ```
 
-The build writes a wheel and source distribution to `dist/`. To install the current version `1.0.0` candidate wheel in another environment:
+Builds write the wheel and source archive to `dist/`. `requirements-dev.lock`
+records the Python 3.12 development dependencies; it is not a compatibility
+result for other interpreters. Release-specific validation, artifact hashes,
+registry verification and study status belong in release receipts.
 
-```sh
-python -m pip install dist/consequa_x-1.0.0-py3-none-any.whl
-```
+Private repository collaborators can use the
+[contribution guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/CONTRIBUTING.md),
+[release checklist](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/release-readiness.md),
+[research roadmap](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/research-roadmap.md),
+and [evidence ledger](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/paper/evidence-ledger.md).
+The contribution guide and Markdown documentation are also in the source archive;
+retained datasets and the paper are not bundled into the Python wheel.
 
-`requirements-dev.lock` captures the Python 3.12 development environment.
-The [stable core API](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/stable-api.md)
-and trace schema have explicit compatibility rules; benchmark modules and study
-commands remain declared research interfaces. Release receipts identify the
-exact interpreters, platforms and installations checked.
-
-The [Python alpha is published on PyPI](https://pypi.org/project/consequa-x/0.1.0a2/),
-with both public artifact hashes and a fresh registry installation verified.
-Install that exact checkpoint with `python -m pip install consequa-x==0.1.0a2`.
-The current [completion work](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/completion-plan.md)
-tracks final stable-release validation and a scoped IEEE protocol/software paper.
-A later npm adapter can share the trace schema and conformance fixtures. The
-package is not published on npm.
-
-The [reviewed alpha 2 artifacts and checks](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/release-alpha-2026-10-14/README.md)
-retain the wheel, source distribution and final build revision. Installation
-checks cover Windows Python 3.12.14. GitHub Actions stays disabled at the
-maintainer's request; this release uses local checks. The
-[publication receipt](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/release-alpha-2026-10-14/publication.json)
-records the completed PyPI upload and registry installation.
+Consequa-X is licensed under the **MIT License**, included with the distributions.
+Copyright and author metadata identify Devrajsinh Jhala. Source privacy does not
+change the permissions granted for the publicly distributed code.

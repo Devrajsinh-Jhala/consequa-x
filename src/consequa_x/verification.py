@@ -13,6 +13,13 @@ from .models import (
 
 
 class Verifier(Protocol):
+    """Application-supplied, read-only interpretation of one captured observation.
+
+    Implementations own predicate semantics, source trust, completeness,
+    temporal bounds, and provenance. The public ``verify`` wrapper checks the
+    returned receipt's identity boundary, not the truth of those conclusions.
+    """
+
     def verify(self, action: Action, observation: Observation) -> VerificationResult: ...
 
 
@@ -187,6 +194,36 @@ def _peak_count(records: list[dict], deadline_ms: int, horizon_ms: int) -> int:
     return peak
 
 
-def verify(action: Action, observation: Observation) -> VerificationResult:
-    """Verify a registered built-in outcome contract without executing a write."""
-    return RefundVerifier().verify(action, observation)
+def verify(
+    action: Action, observation: Observation, *, verifier: Verifier | None = None,
+) -> VerificationResult:
+    """Verify a captured observation with a built-in or application verifier.
+
+    Without ``verifier``, only ``refund_processed`` is supported. A custom
+    verifier is trusted application code: this function cannot establish that
+    it is read-only or that its source, predicate, and origin claims are true.
+    Every returned evidence item must bind to the supplied observation, and a
+    receipt cannot precede that observation or refer to a different contract.
+    This does not change the trace schema or execute the registered action.
+    """
+    if not isinstance(action, Action) or not isinstance(observation, Observation):
+        raise TypeError("verify requires an Action and an Observation")
+    adapter = RefundVerifier() if verifier is None else verifier
+    verify_method = getattr(adapter, "verify", None)
+    if not callable(verify_method):
+        raise TypeError("A verifier must provide a callable verify method")
+    result = verify_method(action, observation)
+    if not isinstance(result, VerificationResult):
+        raise TypeError("A verifier must return a VerificationResult")
+    if result.contract_id != action.contract.contract_id:
+        raise ValueError("Verifier receipt contract_id must match the action contract")
+    if result.observed_at_ms < observation.observed_at_ms:
+        raise ValueError("Verifier receipt cannot precede its evidence observation")
+    for evidence in result.evidence:
+        if evidence.observation_id != observation.observation_id:
+            raise ValueError("Verifier evidence must refer to the supplied observation_id")
+        if evidence.source != observation.source:
+            raise ValueError("Verifier evidence source must match the supplied observation")
+        if evidence.as_of_ms != observation.as_of_ms:
+            raise ValueError("Verifier evidence watermark must match the supplied observation")
+    return result

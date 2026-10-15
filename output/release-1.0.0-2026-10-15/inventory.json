@@ -1,0 +1,26 @@
+{
+  "artifacts": [
+    {
+      "bytes": 151622,
+      "path": "consequa_x-1.0.0-py3-none-any.whl",
+      "sha256": "32880f4c808705d1199db687c9fcc083b6e08e6ae9dd931d00c5335caaa06f5d"
+    },
+    {
+      "bytes": 352389,
+      "path": "consequa_x-1.0.0.tar.gz",
+      "sha256": "05162e12de85652def8c468ee8133d8c5e4f6c01f433da571373d71936ca26f0"
+    }
+  ],
+  "bundled_schema_pytyped_mit_console_entrypoint": true,
+  "git_source_files_checked": 122,
+  "passed": true,
+  "private_research_outputs_credentials_and_environments_excluded": true,
+  "runtime_dependencies": 0,
+  "runtime_files_identical_to_study_checkpoint": 36,
+  "sdist_file_count": 130,
+  "sdist_includes_docs_examples_tests_auditors": true,
+  "source_revision": "85ce6c316838c995782aadc8c10770acc708339b",
+  "study_source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "version": "1.0.0",
+  "wheel_record_entries": 42
+}

@@ -37,10 +37,40 @@
     "verification_scope": "GitHub API-reported asset hashes and sizes matched retained local bytes; lightweight tag targets the reviewed runtime source."
   },
   "pypi": {
-    "status": "pending_local_authentication",
+    "status": "published_and_registry_install_verified",
     "account": "devraj0502",
-    "public_version_files": 0,
-    "registry_installation": "not_yet_performed"
+    "public_version_url": "https://pypi.org/project/consequa-x/0.1.0a2/",
+    "verified_at_utc": "2026-10-14T16:04:47.580638+00:00",
+    "public_version_files": 2,
+    "files": [
+      {
+        "filename": "consequa_x-0.1.0a2-py3-none-any.whl",
+        "sha256": "4b43bd7c775ccd55035af88645b03fe037b91bbfb6953ee6028e922056c04748",
+        "bytes": 140336,
+        "registry_url": "https://files.pythonhosted.org/packages/77/77/3647c73f1e6efbfa2f28bec0ba8913e110b5240dcee31a50ddf276cfbe83/consequa_x-0.1.0a2-py3-none-any.whl",
+        "download_verified": true
+      },
+      {
+        "filename": "consequa_x-0.1.0a2.tar.gz",
+        "sha256": "08736ac0530b0b64aa82ca0ede98276825092f7ecec4e04b24d08349684a4fd8",
+        "bytes": 276725,
+        "registry_url": "https://files.pythonhosted.org/packages/65/cb/6b6f1fc2099e6c08178f18a0e35a61eca36e0b4ec31bef16dc221ab04dc4/consequa_x-0.1.0a2.tar.gz",
+        "download_verified": true
+      }
+    ],
+    "registry_installation": {
+      "passed": true,
+      "index_url": "https://pypi.org/simple",
+      "isolated_environment": true,
+      "runtime_dependencies": 0,
+      "fresh_cache": true,
+      "installed_payload_matches_reviewed_wheel": true,
+      "smoke_receipt": "registry-smoke.json",
+      "offline_trace_roundtrips": 12,
+      "python": "3.12.14",
+      "platform": "Windows-11-10.0.26300-SP0"
+    },
+    "upload_note": "Upload accepted both files. Initial constant-URL JSON verification hit a cached pre-upload404; a fresh query then verified the version and both hashes. No second upload was made."
   },
   "github_actions": {
     "status": "disabled_manually",

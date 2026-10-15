@@ -1,12 +1,22 @@
 # Research and release roadmap
 
-The current milestone is an installable representation and bounded policy replay prototype. Scripted fixtures establish that response, reported assessment and observed state can diverge, and that context can change a consequence while leaving the initial action unchanged. The policy integration prepares these experiments for an installed local model. It does not establish a novel attribution estimator or publishable empirical superiority.
+The current milestone is the version `1.0.0` stable evidence core and a scoped
+IEEE protocol/software paper. Runtime source is frozen at
+`0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`; final release artifacts and registry
+verification are pending. The framework already supports captured applications,
+bounded research replay and an installed local model. The research contribution
+does not depend on claiming a new estimator or empirical superiority.
 
 The initial literature assessment is in `output/research/Consequa-X_Research_Assessment.md` (reviewed 4 October 2026). Before a submission, refresh paper versions and related work, particularly CausalLoss-Fin, CAR, PCCC, FinalityBench and ConsequenceBench.
 
 ## Completed foundation
 
 - Versioned public records and portable JSON Schema.
+- Explicit custom verification and target matching, a domain-neutral explanation
+  path, and a complete non-refund artifact-delivery example using the public API.
+- Successive effect witnesses that preserve historical payload, state and origin,
+  controlled adapter/domain errors, preserved CLI output and a documented
+  stable-core/schema compatibility boundary.
 - Deterministic refund environment, audited fault log, bounded funds and idempotency.
 - Read-only, horizon-aware verification with independent origin status.
 - Evidence graph and reported-assessment diagnosis.
@@ -26,6 +36,10 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - An offline [attribution calibration probe](attribution-calibration.md) with predeclared synthetic mechanisms, separate analytic references, repeated error/coverage scoring, and complete refusal denominators.
 - An audited [1,280-trial calibration run](../output/calibration-probe-2026-10-11/FINDINGS.md), [finite interval enumeration](../output/calibration-theory-2026-10-11/README.md), and fresh [384-trial same-draw comparison](../output/interval-comparison-2026-10-13/FINDINGS.md). Conservative interval defaults retain uncertainty at constant observations, with width and detection tradeoffs explicit.
 - Separate strict and [on-reach positional games](decision-shapley.md), plus [physical refund selection/retry interactions](refund-interactions.md), idempotency and evidence/budget controls. Exact component enumeration establishes the declared physical game; repeated permutation-sampler calibration remains separate.
+- Repeated [physical-interaction sampling](interaction-sampling.md), bounded
+  serial/parallel collection, same-draw uncertainty comparisons and an independent
+  semantic auditor. Implementation/conformance checks are complete; the retained
+  2,048-trial study is running and has no completed audit or result claim yet.
 - A [working manuscript and evidence ledger](../paper/README.md), with completed preliminary evidence and pending held-out, matched-baseline and joint-fault experiments identified.
 - A [24-episode local Qwen3 validation](../output/local-validation-2026-10-14/FINDINGS.md)
   comparing both existing prompt profiles across six validation cases with
@@ -34,13 +48,34 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
   remains untouched.
 - [Reviewed alpha 2 distributions](../output/release-alpha-2026-10-14/README.md),
   bound to the final source revision, with local tests, strict metadata checks,
-  independent archive inspection and fresh wheel/sdist installation checks.
+  independent archive inspection, fresh wheel/sdist installations and verified
+  public PyPI publication. The repository has since become private.
+- A full frozen-source suite of 1,480 passing tests plus 240 subtests, 20
+  additional stable-publisher checks, and Windows Python 3.11 source conformance
+  of 200 tests plus 165 subtests. Final installed-artifact checks remain separate
+  release gates.
 
-## Next research milestone
+## Current completion gates
+
+Complete the retained interaction run, independently audit every declared trial
+and denominator, and integrate the achieved results into the IEEE manuscript.
+Finalize its discussion and primary references and compile/render the paper.
+Complete reviewed wheel/sdist installation, metadata and inventory checks,
+publish the stable package publicly on PyPI, and verify public artifact hashes
+and a fresh registry installation. [Completion scope](completion-plan.md) and
+[release readiness](release-readiness.md) track these gates; neither publication
+nor a completed sampling result is claimed by this source checkpoint.
+
+## Research after this protocol/software paper
 
 1. Extend the recorded local pilot to actual stochastic LLM policies across several task templates and models. The adapter exposes declared task/context and public responses; independent readback follows the final assessment, and evaluator truth stays outside policy inputs. Measure replay fidelity rather than treating shared requested seeds as a determinism guarantee. Prompt changes informed by the pilot are exploratory adaptations and need independent held-out evaluation.
 2. Specify context and fault intervention families and targets before running the study. Hold out templates and fault compositions, not just random seeds.
-3. Extend repeated sampler calibration beyond the exact physical interaction enumeration, then compare the [CAR adaptations](car-reproduction-plan.md) with identical evidence, origin information, intervention units, snapshots and budget. Conservative interval defaults address the previous homogeneous-sample collapse; they do not establish live-model coverage or resolve undefined strict games. Report unavailable coalitions and sampling assumptions, and add a faithfully adapted joint context/fault comparator.
+3. Extend synthetic sampler calibration to live-model and new-domain settings,
+   then compare the [CAR adaptations](car-reproduction-plan.md) with identical
+   evidence, origin information, intervention units, snapshots and budget.
+   Conservative intervals do not establish live-model coverage or resolve
+   undefined strict games. Report unavailable coalitions and sampling assumptions,
+   and add a faithfully adapted joint context/fault comparator.
 4. Measure false consequence/origin claims and factor recovery against independent intervention estimates. Report abstention coverage and error together; audit rationale assertions separately from structured status and report model-specific results and cost.
 5. Expand domains only after a substantive gap remains in the strong baseline. An engineering framework can still be released if the methodological advantage does not emerge.
 
@@ -48,8 +83,19 @@ The current 40-sample fixture report, scripted policy smoke report, and scripted
 
 ## Registry release
 
-The first distribution target is Python/PyPI. The local distribution name is `consequa-x`; registry availability and account ownership are unverified. A TypeScript/npm adapter can later share the schema and conformance fixtures without duplicating the Python estimators.
+The Python distribution is `consequa-x`; alpha `0.1.0a2` is publicly published
+with verified artifact hashes and a fresh registry installation. The maintainer
+has explicitly authorized public stable PyPI publication while keeping GitHub
+private. Version `1.0.0` remains a candidate until its own publication and
+installation receipts are complete. An optional TypeScript/npm adapter can
+later share the schema and conformance fixtures; no npm package is claimed.
 
-The public source repository uses the MIT license and includes author metadata and contribution guides. GitHub Actions is disabled at the maintainer's request; validation and builds run locally. The source retains its Python 3.11/3.12 compatibility declarations, while new checks must identify the actual tested hosts/interpreters. See [release readiness](release-readiness.md) for artifact, ownership and authentication requirements. No PyPI/npm upload or package ownership claim is made by the source version alone.
+The private repository and public distributions use the MIT license. Source
+archives include application examples and Markdown documentation; retained
+datasets and the IEEE manuscript remain private repository materials. GitHub
+Actions stays disabled at the maintainer's request. New checks cover Windows
+Python 3.11/3.12 source behavior; final installed-artifact results must identify
+their exact environments. No Linux/macOS or every-newer-interpreter test result
+is implied. See [release readiness](release-readiness.md) for the current gates.
 
 The selected workspace contains no existing Consequa runtime. Integration with that runtime requires the source repository and compatibility checks, rather than a rewrite based on the brief's assumed architecture.

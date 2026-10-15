@@ -1,6 +1,10 @@
-# First-build semantics
+# Evidence core semantics
 
-The package version is `0.1.0a1`; the public trace schema version is `0.1`. They are separate versioned interfaces. This build has no required runtime dependencies and no provider credentials.
+The version 1 core and public trace schema `0.1` are separate versioned
+interfaces. Core imports and offline examples have no required runtime
+dependencies or provider credentials. See [the stable API](stable-api.md),
+[application integration](application-integration.md) and
+[graph witness semantics](graph-witnesses.md) for the complete contract.
 
 ## Records and trust
 

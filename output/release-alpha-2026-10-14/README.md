@@ -4,7 +4,7 @@ The [GitHub alpha release](https://github.com/Devrajsinh-Jhala/consequa-x/releas
 is published. Its three asset hashes and sizes match the retained local files,
 and the tag targets the reviewed runtime source. The
 [publication receipt](publication.json) records the GitHub verification and the
-separate pending PyPI upload.
+separate completed PyPI upload and registry installation.
 
 The files here are the reviewed `consequa-x 0.1.0a2` wheel and source distribution,
 built from source **40fa9bc7612c249dc33899a2ad6a6a12b5087ec4**. The
@@ -29,14 +29,18 @@ model validation. That checkpoint and its source revision are preserved with
 the [study](../local-validation-2026-10-14/); it was not silently replaced by
 this later build.
 
-After authentication is configured locally, the maintainer-authorized upload
-uses only these exact files:
+The maintainer-authorized upload published only these exact files on
+[PyPI](https://pypi.org/project/consequa-x/0.1.0a2/). The retained helper is
+idempotent for matching published files:
 
 ```powershell
 & .\tmp\interval-reference-env\Scripts\python.exe .\scripts\publish_alpha.py .\output\release-alpha-2026-10-14\checks.json --account devraj0502
 ```
 
 The helper rejects changed artifacts and mismatched registry files, uploads only
-missing files, and verifies both public hashes afterward. PyPI publication and
-a fresh registry installation remain pending until recorded in a separate
-publication receipt. A GitHub download does not establish PyPI publication.
+missing files, and verifies both public hashes afterward. Both registry files
+were downloaded independently and matched the reviewed hashes and sizes. A fresh
+installation from the PyPI index passed twelve offline trace round trips and its
+installed payload matches the reviewed wheel. The
+[registry smoke receipt](registry-smoke.json) and [publication record](publication.json)
+retain the achieved checks. The original local build receipt is preserved.

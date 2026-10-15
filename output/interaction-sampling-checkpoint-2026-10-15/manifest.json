@@ -1,0 +1,28 @@
+{
+  "artifacts": [
+    {
+      "bytes": 5060,
+      "path": "checkpoint.json",
+      "sha256": "0a3580d85d46248058b79a6bed6d27f7e6f997f13f800482a476c4d696b40a94"
+    },
+    {
+      "bytes": 153664,
+      "path": "consequa_x-1.0.0-py3-none-any.whl",
+      "sha256": "1b386cb7a9e5ea41f7b4e2d3f00d434f26e688bc9f20f5c68fd95a7bdfd69e84"
+    },
+    {
+      "bytes": 315724,
+      "path": "consequa_x-1.0.0.tar.gz",
+      "sha256": "c3df56c113d68cc97d098b2db5e52c2d65207bd703b6c712063db15acefae7c9"
+    },
+    {
+      "bytes": 4087,
+      "path": "run_interaction_sampling.py",
+      "sha256": "492a5054a6c0cbba7554dc596aeca8c70be93de7f72b480324aeaef2ba3a0c5b"
+    }
+  ],
+  "completed": true,
+  "scope": "Installed frozen study checkpoint",
+  "source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "status": "completed"
+}

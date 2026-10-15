@@ -45,7 +45,9 @@ def checked_files(receipt_path):
 
 def published_files():
     try:
-        with urlopen("https://pypi.org/pypi/consequa-x/0.1.0a2/json", timeout=30) as response:
+        # A cached pre-upload 404 can outlive successful project creation.
+        url = "https://pypi.org/pypi/consequa-x/0.1.0a2/json?verification=" + str(time.time_ns())
+        with urlopen(url, timeout=30) as response:
             return json.load(response)["urls"]
     except HTTPError as error:
         if error.code == 404:

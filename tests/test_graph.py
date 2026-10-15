@@ -4,7 +4,7 @@ from dataclasses import replace
 
 import pytest
 
-from consequa_x.attribution import Intervention, leave_one_out
+from consequa_x.attribution import EffectEstimate, Intervention, leave_one_out
 from consequa_x.benchmark.runner import (
     RefundReplayRunner,
     demo_scenarios,
@@ -45,7 +45,7 @@ def test_default_graph_contains_only_evidence_links_with_valid_endpoints(config)
     assert all(edge.source in ids and edge.target in ids for edge in graph.edges)
     assert {edge.kind for edge in graph.edges} <= {
         "DEPENDENCY", "TEMPORAL", "RESPONSE", "EFFECT", "OBSERVATION",
-        "CONTRACT", "VERIFICATION",
+        "CONTRACT", "VERIFICATION", "IDENTITY",
     }
     assert not links(graph, "ESTIMATED_INFLUENCE")
     assert all(edge.basis != "isolated_simulated_intervention" for edge in graph.edges)
@@ -141,3 +141,135 @@ def test_arbitrary_json_attempt_payloads_are_not_used_as_identity_joins(value):
     graph = build_graph(replace(trace, events=events))
     assert not links(graph, "RESPONSE")
     assert not links(graph, "EFFECT")
+
+
+def successive_readbacks(*changes):
+    """Capture independent observations; do not rewrite an earlier receipt."""
+    trace = run_scenario(configs()["clean"]).trace
+    original = trace.observations[0]
+    observations = (original,) + tuple(
+        replace(original, observation_id=f"readback_{index}",
+                observed_at_ms=200 + index, as_of_ms=200 + index,
+                records=(dict(original.records[0], **change),))
+        for index, change in enumerate(changes, start=1)
+    )
+    return replace(trace, observations=observations,
+                   verifications=tuple(verify(trace.action, view) for view in observations))
+
+
+def effect_witnesses(graph):
+    return {node.data["witness_observation_id"]: node
+            for node in graph.nodes if node.kind == "observed_external_effect"}
+
+
+def test_conflicting_later_origin_cannot_overwrite_an_earlier_witness_and_inherit_its_edge():
+    trace = successive_readbacks({"actor": "another_actor"})
+    graph = build_graph(trace)
+    witnesses = effect_witnesses(graph)
+    original_id = trace.observations[0].observation_id
+    earlier, later = witnesses[original_id], witnesses["readback_1"]
+    assert trace.verifications[-1].origin is OriginStatus.UNKNOWN
+    assert earlier.data["actor"] == trace.action.actor
+    assert later.data["actor"] == "another_actor"
+    assert links(graph, "EFFECT") == {("dispatch_1", earlier.id)}
+    identity = next(node for node in graph.nodes if node.kind == "external_effect_identity")
+    assert set(identity.data) == {"effect_id", "witness_node_ids"}
+    assert identity.data["witness_node_ids"] == sorted((earlier.id, later.id))
+    assert links(graph, "IDENTITY") == {(earlier.id, identity.id), (later.id, identity.id)}
+    assert links(graph, "OBSERVATION") == {
+        (earlier.id, f"observation:{original_id}"), (later.id, "observation:readback_1"),
+    }
+
+
+def test_corrected_payload_and_verification_retain_their_own_evidence():
+    trace = successive_readbacks({"amount_minor": 250_000})
+    graph = build_graph(trace)
+    witnesses = effect_witnesses(graph)
+    assert witnesses[trace.observations[0].observation_id].data["amount_minor"] == 500_000
+    assert witnesses["readback_1"].data["amount_minor"] == 250_000
+    assert [receipt.status.value for receipt in trace.verifications] == ["satisfied", "violated"]
+    for index, view in enumerate(trace.observations):
+        receipt_id = f"verification:{trace.action.contract.contract_id}:{index}"
+        observed = {edge.source for edge in graph.edges
+                    if edge.kind == "VERIFICATION" and edge.target == receipt_id
+                    and edge.basis == "predicate_evidence"}
+        assert observed == {witnesses[view.observation_id].id}
+
+
+def test_later_compensation_preserves_processed_and_reversed_snapshot_states():
+    trace = successive_readbacks({"status": "reversed", "reversed_at_ms": 150})
+    graph = build_graph(trace)
+    witnesses = effect_witnesses(graph)
+    earlier = witnesses[trace.observations[0].observation_id]
+    later = witnesses["readback_1"]
+    assert earlier.data["status"] == "processed"
+    assert "reversed_at_ms" not in earlier.data
+    assert later.data["status"] == "reversed" and later.data["reversed_at_ms"] == 150
+    # Both receipts concern the original deadline, before the later reversal.
+    assert all(receipt.status.value == "satisfied" for receipt in trace.verifications)
+    assert links(graph, "EFFECT") == {("dispatch_1", earlier.id), ("dispatch_1", later.id)}
+
+
+def test_observation_order_does_not_change_witness_payloads_or_semantic_links():
+    trace = successive_readbacks({"actor": "another_actor"},
+                                {"status": "reversed", "reversed_at_ms": 150})
+    forward = build_graph(trace)
+    reverse = build_graph(replace(trace, observations=tuple(reversed(trace.observations))))
+    assert {node.id: (node.kind, node.time_ms, node.data) for node in forward.nodes} == {
+        node.id: (node.kind, node.time_ms, node.data) for node in reverse.nodes}
+    assert {(edge.source, edge.target, edge.kind, edge.basis) for edge in forward.edges} == {
+        (edge.source, edge.target, edge.kind, edge.basis) for edge in reverse.edges}
+
+
+def test_repeated_identical_records_still_preserve_each_observation_witness():
+    trace = successive_readbacks({})
+    graph = build_graph(trace)
+    witnesses = effect_witnesses(graph)
+    assert set(witnesses) == {view.observation_id for view in trace.observations}
+    assert len({node.id for node in witnesses.values()}) == 2
+    for view in trace.observations:
+        assert witnesses[view.observation_id].data == {
+            **view.records[0], "witness_observation_id": view.observation_id,
+        }
+
+
+def test_later_missing_provenance_does_not_inherit_the_earlier_origin():
+    trace = successive_readbacks({})
+    later = trace.observations[-1]
+    record = {key: value for key, value in later.records[0].items()
+              if key not in {"action_id", "attempt_id", "actor"}}
+    later = replace(later, records=(record,))
+    trace = replace(trace, observations=(trace.observations[0], later),
+                    verifications=(trace.verifications[0], verify(trace.action, later)))
+    graph = build_graph(trace)
+    witnesses = effect_witnesses(graph)
+    earlier_id = trace.observations[0].observation_id
+    assert trace.verifications[-1].origin is OriginStatus.UNKNOWN
+    assert links(graph, "EFFECT") == {("dispatch_1", witnesses[earlier_id].id)}
+    assert not {"action_id", "attempt_id", "actor"} & witnesses[later.observation_id].data.keys()
+
+
+def test_verification_never_borrows_an_effect_record_from_another_observation():
+    trace = successive_readbacks({})
+    missing_view = replace(trace.observations[-1], records=())
+    # A structurally valid imported receipt can claim an effect absent from its
+    # source snapshot. Structural decoding does not authenticate that claim.
+    trace = replace(trace, observations=(trace.observations[0], missing_view))
+    graph = build_graph(trace)
+    later_id = f"verification:{trace.action.contract.contract_id}:1"
+    assert not {edge.source for edge in graph.edges
+                if edge.kind == "VERIFICATION" and edge.target == later_id
+                and edge.basis == "predicate_evidence"}
+
+
+@pytest.mark.parametrize("candidate_kind", ["contract", "observation", "effect", "witness", "verification"])
+def test_generated_evidence_nodes_cannot_be_replay_attribution_candidates(candidate_kind):
+    trace = successive_readbacks({})
+    kinds = {"contract": "postcondition", "observation": "external_observation",
+             "effect": "external_effect_identity", "witness": "observed_external_effect",
+             "verification": "verification"}
+    generated = next(node for node in build_graph(trace).nodes
+                     if node.kind == kinds[candidate_kind])
+    estimate = EffectEstimate(generated.id, "action", 0.5, 0.5, 0.0, (-0.5, 0.5), 2, (1, 2))
+    with pytest.raises(ValueError, match="captured trace event"):
+        build_graph(trace, (estimate,))

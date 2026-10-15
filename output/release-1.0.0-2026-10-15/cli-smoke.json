@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "source_revision": "85ce6c316838c995782aadc8c10770acc708339b",
+  "demo_traces": 12,
+  "demo_file_count": 40,
+  "existing_evidence_preserved": true,
+  "explanation_cannot_overwrite_source": true,
+  "installed_parallel_workers": 2,
+  "parallel_trials": 16,
+  "parallel_planned_branches": 320,
+  "scope": "Engineering smoke only; excluded from retained study.",
+  "model_calls": 0
+}

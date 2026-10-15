@@ -127,3 +127,33 @@ def test_version_matches_installed_public_api(capsys):
         cli.main(["--version"])
     assert stopped.value.code == 0
     assert capsys.readouterr().out.strip() == __version__
+
+
+@pytest.mark.parametrize("command", ["demo", "experiment"])
+def test_export_commands_refuse_existing_evidence_before_running(tmp_path, capsys, monkeypatch, command):
+    output = tmp_path / "previous-run"
+    output.mkdir()
+    witness = output / "evidence.json"
+    witness.write_bytes(b"saved evidence")
+    def refuse(*args, **kwargs):
+        pytest.fail("Rejected output must not start a simulation or replay")
+    monkeypatch.setattr(cli, "run_scenario", refuse)
+    monkeypatch.setattr(cli, "RefundReplayRunner", refuse)
+    assert cli.main([command, "--output", str(output)]) == 2
+    assert "new or empty" in capsys.readouterr().err
+    assert witness.read_bytes() == b"saved evidence"
+    assert list(output.iterdir()) == [witness]
+
+
+@pytest.mark.parametrize("same_source", [True, False])
+def test_explanation_output_preserves_source_and_existing_file(tmp_path, capsys, same_source):
+    source = tmp_path / "trace.json"
+    encoded = run_scenario(seed=0).trace.to_json().encode()
+    source.write_bytes(encoded)
+    output = source if same_source else tmp_path / "previous-explanation.json"
+    if not same_source:
+        output.write_bytes(b"previous explanation")
+    previous = output.read_bytes()
+    assert cli.main(["explain", str(source), "--output", str(output)]) == 2
+    assert "consequa-x:" in capsys.readouterr().err
+    assert source.read_bytes() == encoded and output.read_bytes() == previous

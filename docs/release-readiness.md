@@ -112,10 +112,10 @@ separately retained earlier candidate checkpoint and must keep its own hashes.
 | Tested compatibility and known limits | New checks cover Windows Python 3.12.14 only; the declared Python 3.11+ range and other platforms were not newly tested in this release run. |
 | Package inventory and metadata check | Twine strict wheel/sdist metadata checks passed; independent 14-check archive audit verifies packaged module payloads, schemas, typing marker, license and zero required runtime dependencies. |
 | Account identity | `devraj0502`, public display name Devrajsinh Jhala, checked 13 October 2026 |
-| Name/owner verification | Public project API 404 on 13 October 2026; name claimability/ownership pending |
-| Upload authentication | Maintainer chose local setup; [masked credential-store helper](local-pypi-setup.md) ready; working setup confirmation pending |
-| Production upload and registry installation | Pending |
-| Public registry release URL | Pending actual PyPI upload; the GitHub prerelease is available |
+| Name/owner verification | Production upload accepted through the maintainer's configured credential on 14 October 2026; public project/version verified |
+| Upload authentication | Maintainer configured the local credential store; token remains local |
+| Production upload and registry installation | Both reviewed files published, independently downloaded and hash/size checked; fresh index installation and twelve offline trace smoke checks passed |
+| Public registry release URL | [PyPI 0.1.0a2](https://pypi.org/project/consequa-x/0.1.0a2/), [publication receipt](../output/release-alpha-2026-10-14/publication.json) |
 
 ## Research and npm follow-up
 

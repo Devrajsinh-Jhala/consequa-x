@@ -1,12 +1,12 @@
 # Contributing to Consequa-X
 
-Contributions to the Python framework and the research are welcome. This is an alpha: the implementation uses refund simulation, programmatic policies, and an optional local Ollama adapter. Recorded results include scripted fixtures and a small [local-model pilot](output/live-pilot-2026-10-10/README.md). These establish implementation behavior, not empirical superiority or a new causal estimator. Preserve original live samples when adding exploratory prompt profiles or new evaluations.
+Collaborators with access to this private repository can contribute to the Python framework and research. The `1.0.0` candidate separates a stable application evidence core from research interfaces using refund simulation, programmatic policies, and an optional local Ollama adapter. Final stable-release checks are in progress; `0.1.0a2` is the published public PyPI checkpoint. Recorded results include scripted fixtures and a small [local-model pilot](output/live-pilot-2026-10-10/README.md). These establish implementation behavior, not empirical superiority or a new causal estimator. Preserve original live samples when adding exploratory prompt profiles or new evaluations.
 
 Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). The [policy replay guide](docs/policy-replay.md) covers bounded context comparisons and evidence exports. Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
 
 ## Set up a development environment
 
-Fork the repository, clone your fork, and create a branch for your change. Use Python 3.11 or 3.12:
+With repository access, clone the repository or an authorized fork and create a branch for your change. Use Python 3.11 or 3.12:
 
 ```sh
 python -m venv .venv
@@ -18,7 +18,7 @@ Activate it with `source .venv/bin/activate` on macOS/Linux or `.\.venv\Scripts\
 python -m pip install -e ".[dev]"
 ```
 
-For the pinned development dependencies used in CI, install `requirements-dev.lock` first, then install the project with `python -m pip install -e .`. The lock records the initial Python 3.12 environment; CI checks it on both supported versions.
+For the pinned Python 3.12 development dependencies, install `requirements-dev.lock` first, then install the project with `python -m pip install -e .`. Release receipts record the exact environments checked; the lock alone does not establish compatibility with another interpreter or platform.
 
 Run the checks before submitting:
 
@@ -28,12 +28,12 @@ python -m ruff check src tests
 python -m build
 ```
 
-CI runs tests, lint, and package builds on Ubuntu and Windows with Python 3.11 and 3.12. A wheel installation check verifies that the bundled trace schema is available. CI does not publish packages to a registry.
-
 GitHub Actions is currently disabled because the account quota is exhausted.
 Automatic push and pull-request triggers have been removed; use the local
 checks above. The retained workflow is manual only and must not be re-enabled
-or dispatched without the maintainer's authorization.
+or dispatched without the maintainer's authorization. Its configured test matrix
+does not establish a current test result. Local release checks include fresh
+package installations and access to the bundled trace schema.
 
 ## Where changes belong
 
@@ -52,11 +52,15 @@ Include a regression test when correcting a behavioral defect. Adapter tests sho
 Generate the fixture outputs locally when a change affects their behavior:
 
 ```sh
-consequa-x demo --output output/demo --seed 0
-consequa-x experiment --output output/experiments --samples 40 --seed 0
+consequa-x demo --output output/my-demo --seed 0
+consequa-x experiment --output output/my-experiments --samples 40 --seed 0
 ```
 
-These outputs are reproducible snapshots. If you propose updating committed snapshots, include the generating command, seed, and relevant revision in your pull request.
+Choose a new or empty output directory for every run. The CLI preserves existing
+evidence and refuses populated output paths, including the committed `output/demo`
+and `output/experiments` snapshots. Compare new outputs with those historical
+snapshots. Any proposed snapshot update must retain the original evidence and
+include the generating command, seed, and relevant revision in the pull request.
 
 ## Preserve the evidence contract
 

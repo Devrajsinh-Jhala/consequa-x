@@ -1,10 +1,16 @@
 # Consequa-X
 
-[![CI](https://github.com/Devrajsinh-Jhala/consequa-x/actions/workflows/ci.yml/badge.svg)](https://github.com/Devrajsinh-Jhala/consequa-x/actions/workflows/ci.yml)
+Consequa-X explains consequential agent actions using captured history and independent outcome evidence. The version `1.0.0` candidate provides portable traces, explicit application verifiers, domain-specific target matching, and evidence graphs that preserve successive observations. Final release checks are in progress; the published PyPI checkpoint is `0.1.0a2`.
 
-Consequa-X explains consequential agent actions using captured history and independent outcome evidence. Its Python alpha (`0.1.0a2`) provides a versioned trace format, refund verification, evidence graphs, and isolated replay experiments.
+The GitHub repository is private; its source and research links require repository access. PyPI packages are public. GitHub Actions remains disabled, and validation runs locally.
 
-The working prototype uses an isolated payment simulator with scripted policies and an optional local Ollama adapter. It keeps the tool response, the agent's reported assessment, the observed outcome, and effect origin separate. A timeout can coexist with a completed refund; another actor can satisfy the desired state after the agent's attempt fails.
+The core can consume captured application actions without importing the simulator.
+The [application guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/application-integration.md)
+and [offline artifact example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/artifact_delivery.py)
+show the complete integration. The [stable API contract](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/stable-api.md)
+defines version 1 compatibility and the unchanged trace schema `0.1`.
+
+Research adapters use an isolated payment simulator with scripted policies and an optional local Ollama adapter. They keep the tool response, the agent's reported assessment, the observed outcome, and effect origin separate. A timeout can coexist with a completed refund; another actor can satisfy the desired state after the agent's attempt fails.
 
 The first [recorded local-model pilot](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/live-pilot-2026-10-10/README.md) completed six runs with Qwen3 4B. All refunds were independently verified as successful, while the model reported failure in every run; changing the retry instruction produced no observed effect in two replay pairs. This is a small integration result. Payments remain simulated, and neither fixture experiments nor the pilot establish a new attribution method or empirical superiority. See [the design](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/design.md) for exact semantics and [the research roadmap](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/research-roadmap.md) for the paper and release milestones.
 
@@ -31,11 +37,11 @@ The first [recorded local-model pilot](https://github.com/Devrajsinh-Jhala/conse
 - [Shapley controls, protective decision, and unavailable coalitions](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/shapley-foundation-2026-10-11/README.md)
 - [Alpha validation report](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/build/README.md)
 
-Contributions to the framework and research are welcome. Read [CONTRIBUTING.md](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
+Collaborators with repository access can contribute to the framework and research. Read [CONTRIBUTING.md](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/CONTRIBUTING.md), then open an issue or pull request. The project uses the [MIT license](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/LICENSE). Useful next contributions include additional policy adapters, verified domains, stronger baseline comparisons, and held-out task templates.
 
 ## Install locally
 
-From this repository, use Python 3.11 or newer:
+With access to this private repository, use Python 3.11 or newer:
 
 ```sh
 git clone https://github.com/Devrajsinh-Jhala/consequa-x.git
@@ -67,10 +73,10 @@ The installed framework has no required runtime dependencies and needs no provid
 ## Run the demo
 
 ```sh
-consequa-x demo --output output/demo --seed 0
+consequa-x demo --output output/my-demo --seed 0
 ```
 
-This writes 12 scenarios, including a timeout after commit, false success, partial refunds, delayed visibility, safe and unsafe retries, external-actor effects, and missing provenance. Open `output/demo/README.md` for the outcome table.
+This writes 12 scenarios, including a timeout after commit, false success, partial refunds, delayed visibility, safe and unsafe retries, external-actor effects, and missing provenance. Open `output/my-demo/README.md` for the outcome table. Each run requires a new or empty output directory; choose another path when repeating a command.
 
 | Export | Purpose |
 | --- | --- |
@@ -85,7 +91,7 @@ Keep evaluator truth outside explainer and policy inputs. Manifest hashes detect
 Explain a saved trace without replaying a policy or executing a provider call:
 
 ```sh
-consequa-x explain output/demo/traces/episode_01.json --output output/explanation.json
+consequa-x explain output/my-demo/traces/episode_01.json --output output/my-explanation.json
 ```
 
 ## Evaluate a policy
@@ -224,7 +230,7 @@ consequa-x compare-intervals --replicates 32 --seed 2000000 --output output/my-i
 
 A [working research paper](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/paper/manuscript.md) links the completed evidence and
 the held-out studies still required. [Release readiness](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/release-readiness.md)
-distinguishes a locally installable alpha from a completed PyPI publication.
+records completed publication checks and the remaining stable-release checks.
 
 The [24-episode local validation](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/local-validation-2026-10-14/FINDINGS.md)
 compares both existing prompt profiles on six validation cases using the same
@@ -234,7 +240,7 @@ separately; the study does not establish improved accuracy or held-out superiori
 Run the original deterministic and stochastic fixture comparison:
 
 ```sh
-consequa-x experiment --output output/experiments --samples 40 --seed 0
+consequa-x experiment --output output/my-experiments --samples 40 --seed 0
 ```
 
 The command requires at least 20 samples per condition. It writes `results.json` and a report comparing action selection and verified consequence under deterministic and stochastic programmatic policies. Both branches of each pair start in fresh simulated worlds with aligned random draws.
@@ -274,19 +280,29 @@ python -m ruff check src tests
 python -m build
 ```
 
-The build writes a wheel and source distribution to `dist/`. To install the wheel in another environment:
+The build writes a wheel and source distribution to `dist/`. To install the current version `1.0.0` candidate wheel in another environment:
 
 ```sh
-python -m pip install dist/consequa_x-0.1.0a2-py3-none-any.whl
+python -m pip install dist/consequa_x-1.0.0-py3-none-any.whl
 ```
 
-`requirements-dev.lock` captures the development environment used for this build. Public interfaces are alpha and may change. The Python requirement is declared as 3.11+, with local validation currently on Python 3.12; broader compatibility remains a release check.
+`requirements-dev.lock` captures the Python 3.12 development environment.
+The [stable core API](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/stable-api.md)
+and trace schema have explicit compatibility rules; benchmark modules and study
+commands remain declared research interfaces. Release receipts identify the
+exact interpreters, platforms and installations checked.
 
-The package has not been published to PyPI or npm. The first registry target is PyPI; a later npm adapter can share the trace schema and conformance fixtures. The repository includes MIT licensing, author metadata, contributor guides, and CI for Python 3.11/3.12 on Windows and Ubuntu. Registry availability, broader compatibility, and the final release process remain to be verified. Broader model evaluations, held-out task templates, and comparisons against strong existing methods remain necessary for the research paper.
+The [Python alpha is published on PyPI](https://pypi.org/project/consequa-x/0.1.0a2/),
+with both public artifact hashes and a fresh registry installation verified.
+Install that exact checkpoint with `python -m pip install consequa-x==0.1.0a2`.
+The current [completion work](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/completion-plan.md)
+tracks final stable-release validation and a scoped IEEE protocol/software paper.
+A later npm adapter can share the trace schema and conformance fixtures. The
+package is not published on npm.
 
 The [reviewed alpha 2 artifacts and checks](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/release-alpha-2026-10-14/README.md)
 retain the wheel, source distribution and final build revision. Installation
 checks cover Windows Python 3.12.14. GitHub Actions stays disabled at the
 maintainer's request; this release uses local checks. The
-[local PyPI setup guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/local-pypi-setup.md)
-provides the remaining authentication step.
+[publication receipt](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/output/release-alpha-2026-10-14/publication.json)
+records the completed PyPI upload and registry installation.

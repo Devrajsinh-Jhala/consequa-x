@@ -1,28 +1,50 @@
-# Working research manuscript
+# Consequa-X protocol and software paper
 
-[manuscript.md](manuscript.md) is a substantive draft around the implemented
-evidence/intervention protocol and completed preliminary studies. It includes
-formal estimands, refusal semantics, uncertainty assumptions and explicit pending
-experiment sections. It does not claim a new estimator or demonstrated
-held-out superiority.
+[consequa-x-ieee.tex](consequa-x-ieee.tex) is the complete generic IEEE conference
+source. [manuscript.md](manuscript.md) presents the same paper as readable
+Markdown, with links to evidence. The format uses `IEEEtran` in conference mode,
+two columns, numbered references, equations and compact result tables. The
+maintainer requested IEEE formatting; a specific conference or journal has not
+been selected. No affiliation is inferred.
 
-The draft now includes the audited 384-trial shared-draw interval follow-up,
-including its conservative-width and weak-effect detection tradeoff. The earlier
-1,280-trial legacy-method results retain their original source and intervals.
-It also includes the audited physical refund interaction enumeration and the
-completed 24-episode capped local validation. The latter used 59 calls and
-preserved the held-out reserve; zero definite statuses in the revised profile
-leaves its conditional contradiction rate undefined.
+The paper's contribution is the implemented evidence/intervention protocol and
+its audited behavior. It describes existing contrastive and Shapley methods as
+adaptations, states their assumptions, and reports conservative uncertainty's
+precision costs. It makes no claim of a new estimator or demonstrated superiority
+over an equally informed baseline. Broader held-out comparison is future work,
+not an unfinished section that the current paper treats as a result.
 
-- [Evidence ledger](evidence-ledger.md): completed claims, supporting artifacts and outstanding evidence.
-- [Source audit](source-audit.md): independently checked primary related work and access limits.
-- [Bibliography](references.bib): pinned inspected paper versions and standard statistical sources.
-- [Release readiness](../docs/release-readiness.md): a separate Python alpha publication checklist.
-- [Physical refund interactions](../output/refund-interactions-2026-10-13/README.md): 512 retained branches across eight cases and two named games, with an independent audit.
-- [Frozen local-model validation proposal](protocol-next-validation.md): the completed bounded exploratory run's original proposal.
-- [Completed local validation](../output/local-validation-2026-10-14/FINDINGS.md): all 24 episodes, exact status/availability denominators, separate rationale reading and checkpoint identity.
+Completed evidence includes the original 1,280-trial calibration, the separately
+frozen 384-trial shared-draw comparison, the physical refund interaction
+enumeration and the 24-episode local-model validation. The latter used 59 calls;
+zero definite statuses for the revised profile leaves its conditional
+contradiction rate undefined. A separate rationale reading remains explicitly
+single-reader and exploratory. Reusable application verification and graph
+witness semantics are described separately from historical experimental code.
 
-Final research results should be inserted only after independent audits. A Python
-alpha release can document and expose the current research framework before a
-confirmatory paper is ready. Author affiliation, venue, archival identifier and
-any unconfirmed credit or funding details are deliberately left to the maintainer.
+The Python package is public on [PyPI](https://pypi.org/project/consequa-x/).
+The research repository is now private. Source history, raw evidence and audit
+records are retained for authorized collaborators; the paper does not promise
+public access to the complete research archive. An immutable research archive,
+reviewer-access arrangement and final venue-specific requirements remain to be
+settled before submission.
+
+- [Evidence ledger](evidence-ledger.md): claim-to-artifact mapping, frozen source
+  revisions and limits.
+- [Source audit](source-audit.md): focused primary-source checks and access limits.
+- [Bibliography](references.bib): inspected versions and standard statistical
+  sources, kept alongside the self-contained IEEE reference list.
+- [Release readiness](../docs/release-readiness.md): package engineering and
+  publication evidence, separate from scientific claims.
+- [Physical refund enumeration](../output/refund-interactions-2026-10-13/README.md):
+  512 retained branches across eight cases and two declared games.
+- [Frozen local-model proposal](protocol-next-validation.md) and
+  [completed findings](../output/local-validation-2026-10-14/FINDINGS.md):
+  unchanged source/model/prompt identities and all outcome denominators.
+
+The source uses an inline `thebibliography` so a standalone compiler does not
+depend on a separate bibliography build. The companion BibTeX file preserves
+full metadata for a future venue template. A successful PDF compilation and
+visual review are required before delivering or attaching a generated PDF.
+No page count, submission compliance or acceptance is claimed by the source
+alone. GitHub Actions is not used for this work.

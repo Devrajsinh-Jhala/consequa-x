@@ -124,3 +124,21 @@ def test_credential_prompt_refuses_echo_fallback(monkeypatch):
     monkeypatch.setitem(globals_, "getpass", fallback)
     with pytest.raises(GetPassWarning):
         module["main"]()
+
+
+def test_registry_queries_bypass_a_cached_pre_upload_not_found(monkeypatch):
+    from io import StringIO
+
+    module = subject()
+    globals_ = module["published_files"].__globals__
+    clocks = iter([101, 102])
+    monkeypatch.setattr(globals_["time"], "time_ns", lambda: next(clocks))
+    requests = []
+    def response(url, **kwargs):
+        requests.append(url)
+        return StringIO('{"urls":[]}')
+    monkeypatch.setitem(globals_, "urlopen", response)
+    assert module["published_files"]() == module["published_files"]() == []
+    assert requests[0] != requests[1]
+    assert all(url.startswith("https://pypi.org/pypi/consequa-x/0.1.0a2/json?")
+               for url in requests)

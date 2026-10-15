@@ -24,7 +24,7 @@ def _write_json(path: Path, value):
 
 
 def _demo(args):
-    output = Path(args.output)
+    output = _new_output(args, "demo")
     rows = []
     manifest = []
     cases = []
@@ -85,7 +85,7 @@ def _demo(args):
 def _experiment(args):
     if args.samples < 20:
         raise ValueError("CLI research demonstrations require at least 20 samples per condition")
-    output = Path(args.output)
+    output = _new_output(args, "experiment")
     candidates = tuple(Intervention(name) for name in
                        ("vip_policy", "vip_memory", "retry_instruction", "distractor"))
     results = []
@@ -139,10 +139,17 @@ def _experiment(args):
 
 
 def _explain(args):
-    trace = Trace.from_json(Path(args.trace).read_text(encoding="utf-8"))
+    source = Path(args.trace)
+    output = Path(args.output) if args.output else None
+    if output is not None:
+        if output.resolve() == source.resolve():
+            raise ValueError("Explanation output must differ from the source trace")
+        if output.exists():
+            raise ValueError("Explanation output must be a new file to preserve existing evidence")
+    trace = Trace.from_json(source.read_text(encoding="utf-8"))
     result = explain(trace)
     if args.output:
-        _write_json(Path(args.output), result)
+        _write_json(output, result)
         print(f"Saved explanation to {Path(args.output).resolve()}")
     else:
         print(json.dumps(result.to_dict(), indent=2, sort_keys=True, allow_nan=False))
@@ -1068,6 +1075,18 @@ def _refund_interactions(args):
     return 0
 
 
+def _interaction_sampling(args):
+    from .benchmark.interaction_sampling import InteractionSamplingPlan, export_interaction_sampling
+
+    plan = InteractionSamplingPlan(repeats=args.repeats, pairs=args.pairs,
+        samples_per_eval=args.samples, endpoint_samples=args.endpoint_samples,
+        confidence=args.confidence, seed=args.seed, max_calls=args.max_calls)
+    result = export_interaction_sampling(plan, args.output, source_revision=args.source_revision,
+                                         workers=args.workers)
+    print(f"Saved {result['retained_trials']} interaction trials in {Path(args.output).resolve()}")
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="consequa-x", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
@@ -1179,6 +1198,19 @@ def main(argv=None):
     interactions.add_argument("--mechanism", action="append", choices=tuple(INTERACTION_MECHANISMS))
     interactions.add_argument("--output", default="output/refund-interactions")
     interactions.set_defaults(handler=_refund_interactions)
+    sampling = commands.add_parser("calibrate-interactions",
+                                   help="Repeat physical interaction sampling without a model")
+    sampling.add_argument("--repeats", type=int, default=128)
+    sampling.add_argument("--pairs", type=int, default=32)
+    sampling.add_argument("--samples", type=int, default=1)
+    sampling.add_argument("--endpoint-samples", type=int, default=32)
+    sampling.add_argument("--confidence", type=float, default=0.95)
+    sampling.add_argument("--seed", type=int, default=20_000_000)
+    sampling.add_argument("--max-calls", type=int, default=1000)
+    sampling.add_argument("--workers", type=int, default=1)
+    sampling.add_argument("--source-revision", required=True)
+    sampling.add_argument("--output", default="output/interaction-sampling")
+    sampling.set_defaults(handler=_interaction_sampling)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)

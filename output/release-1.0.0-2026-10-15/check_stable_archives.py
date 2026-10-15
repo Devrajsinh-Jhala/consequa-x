@@ -20,7 +20,8 @@ def main():
     parser.add_argument("--source-revision", required=True)
     parser.add_argument("--checkpoint", type=Path, required=True)
     args = parser.parse_args()
-    root = Path(__file__).resolve().parents[1]
+    root = next(parent for parent in Path(__file__).resolve().parents
+                if (parent / ".git").exists() and (parent / "pyproject.toml").is_file())
     output = args.release / "inventory.json"
     assert not output.exists(), "Preserve existing inventory"
     frozen = json.loads(args.checkpoint.read_text(encoding="utf-8"))

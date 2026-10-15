@@ -1,11 +1,12 @@
 # Research and release roadmap
 
-The current milestone is the version `1.0.0` stable evidence core and a scoped
-IEEE protocol/software paper. Runtime source is frozen at
-`0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`; final release artifacts and registry
-verification are pending. The framework already supports captured applications,
-bounded research replay and an installed local model. The research contribution
-does not depend on claiming a new estimator or empirical superiority.
+Updated 15 October 2026 after public release verification. The stable evidence
+core is complete and [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/).
+Runtime source remains frozen at `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`;
+build source is `85ce6c316838c995782aadc8c10770acc708339b`. The current milestone
+is completing the retained physical-interaction study and scoped IEEE
+protocol/software paper. The research contribution does not depend on claiming
+a new estimator or empirical superiority.
 
 The initial literature assessment is in `output/research/Consequa-X_Research_Assessment.md` (reviewed 4 October 2026). Before a submission, refresh paper versions and related work, particularly CausalLoss-Fin, CAR, PCCC, FinalityBench and ConsequenceBench.
 
@@ -51,20 +52,23 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
   independent archive inspection, fresh wheel/sdist installations and verified
   public PyPI publication. The repository has since become private.
 - A full frozen-source suite of 1,480 passing tests plus 240 subtests, 20
-  additional stable-publisher checks, and Windows Python 3.11 source conformance
-  of 200 tests plus 165 subtests. Final installed-artifact checks remain separate
-  release gates.
+  additional stable-publisher checks, and final installed-wheel Windows Python
+  3.11.9 conformance of 200 tests plus 165 subtests.
+- [Stable 1.0.0 release checks](../output/release-1.0.0-2026-10-15/checks.json),
+  independent wheel/sdist installations, public metadata/download hash and size
+  verification, and a [fresh registry installation](../output/release-1.0.0-2026-10-15/registry-install.json)
+  with 12 trace round-trips and four artifact-adapter checks. PR #8 merged as
+  `708d064`; GitHub remains private and Actions stayed disabled.
 
 ## Current completion gates
 
 Complete the retained interaction run, independently audit every declared trial
 and denominator, and integrate the achieved results into the IEEE manuscript.
 Finalize its discussion and primary references and compile/render the paper.
-Complete reviewed wheel/sdist installation, metadata and inventory checks,
-publish the stable package publicly on PyPI, and verify public artifact hashes
-and a fresh registry installation. [Completion scope](completion-plan.md) and
-[release readiness](release-readiness.md) track these gates; neither publication
-nor a completed sampling result is claimed by this source checkpoint.
+The software release gates are complete; [publication](../output/release-1.0.0-2026-10-15/publication.json)
+and installation receipts preserve the achieved result. [Completion scope](completion-plan.md)
+tracks the remaining study, audit and paper gates. The 2,048-trial study is still
+running, and no completed sampling result is claimed yet.
 
 ## Research after this protocol/software paper
 
@@ -83,19 +87,20 @@ The current 40-sample fixture report, scripted policy smoke report, and scripted
 
 ## Registry release
 
-The Python distribution is `consequa-x`; alpha `0.1.0a2` is publicly published
-with verified artifact hashes and a fresh registry installation. The maintainer
-has explicitly authorized public stable PyPI publication while keeping GitHub
-private. Version `1.0.0` remains a candidate until its own publication and
-installation receipts are complete. An optional TypeScript/npm adapter can
-later share the schema and conformance fixtures; no npm package is claimed.
+The Python distribution is `consequa-x`; stable `1.0.0` and the earlier alpha
+`0.1.0a2` are publicly published with distinct verified artifacts and registry
+installations. Public stable publication was explicitly authorized while GitHub
+stays private. The final stable wheel and source archive retain their reviewed
+bytes; their dated build-time checklist predates the publication receipts. An
+optional TypeScript/npm adapter can later share the schema and conformance
+fixtures; no npm package is claimed.
 
 The private repository and public distributions use the MIT license. Source
 archives include application examples and Markdown documentation; retained
 datasets and the IEEE manuscript remain private repository materials. GitHub
-Actions stays disabled at the maintainer's request. New checks cover Windows
-Python 3.11/3.12 source behavior; final installed-artifact results must identify
-their exact environments. No Linux/macOS or every-newer-interpreter test result
-is implied. See [release readiness](release-readiness.md) for the current gates.
+Actions stays disabled at the maintainer's request. Final installations cover
+Windows Python 3.11.9 and 3.12.14, with their exact checks retained. No Linux/macOS
+or every-newer-interpreter test result is implied. See
+[release readiness](release-readiness.md) for the completed gates and receipts.
 
 The selected workspace contains no existing Consequa runtime. Integration with that runtime requires the source repository and compatibility checks, rather than a rewrite based on the brief's assumed architecture.

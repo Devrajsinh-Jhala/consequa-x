@@ -3,7 +3,14 @@
 ## 1.0.0 - 15 October 2026
 
 Runtime source is frozen at `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`.
-Release-specific artifact and publication checks are recorded in release receipts.
+The [stable release is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/),
+built from `85ce6c316838c995782aadc8c10770acc708339b` with all 36 runtime files
+matching that freeze. Both downloads were independently hash/size checked;
+[publication](output/release-1.0.0-2026-10-15/publication.json) and
+[fresh registry-install](output/release-1.0.0-2026-10-15/registry-install.json)
+receipts record the achieved release. PR #8 merged as `708d064`; GitHub remains
+private. Published artifacts retain their original reviewed bytes and dated
+build-time documentation.
 
 - Defined the version 1 stable evidence-core API while retaining wire schema
   `0.1`. Benchmark procedures, exact policy prompts and study commands remain
@@ -34,10 +41,13 @@ Release-specific artifact and publication checks are recorded in release receipt
   2,048-trial run is in progress and its audit is pending as of 15 October 2026.
 
 The full frozen-source suite passed 1,480 tests and 240 subtests. Twenty
-additional stable-publisher tests passed; Windows Python 3.11 source conformance
-passed 200 tests and 165 subtests. Final wheel/sdist and installed-artifact
-results must be recorded separately. No GitHub Actions were used. These software
-checks do not establish held-out model performance or attribution superiority.
+additional stable-publisher tests passed; final installed-wheel Windows Python
+3.11.9 conformance passed 200 tests and 165 subtests. Independent Windows Python
+3.12.14 wheel, source-archive and registry installations each passed 12 trace
+round-trips and four artifact-adapter checks. All eight local release gates,
+public artifact hash/size verification and the fresh registry installation are
+complete. No GitHub Actions were used. These software checks do not establish
+held-out model performance or attribution superiority.
 
 ## 0.1.0a2 — 14 October 2026
 

@@ -5,10 +5,11 @@ The maintainer asked to finish the framework and paper beyond an alpha on
 implementation is optional future work. The paper will use the standard IEEE
 conference format until a specific venue is selected.
 
-Status updated 15 October 2026. The repository is private, and the maintainer has
-explicitly authorized public stable PyPI publication. Alpha `0.1.0a2` is already
-publicly published and independently verified. Version `1.0.0` is the current
-candidate; its source version does not establish completed publication.
+Status updated 15 October 2026 after release verification. The stable evidence
+core is complete: [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/),
+with both published artifact downloads independently hash/size checked and a
+fresh registry installation verified. The repository remains private. The
+retained study and IEEE paper completion work continue separately below.
 
 ## Stable framework
 
@@ -26,12 +27,18 @@ contract are implemented. The frozen-source suite passed 1,480 tests plus 240
 subtests. Windows Python 3.11 source conformance passed 200 tests plus 165 subtests;
 twenty additional stable-publisher tests passed.
 
-The remaining release gates are final wheel/sdist metadata and inventory checks,
-independent fresh installations, installed-wheel Python 3.11 conformance, public
-PyPI upload, matching public hashes/sizes and a fresh registry installation.
-Record actual interpreters and hosts; Windows source checks do not imply results
-on Linux, macOS or every newer Python. Do not run or enable GitHub Actions.
-See [release readiness](release-readiness.md) for the gate status and receipts.
+All release gates passed for build source
+`85ce6c316838c995782aadc8c10770acc708339b`, whose 36 runtime files match that
+freeze. Final metadata/inventory checks, independent Windows Python 3.12.14
+wheel/sdist installations, installed-wheel Python 3.11.9 conformance (200 tests
+plus 165 subtests), public upload and downloaded hash/size verification are
+recorded in [release readiness](release-readiness.md). The
+[fresh registry installation](../output/release-1.0.0-2026-10-15/registry-install.json)
+passed 12 trace round-trips and four artifact-adapter checks without model calls.
+PR #8 is merged as `708d064`, preserving the runtime and build freezes. Windows
+checks do not imply results on Linux, macOS or every newer Python. GitHub Actions
+stayed disabled. The immutable public archive retains its dated build-time status
+documents; subsequent publication receipts do not change the reviewed artifacts.
 
 The refund benchmark and its replay experiments remain declared research
 adapters. Stable core support does not imply a production payment integration,

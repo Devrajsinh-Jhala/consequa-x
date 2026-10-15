@@ -1,0 +1,26 @@
+{
+  "checks_sha256": "11c649a86326541bebe2be7a5d04edeb6b7356ec390a0d0797d6bd1d295a59a2",
+  "distribution": "consequa-x",
+  "files": [
+    {
+      "bytes": 151622,
+      "independent_download_verified": true,
+      "path": "consequa_x-1.0.0-py3-none-any.whl",
+      "sha256": "32880f4c808705d1199db687c9fcc083b6e08e6ae9dd931d00c5335caaa06f5d",
+      "url": "https://files.pythonhosted.org/packages/68/cc/760266c6485d90b68bd761b71ce9bf473f3b35610c253dada759f76840b3/consequa_x-1.0.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 352389,
+      "independent_download_verified": true,
+      "path": "consequa_x-1.0.0.tar.gz",
+      "sha256": "05162e12de85652def8c468ee8133d8c5e4f6c01f433da571373d71936ca26f0",
+      "url": "https://files.pythonhosted.org/packages/c4/22/50413c8f53ac528824d4cc3cdbeee36dcb11e084fbb236577eec93772071/consequa_x-1.0.0.tar.gz"
+    }
+  ],
+  "metadata_url": "https://pypi.org/pypi/consequa-x/1.0.0/json",
+  "note": "Initial upload accepted; early version JSON endpoint was cached404. No duplicate upload used.",
+  "source_revision": "85ce6c316838c995782aadc8c10770acc708339b",
+  "status": "published_and_download_verified",
+  "verified_at_utc": "2026-10-15T14:06:09.892404+00:00",
+  "version": "1.0.0"
+}

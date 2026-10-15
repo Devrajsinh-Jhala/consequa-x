@@ -1,0 +1,162 @@
+{
+  "artifacts": [
+    {
+      "bytes": 6937,
+      "path": "check_stable_archives.py",
+      "sha256": "374c1c5c45a5f523c92795bcb8bd9786c43f73a5ab3ece9ad370e344604b6313"
+    },
+    {
+      "bytes": 2554,
+      "path": "check_stable_cli.py",
+      "sha256": "a41010a1b2706bb6dd27469566b95609a8c9724d39c97dd3bb15afd1ac3d9b6e"
+    },
+    {
+      "bytes": 4216,
+      "path": "check_stable_install.py",
+      "sha256": "d957737bf74b285e628506ce58ea5fea840dc0f88cbe45441481cf3cbec858d8"
+    },
+    {
+      "bytes": 2848,
+      "path": "check_stable_registry.py",
+      "sha256": "821c0ab5aa8a08b1a5717b04ddd0bf7d911065395676547422404bed3fd99b1f"
+    },
+    {
+      "bytes": 2868,
+      "path": "checks.json",
+      "sha256": "11c649a86326541bebe2be7a5d04edeb6b7356ec390a0d0797d6bd1d295a59a2"
+    },
+    {
+      "bytes": 415,
+      "path": "cli-smoke.json",
+      "sha256": "40a2f4a0d0ee4dc6df7db5f28229d836c972ed1f127f6183eaf54af3fd563fe5"
+    },
+    {
+      "bytes": 151622,
+      "path": "consequa_x-1.0.0-py3-none-any.whl",
+      "sha256": "32880f4c808705d1199db687c9fcc083b6e08e6ae9dd931d00c5335caaa06f5d"
+    },
+    {
+      "bytes": 352389,
+      "path": "consequa_x-1.0.0.tar.gz",
+      "sha256": "05162e12de85652def8c468ee8133d8c5e4f6c01f433da571373d71936ca26f0"
+    },
+    {
+      "bytes": 958,
+      "path": "github-release.json",
+      "sha256": "ff0eb9b3ba3237f78ee77746a446db00fa9abd817f46e960a415483f4e978579"
+    },
+    {
+      "bytes": 777,
+      "path": "initial-upload.log",
+      "sha256": "ce9b2f31a7780a77ef85f78bb1ff70f5b7e5633ce7fadd8963976e22dc252785"
+    },
+    {
+      "bytes": 916,
+      "path": "inventory-recheck.json",
+      "sha256": "fadc66512c2afd98b393669bfc5be63cead593d2345262172c736b1b9e43d1b0"
+    },
+    {
+      "bytes": 916,
+      "path": "inventory.json",
+      "sha256": "fadc66512c2afd98b393669bfc5be63cead593d2345262172c736b1b9e43d1b0"
+    },
+    {
+      "bytes": 1252,
+      "path": "publication.json",
+      "sha256": "0197634862ca9e4d74621627a3e9cabda420463651e17f8df0f6f0c67cddbf19"
+    },
+    {
+      "bytes": 816,
+      "path": "python311-install.json",
+      "sha256": "7563a64aa35cb5944c440b2bad4b1d91045f2fc597de14a2f1942a5d4beba409"
+    },
+    {
+      "bytes": 2958,
+      "path": "README.md",
+      "sha256": "3c8a5b8c08d3d962859a87e31c8a4e7013cb5e02d621d3fb5989353d1b648057"
+    },
+    {
+      "bytes": 839,
+      "path": "registry-install.json",
+      "sha256": "812c133e85c9dbdbd77375871670171aa6e43bff2df648a13d273ced402658d9"
+    },
+    {
+      "bytes": 833,
+      "path": "sdist-install.json",
+      "sha256": "b9cbf2f599fa30826bb87bd98c5f5778278a97d77aa019d17ba5689c598eddc2"
+    },
+    {
+      "bytes": 21836,
+      "path": "stable-final-build.log",
+      "sha256": "573e4e83764bcd8ad6f79b058c53ab08f63f93c7aaa8b6e96065e020afcc695f"
+    },
+    {
+      "bytes": 20,
+      "path": "stable-final-lint.log",
+      "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+    },
+    {
+      "bytes": 158,
+      "path": "stable-final-metadata.log",
+      "sha256": "cd565f9f6c115a08004037e188bffd2260d2eeb2c7268b91e72ac8796dd38dc3"
+    },
+    {
+      "bytes": 346,
+      "path": "stable-installed-python311-tests.log",
+      "sha256": "4b6272ba2367689b30c83075bb60f92a38035af81541d4fc4a928ca59360a190"
+    },
+    {
+      "bytes": 29250,
+      "path": "stable-installed-python311-tests.xml",
+      "sha256": "2ed57e317eb7f6839282392ff9aa1e9638a4bbda05b01f5a9c97529420bc9ad8"
+    },
+    {
+      "bytes": 101,
+      "path": "stable-publisher-tests.log",
+      "sha256": "2f5aafdb1bf1fbccc80d3671e619bd2de655d646159b7ba297bd529d4d8b7536"
+    },
+    {
+      "bytes": 2811,
+      "path": "stable-publisher-tests.xml",
+      "sha256": "6a34a98a35eb4969cb0aca325af8d1feb5dd227e518437b879b34a3fc2d66d9c"
+    },
+    {
+      "bytes": 438,
+      "path": "stable-registry-install.log",
+      "sha256": "f173edf351ff726153b421205aa0ed23883b90751fd2aa7d50a46347f28075a5"
+    },
+    {
+      "bytes": 1263,
+      "path": "stable-sdist-install.log",
+      "sha256": "96a0e3e725a500eb7f7d36a0b0dc0f3b6f454fe7921aedf4e89ab5bbbf318efa"
+    },
+    {
+      "bytes": 1732,
+      "path": "stable-source-tests.log",
+      "sha256": "5758f432c03c26a01fb94f64a1b8a1366581bfbe05586edc57c546e866990fae"
+    },
+    {
+      "bytes": 212328,
+      "path": "stable-source-tests.xml",
+      "sha256": "10054b08f908b5cb2be6e973f3d8a6cbfe2453ba53b8470bdae879cc77e18496"
+    },
+    {
+      "bytes": 202,
+      "path": "stable-wheel-install.log",
+      "sha256": "de3c2945071c040339ed5a424102c25def6027ac692cafd2d7fc8ed79627811a"
+    },
+    {
+      "bytes": 833,
+      "path": "wheel-install.json",
+      "sha256": "ac85d11a7ac5b68b41db8de13b3eaaa476ead5ca66792b627ffeed4ddf8ba482"
+    }
+  ],
+  "completed": true,
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "recorded_at_utc": "2026-10-15T14:08:52.220418+00:00",
+  "runtime_source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "source_revision": "85ce6c316838c995782aadc8c10770acc708339b",
+  "status": "published_and_verified",
+  "version": "1.0.0"
+}

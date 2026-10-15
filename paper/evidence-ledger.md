@@ -23,6 +23,7 @@ and methods even when the current framework changes.
 | Stable `1.0.0` public wheel and source distribution | [Publication receipt](../output/release-1.0.0-2026-10-15/publication.json), [inventory recheck](../output/release-1.0.0-2026-10-15/inventory-recheck.json) and [registry installation](../output/release-1.0.0-2026-10-15/registry-install.json) | Both public artifact hashes and isolated registry installation verified 15 October 2026. Build source `85ce6c316838c995782aadc8c10770acc708339b`; all 36 runtime files match frozen runtime/study source `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`. The public source distribution includes documentation, examples, tests and auditors, while private research outputs are excluded. Software stability does not establish research superiority. |
 | Explicit on-reach game and interacting refund decisions | [Retained physical enumeration](../output/refund-interactions-2026-10-13/README.md) and [independent audit](../output/refund-interaction-audits-2026-10-13/independent.json) | Completed at source `2c4adfeb2a364a8116d6edbccbbdac64b413fc9c`: 512 planned branches, eight cases and 718 scripted calls; on-reach state/linked shares `[-.125,.375,0]` and interaction .25 at p=q=.5. Strict game remains distinct and undefined at interior probabilities. |
 | Idempotency removes the planted refund selection/retry interaction | [Enumeration controls](../output/refund-interactions-2026-10-13/summary.json) | On-reach consequence shares become `[-.5,0,0]`, interaction zero. Lagged/budget controls retain refusals. This is a programmatic mixture, not a live-model effect. |
+| Closed-form on-reach refund reference | Analytic-reference subsection of [the manuscript](manuscript.md), physical payment/policy source, [mechanism specification](../docs/refund-interactions.md), [standalone mathematical check](verify_analytic_references.py) and [SHA-bound receipt](analytic-reference-check.json) | Unsafe exactly-one state target: `v(empty)=1-p(1-q)`, `v(s)=q`, `v(r)=v(sr)=1`; final stop dummy. Therefore `phi_s=-(1-p)(1-q)/2`, `phi_r=(1+p)(1-q)/2`, endpoint `p(1-q)`, interaction `(1-p)(1-q)`. Idempotency and action-selection shares are `[-(1-p),0,0]`. Exact-rational enumeration checked 100 probability/control cases without framework imports, simulator/model calls or saved study inputs. These are ideal mechanism references; finite budgets and unknown evidence retain separate eligibility/refusal rules. |
 | Actual permutation sampler works with the refund interaction adapter | Final source tests using two controls, P=32, S=1, E=32 | Engineering regression only: eighteen numeric coefficients within .3 of reference. Repeated stochastic coverage/power and a retained sampler study remain pending. |
 | Capped validation completed 24/24 episodes and 59 local model calls, with no failed/unstarted episodes | [Frozen validation](../output/local-validation-2026-10-14/README.md), protocol, execution and saved-data audit | Completed exploratory integration at source `2c4adfeb2a364a8116d6edbccbbdac64b413fc9c` and retained candidate wheel, distinct from the final release. Audit passed 2,227 assertions and seven corrupted-copy checks. Validation family is now exposed; held-out reserve not generated. |
 | v1 has six structured contradictions among ten assessable claims; v2 has no definite statuses | [All-case findings](../output/local-validation-2026-10-14/FINDINGS.md) and [audit rows](../output/local-validation-2026-10-14/audit.json) | v1 claim coverage 12/12, two unassessable claims; v2 coverage 0/12, contradiction rate 0/0 undefined. Fixed profile order, overlapping fault conditions and two repetitions per case prevent generalization or calibrated-uncertainty claims. |
@@ -48,6 +49,26 @@ and methods even when the current framework changes.
 6. Update the manuscript's abstract and conclusions only when the new evidence
    justifies a change; standard uncertainty alternatives do not create estimator
    novelty.
+
+## Reproducing the analytic reference check
+
+From the repository root, use Python's standard library only:
+
+```console
+python paper/verify_analytic_references.py --output paper/analytic-reference-check-fresh.json
+```
+
+The output must be a new file. The retained receipt binds its script SHA-256 and
+lists every case: the exact grid `0, 1/5, 1/2, 4/5, 1` for both `p` and `q`,
+both idempotency settings, and action/consequence targets. This yields 100
+control cases, 800 coalition values, 3,200 weighted Boolean components and 600
+permutation orders. Every comparison uses exact fractions. The script imports
+no framework code, reads no retained study files, makes no model/network calls
+and does not execute the simulator. It independently checks the mathematical
+four-component law and six-order allocation against the printed closed forms;
+it is not an independent execution audit or a sampling-calibration experiment.
+Assumptions and limits are included in the receipt. Repeated targets and control
+settings are not independent empirical replications.
 
 ## Submission requirements still open
 

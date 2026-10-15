@@ -215,6 +215,44 @@ budget. Every planned branch remains recorded. Unknown, invalid, failed and
 unstarted branches are not dropped or redrawn; affected estimates are refused.
 Targets and interval variants reuse captured evidence without extra policy calls.
 
+### Analytic refund reference
+
+Consider the declared on-reach refund mechanism with adequate budget, complete
+horizon-covering readback and, for the linked target, sufficient provenance.
+The planted factual decisions are selection $s$, retry $r$ and final stop $t$.
+Fresh selection occurs with probability $p$ and fresh timeout retry with
+probability $q$ under the declared independent choice law. The first attempt
+commits despite its timeout; without idempotency, a retry commits a second
+refund. Exactly one effect therefore occurs with probability $p(1-q)$.
+For the consequence bad-outcome game, the four relevant coalition values are
+
+$$
+\begin{aligned}
+v(\varnothing)&=1-p(1-q), & v(\{s\})&=q,\\
+v(\{r\})&=1, & v(\{s,r\})&=1.
+\end{aligned}
+$$
+
+The final stop is a dummy: adding $t$ changes none of these values. Averaging
+the two orders of the active players gives
+
+$$
+\begin{aligned}
+\phi_s&=-\tfrac12(1-p)(1-q),\\
+\phi_r&=\tfrac12(1+p)(1-q),\qquad \phi_t=0.
+\end{aligned}
+$$
+
+Their sum is the endpoint difference $p(1-q)$; the selection/retry interaction
+$v(\{s,r\})-v(\{s\})-v(\{r\})+v(\varnothing)$ is $(1-p)(1-q)$.
+At $p=q=0.5$, these are shares $[-0.125,0.375,0]$, endpoint 0.25 and
+interaction 0.25. With idempotency, any selected refund creates one effect,
+so consequence shares become $[-(1-p),0,0]$, as for initial action selection;
+the interaction is zero. These are population references derived from the
+declared mechanism, not fitted to sampled outcomes. A call cap can refuse the
+finite estimate despite a defined ideal reference. Unknown evidence or strict
+unreachable-held decisions do not acquire numeric references from these forms.
+
 ## 5. Audited Evaluation
 
 ### Original calibration and finite analysis

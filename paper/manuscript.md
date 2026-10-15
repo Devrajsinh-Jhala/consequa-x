@@ -188,6 +188,8 @@ $$
 Fresh forward/reverse permutation walks form one paired contribution vector.
 Independent empty/full draws diagnose the endpoint scale. Values are signed
 allocations under the declared game, not normalized responsibility shares.
+Positive values mean holding the factual decision increases bad outcomes;
+negative values mean it is protective.
 
 ### Intervals and refusals
 
@@ -198,8 +200,12 @@ is [Hoeffding, 1963](https://doi.org/10.1080/01621459.1963.10500830)
 $$
 h=\sqrt{\frac{2\log(2/\alpha)}{P}}.
 $$
+This is the half-width before clipping the interval to $[-1,1]$.
 Endpoint differences use two exact binomial marginals with a split failure
-allowance. Bootstrap and normal intervals remain explicit legacy comparators.
+allowance. Each marginal has confidence $1-\alpha/2$; the difference interval
+is $[L_f-U_e,U_f-L_e]$. The union bound requires valid marginal bounds, not
+independence between the two arms. Bootstrap and normal intervals remain
+explicit legacy comparators.
 These are standard conditional methods with sampling assumptions and precision
 costs, not distribution-free guarantees for dependent model continuations.
 
@@ -362,12 +368,17 @@ variable-length game restrictions and prose/structured-status disagreement.
 The useful result is a reproducible protocol/software artifact with measured
 limits, without claiming a new estimator or general method superiority.
 
-The Python distribution is publicly available under MIT at
-[PyPI](https://pypi.org/project/consequa-x/). The maintainer-controlled repository
-at [Devrajsinh-Jhala/consequa-x](https://github.com/Devrajsinh-Jhala/consequa-x) is private. Source history,
-retained protocols, raw evidence, evaluator-only truth, independent auditors
-and contributor instructions are retained there for authorized collaborators;
-this paper does not assert unrestricted access to that research archive.
+Stable version 1.0.0 is publicly available under MIT on
+[PyPI](https://pypi.org/project/consequa-x/1.0.0/). Its wheel and source
+distribution were independently downloaded and hash-checked, and an isolated
+registry installation was verified on October 15, 2026. The wheel contains the runtime, schemas and typing
+marker; the source distribution also includes documentation, offline examples,
+tests and audit scripts. Private research outputs and model weights are excluded.
+The maintainer-controlled
+[repository](https://github.com/Devrajsinh-Jhala/consequa-x) is private. Git
+history, retained protocols, raw evidence and evaluator-only truth are retained
+there for authorized collaborators; this paper does not assert unrestricted
+access to that research archive.
 Each historical study retains its own source revision and manifest; later
 engineering fixes do not silently replace earlier data. A public immutable
 research archive and review-access arrangements have not been established.

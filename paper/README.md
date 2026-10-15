@@ -22,10 +22,13 @@ contradiction rate undefined. A separate rationale reading remains explicitly
 single-reader and exploratory. Reusable application verification and graph
 witness semantics are described separately from historical experimental code.
 
-The Python package is public on [PyPI](https://pypi.org/project/consequa-x/).
-The research repository is now private. Source history, raw evidence and audit
-records are retained for authorized collaborators; the paper does not promise
-public access to the complete research archive. An immutable research archive,
+Stable Python version 1.0.0 is public on
+[PyPI](https://pypi.org/project/consequa-x/1.0.0/); both distribution downloads
+and an isolated registry installation were verified on 15 October 2026. The
+source distribution includes documentation, examples, tests and audit scripts.
+The research repository is now private. Git history, raw evidence and retained
+research records are available to authorized collaborators; the paper does not
+promise public access to the complete research archive. An immutable archive,
 reviewer-access arrangement and final venue-specific requirements remain to be
 settled before submission.
 
@@ -36,6 +39,9 @@ settled before submission.
   sources, kept alongside the self-contained IEEE reference list.
 - [Release readiness](../docs/release-readiness.md): package engineering and
   publication evidence, separate from scientific claims.
+- [Stable publication receipt](../output/release-1.0.0-2026-10-15/publication.json)
+  and [registry installation](../output/release-1.0.0-2026-10-15/registry-install.json):
+  the actual public version, artifact hashes and installed-payload checks.
 - [Physical refund enumeration](../output/refund-interactions-2026-10-13/README.md):
   512 retained branches across eight cases and two declared games.
 - [Frozen local-model proposal](protocol-next-validation.md) and

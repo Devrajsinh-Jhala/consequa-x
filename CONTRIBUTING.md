@@ -1,8 +1,12 @@
 # Contributing to Consequa-X
 
-Collaborators with access to this private repository can contribute to the Python framework and research. The `1.0.0` candidate separates a stable application evidence core from research interfaces using refund simulation, programmatic policies, and an optional local Ollama adapter. Final stable-release checks are in progress; `0.1.0a2` is the published public PyPI checkpoint. Recorded results include scripted fixtures and a small [local-model pilot](output/live-pilot-2026-10-10/README.md). These establish implementation behavior, not empirical superiority or a new causal estimator. Preserve original live samples when adding exploratory prompt profiles or new evaluations.
+Collaborators with access to this private repository can contribute to the Python framework and research. Stable [`1.0.0` is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/). It separates the application evidence core from research interfaces using refund simulation, programmatic policies, and an optional local Ollama adapter. [Release receipts](output/release-1.0.0-2026-10-15/README.md) retain the installation and publication checks. Recorded results include [audited synthetic sampling](output/interaction-sampling-findings-2026-10-15/FINDINGS.md) and an exploratory [local-model validation](output/local-validation-2026-10-14/FINDINGS.md). These establish declared implementation behavior, not empirical superiority or a new causal estimator. Preserve original samples when adding prompt profiles or evaluations.
 
 Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). The [policy replay guide](docs/policy-replay.md) covers bounded context comparisons and evidence exports. Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
+
+The [launch plan](docs/launch-readiness.md) separates shipped functionality from
+proposed adoption features. A private repository issue is available to authorized
+collaborators; it is not yet a public support channel for PyPI users.
 
 ## Set up a development environment
 

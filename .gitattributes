@@ -1,3 +1,9 @@
 # Export manifests hash exact bytes; preserve snapshots on every platform.
 # Generated evidence retains original diagnostic whitespace as well.
 output/** -text -whitespace
+# Figure manifests also bind the exact asset and generator bytes.
+paper/figures/** -text
+# Keep generated SVG path whitespace rather than changing hashed output.
+paper/figures/*.svg -whitespace
+scripts/draw_paper_diagrams.py -text
+scripts/plot_paper_results.py -text

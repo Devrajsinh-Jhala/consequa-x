@@ -239,6 +239,11 @@ and [evidence ledger](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/p
 The contribution guide and Markdown documentation are also in the source archive;
 retained datasets and the paper are not bundled into the Python wheel.
 
+The [next-release launch plan](docs/launch-readiness.md) prioritizes an offline
+visual report, minimal disclosure by default, public onboarding/support and
+additional platform validation. These are proposed additions; the published
+package remains version 1.0.0.
+
 Consequa-X is licensed under the **MIT License**, included with the distributions.
 Copyright and author metadata identify Devrajsinh Jhala. Source privacy does not
 change the permissions granted for the publicly distributed code.

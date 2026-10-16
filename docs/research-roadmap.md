@@ -55,7 +55,7 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
   retain complete result tables and explicit availability/refusal denominators.
 - A [complete protocol/software manuscript and evidence ledger](../paper/README.md),
   with audited evidence and held-out, matched-baseline and joint-fault experiments
-  identified as future research. The [six-page IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf)
+  identified as future research. The [eight-page illustrated IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf)
   compiled and passed review of every rendered page; its [QA receipt](../output/pdf/qa.json)
   binds the PDF and frozen manuscript source.
 - A [24-episode local Qwen3 validation](../output/local-validation-2026-10-14/FINDINGS.md)
@@ -81,11 +81,12 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 
 The retained interaction collection and independent saved-evidence audit are
 complete, and checked results are integrated into the completed IEEE manuscript.
-The [six-page PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
+The [eight-page illustrated PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
 and all rendered pages passed visual review on 16 October 2026. The
 [QA receipt](../output/pdf/qa.json) binds its hash and exact
-[editable IEEE source](../paper/consequa-x-ieee.tex) at manuscript revision
-`01d0709ad98acf27c4e12c0899208c28417d46a9`.
+[editable IEEE source](../paper/consequa-x-ieee.tex) revision and four
+[vector figures](../paper/figures/README.md), including two plots of the existing
+audited evidence. No new study was collected for the illustrations.
 The software release gates are complete; [publication](../output/release-1.0.0-2026-10-15/publication.json)
 and installation receipts preserve the achieved result. [Completion scope](completion-plan.md)
 records the completed framework and paper scope. Actual venue selection, final

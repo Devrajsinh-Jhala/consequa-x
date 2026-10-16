@@ -122,13 +122,17 @@ release inventory and cannot change its hashes.
 
 [Completion scope](completion-plan.md) records the achieved framework and
 protocol/software paper scope on 16 October 2026. The
-[six-page IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
+[eight-page illustrated IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
 and all rendered pages passed visual review. Its [QA receipt](../output/pdf/qa.json)
-binds the PDF hash and [editable source](../paper/consequa-x-ieee.tex) at manuscript
-revision `01d0709ad98acf27c4e12c0899208c28417d46a9`. A stable software release
+binds the PDF hash, exact [editable source](../paper/consequa-x-ieee.tex) revision
+and four [vector figures](../paper/figures/README.md). A stable software release
 and checked paper do not establish a new causal estimator, held-out superiority
 or calibrated live-model confidence. Actual venue selection, final human review,
 reviewer access and submission remain maintainer steps.
+
+The [next-release launch plan](launch-readiness.md) separates proposed product
+improvements from shipped capabilities. This paper illustration update changes
+no runtime, schema, package version or immutable published release file.
 
 No npm package is published. An optional later adapter needs a declared API,
 shared schema/conformance fixtures, cross-language integer/identity semantics,

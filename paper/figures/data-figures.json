@@ -1,0 +1,1379 @@
+{
+  "artifacts": [
+    {
+      "bytes": 19395,
+      "path": "data-interval-tradeoffs.pdf",
+      "sha256": "fe3219a7e66d5a4b93b6652bf04d51cb9b3ba8758177c37d7b520bfc635c5630"
+    },
+    {
+      "bytes": 45245,
+      "path": "data-interval-tradeoffs.svg",
+      "sha256": "f116a908f2d93434e787e1f38c5fb1dc18f7610a447cbda0a75dda6a4eb406d5"
+    },
+    {
+      "bytes": 120988,
+      "path": "data-interval-tradeoffs.png",
+      "sha256": "dfbc5eb08f0525117ff947cddf6e90e91e59adcc88f3256d7c89e42a213eba65"
+    },
+    {
+      "bytes": 39677,
+      "path": "data-branch-disposition.pdf",
+      "sha256": "1b5124a03dd213c9eb6d66c2df19533ed13b83718ed03d1e571804ae312a4e8a"
+    },
+    {
+      "bytes": 198308,
+      "path": "data-branch-disposition.svg",
+      "sha256": "a82470e4a9d6e1159b3ea6524fa1384667be4ef18526dc500a78f70c80307041"
+    },
+    {
+      "bytes": 126484,
+      "path": "data-branch-disposition.png",
+      "sha256": "a2cd3536bbc1227900cc8492927b56258899b4b2c1103acc4184d9d65e20f251"
+    }
+  ],
+  "audit": {
+    "actual_policy_calls": 628535,
+    "assertions": 44698925,
+    "audited_utc": "2026-10-16T16:04:11.152166+00:00",
+    "branches": 655360,
+    "full_traces": 4210,
+    "generation_calls": 0,
+    "manifest_sha256": "3ee00dfb6ac66db219bc25b1248a1645b8f86deeecae6c9c46a8419cc1235af4",
+    "source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+    "status": "passed",
+    "trials": 2048
+  },
+  "captions": {
+    "data-branch-disposition": "Branch disposition for all eight mechanisms under strict (S) and on-reach (R) games. Each row retains all 40,960 planned slots from 128 trials. Stacked statuses partition completed, invalid, failed and unstarted branches; narrow budget-control segments remain in the exact source counts. Inactive-held branches are a subset of completed branches, displayed separately with exact counts. Completed execution includes known violations and unknown target evidence and does not imply outcome verification or an available coefficient vector.",
+    "data-interval-tradeoffs": "On-reach global-consequence retry coefficient for every registered mechanism. Normal and Hoeffding intervals use identical retained draws. A/R gives two counts: available estimates and population-reference-eligible trials, respectively, each from 128 planned trials per case. A/R is not a coverage fraction. Coverage is conditional on availability and a defined reference; whiskers are nominal 95% Wilson uncertainty for repeated-trial rates. Mean widths show the precision cost. Filled sign-panel symbols report correct reference-sign detection for nonzero coefficients; open symbols report false nonzero flags at zero references. Undefined lagged evidence and budget refusals are not zero coverage. Rows and interval methods share data and are not independent replications."
+  },
+  "inputs": {
+    "independent_audit_sha256": "c8354412e873c4cc144676529d815360fb7fa91b77fddcebd2ef999bf2bcbfdb",
+    "protocol_sha256": "75dcc58c5652be0b3e220544cfb05ebfd13fdbff93419d21be7d6de0bddb5e06",
+    "script_sha256": "030303e2faaf2e6b243d9e164554ab8e72481e963a59422d13113f3a634a5fd4",
+    "sealed_artifacts_verified": [
+      {
+        "bytes": 797,
+        "path": "evaluator_truth/budget-p50-q50__on_reach.json.gz",
+        "sha256": "7a5526679ba25973cc6743ae17c1c327540d0ee0048b57f2000b80d86c47c68b"
+      },
+      {
+        "bytes": 798,
+        "path": "evaluator_truth/budget-p50-q50__strict.json.gz",
+        "sha256": "446fdf6c66a177383a2ad768aa71b0132f0171035c5577f66f476b1d7a9e199d"
+      },
+      {
+        "bytes": 5172,
+        "path": "evaluator_truth/idempotent-p50-q50__on_reach.json.gz",
+        "sha256": "941694c0da4c23578e8000a3bb9ca48a406c702cfe815feca32c2bbaacf3202d"
+      },
+      {
+        "bytes": 4822,
+        "path": "evaluator_truth/idempotent-p50-q50__strict.json.gz",
+        "sha256": "e865402d6867540263685b7ac1a0adc9c07064cdb2c0503620e88b4cdf08d345"
+      },
+      {
+        "bytes": 5144,
+        "path": "evaluator_truth/lagged-readback-p50-q50__on_reach.json.gz",
+        "sha256": "853ab461d83ece2fde15aa637b233b2589448fa020f66261af377b7b9a52a2f7"
+      },
+      {
+        "bytes": 4751,
+        "path": "evaluator_truth/lagged-readback-p50-q50__strict.json.gz",
+        "sha256": "2b70bb4a1bbf50df278a71d1cc1cf1ca71abcf273f509fdc3db84b9e8b847d2a"
+      },
+      {
+        "bytes": 5755,
+        "path": "evaluator_truth/refund-p100-q100__on_reach.json.gz",
+        "sha256": "abc3b2bd9952a867fba1cd1e5508b3f487f9f997da4040a1724965f47bd89718"
+      },
+      {
+        "bytes": 5750,
+        "path": "evaluator_truth/refund-p100-q100__strict.json.gz",
+        "sha256": "aae2915cd9903f988b8a9ab9ea9702ff6993a9d2e908302387e8d6b26a551318"
+      },
+      {
+        "bytes": 4812,
+        "path": "evaluator_truth/refund-p20-q80__on_reach.json.gz",
+        "sha256": "3a8676cac386b94c26da2254dfe552005683ee5bb373344711433d03aa6774d9"
+      },
+      {
+        "bytes": 4323,
+        "path": "evaluator_truth/refund-p20-q80__strict.json.gz",
+        "sha256": "9df218031df71fb2b348f5f7edd3c85b2a6860efe095cd918236556cb62d12a5"
+      },
+      {
+        "bytes": 5108,
+        "path": "evaluator_truth/refund-p50-q50__on_reach.json.gz",
+        "sha256": "d220f9d856903d5b2f457b385c4fc0dc85d7bc13638a80700c620274c19670bd"
+      },
+      {
+        "bytes": 4845,
+        "path": "evaluator_truth/refund-p50-q50__strict.json.gz",
+        "sha256": "445e4f3e6e0c9a7f7580d5a929c4afcce081d0672d823e8f02cfac2d06fc6b0a"
+      },
+      {
+        "bytes": 5341,
+        "path": "evaluator_truth/refund-p80-q20__on_reach.json.gz",
+        "sha256": "6584f32f7b2aa86387253d620528c32f1c94011610e37fff8753002eb9b840a1"
+      },
+      {
+        "bytes": 4933,
+        "path": "evaluator_truth/refund-p80-q20__strict.json.gz",
+        "sha256": "a014ab03c4dd6b12cab43a8b519987784a108b24dc5b5c616236374668ee001e"
+      },
+      {
+        "bytes": 5180,
+        "path": "evaluator_truth/unknown-provenance-p50-q50__on_reach.json.gz",
+        "sha256": "f74721c2b0f9863e1bab2a7932ace2c059216b250b8d1f4588394827c417801e"
+      },
+      {
+        "bytes": 4813,
+        "path": "evaluator_truth/unknown-provenance-p50-q50__strict.json.gz",
+        "sha256": "ae4821c124759241d96e10775571b65b2ffc97e0252e437f96418f84aede4541"
+      },
+      {
+        "bytes": 3669,
+        "path": "evidence/budget-p50-q50__on_reach.json.gz",
+        "sha256": "04932694cb53c6a88955f3f8adf72384dcd66a36084baad72924244b969ecdaf"
+      },
+      {
+        "bytes": 3669,
+        "path": "evidence/budget-p50-q50__strict.json.gz",
+        "sha256": "ab4f92613bda2a847faadd5b43a55daf740788d4ddaecd344c7f0f36f54d22e4"
+      },
+      {
+        "bytes": 286745,
+        "path": "evidence/idempotent-p50-q50__on_reach.json.gz",
+        "sha256": "1c3aef7b0595c5d07411dc0c953f33ef013add31044d6057566e8301ade4c35d"
+      },
+      {
+        "bytes": 293051,
+        "path": "evidence/idempotent-p50-q50__strict.json.gz",
+        "sha256": "7c2706d848d525e1e2edf6b2c4c40cd0f60bb713bf08a747c84a53872a4d19e5"
+      },
+      {
+        "bytes": 133881,
+        "path": "evidence/lagged-readback-p50-q50__on_reach.json.gz",
+        "sha256": "a31bc945e39b75b33d3326f498bfe3af2a8553c2053280db5a95fe5451d32ed0"
+      },
+      {
+        "bytes": 133422,
+        "path": "evidence/lagged-readback-p50-q50__strict.json.gz",
+        "sha256": "c97f75f47d4c3630d74cf69f054abcf1693a06386ad67e823e7910056cc0eabb"
+      },
+      {
+        "bytes": 552529,
+        "path": "evidence/refund-p100-q100__on_reach.json.gz",
+        "sha256": "76afc802d352831f86f2e366cb4f091e94509af125887699fde078aa7c1e603b"
+      },
+      {
+        "bytes": 552647,
+        "path": "evidence/refund-p100-q100__strict.json.gz",
+        "sha256": "3e6309e382eb71dd9ada9763089e3953ccdc2f561bf7b9e752aff44023898144"
+      },
+      {
+        "bytes": 301635,
+        "path": "evidence/refund-p20-q80__on_reach.json.gz",
+        "sha256": "f7eedfc5eb9eda9febe03028dff2ddd92e24bb74daba53c8f502e3e5955021d1"
+      },
+      {
+        "bytes": 304905,
+        "path": "evidence/refund-p20-q80__strict.json.gz",
+        "sha256": "474faaed924d2da2a2c25028a999684fba5360963ce4d3416822dad073ff52c5"
+      },
+      {
+        "bytes": 325307,
+        "path": "evidence/refund-p50-q50__on_reach.json.gz",
+        "sha256": "ebc21e329deee0210facec8b34e5d929658923a0cb260bd2a37d1c2d6e6c00a1"
+      },
+      {
+        "bytes": 339893,
+        "path": "evidence/refund-p50-q50__strict.json.gz",
+        "sha256": "ffb8f96d385eef2b7216ace0ccf3f285d48ff0be365bbb54c34f6c4293a9742f"
+      },
+      {
+        "bytes": 312769,
+        "path": "evidence/refund-p80-q20__on_reach.json.gz",
+        "sha256": "e85cea31f0bfc71c24977869573cfb2246e1538cc5f69a0535c64da8a48515b6"
+      },
+      {
+        "bytes": 324834,
+        "path": "evidence/refund-p80-q20__strict.json.gz",
+        "sha256": "11ee7c62c5784a1aea2ba00a4412b71aca5d5660521b786270baa9ef432601fd"
+      },
+      {
+        "bytes": 307719,
+        "path": "evidence/unknown-provenance-p50-q50__on_reach.json.gz",
+        "sha256": "68e610197b12e55b8dafcd1d27c5d1b9053bc26a4fde89a4307fd5cf829ee6cd"
+      },
+      {
+        "bytes": 321631,
+        "path": "evidence/unknown-provenance-p50-q50__strict.json.gz",
+        "sha256": "970050814fece35100f75e0d605443e086b891751cccf562326c3204294d0020"
+      },
+      {
+        "bytes": 647437,
+        "path": "protocol.json",
+        "sha256": "75dcc58c5652be0b3e220544cfb05ebfd13fdbff93419d21be7d6de0bddb5e06"
+      },
+      {
+        "bytes": 1109,
+        "path": "README.md",
+        "sha256": "a7e0274a247e60eeb18b5b61abcc05c63ff415eb1f70328cdcded4fe4949ab91"
+      },
+      {
+        "bytes": 491522,
+        "path": "summary.json",
+        "sha256": "8cb521ccba82edccbc85ed783c70cc9f3db4f76fb07e89abfbfd6934c016a1c8"
+      },
+      {
+        "bytes": 12135,
+        "path": "trace-schema.json",
+        "sha256": "671ee88707235c63d7ae012c35942720cf8d40d39ad6519b8e1b62b3753f3e87"
+      },
+      {
+        "bytes": 1084358,
+        "path": "trials/budget-p50-q50__on_reach.jsonl.gz",
+        "sha256": "c758ee7656980de61be67b141e81f640c1afb0f5760b0025b35cd24fd2036ad9"
+      },
+      {
+        "bytes": 1081659,
+        "path": "trials/budget-p50-q50__strict.jsonl.gz",
+        "sha256": "4d0855112ccafc1693c55b22578c9d578f1c62997bc108973db01212277028b0"
+      },
+      {
+        "bytes": 3459080,
+        "path": "trials/idempotent-p50-q50__on_reach.jsonl.gz",
+        "sha256": "c791c9eb3315cd669dcddd69c402edcb93b1dc038f5a27e4494743107f099bff"
+      },
+      {
+        "bytes": 3202587,
+        "path": "trials/idempotent-p50-q50__strict.jsonl.gz",
+        "sha256": "8eadf9545664748978b1651344fb307f66dec72216bb4d990c69218ed7b33fd3"
+      },
+      {
+        "bytes": 3467321,
+        "path": "trials/lagged-readback-p50-q50__on_reach.jsonl.gz",
+        "sha256": "31321617fe9cb4e129e5c0bd86603a5100eaa6ffdd0ba4a9d76b9eb702922cd0"
+      },
+      {
+        "bytes": 3194660,
+        "path": "trials/lagged-readback-p50-q50__strict.jsonl.gz",
+        "sha256": "89c66e4a04d10c3fc22bfe1f32bd95f42cba54a313e9e278704f7227716c32b2"
+      },
+      {
+        "bytes": 3477032,
+        "path": "trials/refund-p100-q100__on_reach.jsonl.gz",
+        "sha256": "67e059789e132417f38dbb7c372af228525f9857261a28299b9ea2a6bdc2d471"
+      },
+      {
+        "bytes": 3475963,
+        "path": "trials/refund-p100-q100__strict.jsonl.gz",
+        "sha256": "956e267c8f46da9345c35b21c52655504074d1fa49ca8ebd6ebc0b0fd7b1b745"
+      },
+      {
+        "bytes": 3455108,
+        "path": "trials/refund-p20-q80__on_reach.jsonl.gz",
+        "sha256": "caa908beb0fb921802e69f7404368d512825f6c995a60641403adad51f282150"
+      },
+      {
+        "bytes": 3129489,
+        "path": "trials/refund-p20-q80__strict.jsonl.gz",
+        "sha256": "964488eb6007bb6ebb48bca2c4bb4c63320e643ff3520f9ddec0bfecc23b8e70"
+      },
+      {
+        "bytes": 3497008,
+        "path": "trials/refund-p50-q50__on_reach.jsonl.gz",
+        "sha256": "4d324e575c379b7067c144245e9835be09df352953ec4a3ded0e840d6e6bc12b"
+      },
+      {
+        "bytes": 3224478,
+        "path": "trials/refund-p50-q50__strict.jsonl.gz",
+        "sha256": "37a7eded1d7b8ac5fe5fe256fe8b86578ab33a82a328e38c3d64100e2eaea84c"
+      },
+      {
+        "bytes": 3517991,
+        "path": "trials/refund-p80-q20__on_reach.jsonl.gz",
+        "sha256": "3b9521c5a0ef43ebaef0946c11cbdffe2498bb32c6b3f5fc95145188822cc563"
+      },
+      {
+        "bytes": 3273812,
+        "path": "trials/refund-p80-q20__strict.jsonl.gz",
+        "sha256": "613b2ffd44133de5fd5c6626cffdf28b7f300b1417cdc1fb2307402a3bd8865e"
+      },
+      {
+        "bytes": 3522586,
+        "path": "trials/unknown-provenance-p50-q50__on_reach.jsonl.gz",
+        "sha256": "ab580c72cd2577ff0ca253f52f2e8cee04f302438f3767b0b5c91ffccf35c138"
+      },
+      {
+        "bytes": 3231224,
+        "path": "trials/unknown-provenance-p50-q50__strict.jsonl.gz",
+        "sha256": "66f2cbefab0d85c9b4ae8bb302b723afda48cfea38e9c62a5677607122de5d3f"
+      }
+    ],
+    "sealed_manifest_sha256": "3ee00dfb6ac66db219bc25b1248a1645b8f86deeecae6c9c46a8419cc1235af4",
+    "summary_sha256": "8cb521ccba82edccbc85ed783c70cc9f3db4f76fb07e89abfbfd6934c016a1c8"
+  },
+  "limits": [
+    "Synthetic planted-factual study; no held-out model generalization claim.",
+    "No fresh sampling, data fitting, confidence-interval recomputation or model calls.",
+    "95% coverage line is a nominal target, not a guarantee of observed finite-sample rates.",
+    "Zero-denominator rates stay undefined; lagged and budget rows carry no numeric coverage.",
+    "Wilson uncertainty is unadjusted for multiple displayed comparisons.",
+    "No pooled point-interaction uncertainty or sign claim is plotted.",
+    "Hash binding detects changed bytes and is not external provider authentication."
+  ],
+  "plan": {
+    "confidence": 0.95,
+    "endpoint_samples": 32,
+    "games": [
+      "strict",
+      "on_reach"
+    ],
+    "max_calls": 1000,
+    "mechanisms": [
+      "refund-p50-q50",
+      "refund-p20-q80",
+      "refund-p80-q20",
+      "refund-p100-q100",
+      "idempotent-p50-q50",
+      "unknown-provenance-p50-q50",
+      "lagged-readback-p50-q50",
+      "budget-p50-q50"
+    ],
+    "pairs": 32,
+    "repeats": 128,
+    "samples_per_eval": 1,
+    "seed": 20000000
+  },
+  "plotted_branch_rows": [
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 42031,
+        "factual": 384,
+        "total": 42415
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "refund-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 34828,
+        "failed": 0,
+        "invalid": 6132,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 42142,
+        "factual": 384,
+        "total": 42526
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 6182,
+      "mechanism": "refund-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 36243,
+        "factual": 384,
+        "total": 36627
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "refund-p20-q80",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 33741,
+        "failed": 0,
+        "invalid": 7219,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 36304,
+        "factual": 384,
+        "total": 36688
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 7212,
+      "mechanism": "refund-p20-q80",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 45413,
+        "factual": 384,
+        "total": 45797
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "refund-p80-q20",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 35402,
+        "failed": 0,
+        "invalid": 5558,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 45433,
+        "factual": 384,
+        "total": 45817
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 5492,
+      "mechanism": "refund-p80-q20",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 61440,
+        "factual": 384,
+        "total": 61824
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "refund-p100-q100",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 61440,
+        "factual": 384,
+        "total": 61824
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 0,
+      "mechanism": "refund-p100-q100",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 41819,
+        "factual": 384,
+        "total": 42203
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "idempotent-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 34781,
+        "failed": 0,
+        "invalid": 6179,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 41994,
+        "factual": 384,
+        "total": 42378
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 6123,
+      "mechanism": "idempotent-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 41857,
+        "factual": 384,
+        "total": 42241
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "unknown-provenance-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 34818,
+        "failed": 0,
+        "invalid": 6142,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 42045,
+        "factual": 384,
+        "total": 42429
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 6187,
+      "mechanism": "unknown-provenance-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 41934,
+        "factual": 384,
+        "total": 42318
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "lagged-readback-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 34767,
+        "failed": 0,
+        "invalid": 6193,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 42040,
+        "factual": 384,
+        "total": 42424
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 6196,
+      "mechanism": "lagged-readback-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 40960,
+        "failed": 0,
+        "invalid": 0,
+        "unstarted": 0
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 128,
+        "factual": 384,
+        "total": 512
+      },
+      "coalition_game": "strict",
+      "inactive_held_branches": 0,
+      "mechanism": "budget-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 64,
+        "failed": 128,
+        "invalid": 0,
+        "unstarted": 40768
+      }
+    },
+    {
+      "calls": {
+        "additional_comparison": 0,
+        "continuations": 128,
+        "factual": 384,
+        "total": 512
+      },
+      "coalition_game": "on_reach",
+      "inactive_held_branches": 0,
+      "mechanism": "budget-p50-q50",
+      "planned_branches": 40960,
+      "planned_trials": 128,
+      "status_counts": {
+        "completed": 69,
+        "failed": 128,
+        "invalid": 0,
+        "unstarted": 40763
+      }
+    }
+  ],
+  "plotted_coefficient_rows": [
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": -0.002685546875,
+      "bias_mcse": 0.0054175105863288045,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.8621530681952095,
+          0.9570126249490177
+        ],
+        "denominator": 128,
+        "numerator": 118,
+        "rate": 0.921875
+      },
+      "mean_interval_width": 0.22551428416820374,
+      "mechanism": "refund-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.375,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.06111128065297662,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": -0.002685546875,
+      "bias_mcse": 0.0054175105863288045,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.9601115694788271,
+      "mechanism": "refund-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.375,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.03200692569506119,
+          0.11848791104425863
+        ],
+        "denominator": 128,
+        "numerator": 8,
+        "rate": 0.0625
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.06111128065297662,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": -0.0013476562499999678,
+      "bias_mcse": 0.003304022884941509,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9224023687386392,
+          0.9877817347549466
+        ],
+        "denominator": 128,
+        "numerator": 124,
+        "rate": 0.96875
+      },
+      "mean_interval_width": 0.15352308529286815,
+      "mechanism": "refund-p20-q80",
+      "planned_trials": 128,
+      "reference": 0.11999999999999997,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.9118129792331631,
+          0.9832013892021962
+        ],
+        "denominator": 128,
+        "numerator": 123,
+        "rate": 0.9609375
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.03725882734123217,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": -0.0013476562499999678,
+      "bias_mcse": 0.003304022884941509,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.9603227913199206,
+      "mechanism": "refund-p20-q80",
+      "planned_trials": 128,
+      "reference": 0.11999999999999997,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.0,
+          0.029136956273508402
+        ],
+        "denominator": 128,
+        "numerator": 0,
+        "rate": 0.0
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.03725882734123217,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": -0.012968750000000084,
+      "bias_mcse": 0.0045886738200482564,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9118129792331631,
+          0.9832013892021962
+        ],
+        "denominator": 128,
+        "numerator": 123,
+        "rate": 0.9609375
+      },
+      "mean_interval_width": 0.2176013867897287,
+      "mechanism": "refund-p80-q20",
+      "planned_trials": 128,
+      "reference": 0.7200000000000001,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.05331314340540827,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": -0.012968750000000084,
+      "bias_mcse": 0.0045886738200482564,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.7731301456599603,
+      "mechanism": "refund-p80-q20",
+      "planned_trials": 128,
+      "reference": 0.7200000000000001,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.05331314340540827,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": 0.0,
+      "bias_mcse": 0.0,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 128,
+      "false_nonzero_flag": {
+        "confidence_interval": [
+          0.0,
+          0.029136956273508402
+        ],
+        "denominator": 128,
+        "numerator": 0,
+        "rate": 0.0
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.0,
+      "mechanism": "refund-p100-q100",
+      "planned_trials": 128,
+      "reference": 0.0,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.0,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": 0.0,
+      "bias_mcse": 0.0,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": [
+          0.0,
+          0.029136956273508402
+        ],
+        "denominator": 128,
+        "numerator": 0,
+        "rate": 0.0
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.9603227913199206,
+      "mechanism": "refund-p100-q100",
+      "planned_trials": 128,
+      "reference": 0.0,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.0,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": 0.0054931640625,
+      "bias_mcse": 0.0055068172612915915,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": [
+          0.016798610797803697,
+          0.08818702076683685
+        ],
+        "denominator": 128,
+        "numerator": 5,
+        "rate": 0.0390625
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9118129792331631,
+          0.9832013892021962
+        ],
+        "denominator": 128,
+        "numerator": 123,
+        "rate": 0.9609375
+      },
+      "mean_interval_width": 0.24412337740417028,
+      "mechanism": "idempotent-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.0,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.06230131995209602,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": 0.0054931640625,
+      "bias_mcse": 0.0055068172612915915,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": [
+          0.0,
+          0.029136956273508402
+        ],
+        "denominator": 128,
+        "numerator": 0,
+        "rate": 0.0
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.9603227913199206,
+      "mechanism": "idempotent-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.0,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.06230131995209602,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": 0.0008544921875,
+      "bias_mcse": 0.005306027273781923,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.8815120889557413,
+          0.9679930743049387
+        ],
+        "denominator": 128,
+        "numerator": 120,
+        "rate": 0.9375
+      },
+      "mean_interval_width": 0.22768421173378853,
+      "mechanism": "unknown-provenance-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.375,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.05980199567341744,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 128,
+      "available_intervals": 128,
+      "bias": 0.0008544921875,
+      "bias_mcse": 0.005306027273781923,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": [
+          0.9708630437264916,
+          1.0
+        ],
+        "denominator": 128,
+        "numerator": 128,
+        "rate": 1.0
+      },
+      "mean_interval_width": 0.9603227913199206,
+      "mechanism": "unknown-provenance-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.375,
+      "reference_eligible_available": 128,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": [
+          0.02674020138134635,
+          0.10858490029974706
+        ],
+        "denominator": 128,
+        "numerator": 7,
+        "rate": 0.0546875
+      },
+      "refusal_counts": {},
+      "refused_estimates": 0,
+      "rmse": 0.05980199567341744,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 0,
+      "available_intervals": 0,
+      "bias": null,
+      "bias_mcse": null,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "mean_interval_width": null,
+      "mechanism": "lagged-readback-p50-q50",
+      "planned_trials": 128,
+      "reference": null,
+      "reference_eligible_available": 0,
+      "reference_eligible_trials": 0,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {
+        "unknown": 128
+      },
+      "refused_estimates": 128,
+      "rmse": null,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 0,
+      "available_intervals": 0,
+      "bias": null,
+      "bias_mcse": null,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "mean_interval_width": null,
+      "mechanism": "lagged-readback-p50-q50",
+      "planned_trials": 128,
+      "reference": null,
+      "reference_eligible_available": 0,
+      "reference_eligible_trials": 0,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {
+        "unknown": 128
+      },
+      "refused_estimates": 128,
+      "rmse": null,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    },
+    {
+      "available_estimates": 0,
+      "available_intervals": 0,
+      "bias": null,
+      "bias_mcse": null,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "mean_interval_width": null,
+      "mechanism": "budget-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.375,
+      "reference_eligible_available": 0,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {
+        "unstarted": 128
+      },
+      "refused_estimates": 128,
+      "rmse": null,
+      "target": "consequence",
+      "variant": "normal"
+    },
+    {
+      "available_estimates": 0,
+      "available_intervals": 0,
+      "bias": null,
+      "bias_mcse": null,
+      "coalition_game": "on_reach",
+      "decision_index": 1,
+      "degenerate_intervals": 0,
+      "false_nonzero_flag": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "interval_coverage": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "mean_interval_width": null,
+      "mechanism": "budget-p50-q50",
+      "planned_trials": 128,
+      "reference": 0.375,
+      "reference_eligible_available": 0,
+      "reference_eligible_trials": 128,
+      "reference_sign_detection": {
+        "confidence_interval": null,
+        "denominator": 0,
+        "numerator": 0,
+        "rate": null
+      },
+      "refusal_counts": {
+        "unstarted": 128
+      },
+      "refused_estimates": 128,
+      "rmse": null,
+      "target": "consequence",
+      "variant": "hoeffding_exact_endpoints"
+    }
+  ],
+  "schema_version": "consequa-x-paper-data-figures-v1",
+  "settings": {
+    "availability_label": "A/R means available-estimate and population-reference-eligible trial counts, respectively; each count is out of 128 planned trials, not an availability or coverage fraction",
+    "figure_one_decision_index": 1,
+    "figure_one_game": "on_reach",
+    "figure_one_target": "consequence",
+    "interval_method_markers": [
+      "o",
+      "s"
+    ],
+    "matplotlib": "3.11.2",
+    "minimum_font_points": 8,
+    "new_model_calls": 0,
+    "new_policy_calls": 0,
+    "palette": [
+      "#31688e",
+      "#b26b25"
+    ],
+    "pooling": "none; every plotted marker is one saved case/player/method row",
+    "rate_uncertainty": "Saved nominal 95% Wilson intervals; no multiplicity adjustment",
+    "sizes_inches": {
+      "data-branch-disposition": [
+        6.9,
+        3.6
+      ],
+      "data-interval-tradeoffs": [
+        6.9,
+        3.6
+      ]
+    }
+  },
+  "source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9"
+}

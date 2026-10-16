@@ -7,15 +7,22 @@ two columns, numbered references, equations and compact result tables. The
 maintainer requested IEEE formatting; a specific conference or journal has not
 been selected. No affiliation is inferred.
 
-The compiled [six-page paper](../output/pdf/Consequa-X_IEEE_Paper.pdf) is ready
+The compiled [eight-page illustrated paper](../output/pdf/Consequa-X_IEEE_Paper.pdf) is ready
 for maintainer review. Its [PDF quality receipt](../output/pdf/qa.json) records
-successful compilation, AI-assisted visual inspection of all six pages,
+successful compilation, AI-assisted visual inspection of all eight pages,
 embedded fonts and checks for clipping, missing characters and unresolved
-references. The PDF was built from frozen source revision
-`01d0709ad98acf27c4e12c0899208c28417d46a9`; its recorded SHA-256 is
-`6b22124d81b17d0d0e2608183cfd8fc015449d912fc87340e82a3f1a67899a98`.
+references. That receipt binds the exact source revision, figure inputs and
+PDF SHA-256. The [earlier six-page revision](../output/pdf/revisions/2026-10-16-without-figures/Consequa-X_IEEE_Paper.pdf)
+and its original quality receipt remain preserved separately.
 This artifact check does not replace final independent human checking or
 establish venue-specific submission compliance.
+
+Four [vector figures](figures/README.md) now show evidence flow, an illustrative
+timeout/retry sequence, the complete repeated-study branch inventory, and the
+coverage/precision/detection tradeoff. Their editable assets, generating scripts
+and input/output hashes are retained. The empirical plots use the existing
+audited study; they add no sampling or model calls. Unavailable controls remain
+visible without numerical markers. All four original tables are retained.
 
 The paper's contribution is the implemented evidence/intervention protocol and
 its audited behavior. It describes existing contrastive and Shapley methods as

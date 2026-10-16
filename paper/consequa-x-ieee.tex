@@ -2,6 +2,8 @@
 \documentclass[conference]{IEEEtran}
 \usepackage{amsmath,amssymb}
 \usepackage{newtxtext,newtxmath}
+\usepackage{graphicx}
+\graphicspath{{paper/figures/}{figures/}}
 \usepackage{booktabs}
 \usepackage{balance}
 \usepackage{url}
@@ -68,6 +70,18 @@ attempts, responses, assessments, independent readback, conclusions and origin;
 complete refusal records; and (3) audited evidence exposing uncertainty and
 reporting limits in specified synthetic and exploratory local-model settings.
 It presents a protocol/software artifact rather than a superiority comparison.
+Figure~\ref{fig:architecture} separates the captured-evidence core from the
+explicitly invoked research replay path.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{diagram-evidence-architecture.pdf}
+\caption{Evidence flow and trust boundaries. Application verifiers interpret
+independent readback; explanations use captured evidence. Explicitly invoked
+replay can supply estimates, while evaluator truth remains audit-only. Source
+trust and domain semantics remain application responsibilities.}
+\label{fig:architecture}
+\end{figure*}
 
 \section{Related Work}
 Causal Agent Replay (CAR) performs same-policy interventions on recorded
@@ -112,6 +126,19 @@ and completeness yields unknown rather than a confident absence claim.
 Source authority, scope, completeness and watermark declarations remain trusted
 adapter inputs. Schemas and hashes validate structure and changed bytes, not
 source authenticity or real transactional guarantees.
+Figure~\ref{fig:timeout} illustrates why a response and a reported assessment
+cannot substitute for a horizon-covering outcome observation.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{diagram-timeout-retry.pdf}
+\caption{Illustrative timeout-after-commit sequence. A committed effect precedes
+a timeout and reported failure. An unsafe retry creates a duplicate; reusing the
+same provider-scoped idempotency key and payload preserves one effect. Complete
+final readback covers the stability horizon. Arrows show event order, and times
+are illustrative rather than sampled observations.}
+\label{fig:timeout}
+\end{figure*}
 
 \subsection{Reusable application boundary}
 Applications can supply an explicit read-only verifier through
@@ -361,6 +388,19 @@ The run retained all 655,360 branches: 536,150 completed, 37,423 invalid,
 6,144 factual calls, and zero language-model calls. On-reach execution recorded
 37,392 branches with inactive requested holds; these are normal-termination
 records, distinct from strict invalidity and budget exhaustion.
+Figure~\ref{fig:branches} retains both games and every branch status, displaying
+inactive holds separately from the mutually exclusive status partition.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{data-branch-disposition.pdf}
+\caption{Disposition of all planned branches across eight mechanisms and two
+games: 40,960 slots per row. Completed execution includes unknown target
+evidence and known violations; it does not establish an available coefficient.
+Failed and unstarted budget-control slots remain visible through exact counts.
+Inactive holds are a subset of completed branches, shown separately.}
+\label{fig:branches}
+\end{figure*}
 
 A standalone auditor importing no framework implementation passed 44,698,925
 assertions over the retained trials, branches, 4,210 complete traces and all
@@ -393,8 +433,23 @@ Four-call cap $(0.5,0.5)$ & 0.375 & 0 ; 128 & 0/0 ; 0/0 & --- & ---\\
 \end{tabular}
 \end{table*}
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{data-interval-tradeoffs.pdf}
+\caption{On-reach global-consequence retry coefficient for all eight cases,
+using identical draws for both interval methods. A/R denotes available and
+population-reference-eligible counts, each from 128 planned trials. Coverage
+and flag whiskers are 95\% Wilson uncertainty for repeated-trial rates, not
+coefficient intervals. Filled flag markers indicate correct directional
+detection; open markers indicate false nonzero flags for zero-reference
+controls. Undefined evidence and budget refusals have no zero-valued markers.}
+\label{fig:tradeoffs}
+\end{figure*}
+
 Table~\ref{tab:repeated} reports every declared mechanism for one specified
-target and position, including unavailable controls. At $(p,q)=(0.5,0.5)$,
+target and position, including unavailable controls.
+Figure~\ref{fig:tradeoffs} places coverage beside interval width and detection
+to expose their tradeoff without pooling targets or cases. At $(p,q)=(0.5,0.5)$,
 the shared retry estimate had bias $-0.00269$ and RMSE 0.0611. Normal coverage
 118/128 has a 95\% Wilson interval $[0.862,0.957]$; 128/128 has
 $[0.971,1]$, not proof of perfect population coverage. The conservative
@@ -531,8 +586,7 @@ and audit scripts are retained for review. Final human checking of annotations,
 manuscript, code, references and submission requirements remains required before
 submission and is the authors' responsibility.
 
-\clearpage
-\balance
+\newpage
 \begin{thebibliography}{9}
 \bibitem{car} J. Shah, ``Causal Agent Replay: Counterfactual Attribution for
 LLM-Agent Failures,'' arXiv:2606.08275, v1, Jun. 2026.

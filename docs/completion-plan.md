@@ -75,15 +75,20 @@ or superiority.
 
 The independently checked results are integrated into the completed
 protocol/software manuscript. The
-[six-page IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
+[eight-page illustrated IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
 and every rendered page passed visual review on 16 October 2026. Its
 [QA receipt](../output/pdf/qa.json) binds the PDF hash and exact
-[editable IEEE source](../paper/consequa-x-ieee.tex) at manuscript revision
-`01d0709ad98acf27c4e12c0899208c28417d46a9`; fonts are embedded and checks found
+[editable IEEE source](../paper/consequa-x-ieee.tex) and four
+[vector figures](../paper/figures/README.md); fonts are embedded and checks found
 no missing characters, unresolved references or overfull boxes. Scripts,
 protocols and data retain their actual source revisions. The public source
 archive distributes software/examples/documentation; retained datasets and the
 IEEE manuscript stay in the private repository.
+
+The [hard-launch plan](launch-readiness.md) describes proposed usability and
+adoption improvements for a bounded next release: an offline report with minimal
+disclosure, public onboarding/support and real additional-platform checks.
+Those features are not included in the published 1.0.0 package.
 
 Unimplemented joint context/fault methods, matched live baselines and broad
 held-out generalization will be stated as future work. The manuscript will not

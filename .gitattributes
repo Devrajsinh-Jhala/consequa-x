@@ -1,2 +1,3 @@
 # Export manifests hash exact bytes; preserve snapshots on every platform.
-output/** -text
+# Generated evidence retains original diagnostic whitespace as well.
+output/** -text -whitespace

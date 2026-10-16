@@ -1,22 +1,42 @@
 {
   "artifacts": [
     {
-      "bytes": 45544,
+      "bytes": 46511,
       "path": "compile.log",
+      "sha256": "c4f2d624f02fef74120c6e70c30d0738a668d08a76c8d797311c7813e4865540"
+    },
+    {
+      "bytes": 256752,
+      "path": "Consequa-X_IEEE_Paper.pdf",
+      "sha256": "c47a99e9690c040148b135f792b7a5c1ce4ba0a442dbf11160ceeecf7c9e4ec6"
+    },
+    {
+      "bytes": 6320,
+      "path": "qa.json",
+      "sha256": "62c4dcf9dded4a89b941d9d7759b558a4325591afc998afd974811122701c18c"
+    },
+    {
+      "bytes": 45544,
+      "path": "revisions/2026-10-16-without-figures/compile.log",
       "sha256": "fc4b3235f69f41d686cfe364a75ce304dbc89aac9cee055d3944cb53d6e78614"
     },
     {
       "bytes": 84004,
-      "path": "Consequa-X_IEEE_Paper.pdf",
+      "path": "revisions/2026-10-16-without-figures/Consequa-X_IEEE_Paper.pdf",
       "sha256": "6b22124d81b17d0d0e2608183cfd8fc015449d912fc87340e82a3f1a67899a98"
     },
     {
+      "bytes": 609,
+      "path": "revisions/2026-10-16-without-figures/manifest.json",
+      "sha256": "db66d8b4231d59641ee19bfde58915838c1376dd3e569f7c3d9543291c1ffa1e"
+    },
+    {
       "bytes": 3503,
-      "path": "qa.json",
+      "path": "revisions/2026-10-16-without-figures/qa.json",
       "sha256": "543b8d3466ed3615db6143d6cbe454678f61c063e7447c48f10a740850e8b58b"
     }
   ],
   "completed": true,
-  "source_revision": "01d0709ad98acf27c4e12c0899208c28417d46a9",
-  "status": "checked_pdf"
+  "source_revision": "af0b537b6e18538ee73644834e452ad8ffdd31b5",
+  "status": "checked_illustrated_pdf"
 }

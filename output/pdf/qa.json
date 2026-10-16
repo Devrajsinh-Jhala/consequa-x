@@ -11,8 +11,15 @@
     "/AKHCZK+NewTXMI": true,
     "/BZIVMZ+TeXGyreTermesX-BoldItalic-Identity-H": true,
     "/CAFSZL+txmiaX": true,
+    "/CTBGDV+TimesNewRomanPS-BoldMT": true,
     "/DDIEWW+TeXGyreTermesX-Regular": true,
+    "/DNRANN+STIXGeneral-Regular": true,
+    "/DYTMNF+STIXGeneral-Regular": true,
+    "/EFEWBW+TimesNewRomanPSMT": true,
+    "/FDABPN+TimesNewRomanPSMT": true,
     "/FKPJSN+NewTXMI7": true,
+    "/GLXCWF+STIXGeneral-Regular": true,
+    "/GYFKBS+TimesNewRomanPS-BoldMT": true,
     "/IHAIZV+TeXGyreTermesX-Regular-Identity-H": true,
     "/IXFAWU+TeXGyreTermesX-Bold-Identity-H": true,
     "/JAGKKY+txexs": true,
@@ -21,9 +28,56 @@
     "/VDVGTR+txsys": true,
     "/YEUUOC+LMMono10-Regular-Identity-H": true
   },
+  "figure_rendering": "vector; no raster image XObjects",
+  "figures": 4,
+  "font_check_scope": "page and recursively nested Form XObject resources",
   "font_substitution_warnings": 0,
+  "frozen_inputs": [
+    {
+      "bytes": 34574,
+      "path": "paper/consequa-x-ieee.tex",
+      "sha256": "f79c774265627fe0308175b1c66b7b12fb58da16724dc0f86a59e45895b4ae56"
+    },
+    {
+      "bytes": 34641,
+      "path": "paper/manuscript.md",
+      "sha256": "8c5e1337d07d727eb61e17d12f2959dfe7fc22d8ba55f3fab774a9ade93cad72"
+    },
+    {
+      "bytes": 41305,
+      "path": "paper/figures/data-figures.json",
+      "sha256": "d6393f963656a39d4079d9497b85472d9991580f646f43e65c02a2770329ee87"
+    },
+    {
+      "bytes": 5282,
+      "path": "paper/figures/diagram-figures.json",
+      "sha256": "46a64218c7713f4dfd7cd298f79824e2b772e5dd3c06f4a6521ce1bf5fa0a7d6"
+    },
+    {
+      "bytes": 58092,
+      "path": "paper/figures/diagram-evidence-architecture.pdf",
+      "sha256": "971f659f941029f286f2933d010800978ddbcafe02466df27b9759da227f95aa"
+    },
+    {
+      "bytes": 60890,
+      "path": "paper/figures/diagram-timeout-retry.pdf",
+      "sha256": "5c1c49a94bb962966449f565e491beca890b9631d3074d6cac22edb0bca19ad1"
+    },
+    {
+      "bytes": 39677,
+      "path": "paper/figures/data-branch-disposition.pdf",
+      "sha256": "1b5124a03dd213c9eb6d66c2df19533ed13b83718ed03d1e571804ae312a4e8a"
+    },
+    {
+      "bytes": 19395,
+      "path": "paper/figures/data-interval-tradeoffs.pdf",
+      "sha256": "fe3219a7e66d5a4b93b6652bf04d51cb9b3ba8758177c37d7b520bfc635c5630"
+    }
+  ],
   "github_actions_used": false,
   "missing_characters": 0,
+  "new_model_calls": 0,
+  "new_policy_calls": 0,
   "nonfatal_warnings": "Underfull boxes in bibliography URL paragraph",
   "overfull_boxes": 0,
   "page_size_points": [
@@ -31,58 +85,76 @@
     792
   ],
   "page_text_lengths": [
-    5573,
-    5718,
-    5316,
-    6461,
-    5465,
-    1333
+    5545,
+    3663,
+    3605,
+    5447,
+    6149,
+    3636,
+    4207,
+    2509
   ],
-  "pages": 6,
+  "pages": 8,
   "pdf": {
-    "bytes": 84004,
+    "bytes": 256752,
     "path": "Consequa-X_IEEE_Paper.pdf",
-    "sha256": "6b22124d81b17d0d0e2608183cfd8fc015449d912fc87340e82a3f1a67899a98"
+    "sha256": "c47a99e9690c040148b135f792b7a5c1ce4ba0a442dbf11160ceeecf7c9e4ec6"
   },
-  "recorded_at_utc": "2026-10-16T16:09:36.258902+00:00",
+  "prior_revision": {
+    "all_four_original_files_preserved": true,
+    "directory": "output/pdf/revisions/2026-10-16-without-figures"
+  },
+  "recorded_at_utc": "2026-10-16T16:47:30.600588+00:00",
   "render_command": "pdftoppm -scale-to 1400 -png",
   "rendered_page_reviews": [
     {
       "page": 1,
-      "sha256": "f39c6d9e88d4714fa739dec6d556a78d01434f66c54612243901ec149e49c78e",
-      "visual_review": "passed: readable text/math/tables; no clipping, overlap or orphaned reference heading"
+      "sha256": "71a550acad64367748fab61365ba327b39ebcfa16955aed1da75381560dd92ef",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
     },
     {
       "page": 2,
-      "sha256": "b5686934397938b67a6fe9544e17a5e2911e46f3f20f1803aed83e2de217d798",
-      "visual_review": "passed: readable text/math/tables; no clipping, overlap or orphaned reference heading"
+      "sha256": "72b3ae46cfeb7efa57ea1049f8d2b4b91c71c07f6d9eeac5e8eb5e4b92d02aa8",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
     },
     {
       "page": 3,
-      "sha256": "e32f8c12c5aa40d6f5d152a3412c7d8c03e50b35268ba75c8aa5179203bdccfe",
-      "visual_review": "passed: readable text/math/tables; no clipping, overlap or orphaned reference heading"
+      "sha256": "b8bb8919a7913ba804cc675d85fa48c20f5e95572624d08fa6db4d6e1c0b1228",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
     },
     {
       "page": 4,
-      "sha256": "585439cb6bae430efc78e45be866dc5fa06a12c2e12ccf60da34399bb1dbfaf1",
-      "visual_review": "passed: readable text/math/tables; no clipping, overlap or orphaned reference heading"
+      "sha256": "dd3f0ede26539a4817b1f59f1caa7212e9b599ef6203ae91f6c01e77c75b14ec",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
     },
     {
       "page": 5,
-      "sha256": "98a1956a62524d055aa44bc73d2b824a5eabccca92ad01406674b13ed71512de",
-      "visual_review": "passed: readable text/math/tables; no clipping, overlap or orphaned reference heading"
+      "sha256": "74f7b4db51fb6060e423db35e7417819770c26b1764cf6fc0fd8f71ce43225a2",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
     },
     {
       "page": 6,
-      "sha256": "67f4c2f6d26bdd5e24aea7d4b628d210ee98c068edc83deba08ee79ef713b7ce",
-      "visual_review": "passed: readable text/math/tables; no clipping, overlap or orphaned reference heading"
+      "sha256": "e6e10943a2abbb0442ea961aa10111b6ad9d781f8a2a7e0ba3f2fdb21ec06e2f",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
+    },
+    {
+      "page": 7,
+      "sha256": "7dcf409718ce336561efc05e15d708f4d3189faadeabe94f36f18793062bee46",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
+    },
+    {
+      "page": 8,
+      "sha256": "ca2435f6adb1fc23f8d14082cfb551c8c455f9a144ec53fc74704ee44d0c346b",
+      "visual_review": "passed: readable text, math, tables and vector figures; no clipping, overlap or orphaned reference heading"
     }
   ],
-  "review_method": "AI-assisted page-by-page rendered inspection and PDF/text/font checks",
+  "review_method": "AI-assisted page-by-page rendered inspection and PDF/text/font checks; final renderings byte-match inspected pages",
+  "runtime_changes": false,
   "scope": "Generic IEEE conference protocol/software manuscript; venue selection, independent human checking and actual submission remain future maintainer steps.",
   "source_path": "paper/consequa-x-ieee.tex",
-  "source_revision": "01d0709ad98acf27c4e12c0899208c28417d46a9",
-  "source_sha256": "254d792751809a818fd5785111f64819d952819f277f860fb635652ab8af1a9c",
+  "source_revision": "af0b537b6e18538ee73644834e452ad8ffdd31b5",
+  "source_sha256": "f79c774265627fe0308175b1c66b7b12fb58da16724dc0f86a59e45895b4ae56",
   "status": "passed",
+  "tables": 4,
   "unresolved_references": 0
 }

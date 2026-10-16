@@ -21,8 +21,9 @@ independent readback and executes isolated intervention replays with explicit
 unknown, invalid and budget-exhausted outcomes. The contribution is a software
 and evidence protocol; its contrastive and permutation Shapley estimators adapt
 existing methods. Audited synthetic studies retain 1,280 original calibration
-trials and 384 fresh shared-draw comparisons. Several original nominal 95\%
-intervals undercovered specified effects. Conservative alternatives retain
+trials, 384 fresh shared-draw comparisons and 2,048 repeated physical sampling
+trials. Several original nominal 95\% intervals undercovered specified effects.
+Conservative alternatives retain
 uncertainty at homogeneous samples but have substantial precision and
 detection costs. Physical refund enumeration shows different initial-action
 and consequence interactions under an explicit on-reach positional game.
@@ -243,12 +244,18 @@ declared mechanism, not fitted to sampled outcomes. A call cap can refuse the
 finite estimate despite a defined ideal reference. Unknown evidence or strict
 unreachable-held decisions do not acquire numeric references from these forms.
 
+A standalone standard-library check uses exact rational arithmetic on a
+five-by-five $(p,q)$ grid, two idempotency settings and two targets: 100 control
+cases. It checks all coalition values and six permutation orders against these
+forms without importing the framework or reading sampled study data. This
+checks the stated mathematical law, not simulator execution or sampling validity.
+
 \section{Audited Evaluation}
 \subsection{Original calibration and finite analysis}
 The original development study retained 1,280 trials across ten specified
 mechanisms, with 128 repetitions. Of 223,232 planned branches, 198,690
 completed, 4,062 were invalid, 256 failed at the deliberate cap and 20,224
-were unstarted. Independent auditors checked raw evidence, seeded outcomes,
+were unstarted. Standalone audit scripts checked raw evidence, seeded outcomes,
 statistics and accounting. Table~\ref{tab:original} reports a preselected
 protective-stop consequence position with 128 available, reference-eligible
 estimates in each row.
@@ -335,6 +342,93 @@ the derived canonical inventory. Two sampler integration controls exercised
 32 pairs and 32 endpoint draws, with eighteen coefficients within a broad
 0.3 regression tolerance. That tolerance alone is not a calibration result.
 
+\subsection{Repeated physical sampling}
+A separately frozen protocol exercised the actual permutation sampler across
+all eight declared physical mechanisms, both games and 128 fresh repetitions
+per mechanism/game: 2,048 trials. Each trial planted the same three factual
+decisions and used 32 forward/reverse permutation pairs, one draw per coalition
+evaluation and 32 independent draws per endpoint, yielding 320 planned branches.
+The planted factual path was specified rather than selected by seed search.
+The cap was 1,000 actual calls including three factual calls, except for the
+four-call budget control. Collection used normal intervals; Hoeffding and
+exact-binomial endpoint differences were rescored from identical draws without
+additional calls, altered points or redrawn refusals. The installed checkpoint,
+precollection protocol, all compressed trial/branch rows and replicate-zero
+full evidence with separately stored evaluator truth are retained.
+
+The run retained all 655,360 branches: 536,150 completed, 37,423 invalid,
+256 failed and 81,531 unstarted. It consumed 628,535 scripted calls, including
+6,144 factual calls, and zero language-model calls. On-reach execution recorded
+37,392 branches with inactive requested holds; these are normal-termination
+records, distinct from strict invalidity and budget exhaustion.
+
+A standalone auditor importing no framework implementation passed 44,698,925
+assertions over the retained trials, branches, 4,210 complete traces and all
+summary rows. Its receipt binds the frozen source revision and original
+52-file manifest. Derived tables retain every row separately from that sealed
+collection; auditing made no generation calls.
+
+\begin{table*}[t]
+\caption{All eight declared cases: on-reach retry coefficient for global
+consequence, 128 planned repetitions per row. N/H denotes normal/Hoeffding.
+Availability A and population-reference eligibility R each have denominator 128.
+Flags denote correct directional detection for nonzero references and false
+nonzero flags for zero references. Dashes denote undefined quantities;
+0/0 denotes an undefined coverage rate.}
+\label{tab:repeated}
+\centering\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+Case $(p,q)$ or control & Reference & A ; R & Covered N / H & Mean width N / H & Flags N / H\\
+\midrule
+Unsafe $(0.5,0.5)$ & 0.375 & 128 ; 128 & 118/128 ; 128/128 & 0.226 / 0.960 & 128/128 ; 8/128\\
+Unsafe $(0.2,0.8)$ & 0.120 & 128 ; 128 & 124/128 ; 128/128 & 0.154 / 0.960 & 123/128 ; 0/128\\
+Unsafe $(0.8,0.2)$ & 0.720 & 128 ; 128 & 123/128 ; 128/128 & 0.218 / 0.773 & 128/128 ; 128/128\\
+Deterministic $(1,1)$ & 0 & 128 ; 128 & 128/128 ; 128/128 & 0 / 0.960 & 0/128 ; 0/128\\
+Idempotent $(0.5,0.5)$ & 0 & 128 ; 128 & 123/128 ; 128/128 & 0.244 / 0.960 & 5/128 ; 0/128\\
+No provenance $(0.5,0.5)$ & 0.375 & 128 ; 128 & 120/128 ; 128/128 & 0.228 / 0.960 & 128/128 ; 7/128\\
+Lagged readback $(0.5,0.5)$ & --- & 0 ; 0 & 0/0 ; 0/0 & --- & ---\\
+Four-call cap $(0.5,0.5)$ & 0.375 & 0 ; 128 & 0/0 ; 0/0 & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Table~\ref{tab:repeated} reports every declared mechanism for one specified
+target and position, including unavailable controls. At $(p,q)=(0.5,0.5)$,
+the shared retry estimate had bias $-0.00269$ and RMSE 0.0611. Normal coverage
+118/128 has a 95\% Wilson interval $[0.862,0.957]$; 128/128 has
+$[0.971,1]$, not proof of perfect population coverage. The conservative
+intervals sharply reduced weak-effect sign detection. For the consequence
+stop dummy, normal false nonzero flags ranged from 0 to 14/128 across the six
+assessable mechanisms; Hoeffding flags were 0/128 in each. The deterministic
+zero-reference case yielded 128 normal point intervals; their correctness in
+that case does not validate point intervals for stochastic outcomes.
+
+Endpoint behavior was separately assessed. For the on-reach unsafe
+$(0.2,0.8)$ global-consequence endpoint,
+normal coverage was 92/128 (Wilson $[0.635,0.789]$), with 35 point intervals
+and mean width 0.114. Exact-marginal differences covered 128/128, with mean
+width 0.319. These finite results demonstrate the declared precision tradeoff;
+they do not establish simultaneous coverage or calibration under live-model
+dependence.
+
+In the on-reach game, every lagged-consequence coefficient was refused as
+unknown; every budget
+coefficient was refused after unstarted slots, despite the latter's defined
+ideal reference. Removing provenance preserved global-consequence availability
+but refused all 128 linked-consequence coefficient vectors. All nondeterministic strict
+coefficient vectors were unavailable and their population games undefined;
+the fully deterministic strict control remained defined. One finite strict
+interaction point at $(0.8,0.2)$ did not make that population interaction
+defined. One strict linked-consequence endpoint without provenance was numeric
+but reference-ineligible, giving coverage 0/0 rather than an accuracy result.
+Pooled-coalition interaction diagnostics have no confidence interval
+and supply no coverage or sign-detection result. The full summary retains
+separate availability, reference eligibility, bias/RMSE, coverage uncertainty,
+width, flags, endpoints, interactions and refusal rows for every target,
+position, game and interval variant. Reused targets and variants are not
+independent replications.
+
 \subsection{Exploratory local-model validation}
 A frozen installed Qwen3 4B checkpoint completed six validation cases,
 two repetitions and two unchanged prompt profiles, using 59 actual calls
@@ -368,13 +462,15 @@ the original profile correctly described ineligibility but issued a refund;
 its failure assessment contradicted achieved effect. Effect satisfaction and
 eligibility-policy correctness are distinct targets.
 
-A separate single unblinded manual reading annotated affirmative processing
-clauses in 10/12 original and 7/12 revised final rationales. Five of those
+A separate unblinded annotation pass within the AI-assisted development
+workflow marked affirmative processing clauses in 10/12 original and 7/12
+revised final rationales. Five of those
 seven revised rationales also hedged independent verification. A statement
 that a second attempt committed can be literally true while two effects
-violate an exactly-one task. These annotations are descriptive, without an
-inter-rater reliability result; unknown structured fields do not ensure prose
-abstention. The saved auditor passed 2,227 assertions and rejected seven
+violate an exactly-one task. These annotations are descriptive; no independent
+human verification or inter-rater reliability has been established. Unknown
+structured fields do not ensure prose abstention. The saved auditor passed
+2,227 assertions and rejected seven
 corrupted smoke copies without additional generation. Fixed profile order,
 tiny sample size, shared fault conditions and an exposed validation family
 limit interpretation. The held-out reserve was not generated.
@@ -430,11 +526,12 @@ identified rather than redistributed.
 
 \section*{Acknowledgment}
 Generative AI assistance was used for software development, research-source
-inspection and manuscript drafting. The empirical records and audit scripts
-are retained for review. Human authors are responsible for checking the final
-manuscript, code, references and submission requirements. No institutional
-affiliation, funding or venue acceptance is asserted here.
+inspection, rationale annotation and manuscript drafting. The empirical records
+and audit scripts are retained for review. Final human checking of annotations,
+manuscript, code, references and submission requirements remains required before
+submission and is the authors' responsibility.
 
+\clearpage
 \balance
 \begin{thebibliography}{9}
 \bibitem{car} J. Shah, ``Causal Agent Replay: Counterfactual Attribution for

@@ -1,6 +1,7 @@
 # Python stable release readiness
 
-Status updated 15 October 2026 after public registry verification. The stable
+Status updated 16 October 2026; public release verification completed 15 October
+2026. The stable
 evidence core is complete and [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/).
 Both reviewed files were independently downloaded and hash/size checked, and a
 fresh public-registry installation passed its offline smoke checks. The GitHub
@@ -104,13 +105,27 @@ abstained in every structured status: its conditional contradiction rate is
 undefined, and some rationales still made positive processing claims. No
 improved accuracy, held-out generalization or baseline superiority is established.
 
-The new repeated physical-interaction study is in progress under a predeclared
-2,048-trial protocol, totaling 655,360 planned branches. It must finish and pass
-its independent audit before its results are described as achieved. It calls
-synthetic policies, not a language model. [Completion scope](completion-plan.md)
-tracks the separate IEEE manuscript, source, references and checked-PDF gates.
-A stable software release does not establish a new causal estimator or a
-calibrated live-model confidence claim.
+The repeated physical-interaction collection completed on 15 October 2026 under
+its [predeclared protocol](../output/interaction-sampling-2026-10-15/protocol.json),
+retaining all 2,048 trials and 655,360 planned branch slots. Its
+[summary](../output/interaction-sampling-2026-10-15/summary.json) and
+[execution receipt](../output/interaction-sampling-2026-10-15-execution.json)
+record 628,535 scripted policy calls, zero model calls and zero extra comparison
+calls at frozen source `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`. The
+[independent saved-evidence audit](../output/interaction-sampling-audits-2026-10-15/independent.json)
+passed 44,698,925 assertions, including every planned trial/branch and 4,210
+preselected complete traces. The
+[derived findings](../output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
+and complete tables retain coverage with width, detection, population eligibility
+and refusals. These research records remain separate from the sealed public
+release inventory and cannot change its hashes.
+
+[Completion scope](completion-plan.md) tracks the separate IEEE paper gates.
+The [editable source](../paper/consequa-x-ieee.tex) is being finalized; compilation
+and visual review of `output/pdf/Consequa-X_IEEE_Paper.pdf` remain pending. A
+stable software release does not establish a new causal estimator, held-out
+superiority or calibrated live-model confidence. Actual venue selection, final
+human checking and submission remain maintainer decisions.
 
 No npm package is published. An optional later adapter needs a declared API,
 shared schema/conformance fixtures, cross-language integer/identity semantics,

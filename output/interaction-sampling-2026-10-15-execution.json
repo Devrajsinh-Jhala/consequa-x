@@ -1,0 +1,25 @@
+{
+  "actual_policy_calls": 628535,
+  "argv": [
+    "output/interaction-sampling-checkpoint-2026-10-15/run_interaction_sampling.py",
+    "--source-revision",
+    "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+    "--workers",
+    "4",
+    "--output",
+    "output/interaction-sampling-2026-10-15"
+  ],
+  "artifact_manifest_sha256": "3ee00dfb6ac66db219bc25b1248a1645b8f86deeecae6c9c46a8419cc1235af4",
+  "elapsed_seconds": 4917.446375299998,
+  "finished_utc": "2026-10-15T15:04:21.570898+00:00",
+  "generation_provider": "synthetic",
+  "model_calls": 0,
+  "module_file": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\study-v1-env\\Lib\\site-packages\\consequa_x\\benchmark\\interaction_sampling.py",
+  "planned_branches": 655360,
+  "planned_trials": 2048,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "started_utc": "2026-10-15T13:42:25.652588+00:00",
+  "workers": 4
+}

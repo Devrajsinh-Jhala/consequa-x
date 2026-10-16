@@ -5,11 +5,12 @@ The maintainer asked to finish the framework and paper beyond an alpha on
 implementation is optional future work. The paper will use the standard IEEE
 conference format until a specific venue is selected.
 
-Status updated 15 October 2026 after release verification. The stable evidence
+Status updated 16 October 2026. The stable evidence
 core is complete: [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/),
 with both published artifact downloads independently hash/size checked and a
 fresh registry installation verified. The repository remains private. The
-retained study and IEEE paper completion work continue separately below.
+retained collection and its independent audit are complete; IEEE paper validation
+is the remaining production gate below.
 
 ## Stable framework
 
@@ -53,17 +54,30 @@ describe the actual implemented scope.
 
 The repeated physical-interaction sampling implementation, deterministic
 serial/parallel conformance checks and independent auditor are complete. A
-predeclared 2,048-trial retained run is in progress, with 655,360 planned branch
-slots, explicit references/refusals and no language-model calls. The frozen
-protocol is retained in `output/interaction-sampling-2026-10-15/protocol.json`;
-no completed or audited result is claimed yet.
+predeclared run completed collection on 15 October 2026, retaining all 2,048
+trials and 655,360 planned branch slots. It used 628,535 scripted policy calls,
+zero model calls and zero additional comparison calls. The
+[protocol](../output/interaction-sampling-2026-10-15/protocol.json),
+[summary](../output/interaction-sampling-2026-10-15/summary.json) and
+[execution receipt](../output/interaction-sampling-2026-10-15-execution.json)
+retain source `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9` and the installed
+checkpoint identity. Every planned slot remains present, including invalid,
+failed and unstarted outcomes. The
+[independent saved-evidence audit](../output/interaction-sampling-audits-2026-10-15/independent.json)
+passed 44,698,925 assertions on all planned trials/branches and 4,210 preselected
+complete traces. Its receipt binds the sealed export manifest. The
+[derived findings](../output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
+and complete tables preserve availability, population eligibility, interval
+coverage, width, detection and refusals; they do not establish broad calibration
+or superiority.
 
-Finish that run without replacement draws, independently audit its saved
-evidence, and integrate the achieved results into the manuscript. Complete the
-discussion, refresh primary related-work sources, and compile/render the editable
-IEEE LaTeX to a checked PDF. Retain scripts, protocols and data with their actual
-source revisions. The source archive distributes software/examples/documentation;
-retained datasets and the IEEE manuscript stay in the private repository.
+Finish integrating the independently checked results into the protocol/software
+manuscript and complete PDF validation. The editable
+[IEEE source](../paper/consequa-x-ieee.tex) is being finalized; compilation and
+visual review of `output/pdf/Consequa-X_IEEE_Paper.pdf` are pending. Scripts,
+protocols and data retain their actual source revisions. The public source
+archive distributes software/examples/documentation; retained datasets and the
+IEEE manuscript stay in the private repository.
 
 Unimplemented joint context/fault methods, matched live baselines and broad
 held-out generalization will be stated as future work. The manuscript will not

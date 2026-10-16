@@ -1,0 +1,17 @@
+calls.additional_comparison,calls.continuations,calls.factual,calls.total,coalition_game,inactive_held_branches,mechanism,planned_branches,planned_trials,status_counts.completed,status_counts.failed,status_counts.invalid,status_counts.unstarted
+0,42031,384,42415,strict,0,refund-p50-q50,40960,128,34828,0,6132,0
+0,42142,384,42526,on_reach,6182,refund-p50-q50,40960,128,40960,0,0,0
+0,36243,384,36627,strict,0,refund-p20-q80,40960,128,33741,0,7219,0
+0,36304,384,36688,on_reach,7212,refund-p20-q80,40960,128,40960,0,0,0
+0,45413,384,45797,strict,0,refund-p80-q20,40960,128,35402,0,5558,0
+0,45433,384,45817,on_reach,5492,refund-p80-q20,40960,128,40960,0,0,0
+0,61440,384,61824,strict,0,refund-p100-q100,40960,128,40960,0,0,0
+0,61440,384,61824,on_reach,0,refund-p100-q100,40960,128,40960,0,0,0
+0,41819,384,42203,strict,0,idempotent-p50-q50,40960,128,34781,0,6179,0
+0,41994,384,42378,on_reach,6123,idempotent-p50-q50,40960,128,40960,0,0,0
+0,41857,384,42241,strict,0,unknown-provenance-p50-q50,40960,128,34818,0,6142,0
+0,42045,384,42429,on_reach,6187,unknown-provenance-p50-q50,40960,128,40960,0,0,0
+0,41934,384,42318,strict,0,lagged-readback-p50-q50,40960,128,34767,0,6193,0
+0,42040,384,42424,on_reach,6196,lagged-readback-p50-q50,40960,128,40960,0,0,0
+0,128,384,512,strict,0,budget-p50-q50,40960,128,64,128,0,40768
+0,128,384,512,on_reach,0,budget-p50-q50,40960,128,69,128,0,40763

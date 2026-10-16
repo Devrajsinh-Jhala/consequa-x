@@ -1,11 +1,12 @@
 # Research and release roadmap
 
-Updated 15 October 2026 after public release verification. The stable evidence
+Updated 16 October 2026; public release verification completed 15 October 2026.
+The stable evidence
 core is complete and [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/).
 Runtime source remains frozen at `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`;
 build source is `85ce6c316838c995782aadc8c10770acc708339b`. The current milestone
-is completing the retained physical-interaction study and scoped IEEE
-protocol/software paper. The research contribution does not depend on claiming
+is finalizing the scoped IEEE protocol/software paper with the completed,
+independently audited physical-interaction study. The research contribution does not depend on claiming
 a new estimator or empirical superiority.
 
 The initial literature assessment is in `output/research/Consequa-X_Research_Assessment.md` (reviewed 4 October 2026). Before a submission, refresh paper versions and related work, particularly CausalLoss-Fin, CAR, PCCC, FinalityBench and ConsequenceBench.
@@ -39,13 +40,24 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 - Separate strict and [on-reach positional games](decision-shapley.md), plus [physical refund selection/retry interactions](refund-interactions.md), idempotency and evidence/budget controls. Exact component enumeration establishes the declared physical game; repeated permutation-sampler calibration remains separate.
 - Repeated [physical-interaction sampling](interaction-sampling.md), bounded
   serial/parallel collection, same-draw uncertainty comparisons and an independent
-  semantic auditor. Implementation/conformance checks are complete; the retained
-  2,048-trial study is running and has no completed audit or result claim yet.
+  semantic auditor. The retained collection completed on 15 October 2026:
+  all 2,048 trials and 655,360 planned branch slots, with 628,535 scripted policy
+  calls, zero model calls and zero extra comparison calls. The
+  [protocol](../output/interaction-sampling-2026-10-15/protocol.json),
+  [summary](../output/interaction-sampling-2026-10-15/summary.json) and
+  [execution receipt](../output/interaction-sampling-2026-10-15-execution.json)
+  retain frozen source `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`.
+  The [independent audit](../output/interaction-sampling-audits-2026-10-15/independent.json)
+  passed 44,698,925 assertions, covering every planned trial/branch and 4,210
+  preselected complete traces. The
+  [derived findings](../output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
+  retain complete result tables and explicit availability/refusal denominators.
 - A [working manuscript and evidence ledger](../paper/README.md), with completed preliminary evidence and pending held-out, matched-baseline and joint-fault experiments identified.
 - A [24-episode local Qwen3 validation](../output/local-validation-2026-10-14/FINDINGS.md)
   comparing both existing prompt profiles across six validation cases with
   59 actual model calls. Structured abstention, assessable-claim contradictions
-  and manual rationale clauses are reported separately; the held-out reserve
+  and unblinded rationale labels from the AI-assisted workflow are reported
+  separately; independent human verification is not established. The held-out reserve
   remains untouched.
 - [Reviewed alpha 2 distributions](../output/release-alpha-2026-10-14/README.md),
   bound to the final source revision, with local tests, strict metadata checks,
@@ -62,13 +74,16 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
 
 ## Current completion gates
 
-Complete the retained interaction run, independently audit every declared trial
-and denominator, and integrate the achieved results into the IEEE manuscript.
-Finalize its discussion and primary references and compile/render the paper.
+The retained interaction collection and independent saved-evidence audit are
+complete. Finish integrating the checked results into the IEEE manuscript and
+compile/render the paper. The [editable IEEE source](../paper/consequa-x-ieee.tex) is being
+finalized; compilation and visual review of
+`output/pdf/Consequa-X_IEEE_Paper.pdf` remain pending.
 The software release gates are complete; [publication](../output/release-1.0.0-2026-10-15/publication.json)
 and installation receipts preserve the achieved result. [Completion scope](completion-plan.md)
-tracks the remaining study, audit and paper gates. The 2,048-trial study is still
-running, and no completed sampling result is claimed yet.
+tracks the remaining paper gate. The audit establishes saved-data consistency
+under the declared mechanism and checking rules, not provider authenticity,
+held-out generalization or method superiority.
 
 ## Research after this protocol/software paper
 

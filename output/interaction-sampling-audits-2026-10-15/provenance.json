@@ -1,0 +1,22 @@
+{
+  "audit_receipt_sha256": "c8354412e873c4cc144676529d815360fb7fa91b77fddcebd2ef999bf2bcbfdb",
+  "findings_manifest_sha256": "9cf3489d9cfba114b789661bf1ada3153b46399e9437e9f2166925bcd47b8397",
+  "generation_calls": 0,
+  "jsonschema": "4.26.0",
+  "note": "Audit reconstructs seeded laws, receipts and statistics without framework imports or simulator/model calls. Postprocessing rehashes all sealed data before exporting complete tables.",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.14",
+  "status": "passed",
+  "study_manifest_sha256": "3ee00dfb6ac66db219bc25b1248a1645b8f86deeecae6c9c46a8419cc1235af4",
+  "study_source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "tools": {
+    "audit_interaction_sampling.py": {
+      "sha256": "cf750567b6a42a864d3e2408af9f128a817533316e7a1214ed8b1967a4590062",
+      "source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9"
+    },
+    "summarize_interaction_sampling.py": {
+      "sha256": "47f546acfba731695e2803b9f0fa9253ff470eb3a18a31ea728ce8e7d1420ab3",
+      "source_revision": "85ce6c316838c995782aadc8c10770acc708339b"
+    }
+  }
+}

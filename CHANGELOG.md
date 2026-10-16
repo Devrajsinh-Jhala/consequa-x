@@ -1,5 +1,23 @@
 # Changes
 
+## Post-release research update - 16 October 2026
+
+The predeclared physical-interaction study finished collection on 15 October
+2026 at frozen runtime source `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`.
+It retained all 2,048 trials and 655,360 planned branch slots, with 628,535 actual
+scripted policy calls, no model calls and no additional comparison calls.
+The [protocol](output/interaction-sampling-2026-10-15/protocol.json),
+[complete summary](output/interaction-sampling-2026-10-15/summary.json) and
+[execution receipt](output/interaction-sampling-2026-10-15-execution.json) retain
+the collection identity separately from the public stable release. The
+[independent audit](output/interaction-sampling-audits-2026-10-15/independent.json)
+passed 44,698,925 assertions, covering every planned trial/branch and 4,210
+preselected complete traces. The
+[derived findings](output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
+retain coverage, width, detection and refusal denominators. Final IEEE PDF
+validation is pending. These results do not establish held-out model
+performance, a new estimator or baseline superiority.
+
 ## 1.0.0 - 15 October 2026
 
 Runtime source is frozen at `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`.
@@ -38,7 +56,8 @@ build-time documentation.
 - Added `calibrate-interactions`, reproducible repeated physical refund sampling,
   same-draw uncertainty comparisons, bounded parallel execution, complete
   refusal/cost records and an independently implemented audit. The retained
-  2,048-trial run is in progress and its audit is pending as of 15 October 2026.
+  2,048-trial collection completed after the distribution-build checkpoint;
+  its later research status is recorded above without changing released bytes.
 
 The full frozen-source suite passed 1,480 tests and 240 subtests. Twenty
 additional stable-publisher tests passed; final installed-wheel Windows Python

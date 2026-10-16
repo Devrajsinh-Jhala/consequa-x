@@ -1,0 +1,30 @@
+{
+  "artifacts": [
+    {
+      "bytes": 391,
+      "path": "audit-stdout.log",
+      "sha256": "c8354412e873c4cc144676529d815360fb7fa91b77fddcebd2ef999bf2bcbfdb"
+    },
+    {
+      "bytes": 71928,
+      "path": "audit_interaction_sampling.py",
+      "sha256": "cf750567b6a42a864d3e2408af9f128a817533316e7a1214ed8b1967a4590062"
+    },
+    {
+      "bytes": 391,
+      "path": "independent.json",
+      "sha256": "c8354412e873c4cc144676529d815360fb7fa91b77fddcebd2ef999bf2bcbfdb"
+    },
+    {
+      "bytes": 1134,
+      "path": "provenance.json",
+      "sha256": "7ba3f7f9c9bab0aab724c80dcc584b958c319a84a849ba18f135e53d5768b94f"
+    },
+    {
+      "bytes": 21885,
+      "path": "summarize_interaction_sampling.py",
+      "sha256": "47f546acfba731695e2803b9f0fa9253ff470eb3a18a31ea728ce8e7d1420ab3"
+    }
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,48 @@
+{
+  "artifacts": [
+    {
+      "bytes": 896254,
+      "path": "analysis.json",
+      "sha256": "7ea25d218e53ab3677c662f53ea5bd6b25ae55b52b73e62b73d156f68133badf"
+    },
+    {
+      "bytes": 7657,
+      "path": "availability.csv",
+      "sha256": "b327ad6d0e3e9bcf8ad49b25a804aa11290b32b18041520a0ae4bc66d3a49a3c"
+    },
+    {
+      "bytes": 1373,
+      "path": "branches.csv",
+      "sha256": "3f29c97c808280637e2fe6b736c3b3107a7c0f16b0e97903edb5adfc72306701"
+    },
+    {
+      "bytes": 50161,
+      "path": "coefficients.csv",
+      "sha256": "cc9c53616b85cf1e177eb48e5a01e884f27635cac1adc4192ed603acd5532e57"
+    },
+    {
+      "bytes": 23296,
+      "path": "endpoints.csv",
+      "sha256": "674edf24edeb5e16412094b823b4a60286f6ccc4a5325db06813a32b37e32118"
+    },
+    {
+      "bytes": 9797,
+      "path": "FINDINGS.md",
+      "sha256": "59e8d53ff1f0259cf3f0fa2c2c9c1ad1c5baa823b21b58787edeb7df951fc33c"
+    },
+    {
+      "bytes": 9272,
+      "path": "interactions.csv",
+      "sha256": "f1290585a1f521ac23e7a605744a6e93a8c533e045d0cba4b143474ff5bdbf6d"
+    },
+    {
+      "bytes": 50819,
+      "path": "interval-comparisons.csv",
+      "sha256": "c526c642f2c2219f40f7c318f9c840b17b91bc77fe9b5e7b0dd8e62f84edc7a2"
+    }
+  ],
+  "completed": true,
+  "input_study_manifest_sha256": "3ee00dfb6ac66db219bc25b1248a1645b8f86deeecae6c9c46a8419cc1235af4",
+  "source_revision": "0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9",
+  "status": "completed"
+}

@@ -16,10 +16,20 @@ not an unfinished section that the current paper treats as a result.
 
 Completed evidence includes the original 1,280-trial calibration, the separately
 frozen 384-trial shared-draw comparison, the physical refund interaction
-enumeration and the 24-episode local-model validation. The latter used 59 calls;
+enumeration, 2,048 repeated physical-sampling trials and the 24-episode
+local-model validation. The repeated sampler retained 655,360 branches and
+628,535 scripted calls, with zero model or additional comparison calls. Its
+all-eight-case result table reports availability and reference eligibility
+alongside interval coverage, width and detection or false-flag counts. The
+standalone saved-evidence audit passed 44,698,925 assertions and checked
+4,210 full traces without importing the framework implementation or making
+generation calls. The
+local-model validation used 59 calls;
 zero definite statuses for the revised profile leaves its conditional
-contradiction rate undefined. A separate rationale reading remains explicitly
-single-reader and exploratory. Reusable application verification and graph
+contradiction rate undefined. Separate rationale labels came from an unblinded
+annotation pass in the AI-assisted development workflow; independent human
+verification and inter-rater reliability are not established. Reusable
+application verification and graph
 witness semantics are described separately from historical experimental code.
 
 Stable Python version 1.0.0 is public on
@@ -44,6 +54,15 @@ settled before submission.
   the actual public version, artifact hashes and installed-payload checks.
 - [Physical refund enumeration](../output/refund-interactions-2026-10-13/README.md):
   512 retained branches across eight cases and two declared games.
+- [Repeated physical sampling](../output/interaction-sampling-2026-10-15/README.md),
+  [precollection protocol](../output/interaction-sampling-2026-10-15/protocol.json),
+  [all summary rows](../output/interaction-sampling-2026-10-15/summary.json) and
+  [installed checkpoint](../output/interaction-sampling-checkpoint-2026-10-15/checkpoint.json):
+  all trials/slots, separate strict/on-reach games and refusal denominators.
+- [Repeated-sampling audit](../output/interaction-sampling-audits-2026-10-15/independent.json)
+  and [derived findings](../output/interaction-sampling-findings-2026-10-15/FINDINGS.md):
+  the audit binds the frozen revision and sealed manifest; complete CSV/JSON
+  analysis remains outside that original collection.
 - [Frozen local-model proposal](protocol-next-validation.md) and
   [completed findings](../output/local-validation-2026-10-14/FINDINGS.md):
   unchanged source/model/prompt identities and all outcome denominators.

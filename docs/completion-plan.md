@@ -9,8 +9,10 @@ Status updated 16 October 2026. The stable evidence
 core is complete: [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/),
 with both published artifact downloads independently hash/size checked and a
 fresh registry installation verified. The repository remains private. The
-retained collection and its independent audit are complete; IEEE paper validation
-is the remaining production gate below.
+retained collection, its independent audit and checked IEEE paper are complete.
+The defined framework and protocol/software paper scope was achieved on
+16 October 2026. Venue selection, final human review, reviewer access and
+submission remain separate maintainer steps.
 
 ## Stable framework
 
@@ -49,8 +51,8 @@ authenticated evidence source or universal replay adapter.
 
 The supported contribution is an evidence/intervention protocol and reproducible
 software artifact, with audited synthetic and exploratory local-model results.
-The final manuscript will retain the original research brief as motivation and
-describe the actual implemented scope.
+The completed manuscript retains the original research brief as motivation and
+describes the actual implemented scope.
 
 The repeated physical-interaction sampling implementation, deterministic
 serial/parallel conformance checks and independent auditor are complete. A
@@ -71,10 +73,14 @@ and complete tables preserve availability, population eligibility, interval
 coverage, width, detection and refusals; they do not establish broad calibration
 or superiority.
 
-Finish integrating the independently checked results into the protocol/software
-manuscript and complete PDF validation. The editable
-[IEEE source](../paper/consequa-x-ieee.tex) is being finalized; compilation and
-visual review of `output/pdf/Consequa-X_IEEE_Paper.pdf` are pending. Scripts,
+The independently checked results are integrated into the completed
+protocol/software manuscript. The
+[six-page IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
+and every rendered page passed visual review on 16 October 2026. Its
+[QA receipt](../output/pdf/qa.json) binds the PDF hash and exact
+[editable IEEE source](../paper/consequa-x-ieee.tex) at manuscript revision
+`01d0709ad98acf27c4e12c0899208c28417d46a9`; fonts are embedded and checks found
+no missing characters, unresolved references or overfull boxes. Scripts,
 protocols and data retain their actual source revisions. The public source
 archive distributes software/examples/documentation; retained datasets and the
 IEEE manuscript stay in the private repository.

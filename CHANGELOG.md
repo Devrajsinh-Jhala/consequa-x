@@ -14,9 +14,15 @@ the collection identity separately from the public stable release. The
 passed 44,698,925 assertions, covering every planned trial/branch and 4,210
 preselected complete traces. The
 [derived findings](output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
-retain coverage, width, detection and refusal denominators. Final IEEE PDF
-validation is pending. These results do not establish held-out model
-performance, a new estimator or baseline superiority.
+retain coverage, width, detection and refusal denominators. The defined
+framework and protocol/software paper scope is complete on 16 October 2026:
+the [six-page IEEE PDF](output/pdf/Consequa-X_IEEE_Paper.pdf) compiled and all
+rendered pages passed visual review. The [QA receipt](output/pdf/qa.json) binds
+it to [editable source](paper/consequa-x-ieee.tex) at manuscript revision
+`01d0709ad98acf27c4e12c0899208c28417d46a9`. Actual venue selection, final human
+review, reviewer access and submission remain maintainer steps. These results
+do not establish held-out model performance, a new estimator or baseline
+superiority.
 
 ## 1.0.0 - 15 October 2026
 

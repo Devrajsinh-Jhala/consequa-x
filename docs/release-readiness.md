@@ -120,12 +120,15 @@ and complete tables retain coverage with width, detection, population eligibilit
 and refusals. These research records remain separate from the sealed public
 release inventory and cannot change its hashes.
 
-[Completion scope](completion-plan.md) tracks the separate IEEE paper gates.
-The [editable source](../paper/consequa-x-ieee.tex) is being finalized; compilation
-and visual review of `output/pdf/Consequa-X_IEEE_Paper.pdf` remain pending. A
-stable software release does not establish a new causal estimator, held-out
-superiority or calibrated live-model confidence. Actual venue selection, final
-human checking and submission remain maintainer decisions.
+[Completion scope](completion-plan.md) records the achieved framework and
+protocol/software paper scope on 16 October 2026. The
+[six-page IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
+and all rendered pages passed visual review. Its [QA receipt](../output/pdf/qa.json)
+binds the PDF hash and [editable source](../paper/consequa-x-ieee.tex) at manuscript
+revision `01d0709ad98acf27c4e12c0899208c28417d46a9`. A stable software release
+and checked paper do not establish a new causal estimator, held-out superiority
+or calibrated live-model confidence. Actual venue selection, final human review,
+reviewer access and submission remain maintainer steps.
 
 No npm package is published. An optional later adapter needs a declared API,
 shared schema/conformance fixtures, cross-language integer/identity semantics,

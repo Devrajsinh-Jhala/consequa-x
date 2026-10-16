@@ -7,6 +7,16 @@ two columns, numbered references, equations and compact result tables. The
 maintainer requested IEEE formatting; a specific conference or journal has not
 been selected. No affiliation is inferred.
 
+The compiled [six-page paper](../output/pdf/Consequa-X_IEEE_Paper.pdf) is ready
+for maintainer review. Its [PDF quality receipt](../output/pdf/qa.json) records
+successful compilation, AI-assisted visual inspection of all six pages,
+embedded fonts and checks for clipping, missing characters and unresolved
+references. The PDF was built from frozen source revision
+`01d0709ad98acf27c4e12c0899208c28417d46a9`; its recorded SHA-256 is
+`6b22124d81b17d0d0e2608183cfd8fc015449d912fc87340e82a3f1a67899a98`.
+This artifact check does not replace final independent human checking or
+establish venue-specific submission compliance.
+
 The paper's contribution is the implemented evidence/intervention protocol and
 its audited behavior. It describes existing contrastive and Shapley methods as
 adaptations, states their assumptions, and reports conservative uncertainty's
@@ -69,7 +79,8 @@ settled before submission.
 
 The source uses an inline `thebibliography` so a standalone compiler does not
 depend on a separate bibliography build. The companion BibTeX file preserves
-full metadata for a future venue template. A successful PDF compilation and
-visual review are required before delivering or attaching a generated PDF.
-No page count, submission compliance or acceptance is claimed by the source
-alone. GitHub Actions is not used for this work.
+full metadata for a future venue template. The linked PDF has completed
+compilation and artifact checks; any later source edits require a new build
+and visual review. Venue selection, independent human checking, reviewer-access
+arrangements and actual submission remain maintainer steps. No acceptance is
+claimed. GitHub Actions is not used for this work.

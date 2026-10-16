@@ -4,10 +4,11 @@ Updated 16 October 2026; public release verification completed 15 October 2026.
 The stable evidence
 core is complete and [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/).
 Runtime source remains frozen at `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9`;
-build source is `85ce6c316838c995782aadc8c10770acc708339b`. The current milestone
-is finalizing the scoped IEEE protocol/software paper with the completed,
-independently audited physical-interaction study. The research contribution does not depend on claiming
-a new estimator or empirical superiority.
+build source is `85ce6c316838c995782aadc8c10770acc708339b`. The defined framework
+and IEEE protocol/software paper scope is complete on 16 October 2026, including
+the independently audited physical-interaction study and checked PDF. The
+research contribution does not depend on claiming a new estimator or empirical
+superiority.
 
 The initial literature assessment is in `output/research/Consequa-X_Research_Assessment.md` (reviewed 4 October 2026). Before a submission, refresh paper versions and related work, particularly CausalLoss-Fin, CAR, PCCC, FinalityBench and ConsequenceBench.
 
@@ -52,7 +53,11 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
   preselected complete traces. The
   [derived findings](../output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
   retain complete result tables and explicit availability/refusal denominators.
-- A [working manuscript and evidence ledger](../paper/README.md), with completed preliminary evidence and pending held-out, matched-baseline and joint-fault experiments identified.
+- A [complete protocol/software manuscript and evidence ledger](../paper/README.md),
+  with audited evidence and held-out, matched-baseline and joint-fault experiments
+  identified as future research. The [six-page IEEE PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf)
+  compiled and passed review of every rendered page; its [QA receipt](../output/pdf/qa.json)
+  binds the PDF and frozen manuscript source.
 - A [24-episode local Qwen3 validation](../output/local-validation-2026-10-14/FINDINGS.md)
   comparing both existing prompt profiles across six validation cases with
   59 actual model calls. Structured abstention, assessable-claim contradictions
@@ -72,16 +77,20 @@ The initial literature assessment is in `output/research/Consequa-X_Research_Ass
   with 12 trace round-trips and four artifact-adapter checks. PR #8 merged as
   `708d064`; GitHub remains private and Actions stayed disabled.
 
-## Current completion gates
+## Achieved completion scope
 
 The retained interaction collection and independent saved-evidence audit are
-complete. Finish integrating the checked results into the IEEE manuscript and
-compile/render the paper. The [editable IEEE source](../paper/consequa-x-ieee.tex) is being
-finalized; compilation and visual review of
-`output/pdf/Consequa-X_IEEE_Paper.pdf` remain pending.
+complete, and checked results are integrated into the completed IEEE manuscript.
+The [six-page PDF](../output/pdf/Consequa-X_IEEE_Paper.pdf) compiled successfully
+and all rendered pages passed visual review on 16 October 2026. The
+[QA receipt](../output/pdf/qa.json) binds its hash and exact
+[editable IEEE source](../paper/consequa-x-ieee.tex) at manuscript revision
+`01d0709ad98acf27c4e12c0899208c28417d46a9`.
 The software release gates are complete; [publication](../output/release-1.0.0-2026-10-15/publication.json)
 and installation receipts preserve the achieved result. [Completion scope](completion-plan.md)
-tracks the remaining paper gate. The audit establishes saved-data consistency
+records the completed framework and paper scope. Actual venue selection, final
+human review, reviewer access and submission remain maintainer steps.
+The audit establishes saved-data consistency
 under the declared mechanism and checking rules, not provider authenticity,
 held-out generalization or method superiority.
 

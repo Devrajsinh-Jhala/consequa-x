@@ -1,8 +1,7 @@
 # Five-minute offline quickstart
 
 Use Python 3.11 or 3.12. No model, API key, provider account or runtime dependency
-is required. Version 1.1 commands below become available with that release;
-check the package's PyPI version before installing a pinned version.
+is required. Version 1.1.0 is public on PyPI. The core schema stays at 0.1.
 
 ```console
 python -m pip install consequa-x==1.1.0

@@ -1,0 +1,47 @@
+{
+  "cases": [
+    "conflicting successive witnesses",
+    "hostile detail markup as inert text",
+    "newer unknown receipt in unsorted capture",
+    "no readback/verifications",
+    "large graph with complete tables",
+    "keyboard focusable scroll regions"
+  ],
+  "desktop_review": true,
+  "document_horizontal_overflow": false,
+  "fixture_manifest_sha256": "479af6226af4f680bd05d69de93e2cb63b749e3b1a32f7b99a576ca78fc53f57",
+  "focusable_named_scroll_regions": 6,
+  "github_actions_used": false,
+  "hosting_scope": "Public site has CDN challenge markup in addition to authored assets; offline exported report files do not",
+  "landing_interactions": [
+    "three synthetic evidence scenarios",
+    "mobile menu open/close",
+    "motion pause",
+    "copy install command",
+    "local docs navigation"
+  ],
+  "landing_mobile_horizontal_overflow": false,
+  "minimal_report_scripts": 0,
+  "mobile_390px_review": true,
+  "passed": true,
+  "physical_printer_pagination": "not exercised",
+  "print_media_styles_previewed": true,
+  "print_preview_method": "QA HTML copy switches print media to screen for browser style review",
+  "print_preview_rows_retained": 122,
+  "print_strategy": "Omit SVG overview, explain omission, retain every node/link table row",
+  "provider_calls": 0,
+  "report_source_sha256": "1b9fe655e3556a519ac9d96716602193c4fa0dd8eca95377197632c7813a73d1",
+  "review_date": "2026-10-17",
+  "review_method": "AI-assisted live browser DOM, interaction and rendered screenshot review",
+  "screenshots": [
+    {
+      "path": "report-desktop.png",
+      "sha256": "9b7a638743410959be2997792b92697af3006593a80101d238cd4ceb3c3eaf89"
+    },
+    {
+      "path": "report-mobile.png",
+      "sha256": "7cae4f7f94bc3de5c144f9c8c3bef4001aa9518db159095ebfeaea7576b1a332"
+    }
+  ],
+  "source_revision": "2e1ea177bffb3c7649b1ef055a277b196a58f8b9"
+}

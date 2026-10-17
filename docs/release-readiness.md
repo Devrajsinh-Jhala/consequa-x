@@ -1,5 +1,14 @@
 # Python stable release readiness
 
+Version **1.1.0 is public on PyPI** as of 17 October 2026. Its
+[completed launch record](../output/release-1.1.0-2026-10-17/README.md) and
+[publication receipt](../output/release-1.1.0-2026-10-17/publication.json) retain
+the exact artifacts, source freeze, 1,624 tests plus 240 subtests, Windows/Linux
+installed checks, public-index install and deployed public onboarding. All four
+P0 improvements are complete. The research repository remains private and
+GitHub Actions remains disabled. The dated 1.0 checkpoint below is retained as
+release history rather than the current package version.
+
 Status updated 16 October 2026; public release verification completed 15 October
 2026. The stable
 evidence core is complete and [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/).

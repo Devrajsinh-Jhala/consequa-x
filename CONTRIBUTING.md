@@ -1,5 +1,10 @@
 # Contributing to Consequa-X
 
+The current release is **1.1.0**, with offline HTML reports and public onboarding.
+Its [completed launch record](output/release-1.1.0-2026-10-17/README.md) contains
+the frozen source, artifact and installation receipts. The 1.0 core checkpoint
+below describes the API foundation retained by 1.1.
+
 Collaborators with access to this private repository can contribute to the Python framework and research. Stable [`1.0.0` is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/). It separates the application evidence core from research interfaces using refund simulation, programmatic policies, and an optional local Ollama adapter. [Release receipts](output/release-1.0.0-2026-10-15/README.md) retain the installation and publication checks. Recorded results include [audited synthetic sampling](output/interaction-sampling-findings-2026-10-15/FINDINGS.md) and an exploratory [local-model validation](output/local-validation-2026-10-14/FINDINGS.md). These establish declared implementation behavior, not empirical superiority or a new causal estimator. Preserve original samples when adding prompt profiles or evaluations.
 
 Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). The [policy replay guide](docs/policy-replay.md) covers bounded context comparisons and evidence exports. Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.

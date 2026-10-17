@@ -1,0 +1,344 @@
+* Getting build dependencies for sdist...
+running egg_info
+writing src\consequa_x.egg-info\PKG-INFO
+writing dependency_links to src\consequa_x.egg-info\dependency_links.txt
+writing entry points to src\consequa_x.egg-info\entry_points.txt
+writing requirements to src\consequa_x.egg-info\requires.txt
+writing top-level names to src\consequa_x.egg-info\top_level.txt
+reading manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing src\consequa_x.egg-info\PKG-INFO
+writing dependency_links to src\consequa_x.egg-info\dependency_links.txt
+writing entry points to src\consequa_x.egg-info\entry_points.txt
+writing requirements to src\consequa_x.egg-info\requires.txt
+writing top-level names to src\consequa_x.egg-info\top_level.txt
+reading manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+running check
+creating consequa_x-1.1.0
+creating consequa_x-1.1.0\docs
+creating consequa_x-1.1.0\docs\studies
+creating consequa_x-1.1.0\examples
+creating consequa_x-1.1.0\scripts
+creating consequa_x-1.1.0\src\consequa_x
+creating consequa_x-1.1.0\src\consequa_x.egg-info
+creating consequa_x-1.1.0\src\consequa_x\adapters
+creating consequa_x-1.1.0\src\consequa_x\benchmark
+creating consequa_x-1.1.0\src\consequa_x\schemas
+creating consequa_x-1.1.0\tests
+copying files to consequa_x-1.1.0...
+copying CHANGELOG.md -> consequa_x-1.1.0
+copying CONTRIBUTING.md -> consequa_x-1.1.0
+copying LICENSE -> consequa_x-1.1.0
+copying MANIFEST.in -> consequa_x-1.1.0
+copying README.md -> consequa_x-1.1.0
+copying SECURITY.md -> consequa_x-1.1.0
+copying pyproject.toml -> consequa_x-1.1.0
+copying requirements-dev.lock -> consequa_x-1.1.0
+copying docs\application-integration.md -> consequa_x-1.1.0\docs
+copying docs\attribution-calibration.md -> consequa_x-1.1.0\docs
+copying docs\build-contract.md -> consequa_x-1.1.0\docs
+copying docs\car-reproduction-plan.md -> consequa_x-1.1.0\docs
+copying docs\completion-plan.md -> consequa_x-1.1.0\docs
+copying docs\decision-contrastive.md -> consequa_x-1.1.0\docs
+copying docs\decision-replay.md -> consequa_x-1.1.0\docs
+copying docs\decision-shapley.md -> consequa_x-1.1.0\docs
+copying docs\design.md -> consequa_x-1.1.0\docs
+copying docs\graph-witnesses.md -> consequa_x-1.1.0\docs
+copying docs\interaction-sampling.md -> consequa_x-1.1.0\docs
+copying docs\interval-followup-plan.md -> consequa_x-1.1.0\docs
+copying docs\launch-readiness.md -> consequa_x-1.1.0\docs
+copying docs\local-pypi-setup.md -> consequa_x-1.1.0\docs
+copying docs\offline-reports.md -> consequa_x-1.1.0\docs
+copying docs\policy-evaluation.md -> consequa_x-1.1.0\docs
+copying docs\policy-replay.md -> consequa_x-1.1.0\docs
+copying docs\refund-interactions.md -> consequa_x-1.1.0\docs
+copying docs\release-readiness.md -> consequa_x-1.1.0\docs
+copying docs\research-roadmap.md -> consequa_x-1.1.0\docs
+copying docs\stable-api.md -> consequa_x-1.1.0\docs
+copying docs\study-manifests.md -> consequa_x-1.1.0\docs
+copying docs\study-plan.md -> consequa_x-1.1.0\docs
+copying docs\v1.1-release.md -> consequa_x-1.1.0\docs
+copying docs\variable-length-game-plan.md -> consequa_x-1.1.0\docs
+copying docs\studies\refund-family-candidates-v1.json -> consequa_x-1.1.0\docs\studies
+copying examples\artifact_delivery.py -> consequa_x-1.1.0\examples
+copying examples\decision_shapley_fixture.py -> consequa_x-1.1.0\examples
+copying examples\report_quickstart.py -> consequa_x-1.1.0\examples
+copying scripts\audit_interaction_sampling.py -> consequa_x-1.1.0\scripts
+copying scripts\audit_interval_comparison.py -> consequa_x-1.1.0\scripts
+copying scripts\audit_refund_interactions.py -> consequa_x-1.1.0\scripts
+copying scripts\audit_release_artifacts.py -> consequa_x-1.1.0\scripts
+copying scripts\build_public_docs.py -> consequa_x-1.1.0\scripts
+copying scripts\check_installed_release.py -> consequa_x-1.1.0\scripts
+copying scripts\configure_pypi_auth.py -> consequa_x-1.1.0\scripts
+copying scripts\draw_paper_diagrams.py -> consequa_x-1.1.0\scripts
+copying scripts\finalize_interval_artifacts.py -> consequa_x-1.1.0\scripts
+copying scripts\finalize_refund_artifacts.py -> consequa_x-1.1.0\scripts
+copying scripts\plot_interval_comparison.py -> consequa_x-1.1.0\scripts
+copying scripts\plot_paper_results.py -> consequa_x-1.1.0\scripts
+copying scripts\publish_alpha.py -> consequa_x-1.1.0\scripts
+copying scripts\publish_release.py -> consequa_x-1.1.0\scripts
+copying scripts\run_interaction_sampling.py -> consequa_x-1.1.0\scripts
+copying scripts\summarize_interaction_sampling.py -> consequa_x-1.1.0\scripts
+copying src\consequa_x\__init__.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\__main__.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\attribution.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\cli.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\explanation.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\graph.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\models.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\policies.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\py.typed -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\report.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\schema.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x\verification.py -> consequa_x-1.1.0\src\consequa_x
+copying src\consequa_x.egg-info\PKG-INFO -> consequa_x-1.1.0\src\consequa_x.egg-info
+copying src\consequa_x.egg-info\SOURCES.txt -> consequa_x-1.1.0\src\consequa_x.egg-info
+copying src\consequa_x.egg-info\dependency_links.txt -> consequa_x-1.1.0\src\consequa_x.egg-info
+copying src\consequa_x.egg-info\entry_points.txt -> consequa_x-1.1.0\src\consequa_x.egg-info
+copying src\consequa_x.egg-info\requires.txt -> consequa_x-1.1.0\src\consequa_x.egg-info
+copying src\consequa_x.egg-info\top_level.txt -> consequa_x-1.1.0\src\consequa_x.egg-info
+copying src\consequa_x\adapters\__init__.py -> consequa_x-1.1.0\src\consequa_x\adapters
+copying src\consequa_x\adapters\ollama.py -> consequa_x-1.1.0\src\consequa_x\adapters
+copying src\consequa_x\benchmark\__init__.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\assessment_metrics.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\calibration.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\calibration_export.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\calibration_mechanisms.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_coalition.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_contrastive.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_replay.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_shapley.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\evaluation.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\interaction_export.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\interaction_mechanisms.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\interaction_sampling.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\interval_comparison.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\intervals.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\payments.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\policy_experiment.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\policy_runner.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\runner.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\study.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\targets.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\benchmark\templates.py -> consequa_x-1.1.0\src\consequa_x\benchmark
+copying src\consequa_x\schemas\trace-v0.1.json -> consequa_x-1.1.0\src\consequa_x\schemas
+copying tests\test_assessment_metrics.py -> consequa_x-1.1.0\tests
+copying tests\test_attribution.py -> consequa_x-1.1.0\tests
+copying tests\test_calibration.py -> consequa_x-1.1.0\tests
+copying tests\test_calibration_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_calibration_mechanisms.py -> consequa_x-1.1.0\tests
+copying tests\test_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_decision_coalition.py -> consequa_x-1.1.0\tests
+copying tests\test_decision_contrastive.py -> consequa_x-1.1.0\tests
+copying tests\test_decision_contrastive_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_decision_replay.py -> consequa_x-1.1.0\tests
+copying tests\test_decision_shapley.py -> consequa_x-1.1.0\tests
+copying tests\test_decision_shapley_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_graph.py -> consequa_x-1.1.0\tests
+copying tests\test_graph_identity.py -> consequa_x-1.1.0\tests
+copying tests\test_installed_release_check.py -> consequa_x-1.1.0\tests
+copying tests\test_integration.py -> consequa_x-1.1.0\tests
+copying tests\test_interaction_sampling.py -> consequa_x-1.1.0\tests
+copying tests\test_interaction_sampling_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_interaction_workers.py -> consequa_x-1.1.0\tests
+copying tests\test_interval_comparison.py -> consequa_x-1.1.0\tests
+copying tests\test_interval_replay.py -> consequa_x-1.1.0\tests
+copying tests\test_intervals.py -> consequa_x-1.1.0\tests
+copying tests\test_model_eval_integration.py -> consequa_x-1.1.0\tests
+copying tests\test_models.py -> consequa_x-1.1.0\tests
+copying tests\test_ollama.py -> consequa_x-1.1.0\tests
+copying tests\test_payments.py -> consequa_x-1.1.0\tests
+copying tests\test_policies.py -> consequa_x-1.1.0\tests
+copying tests\test_policy_evaluation.py -> consequa_x-1.1.0\tests
+copying tests\test_policy_experiment.py -> consequa_x-1.1.0\tests
+copying tests\test_policy_experiment_integration.py -> consequa_x-1.1.0\tests
+copying tests\test_policy_runner.py -> consequa_x-1.1.0\tests
+copying tests\test_prompt_profile_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_public_integration.py -> consequa_x-1.1.0\tests
+copying tests\test_refund_interactions.py -> consequa_x-1.1.0\tests
+copying tests\test_refund_interactions_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_release_helpers.py -> consequa_x-1.1.0\tests
+copying tests\test_release_inventory.py -> consequa_x-1.1.0\tests
+copying tests\test_replay_targets.py -> consequa_x-1.1.0\tests
+copying tests\test_report.py -> consequa_x-1.1.0\tests
+copying tests\test_report_cli.py -> consequa_x-1.1.0\tests
+copying tests\test_research_integration.py -> consequa_x-1.1.0\tests
+copying tests\test_schema.py -> consequa_x-1.1.0\tests
+copying tests\test_snapshot_integrity.py -> consequa_x-1.1.0\tests
+copying tests\test_stable_release.py -> consequa_x-1.1.0\tests
+copying tests\test_study.py -> consequa_x-1.1.0\tests
+copying tests\test_task_templates.py -> consequa_x-1.1.0\tests
+copying tests\test_verification.py -> consequa_x-1.1.0\tests
+Writing consequa_x-1.1.0\setup.cfg
+Creating tar archive
+removing 'consequa_x-1.1.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing src\consequa_x.egg-info\PKG-INFO
+writing dependency_links to src\consequa_x.egg-info\dependency_links.txt
+writing entry points to src\consequa_x.egg-info\entry_points.txt
+writing requirements to src\consequa_x.egg-info\requires.txt
+writing top-level names to src\consequa_x.egg-info\top_level.txt
+reading manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\consequa_x
+copying src\consequa_x\attribution.py -> build\lib\consequa_x
+copying src\consequa_x\cli.py -> build\lib\consequa_x
+copying src\consequa_x\explanation.py -> build\lib\consequa_x
+copying src\consequa_x\graph.py -> build\lib\consequa_x
+copying src\consequa_x\models.py -> build\lib\consequa_x
+copying src\consequa_x\policies.py -> build\lib\consequa_x
+copying src\consequa_x\report.py -> build\lib\consequa_x
+copying src\consequa_x\schema.py -> build\lib\consequa_x
+copying src\consequa_x\verification.py -> build\lib\consequa_x
+copying src\consequa_x\__init__.py -> build\lib\consequa_x
+copying src\consequa_x\__main__.py -> build\lib\consequa_x
+creating build\lib\consequa_x\adapters
+copying src\consequa_x\adapters\ollama.py -> build\lib\consequa_x\adapters
+copying src\consequa_x\adapters\__init__.py -> build\lib\consequa_x\adapters
+creating build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\assessment_metrics.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\calibration.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\calibration_export.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\calibration_mechanisms.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_coalition.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_contrastive.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_replay.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\decision_shapley.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\evaluation.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\interaction_export.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\interaction_mechanisms.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\interaction_sampling.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\intervals.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\interval_comparison.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\payments.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\policy_experiment.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\policy_runner.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\runner.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\study.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\targets.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\templates.py -> build\lib\consequa_x\benchmark
+copying src\consequa_x\benchmark\__init__.py -> build\lib\consequa_x\benchmark
+running egg_info
+writing src\consequa_x.egg-info\PKG-INFO
+writing dependency_links to src\consequa_x.egg-info\dependency_links.txt
+writing entry points to src\consequa_x.egg-info\entry_points.txt
+writing requirements to src\consequa_x.egg-info\requires.txt
+writing top-level names to src\consequa_x.egg-info\top_level.txt
+reading manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'src\consequa_x.egg-info\SOURCES.txt'
+copying src\consequa_x\py.typed -> build\lib\consequa_x
+creating build\lib\consequa_x\schemas
+copying src\consequa_x\schemas\trace-v0.1.json -> build\lib\consequa_x\schemas
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\consequa_x
+creating build\bdist.win-amd64\wheel\consequa_x\adapters
+copying build\lib\consequa_x\adapters\ollama.py -> build\bdist.win-amd64\wheel\.\consequa_x\adapters
+copying build\lib\consequa_x\adapters\__init__.py -> build\bdist.win-amd64\wheel\.\consequa_x\adapters
+copying build\lib\consequa_x\attribution.py -> build\bdist.win-amd64\wheel\.\consequa_x
+creating build\bdist.win-amd64\wheel\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\assessment_metrics.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\calibration.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\calibration_export.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\calibration_mechanisms.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\decision_coalition.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\decision_contrastive.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\decision_replay.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\decision_shapley.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\evaluation.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\interaction_export.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\interaction_mechanisms.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\interaction_sampling.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\intervals.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\interval_comparison.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\payments.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\policy_experiment.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\policy_runner.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\runner.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\study.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\targets.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\templates.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\benchmark\__init__.py -> build\bdist.win-amd64\wheel\.\consequa_x\benchmark
+copying build\lib\consequa_x\cli.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\explanation.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\graph.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\models.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\policies.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\py.typed -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\report.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\schema.py -> build\bdist.win-amd64\wheel\.\consequa_x
+creating build\bdist.win-amd64\wheel\consequa_x\schemas
+copying build\lib\consequa_x\schemas\trace-v0.1.json -> build\bdist.win-amd64\wheel\.\consequa_x\schemas
+copying build\lib\consequa_x\verification.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\__init__.py -> build\bdist.win-amd64\wheel\.\consequa_x
+copying build\lib\consequa_x\__main__.py -> build\bdist.win-amd64\wheel\.\consequa_x
+running install_egg_info
+Copying src\consequa_x.egg-info to build\bdist.win-amd64\wheel\.\consequa_x-1.1.0-py3.12.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\consequa_x-1.1.0.dist-info\WHEEL
+creating 'C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\release-1.1.0-2026-10-17\\.tmp-5gkyxl7p\\consequa_x-1.1.0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'consequa_x/__init__.py'
+adding 'consequa_x/__main__.py'
+adding 'consequa_x/attribution.py'
+adding 'consequa_x/cli.py'
+adding 'consequa_x/explanation.py'
+adding 'consequa_x/graph.py'
+adding 'consequa_x/models.py'
+adding 'consequa_x/policies.py'
+adding 'consequa_x/py.typed'
+adding 'consequa_x/report.py'
+adding 'consequa_x/schema.py'
+adding 'consequa_x/verification.py'
+adding 'consequa_x/adapters/__init__.py'
+adding 'consequa_x/adapters/ollama.py'
+adding 'consequa_x/benchmark/__init__.py'
+adding 'consequa_x/benchmark/assessment_metrics.py'
+adding 'consequa_x/benchmark/calibration.py'
+adding 'consequa_x/benchmark/calibration_export.py'
+adding 'consequa_x/benchmark/calibration_mechanisms.py'
+adding 'consequa_x/benchmark/decision_coalition.py'
+adding 'consequa_x/benchmark/decision_contrastive.py'
+adding 'consequa_x/benchmark/decision_replay.py'
+adding 'consequa_x/benchmark/decision_shapley.py'
+adding 'consequa_x/benchmark/evaluation.py'
+adding 'consequa_x/benchmark/interaction_export.py'
+adding 'consequa_x/benchmark/interaction_mechanisms.py'
+adding 'consequa_x/benchmark/interaction_sampling.py'
+adding 'consequa_x/benchmark/interval_comparison.py'
+adding 'consequa_x/benchmark/intervals.py'
+adding 'consequa_x/benchmark/payments.py'
+adding 'consequa_x/benchmark/policy_experiment.py'
+adding 'consequa_x/benchmark/policy_runner.py'
+adding 'consequa_x/benchmark/runner.py'
+adding 'consequa_x/benchmark/study.py'
+adding 'consequa_x/benchmark/targets.py'
+adding 'consequa_x/benchmark/templates.py'
+adding 'consequa_x/schemas/trace-v0.1.json'
+adding 'consequa_x-1.1.0.dist-info/licenses/LICENSE'
+adding 'consequa_x-1.1.0.dist-info/METADATA'
+adding 'consequa_x-1.1.0.dist-info/WHEEL'
+adding 'consequa_x-1.1.0.dist-info/entry_points.txt'
+adding 'consequa_x-1.1.0.dist-info/top_level.txt'
+adding 'consequa_x-1.1.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built consequa_x-1.1.0.tar.gz and consequa_x-1.1.0-py3-none-any.whl

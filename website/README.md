@@ -1,8 +1,10 @@
 # Consequa-X public website
 
-`dist/` contains a buildless landing page and public documentation. The website
-has no third-party scripts, fonts, remote images, analytics, cookies, database,
-account flow, or runtime dependencies. Serve `dist/` as static files. The owning
+`dist/` contains a buildless landing page and public documentation. Authored assets
+use no third-party scripts, fonts, remote images, analytics, cookies, database,
+account flow, or runtime dependencies. The hosting CDN can append its browser
+challenge script; offline package report files have no hosting runtime. Serve
+`dist/` as static files. The owning
 task manages Sites registration, publication and the hosting manifest.
 
 The visual direction uses warm paper, dark ink, teal and lime, with system sans,

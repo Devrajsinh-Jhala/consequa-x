@@ -1,0 +1,13 @@
+Uploading distributions to https://upload.pypi.org/legacy/
+Uploading consequa_x-1.1.0-py3-none-any.whl
+Uploading consequa_x-1.1.0.tar.gz
+
+View at:
+https://pypi.org/project/consequa-x/1.1.0/
+Traceback (most recent call last):
+  File "C:\Users\DELL\OneDrive\Desktop\ConseqaX\scripts\publish_release.py", line 123, in <module>
+    raise SystemExit(upload(args.receipt, account=args.account))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\OneDrive\Desktop\ConseqaX\scripts\publish_release.py", line 115, in upload
+    raise RuntimeError("Upload accepted; public verification pending. Rerun to verify without replacing files.")
+RuntimeError: Upload accepted; public verification pending. Rerun to verify without replacing files.

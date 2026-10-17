@@ -1,0 +1,54 @@
+{
+  "api_process_benchmark_imports": 0,
+  "checker_sha256": "34332976f444de17d2a99344485baef8376727bb52e4f10f267f03d6b6be9ef7",
+  "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+  "executable": "/root/consequa-venv/bin/python",
+  "install": {
+    "matching_wheel_payloads": 37,
+    "module_file": "/root/consequa-venv/lib/python3.14/site-packages/consequa_x/__init__.py",
+    "runtime_dependencies": 0,
+    "version": "1.1.0"
+  },
+  "isolated_imports": true,
+  "kernel_release": "6.18.52-0-virt",
+  "linux_distribution": {
+    "BUG_REPORT_URL": "https://gitlab.alpinelinux.org/alpine/aports/-/issues",
+    "HOME_URL": "https://alpinelinux.org/",
+    "ID": "alpine",
+    "NAME": "Alpine Linux",
+    "PRETTY_NAME": "Alpine Linux v3.24",
+    "VERSION_ID": "3.24.2"
+  },
+  "machine": "x86_64",
+  "passed": true,
+  "platform": "Linux-6.18.52-0-virt-x86_64-with-musl1",
+  "provider_calls": 0,
+  "python": "3.14.8",
+  "reports": {
+    "cli_checks": 12,
+    "default_omits_captured_details": true,
+    "existing_output_preserved": true,
+    "explicit_details_escaped": true,
+    "invalid_inputs_refused_without_output": 8,
+    "source_unchanged": true
+  },
+  "strict_schema_refusals": 16,
+  "system": "Linux",
+  "wheel": {
+    "bytes": 160679,
+    "filename": "consequa_x-1.1.0-py3-none-any.whl",
+    "sha256": "73828c5879a9523cf2db97a7b2fd77fd09c66d8744b820757b58a1d984be4f40"
+  },
+  "workflow": {
+    "custom_target_matcher": true,
+    "custom_verifier": true,
+    "missing_verification_refused": true,
+    "observed_statuses": [
+      "satisfied",
+      "unknown",
+      "violated"
+    ],
+    "trace_roundtrips": 4,
+    "unknown_origin_preserved": true
+  }
+}

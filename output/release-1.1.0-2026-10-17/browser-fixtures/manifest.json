@@ -1,0 +1,56 @@
+{
+  "source": "tests/test_report.py::captured_trace (synthetic hostile strings)",
+  "report_source_sha256": "1b9fe655e3556a519ac9d96716602193c4fa0dd8eca95377197632c7813a73d1",
+  "cases": [
+    {
+      "file": "adversarial-minimal.html",
+      "sha256": "de0b5019db6da6b6c3bca7d2687aa0dcddbcc72b7dda1623a617a2d63f3fa438",
+      "bytes": 19789,
+      "include_details": false,
+      "html_semantics_checked": true,
+      "source_unchanged": true,
+      "captured_detail_roundtrip_checked": false,
+      "browser_visual_qa": "pending"
+    },
+    {
+      "file": "adversarial-details.html",
+      "sha256": "7c2d42e59efe720705f305e925f0cfd909339b296ee503c6a0905ead1ee39b20",
+      "bytes": 28847,
+      "include_details": true,
+      "html_semantics_checked": true,
+      "source_unchanged": true,
+      "captured_detail_roundtrip_checked": true,
+      "browser_visual_qa": "pending"
+    },
+    {
+      "file": "latest-unknown-unsorted.html",
+      "sha256": "4b0d561c6088099744a0b2add1e0f262afb5466fd02e5fb3049a65ae45604df1",
+      "bytes": 19448,
+      "include_details": false,
+      "html_semantics_checked": true,
+      "source_unchanged": true,
+      "captured_detail_roundtrip_checked": false,
+      "browser_visual_qa": "pending"
+    },
+    {
+      "file": "missing-readback.html",
+      "sha256": "8eabeed785d3aa49e4f2bce75cc20dd31c6bccae601fddb35871508089f2edb7",
+      "bytes": 12237,
+      "include_details": false,
+      "html_semantics_checked": true,
+      "source_unchanged": true,
+      "captured_detail_roundtrip_checked": false,
+      "browser_visual_qa": "pending"
+    },
+    {
+      "file": "large-graph.html",
+      "sha256": "64b13e2e3c330a29ba5573b10e39995b38f2fcddfab700824bce7364f2d7994c",
+      "bytes": 40192,
+      "include_details": false,
+      "html_semantics_checked": true,
+      "source_unchanged": true,
+      "captured_detail_roundtrip_checked": false,
+      "browser_visual_qa": "pending"
+    }
+  ]
+}

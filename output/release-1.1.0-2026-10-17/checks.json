@@ -1,0 +1,68 @@
+{
+  "artifacts": [
+    {
+      "bytes": 160679,
+      "path": "consequa_x-1.1.0-py3-none-any.whl",
+      "sha256": "73828c5879a9523cf2db97a7b2fd77fd09c66d8744b820757b58a1d984be4f40"
+    },
+    {
+      "bytes": 418470,
+      "path": "consequa_x-1.1.0.tar.gz",
+      "sha256": "6bc2c1062fef8c6bee82b66fc950378e9165fe78dc032b23beb64ec94c664019"
+    }
+  ],
+  "browser_receipt": "browser-qa.json",
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "installed_artifact_receipts": [
+    "windows311.json",
+    "windows312.json",
+    "sdist312.json",
+    "linux.json"
+  ],
+  "limits": [
+    "Linux result is one Alpine guest under QEMU TCG, not every distro.",
+    "macOS has not been tested.",
+    "Rendering does not authenticate evidence or run target matching.",
+    "HTML print styles were reviewed; physical printer pagination was not exercised."
+  ],
+  "local_checks": {
+    "artifact_inventory": true,
+    "lint": true,
+    "linux_wheel_install": true,
+    "public_docs_support": true,
+    "python311_conformance": true,
+    "release_helper_tests": true,
+    "report_browser_qa": true,
+    "report_security": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "public_receipt": "public-candidate.json",
+  "public_site": "https://consequa-x.brawny-deer-5658.chatgpt.site",
+  "public_support": "https://github.com/Devrajsinh-Jhala/consequa-x-community",
+  "recorded_at_utc": "2026-10-17T14:01:50.937582+00:00",
+  "research_repository_private": true,
+  "runtime_freeze": "23f871ee0d01d6aef452211fe3facc31963adefc",
+  "sdist_install": {
+    "build_backend": "setuptools 84.0.0",
+    "input_artifact": {
+      "bytes": 418470,
+      "path": "consequa_x-1.1.0.tar.gz",
+      "sha256": "6bc2c1062fef8c6bee82b66fc950378e9165fe78dc032b23beb64ec94c664019"
+    },
+    "installer": "fresh Windows Python 3.12 venv; no-index/no-deps/no-build-isolation",
+    "runtime_payload_matches_reviewed_wheel": true
+  },
+  "source_date_epoch": 1792244657,
+  "source_revision": "2e1ea177bffb3c7649b1ef055a277b196a58f8b9",
+  "source_tests": {
+    "failures": 0,
+    "receipt": "source-tests.xml",
+    "subtests": 240,
+    "tests": 1624
+  },
+  "version": "1.1.0"
+}

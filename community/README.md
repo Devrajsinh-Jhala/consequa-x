@@ -17,8 +17,8 @@ research datasets, credentials or model weights are published here. The Python
 wheel and source distribution are public under MIT; the source distribution
 includes the implementation, application examples, tests and documentation.
 
-Version 1.1 is being prepared. Use the published version listed on PyPI until
-the 1.1 release is verified. A visual report is a presentation of captured
+Version 1.1.0 is published on PyPI. Both distribution hashes and sizes were
+verified on 17 October 2026. A visual report is a presentation of captured
 evidence, not provider authentication, automatic causal proof or a production
 payment integration.
 

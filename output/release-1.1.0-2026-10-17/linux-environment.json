@@ -1,0 +1,70 @@
+{
+  "validated_on": "2026-10-17",
+  "passed": true,
+  "validation_scope": "Actual installed-wheel application/report integration checks inside an emulated Linux guest, not a native Linux host or all Linux distributions",
+  "host": {
+    "os": "Microsoft Windows 11 Pro",
+    "version": "10.0.26300",
+    "architecture": "64-bit",
+    "changes": "Workspace-local portable downloads and temporary processes only; no OS feature, boot, registry, service or global installation changes",
+    "administrator_features_installed": false,
+    "github_actions_used": false,
+    "cloud_runner_used": false,
+    "wsl_used": false,
+    "docker_used": false
+  },
+  "emulator": {
+    "product": "QEMU",
+    "version": "11.1.0 (v11.1.0-12130-ge470268ff4)",
+    "accelerator": "TCG software emulation",
+    "architecture": "x86_64",
+    "cpus": 2,
+    "ram_mib": 1024,
+    "network": "Unprivileged QEMU user-mode network",
+    "windows_build_provider_listed_by_upstream": "https://www.qemu.org/download/#windows",
+    "archive_url": "https://qemu.weilnetz.de/w64/2026/qemu-w64-setup-20260811.exe",
+    "checksum_url": "https://qemu.weilnetz.de/w64/2026/qemu-w64-setup-20260811.sha512",
+    "archive_sha512": "5bcf9eed634e8575a37b74f445af41a2fe4106da512d0c30c368301d4c105037fdfab40a5287367a28a957624cddebbc8c07e16c88ab6634f554cdf3d16bf543",
+    "publisher_checksum_matched": true
+  },
+  "guest": {
+    "distribution": "Alpine Linux 3.24.2",
+    "kernel": "6.18.52-0-virt",
+    "architecture": "x86_64",
+    "python": "3.14.8",
+    "python_package": "python3 3.14.8-r0",
+    "python_package_repository": "https://dl-cdn.alpinelinux.org/alpine/v3.24/main",
+    "apk_package_signatures_checked": true,
+    "iso_url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.2-x86_64.iso",
+    "checksum_url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/x86_64/alpine-virt-3.24.2-x86_64.iso.sha256",
+    "iso_sha256": "3ab424762af704b2c2a9e57df1dc37f982af260071504d977f2fb96822e7130b",
+    "publisher_checksum_matched": true,
+    "source_repository_mounted": false,
+    "working_directory": "/root/release-check",
+    "venv": "/root/consequa-venv",
+    "module_file": "/root/consequa-venv/lib/python3.14/site-packages/consequa_x/__init__.py",
+    "isolated_python_imports": true,
+    "installation": "Fresh venv; exact local wheel installed using pip --no-index --no-deps"
+  },
+  "runtime_source_commit": "23f871ee0d01d6aef452211fe3facc31963adefc",
+  "final_build_commit": "2e1ea177bffb3c7649b1ef055a277b196a58f8b9",
+  "wheel_filename": "consequa_x-1.1.0-py3-none-any.whl",
+  "wheel_bytes": 160679,
+  "wheel_sha256": "73828c5879a9523cf2db97a7b2fd77fd09c66d8744b820757b58a1d984be4f40",
+  "checker_sha256": "34332976f444de17d2a99344485baef8376727bb52e4f10f267f03d6b6be9ef7",
+  "receipt_filename": "linux-receipt.json",
+  "receipt_sha256": "c1816c2cedbdbcb11b0e08adc3b8c3f45f98d6517845dc3d319ad6974a0d7ffe",
+  "installed_console_script_check": {
+    "command": "/root/consequa-venv/bin/consequa-x report --help",
+    "exit_code": 0
+  },
+  "checks": {
+    "matching_wheel_payloads": 37,
+    "trace_roundtrips": 4,
+    "strict_schema_refusals": 16,
+    "report_cli_checks": 12,
+    "runtime_dependencies": 0,
+    "provider_calls": 0,
+    "validation_pipeline_exit_code": 0
+  }
+}

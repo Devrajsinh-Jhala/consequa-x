@@ -15,6 +15,8 @@ from urllib.request import urlopen
 SERVICE = "https://upload.pypi.org/legacy/"
 REQUIRED_CHECKS = frozenset({"source_tests", "lint", "strict_metadata", "artifact_inventory",
     "wheel_install_smoke", "sdist_install_smoke", "python311_conformance", "release_helper_tests"})
+LAUNCH_CHECKS = frozenset({"report_security", "report_browser_qa", "linux_wheel_install",
+                          "public_docs_support"})
 
 
 def _unique_object(items):
@@ -36,7 +38,10 @@ def checked_files(receipt_path):
     if re.fullmatch(r"[a-f0-9]{40}", record["source_revision"]) is None:
         raise ValueError("Receipt requires a full frozen Git source revision")
     checks = record["local_checks"]
-    if not REQUIRED_CHECKS.issubset(checks) or any(value is not True for value in checks.values()):
+    required = REQUIRED_CHECKS
+    if tuple(map(int, version.split("."))) >= (1, 1, 0):
+        required = required | LAUNCH_CHECKS
+    if not required.issubset(checks) or any(value is not True for value in checks.values()):
         raise ValueError("All named release checks must pass")
     expected = {f"consequa_x-{version}-py3-none-any.whl", f"consequa_x-{version}.tar.gz"}
     files = []

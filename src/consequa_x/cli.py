@@ -14,6 +14,7 @@ from .benchmark.runner import (
 )
 from .explanation import explain
 from .models import Trace, to_dict
+from .report import render_report
 from .schema import get_trace_schema
 
 
@@ -161,6 +162,28 @@ def _new_output(args, command):
     if output.exists() and (not output.is_dir() or any(output.iterdir())):
         raise ValueError(f"{command} requires a new or empty output directory to preserve each run")
     return output
+
+
+def _report(args):
+    source, output = Path(args.trace), Path(args.output)
+    if output.resolve() == source.resolve():
+        raise ValueError("Report output must differ from the source trace")
+    if output.exists() or output.is_symlink():
+        raise ValueError("Report output must be a new file to preserve existing evidence")
+    try:
+        trace = Trace.from_json(source.read_text(encoding="utf-8"))
+    except (ValueError, TypeError, RecursionError):
+        raise ValueError("Cannot report an invalid schema-0.1 trace") from None
+    document = render_report(trace, include_details=args.include_details)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    # Exclusive creation also protects against another process creating the file
+    # between the preservation check and this write.
+    with output.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(document)
+    print(f"Saved offline report to {output.resolve()}")
+    if args.include_details:
+        print("Captured details are included. Review the report before sharing.")
+    return 0
 
 
 def _assessment_report(summary):
@@ -1104,6 +1127,12 @@ def main(argv=None):
     command.add_argument("trace")
     command.add_argument("--output")
     command.set_defaults(handler=_explain)
+    report = commands.add_parser("report", help="Create a self-contained offline HTML evidence report")
+    report.add_argument("trace", help="Existing schema-0.1 trace JSON")
+    report.add_argument("--output", required=True, help="New HTML file; existing files are preserved")
+    report.add_argument("--include-details", action="store_true",
+                        help="Include potentially sensitive captured values as inert escaped text")
+    report.set_defaults(handler=_report)
     evaluation = commands.add_parser("model-eval", help="Evaluate a bounded scripted or local model policy")
     _add_policy_arguments(evaluation, samples=2, max_calls=100)
     evaluation.add_argument("--cases")

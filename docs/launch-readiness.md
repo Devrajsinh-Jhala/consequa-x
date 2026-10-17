@@ -1,8 +1,13 @@
-# Launch readiness and the next package release
+# Version 1.1 launch readiness
 
-Reviewed 16 October 2026 against the published `1.0.0` package and the current
-repository. This is a product plan, not a claim that the proposed features have
-shipped. Command names and APIs in the proposed scope are illustrative.
+The four P0 improvements below are implemented for version 1.1: an offline HTML
+report, minimal disclosure by default, public documentation/support and an
+installed-package compatibility checker. The [1.1 release checklist](v1.1-release.md)
+and its retained artifact receipts determine whether all release gates passed.
+The version-1 core and schema 0.1 remain unchanged. P1 items remain future work.
+
+The original product review was conducted on 16 October 2026 against 1.0.0;
+the following inventory describes that checkpoint and motivates the 1.1 scope.
 
 The strongest launch audience is Python developers debugging consequential
 agent tools: a timeout, retry, or confident agent report can disagree with the
@@ -27,7 +32,7 @@ for the next version:
 | Verified public distribution | `output/release-1.0.0-2026-10-15/checks.json`, `publication.json` and `registry-install.json`; wheel and source archive independently downloaded and hash checked |
 | Tested installation scope | Windows Python 3.11/3.12; full frozen-source suite passed 1,480 tests plus 240 subtests; installed-artifact and public-index checks are recorded separately |
 
-The graph currently exports structured data, not a visual application report.
+At the 1.0 checkpoint, the graph exported structured data without a visual application report.
 Application users construct records directly; benchmark recording helpers are
 not a general application recorder. No general redaction API, LangChain adapter,
 OpenTelemetry exporter, hosted dashboard or npm distribution was found in the

@@ -10,11 +10,22 @@ application verifiers, domain-specific target matching, and evidence graphs that
 preserve successive observations. Research replay adapters have separately
 declared interfaces and assumptions.
 
-The GitHub repository is private. Repository, issue and research links require
-access; the Python distributions on PyPI are public. The source distribution
+Version 1.1 adds self-contained offline HTML reports with a timeline, evidence
+graph and minimal disclosure by default. It preserves the version-1 core,
+portable schema `0.1` and zero required runtime dependencies.
+
+The research/source GitHub repository is private. Public
+[documentation](https://consequa-x.brawny-deer-5658.chatgpt.site/docs.html),
+[support](https://github.com/Devrajsinh-Jhala/consequa-x-community/issues/new/choose),
+[release notes](https://consequa-x.brawny-deer-5658.chatgpt.site/changelog.html) and
+[security policy](https://github.com/Devrajsinh-Jhala/consequa-x-community/security/policy)
+do not require private-repository access. The Python distributions on PyPI are public. The source distribution
 includes application examples, Markdown documentation, tests and study scripts
 so package users can work without GitHub access. Large retained research
 datasets and the original research PDF remain repository materials.
+
+Release receipts record the exact artifacts, publication state and actual
+platform checks. The new report command requires version 1.1 or newer.
 
 ## Install
 
@@ -30,10 +41,32 @@ dependencies. Importing the core and running offline examples require no model,
 API key, payment provider or network call. Use `python -m consequa_x` wherever an
 example uses `consequa-x`.
 
-Current validation covers Windows with Python 3.11 and 3.12; the declared
-Python 3.11+ range and pure-Python wheel are not test results on every platform.
-Release receipts identify the exact source, artifacts and checks. GitHub Actions
+Consult the public release notes and retained release receipts for exact tested
+operating systems and interpreters. The declared Python 3.11+ range and
+pure-Python wheel are not test results on every platform. GitHub Actions
 remains disabled; release validation runs locally.
+
+## Five-minute visual quickstart
+
+The public [quickstart](https://consequa-x.brawny-deer-5658.chatgpt.site/docs.html)
+provides a small download containing `artifact_delivery.py` and
+`report_quickstart.py`. Run the latter with the installed 1.1 package to compare
+a synthetic delivery that is verified, an unavailable readback that stays
+unknown, and a satisfied state produced by another actor. The example makes no
+application writes or model calls.
+
+```sh
+python report_quickstart.py --output my-first-capture
+consequa-x report my-first-capture/verified.json --output report.html
+```
+
+Open `report.html` directly in a browser. The default omits arbitrary captured
+strings and uses local identity aliases. It retains timestamps, counts and
+relationships, which may still be sensitive. This is field omission, not
+universal anonymization. `--include-details` explicitly includes the complete
+capture as escaped inert text. Keep the original trace separately as evidence.
+Reports perform no verification, target matching or replay; see the
+[report guide](docs/offline-reports.md) for the exact boundary.
 
 ## Capture, verify and explain
 
@@ -239,10 +272,9 @@ and [evidence ledger](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/p
 The contribution guide and Markdown documentation are also in the source archive;
 retained datasets and the paper are not bundled into the Python wheel.
 
-The [next-release launch plan](docs/launch-readiness.md) prioritizes an offline
-visual report, minimal disclosure by default, public onboarding/support and
-additional platform validation. These are proposed additions; the published
-package remains version 1.0.0.
+The [1.1 launch checklist](docs/launch-readiness.md) records the report, disclosure,
+onboarding/support and installed-platform gates. Historical studies, release
+files and paper results retain their original source identities.
 
 Consequa-X is licensed under the **MIT License**, included with the distributions.
 Copyright and author metadata identify Devrajsinh Jhala. Source privacy does not

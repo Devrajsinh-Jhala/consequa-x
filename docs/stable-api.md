@@ -17,6 +17,12 @@ The stable surface is exported from `consequa_x`: typed trace records and enums,
 policy-boundary records/protocol and scripted refund policy remain available.
 `consequa_x.schema.get_trace_schema` and `validate_trace` are supported.
 
+Version 1.1 adds `render_report(trace, *, include_details=False) -> str` and the
+`report` CLI command. The renderer produces offline HTML from a revalidated
+snapshot, with structural aliases by default and an explicit escaped full-trace
+details mode. It does not run verifiers, target matching or replay. See
+[offline reports](offline-reports.md) for the disclosure and preservation contract.
+
 The wire schema stays at `0.1`: the software version and trace schema version
 are separate. Existing alpha trace JSON remains readable. Unsupported schema
 versions, unknown record fields, invalid identities, inconsistent chronology and

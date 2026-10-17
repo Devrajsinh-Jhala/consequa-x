@@ -16,19 +16,81 @@ def subject():
     return runpy.run_path(str(Path(__file__).resolve().parents[1]/"scripts/publish_release.py"))
 
 
-def receipt(tmp_path):
+LAUNCH_GATES = ("report_security", "report_browser_qa", "linux_wheel_install",
+                "public_docs_support")
+
+
+def receipt(tmp_path, *, version="1.0.0", launch_checks=False):
     module = subject()
     items = []
-    for name in ("consequa_x-1.0.0-py3-none-any.whl", "consequa_x-1.0.0.tar.gz"):
+    for name in (f"consequa_x-{version}-py3-none-any.whl", f"consequa_x-{version}.tar.gz"):
         path = tmp_path/name
         path.write_bytes(b"reviewed stable fixture")
         items.append({"path": name, "bytes": path.stat().st_size,
                       "sha256": sha256(path.read_bytes()).hexdigest()})
-    record = {"distribution": "consequa-x", "version": "1.0.0", "source_revision": "a"*40,
+    record = {"distribution": "consequa-x", "version": version, "source_revision": "a"*40,
               "artifacts": items, "local_checks": {key: True for key in module["REQUIRED_CHECKS"]}}
+    if launch_checks:
+        record["local_checks"].update({key: True for key in LAUNCH_GATES})
     path = tmp_path/"checks.json"
     path.write_text(json.dumps(record), encoding="utf-8")
     return module, path, record
+
+
+def test_historical_1_0_receipt_still_validates_without_later_launch_checks(tmp_path):
+    module, path, record = receipt(tmp_path)
+    assert not set(LAUNCH_GATES) & record["local_checks"].keys()
+    checked, files = module["checked_files"](path)
+    assert checked == record
+    assert {item.name for item in files} == {
+        "consequa_x-1.0.0-py3-none-any.whl", "consequa_x-1.0.0.tar.gz"}
+
+
+@pytest.mark.parametrize("version", ["1.1.0", "1.1.1", "1.10.0", "2.0.0"])
+def test_1_1_and_later_receipts_accept_all_four_explicit_launch_checks(tmp_path, version):
+    module, path, record = receipt(tmp_path, version=version, launch_checks=True)
+    assert module["LAUNCH_CHECKS"] == frozenset(LAUNCH_GATES)
+    checked, files = module["checked_files"](path)
+    assert checked == record
+    assert len(files) == 2
+    assert all(record["local_checks"][key] is True for key in LAUNCH_GATES)
+
+
+@pytest.mark.parametrize("check", LAUNCH_GATES)
+@pytest.mark.parametrize("mutation", ["missing", "false", "integer", "string"])
+def test_each_1_1_launch_gate_refuses_missing_false_and_truthy_before_any_external_access(
+    tmp_path, monkeypatch, check, mutation,
+):
+    module, path, record = receipt(tmp_path, version="1.1.0", launch_checks=True)
+    if mutation == "missing":
+        record["local_checks"].pop(check)
+    else:
+        record["local_checks"][check] = {"false": False, "integer": 1, "string": "true"}[mutation]
+    path.write_text(json.dumps(record), encoding="utf-8")
+    registry_calls, credential_calls = [], []
+
+    def unexpected_registry(version):
+        registry_calls.append(version)
+        raise AssertionError("Incomplete launch review must fail before registry access")
+
+    def unexpected_credentials(*args):
+        credential_calls.append(args)
+        raise AssertionError("Incomplete launch review must fail before credential access")
+
+    monkeypatch.setitem(module["upload"].__globals__, "published_files", unexpected_registry)
+    monkeypatch.setitem(sys.modules, "keyring", SimpleNamespace(get_password=unexpected_credentials))
+    before = path.read_bytes()
+    with pytest.raises(ValueError, match="All named release checks must pass"):
+        module["upload"](path)
+    assert registry_calls == credential_calls == []
+    assert path.read_bytes() == before
+
+
+@pytest.mark.parametrize("version", ["1.1.1", "1.10.0", "2.0.0"])
+def test_future_stable_versions_cannot_reuse_only_the_1_0_check_set(tmp_path, version):
+    module, path, _ = receipt(tmp_path, version=version)
+    with pytest.raises(ValueError, match="All named release checks must pass"):
+        module["checked_files"](path)
 
 
 @pytest.mark.parametrize("mutation", ["version", "revision", "no_checks", "missing_check",

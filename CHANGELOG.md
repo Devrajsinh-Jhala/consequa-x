@@ -1,5 +1,26 @@
 # Changes
 
+## 1.1.0 - 17 October 2026
+
+- Added `render_report(trace, include_details=False)` and
+  `consequa-x report trace.json --output report.html`, with a self-contained
+  chronology, contract, responses, assessment, readback, verification/origin and
+  SVG evidence graph plus complete accessible graph tables.
+- Default reports omit arbitrary captured values throughout the file. Explicit
+  details mode includes the full trace as escaped inert JSON. No report executes
+  actions, verifiers, target matchers or replay; alignment remains unassessable
+  in the report. The original trace remains separate evidence.
+- Preserved source and existing output files with exclusive creation. Invalid
+  schema data is refused before an output directory is created, with captured
+  values omitted from report-command decoding errors.
+- Added a synthetic artifact-delivery visual quickstart and public documentation,
+  support and security routes, while retaining the private research repository.
+- Added installed-package release checks and browser/report security gates.
+  Release receipts bind the final artifact, actual platform checks and
+  publication state; public release notes report the tested environments.
+- Preserved the dependency-free version-1 core and portable wire schema `0.1`.
+  GitHub Actions stays disabled.
+
 ## Post-release research update - 16 October 2026
 
 The predeclared physical-interaction study finished collection on 15 October
@@ -16,10 +37,10 @@ preselected complete traces. The
 [derived findings](output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
 retain coverage, width, detection and refusal denominators. The defined
 framework and protocol/software paper scope is complete on 16 October 2026:
-the [six-page IEEE PDF](output/pdf/Consequa-X_IEEE_Paper.pdf) compiled and all
+the [illustrated eight-page IEEE PDF](output/pdf/Consequa-X_IEEE_Paper.pdf) compiled and all
 rendered pages passed visual review. The [QA receipt](output/pdf/qa.json) binds
-it to [editable source](paper/consequa-x-ieee.tex) at manuscript revision
-`01d0709ad98acf27c4e12c0899208c28417d46a9`. Actual venue selection, final human
+it to the frozen [editable source](paper/consequa-x-ieee.tex) and four vector
+figures. Actual venue selection, final human
 review, reviewer access and submission remain maintainer steps. These results
 do not establish held-out model performance, a new estimator or baseline
 superiority.

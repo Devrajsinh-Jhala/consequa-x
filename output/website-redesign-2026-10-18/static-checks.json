@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "date": "2026-10-18",
+  "html_pages": 5,
+  "local_references_checked": 106,
+  "duplicate_ids": 0,
+  "missing_local_references": 0,
+  "quickstart_unchanged": true,
+  "runtime_package_changed": false,
+  "github_actions_used": false,
+  "authored_assets": [
+    {
+      "path": "app.js",
+      "bytes": 6721,
+      "sha256": "00f5cef083e491b0c65e33de71f9fd5f6303e3f47822bd54ad3900217c508ca8"
+    },
+    {
+      "path": "changelog.html",
+      "bytes": 5055,
+      "sha256": "90920a2d8cfdc4b7ace93dd9c7013f0dff030cd10ea2e9eca91158f93c745b1f"
+    },
+    {
+      "path": "docs.css",
+      "bytes": 16872,
+      "sha256": "05c1ea6ffe4da61dd012761a32951c72c24ef64828c1cc00452a572b97732987"
+    },
+    {
+      "path": "docs.html",
+      "bytes": 12947,
+      "sha256": "2482c3e22531c98c90a5369938585dece3e037ab0b5afd9b9669013dbe03681d"
+    },
+    {
+      "path": "examples/artifact_delivery.py",
+      "bytes": 9834,
+      "sha256": "0c40af6b4389512c92e812835a5a9043aa889c6a626a2409f79410be4d68f473"
+    },
+    {
+      "path": "examples/report_quickstart.py",
+      "bytes": 1486,
+      "sha256": "a0c671c6d988243215147722ddfd412660e1c69abc2fd3a1ab6a009e052c8679"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 267,
+      "sha256": "4a02d45a8d9910c1e58ba301530ad8608633846e84063baca82b2baffef9afa7"
+    },
+    {
+      "path": "fonts/JetBrainsMono-OFL.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "path": "fonts/JetBrainsMono-Variable.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "path": "fonts/Manrope-OFL.txt",
+      "bytes": 4387,
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    },
+    {
+      "path": "fonts/Manrope-Variable.ttf",
+      "bytes": 164700,
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+    },
+    {
+      "path": "fonts/README.md",
+      "bytes": 2273,
+      "sha256": "dda5d5687fc2af28b592c5a5ec77160938ebb14614e4515965825523ee9d0b50"
+    },
+    {
+      "path": "fonts/SpaceGrotesk-OFL.txt",
+      "bytes": 4495,
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "path": "fonts/SpaceGrotesk-Variable.ttf",
+      "bytes": 136676,
+      "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72"
+    },
+    {
+      "path": "index.html",
+      "bytes": 18215,
+      "sha256": "e49b765088bc908f432c4d44769184d6afea1baad2659de70bd19e2ead927f25"
+    },
+    {
+      "path": "quickstart.zip",
+      "bytes": 6339,
+      "sha256": "b985fad0772f8c68bc0150db0f4be843803f8511158bcd880663a6cb7d7ac75c"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 93,
+      "sha256": "9ad00d9c9c299566af77f7d21cd32922945a4a6e8978b1492943c43997268a69"
+    },
+    {
+      "path": "security.html",
+      "bytes": 3904,
+      "sha256": "e181e68609cf346b276368f69978a16a88da141f708c12003bee6b6b1492a1bb"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 528,
+      "sha256": "c78d5f3941e43d13c3847637656285fb0c0b6b9d672face22a05452db9c896a2"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 39113,
+      "sha256": "c43578228b16a00156467aa7dec4dea59e244384e5d57cb33d8c588639b820fa"
+    },
+    {
+      "path": "support.html",
+      "bytes": 4798,
+      "sha256": "aa741103df4de88dc43a2ab267034d8d8bd616f0afeca4bfd5ffeb0f5b700d01"
+    }
+  ]
+}

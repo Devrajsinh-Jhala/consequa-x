@@ -55,33 +55,37 @@
   const scenarios = {
     confirmed: {
       symbol: "✓",
-      title: "Contract satisfied",
-      description: "The independent readback establishes the requested refund. Qualified provenance links this effect to the agent’s action.",
-      readback: "One matching effect, with qualified agent provenance",
+      title: "Contract satisfied.",
+      description: "Independent readback establishes the refund. Qualified provenance links the effect to this agent.",
+      readback: "Matching effect; qualified agent provenance",
       state: "Satisfied", origin: "Confirmed", alignment: "Contradicted",
-      edge: "qualified provenance", target: "Effect E01", source: "Action A01"
+      edge: "qualified provenance", target: "Effect E01", source: "Action A01",
+      sourceKind: "DISPATCH", effectSymbol: "✓"
     },
     unknown: {
       symbol: "?",
-      title: "Outcome unknown",
+      title: "Outcome unknown.",
       description: "The readback is incomplete. The timeout and reported failure cannot establish whether the requested refund occurred.",
       readback: "Incomplete source view; no sufficient persistence witness",
       state: "Unknown", origin: "Unknown", alignment: "Unassessable",
-      edge: "insufficient evidence", target: "No qualified witness", source: "Action A01"
+      edge: "insufficient evidence", target: "No qualified witness", source: "Action A01",
+      sourceKind: "DISPATCH", effectSymbol: "?"
     },
     other: {
       symbol: "✓",
-      title: "State satisfied, origin differs",
+      title: "State satisfied. Origin differs.",
       description: "The requested refund exists, but qualified provenance identifies another actor. State satisfaction alone does not attribute the effect to this agent.",
       readback: "One matching effect, attributed to another actor",
       state: "Satisfied", origin: "Other actor", alignment: "Aligned for linked target",
-      edge: "qualified provenance", target: "Effect E01", source: "Actor B01"
+      edge: "qualified provenance", target: "Effect E01", source: "Actor B01",
+      sourceKind: "EFFECT ORIGIN", effectSymbol: "✓"
     }
   };
   const fields = {
     symbol: "verdict-symbol", title: "verdict-title", description: "verdict-description",
     readback: "demo-readback", state: "fact-state", origin: "fact-origin",
-    alignment: "fact-alignment", edge: "graph-edge", target: "graph-target", source: "graph-source"
+    alignment: "fact-alignment", edge: "graph-edge", target: "graph-target", source: "graph-source",
+    sourceKind: "graph-source-kind", effectSymbol: "graph-effect-symbol"
   };
   const scenarioButtons = document.querySelectorAll("[data-scenario]");
   scenarioButtons.forEach((button) => {
@@ -95,6 +99,8 @@
       });
       const verdict = document.querySelector("#demo-verdict");
       if (verdict) verdict.dataset.state = button.dataset.scenario;
+      const inspector = document.querySelector(".inspector");
+      if (inspector) inspector.dataset.scenarioView = button.dataset.scenario;
       Object.entries(fields).forEach(([key, id]) => {
         const element = document.getElementById(id);
         if (element) element.textContent = scenario[key];
@@ -107,9 +113,16 @@
       const source = document.getElementById(button.dataset.copy);
       const status = document.getElementById("copy-status");
       if (!source) return;
+      let clipboardTimeout;
       try {
         if (!navigator.clipboard || !window.isSecureContext) throw new Error("Clipboard unavailable");
-        await navigator.clipboard.writeText(source.textContent.trim());
+        if (status) status.textContent = "Copying the installation command…";
+        await Promise.race([
+          navigator.clipboard.writeText(source.textContent.trim()),
+          new Promise((resolve, reject) => {
+            clipboardTimeout = window.setTimeout(() => reject(new Error("Clipboard did not respond")), 1500);
+          })
+        ]);
         const label = button.querySelector("span");
         if (label) label.textContent = "Copied";
         button.setAttribute("aria-label", "Installation command copied");
@@ -127,6 +140,8 @@
           selection.addRange(range);
         }
         if (status) status.textContent = "The installation command is selected. Use your device’s copy command.";
+      } finally {
+        window.clearTimeout(clipboardTimeout);
       }
     });
   });

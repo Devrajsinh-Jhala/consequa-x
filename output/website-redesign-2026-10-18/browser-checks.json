@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-18",
+  "url": "https://consequa-x.brawny-deer-5658.chatgpt.site",
+  "scenarioChecks": [
+    {
+      "scenario": "unknown",
+      "values": [
+        "Unknown",
+        "Unknown",
+        "Unassessable"
+      ],
+      "view": "unknown"
+    },
+    {
+      "scenario": "other",
+      "values": [
+        "Satisfied",
+        "Other actor",
+        "Aligned for linked target"
+      ],
+      "view": "other"
+    },
+    {
+      "scenario": "confirmed",
+      "values": [
+        "Satisfied",
+        "Confirmed",
+        "Contradicted"
+      ],
+      "view": "confirmed"
+    }
+  ],
+  "pauseStates": [
+    "paused",
+    "paused",
+    "paused",
+    "paused"
+  ],
+  "responsiveChecks": [
+    {
+      "client": 305,
+      "page": 305,
+      "width": 320
+    },
+    {
+      "client": 375,
+      "page": 375,
+      "width": 390
+    },
+    {
+      "client": 753,
+      "page": 753,
+      "width": 768
+    },
+    {
+      "client": 1289,
+      "page": 1289,
+      "width": 1304
+    }
+  ],
+  "copyFeedbackObserved": "Installation command copied to clipboard.",
+  "mobileMenuClosesOnEscapeAndNavigation": true,
+  "docsMobilePageOverflow": 0,
+  "docsTableContainerWidth": 333,
+  "docsTableScrollWidth": 570,
+  "reducedMotion": "CSS rules inspected; operating-system preference was not emulated",
+  "githubActionsUsed": false
+}

@@ -1,0 +1,11 @@
+name: Usage question
+description: Ask about an API, example or documented behavior.
+title: "Question: "
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question and context
+      description: Include your package/Python/OS versions and a synthetic example if relevant. No private captures or credentials.
+    validations:
+      required: true

@@ -1,0 +1,133 @@
+"use strict";
+
+(() => {
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const menuButton = document.querySelector(".menu-toggle");
+  const navigation = document.querySelector("#primary-nav");
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", () => {
+      const expanded = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!expanded));
+      navigation.classList.toggle("is-open", !expanded);
+    });
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        navigation.classList.remove("is-open");
+      });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+        menuButton.setAttribute("aria-expanded", "false");
+        navigation.classList.remove("is-open");
+        menuButton.focus();
+      }
+    });
+  }
+
+  const motionButton = document.querySelector(".motion-toggle");
+  if (motionButton) {
+    motionButton.addEventListener("click", () => {
+      const paused = motionButton.getAttribute("aria-pressed") !== "true";
+      motionButton.setAttribute("aria-pressed", String(paused));
+      root.classList.toggle("motion-paused", paused);
+      const symbol = document.createElement("span");
+      symbol.setAttribute("aria-hidden", "true");
+      symbol.textContent = paused ? "▷" : "Ⅱ";
+      motionButton.replaceChildren(symbol, document.createTextNode(paused ? " Resume motion" : " Pause motion"));
+    });
+  }
+
+  if (!reducedMotion.matches && "IntersectionObserver" in window) {
+    root.classList.add("motion-ready");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -20px 0px" });
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  }
+
+  const scenarios = {
+    confirmed: {
+      symbol: "✓",
+      title: "Contract satisfied",
+      description: "The independent readback establishes the requested refund. Qualified provenance links this effect to the agent’s action.",
+      readback: "One matching effect, with qualified agent provenance",
+      state: "Satisfied", origin: "Confirmed", alignment: "Contradicted",
+      edge: "qualified provenance", target: "Effect E01", source: "Action A01"
+    },
+    unknown: {
+      symbol: "?",
+      title: "Outcome unknown",
+      description: "The readback is incomplete. The timeout and reported failure cannot establish whether the requested refund occurred.",
+      readback: "Incomplete source view; no sufficient persistence witness",
+      state: "Unknown", origin: "Unknown", alignment: "Unassessable",
+      edge: "insufficient evidence", target: "No qualified witness", source: "Action A01"
+    },
+    other: {
+      symbol: "✓",
+      title: "State satisfied, origin differs",
+      description: "The requested refund exists, but qualified provenance identifies another actor. State satisfaction alone does not attribute the effect to this agent.",
+      readback: "One matching effect, attributed to another actor",
+      state: "Satisfied", origin: "Other actor", alignment: "Aligned for linked target",
+      edge: "qualified provenance", target: "Effect E01", source: "Actor B01"
+    }
+  };
+  const fields = {
+    symbol: "verdict-symbol", title: "verdict-title", description: "verdict-description",
+    readback: "demo-readback", state: "fact-state", origin: "fact-origin",
+    alignment: "fact-alignment", edge: "graph-edge", target: "graph-target", source: "graph-source"
+  };
+  const scenarioButtons = document.querySelectorAll("[data-scenario]");
+  scenarioButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const scenario = scenarios[button.dataset.scenario];
+      if (!scenario) return;
+      scenarioButtons.forEach((item) => {
+        const selected = item === button;
+        item.classList.toggle("active", selected);
+        item.setAttribute("aria-pressed", String(selected));
+      });
+      const verdict = document.querySelector("#demo-verdict");
+      if (verdict) verdict.dataset.state = button.dataset.scenario;
+      Object.entries(fields).forEach(([key, id]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = scenario[key];
+      });
+    });
+  });
+
+  document.querySelectorAll("[data-copy]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const source = document.getElementById(button.dataset.copy);
+      const status = document.getElementById("copy-status");
+      if (!source) return;
+      try {
+        if (!navigator.clipboard || !window.isSecureContext) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(source.textContent.trim());
+        const label = button.querySelector("span");
+        if (label) label.textContent = "Copied";
+        button.setAttribute("aria-label", "Installation command copied");
+        if (status) status.textContent = "Installation command copied to clipboard.";
+        window.setTimeout(() => {
+          if (label) label.textContent = "Copy";
+          button.setAttribute("aria-label", "Copy package installation command");
+        }, 2200);
+      } catch {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(source);
+        if (selection) {
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
+        if (status) status.textContent = "The installation command is selected. Use your device’s copy command.";
+      }
+    });
+  });
+})();

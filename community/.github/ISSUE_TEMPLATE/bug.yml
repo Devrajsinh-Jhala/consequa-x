@@ -1,0 +1,21 @@
+name: Reproducible bug
+description: Report a package or documentation problem using synthetic data.
+title: "Bug: "
+body:
+  - type: markdown
+    attributes:
+      value: "Use synthetic examples only. Never post secrets, private traces, customer data or security vulnerabilities here. See SECURITY.md for private vulnerability reports."
+  - type: input
+    id: versions
+    attributes:
+      label: Package, Python and operating system versions
+      placeholder: "consequa-x 1.1.0; Python 3.12; Windows 11"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal synthetic reproduction
+      description: Include the command, expected behavior, actual behavior and sanitized error. Do not attach a real customer trace.
+    validations:
+      required: true

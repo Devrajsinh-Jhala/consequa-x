@@ -1,0 +1,211 @@
+{
+  "schema_version": "paper_review_arithmetic_v1",
+  "scope": "Independent arithmetic/retained-byte inspection only; no generation, model, external API or review-code execution",
+  "revision_date": "2026-10-18",
+  "wilson_95": {
+    "6/10": [
+      0.3126737697336583,
+      0.8318196702937637
+    ],
+    "118/128": [
+      0.8621530681952095,
+      0.9570126249490177
+    ],
+    "128/128": [
+      0.9708630437264916,
+      1
+    ],
+    "92/128": [
+      0.6353658087171574,
+      0.7893867729131827
+    ]
+  },
+  "hoeffding": {
+    "pairs32_half_width": 0.48016139565996035,
+    "pairs32_unclipped_width": 0.9603227913199207,
+    "pairs16_unclipped_width": 1.3581015157406195,
+    "p80q20_retry_mean": 0.70703125,
+    "p80q20_retry_mean_clipped_width": 0.7731301456599604,
+    "p80q20_upper_clipped_trials": 128
+  },
+  "repeated_branch_totals": {
+    "planned": 655360,
+    "completed": 536150,
+    "invalid": 37423,
+    "failed": 256,
+    "unstarted": 81531,
+    "calls": 628535,
+    "completed_proportion": 0.8180999755859375,
+    "not_completed_proportion": 0.1819000244140625
+  },
+  "global_vector_costs": [
+    {
+      "mechanism": "refund-p50-q50",
+      "game": "strict",
+      "actual_calls": 42415,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "refund-p50-q50",
+      "game": "on_reach",
+      "actual_calls": 42526,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 332.234375
+    },
+    {
+      "mechanism": "refund-p20-q80",
+      "game": "strict",
+      "actual_calls": 36627,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "refund-p20-q80",
+      "game": "on_reach",
+      "actual_calls": 36688,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 286.625
+    },
+    {
+      "mechanism": "refund-p80-q20",
+      "game": "strict",
+      "actual_calls": 45797,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "refund-p80-q20",
+      "game": "on_reach",
+      "actual_calls": 45817,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 357.9453125
+    },
+    {
+      "mechanism": "refund-p100-q100",
+      "game": "strict",
+      "actual_calls": 61824,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 483.0
+    },
+    {
+      "mechanism": "refund-p100-q100",
+      "game": "on_reach",
+      "actual_calls": 61824,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 483.0
+    },
+    {
+      "mechanism": "idempotent-p50-q50",
+      "game": "strict",
+      "actual_calls": 42203,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "idempotent-p50-q50",
+      "game": "on_reach",
+      "actual_calls": 42378,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 331.078125
+    },
+    {
+      "mechanism": "unknown-provenance-p50-q50",
+      "game": "strict",
+      "actual_calls": 42241,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "unknown-provenance-p50-q50",
+      "game": "on_reach",
+      "actual_calls": 42429,
+      "available_global_vectors": 128,
+      "calls_per_available_global_vector": 331.4765625
+    },
+    {
+      "mechanism": "lagged-readback-p50-q50",
+      "game": "strict",
+      "actual_calls": 42318,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "lagged-readback-p50-q50",
+      "game": "on_reach",
+      "actual_calls": 42424,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "budget-p50-q50",
+      "game": "strict",
+      "actual_calls": 512,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    },
+    {
+      "mechanism": "budget-p50-q50",
+      "game": "on_reach",
+      "actual_calls": 512,
+      "available_global_vectors": 0,
+      "calls_per_available_global_vector": null
+    }
+  ],
+  "retained_manifest_size_groups": {
+    "evaluator_truth": {
+      "files": 16,
+      "bytes": 72344
+    },
+    "evidence": {
+      "files": 16,
+      "bytes": 4498306
+    },
+    "root_metadata": {
+      "files": 4,
+      "bytes": 1152203
+    },
+    "trials": {
+      "files": 16,
+      "bytes": 49294356
+    }
+  },
+  "retained_manifest_listed_bytes": 55017209,
+  "retained_manifest_bytes": 9428,
+  "review_data_only_inspection": {
+    "status": "two known members hashed only",
+    "sim_py_sha256": "4683fe8ab66d840b3b441ff48a438f0a29e54d5231a8eff8150d120a6d980df8",
+    "sim_results_sha256": "4d6b9a0dce11a946991173daf20cd50b8ad64cd63230210e08f1f2e95282ef10",
+    "code_executed": false
+  },
+  "prior_study_branch_counts": {
+    "original_calibration": {
+      "planned_branches": 223232,
+      "completed": 198690,
+      "invalid": 4062,
+      "failed": 256,
+      "unstarted": 20224,
+      "actual_calls": {
+        "contrastive": 79910,
+        "factual": 5888,
+        "shapley": 203911,
+        "total": 289709
+      },
+      "not_completed_proportion": 0.10993943520642202
+    },
+    "shared_draw_followup": {
+      "planned_branches": 66048,
+      "completed": 59901,
+      "invalid": 1027,
+      "failed": 64,
+      "unstarted": 5056,
+      "actual_calls": {
+        "contrastive": 24087,
+        "factual": 1728,
+        "shapley": 61239,
+        "total": 87054
+      },
+      "not_completed_proportion": 0.09306867732558144
+    }
+  }
+}

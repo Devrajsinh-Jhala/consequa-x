@@ -2,7 +2,7 @@
 
 Devrajsinh Jhala
 
-Complete protocol and software manuscript, updated 16 October 2026. This readable
+Protocol and software manuscript, revised 18 October 2026. This readable
 source follows the [generic IEEE conference version](consequa-x-ieee.tex). No
 specific conference, acceptance, institutional affiliation or funding is asserted.
 The contribution and empirical claims are limited to the declared artifact and
@@ -10,27 +10,22 @@ settings. Broader comparative research is future work.
 
 ## Abstract
 
-An agent's selected operation, tool response, reported assessment and external
-effect can disagree. A refund may commit before an acknowledgement is lost,
-and another actor may satisfy the requested state. Consequa-X records these
-distinctions in portable evidence traces, verifies temporal contracts from
-independent readback and executes isolated intervention replays with explicit
-unknown, invalid and budget-exhausted outcomes. The contribution is a software
-and evidence protocol; its contrastive and permutation Shapley estimators adapt
-existing methods. Audited synthetic studies retain 1,280 original calibration
-trials, 384 fresh shared-draw comparisons and 2,048 repeated physical sampling
-trials. Several original nominal 95% intervals undercovered specified effects.
-Conservative alternatives retain
-uncertainty at homogeneous samples but have substantial precision and
-detection costs. Physical refund enumeration shows different initial-action
-and consequence interactions under an explicit on-reach positional game.
-A separate 24-episode local-model validation found six contradicted status
-claims among ten assessable claims for one prompt, while another abstained in
-every structured status but retained affirmative language in some rationales.
-The reusable core supports explicit application verifiers and separates
-successive effect witnesses in its evidence graph. These results establish
-auditable implementation behavior and measured limitations in the declared
-settings; they do not establish a new estimator or broad attribution superiority.
+A lost acknowledgement can turn a successful agent action into a duplicate
+when the agent retries. Reliable diagnosis must distinguish what the agent
+reported, whether the requested state holds and which actor produced it.
+Consequa-X contributes an evidence protocol that preserves those distinctions,
+observation-specific provenance and explicit unknown verdicts. Its optional
+research adapter adds a declared on-reach intervention game and refusal-aware
+accounting around existing contrastive and permutation Shapley estimators.
+Across 2,048 scripted-simulator sampling trials, all 655,360 planned replay
+branches were retained, including invalid and unstarted branches. At one
+predeclared retry coefficient, nominal normal intervals covered the reference
+in 118/128 trials; Hoeffding bounds covered in 128/128 but detected its sign in
+only 8/128. A separate 24-episode, single-model exploratory validation found
+six contradicted status claims among ten assessable claims for one prompt.
+These results support testable protocol properties and expose the availability
+and precision costs of the declared evidence and replay rules. Comparative
+accuracy, real-service effectiveness and broad model generalization remain open.
 
 **Index terms:**
 agent systems, outcome verification, evidence provenance, counterfactual replay,
@@ -58,12 +53,25 @@ explanation. Its research adapters provide isolated refund worlds, public-only
 policy inputs, a local Ollama adapter and bounded replay experiments. Reported
 assessments are captured outputs, not measurements of hidden reasoning.
 
-This paper contributes (1) a reproducible protocol linking operation identity,
-attempts, responses, assessments, independent readback, conclusions and origin;
-(2) replay infrastructure with declared games, actual-call accounting and
-complete refusal records; and (3) audited evidence exposing uncertainty and
-reporting limits in specified synthetic and exploratory local-model settings.
-It presents a protocol/software artifact rather than a superiority comparison.
+The paper centers three testable protocol claims:
+
+1. **C1: State and origin remain separate.** A satisfied contract can retain an
+   other-actor or unknown origin. Successive readbacks retain their own supporting
+   witnesses rather than transferring provenance between observations. Verification
+   and graph tests exercise external-actor, missing-provenance and conflicting-witness
+   cases; the local validation contains an other-actor example.
+2. **C2: The replay game is explicit.** On-reach semantics define how normal early
+   termination treats later requested holds. Strict and on-reach results remain
+   separate. Analytic enumeration and the variable-length controls test this
+   distinction; Appendix A states its formal scope.
+3. **C3: Refusal remains observable.** Every planned branch is retained with call
+   accounting; incomplete evidence or an invalid draw refuses affected estimates.
+   The repeated-sampling study accounts for all 655,360 slots and reports availability
+   beside numerical accuracy.
+
+These are implementation and declared-game claims. The contribution combines
+them in a portable protocol around existing estimators; an equally informed
+baseline comparison has not yet established their empirical advantage.
 Figure 1 separates the captured-evidence core from the explicitly invoked
 research replay path.
 
@@ -101,6 +109,38 @@ response/effect separation are foundations and comparison requirements here.
 These targeted primary-source checks do not constitute a systematic review or
 an independent reproduction of those papers' empirical results.
 
+[Who&When](https://proceedings.mlr.press/v267/zhang25cq.html) attributes failed
+multi-agent runs to an agent and decisive step from annotated logs; this differs
+from verifying a particular external effect from an independent witness.
+[PROV-DM](https://www.w3.org/TR/2013/REC-prov-dm-20130430/) already represents
+entities, activities, agents and responsibility. Consequa-X is neither a new
+general provenance model nor a PROV conformance implementation. Its narrower
+contribution is an executable protocol linking temporal contracts, observation
+witnesses, separate origin verdicts and explicit refusal.
+
+[Agent–tool anomaly work](https://arxiv.org/html/2609.15397v1) already separates
+external events from runtime observations, including exogenous effects;
+[LIMBO](https://arxiv.org/html/2609.29095v1) grades committed-effect histories and
+analyzes late commits. Response/effect separation and effect ledgers are therefore
+prior concepts. Our study audits a particular protocol rather than establishing
+a safer recovery controller. LIMBO's late-commit argument assumes a keyless,
+non-idempotent write with no known finite in-flight bound and finite task-completion
+time. Under those conditions, bounded watermark polling cannot guarantee
+exactly-once execution. [Idempotence](https://doi.org/10.1145/2160718.2160734) and
+[eventual consistency](https://doi.org/10.1145/1435417.1435432) are established
+systems concerns.
+
+[AppWorld](https://doi.org/10.18653/v1/2024.acl-long.850),
+[ToolSandbox](https://doi.org/10.18653/v1/2025.findings-naacl.65) and
+[$\tau$-bench](https://arxiv.org/html/2406.12045v1) already evaluate world-state
+outcomes or stateful trajectories. They provide future transfer targets; this
+paper evaluates none of their task populations. For statistics, known
+[binomial Wald-interval limitations](https://doi.org/10.1214/ss/1009213286) motivate
+careful interval checks but do not by themselves establish paired-Shapley
+undercoverage. Modern [bounded-mean betting intervals](https://doi.org/10.1093/jrsssb/qkad009)
+are planned comparators, with the sampling unit and stopping rule still requiring
+explicit validation for this replay setting.
+
 ## 3. Evidence Protocol and Core Interfaces
 
 ### Objects, contracts and trust
@@ -132,6 +172,12 @@ Complete final readback covers the stability horizon. Arrows show event order,
 and times are illustrative rather than sampled observations.
 
 ### Reusable application boundary
+
+The evidence core can operate on a production application's captured records
+without any replay. A read-only adapter obtains independent observations;
+verification returns state and origin conclusions, and explanation renders the
+supporting evidence. This path requires neither simulator reset nor a second
+execution of a consequential action.
 
 Applications can supply an explicit read-only verifier through
 `verify(action, observation, verifier=...)`. The wrapper checks receipt
@@ -179,11 +225,21 @@ $$
 \gamma_k = \mathbb{E}[X\mid \text{prefix held, suffix resampled at }k]-x_f.
 $$
 The factual term is one observed constant, not a population rate estimate.
-Negative values indicate rescue relative to that observation. An earlier
-irrelevant position can have a nonzero suffix effect through a later stochastic
-choice. A latest nominal rescue is selected only when every planned position
-is estimable and its interval supports a negative effect. This selection has
-no simultaneous coverage guarantee and does not establish a unique cause.
+This factual-anchored target answers: how often would a fresh suffix avoid the
+bad outcome observed in this episode? It is useful for episode diagnosis, but
+does not estimate the effect of changing one decision against an independently
+resampled original arm. That population contrast would instead compare two
+expectations, for example $\mathbb{E}[X\mid\text{hold }k]-
+\mathbb{E}[X\mid\text{resample }k]$, with the other conditions declared.
+Neither estimand is generally preferable; they answer different questions and
+have different sampling costs. Here negative $\gamma_k$ indicates rescue
+relative to the observed episode. An earlier irrelevant position can have a
+nonzero suffix effect because its suffix contains a later stochastic choice.
+The **pivot** is the latest position with negative population suffix effect
+under this definition. The retained nominal selector attempts to detect that
+position only if all planned positions are estimable. Its pointwise intervals
+give no simultaneous or post-selection coverage guarantee; selected pivots are
+exploratory diagnostics rather than unique causes.
 
 ### Held-decision coalition games
 
@@ -214,7 +270,7 @@ negative values mean it is protective.
 ### Intervals and refusals
 
 Contrastive defaults use exact binomial Clopper–Pearson bounds translated by
-$-x_f$ [NIST binomial intervals](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm). Signed pair observations lie in $[-1,1]$; the default
+$-x_f$ [Clopper and Pearson, 1934](https://doi.org/10.1093/biomet/26.4.404). Signed pair observations lie in $[-1,1]$; the default
 Hoeffding half-width for $P$ independent pairs and failure allowance $\alpha$
 is [Hoeffding, 1963](https://doi.org/10.1080/01621459.1963.10500830)
 $$
@@ -228,8 +284,20 @@ independence between the two arms. Bootstrap and normal intervals remain
 explicit legacy comparators.
 These are standard conditional methods with sampling assumptions and precision
 costs, not distribution-free guarantees for dependent model continuations.
+All reported coefficient intervals are pointwise. For a predeclared family
+of $m$ valid marginal intervals, allocating failure probability $\alpha/m$ to
+each would give a Bonferroni family guarantee without independence across
+positions. That adjustment was not used in these retained studies. A nominal
+latest-rescue selection therefore does not inherit a 95% family guarantee.
+Variance-adaptive or [betting-based bounded-mean methods](https://doi.org/10.1093/jrsssb/qkad009)
+are relevant future comparators; the present results do not establish that
+Hoeffding is optimal or that conservative uncertainty must have this width.
 
-Each replay starts a fresh declared world. Held replies consume no fresh calls;
+Replay requires a resettable, isolated simulator or a validated digital twin.
+It must not reissue real refunds or other consequential production writes.
+The studies below reset a scripted payment simulator, whose fidelity is a
+separate assumption; the evidence-only production path does not require it.
+Held replies consume no fresh calls;
 every attempted fresh call, including a provider/protocol failure, consumes
 budget. Every planned branch remains recorded. Unknown, invalid, failed and
 unstarted branches are not dropped or redrawn; affected estimates are refused.
@@ -283,6 +351,13 @@ checks the stated mathematical law, not simulator execution or sampling validity
 
 ### Original calibration and finite analysis
 
+The **protective-stop** fixture forces the factual timeout decision to stop
+after one committed refund. Fresh continuations retry with probability $q$,
+so resampling can introduce a duplicate. The **retry-pivot** fixture instead
+forces a factual retry; its timeout position is the latest population rescue
+position when $0<q<1$. These are planted scripted decisions, not model-derived
+causal labels.
+
 The original development study retained 1,280 trials across ten specified
 mechanisms, with 128 repetitions. Of 223,232 planned branches, 198,690
 completed, 4,062 were invalid, 256 failed at the deliberate cap and 20,224
@@ -291,7 +366,9 @@ statistics and accounting. Table 1 reports a preselected
 protective-stop consequence position with 128 available, reference-eligible
 estimates in each row.
 
-**Table 1. Original nominal 95% coverage at the protective stop.**
+**Table 1. Original protective-stop consequence position: nominal 95%
+percentile-bootstrap contrastive and normal paired-Shapley coverage.** Each entry
+has 128 available, reference-eligible trials.
 
 | Retry $q$ | Contrastive covered | Shapley covered |
 | --- | --- | --- |
@@ -317,7 +394,9 @@ coverage 7.72% for the limiting empirical percentile bootstrap, 85.15% for
 Wilson and 96.68% for Clopper–Pearson. The bootstrap grid is its
 infinite-resample limit, distinct from the replay's finite seeded bootstrap.
 
-**Table 2. Fresh shared-draw coverage: 32 trials per row.**
+**Table 2. Fresh protective-stop shared-draw coverage: 32 trials per row.**
+Bootstrap/exact-binomial intervals cover the contrastive effect;
+normal/Hoeffding intervals cover the paired-Shapley coefficient.
 
 | $q$ | Bootstrap | Exact binomial | Normal | Hoeffding |
 | --- | --- | --- | --- | --- |
@@ -333,17 +412,17 @@ population method. At $q=0.1$, mean normal versus Hoeffding width was about
 negative reference sign in 0/32 trials at both weaker settings, and 32/32 at
 $q=0.9$. Wider intervals therefore impose a substantial detection cost.
 
-The hardened independent audit passed 3,283,523 assertions at its recorded
-derived-artifact inventory; twenty targeted corruptions were rejected. A
+The standalone saved-evidence audit checked its recorded derived-artifact
+inventory and rejected twenty targeted corruptions. A
 separate SciPy numerical audit covered 1,290 binomial cases and 1,290 endpoint
 differences, with maximum binomial endpoint disagreement approximately
 $2.66\times10^{-14}$. SciPy was an audit dependency, not a framework runtime
 dependency. Finite grids and synthetic replays do not establish live-model
 sampling independence or simultaneous attribution coverage.
 
-### Physical interactions and variable length
+### Scripted-simulator interactions and variable length
 
-An independent physical enumeration covered four deterministic fresh-choice
+An independent scripted-simulator enumeration covered four deterministic fresh-choice
 components, eight held masks, two games and eight cases, retaining 512 planned
 branches and 718 actual scripted calls. Outcomes came from ordinary payment
 readback rather than injected payoff values. With selection and timeout retry
@@ -355,16 +434,16 @@ programmatic mixture, not observed model interaction recovery.
 
 The strict population game remained undefined at interior probabilities;
 missing provenance, lag and small budgets retained their distinct limits.
-The independent audit passed 27,277 checks; twenty-nine semantic corruptions
-were rejected. The original export manifest and data remain preserved alongside
+The independent audit rejected twenty-nine semantic corruptions.
+The original export manifest and data remain preserved alongside
 the derived canonical inventory. Two sampler integration controls exercised
 32 pairs and 32 endpoint draws, with eighteen coefficients within a broad
 0.3 regression tolerance. That tolerance alone is not a calibration result.
 
-### Repeated physical sampling
+### Repeated scripted-simulator sampling
 
 A separately frozen protocol exercised the actual permutation sampler across
-all eight declared physical mechanisms, both games and 128 fresh repetitions
+all eight declared scripted-simulator mechanisms, both games and 128 fresh repetitions
 per mechanism/game: 2,048 trials. Each trial planted the same three factual
 decisions and used 32 forward/reverse permutation pairs, one draw per coalition
 evaluation and 32 independent draws per endpoint, yielding 320 planned branches.
@@ -392,18 +471,29 @@ evidence and known violations; it does not establish an available coefficient.
 Failed and unstarted budget-control slots remain visible through exact counts.
 Inactive holds are a subset of completed branches, shown separately.
 
-A standalone auditor importing no framework implementation passed 44,698,925
-assertions over the retained trials, branches, 4,210 complete traces and all
-summary rows. Its receipt binds the frozen source revision and original
+A standalone auditor importing no framework implementation checked the retained
+trials, branches, 4,210 complete traces and all summary rows.
+Its receipt binds the frozen source revision and original
 52-file manifest. Derived tables retain every row separately from that sealed
 collection; auditing made no generation calls.
+
+Actual-call cost also depends on availability. The on-reach unsafe
+$(0.5,0.5)$ stratum used 42,526 scripted calls for 128 available global-consequence
+coefficient vectors, or 332.23 calls per vector, including factual capture and
+independent endpoints. Each vector contains three jointly estimated players.
+The lagged stratum spent 42,424 calls for zero such vectors; its cost-per-usable
+vector ratio is undefined. Shared targets and interval variants do not multiply
+the number of independent usable vectors. These are scripted-call costs, not
+production latency or financial charges.
 
 **Table 3. All eight declared cases: on-reach retry coefficient for global
 consequence, 128 planned repetitions per row.** N/H denotes normal/Hoeffding.
 Availability A and population-reference eligibility R each have denominator 128.
 Flags denote correct directional detection for nonzero references and false
 nonzero flags for zero references. Dashes denote undefined quantities;
-0/0 denotes an undefined coverage rate.
+0/0 denotes an undefined coverage rate. Hoeffding intervals are clipped to
+$[-1,1]$, explaining the 0.773 mean width at $(0.8,0.2)$ versus the
+unclipped 0.960 width at the two other stochastic unsafe settings.
 
 | Case $(p,q)$ or control | Reference | A ; R | Covered N / H | Mean width N / H | Flags N / H |
 | --- | --- | --- | --- | --- | --- |
@@ -438,6 +528,11 @@ ranged from 0 to 14/128 across the six assessable mechanisms; Hoeffding flags
 were 0/128 in each. The deterministic zero-reference case yielded 128 normal
 point intervals; their correctness in that case does not validate point intervals
 for stochastic outcomes.
+With 128 repetitions, $[0.862,0.957]$ also shows why an observed 92.2% rate
+does not resolve a small departure from 95% coverage. These runs are diagnostic
+integration evidence, not a precise empirical ranking of near-nominal methods.
+The finite-distribution calculation supplies a separate analytic check only
+for its declared independent Bernoulli law.
 
 Endpoint behavior was separately assessed. For the on-reach unsafe
 $(0.2,0.8)$ global-consequence endpoint,
@@ -485,7 +580,11 @@ is not a pure reporting experiment or an attribution-method comparison.
 | Linked satisfied/false/unknown | 6/4/2 | 5/5/2 |
 
 The revised profile's conditional contradiction rate is undefined, not zero
-error. In the other-actor case, revised-profile readback satisfied state while
+error. The original profile's 6/10 contradiction proportion has a descriptive
+95% Wilson interval of approximately $[0.313,0.832]$. Shared cases, fixed
+profile order and two repetitions per case preclude interpreting this interval
+as calibrated uncertainty over a broader population of tasks or models.
+In the other-actor case, revised-profile readback satisfied state while
 origin was external and action linkage false. In the expired-request case,
 the original profile correctly described ineligibility but issued a refund;
 its failure assessment contradicted achieved effect. Effect satisfaction and
@@ -498,9 +597,8 @@ seven revised rationales also hedged independent verification. A statement
 that a second attempt committed can be literally true while two effects
 violate an exactly-one task. These annotations are descriptive; no independent
 human verification or inter-rater reliability has been established. Unknown
-structured fields do not ensure prose abstention. The saved auditor passed
-2,227 assertions and rejected seven
-corrupted smoke copies without additional generation. Fixed profile order,
+structured fields do not ensure prose abstention. The saved auditor rejected
+seven corrupted smoke copies without additional generation. Fixed profile order,
 tiny sample size, shared fault conditions and an exposed validation family
 limit interpretation. The held-out reserve was not generated.
 
@@ -513,7 +611,8 @@ on interventions and must remain visible beside numerical results. Conservative
 intervals do not make undefined games numeric, resolve missing evidence, or
 remove the need to assess the actual sampling law.
 
-The environment is synthetic and narrow. The artifact-delivery example validates
+The environment is a narrow scripted simulator. No real payment API or standard
+world-state benchmark was evaluated. The artifact-delivery example validates
 an integration interface, not a second production-domain experiment. Declared
 source authority and watermarks are not authenticated transactional guarantees.
 The model experiments use one local model and exposed development/validation
@@ -521,12 +620,39 @@ families; they do not estimate broad model performance or held-out transfer.
 State and linked targets sharing outcomes are not independent replications.
 Claims about hidden reasoning cannot be inferred from reported assessments.
 
-Future superiority research requires faithful modular baselines with matched
-evidence, target definitions, candidate variables, snapshots and actual budgets.
-Joint context/fault attribution must expose infrastructure variables. Independent
-template and fault-composition families, predeclared precision, replay-fidelity
-checks and cluster-aware uncertainty are needed for generalization claims.
-Those comparisons are future work, not completed evidence of this paper.
+Three evaluation gaps determine the next study design. First, compare a
+response-only auditor, a verify-before-retry wrapper, a faithful CAR-style
+adapter, an LLM trace judge and simple last-step rules on identical fault
+traces. State satisfaction, source-supported origin and causal intervention
+effects need separate reference labels. Report duplicate effects, false success
+claims, abstention/availability, attribution accuracy and actual cost under
+matched evidence, targets and call budgets. Joint context/fault attribution
+must expose infrastructure variables to every applicable method.
+
+Second, assess bounded polling on an eventually consistent readback: poll
+until its declared watermark covers the horizon or a predeclared wait budget
+expires, then retain unknown. Report availability against wait time, read
+count and latency. Polling cannot promise finality or exactly-once execution
+under arbitrary late commits. The retained lag control uses one insufficient
+readback and yields zero consequence estimates; a polling result has not been
+measured. A safe real-service study would use provider test mode, isolated
+accounts and injected acknowledgement faults; counterfactual replay would
+remain in an isolated simulator or a separately validated digital twin.
+
+Third, preregister held-out template and fault-composition families, multiple
+model classes and independent blinded double annotation with agreement
+reporting. A planned 3–5-model, 500-or-more-episode study requires a precision
+and clustering analysis before fixing its final sample size. At least 1,000
+independent repetitions per selected simulator setting would better resolve
+coverage, with simultaneous uncertainty over predeclared positions and
+modern bounded-mean interval comparators. These are proposed experiments.
+No matched baseline, polling study, multi-model result or human annotation
+agreement is claimed here.
+
+The retained cost record counts actual scripted calls and refusals; the repeated
+study used 628,535 calls and zero model calls. It does not measure per-call
+verification latency, trace-size overhead, real-API charges or cost per usable
+production estimate. Those measurements belong in the next evaluation.
 
 ## 7. Conclusion and Artifact Availability
 
@@ -537,10 +663,10 @@ variable-length game restrictions and prose/structured-status disagreement.
 The useful result is a reproducible protocol/software artifact with measured
 limits, without claiming a new estimator or general method superiority.
 
-Stable version 1.0.0 is publicly available under MIT on
-[PyPI](https://pypi.org/project/consequa-x/1.0.0/). Its wheel and source
+Stable version 1.1.0 is publicly available under MIT on
+[PyPI](https://pypi.org/project/consequa-x/1.1.0/). Its wheel and source
 distribution were independently downloaded and hash-checked, and an isolated
-registry installation was verified on October 15, 2026. The wheel contains the runtime, schemas and typing
+registry installation was verified on October 17, 2026. The wheel contains the runtime, schemas and typing
 marker; the source distribution also includes documentation, offline examples,
 tests and audit scripts. Private research outputs and model weights are excluded.
 The maintainer-controlled
@@ -548,20 +674,82 @@ The maintainer-controlled
 history, retained protocols, raw evidence and evaluator-only truth are retained
 there for authorized collaborators; this paper does not assert unrestricted
 access to that research archive.
-Each historical study retains its own source revision and manifest; later
-engineering fixes do not silently replace earlier data. A public immutable
+The experiments predate the 1.1.0 release: original calibration used source
+`9e2dcbb`, shared-draw comparison `0d8ec0b`, refund enumeration and local
+validation `2c4adfe`, and repeated sampling `0bd744d`. Full revisions and manifests
+are retained in the evidence ledger. Version 1.1.0 adds current engineering
+interfaces and offline reports; its publication does not rerun or change those
+historical studies. A public immutable
 research archive and review-access arrangements have not been established.
 Framework imports and offline examples require no model credentials or required
 runtime dependencies. All reported payments are simulated; model weights are
 identified rather than redistributed.
 
-## Acknowledgment
+## AI Assistance and Verification Disclosure
 
 Generative AI assistance was used for software development, research-source
-inspection, rationale annotation and manuscript drafting. The empirical records
-and audit scripts are retained for review. Final human checking of annotations,
-manuscript, code, references and submission requirements remains required before
-submission and is the authors' responsibility.
+inspection, rationale annotation and manuscript drafting. Recorded automated
+checks cover retained-evidence accounting, analytic references, numerical
+implementations and document compilation. They do not constitute independent
+human replication or blinded annotation. The rationale labels remain unblinded
+and exploratory. The author is responsible for the paper's claims and any
+venue-required disclosure; no independent human validation is asserted.
+
+## Appendix A. Declared-Game Properties and Test Evidence
+
+**Strict-game partiality.** In the declared three-position mechanism, let
+$N=\{s,r,t\}$ be selection, timeout retry and final stop. If $p<1$, coalition
+$\{r\}$ requests a retry that is unreachable with probability $1-p>0$ when
+fresh selection declines. If $q<1$, coalition $\{s,t\}$ holds selection and
+requests a final stop that is unreachable with probability $1-q>0$ when the
+fresh timeout decision stops. With compatible decisions, normal execution,
+adequate budget and known outcomes, the full strict coalition game is structurally
+defined if and only if $p=q=1$ in this mechanism. In
+particular the full strict game is partial at every interior $(p,q)$ and ordinary
+full-game Shapley is undefined there. Conditioning on valid replay would define
+a different game. A finite sample with no invalid draw cannot establish zero
+population invalid probability.
+
+**On-reach allocation.** Fix finite factual positions, an intervention mapping
+and a continuation law. Suppose each coalition terminates almost surely, all
+reached held decisions are compatible, and a bounded measurable numeric outcome
+exists almost surely. Ignoring holds beyond normal termination then defines
+$v(S)=\mathbb{E}[X_S]$ for every coalition. Its ordinary Shapley values obey
+efficiency, symmetry, the null-player property and linearity. To see efficiency,
+sum the marginal contributions along each permutation: they telescope to
+$v(N)-v(\varnothing)$, and averaging preserves the equality. Relabelling
+permutations gives symmetry; zero marginals give the null-player property;
+linearity follows from linearity of each difference and of averaging. These
+properties belong to this declared game. They establish neither causal
+identifiability nor nonnegative normalized responsibility. Unknown observations,
+incompatible holds and provider failures remain outside these assumptions.
+Finite independently sampled coalition values can give a nonzero estimate for
+a true null player, and an independently sampled endpoint need not equal the
+sum of finite estimated shares.
+Uniform forward permutations and their reverses each have a uniform marginal.
+With unbiased coalition samples, their paired average is unbiased for the
+declared Shapley value. Independent pairs, rather than individual walk steps,
+are the sampling units for the bounded-mean interval.
+
+**Test mapping.** C1 is exercised by external-actor and absent-provenance tests
+in [test_verification.py](../tests/test_verification.py) and conflicting-observation
+tests in [test_graph_identity.py](../tests/test_graph_identity.py). C2 is exercised
+by [test_refund_interactions.py](../tests/test_refund_interactions.py), the
+[exact-rational analytic checker](verify_analytic_references.py), and retained
+enumeration controls. C3 is exercised by unknown-draw and exhausted-budget tests
+in [test_decision_shapley.py](../tests/test_decision_shapley.py), plus the
+saved-evidence branch audit. Tests establish behavior in their stated cases,
+not correctness of an untrusted source or a real-service policy.
+
+## Appendix B. Supporting Audit Inventory
+
+Raw assertion counts are retained for reproducibility rather than treated as
+evidence strength: 3,283,523 for the shared-draw audit, 27,277 for the enumeration
+audit, 44,698,925 for repeated sampling, and 2,227 for the local validation.
+These counts depend on data volume and auditor implementation. More informative
+checks include independently recomputed summaries, exact-rational analytic
+references, source-bound inventories, refusal denominators and rejected
+semantic corruptions. None supplies independent human verification.
 
 ## Evidence and reproducibility links
 
@@ -574,9 +762,9 @@ maintainer-controlled repository; links do not imply public research-archive acc
 - [Original calibration](../output/calibration-probe-2026-10-11/FINDINGS.md) and
   [finite analysis](../output/calibration-theory-2026-10-11/README.md).
 - [Shared-draw interval comparison](../output/interval-comparison-2026-10-13/FINDINGS.md).
-- [Physical refund enumeration](../output/refund-interactions-2026-10-13/README.md)
+- [Scripted-simulator refund enumeration](../output/refund-interactions-2026-10-13/README.md)
   and [independent audit](../output/refund-interaction-audits-2026-10-13/independent.json).
-- [Repeated physical sampling protocol](../output/interaction-sampling-2026-10-15/protocol.json),
+- [Repeated scripted-simulator sampling protocol](../output/interaction-sampling-2026-10-15/protocol.json),
   [all summary rows](../output/interaction-sampling-2026-10-15/summary.json),
   [execution receipt](../output/interaction-sampling-2026-10-15-execution.json) and
   [frozen installed checkpoint](../output/interaction-sampling-checkpoint-2026-10-15/checkpoint.json).

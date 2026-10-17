@@ -1,0 +1,178 @@
+{
+  "cited_references": 20,
+  "client_review_date": "2026-10-18",
+  "compilation_successful": true,
+  "embedded_fonts": {
+    "/AKHCZK+NewTXMI": true,
+    "/BZIVMZ+TeXGyreTermesX-BoldItalic-Identity-H": true,
+    "/CAFSZL+txmiaX": true,
+    "/CTBGDV+TimesNewRomanPS-BoldMT": true,
+    "/DDIEWW+TeXGyreTermesX-Regular": true,
+    "/DNRANN+STIXGeneral-Regular": true,
+    "/DYTMNF+STIXGeneral-Regular": true,
+    "/EFEWBW+TimesNewRomanPSMT": true,
+    "/FDABPN+TimesNewRomanPSMT": true,
+    "/FKPJSN+NewTXMI7": true,
+    "/GLXCWF+STIXGeneral-Regular": true,
+    "/GYFKBS+TimesNewRomanPS-BoldMT": true,
+    "/IHAIZV+TeXGyreTermesX-Regular-Identity-H": true,
+    "/IXFAWU+TeXGyreTermesX-Bold-Identity-H": true,
+    "/JAGKKY+txexs": true,
+    "/PVTTLK+txsyb": true,
+    "/TQTHRL+TeXGyreTermesX-Italic-Identity-H": true,
+    "/VDVGTR+txsys": true,
+    "/YEUUOC+LMMono10-Regular-Identity-H": true
+  },
+  "figure_rendering": "vector; no raster image XObjects",
+  "figures": 4,
+  "final_page_layout": "IEEE bibliography column trigger at reference 9; inspected after final compilation",
+  "frozen_inputs": [
+    {
+      "bytes": 49331,
+      "path": "paper/consequa-x-ieee.tex",
+      "sha256": "298e64b60828550919598425eddecdb4c2457480d445792dc261780962993631"
+    },
+    {
+      "bytes": 47173,
+      "path": "paper/manuscript.md",
+      "sha256": "558733b319f0c35273e1a08d6bc751e1b77bd46992b27905e15bd11dcfd73fea"
+    },
+    {
+      "bytes": 10019,
+      "path": "paper/references.bib",
+      "sha256": "3e559e78ee6824adb38d88064fd9b31c30a5d12bd3d483eadb2915579ebd2985"
+    },
+    {
+      "bytes": 12847,
+      "path": "paper/source-audit.md",
+      "sha256": "3329503844d8aba006d6f78ffd51e11cda960863c7d4905f81221e72c8f3ab7c"
+    },
+    {
+      "bytes": 9439,
+      "path": "paper/review-response-2026-10-18.md",
+      "sha256": "b2e58cf3b29b904969afd99c5fa10b6953a9c2a3678ebb2a917650c49e3ca36d"
+    },
+    {
+      "bytes": 19255,
+      "path": "paper/technical-review-audit-2026-10-18.md",
+      "sha256": "bd9e4518677135dcf973e8a432734d6bf9c94a5efcfb62f664986e6d09155a97"
+    },
+    {
+      "bytes": 7484,
+      "path": "paper/related-work-update-2026-10-18.md",
+      "sha256": "2903e17ccc2cdcc9e5eec68c9cba364037027d09359175ca9ce409cb93f69945"
+    },
+    {
+      "bytes": 58092,
+      "path": "paper/figures/diagram-evidence-architecture.pdf",
+      "sha256": "971f659f941029f286f2933d010800978ddbcafe02466df27b9759da227f95aa"
+    },
+    {
+      "bytes": 60890,
+      "path": "paper/figures/diagram-timeout-retry.pdf",
+      "sha256": "5c1c49a94bb962966449f565e491beca890b9631d3074d6cac22edb0bca19ad1"
+    },
+    {
+      "bytes": 39677,
+      "path": "paper/figures/data-branch-disposition.pdf",
+      "sha256": "1b5124a03dd213c9eb6d66c2df19533ed13b83718ed03d1e571804ae312a4e8a"
+    },
+    {
+      "bytes": 19395,
+      "path": "paper/figures/data-interval-tradeoffs.pdf",
+      "sha256": "fe3219a7e66d5a4b93b6652bf04d51cb9b3ba8758177c37d7b520bfc635c5630"
+    }
+  ],
+  "github_actions_used": false,
+  "missing_characters": 0,
+  "new_model_calls": 0,
+  "new_sampling_trials": 0,
+  "nonfatal_warnings": "Underfull boxes in justified bibliography URL paragraphs",
+  "original_studies_changed": false,
+  "overfull_boxes": 0,
+  "page_size_points": [
+    612,
+    792
+  ],
+  "page_text_lengths": [
+    5461,
+    3582,
+    6031,
+    3698,
+    5401,
+    6330,
+    3705,
+    4392,
+    6024,
+    4216
+  ],
+  "pages": 10,
+  "pdf": {
+    "bytes": 277466,
+    "path": "Consequa-X_IEEE_Paper.pdf",
+    "sha256": "946eb334e11f9bb28c5b3f8f70abbdfb7b8536c3f27f597cb0ccab5c77b7b96c"
+  },
+  "prior_illustrated_pdf": {
+    "bytes": 256752,
+    "path": "output/pdf/Consequa-X_IEEE_Paper.pdf",
+    "sha256": "c47a99e9690c040148b135f792b7a5c1ce4ba0a442dbf11160ceeecf7c9e4ec6"
+  },
+  "recorded_at_utc": "2026-10-17T18:51:04.844804+00:00",
+  "render_command": "pdftoppm -scale-to 1400 -png",
+  "rendered_page_reviews": [
+    {
+      "page": 1,
+      "sha256": "72cd6b852fe9d656acead90f4a0c7e6dbc71c63975242b554c05204283233dea",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 2,
+      "sha256": "d8b5d4dbd8d7ebf05db40e02b1f3d0835ffbb391fe986401b50b938f3a9dc2cd",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 3,
+      "sha256": "a843fde96655fd72eaa1a08e4f7f70b66f97f068d1ec6c688e89a2a11bc1a3d8",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 4,
+      "sha256": "c3ed4ec7ed31278fa9580c2deb559d7093cd3f4fefd81e02cb786fbd42932ef3",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 5,
+      "sha256": "fe8f7c5d76c0caeb97347e63172a1343b8145154c343b71ddb2338ebc58ba0d9",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 6,
+      "sha256": "3b3cc00cdba5ac64a1bc3c1a98d102b1303ba2e685f9ab3255f66520f65bc2c5",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 7,
+      "sha256": "47448e53b1da1647055fc88bfd170daa7b2ab99af7deb41f0ddc82375d20b0aa",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 8,
+      "sha256": "ad646680d9bb899fea72072237cacab0e29b081edef92bab76e8a561ba1f33dc",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 9,
+      "sha256": "ef627c091101acb748bfe5f2af233d58b2a91116801236b4b8e019d6ff72ae1e",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    },
+    {
+      "page": 10,
+      "sha256": "1e1ece8b2216288b49e30dcd49a2d9e08b4d1f39dd4aaf04125ee0faaa79f81a",
+      "visual_review": "AI-assisted visual inspection passed: readable text, math, tables and figures; no clipping or overlap"
+    }
+  ],
+  "scope": "Document and retained-arithmetic checks; not independent human replication or new comparative evidence",
+  "source_revision": "dbb00aadd0a62f3d9a1a205583dc25182c316395",
+  "tables": 4,
+  "unresolved_references": 0
+}

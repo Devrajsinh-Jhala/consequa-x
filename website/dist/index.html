@@ -119,18 +119,22 @@
             <span class="step-index">01 / CAPTURE</span>
             <h3>Declare the outcome first.</h3>
             <p>Register a contract before the action: what must hold, by when, how many times. The recorder keeps dispatches, responses and what the agent reported.</p>
-            <pre class="code-card"><code><span class="tok-name">rec</span> = TraceRecorder(<span class="tok-str">"run-17"</span>, actor=<span class="tok-str">"support-agent"</span>)
-rec.register(<span class="tok-str">"refund-o-17"</span>, <span class="tok-str">"issue_refund"</span>, order,
-             contract=contract)
+            <pre class="code-card"><code><span class="tok-name">rec</span> = TraceRecorder(
+    <span class="tok-str">"agent-loop"</span>, actor=AGENT)
+rec.register(<span class="tok-str">"refund-o-17"</span>,
+    <span class="tok-str">"issue_refund"</span>, ORDER,
+    contract=CONTRACT)
 <span class="tok-name">with</span> rec.attempt() <span class="tok-name">as</span> attempt:
-    issue_refund(order, attempt_id=attempt.attempt_id)</code></pre>
+    issue_refund(ORDER, attempt)</code></pre>
           </li>
           <li class="workflow-step reveal" style="--i:1">
             <span class="step-index">02 / READ BACK</span>
             <h3>Check beyond the tool.</h3>
             <p>Read your system of record through a separate read-only path. The built-in record verifier checks rows, orders or tickets; stale, incomplete or unavailable readback stays <strong>unknown</strong>.</p>
-            <pre class="code-card"><code><span class="tok-name">verifier</span> = RecordVerifier(scope_fields=(<span class="tok-str">"order_id"</span>,))
-<span class="tok-name">receipt</span> = rec.verify(readback, verifier=verifier)
+            <pre class="code-card"><code><span class="tok-name">VERIFIER</span> = RecordVerifier(
+    scope_fields=(<span class="tok-str">"order_id"</span>,))
+<span class="tok-name">receipt</span> = rec.verify(
+    readback, verifier=VERIFIER)
 receipt.status.value  <span class="tok-com"># "satisfied"</span>
 receipt.origin.value  <span class="tok-com"># "confirmed"</span></code></pre>
           </li>
@@ -138,13 +142,15 @@ receipt.origin.value  <span class="tok-com"># "confirmed"</span></code></pre>
             <span class="step-index">03 / EXPLAIN</span>
             <h3>See what the record supports.</h3>
             <p>Compare the agent’s report with verified state and origin, then hand anyone a self-contained report.</p>
-            <pre class="code-card"><code>explain(rec.trace(),
-        target_matcher=verifier.target_matcher())
-<span class="tok-com"># alignment: "contradicted"</span>
-html = render_report(rec.trace())  <span class="tok-com"># offline</span></code></pre>
+            <pre class="code-card"><code><span class="tok-name">m</span> = VERIFIER.target_matcher()
+<span class="tok-name">ex</span> = explain(rec.trace(),
+             target_matcher=m)
+ex.assessment_alignment
+<span class="tok-com"># "contradicted"</span>
+html = render_report(rec.trace())</code></pre>
           </li>
         </ol>
-        <p class="workflow-boundary reveal"><span aria-hidden="true">↳</span>You define success and establish source trust. Consequa-X preserves and explains the evidence you supply; a graph link does not establish causal necessity. Values are from the tested <a href="https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/agent_loop_sqlite.py">SQLite agent-loop example</a> (timeout after commit; Consequa-X 1.2).</p>
+        <p class="workflow-boundary reveal"><span aria-hidden="true">↳</span><span>You define success and establish source trust. Consequa-X preserves and explains the evidence you supply; a graph link does not establish causal necessity. Values are from the tested <a href="https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/agent_loop_sqlite.py">SQLite agent-loop example</a> (timeout after commit; Consequa-X 1.2).</span></p>
       </div>
     </section>
 

@@ -25,7 +25,9 @@ details mode. It does not run verifiers, target matching or replay. See
 
 Version 1.2 (unreleased) adds `TraceRecorder`, which records one action step by
 step and returns the same validated `Trace` a caller could build by hand. It
-never executes tools, reads sources or decides outcomes.
+never executes tools, reads sources or decides outcomes. `RecordVerifier` and
+`RecordTargetMatcher` add a generic `record_present` predicate with the refund
+verifier's evidence discipline.
 
 The wire schema stays at `0.1`: the software version and trace schema version
 are separate. Existing alpha trace JSON remains readable. Unsupported schema

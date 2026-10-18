@@ -9,6 +9,11 @@ Additive only: the 1.x API and trace schema `0.1` are unchanged.
   dispatches, tool responses, the agent's assessment, readbacks and
   verification) and returns an ordinary validated `Trace`. Events are linked
   as in the package fixtures, so graphs, reports and `explain()` work unchanged.
+- Added `RecordVerifier` and `RecordTargetMatcher` for a generic `record_present`
+  predicate: records with given field values, an exact or minimum count,
+  a commit deadline and a persistence window, with configurable field names.
+  Unavailable, out-of-scope, incomplete, stale or malformed readback stays
+  `unknown`, and origin stays a separate conclusion, as for refunds.
 
 ## 1.1.1 - 18 October 2026
 

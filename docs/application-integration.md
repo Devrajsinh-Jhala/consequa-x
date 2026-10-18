@@ -16,7 +16,24 @@ It does not authenticate a source or prove a predicate's domain semantics.
 ## Outcome verification
 
 `verify(action, observation)` retains the built-in `refund_processed` verifier.
-For another domain, explicitly supply a read-only adapter:
+For an outcome that leaves records behind (rows, orders, tickets, files), start
+with the built-in `RecordVerifier` before writing an adapter. Use the predicate
+`record_present`; `contract.expected` lists the field values a matching record
+must carry, and `scope_fields` names the fields the readback snapshot covers:
+
+```python
+verifier = RecordVerifier(scope_fields=("order_id",))
+receipt = verify(action, observation, verifier=verifier)
+explanation = explain(trace, target_matcher=verifier.target_matcher())
+```
+
+It checks the exact or minimum count, the commit deadline and the persistence
+window, and returns `unknown` for unavailable, out-of-scope, incomplete, stale
+or malformed readback. Record identifier, commit time, removal time, action,
+actor and attempt field names are configurable; with the defaults the
+evidence graph also links each record to its dispatch.
+
+For any other domain, explicitly supply a read-only adapter:
 
 ```python
 receipt = verify(action, observation, verifier=application_verifier)

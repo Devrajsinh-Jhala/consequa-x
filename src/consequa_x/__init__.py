@@ -11,6 +11,7 @@ from .models import (
     OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, Trace,
     VerificationResult, VerificationStatus,
 )
+from .record_verifier import RecordTargetMatcher, RecordVerifier
 from .policies import Policy, PolicyDecision, PolicyError, PolicyReply, PolicyRequest, ScriptedRefundPolicy
 from .verification import RefundVerifier, Verifier, verify
 from .report import render_report
@@ -18,7 +19,8 @@ from .report import render_report
 __all__ = [
     "Action", "AgentAssessment", "AssessmentStatus", "ConsequenceExplanation",
     "ConsequenceGraph", "EffectEstimate", "Evidence", "Event", "EventType", "Intervention",
-    "Observation", "OriginStatus", "OutcomeContract", "RefundVerifier", "TargetMatcher", "Trace",
+    "Observation", "OriginStatus", "OutcomeContract", "RecordTargetMatcher", "RecordVerifier",
+    "RefundVerifier", "TargetMatcher", "Trace",
     "Policy", "PolicyDecision", "PolicyError", "PolicyReply", "PolicyRequest", "ScriptedRefundPolicy",
     "ResponseStatus", "ToolResponse", "TraceRecorder", "VerificationResult", "VerificationStatus", "Verifier",
     "build_graph", "explain",

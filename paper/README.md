@@ -3,8 +3,14 @@
 [consequa-x-ieee.tex](consequa-x-ieee.tex) is the generic IEEE conference source.
 [manuscript.md](manuscript.md) presents the same argument in readable Markdown.
 The maintainer requested IEEE formatting; no specific conference or journal has
-been selected. Author affiliation and contact email have not been supplied and
-are not invented.
+been selected. The next compiled revision will use the supplied affiliation
+**Independent Researcher**. A contact email has not been supplied.
+
+The [larger matched-study update](matched-study-update-2026-10-18.md) records the
+new frozen 504-episode collection and its limits. Collection and final paper
+integration are in progress; the existing compiled PDF contains the earlier
+retained studies. The [India venue plan](india-venue-plan-2026-10-18.md) keeps
+main research, workshop and demo routes distinct.
 
 The [revised compiled paper](../output/pdf/review-2026-10-18/Consequa-X_IEEE_Paper.pdf) and its
 [quality receipt](../output/pdf/review-2026-10-18/qa.json) are derived artifacts. A quality receipt

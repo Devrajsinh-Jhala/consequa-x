@@ -1,0 +1,60 @@
+{
+  "scope": "Closed journal prefix, immutable completed slots only; no new generation calls",
+  "closed_journal_prefix_sha256": "38b7f2532fa6a0e65365e040365a28aa0434087ae48cccb1bff68564a5143cfc",
+  "checks": [
+    {
+      "slot_id": "episode_00000",
+      "status": 200,
+      "operation": "stop",
+      "receipt_journal_binding_valid": true,
+      "request_response_hashes_valid": true,
+      "raw_returned_model": "gemma3:1b-it-q4_K_M",
+      "schema_offers_refund_and_stop": true
+    },
+    {
+      "slot_id": "episode_00001",
+      "status": 200,
+      "operation": "stop",
+      "receipt_journal_binding_valid": true,
+      "request_response_hashes_valid": true,
+      "raw_returned_model": "gemma3:1b-it-q4_K_M",
+      "schema_offers_refund_and_stop": true
+    },
+    {
+      "slot_id": "episode_00002",
+      "status": 200,
+      "operation": "stop",
+      "receipt_journal_binding_valid": true,
+      "request_response_hashes_valid": true,
+      "raw_returned_model": "gemma3:1b-it-q4_K_M",
+      "schema_offers_refund_and_stop": true
+    },
+    {
+      "slot_id": "episode_00003",
+      "status": 200,
+      "operation": "stop",
+      "receipt_journal_binding_valid": true,
+      "request_response_hashes_valid": true,
+      "raw_returned_model": "gemma3:1b-it-q4_K_M",
+      "schema_offers_refund_and_stop": true
+    },
+    {
+      "slot_id": "episode_00004",
+      "status": 200,
+      "operation": "stop",
+      "receipt_journal_binding_valid": true,
+      "request_response_hashes_valid": true,
+      "raw_returned_model": "gemma3:1b-it-q4_K_M",
+      "schema_offers_refund_and_stop": true
+    },
+    {
+      "slot_id": "episode_00005",
+      "status": 200,
+      "operation": "stop",
+      "receipt_journal_binding_valid": true,
+      "request_response_hashes_valid": true,
+      "raw_returned_model": "gemma3:1b-it-q4_K_M",
+      "schema_offers_refund_and_stop": true
+    }
+  ]
+}

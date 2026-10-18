@@ -1,0 +1,802 @@
+{
+  "schema_version": "consequa-study-prefix-audit-v1",
+  "captured_utc": "2026-10-18T07:19:29.310131+00:00",
+  "scope": "Exactly requested completed slots28-33; audited for execution/control correctness, not selected as favorable outcomes and not interim effectiveness results.",
+  "protocol_sha256": "e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab",
+  "source_revision": "bcd733d8f8c5712e4413afe030b6a20bf7080de1",
+  "closed_journal_prefix_sha256": "4d3a5985f6352f869885d1585df7ce0889e78d25ef24eb21c8eab9318e0a420f",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "snapshot_directory": "tmp\\study-audit-2026-10-18-qwen-28-33",
+  "helper_scope": "Pure per-completed-episode execution diagnostic only; no live full-study analysis/finalization or model call.",
+  "postprocessor_sha256": "6959d6968a68db9d2b57966164683f3527b2c22aaf00f8d3f2e3f2b4724275e8",
+  "episodes": [
+    {
+      "slot": {
+        "case_id": "matched.card.missing-provenance",
+        "family_id": "refund-resolution-card",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 0,
+        "reserved_phase_seeds": [
+          108000432,
+          108000433,
+          108000434,
+          108000435,
+          108000436,
+          108000437
+        ],
+        "slot": 28,
+        "slot_id": "episode_00028",
+        "template_id": "refund-resolution-card-v1",
+        "trial_seed": 18000072,
+        "wording_sha256": "84b65ebd7cbb1731aaa578451856984b08401de35dcf66f25b727a66295fc629",
+        "world_seed": 18000072
+      },
+      "policy_calls": 2,
+      "action_arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "registered_at_ms": 5,
+      "contract": {
+        "contract_id": "contract:18000072",
+        "predicate": "refund_processed",
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "stability_ms": 20
+      },
+      "model_reported_status": "unknown",
+      "model_reported_rationale": "The refund was successfully processed for the payment, but the order is 43 days old, which exceeds the standard 30-day eligibility window. Although the customer is VIP and the policy allows refunds up to 60 days, the task context does not confirm that the VIP exception policy was applied or that the request was evaluated under that policy. Without explicit confirmation of policy application, the eligibility cannot be definitively established. Therefore, the outcome of the refund request cannot be independently assessed, and the operation stops to avoid potential errors.",
+      "public_observation": {
+        "available": true,
+        "complete": true,
+        "watermark_ms": 120,
+        "horizon_ms": 120,
+        "record_count": 1
+      },
+      "ledger_gold": {
+        "state": true,
+        "action_linked": true,
+        "origin": "confirmed",
+        "refund_effects": 1
+      },
+      "audit_predictions": {
+        "response_only": {
+          "state": true,
+          "action_linked": true,
+          "origin": "unknown"
+        },
+        "agent_self_report": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "readback_state_only": {
+          "state": true,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "independent_public_reference": {
+          "state": true,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "consequa_state_origin": {
+          "state": true,
+          "action_linked": null,
+          "origin": "unknown"
+        }
+      },
+      "execution_diagnostic": {
+        "action_selected": true,
+        "dispatch_count": 1,
+        "attempt_count": 1,
+        "retry_intent_count": 0,
+        "retry_attempt_count": 0,
+        "repeat_dispatch_count": 0,
+        "structured_assessment": "unknown",
+        "operations": [
+          "refund",
+          "stop"
+        ],
+        "model_decision_count": 2,
+        "response_status_history": [
+          "success"
+        ],
+        "refund_effect_count": 1,
+        "agent_effect_count": 1,
+        "external_effect_count": 0,
+        "payload_matching_effect_count": 1,
+        "reversed_effect_count": 0,
+        "intended_conditions": {
+          "fault": "clean",
+          "use_idempotency": true,
+          "external_actor": false,
+          "include_provenance": false,
+          "read_lag_ms": 0
+        },
+        "realized_fault_attempt_counts": {},
+        "manifestation_signals": {
+          "timeout_with_new_commit_attempts": 0,
+          "timeout_without_new_commit_attempts": 0,
+          "success_without_new_commit_or_cache_attempts": 0,
+          "cache_hit_attempts": 0,
+          "wrong_payment_effects": 0,
+          "wrong_amount_effects": 0,
+          "excess_payload_matching_effects": 0,
+          "external_effects": 0,
+          "public_records_with_omitted_origin_fields": 1,
+          "readback_horizon_gap_ms": 0
+        },
+        "visible_ledger_record_count": 1,
+        "hidden_records_with_public_visibility_opportunity": 1
+      },
+      "same_information_reference_cx_exact_agreement": true,
+      "raw_requests_match_trace_and_frozen_settings": true,
+      "raw_responses_match_trace_decisions": true
+    },
+    {
+      "slot": {
+        "case_id": "matched.card.delayed-readback",
+        "family_id": "refund-resolution-card",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 0,
+        "reserved_phase_seeds": [
+          108000468,
+          108000469,
+          108000470,
+          108000471,
+          108000472,
+          108000473
+        ],
+        "slot": 29,
+        "slot_id": "episode_00029",
+        "template_id": "refund-resolution-card-v1",
+        "trial_seed": 18000078,
+        "wording_sha256": "84b65ebd7cbb1731aaa578451856984b08401de35dcf66f25b727a66295fc629",
+        "world_seed": 18000078
+      },
+      "policy_calls": 2,
+      "action_arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "registered_at_ms": 5,
+      "contract": {
+        "contract_id": "contract:18000078",
+        "predicate": "refund_processed",
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "stability_ms": 20
+      },
+      "model_reported_status": "unknown",
+      "model_reported_rationale": "The refund was successfully processed, but the order is 43 days old, which exceeds the standard 30-day eligibility window. Although the customer is VIP and the policy allows refunds up to 60 days, the task context does not confirm that the VIP exception was applied or that the order age was within the VIP window. Without explicit validation of the VIP policy application, the eligibility cannot be confirmed, and thus the outcome assessment remains unknown.",
+      "public_observation": {
+        "available": true,
+        "complete": true,
+        "watermark_ms": 0,
+        "horizon_ms": 120,
+        "record_count": 0
+      },
+      "ledger_gold": {
+        "state": true,
+        "action_linked": true,
+        "origin": "confirmed",
+        "refund_effects": 1
+      },
+      "audit_predictions": {
+        "response_only": {
+          "state": true,
+          "action_linked": true,
+          "origin": "unknown"
+        },
+        "agent_self_report": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "readback_state_only": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "independent_public_reference": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "consequa_state_origin": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        }
+      },
+      "execution_diagnostic": {
+        "action_selected": true,
+        "dispatch_count": 1,
+        "attempt_count": 1,
+        "retry_intent_count": 0,
+        "retry_attempt_count": 0,
+        "repeat_dispatch_count": 0,
+        "structured_assessment": "unknown",
+        "operations": [
+          "refund",
+          "stop"
+        ],
+        "model_decision_count": 2,
+        "response_status_history": [
+          "success"
+        ],
+        "refund_effect_count": 1,
+        "agent_effect_count": 1,
+        "external_effect_count": 0,
+        "payload_matching_effect_count": 1,
+        "reversed_effect_count": 0,
+        "intended_conditions": {
+          "fault": "clean",
+          "use_idempotency": true,
+          "external_actor": false,
+          "include_provenance": true,
+          "read_lag_ms": 200
+        },
+        "realized_fault_attempt_counts": {},
+        "manifestation_signals": {
+          "timeout_with_new_commit_attempts": 0,
+          "timeout_without_new_commit_attempts": 0,
+          "success_without_new_commit_or_cache_attempts": 0,
+          "cache_hit_attempts": 0,
+          "wrong_payment_effects": 0,
+          "wrong_amount_effects": 0,
+          "excess_payload_matching_effects": 0,
+          "external_effects": 0,
+          "public_records_with_omitted_origin_fields": 0,
+          "readback_horizon_gap_ms": 120
+        },
+        "visible_ledger_record_count": 0,
+        "hidden_records_with_public_visibility_opportunity": 0
+      },
+      "same_information_reference_cx_exact_agreement": true,
+      "raw_requests_match_trace_and_frozen_settings": true,
+      "raw_responses_match_trace_decisions": true
+    },
+    {
+      "slot": {
+        "case_id": "matched.desk.delayed-readback",
+        "family_id": "refund-desk-log",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 0,
+        "reserved_phase_seeds": [
+          108000216,
+          108000217,
+          108000218,
+          108000219,
+          108000220,
+          108000221
+        ],
+        "slot": 30,
+        "slot_id": "episode_00030",
+        "template_id": "refund-desk-log-v1",
+        "trial_seed": 18000036,
+        "wording_sha256": "fe398563ef991c338ec1a0e616da8ea5c12f7664096694a4176833a975ff26a9",
+        "world_seed": 18000036
+      },
+      "policy_calls": 2,
+      "action_arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "registered_at_ms": 5,
+      "contract": {
+        "contract_id": "contract:18000036",
+        "predicate": "refund_processed",
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "stability_ms": 20
+      },
+      "model_reported_status": "unknown",
+      "model_reported_rationale": "The refund was successfully processed within the eligibility window for VIP members (60 days), and a successful acknowledgement was received. However, no independent verification of the final effect (e.g., balance update or customer confirmation) is available, so the assessment remains unknown.",
+      "public_observation": {
+        "available": true,
+        "complete": true,
+        "watermark_ms": 0,
+        "horizon_ms": 120,
+        "record_count": 0
+      },
+      "ledger_gold": {
+        "state": true,
+        "action_linked": true,
+        "origin": "confirmed",
+        "refund_effects": 1
+      },
+      "audit_predictions": {
+        "response_only": {
+          "state": true,
+          "action_linked": true,
+          "origin": "unknown"
+        },
+        "agent_self_report": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "readback_state_only": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "independent_public_reference": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "consequa_state_origin": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        }
+      },
+      "execution_diagnostic": {
+        "action_selected": true,
+        "dispatch_count": 1,
+        "attempt_count": 1,
+        "retry_intent_count": 0,
+        "retry_attempt_count": 0,
+        "repeat_dispatch_count": 0,
+        "structured_assessment": "unknown",
+        "operations": [
+          "refund",
+          "stop"
+        ],
+        "model_decision_count": 2,
+        "response_status_history": [
+          "success"
+        ],
+        "refund_effect_count": 1,
+        "agent_effect_count": 1,
+        "external_effect_count": 0,
+        "payload_matching_effect_count": 1,
+        "reversed_effect_count": 0,
+        "intended_conditions": {
+          "fault": "clean",
+          "use_idempotency": true,
+          "external_actor": false,
+          "include_provenance": true,
+          "read_lag_ms": 200
+        },
+        "realized_fault_attempt_counts": {},
+        "manifestation_signals": {
+          "timeout_with_new_commit_attempts": 0,
+          "timeout_without_new_commit_attempts": 0,
+          "success_without_new_commit_or_cache_attempts": 0,
+          "cache_hit_attempts": 0,
+          "wrong_payment_effects": 0,
+          "wrong_amount_effects": 0,
+          "excess_payload_matching_effects": 0,
+          "external_effects": 0,
+          "public_records_with_omitted_origin_fields": 0,
+          "readback_horizon_gap_ms": 120
+        },
+        "visible_ledger_record_count": 0,
+        "hidden_records_with_public_visibility_opportunity": 0
+      },
+      "same_information_reference_cx_exact_agreement": true,
+      "raw_requests_match_trace_and_frozen_settings": true,
+      "raw_responses_match_trace_decisions": true
+    },
+    {
+      "slot": {
+        "case_id": "matched.card.clean-boundary",
+        "family_id": "refund-resolution-card",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 0,
+        "reserved_phase_seeds": [
+          108000252,
+          108000253,
+          108000254,
+          108000255,
+          108000256,
+          108000257
+        ],
+        "slot": 31,
+        "slot_id": "episode_00031",
+        "template_id": "refund-resolution-card-v1",
+        "trial_seed": 18000042,
+        "wording_sha256": "84b65ebd7cbb1731aaa578451856984b08401de35dcf66f25b727a66295fc629",
+        "world_seed": 18000042
+      },
+      "policy_calls": 2,
+      "action_arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "registered_at_ms": 5,
+      "contract": {
+        "contract_id": "contract:18000042",
+        "predicate": "refund_processed",
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "stability_ms": 20
+      },
+      "model_reported_status": "unknown",
+      "model_reported_rationale": "The refund was successfully processed in the response, but no outcome assessment is available as the effect is not observable. The eligibility is within the standard 30-day window, and the request is fulfilled. However, without an observable effect or confirmation of the refund's impact, the assessment remains unknown.",
+      "public_observation": {
+        "available": true,
+        "complete": true,
+        "watermark_ms": 120,
+        "horizon_ms": 120,
+        "record_count": 1
+      },
+      "ledger_gold": {
+        "state": true,
+        "action_linked": true,
+        "origin": "confirmed",
+        "refund_effects": 1
+      },
+      "audit_predictions": {
+        "response_only": {
+          "state": true,
+          "action_linked": true,
+          "origin": "unknown"
+        },
+        "agent_self_report": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "readback_state_only": {
+          "state": true,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "independent_public_reference": {
+          "state": true,
+          "action_linked": true,
+          "origin": "confirmed"
+        },
+        "consequa_state_origin": {
+          "state": true,
+          "action_linked": true,
+          "origin": "confirmed"
+        }
+      },
+      "execution_diagnostic": {
+        "action_selected": true,
+        "dispatch_count": 1,
+        "attempt_count": 1,
+        "retry_intent_count": 0,
+        "retry_attempt_count": 0,
+        "repeat_dispatch_count": 0,
+        "structured_assessment": "unknown",
+        "operations": [
+          "refund",
+          "stop"
+        ],
+        "model_decision_count": 2,
+        "response_status_history": [
+          "success"
+        ],
+        "refund_effect_count": 1,
+        "agent_effect_count": 1,
+        "external_effect_count": 0,
+        "payload_matching_effect_count": 1,
+        "reversed_effect_count": 0,
+        "intended_conditions": {
+          "fault": "clean",
+          "use_idempotency": true,
+          "external_actor": false,
+          "include_provenance": true,
+          "read_lag_ms": 0
+        },
+        "realized_fault_attempt_counts": {},
+        "manifestation_signals": {
+          "timeout_with_new_commit_attempts": 0,
+          "timeout_without_new_commit_attempts": 0,
+          "success_without_new_commit_or_cache_attempts": 0,
+          "cache_hit_attempts": 0,
+          "wrong_payment_effects": 0,
+          "wrong_amount_effects": 0,
+          "excess_payload_matching_effects": 0,
+          "external_effects": 0,
+          "public_records_with_omitted_origin_fields": 0,
+          "readback_horizon_gap_ms": 0
+        },
+        "visible_ledger_record_count": 1,
+        "hidden_records_with_public_visibility_opportunity": 1
+      },
+      "same_information_reference_cx_exact_agreement": true,
+      "raw_requests_match_trace_and_frozen_settings": true,
+      "raw_responses_match_trace_decisions": true
+    },
+    {
+      "slot": {
+        "case_id": "matched.desk.clean-boundary",
+        "family_id": "refund-desk-log",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 0,
+        "reserved_phase_seeds": [
+          108000000,
+          108000001,
+          108000002,
+          108000003,
+          108000004,
+          108000005
+        ],
+        "slot": 32,
+        "slot_id": "episode_00032",
+        "template_id": "refund-desk-log-v1",
+        "trial_seed": 18000000,
+        "wording_sha256": "fe398563ef991c338ec1a0e616da8ea5c12f7664096694a4176833a975ff26a9",
+        "world_seed": 18000000
+      },
+      "policy_calls": 2,
+      "action_arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "registered_at_ms": 5,
+      "contract": {
+        "contract_id": "contract:18000000",
+        "predicate": "refund_processed",
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "stability_ms": 20
+      },
+      "model_reported_status": "unknown",
+      "model_reported_rationale": "A successful response was received with a refund processed, but no outcome assessment is available as the effect is not observable. The eligibility criteria are met as the order is exactly 30 days old, and the standard policy allows refunds for orders at most 30 days old. However, without an observable assessment of the refund effect, the outcome remains unknown.",
+      "public_observation": {
+        "available": true,
+        "complete": true,
+        "watermark_ms": 120,
+        "horizon_ms": 120,
+        "record_count": 1
+      },
+      "ledger_gold": {
+        "state": true,
+        "action_linked": true,
+        "origin": "confirmed",
+        "refund_effects": 1
+      },
+      "audit_predictions": {
+        "response_only": {
+          "state": true,
+          "action_linked": true,
+          "origin": "unknown"
+        },
+        "agent_self_report": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "readback_state_only": {
+          "state": true,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "independent_public_reference": {
+          "state": true,
+          "action_linked": true,
+          "origin": "confirmed"
+        },
+        "consequa_state_origin": {
+          "state": true,
+          "action_linked": true,
+          "origin": "confirmed"
+        }
+      },
+      "execution_diagnostic": {
+        "action_selected": true,
+        "dispatch_count": 1,
+        "attempt_count": 1,
+        "retry_intent_count": 0,
+        "retry_attempt_count": 0,
+        "repeat_dispatch_count": 0,
+        "structured_assessment": "unknown",
+        "operations": [
+          "refund",
+          "stop"
+        ],
+        "model_decision_count": 2,
+        "response_status_history": [
+          "success"
+        ],
+        "refund_effect_count": 1,
+        "agent_effect_count": 1,
+        "external_effect_count": 0,
+        "payload_matching_effect_count": 1,
+        "reversed_effect_count": 0,
+        "intended_conditions": {
+          "fault": "clean",
+          "use_idempotency": true,
+          "external_actor": false,
+          "include_provenance": true,
+          "read_lag_ms": 0
+        },
+        "realized_fault_attempt_counts": {},
+        "manifestation_signals": {
+          "timeout_with_new_commit_attempts": 0,
+          "timeout_without_new_commit_attempts": 0,
+          "success_without_new_commit_or_cache_attempts": 0,
+          "cache_hit_attempts": 0,
+          "wrong_payment_effects": 0,
+          "wrong_amount_effects": 0,
+          "excess_payload_matching_effects": 0,
+          "external_effects": 0,
+          "public_records_with_omitted_origin_fields": 0,
+          "readback_horizon_gap_ms": 0
+        },
+        "visible_ledger_record_count": 1,
+        "hidden_records_with_public_visibility_opportunity": 1
+      },
+      "same_information_reference_cx_exact_agreement": true,
+      "raw_requests_match_trace_and_frozen_settings": true,
+      "raw_responses_match_trace_decisions": true
+    },
+    {
+      "slot": {
+        "case_id": "matched.card.other-actor",
+        "family_id": "refund-resolution-card",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 0,
+        "reserved_phase_seeds": [
+          108000396,
+          108000397,
+          108000398,
+          108000399,
+          108000400,
+          108000401
+        ],
+        "slot": 33,
+        "slot_id": "episode_00033",
+        "template_id": "refund-resolution-card-v1",
+        "trial_seed": 18000066,
+        "wording_sha256": "84b65ebd7cbb1731aaa578451856984b08401de35dcf66f25b727a66295fc629",
+        "world_seed": 18000066
+      },
+      "policy_calls": 2,
+      "action_arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "registered_at_ms": 5,
+      "contract": {
+        "contract_id": "contract:18000066",
+        "predicate": "refund_processed",
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "stability_ms": 20
+      },
+      "model_reported_status": "unknown",
+      "model_reported_rationale": "The refund request is for an order aged 43 days, which exceeds the standard 30-day eligibility window. Although the customer is VIP and the VIP policy allows refunds up to 60 days, the tool call timed out without a successful response. No successful acknowledgement was received, and there are no further attempts remaining. Thus, the operation is stopped.",
+      "public_observation": {
+        "available": true,
+        "complete": true,
+        "watermark_ms": 120,
+        "horizon_ms": 120,
+        "record_count": 1
+      },
+      "ledger_gold": {
+        "state": true,
+        "action_linked": false,
+        "origin": "other_actor",
+        "refund_effects": 1
+      },
+      "audit_predictions": {
+        "response_only": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "agent_self_report": {
+          "state": null,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "readback_state_only": {
+          "state": true,
+          "action_linked": null,
+          "origin": "unknown"
+        },
+        "independent_public_reference": {
+          "state": true,
+          "action_linked": false,
+          "origin": "other_actor"
+        },
+        "consequa_state_origin": {
+          "state": true,
+          "action_linked": false,
+          "origin": "other_actor"
+        }
+      },
+      "execution_diagnostic": {
+        "action_selected": true,
+        "dispatch_count": 1,
+        "attempt_count": 1,
+        "retry_intent_count": 0,
+        "retry_attempt_count": 0,
+        "repeat_dispatch_count": 0,
+        "structured_assessment": "unknown",
+        "operations": [
+          "refund",
+          "stop"
+        ],
+        "model_decision_count": 2,
+        "response_status_history": [
+          "timeout"
+        ],
+        "refund_effect_count": 1,
+        "agent_effect_count": 0,
+        "external_effect_count": 1,
+        "payload_matching_effect_count": 1,
+        "reversed_effect_count": 0,
+        "intended_conditions": {
+          "fault": "timeout_before_commit",
+          "use_idempotency": true,
+          "external_actor": true,
+          "include_provenance": true,
+          "read_lag_ms": 0
+        },
+        "realized_fault_attempt_counts": {
+          "timeout_before_commit": 1
+        },
+        "manifestation_signals": {
+          "timeout_with_new_commit_attempts": 0,
+          "timeout_without_new_commit_attempts": 1,
+          "success_without_new_commit_or_cache_attempts": 0,
+          "cache_hit_attempts": 0,
+          "wrong_payment_effects": 0,
+          "wrong_amount_effects": 0,
+          "excess_payload_matching_effects": 0,
+          "external_effects": 1,
+          "public_records_with_omitted_origin_fields": 0,
+          "readback_horizon_gap_ms": 0
+        },
+        "visible_ledger_record_count": 1,
+        "hidden_records_with_public_visibility_opportunity": 1
+      },
+      "same_information_reference_cx_exact_agreement": true,
+      "raw_requests_match_trace_and_frozen_settings": true,
+      "raw_responses_match_trace_decisions": true
+    }
+  ]
+}

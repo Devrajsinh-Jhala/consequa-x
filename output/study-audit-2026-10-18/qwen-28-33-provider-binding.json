@@ -1,0 +1,114 @@
+{
+  "protocol_sha256": "e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab",
+  "closed_journal_prefix_sha256": "4d3a5985f6352f869885d1585df7ce0889e78d25ef24eb21c8eab9318e0a420f",
+  "checks": [
+    {
+      "slot_id": "episode_00028",
+      "call_id": "episode_00028-call-00",
+      "request_sha256": "8f368a46c451878aaf4ecd9648facddaf1bff9ff0c4661428029f5f98f55005a",
+      "response_sha256": "d6c423603bc3efafb82250fb1fe00d3470cd105f3f84bb1cbe34afa75e9eba35",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00028",
+      "call_id": "episode_00028-call-01",
+      "request_sha256": "bdf7d890bc8443cd681e712fb7e04bb93996ffc18109d0a8709a6c84474b2c91",
+      "response_sha256": "7b2778639f5c1773d52bff85452eea84958b2b3e658c8639a52202d52258bf74",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00029",
+      "call_id": "episode_00029-call-00",
+      "request_sha256": "232a2f1576fa8d373f061f24183fe21bd42faf875105305224c06a89f8e51b91",
+      "response_sha256": "086b77d27de08a279ca719d5c3b9c14301e85265bb03006aae2e24b63c348269",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00029",
+      "call_id": "episode_00029-call-01",
+      "request_sha256": "8fe4cf54c922b3560aaa292d6e8c43c40c3b9675aa20d59b33b7bb051fbf978c",
+      "response_sha256": "9108ef3928eab6cf814ec9c031327f98f99b9ce5e10ac5c19520f6e680768b11",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00030",
+      "call_id": "episode_00030-call-00",
+      "request_sha256": "7d1c2868eb56e7b99ee6e9b36ce17a6145245e3f76e708b23b3d3c86774d9867",
+      "response_sha256": "d5c9e29a2a288c83e75731e1e0a4833d952be425c0a6c0e0ae824b2e7064838b",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00030",
+      "call_id": "episode_00030-call-01",
+      "request_sha256": "98ba15ddb3ab1e6bf2b4956732e3664e8db8630a9b020d785daeeda8ec3eed83",
+      "response_sha256": "e835ac3dda1bf89ec8b2c829f77dabb7781bd08f8bfcd5baf3d9471b1c101452",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00031",
+      "call_id": "episode_00031-call-00",
+      "request_sha256": "ee4e1084ef0303d7446d4cb2f2623a8b8f4ea770c4ff6c7610a5627f7532bf0b",
+      "response_sha256": "75c23b1fb16abb019fd2f1779bfde4894a4655425e1054b1e94a7aab81c4b459",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00031",
+      "call_id": "episode_00031-call-01",
+      "request_sha256": "6f1dd56305677e2031b0beea76b30b53a63350d55ecf7d6eaeaef847ff78f921",
+      "response_sha256": "4142756a9ad1d51a7b0c835a30bf53fefd488cb002b64ace2d4196f9e0ac8385",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00032",
+      "call_id": "episode_00032-call-00",
+      "request_sha256": "6d8d81fdb18646f548ccba8bed79d2642ac46c667d5d1f0431d4b235f150367b",
+      "response_sha256": "f62e44aeffc7ba869d1ee28de2fbff9062b86636972064393968bddf9b294437",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00032",
+      "call_id": "episode_00032-call-01",
+      "request_sha256": "be8ab79b8ae227c114a1d390e20a3b5522b3feca6b40eb4a6fa81fcba436c35c",
+      "response_sha256": "255d57340233be46e66ea19b9df3445a0c9cacaffe20ba6909b7f722ec6ff725",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00033",
+      "call_id": "episode_00033-call-00",
+      "request_sha256": "a7900feeedcb0894873a51f1f215167693a745ba27f76bac5b1874a2ee508862",
+      "response_sha256": "2f5b88341fd016ddd553d99b7635a5fcb4b9e2027cf83ff31bb267863f955541",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    },
+    {
+      "slot_id": "episode_00033",
+      "call_id": "episode_00033-call-01",
+      "request_sha256": "0d479228f086ef37d4031d25695f94dbd0287ac87780bbfa3c6add9789b89304",
+      "response_sha256": "f1c48b5000f6e41756e9482366c1870ed776ff29591a26ebe38a8e9fe978c1ee",
+      "http_status": 200,
+      "receipt_journal_binding_valid": true,
+      "provider_bytes_binding_valid": true
+    }
+  ]
+}

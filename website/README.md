@@ -43,9 +43,9 @@ are recorded in `.openai/hosting.json`; publication uses the Sites workflow.
 - The actual-package walkthrough near the quickstart starts with a still image.
   Its play control swaps in the GIF; pause restores the poster. A reduced-motion
   preference change also pauses it. With JavaScript disabled the poster and a
-  direct animation link remain available. Visitors can also open or download
-  the actual offline HTML report. These are generated report screenshots from
-  synthetic data, not a recording of a live payment or model run.
+  direct animation link remain available. Visitors can also open the report or
+  download a ZIP containing the original offline HTML. These are generated report
+  screenshots from synthetic data, not a recording of a live payment or model run.
 - On small screens, captured history stays available through a labeled expand
   button. Without JavaScript the full history remains visible. Resizing restores
   the full desktop history, and the evidence graph keeps aligned node centers.
@@ -135,6 +135,7 @@ website/dist/quickstart.zip
 website/dist/assets/package-demo.gif
 website/dist/assets/package-demo-poster.png
 website/dist/assets/sample-report.html
+website/dist/assets/sample-report.zip
 website/dist/examples/artifact_delivery.py
 website/dist/examples/report_quickstart.py
 website/dist/fonts/README.md
@@ -150,6 +151,14 @@ Review changes to this list before exporting a later version. In particular,
 `quickstart.zip` contains only the public README, MIT license, and two synthetic
 examples; it is not a research artifact download. Preserve the three font
 licenses when copying assets.
+
+`assets/sample-report.zip` contains exactly `my-report.html`, the unmodified
+self-contained package report with SHA-256
+`52c320078c79e5a071a15c051e024c3e541d86dfda6cbbd3685711a8b81492e7`.
+Use this ZIP for the offline download: the public Site host can append a browser
+challenge script to served HTML, including the browser preview of the report.
+The ZIP preserves the original package bytes when extracted. It uses fixed ZIP
+metadata and contains synthetic example data only.
 
 1. Connect the intended Render account and the site-only Git repository.
 2. Create a Blueprint from that repository and select its root `render.yaml`.

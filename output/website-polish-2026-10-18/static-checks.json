@@ -1,0 +1,133 @@
+{
+  "files": 24,
+  "html_pages": 6,
+  "local_references": 91,
+  "zip_members": [
+    "LICENSE",
+    "README.md",
+    "artifact_delivery.py",
+    "report_quickstart.py"
+  ],
+  "assets": [
+    {
+      "path": "app.js",
+      "sha256": "ebecf0aebdd5821ecea87bcb80a340ce6fde98353bff0c40bd5f0ab8b3cdaa6d",
+      "bytes": 9913
+    },
+    {
+      "path": "assets/package-demo-poster.png",
+      "sha256": "20d4144663850a787cc35f95eb71fb8c4abf93f3bda80550eee40bba7358d922",
+      "bytes": 366518
+    },
+    {
+      "path": "assets/package-demo.gif",
+      "sha256": "20c7655c2defe73c40fcd58fa58a02a5d55b70087070986cb61411896966aae3",
+      "bytes": 945235
+    },
+    {
+      "path": "assets/sample-report.html",
+      "sha256": "52c320078c79e5a071a15c051e024c3e541d86dfda6cbbd3685711a8b81492e7",
+      "bytes": 22674
+    },
+    {
+      "path": "changelog.html",
+      "sha256": "ce91d4ddd171ca7274c069eb03b4876d585b04317def73c4602d92c750351f98",
+      "bytes": 4319
+    },
+    {
+      "path": "docs.css",
+      "sha256": "206ff187e727bc457746e83b2a20e1810b937a28a876c0dc171bfd5a52a4fb2e",
+      "bytes": 17075
+    },
+    {
+      "path": "docs.html",
+      "sha256": "e2568badda1d5dc68c8a2310e8ac7efdb5b6ad09da9e80febab91495eb2dbe92",
+      "bytes": 13004
+    },
+    {
+      "path": "examples/artifact_delivery.py",
+      "sha256": "0c40af6b4389512c92e812835a5a9043aa889c6a626a2409f79410be4d68f473",
+      "bytes": 9834
+    },
+    {
+      "path": "examples/report_quickstart.py",
+      "sha256": "a0c671c6d988243215147722ddfd412660e1c69abc2fd3a1ab6a009e052c8679",
+      "bytes": 1486
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "4a02d45a8d9910c1e58ba301530ad8608633846e84063baca82b2baffef9afa7",
+      "bytes": 267
+    },
+    {
+      "path": "fonts/JetBrainsMono-OFL.txt",
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "bytes": 4399
+    },
+    {
+      "path": "fonts/JetBrainsMono-Variable.ttf",
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "bytes": 187208
+    },
+    {
+      "path": "fonts/Manrope-OFL.txt",
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+      "bytes": 4387
+    },
+    {
+      "path": "fonts/Manrope-Variable.ttf",
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "bytes": 164700
+    },
+    {
+      "path": "fonts/README.md",
+      "sha256": "dda5d5687fc2af28b592c5a5ec77160938ebb14614e4515965825523ee9d0b50",
+      "bytes": 2273
+    },
+    {
+      "path": "fonts/SpaceGrotesk-OFL.txt",
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+      "bytes": 4495
+    },
+    {
+      "path": "fonts/SpaceGrotesk-Variable.ttf",
+      "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72",
+      "bytes": 136676
+    },
+    {
+      "path": "index.html",
+      "sha256": "f303eeac00e7040b11baa1ffeb3ef1d5cdc83477b876494fe9b11f9641ad1abb",
+      "bytes": 20629
+    },
+    {
+      "path": "quickstart.zip",
+      "sha256": "b985fad0772f8c68bc0150db0f4be843803f8511158bcd880663a6cb7d7ac75c",
+      "bytes": 6339
+    },
+    {
+      "path": "robots.txt",
+      "sha256": "9ad00d9c9c299566af77f7d21cd32922945a4a6e8978b1492943c43997268a69",
+      "bytes": 93
+    },
+    {
+      "path": "security.html",
+      "sha256": "3b2a25ff1740972c6d18b826f33686d42842f088e755face2bfd3281c4e85b66",
+      "bytes": 3904
+    },
+    {
+      "path": "sitemap.xml",
+      "sha256": "c78d5f3941e43d13c3847637656285fb0c0b6b9d672face22a05452db9c896a2",
+      "bytes": 528
+    },
+    {
+      "path": "styles.css",
+      "sha256": "64fd6562d9e96a147aaef6438f04d92437a38da61b02f7ed442bdeb51031cfba",
+      "bytes": 55532
+    },
+    {
+      "path": "support.html",
+      "sha256": "bb9374b3cb9192789d9cd634f4a95799d8725812ef8533c1fa7c64981afde451",
+      "bytes": 4798
+    }
+  ]
+}

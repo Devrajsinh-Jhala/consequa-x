@@ -2,7 +2,34 @@
 
 (() => {
   const root = document.documentElement;
+  root.classList.add("has-script");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const packageDemoButton = document.querySelector(".package-demo-control");
+  const packageDemoImage = document.querySelector("#package-demo-image");
+  const packageDemoStatus = document.querySelector("#package-demo-status");
+  if (packageDemoButton && packageDemoImage) {
+    const setPackageDemoPlaying = (playing) => {
+      packageDemoImage.src = playing ? packageDemoImage.dataset.animation : packageDemoImage.dataset.poster;
+      packageDemoButton.setAttribute("aria-pressed", String(playing));
+      const symbol = packageDemoButton.querySelector("[data-package-demo-symbol]");
+      const label = packageDemoButton.querySelector("[data-package-demo-label]");
+      if (symbol) symbol.textContent = playing ? "Ⅱ" : "▷";
+      if (label) label.textContent = playing ? "Pause walkthrough" : "Play report walkthrough";
+      if (packageDemoStatus) packageDemoStatus.textContent = playing ? "Report walkthrough playing." : "Walkthrough paused. Showing the still report image.";
+    };
+    packageDemoButton.hidden = false;
+    packageDemoButton.addEventListener("click", () => {
+      setPackageDemoPlaying(packageDemoButton.getAttribute("aria-pressed") !== "true");
+    });
+    packageDemoImage.addEventListener("error", () => {
+      if (packageDemoButton.getAttribute("aria-pressed") !== "true") return;
+      setPackageDemoPlaying(false);
+      if (packageDemoStatus) packageDemoStatus.textContent = "The animation could not load. Showing the still report image.";
+    });
+    reducedMotion.addEventListener("change", (event) => {
+      if (event.matches && packageDemoButton.getAttribute("aria-pressed") === "true") setPackageDemoPlaying(false);
+    });
+  }
   const menuButton = document.querySelector(".menu-toggle");
   const navigation = document.querySelector("#primary-nav");
   if (menuButton && navigation) {
@@ -24,6 +51,24 @@
         menuButton.focus();
       }
     });
+  }
+
+  const historyButton = document.querySelector(".history-toggle");
+  const historyPanel = document.querySelector(".trace-panel");
+  const compactHistory = window.matchMedia("(max-width: 760px)");
+  const setHistoryExpanded = (expanded) => {
+    if (!historyButton || !historyPanel) return;
+    historyPanel.classList.toggle("is-collapsed", !expanded);
+    historyButton.setAttribute("aria-expanded", String(expanded));
+    const label = historyButton.querySelector("[data-history-label]");
+    if (label) label.textContent = expanded ? "Hide 4 events" : "View 4 events";
+  };
+  if (historyButton && historyPanel) {
+    setHistoryExpanded(!compactHistory.matches);
+    historyButton.addEventListener("click", () => {
+      setHistoryExpanded(historyButton.getAttribute("aria-expanded") !== "true");
+    });
+    compactHistory.addEventListener("change", (event) => setHistoryExpanded(!event.matches));
   }
 
   const motionButton = document.querySelector(".motion-toggle");
@@ -88,6 +133,19 @@
     sourceKind: "graph-source-kind", effectSymbol: "graph-effect-symbol"
   };
   const scenarioButtons = document.querySelectorAll("[data-scenario]");
+  scenarioButtons.forEach((button, index) => {
+    button.addEventListener("keydown", (event) => {
+      const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+      if (!keys.includes(event.key)) return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = scenarioButtons.length - 1;
+      else next = (index + (event.key === "ArrowRight" ? 1 : -1) + scenarioButtons.length) % scenarioButtons.length;
+      scenarioButtons[next].focus();
+      scenarioButtons[next].click();
+    });
+  });
   scenarioButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const scenario = scenarios[button.dataset.scenario];

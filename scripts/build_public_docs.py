@@ -94,9 +94,9 @@ def page(title: str, description: str, body: str, active: str) -> str:
   <meta name="theme-color" content="#0b0d10">
   <meta name="description" content="{escape(description, quote=True)}">
   <title>{escape(title)} — Consequa-X</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261018-ui2">
-  <link rel="stylesheet" href="styles.css?v=20261018-ui2">
-  <link rel="stylesheet" href="docs.css?v=20261018-ui2">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261018-ui4">
+  <link rel="stylesheet" href="styles.css?v=20261018-ui4">
+  <link rel="stylesheet" href="docs.css?v=20261018-ui4">
 </head>
 <body class="docs-site">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -190,7 +190,7 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
 .docs-header .brand-symbol { width: 29px; height: 29px; color: var(--docs-accent); flex: 0 0 auto; }
 .docs-header .brand-x, .docs-footer .brand-x { color: var(--docs-accent); }
 .docs-header > nav { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-.docs-header nav a { font-size: 12px; text-decoration: none; padding: 10px 12px; border-radius: 7px; color: var(--docs-muted); transition: color .18s, background .18s; }
+.docs-header nav a { font-size: 13px; text-decoration: none; padding: 10px 12px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 7px; color: var(--docs-muted); transition: color .18s, background .18s; }
 .docs-header nav a:hover { color: var(--docs-text); background: #1a2028; }
 .docs-header nav a[aria-current=page] { color: var(--docs-accent); background: #c9f36a0c; }
 .docs-header .package-link { padding: 10px 14px; border: 1px solid var(--docs-line); margin-left: 12px; color: var(--docs-text); }
@@ -199,7 +199,7 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
 .docs-sidebar { position: sticky; top: 34px; align-self: start; padding-top: 5px; }
 .docs-sidebar .eyebrow { display: block; color: #757f8e; font-family: var(--docs-mono); font-size: 10px; font-weight: 500; letter-spacing: 1.5px; margin: 0 0 20px 13px; }
 .docs-sidebar nav { display: flex; flex-direction: column; align-items: stretch; gap: 3px; border-left: 1px solid var(--docs-line); }
-.docs-sidebar nav a { font-size: 13px; text-decoration: none; line-height: 1.6; color: var(--docs-muted); padding: 9px 12px; border-radius: 0 7px 7px 0; margin-left: -1px; border-left: 1px solid transparent; transition: color .18s, background .18s, border-color .18s; }
+.docs-sidebar nav a { font-size: 13px; text-decoration: none; line-height: 1.6; color: var(--docs-muted); padding: 9px 12px; min-height: 44px; border-radius: 0 7px 7px 0; margin-left: -1px; border-left: 1px solid transparent; transition: color .18s, background .18s, border-color .18s; }
 .docs-sidebar nav a:hover, .docs-sidebar nav a:focus-visible { color: var(--docs-accent); background: #c9f36a09; border-left-color: var(--docs-accent); }
 .sidebar-download { display: block; padding: 18px 15px; margin-top: 30px; border: 1px solid var(--docs-line); border-radius: 10px; background: var(--docs-panel); font-size: 12px; font-weight: 600; color: var(--docs-text); text-decoration: none; line-height: 1.7; }
 .sidebar-download:hover { border-color: #66794a; }
@@ -255,11 +255,11 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
 .docs-next .text-link { margin-top: 22px; color: var(--docs-accent); }
 .docs-footer { padding-top: 36px; padding-bottom: 32px; border-top: 1px solid var(--docs-line); display: flex; flex-wrap: wrap; align-items: center; gap: 20px 27px; }
 .docs-footer > a { font-family: var(--font-body, Arial, sans-serif); font-size: 25px; font-weight: 600; text-decoration: none; color: var(--docs-text); letter-spacing: -.9px; }
-.docs-footer > p { font-size: 11px; max-width: 240px; color: var(--docs-muted); line-height: 1.7; }
+.docs-footer > p { font-size: 12px; max-width: 260px; color: var(--docs-muted); line-height: 1.7; }
 .docs-footer > nav { margin-left: auto; display: flex; flex-wrap: wrap; gap: 17px; }
-.docs-footer nav a { font-size: 11px; text-decoration: none; color: #a7afbb; }
+.docs-footer nav a { font-size: 12px; text-decoration: none; color: #b8c2d0; min-height: 44px; display: inline-flex; align-items: center; }
 .docs-footer nav a:hover { color: var(--docs-accent); }
-.docs-footer small { display: block; flex-basis: 100%; font-size: 10px; color: #7d8796; margin-top: 7px; }
+.docs-footer small { display: block; flex-basis: 100%; font-size: 11px; color: #a1aebe; margin-top: 7px; }
 .docs-article { max-width: 1080px; padding-top: 76px; padding-bottom: 100px; }
 .article-intro { padding-bottom: 38px; border-bottom: 1px solid var(--docs-line); }
 .article-body { max-width: 810px; }
@@ -284,7 +284,7 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
 @media (max-width:1050px) {
   .docs-layout { gap: 40px; grid-template-columns: 190px minmax(0,1fr); }
   .docs-header > nav { gap: 2px; }
-  .docs-header nav a { font-size: 11px; padding-inline: 9px; }
+  .docs-header nav a { font-size: 12px; padding-inline: 9px; }
   .docs-header .package-link { margin-left: 4px; }
   .docs-content h2 { font-size: 31px; }
   .docs-footer > nav { margin-left: 0; flex-basis: 100%; }
@@ -293,14 +293,14 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
   .docs-header { padding-top: 22px; padding-bottom: 18px; min-height: 0; display: block; }
   .docs-header .wordmark { font-size: 24px; }
   .docs-header > nav { gap: 5px; margin-top: 18px; margin-left: -8px; }
-  .docs-header nav a { font-size: 11px; padding: 8px; }
+  .docs-header nav a { font-size: 12px; padding: 8px; }
   .docs-header .package-link { margin-left: 0; padding: 7px 8px; }
   .docs-header .package-link span { margin-left: 5px; }
   .docs-layout { display: flex; flex-direction: column; padding-top: 28px; padding-bottom: 65px; gap: 0; }
   .docs-sidebar { position: static; padding: 0 0 25px; margin-bottom: 36px; border-bottom: 1px solid var(--docs-line); width: 100%; }
   .docs-sidebar .eyebrow { margin: 0 0 13px; font-size: 9px; }
   .docs-sidebar nav { flex-direction: row; gap: 5px; flex-wrap: wrap; border: 0; }
-  .docs-sidebar nav a { font-size: 11px; padding: 7px 9px; border-radius: 6px; border: 1px solid var(--docs-line); margin: 0; background: var(--docs-panel); }
+  .docs-sidebar nav a { font-size: 12px; padding: 9px 10px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 6px; border: 1px solid var(--docs-line); margin: 0; background: var(--docs-panel); }
   .sidebar-download { margin-top: 15px; padding: 11px 13px; font-size: 11px; max-width: 270px; }
   .sidebar-download small { font-size: 9px; margin-top: 3px; }
   .docs-hero h1, .article-intro h1 { font-size: clamp(40px,8.4vw,57px); letter-spacing: -.055em; }
@@ -330,14 +330,14 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
   .support-path { padding: 23px; }
   .docs-footer { gap: 17px 23px; padding-top: 29px; padding-bottom: 29px; }
   .docs-footer > nav { gap: 15px 19px; }
-  .docs-footer nav a { font-size: 10px; }
-  .docs-footer small { font-size: 9px; line-height: 1.7; }
+  .docs-footer nav a { font-size: 12px; }
+  .docs-footer small { font-size: 11px; line-height: 1.7; }
   .contact-checklist { padding: 21px; }
   .contact-checklist h2 { font-size: 23px; }
 }
 @media (max-width:380px) {
   .docs-header > nav { gap: 3px; }
-  .docs-header nav a { font-size: 10px; padding-inline: 7px; }
+  .docs-header nav a { font-size: 12px; padding-inline: 7px; }
   .docs-hero h1, .article-intro h1 { font-size: 39px; }
   .docs-content h2 { font-size: 27px; }
   .guide-step { gap: 10px; grid-template-columns: 24px minmax(0,1fr); }

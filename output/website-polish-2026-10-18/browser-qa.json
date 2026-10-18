@@ -1,0 +1,32 @@
+{
+  "responsive": [
+    {
+      "heroGap": [
+        "9px",
+        "7px"
+      ],
+      "overflow": false,
+      "viewport": 390
+    },
+    {
+      "heroGap": [
+        "9px",
+        "7px"
+      ],
+      "overflow": false,
+      "viewport": 320
+    },
+    {
+      "alignment": "Aligned for linked target",
+      "origin": "Other actor",
+      "overflow": false,
+      "source": "Actor B01",
+      "state": "Satisfied",
+      "viewport": 820
+    }
+  ],
+  "playPause": true,
+  "menuEscape": true,
+  "unknownState": true,
+  "notes": "Reduced-motion CSS and media listener inspected; OS preference not emulated."
+}

@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-18",
+  "package_version": "1.1.0",
+  "scenario": "timeout_after_commit",
+  "synthetic": true,
+  "report_mode": "default minimal disclosure",
+  "captured_details_included": false,
+  "source_trace_sha256": "07cd79a15162ca1375e19d5fe5b7481e072097f9f8b77f8d4c1d4c885e9f36e1",
+  "commands": [
+    "consequa-x demo --output my-demo",
+    "consequa-x report my-demo/traces/episode_01.json --output my-report.html"
+  ],
+  "capture": "Browser screenshots of actual unchanged package HTML output; navigation between sections.",
+  "dimensions": [
+    1265,
+    791
+  ],
+  "duration_ms": 23000,
+  "frames": [
+    {
+      "path": "output/website-polish-2026-10-18/capture/01-summary.png",
+      "sha256": "4c141047cf319f5fe671314319d2272e2b86728c37f593cccc77e59fa9fee944"
+    },
+    {
+      "path": "output/website-polish-2026-10-18/capture/02-verdicts.png",
+      "sha256": "715287e7f900376ed59a7e7ec8278d5094feb92729170e0e695d6972bdbddf22"
+    },
+    {
+      "path": "output/website-polish-2026-10-18/capture/03-timeline.png",
+      "sha256": "4b89faf05e841af2512421e80b2c2f34727764193b774142fdd7da95504c85d0"
+    },
+    {
+      "path": "output/website-polish-2026-10-18/capture/04-readback.png",
+      "sha256": "88cbb9d1d9cabd48934dcc87daa230f2cb71a95a139e87915b1263fab09f4669"
+    },
+    {
+      "path": "output/website-polish-2026-10-18/capture/05-graph.png",
+      "sha256": "474152fcc79047d541c7ed9f14a4f0450c858891da887252cc1c37748b859259"
+    },
+    {
+      "path": "output/website-polish-2026-10-18/capture/06-origin-links.png",
+      "sha256": "ef76e41e15481e553ff1617c3f13faa663fbce6d59d8d3fff8f6bcc0beb9b252"
+    }
+  ],
+  "assets": [
+    {
+      "path": "website/dist/assets/package-demo.gif",
+      "sha256": "20c7655c2defe73c40fcd58fa58a02a5d55b70087070986cb61411896966aae3",
+      "bytes": 945235
+    },
+    {
+      "path": "website/dist/assets/package-demo-poster.png",
+      "sha256": "20d4144663850a787cc35f95eb71fb8c4abf93f3bda80550eee40bba7358d922",
+      "bytes": 366518
+    },
+    {
+      "path": "website/dist/assets/sample-report.html",
+      "sha256": "52c320078c79e5a071a15c051e024c3e541d86dfda6cbbd3685711a8b81492e7",
+      "bytes": 22674
+    }
+  ],
+  "released_wheel_verification": {
+    "version": "1.1.0",
+    "wheel_sha256": "73828c5879a9523cf2db97a7b2fd77fd09c66d8744b820757b58a1d984be4f40",
+    "isolated_install": true,
+    "report_byte_identical": true
+  }
+}

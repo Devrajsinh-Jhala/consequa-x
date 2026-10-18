@@ -90,6 +90,38 @@ Traces round-trip through a portable, versioned JSON schema (`0.1`):
 and dependency cycles. `consequa_x.schema.get_trace_schema()` returns the bundled
 JSON Schema.
 
+## Capture a real agent's tool call
+
+`TraceRecorder` records an action while your agent runs, and `RecordVerifier`
+checks any outcome that leaves records behind (rows, orders, tickets, files):
+
+```python
+from consequa_x import OutcomeContract, RecordVerifier, TraceRecorder, explain
+
+contract = OutcomeContract("refund-o-17", "record_present",
+                           {"order_id": "o-17", "amount_minor": 5000, "currency": "INR"},
+                           deadline_ms=200, stability_ms=50)
+verifier = RecordVerifier(scope_fields=("order_id",))
+
+rec = TraceRecorder("run-17", actor="support-agent")
+rec.register("refund-o-17", "issue_refund", {"order_id": "o-17"}, contract=contract)
+try:
+    with rec.attempt(data={"tool": "issue_refund"}) as attempt:
+        issue_refund("o-17", attempt_id=attempt.attempt_id)   # your tool
+    rec.assessment("success")                                  # what the agent reported
+except TimeoutError:
+    rec.assessment("failure")
+rec.verify(read_refunds_for("o-17"), verifier=verifier)       # your read-only readback
+print(explain(rec.trace(), target_matcher=verifier.target_matcher()).diagnoses)
+```
+
+`capture_tool` decorates a synchronous tool so every call is recorded the same
+way. The
+[agent-loop example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/agent_loop_sqlite.py)
+runs this end to end against a real SQLite database, offline, in three modes:
+a timeout after the refund committed, a refund made by someone else, and a
+readback too stale to decide.
+
 ## Bring your own domain
 
 Supply a read-only `Verifier` for your predicate, and a `TargetMatcher` when the

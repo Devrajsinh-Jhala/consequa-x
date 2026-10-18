@@ -20,6 +20,12 @@ Additive only: the 1.x API and trace schema `0.1` are unchanged.
   Unavailable, out-of-scope, incomplete, stale or malformed readback stays
   `unknown`, and origin stays a separate conclusion, as for refunds.
 
+- Added `examples/agent_loop_sqlite.py`: a stdlib-only, offline tool-calling
+  loop that writes to a real SQLite database, is captured with `TraceRecorder`,
+  and is verified through a separate read-only connection with `RecordVerifier`.
+  Modes: `timeout_after_commit`, `other_actor` and `stale_readback`.
+- README section on capturing a real agent's tool call.
+
 ## 1.1.1 - 18 October 2026
 
 - Documentation and metadata release. Runtime code and schema `0.1` are

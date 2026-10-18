@@ -39,6 +39,7 @@ ALLOWLIST = (
     "website/dist/assets/demo-data.js",
     "website/dist/assets/sample-report.html",
     "website/dist/assets/sample-report.zip",
+    "website/dist/examples/agent_loop_sqlite.py",
     "website/dist/examples/artifact_delivery.py",
     "website/dist/examples/report_quickstart.py",
     "website/dist/fonts/README.md",
@@ -140,7 +141,8 @@ def validate_types(data):
         elif suffix != ".zip":
             raise ValueError("Unapproved file type: " + name)
     with zipfile.ZipFile(BytesIO(data["website/dist/quickstart.zip"])) as archive:
-        expected = {"LICENSE", "README.md", "artifact_delivery.py", "report_quickstart.py"}
+        expected = {"LICENSE", "README.md", "agent_loop_sqlite.py", "artifact_delivery.py",
+                    "report_quickstart.py"}
         require(len(archive.infolist()) == len(expected)
                 and set(archive.namelist()) == expected, "Unexpected quickstart ZIP member")
         for item in archive.infolist():

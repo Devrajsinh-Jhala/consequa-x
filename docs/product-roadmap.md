@@ -43,7 +43,8 @@ Status: `planned`, `in progress`, `done` (on `release-1.2`), `released`.
 | X2 | Framework integration guide | Where each capture call goes in OpenAI Agents SDK, LangChain, Claude Agent SDK and MCP tool loops; prose and pseudo-code, no dependencies. | done |
 | C4 | MCP tool-call wrapper | A thin, optional wrapper around an MCP client's tool calls that uses the recorder; no MCP dependency in the core. | done |
 
-Planned 1.2 API sketch (names may still change during review):
+The 1.2 API as built (the [SQLite example](../examples/agent_loop_sqlite.py)
+is a complete, runnable version):
 
 ```python
 from consequa_x import OutcomeContract, RecordVerifier, TraceRecorder, explain

@@ -220,6 +220,120 @@ def check_trace_workflow() -> dict:
             "missing_verification_refused": True, "unknown_origin_preserved": True}
 
 
+def captured_record_trace(mode: str):
+    """Capture one synthetic tool call with the 1.2 recorder; a list is the record store.
+
+    ``timeout_after_commit`` writes the record, then times out (``attempt()``);
+    ``other_actor`` times out before writing while a different actor writes the
+    record (``capture_tool``); ``stale`` succeeds (``call()``) but is read back
+    from a snapshot whose watermark precedes the contract horizon.
+    """
+    from consequa_x import Observation, OutcomeContract, RecordVerifier, TraceRecorder, capture_tool
+
+    now = [0]
+    rec = TraceRecorder(PRIVATE_MARKER + "-capture", actor=PRIVATE_MARKER + "-agent",
+                        clock=lambda: now[0])
+    expected = {"order_id": PRIVATE_MARKER + "-order", "amount_minor": 5000}
+    contract = OutcomeContract(PRIVATE_MARKER + "-record-contract", "record_present", expected,
+                               deadline_ms=200, exact_count=1, stability_ms=50)
+    verifier = RecordVerifier(scope_fields=("order_id",))
+    store = []
+    message = rec.context("user_input", {"message": UNSAFE_TEXT})
+    now[0] = 2
+    rec.decision({"tool": "issue_refund"}, inputs=(message,))
+    now[0] = 3
+    action = rec.register(PRIVATE_MARKER + "-refund", "issue_refund", expected, contract=contract)
+    now[0] = 5
+
+    def write(effect_id, **origin):
+        store.append({"effect_id": effect_id, **expected, "committed_at_ms": 40, **origin})
+
+    if mode == "timeout_after_commit":
+        try:
+            with rec.attempt(data={"tool": "issue_refund"}) as attempt:
+                write(PRIVATE_MARKER + "-effect", action_id=action.action_id,
+                      actor=action.actor, attempt_id=attempt.attempt_id)
+                now[0] = 60
+                raise TimeoutError(UNSAFE_TEXT)
+        except TimeoutError:
+            pass
+    elif mode == "other_actor":
+        @capture_tool(rec)
+        def issue_refund(arguments):
+            now[0] = 60
+            raise TimeoutError(UNSAFE_TEXT)
+
+        try:
+            issue_refund(expected)
+        except TimeoutError:
+            pass
+        write(PRIVATE_MARKER + "-staff-effect", actor=PRIVATE_MARKER + "-staff")
+    else:
+        def issue_refund(arguments):
+            write(PRIVATE_MARKER + "-effect", action_id=action.action_id, actor=action.actor)
+            now[0] = 60
+            return {"accepted": True}
+
+        require(rec.call(issue_refund, expected) == {"accepted": True},
+                "Recorded tool call changed the tool's result")
+    now[0] = 61
+    rec.assessment("success" if mode == "stale" else "failure")
+    now[0] = 300
+    observation = Observation(PRIVATE_MARKER + "-readback", PRIVATE_MARKER + "-replica",
+                              rec.now(), 100 if mode == "stale" else 300,
+                              {"order_id": expected["order_id"]}, tuple(store))
+    rec.verify(observation, verifier=verifier)
+    return rec.trace(), verifier
+
+
+def check_capture_workflow() -> dict:
+    """Exercise the 1.2 recorder, tool capture and record verifier from the install."""
+    import asyncio
+    from types import SimpleNamespace
+
+    from consequa_x import (OutcomeContract, ResponseStatus, Trace, TraceRecorder, explain,
+                            render_report)
+    from consequa_x.mcp_capture import call_mcp_tool
+    from consequa_x.schema import validate_trace
+
+    expected = {"timeout_after_commit": ("timeout", "satisfied", "confirmed", "contradicted"),
+                "other_actor": ("timeout", "satisfied", "other_actor", "unassessable"),
+                "stale": ("success", "unknown", "unknown", "unassessable")}
+    for mode, outcome in expected.items():
+        trace, verifier = captured_record_trace(mode)
+        require(Trace.from_json(trace.to_json()) == validate_trace(trace.to_json()) == trace,
+                "Recorded trace round-trip changed evidence")
+        (response,) = trace.responses
+        if response.status is ResponseStatus.TIMEOUT:
+            require(response.result == {"exception": "TimeoutError"},
+                    "Recorded exception kept more than its type name")
+        explanation = explain(trace, target_matcher=verifier.target_matcher())
+        observed = (response.status.value, explanation.consequence.status.value,
+                    explanation.consequence.origin.value, explanation.assessment_alignment)
+        require(observed == outcome, f"Recorded {mode} outcome differs: {observed}")
+        require(PRIVATE_MARKER not in render_report(trace),
+                "Default report of a recorded trace leaked captured identity")
+
+    class StandInSession:
+        """Has the MCP ClientSession.call_tool shape; no MCP SDK is installed or used."""
+
+        async def call_tool(self, name, arguments):
+            return SimpleNamespace(isError=True, content=[UNSAFE_TEXT])
+
+    rec = TraceRecorder(PRIVATE_MARKER + "-mcp", actor=PRIVATE_MARKER + "-agent")
+    rec.register(PRIVATE_MARKER + "-mcp-action", "issue_refund", {}, contract=OutcomeContract(
+        PRIVATE_MARKER + "-mcp-contract", "record_present", {"order_id": "o-1"}, 200))
+    asyncio.run(call_mcp_tool(rec, StandInSession(), "issue_refund", {}))
+    rec.assessment("unknown")
+    (response,) = rec.trace().responses
+    require(response.status is ResponseStatus.ERROR and response.result == {"is_error": True}
+            and UNSAFE_TEXT not in rec.trace().to_json(),
+            "MCP tool error was not recorded as an error without its content")
+    return {"recorded_modes": sorted(expected), "record_verifier": True,
+            "attempt_context": True, "capture_tool": True, "recorder_call": True,
+            "mcp_error_recorded": True, "exception_messages_dropped": True}
+
+
 def invalid_trace_inputs() -> dict[str, str]:
     """Exercise structural, numeric and cross-record strict decoding gates."""
     good = artifact_trace().to_dict()
@@ -328,6 +442,7 @@ def main(argv=None) -> int:
     wheel = checked_wheel(args.wheel, args.expected_wheel_sha256, args.expected_version)
     install = checked_install(wheel, args.expected_version)
     workflow = check_trace_workflow()
+    capture = check_capture_workflow()
     refusals = check_schema_refusals()
     with tempfile.TemporaryDirectory(prefix="consequa-installed-") as temporary:
         reports = check_reports(Path(temporary))
@@ -338,7 +453,8 @@ def main(argv=None) -> int:
                "machine": platform.machine(), "kernel_release": platform.release(),
                "executable": sys.executable, "isolated_imports": True,
                "wheel": {key: value for key, value in wheel.items() if key != "payload_sha256"},
-               "install": install, "workflow": workflow, "strict_schema_refusals": refusals,
+               "install": install, "workflow": workflow, "capture": capture,
+               "strict_schema_refusals": refusals,
                "reports": reports, "provider_calls": 0, "api_process_benchmark_imports": 0,
                "cli_import_scope": ("CLI imports packaged research modules but does not "
                                     "execute scenarios/replay"),

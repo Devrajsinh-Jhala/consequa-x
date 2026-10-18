@@ -2,7 +2,7 @@
 
 This authoring tool has no runtime dependencies. It never scans the repository
 for publication candidates: every input and output is named below. Run it again
-after editing the public documentation sources or the two example modules.
+after editing the public documentation sources or the three example modules.
 """
 
 import argparse
@@ -16,8 +16,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_REPOSITORY = "https://github.com/Devrajsinh-Jhala/consequa-x"
 SITE = "https://consequa-x.onrender.com"
-RELEASE = "1.1.1"
-EXAMPLES = ("artifact_delivery.py", "report_quickstart.py")
+RELEASE = "1.2.0"
+EXAMPLES = ("agent_loop_sqlite.py", "artifact_delivery.py", "report_quickstart.py")
 
 
 def code(source: str, language: str = "console") -> str:
@@ -119,8 +119,8 @@ def documentation(*, published: bool = False) -> str:
         f'<a href="https://pypi.org/project/consequa-x/{RELEASE}/">{RELEASE} release from PyPI</a>. '
         '<a href="changelog.html">Read release notes and the actual platform checks.</a></p>'
         if published else
-        f'<strong>{RELEASE} is being prepared.</strong><p>The report command and API below belong '
-        'to 1.1. Check the <a href="https://pypi.org/project/consequa-x/">published version '
+        f'<strong>{RELEASE} is being prepared.</strong><p>The capture API below belongs '
+        f'to {RELEASE}. Check the <a href="https://pypi.org/project/consequa-x/">published version '
         'on PyPI</a> before installing a pinned release. <a href="changelog.html">Read '
         'release status and validated platforms.</a></p>'
     )
@@ -137,10 +137,11 @@ document = render_report(trace)  # Minimal disclosure by default.
 with Path("report.html").open("x", encoding="utf-8") as destination:
     destination.write(document)''', "python")
     demo = code("consequa-x demo --output sample-run\nconsequa-x report sample-run/traces/episode_00.json --output sample-report.html")
+    agent_loop = code("python agent_loop_sqlite.py --mode timeout_after_commit --output agent-run")
     return f'''<div class="docs-layout section-shell">
-  <aside class="docs-sidebar" aria-label="On this page"><span class="eyebrow">THE FIELD GUIDE</span><nav><a href="#quickstart">Five-minute quickstart</a><a href="#read-the-evidence">Read the evidence</a><a href="#reports">Offline reports</a><a href="#privacy">Disclosure &amp; sharing</a><a href="#python-api">Python API</a><a href="#integration">Connect your application</a><a href="#boundaries">Trust boundaries</a><a href="#help">Get help</a></nav><a class="sidebar-download" href="quickstart.zip" download>Download the examples <span aria-hidden="true">↓</span><small>Two Python files · synthetic data · MIT</small></a></aside>
+  <aside class="docs-sidebar" aria-label="On this page"><span class="eyebrow">THE FIELD GUIDE</span><nav><a href="#quickstart">Five-minute quickstart</a><a href="#read-the-evidence">Read the evidence</a><a href="#reports">Offline reports</a><a href="#privacy">Disclosure &amp; sharing</a><a href="#python-api">Python API</a><a href="#integration">Connect your application</a><a href="#boundaries">Trust boundaries</a><a href="#help">Get help</a></nav><a class="sidebar-download" href="quickstart.zip" download>Download the examples <span aria-hidden="true">↓</span><small>Three Python files · synthetic data · MIT</small></a></aside>
   <main class="docs-content" id="main">
-    <div class="docs-hero"><span class="eyebrow">DOCUMENTATION / VERSION 1.1</span><h1>From a trace<br>to a <em>clear account.</em></h1><p class="docs-lead">Create your first offline report, read what the evidence supports, and connect a verifier for your own application.</p><div class="docs-prerequisites"><span>Python 3.11 or 3.12</span><span>No API key</span><span>No required runtime dependencies</span></div></div>
+    <div class="docs-hero"><span class="eyebrow">DOCUMENTATION / VERSION 1.2</span><h1>From a trace<br>to a <em>clear account.</em></h1><p class="docs-lead">Create your first offline report, read what the evidence supports, and capture your own agent’s tool calls.</p><div class="docs-prerequisites"><span>Python 3.11 or 3.12</span><span>No API key</span><span>No required runtime dependencies</span></div></div>
     <div class="docs-callout release-callout">{release_status}</div>
     <section id="quickstart"><span class="eyebrow">01 / YOUR FIRST FIVE MINUTES</span><h2>Make the evidence visible.</h2><p>This example performs no delivery or payment. It reads synthetic artifact-store fixtures using the public package APIs.</p>
       <div class="guide-step"><span class="guide-step-number" aria-hidden="true">1</span><div><h3>Install the package.</h3><p>Use a Python 3.11 or 3.12 environment.</p>{installation}</div></div>
@@ -152,7 +153,7 @@ with Path("report.html").open("x", encoding="utf-8") as destination:
     <section id="reports"><span class="eyebrow">03 / ONE FILE, NO SERVER</span><h2>Inspect an offline report.</h2><p>A report is self-contained HTML: no JavaScript, external fonts, remote assets or network requests. It shows structural contract bounds, the timeline, responses, the reported assessment, readbacks, recorded state and origin, and an evidence graph.</p><p>Successive observations retain separate witnesses. Order, dependency, observation and origin links carry distinct labels; a graph edge does not establish counterfactual necessity.</p><div class="docs-callout"><strong>Rendering is a read-only presentation.</strong><p>It performs no verifier call, target matching, application action or replay. It presents captured verification and does not independently establish source truth. Assessment alignment remains unassessable in this renderer.</p></div><p>To start with the package’s bundled refund fixtures instead:</p>{demo}<p>Input traces are validated before the output is created. The CLI preserves the source and refuses an existing output file, including the input itself.</p></section>
     <section id="privacy"><span class="eyebrow">04 / CHOOSE WHAT YOU DISCLOSE</span><h2>Share a smaller surface.</h2><p>Default reports use local aliases and omit arbitrary captured values: payloads, rationales, source names, raw identifiers, paths, digests, predicates and error messages. Omitted fields are absent from the HTML, including attributes, comments and embedded data.</p><p>Timing, counts, enum statuses and relationships remain visible. Review these before sharing. This is deliberate field omission, not universal anonymization or personal-data detection.</p><details class="docs-details"><summary>Inspect all captured fields locally</summary><div><p><code>--include-details</code> explicitly includes the entire trace as escaped, inert text. This can expose sensitive information. Keep a detailed report private whenever its trace is private.</p>{detailed}</div></details><p>Retain the original trace and source evidence separately. A reduced presentation is not a substitute for the verification record. For a public bug report, provide a synthetic reproduction.</p></section>
     <section id="python-api"><span class="eyebrow">05 / COMPOSE WITH PYTHON</span><h2>Render without a service.</h2><p><code>render_report</code> returns HTML and writes no files. It accepts a validated <code>Trace</code> and an optional boolean <code>include_details</code> argument, which defaults to <code>False</code>.</p>{api}<p>The portable schema remains <code>0.1</code>. Package version and wire-schema version are separate; the version-1 core remains compatible.</p></section>
-    <section id="integration"><span class="eyebrow">06 / YOUR DOMAIN, EXPLICITLY</span><h2>Connect your application.</h2><ol class="integration-list"><li><strong>Declare the contract before the action.</strong> Define matching state, deadline, persistence horizon and required count.</li><li><strong>Capture the action history.</strong> Retain dispatches, responses and the agent’s reported assessment.</li><li><strong>Obtain independent readback.</strong> Capture source, scope, completeness, watermark and effect-origin metadata from a read-only adapter.</li><li><strong>Implement your verifier.</strong> Interpret that domain’s evidence through the explicit <code>Verifier</code> interface.</li><li><strong>Qualify alignment when appropriate.</strong> Supply an application <code>TargetMatcher</code> to <code>explain(trace, target_matcher=...)</code>.</li></ol><p>The downloadable <a href="examples/artifact_delivery.py">artifact-delivery adapter</a> demonstrates both interfaces using only public APIs. Replace its fixture with an independently authenticated read adapter; do not copy the requested state into the readback.</p></section>
+    <section id="integration"><span class="eyebrow">06 / YOUR DOMAIN, EXPLICITLY</span><h2>Connect your application.</h2><ol class="integration-list"><li><strong>Declare the contract before the action.</strong> Define matching state, deadline, persistence horizon and required count, and register it with <code>TraceRecorder.register</code>.</li><li><strong>Capture the action as it runs.</strong> Wrap each tool call in <code>rec.attempt()</code> or <code>capture_tool</code>, and record the agent’s assessment exactly as it was stated.</li><li><strong>Obtain independent readback.</strong> Query your system of record through a separate read-only path, with source, scope, completeness, watermark and effect-origin metadata.</li><li><strong>Verify it.</strong> Use the built-in <code>RecordVerifier</code> for rows, orders or tickets, or implement the explicit <code>Verifier</code> interface for another domain.</li><li><strong>Qualify alignment when appropriate.</strong> Pass <code>verifier.target_matcher()</code>, or your own <code>TargetMatcher</code>, to <code>explain(trace, target_matcher=...)</code>.</li></ol><p>The downloadable <a href="examples/agent_loop_sqlite.py">SQLite agent loop</a> runs a scripted support agent against a real local database, captures it with <code>TraceRecorder</code> and checks the refund with <code>RecordVerifier</code>. Its other modes are <code>other_actor</code> and <code>stale_readback</code>. No money moves; the refund is a row in a local file.</p>{agent_loop}<p>The <a href="examples/artifact_delivery.py">artifact-delivery adapter</a> implements both interfaces by hand. In your application, read back through an independently authenticated adapter; do not copy the requested state into the readback.</p></section>
     <section id="boundaries"><span class="eyebrow">07 / WHAT THE RECORD CAN SUPPORT</span><h2>Keep uncertainty intact.</h2><p>Schema validation checks structure and identity linkage. Your application establishes source authentication, provider guarantees and the truth of supplied metadata. A report cannot supply those guarantees.</p><p><code>unknown</code>, <code>other_actor</code> and unassessable conclusions remain distinct. Missing readback is not a successful verification. Research replay interfaces carry their own assumptions; the package does not claim baseline superiority or improved live-model accuracy.</p><p>Platform validation is recorded for environments actually checked. A pure-Python wheel alone does not establish compatibility with every platform.</p></section>
     <section class="docs-next" id="help"><span class="eyebrow">KEEP BUILDING</span><h2>A clear next step.</h2><p><a href="support.html">Ask a question or report a reproducible bug</a>. Use the <a href="security.html">private security route</a> for vulnerabilities, and <a href="changelog.html">release notes</a> for publication status and platform checks.</p><a class="text-link" href="quickstart.zip" download>Download the synthetic quickstart <span aria-hidden="true">↓</span></a></section>
   </main>
@@ -456,8 +457,8 @@ def build(*, published: bool = False, platform_receipts: list[Path] | None = Non
             info.external_attr = 0o100644 << 16
             info.compress_type = zipfile.ZIP_DEFLATED
             output.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
-    print("Built four documentation pages, their stylesheet, and the four-file quickstart archive.")
-    print("Mirrored only the two explicitly allowlisted synthetic Python examples.")
+    print("Built four documentation pages, their stylesheet, and the five-file quickstart archive.")
+    print("Mirrored only the three explicitly allowlisted synthetic Python examples.")
 
 
 if __name__ == "__main__":

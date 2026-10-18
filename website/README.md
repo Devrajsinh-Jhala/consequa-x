@@ -92,10 +92,11 @@ All captured strings are inserted as text nodes; no data enters an HTML parser.
 
 ## Release status
 
-Version 1.1.0 is published on PyPI, and the installation command targets
-`consequa-x==1.1.0`. The homepage release badge and quickstart describe that
-published release. The UI redesign does not change the Python package or its
-offline report renderer. Do not describe unverified platform support or present
+The homepage installation command, release badge and quickstart target
+`consequa-x==1.2.0`. Merge them to the deployed branch only after that version is
+verified on PyPI. The workflow cards show the 1.2 capture API with values from
+`examples/agent_loop_sqlite.py`; the site does not change the Python package or
+its offline report renderer. Do not describe unverified platform support or present
 recorded output as a live application execution.
 
 `scripts/build_public_docs.py` regenerates the four public documentation pages
@@ -104,7 +105,7 @@ from `docs/quickstart.md`, `SECURITY.md`, `docs/release-notes.md` and the README
 Run it with `--published` to retain the published release status and pass the
 existing successful installed-wheel receipts through repeatable
 `--platform-receipt` arguments to retain the actual platform validation table.
-The downloadable archive contains only its README, MIT license, and two public
+The downloadable archive contains only its README, MIT license, and three public
 Python examples. Research captures and study data are not website inputs. GitHub Actions remains disabled.
 
 HTML references to `styles.css`, `app.js`, `docs.css`, `assets/demo-data.js` and
@@ -170,6 +171,7 @@ website/dist/quickstart.zip
 website/dist/assets/demo-data.js
 website/dist/assets/sample-report.html
 website/dist/assets/sample-report.zip
+website/dist/examples/agent_loop_sqlite.py
 website/dist/examples/artifact_delivery.py
 website/dist/examples/report_quickstart.py
 website/dist/fonts/README.md
@@ -182,7 +184,7 @@ website/dist/fonts/JetBrainsMono-OFL.txt
 ```
 
 Review changes to this list before publishing a later version. In particular,
-`quickstart.zip` contains only the public README, MIT license, and two synthetic
+`quickstart.zip` contains only the public README, MIT license, and three synthetic
 examples; it is not a research artifact download. `assets/demo-data.js` contains
 only recorded output from the synthetic demo. Preserve the three font licenses
 when copying assets.

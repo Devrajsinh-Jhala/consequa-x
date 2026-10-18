@@ -76,3 +76,24 @@ def test_standalone_fixture_checks_public_custom_adapters_and_strict_schema(chec
     assert workflow["trace_roundtrips"] == 4
     assert workflow["observed_statuses"] == ["satisfied", "unknown", "violated"]
     assert checker["check_schema_refusals"]() == 16
+
+
+def test_standalone_capture_check_covers_the_1_2_recorder_and_record_verifier(checker):
+    capture = checker["check_capture_workflow"]()
+    assert capture["recorded_modes"] == ["other_actor", "stale", "timeout_after_commit"]
+    assert all(value is True for key, value in capture.items() if key != "recorded_modes")
+
+
+def test_capture_check_refuses_a_recorder_that_attributes_another_actors_record(
+    checker, monkeypatch,
+):
+    original = checker["captured_record_trace"]
+
+    def misattributed(mode):
+        trace, verifier = original("timeout_after_commit" if mode == "other_actor" else mode)
+        return trace, verifier
+
+    monkeypatch.setitem(checker["check_capture_workflow"].__globals__,
+                        "captured_record_trace", misattributed)
+    with pytest.raises(ValueError, match="Recorded other_actor outcome differs"):
+        checker["check_capture_workflow"]()

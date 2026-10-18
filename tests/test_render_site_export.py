@@ -49,7 +49,7 @@ def test_export_ignores_unapproved_files_and_refuses_overwrite(source):
     blob = (output / exporter.ARCHIVE_NAME).read_bytes()
     with zipfile.ZipFile(BytesIO(blob)) as archive:
         assert archive.namelist() == sorted(exporter.ALLOWLIST)
-        assert len(archive.infolist()) == len(exporter.ALLOWLIST) == 25
+        assert len(archive.infolist()) == len(exporter.ALLOWLIST) == 26
         assert not any(secret in archive.read(name) for name in archive.namelist())
     assert receipt["deployment"] == {
         "performed": False, "render_url": None, "github_actions_used": False}

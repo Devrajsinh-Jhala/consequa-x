@@ -1,5 +1,19 @@
 # Release notes
 
+## 1.2.0 — 19 October 2026
+
+- TraceRecorder records an action as it happens, from the outcome contract to
+  readback and verification, and returns an ordinary validated trace.
+- Tool-call capture: attempt(), call() and capture_tool record each dispatch and
+  response around a synchronous tool, including timeouts and errors.
+  call_mcp_tool does the same for MCP client sessions, without an MCP dependency.
+- RecordVerifier checks record-shaped outcomes such as rows, orders or tickets:
+  field values, count, deadline and persistence. Unavailable, incomplete, stale
+  or out-of-scope readback stays unknown, and origin stays a separate conclusion.
+- An offline SQLite agent-loop example, also in the quickstart download, and a
+  framework integration guide.
+- Additive only: the 1.x API and schema 0.1 are unchanged.
+
 ## 1.1.1 — 18 October 2026
 
 - Documentation and metadata release: runtime code and schema 0.1 are identical

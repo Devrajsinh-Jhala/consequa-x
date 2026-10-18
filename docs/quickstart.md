@@ -1,16 +1,16 @@
 # Five-minute offline quickstart
 
 Use Python 3.11 or 3.12. No model, API key, provider account or runtime dependency
-is required. Version 1.1.1 is public on PyPI. The core schema stays at 0.1.
+is required. Version 1.2.0 is public on PyPI. The core schema stays at 0.1.
 
 ```console
-python -m pip install consequa-x==1.1.1
+python -m pip install consequa-x==1.2.0
 consequa-x --version
 ```
 
 Download and extract the [quickstart archive](https://consequa-x.onrender.com/quickstart.zip)
-or use the two Python files in examples in this repository. Run from the folder
-containing both files:
+or use the three Python files in examples in this repository. Run from the folder
+containing them:
 
 ```console
 python report_quickstart.py --output my-first-capture
@@ -37,6 +37,21 @@ consequa-x demo --output sample-run
 consequa-x report sample-run/traces/episode_00.json --output sample-report.html
 ```
 
+## Capture an agent loop
+
+agent_loop_sqlite.py runs a scripted support agent that calls an issue_refund
+tool against a local SQLite database. TraceRecorder captures the loop as it runs,
+and RecordVerifier checks the refund through a separate read-only connection:
+
+```console
+python agent_loop_sqlite.py --mode timeout_after_commit --output agent-run
+```
+
+The output folder receives the database, the trace, its explanation and an HTML
+report. The tool times out after committing, so the agent reports failure while
+readback shows the refund linked to this action. The other modes are other_actor
+and stale_readback. No money moves; the refund is a row in a local file.
+
 ## Sharing and trust
 
 Default reports omit arbitrary captured values and use local aliases. Timing,
@@ -52,17 +67,19 @@ TargetMatcher can qualify alignment through explain(trace, target_matcher=...).
 
 ## Connect your own application
 
-Declare the target contract before the action. Capture dispatches, responses and
-the agent's reported assessment. Obtain an independent readback with explicit
-source, scope, completeness, watermark and origin metadata. Implement a read-only
-Verifier for your domain, and a TargetMatcher when alignment is meaningful.
-The artifact_delivery.py example uses only public APIs and contains both adapters.
+Declare the target contract before the action and register it with
+TraceRecorder. Wrap each tool call in rec.attempt() or capture_tool, and record
+the agent's assessment as it was stated. Obtain an independent readback with
+explicit source, scope, completeness, watermark and origin metadata. Use the
+built-in RecordVerifier for records such as rows, orders or tickets, or implement
+a read-only Verifier for another domain, with a TargetMatcher when alignment is
+meaningful. The artifact_delivery.py example implements both interfaces by hand.
 
 The schema validates structure and identity linkage. Source authentication,
 transaction guarantees and the truth of adapter-provided metadata remain your
 application's responsibility. Unknown evidence must stay unknown.
 
-The version-1 core and schema 0.1 remain compatible in 1.1.x. Research replay
+The version-1 core and schema 0.1 remain compatible in 1.2. Research replay
 interfaces have separate assumptions; no baseline superiority or live-model
 accuracy improvement is claimed. Platform validation is listed in release notes
 using actual environments, rather than inferred from a pure-Python wheel.

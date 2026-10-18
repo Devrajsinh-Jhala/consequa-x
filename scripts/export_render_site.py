@@ -36,8 +36,7 @@ ALLOWLIST = (
     "website/dist/robots.txt",
     "website/dist/sitemap.xml",
     "website/dist/quickstart.zip",
-    "website/dist/assets/package-demo.gif",
-    "website/dist/assets/package-demo-poster.png",
+    "website/dist/assets/demo-data.js",
     "website/dist/assets/sample-report.html",
     "website/dist/assets/sample-report.zip",
     "website/dist/examples/artifact_delivery.py",
@@ -171,7 +170,7 @@ def validate_types(data):
     config = data["render.yaml"].decode("utf-8")
     expected_config = ["services:", "  - type: web", "    name: consequa-x",
                        "    runtime: static", "    rootDir: website", '    buildCommand: "true"',
-                       "    staticPublishPath: dist", '    autoDeployTrigger: "off"']
+                       "    staticPublishPath: dist", '    autoDeployTrigger: "commit"']
     require([line for line in config.splitlines() if line.strip() and not line.startswith("#")]
             == expected_config, "Render configuration differs from reviewed static-only settings")
 
@@ -347,7 +346,7 @@ def export_site(root, output, expected_source):
                   for name in sorted(ALLOWLIST)],
         "reference_checks": references,
         "deployment": {"performed": False, "render_url": None, "github_actions_used": False},
-        "scope": "Only the 26 explicit public source files; no Git history or private study inputs.",
+        "scope": f"Only the {len(ALLOWLIST)} explicit public source files; no Git history or private study inputs.",
     }
     output.mkdir()
     with (output / ARCHIVE_NAME).open("xb") as destination:

@@ -94,9 +94,9 @@ def page(title: str, description: str, body: str, active: str) -> str:
   <meta name="theme-color" content="#0b0d10">
   <meta name="description" content="{escape(description, quote=True)}">
   <title>{escape(title)} — Consequa-X</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261018-ui4">
-  <link rel="stylesheet" href="styles.css?v=20261018-ui4">
-  <link rel="stylesheet" href="docs.css?v=20261018-ui4">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261018-ui5">
+  <link rel="stylesheet" href="styles.css?v=20261018-ui5">
+  <link rel="stylesheet" href="docs.css?v=20261018-ui5">
 </head>
 <body class="docs-site">
   <a class="skip-link" href="#main">Skip to content</a>

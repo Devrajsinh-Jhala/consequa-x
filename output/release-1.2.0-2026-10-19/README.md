@@ -46,9 +46,11 @@ instruction, with the public docs/support gate recorded as pending.
 
 ## Pending and limits
 
-- Public docs/support gate: pending. Private vulnerability reporting is enabled.
-  The 1.2.0 site and docs deploy from `main` after the merge, and only once
-  Render serves the site from this repository.
+- Public docs/support gate: pending at upload, met after publication. The
+  1.2.0 site went live from the `consequa-x-site` mirror (`d2b99e0`, byte-identical
+  to this repository's `main` at `5cbacd1`), and private vulnerability reporting
+  is enabled ([site-publication.json](site-publication.json)). Render still
+  deploys from that mirror, not from this repository.
 - macOS has never been tested. Linux coverage is one emulated Alpine guest.
 - MCP capture was checked with a stand-in session, not a live MCP server.
 

@@ -1,0 +1,30 @@
+{
+  "deployed_from": {
+    "blobs_identical_to_mirrored_revision": 25,
+    "commit": "d2b99e0",
+    "mirrors": "website/dist of Devrajsinh-Jhala/consequa-x main at 5cbacd1",
+    "repository": "https://github.com/Devrajsinh-Jhala/consequa-x-site"
+  },
+  "live_checks": {
+    "allowlisted_files_served_byte_identical": 25,
+    "changelog": "1.2.0 entry first",
+    "docs": "Version 1.2 hero, 1.2.0 available callout, capture API integration section",
+    "homepage": "v1.2 badge, consequa-x==1.2.0 install command and 1.2.0 note; no script errors",
+    "html_charset": "utf-8 header and document",
+    "method": "curl byte comparison and headless Chrome DOM checks",
+    "page_horizontal_overflow_at_375": false,
+    "quickstart_zip_members": [
+      "LICENSE",
+      "README.md",
+      "agent_loop_sqlite.py",
+      "artifact_delivery.py",
+      "report_quickstart.py"
+    ],
+    "workflow_code_cards_overflow_at_1440": false
+  },
+  "maintainer_instruction": "Push the 1.2.0 website files to consequa-x-site so the current Render service deploys them, then check the live site. (19 October 2026)",
+  "public_docs_support": "Met after publication: the 1.2.0 docs, changelog, support and security pages are live, and private vulnerability reporting is enabled. checks.json keeps the gate as it stood at upload (pending). Render still deploys from the consequa-x-site mirror, not from this repository, so later site changes must be mirrored there until the service is repointed.",
+  "site": "https://consequa-x.onrender.com",
+  "verified_at_utc": "2026-10-18T19:14:40.203978+00:00",
+  "version": "1.2.0"
+}

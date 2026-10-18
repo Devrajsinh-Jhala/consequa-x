@@ -127,6 +127,14 @@ class TraceRecorder:
     def events(self) -> tuple[Event, ...]:
         return tuple(self._events)
 
+    def now(self) -> int:
+        """Current time in this trace's time base, for readback observations.
+
+        Every time in one trace (contract deadline, events, readback
+        ``observed_at_ms`` and ``as_of_ms``) must use the same time base.
+        """
+        return self._time(None)
+
     def _time(self, at_ms: int | None) -> int:
         value = self._clock() if at_ms is None else at_ms
         if type(value) is not int or value < 0:

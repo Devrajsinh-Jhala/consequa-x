@@ -33,6 +33,9 @@ or malformed readback. Record identifier, commit time, removal time, action,
 actor and attempt field names are configurable; with the defaults the
 evidence graph also links each record to its dispatch.
 
+To capture an action while an agent runs, use `TraceRecorder`; see
+[capturing agents built with a framework](framework-integration.md).
+
 For any other domain, explicitly supply a read-only adapter:
 
 ```python

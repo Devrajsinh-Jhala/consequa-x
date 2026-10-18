@@ -25,6 +25,11 @@ Additive only: the 1.x API and trace schema `0.1` are unchanged.
   and is verified through a separate read-only connection with `RecordVerifier`.
   Modes: `timeout_after_commit`, `other_actor` and `stale_readback`.
 - README section on capturing a real agent's tool call.
+- Added `TraceRecorder.now()`, the recorder clock for readback times.
+- Added `consequa_x.mcp_capture.call_mcp_tool`, which records an awaited MCP
+  tool call from any session exposing `call_tool(name, arguments)` without an
+  MCP dependency. Tool content is not copied into the trace.
+- Added a framework integration guide (`docs/framework-integration.md`).
 
 ## 1.1.1 - 18 October 2026
 

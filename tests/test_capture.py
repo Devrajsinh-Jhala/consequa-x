@@ -240,3 +240,10 @@ def test_capture_tool_decorates_synchronous_tools_only():
         rec.call(remote, "o-17")
     with pytest.raises(TypeError, match="TraceRecorder"):
         capture_tool(object())
+
+
+def test_now_reads_the_recorder_clock():
+    ticks = iter([7, 8])
+    rec = TraceRecorder("trace-1", actor="agent", clock=lambda: next(ticks))
+    assert rec.now() == 7
+    assert rec.now() == 8

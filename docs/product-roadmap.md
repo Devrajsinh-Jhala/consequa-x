@@ -40,8 +40,8 @@ Status: `planned`, `in progress`, `done` (on `release-1.2`), `released`.
 | B3 | `RecordVerifier` and `RecordTargetMatcher` | A built-in `record_present` check for any record-shaped outcome (rows, orders, tickets, files): field values, exact or minimum count, commit deadline, persistence window, origin from configurable fields. Same evidence discipline as the refund verifier: unavailable, incomplete, out-of-scope, stale or malformed readback stays `unknown`. | done |
 | B2 | `capture_tool` wrapper | A decorator/context manager that records dispatch, response status and timing around any tool function, including timeouts and errors. | done |
 | X1 | Real agent-loop example | `examples/agent_loop_sqlite.py`: a stdlib-only tool-calling loop writing to a real SQLite file, read back through a separate read-only connection. Modes `timeout_after_commit`, `other_actor` and `stale_readback`; each writes a trace and an offline report. This is the launch-video demo. | done |
-| X2 | Framework integration guide | Where each capture call goes in OpenAI Agents SDK, LangChain, Claude Agent SDK and MCP tool loops; prose and pseudo-code, no dependencies. | planned |
-| C4 | MCP tool-call wrapper | A thin, optional wrapper around an MCP client's tool calls that uses the recorder; no MCP dependency in the core. | planned |
+| X2 | Framework integration guide | Where each capture call goes in OpenAI Agents SDK, LangChain, Claude Agent SDK and MCP tool loops; prose and pseudo-code, no dependencies. | done |
+| C4 | MCP tool-call wrapper | A thin, optional wrapper around an MCP client's tool calls that uses the recorder; no MCP dependency in the core. | done |
 
 Planned 1.2 API sketch (names may still change during review):
 

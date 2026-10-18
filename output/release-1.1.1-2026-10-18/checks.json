@@ -1,0 +1,74 @@
+{
+  "artifacts": [
+    {
+      "bytes": 158098,
+      "path": "consequa_x-1.1.1-py3-none-any.whl",
+      "sha256": "bdca26f28b0525d811b3e6512aac01c4b62809d80ce65825048cbf8245f3cf25"
+    },
+    {
+      "bytes": 528702,
+      "path": "consequa_x-1.1.1.tar.gz",
+      "sha256": "d536500085de818c6083a9f37d1cd71d8b8b246f2c010c9eca448b2306bb5bd6"
+    }
+  ],
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "installed_artifact_receipts": [
+    "windows311.json",
+    "windows312.json",
+    "sdist312.json"
+  ],
+  "installed_environments": {
+    "windows311.json": "Official Windows embedded Python 3.11.9, wheel unpacked into an isolated site-packages",
+    "windows312.json": "Fresh Windows Python 3.12.10 venv, wheel installed with --no-deps --no-index"
+  },
+  "limits": [
+    "Linux and macOS were not rerun for 1.1.1; macOS has never been tested.",
+    "Windows checks ran on one Windows 11 host.",
+    "Rendering does not authenticate evidence or run target matching."
+  ],
+  "local_checks": {
+    "artifact_inventory": true,
+    "lint": true,
+    "linux_wheel_install": false,
+    "public_docs_support": false,
+    "python311_conformance": true,
+    "release_helper_tests": true,
+    "report_browser_qa": false,
+    "report_security": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "maintainer_instruction": "Publish 1.1.1 to PyPI now with the Windows install checks, and record that Linux and macOS were not rerun for 1.1.1. (18 October 2026)",
+  "not_rerun_for_1_1_1": {
+    "linux_wheel_install": "Not rerun. The 1.1.0 wheel passed on one Alpine Linux 3.24.2 QEMU guest with Python 3.14.8; 1.1.1 runtime differs only in the version string.",
+    "macos": "Never tested, for 1.1.0 or 1.1.1.",
+    "report_browser_qa": "Formal report browser QA not rerun. The renderer is byte-identical to 1.1.0, and the sdist smoke reproduced the published sample report byte for byte."
+  },
+  "pending": {
+    "public_docs_support": "Private vulnerability reporting is not yet enabled on the public repository that SECURITY.md now names, and Render still serves the site from the consequa-x-site repository."
+  },
+  "public_repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+  "public_site": "https://consequa-x.onrender.com",
+  "recorded_at_utc": "2026-10-18T15:19:02.488225+00:00",
+  "release_kind": "Documentation and metadata release",
+  "research_repository_private": false,
+  "runtime_changes_since_1_1_0": {
+    "change": "__version__ 1.1.0 -> 1.1.1 only",
+    "changed_runtime_files": [
+      "src/consequa_x/__init__.py"
+    ],
+    "compared_with_source_revision": "2e1ea177bffb3c7649b1ef055a277b196a58f8b9"
+  },
+  "source_revision": "d6b77854f7c812d4210d62193b2ce1cef5a3710b",
+  "source_tests": {
+    "failures": 0,
+    "passed": 1786,
+    "receipt": "source-tests.log",
+    "skipped": 21,
+    "subtests": 240
+  },
+  "version": "1.1.1"
+}

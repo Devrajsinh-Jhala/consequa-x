@@ -1,0 +1,46 @@
+{
+  "api_process_benchmark_imports": 0,
+  "checker_sha256": "34332976f444de17d2a99344485baef8376727bb52e4f10f267f03d6b6be9ef7",
+  "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+  "executable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-1.1.1\\env312\\Scripts\\python.exe",
+  "install": {
+    "matching_wheel_payloads": 37,
+    "module_file": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-1.1.1\\env312\\Lib\\site-packages\\consequa_x\\__init__.py",
+    "runtime_dependencies": 0,
+    "version": "1.1.1"
+  },
+  "isolated_imports": true,
+  "kernel_release": "11",
+  "machine": "AMD64",
+  "passed": true,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "provider_calls": 0,
+  "python": "3.12.10",
+  "reports": {
+    "cli_checks": 12,
+    "default_omits_captured_details": true,
+    "existing_output_preserved": true,
+    "explicit_details_escaped": true,
+    "invalid_inputs_refused_without_output": 8,
+    "source_unchanged": true
+  },
+  "strict_schema_refusals": 16,
+  "system": "Windows",
+  "wheel": {
+    "bytes": 158098,
+    "filename": "consequa_x-1.1.1-py3-none-any.whl",
+    "sha256": "bdca26f28b0525d811b3e6512aac01c4b62809d80ce65825048cbf8245f3cf25"
+  },
+  "workflow": {
+    "custom_target_matcher": true,
+    "custom_verifier": true,
+    "missing_verification_refused": true,
+    "observed_statuses": [
+      "satisfied",
+      "unknown",
+      "violated"
+    ],
+    "trace_roundtrips": 4,
+    "unknown_origin_preserved": true
+  }
+}

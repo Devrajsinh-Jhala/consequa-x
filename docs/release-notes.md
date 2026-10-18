@@ -8,6 +8,13 @@
 - The source repository is now public and is the home for questions, bug reports
   and private vulnerability reports.
 
+Both files are published on PyPI with their registry hashes and sizes verified.
+The source suite passed 1,786 tests plus 240 subtests. Fresh installed checks
+passed on Windows with embedded Python 3.11.9 and Python 3.12.10, including a
+fresh install from PyPI. Linux and macOS were not rerun for 1.1.1: its runtime
+differs from 1.1.0 only in the version string, and the 1.1.0 wheel passed on one
+Alpine Linux virtual machine. macOS has not been tested.
+
 ## 1.1.0 — 17 October 2026
 
 - A self-contained offline HTML report command and public render_report API.

@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "cli_version": "1.1.1",
+    "consequa_x_version": "1.1.1",
+    "demo_scenarios_generated": 12,
+    "project_urls": [
+      "Homepage, https://consequa-x.onrender.com",
+      "Documentation, https://consequa-x.onrender.com/docs.html",
+      "Changelog, https://consequa-x.onrender.com/changelog.html",
+      "Repository, https://github.com/Devrajsinh-Jhala/consequa-x",
+      "Issues, https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+      "Security, https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+    ],
+    "report_from_episode_01_sha256": "52c320078c79e5a071a15c051e024c3e541d86dfda6cbbd3685711a8b81492e7",
+    "report_matches_published_sample": true
+  },
+  "input_artifact": {
+    "bytes": 528702,
+    "path": "consequa_x-1.1.1.tar.gz",
+    "sha256": "d536500085de818c6083a9f37d1cd71d8b8b246f2c010c9eca448b2306bb5bd6"
+  },
+  "installer": "fresh Windows Python 3.12.10 venv; pip with default build isolation (fetched the setuptools build backend from PyPI)",
+  "passed": true,
+  "scope": "Smoke install of the source distribution; not the full installed-artifact checker."
+}

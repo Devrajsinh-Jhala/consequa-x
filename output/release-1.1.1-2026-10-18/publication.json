@@ -1,0 +1,43 @@
+{
+  "distribution": "consequa-x",
+  "gate_exceptions": {
+    "not_rerun": [
+      "linux_wheel_install",
+      "macos",
+      "report_browser_qa"
+    ],
+    "pending": [
+      "public_docs_support"
+    ]
+  },
+  "project_urls": {
+    "Changelog": "https://consequa-x.onrender.com/changelog.html",
+    "Documentation": "https://consequa-x.onrender.com/docs.html",
+    "Homepage": "https://consequa-x.onrender.com",
+    "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+    "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+    "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+  },
+  "published": true,
+  "published_files": [
+    {
+      "filename": "consequa_x-1.1.1-py3-none-any.whl",
+      "sha256": "bdca26f28b0525d811b3e6512aac01c4b62809d80ce65825048cbf8245f3cf25",
+      "size": 158098,
+      "upload_time_utc": "2026-10-18T15:19:32.173195Z"
+    },
+    {
+      "filename": "consequa_x-1.1.1.tar.gz",
+      "sha256": "d536500085de818c6083a9f37d1cd71d8b8b246f2c010c9eca448b2306bb5bd6",
+      "size": 528702,
+      "upload_time_utc": "2026-10-18T15:19:34.181977Z"
+    }
+  ],
+  "registry": "https://pypi.org/project/consequa-x/1.1.1/",
+  "registry_hashes_and_sizes_match_review": true,
+  "registry_install_receipt": "registry312.json",
+  "source_revision": "d6b77854f7c812d4210d62193b2ce1cef5a3710b",
+  "uploader": "twine via the maintainer's local keyring credential; GitHub Actions not used",
+  "verified_at_utc": "2026-10-18T15:23:12.285247+00:00",
+  "version": "1.1.1"
+}

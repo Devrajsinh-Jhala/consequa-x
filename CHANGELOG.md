@@ -15,6 +15,10 @@
   `tests/test_site_demo.py`. The site deploys from this repository.
 - The snapshot-integrity test now verifies every committed manifest format and
   ignores uncommitted study outputs.
+- Published to PyPI with registry hashes verified; see the
+  [release record](output/release-1.1.1-2026-10-18/README.md). Installed checks
+  passed on Windows Python 3.11.9 and 3.12.10 and from a fresh PyPI install.
+  Linux and macOS were not rerun for 1.1.1; macOS has never been tested.
 
 ## 1.1.0 - 17 October 2026
 

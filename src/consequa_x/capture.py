@@ -1,8 +1,9 @@
 """Record one consequential action as it happens and build a validated trace.
 
-A recorder arranges records that the application supplies. It never executes a
-tool, reads a source, or decides an outcome: the application calls it at each
-step, and ``trace()`` returns an ordinary :class:`~consequa_x.models.Trace`
+A recorder arranges records that the application supplies. It never reads a
+source or decides an outcome, and it runs a tool only when the application hands
+it the function through ``call`` or ``capture_tool``; the application calls it at
+each step, and ``trace()`` returns an ordinary :class:`~consequa_x.models.Trace`
 validated exactly like a hand-built one. Events are linked the way the
 package's own fixtures link them: decision, intent, dispatch, response, then
 the agent's reported assessment. Readback still comes from an independent
@@ -11,9 +12,13 @@ read-only source that the application captures as an ``Observation``.
 
 from __future__ import annotations
 
+from contextlib import contextmanager
+import functools
+import inspect
 import time
-from typing import Any, Callable
+from typing import Any, Callable, Iterator
 
+from .models import _json_copy
 from .models import (
     Action,
     AgentAssessment,
@@ -43,6 +48,38 @@ def _identifier(value: Any, label: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"{label} must be a nonempty string")
     return value
+
+
+def _default_status(error: Exception) -> str:
+    # asyncio, socket and concurrent.futures timeouts are TimeoutError since 3.11.
+    return "timeout" if isinstance(error, TimeoutError) else "error"
+
+
+def _result_payload(value: Any) -> dict[str, Any]:
+    """Keep a JSON object as is, wrap other JSON values, and name anything else."""
+    try:
+        copied = _json_copy(value, "result")
+    except (TypeError, ValueError):
+        return {"type": type(value).__name__}
+    return copied if type(copied) is dict else {"value": copied}
+
+
+class Attempt:
+    """One in-flight tool attempt inside ``TraceRecorder.attempt``.
+
+    Set ``result`` to keep a JSON payload with the response, ``status`` to
+    report an error the tool returned without raising,
+    ``provider_request_id`` when the provider supplies one, and ``at_ms`` to
+    give the response an explicit time instead of the recorder's clock.
+    """
+
+    def __init__(self, attempt_id: str) -> None:
+        self.attempt_id = attempt_id
+        self.status: str | ResponseStatus | None = None
+        self.result: dict[str, Any] = {}
+        self.provider_request_id: str | None = None
+        self.at_ms: int | None = None
+        self.response: ToolResponse | None = None
 
 
 class TraceRecorder:
@@ -201,6 +238,50 @@ class TraceRecorder:
         self._response_event_ids.append(event_id)
         return record
 
+    @contextmanager
+    def attempt(self, *, attempt_id: str | None = None, data: dict[str, Any] | None = None,
+                at_ms: int | None = None,
+                classify: Callable[[Exception], str | ResponseStatus] | None = None,
+                ) -> Iterator[Attempt]:
+        """Record the dispatch on entry and the tool's response on exit.
+
+        A normal exit records ``success`` unless the block set ``attempt.status``.
+        An exception records ``timeout`` for ``TimeoutError`` and ``error``
+        otherwise (or what ``classify`` returns), keeps only the exception's
+        type name, and is re-raised. A timeout says nothing about whether the
+        tool's effect happened; that is what readback is for.
+        """
+        handle = Attempt(self.dispatch(attempt_id=attempt_id, at_ms=at_ms, data=data))
+        try:
+            yield handle
+        except Exception as error:
+            status = (classify or _default_status)(error)
+            handle.response = self.response(
+                handle.attempt_id, status, at_ms=handle.at_ms,
+                provider_request_id=handle.provider_request_id,
+                result={**handle.result, "exception": type(error).__name__},
+            )
+            raise
+        handle.response = self.response(handle.attempt_id, handle.status or "success",
+                                        at_ms=handle.at_ms,
+                                        provider_request_id=handle.provider_request_id,
+                                        result=handle.result)
+
+    def call(self, tool: Callable[..., Any], /, *args: Any, **kwargs: Any) -> Any:
+        """Run ``tool(*args, **kwargs)`` as one recorded attempt and return its result.
+
+        JSON results are kept with the response; other values keep only their
+        type name. Use ``attempt`` for custom status, identity or payloads.
+        """
+        if inspect.iscoroutinefunction(tool):
+            raise TypeError("asynchronous tools are not supported yet; use attempt() around "
+                            "the awaited call")
+        name = getattr(tool, "__name__", type(tool).__name__)
+        with self.attempt(data={"tool": name}) as handle:
+            value = tool(*args, **kwargs)
+            handle.result = _result_payload(value)
+        return value
+
     def assessment(self, status: str | AssessmentStatus, *, at_ms: int | None = None,
                    rationale: str = "", evidence: tuple[str, ...] | None = None) -> AgentAssessment:
         """Record what the agent reported about the outcome.
@@ -257,3 +338,31 @@ class TraceRecorder:
                              "reported nothing")
         return Trace(self.trace_id, action, tuple(self._events), tuple(self._responses),
                      self._assessment, tuple(self._observations), tuple(self._verifications))
+
+
+def capture_tool(recorder: TraceRecorder, *,
+                 classify: Callable[[Exception], str | ResponseStatus] | None = None,
+                 ) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """Decorate a synchronous tool so every call is one recorded attempt.
+
+    The wrapped function behaves as before: it returns the tool's result or
+    re-raises its exception after the response is recorded.
+    """
+    if not isinstance(recorder, TraceRecorder):
+        raise TypeError("capture_tool requires a TraceRecorder")
+
+    def decorate(tool: Callable[..., Any]) -> Callable[..., Any]:
+        if inspect.iscoroutinefunction(tool):
+            raise TypeError("asynchronous tools are not supported yet")
+        name = getattr(tool, "__name__", type(tool).__name__)
+
+        @functools.wraps(tool)
+        def wrapped(*args: Any, **kwargs: Any) -> Any:
+            with recorder.attempt(data={"tool": name}, classify=classify) as handle:
+                value = tool(*args, **kwargs)
+                handle.result = _result_payload(value)
+            return value
+
+        return wrapped
+
+    return decorate

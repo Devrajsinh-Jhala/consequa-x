@@ -4,7 +4,8 @@ import pytest
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Event, EventType, Observation, OutcomeContract,
-    ResponseStatus, ToolResponse, Trace, TraceRecorder, VerificationStatus, build_graph, explain,
+    ResponseStatus, ToolResponse, Trace, TraceRecorder, VerificationStatus, build_graph,
+    capture_tool, explain,
 )
 
 
@@ -154,3 +155,88 @@ def test_identities_and_references_are_checked():
         rec.observe(readback(watermark=90))
     with pytest.raises(TypeError):
         rec.observe({"observation_id": "readback-1"})
+
+
+def registered(clock_values=None):
+    ticks = iter(clock_values or range(0, 1000, 5))
+    rec = TraceRecorder("trace-1", actor="agent", clock=lambda: next(ticks))
+    rec.register("refund-1", "refund", dict(EXPECTED), contract=contract())
+    return rec
+
+
+def test_call_records_a_successful_attempt_and_returns_the_result():
+    rec = registered()
+
+    def issue_refund(order_id, *, amount):
+        return {"refund_id": "rf-1", "order_id": order_id, "amount": amount}
+
+    value = rec.call(issue_refund, "o-17", amount=5000)
+    assert value == {"refund_id": "rf-1", "order_id": "o-17", "amount": 5000}
+    rec.assessment("success")
+    trace = rec.trace()
+    (response,) = trace.responses
+    assert response.status is ResponseStatus.SUCCESS
+    assert response.result == value
+    dispatch = next(event for event in trace.events if event.type is EventType.ACTION_DISPATCH)
+    assert dispatch.data == {"tool": "issue_refund", "action_id": "refund-1",
+                             "attempt_id": "refund-1:attempt-1"}
+
+
+@pytest.mark.parametrize("error,status", [
+    (TimeoutError("gateway timed out"), ResponseStatus.TIMEOUT),
+    (ConnectionError("reset"), ResponseStatus.ERROR),
+])
+def test_exceptions_are_recorded_and_reraised(error, status):
+    rec = registered()
+
+    def flaky():
+        raise error
+
+    with pytest.raises(type(error)):
+        rec.call(flaky)
+    rec.assessment("failure")
+    (response,) = rec.trace().responses
+    assert response.status is status
+    # Only the exception type is kept; its message may contain sensitive data.
+    assert response.result == {"exception": type(error).__name__}
+
+
+def test_attempt_allows_explicit_status_identity_payload_and_time():
+    rec = registered()
+    with rec.attempt(attempt_id="a1", data={"tool": "issue_refund"}, at_ms=100) as attempt:
+        attempt.status = "error"
+        attempt.result = {"code": "card_declined"}
+        attempt.provider_request_id = "req-9"
+        attempt.at_ms = 140
+    assert attempt.response == ToolResponse("a1", ResponseStatus.ERROR, 140, "req-9",
+                                            {"code": "card_declined"})
+    with pytest.raises(ValueError):
+        with rec.attempt(classify=lambda error: "timeout") as second:
+            raise ValueError("bad input")
+    assert second.response.status is ResponseStatus.TIMEOUT
+
+
+def test_capture_tool_decorates_synchronous_tools_only():
+    rec = registered()
+
+    @capture_tool(rec)
+    def lookup(order_id):
+        """Find an order."""
+        return [order_id, object()]
+
+    assert lookup.__name__ == "lookup" and lookup.__doc__ == "Find an order."
+    first = lookup("o-17")
+    assert first[0] == "o-17"
+    rec.assessment("unknown")
+    (response,) = rec.trace().responses
+    assert response.result == {"type": "list"}
+
+    async def remote(order_id):
+        return order_id
+
+    with pytest.raises(TypeError, match="asynchronous"):
+        capture_tool(rec)(remote)
+    with pytest.raises(TypeError, match="asynchronous"):
+        rec.call(remote, "o-17")
+    with pytest.raises(TypeError, match="TraceRecorder"):
+        capture_tool(object())

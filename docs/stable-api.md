@@ -24,8 +24,10 @@ details mode. It does not run verifiers, target matching or replay. See
 [offline reports](offline-reports.md) for the disclosure and preservation contract.
 
 Version 1.2 (unreleased) adds `TraceRecorder`, which records one action step by
-step and returns the same validated `Trace` a caller could build by hand. It
-never executes tools, reads sources or decides outcomes. `RecordVerifier` and
+step and returns the same validated `Trace` a caller could build by hand, plus
+`capture_tool` and `TraceRecorder.call`/`attempt` to record a synchronous tool
+call. The recorder runs only the tool function it is handed and never reads
+sources or decides outcomes. `RecordVerifier` and
 `RecordTargetMatcher` add a generic `record_present` predicate with the refund
 verifier's evidence discipline.
 

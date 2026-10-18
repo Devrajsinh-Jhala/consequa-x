@@ -9,6 +9,11 @@ Additive only: the 1.x API and trace schema `0.1` are unchanged.
   dispatches, tool responses, the agent's assessment, readbacks and
   verification) and returns an ordinary validated `Trace`. Events are linked
   as in the package fixtures, so graphs, reports and `explain()` work unchanged.
+- Added tool-call capture: `TraceRecorder.attempt()` (context manager),
+  `TraceRecorder.call()` and the `capture_tool` decorator record the dispatch
+  and the response (success, `timeout` for `TimeoutError`, or `error`) around
+  a synchronous tool, keep JSON results, keep only exception type names, and
+  re-raise. A recorded timeout says nothing about whether the effect happened.
 - Added `RecordVerifier` and `RecordTargetMatcher` for a generic `record_present`
   predicate: records with given field values, an exact or minimum count,
   a commit deadline and a persistence window, with configurable field names.

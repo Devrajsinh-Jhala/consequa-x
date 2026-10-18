@@ -3,7 +3,7 @@
 __version__ = "1.1.1"
 
 from .attribution import EffectEstimate, Intervention, leave_one_out, recency_attribution
-from .capture import TraceRecorder
+from .capture import Attempt, TraceRecorder, capture_tool
 from .explanation import ConsequenceExplanation, TargetMatcher, explain
 from .graph import ConsequenceGraph, build_graph
 from .models import (
@@ -23,6 +23,6 @@ __all__ = [
     "RefundVerifier", "TargetMatcher", "Trace",
     "Policy", "PolicyDecision", "PolicyError", "PolicyReply", "PolicyRequest", "ScriptedRefundPolicy",
     "ResponseStatus", "ToolResponse", "TraceRecorder", "VerificationResult", "VerificationStatus", "Verifier",
-    "build_graph", "explain",
+    "Attempt", "build_graph", "capture_tool", "explain",
     "leave_one_out", "recency_attribution", "render_report", "verify",
 ]

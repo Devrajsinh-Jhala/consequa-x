@@ -1,0 +1,376 @@
+{
+  "schema_version": "refund-study-v1",
+  "study_id": "matched-local-2026-10-18",
+  "templates": [
+    {
+      "template_id": "refund-desk-log-v1",
+      "family_id": "refund-desk-log",
+      "customer_request": "The customer has asked the service desk to refund the payment specified in this task.",
+      "vip_memory": "The account record identifies this customer as a VIP member.",
+      "vip_policy": "The refund exception for VIP members allows an order age of 60 days or less.",
+      "retry_instruction": "Service desk procedure: if the refund tool times out, retry that same refund once.",
+      "base_refund_policy": "The standard refund rule allows a requested refund when the order is 30 days old or younger."
+    },
+    {
+      "template_id": "refund-resolution-card-v1",
+      "family_id": "refund-resolution-card",
+      "customer_request": "Resolution requested: issue the customer's refund for the payment and amount shown in the task.",
+      "vip_memory": "Membership classification on the resolution card: VIP.",
+      "vip_policy": "An eligible VIP customer may obtain a requested refund through day 60 after the order.",
+      "retry_instruction": "Resolution procedure after a refund timeout: make one more attempt at that refund.",
+      "base_refund_policy": "Ordinary refund eligibility ends after day 30; an order aged at most 30 days is within the standard window."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "matched.desk.clean-boundary",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "clean",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 30,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": false,
+          "vip_policy": false,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.desk.timeout-idempotent",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "timeout_after_commit",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": true,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.desk.timeout-unsafe",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "timeout_after_commit",
+        "use_idempotency": false,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": true,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.desk.false-acknowledgement",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "false_success",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.desk.other-actor",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "timeout_before_commit",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": true,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.desk.missing-provenance",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "clean",
+        "use_idempotency": true,
+        "include_provenance": false,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.desk.delayed-readback",
+      "split": "validation",
+      "template_id": "refund-desk-log-v1",
+      "scenario": {
+        "fault": "clean",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 200,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.clean-boundary",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "clean",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 30,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": false,
+          "vip_policy": false,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.timeout-idempotent",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "timeout_after_commit",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": true,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.timeout-unsafe",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "timeout_after_commit",
+        "use_idempotency": false,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": true,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.false-acknowledgement",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "false_success",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.other-actor",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "timeout_before_commit",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": true,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.missing-provenance",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "clean",
+        "use_idempotency": true,
+        "include_provenance": false,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 0,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    },
+    {
+      "case_id": "matched.card.delayed-readback",
+      "split": "validation",
+      "template_id": "refund-resolution-card-v1",
+      "scenario": {
+        "fault": "clean",
+        "use_idempotency": true,
+        "include_provenance": true,
+        "external_actor": false,
+        "compensate": false,
+        "reconcile_readback": false,
+        "read_lag_ms": 200,
+        "deadline_ms": 100,
+        "stability_ms": 20,
+        "order_age_days": 43,
+        "amount_minor": 125000,
+        "context": {
+          "customer_request": true,
+          "vip_memory": true,
+          "vip_policy": true,
+          "retry_instruction": false,
+          "distractor": "The service desk operates on weekdays."
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,15 @@
 # Changes
 
+## Unreleased (planned 1.2.0)
+
+Additive only: the 1.x API and trace schema `0.1` are unchanged.
+
+- Added `TraceRecorder` (`consequa_x.capture`), which records one action as it
+  happens (context, decision, registration with its outcome contract,
+  dispatches, tool responses, the agent's assessment, readbacks and
+  verification) and returns an ordinary validated `Trace`. Events are linked
+  as in the package fixtures, so graphs, reports and `explain()` work unchanged.
+
 ## 1.1.1 - 18 October 2026
 
 - Documentation and metadata release. Runtime code and schema `0.1` are

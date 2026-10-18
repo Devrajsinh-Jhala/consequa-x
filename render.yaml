@@ -1,6 +1,5 @@
-# Deploy a site-only mirror containing this file and website/dist/.
-# Keep the private research repository and its outputs out of that mirror.
-# Each commit to the site-only repository's branch deploys automatically.
+# Static site served from website/dist/ of this repository.
+# Commits that change files under website/ deploy automatically.
 services:
   - type: web
     name: consequa-x

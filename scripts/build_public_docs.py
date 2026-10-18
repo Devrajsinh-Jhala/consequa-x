@@ -2,7 +2,7 @@
 
 This authoring tool has no runtime dependencies. It never scans the repository
 for publication candidates: every input and output is named below. Run it again
-after editing the public community documentation or the two example modules.
+after editing the public documentation sources or the two example modules.
 """
 
 import argparse
@@ -14,8 +14,9 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC_REPOSITORY = "https://github.com/Devrajsinh-Jhala/consequa-x-community"
-SITE = "https://consequa-x.brawny-deer-5658.chatgpt.site"
+PUBLIC_REPOSITORY = "https://github.com/Devrajsinh-Jhala/consequa-x"
+SITE = "https://consequa-x.onrender.com"
+RELEASE = "1.1.1"
 EXAMPLES = ("artifact_delivery.py", "report_quickstart.py")
 
 
@@ -36,8 +37,9 @@ def inline(text: str) -> str:
             if not (target.startswith(("https://", "http://", "#"))
                     or re.fullmatch(r"[A-Za-z0-9_./-]+", target)):
                 raise ValueError("Unsupported URL in public Markdown")
-            target = {"QUICKSTART.md": "docs.html", "SECURITY.md": "security.html",
-                      "CHANGELOG.md": "changelog.html"}.get(target, target)
+            target = {"QUICKSTART.md": "docs.html", "docs/quickstart.md": "docs.html",
+                      "SECURITY.md": "security.html", "CHANGELOG.md": "changelog.html",
+                      "docs/release-notes.md": "changelog.html"}.get(target, target)
             output.append(f'<a href="{escape(target, quote=True)}">{escape(label)}</a>')
         else:
             output.append(escape(part))
@@ -105,7 +107,7 @@ def page(title: str, description: str, body: str, active: str) -> str:
     <nav aria-label="Main navigation">{navigation}<a class="package-link" href="https://pypi.org/project/consequa-x/">Python package <span aria-hidden="true">↗</span></a></nav>
   </header>
   {body}
-  <footer class="docs-footer section-shell"><a href="index.html">consequa<span class="brand-x">×</span></a><p>Evidence-aware explanation of consequential agent actions.</p><nav aria-label="Footer">{navigation}<a href="{PUBLIC_REPOSITORY}">Public community <span aria-hidden="true">↗</span></a></nav><small>© 2026 Devrajsinh Jhala · MIT licensed package</small></footer>
+  <footer class="docs-footer section-shell"><a href="index.html">consequa<span class="brand-x">×</span></a><p>Evidence-aware explanation of consequential agent actions.</p><nav aria-label="Footer">{navigation}<a href="{PUBLIC_REPOSITORY}">GitHub <span aria-hidden="true">↗</span></a></nav><small>© 2026 Devrajsinh Jhala · MIT licensed package</small></footer>
 </body>
 </html>
 '''
@@ -113,16 +115,16 @@ def page(title: str, description: str, body: str, active: str) -> str:
 
 def documentation(*, published: bool = False) -> str:
     release_status = (
-        '<strong>Version 1.1.0 is available.</strong><p>Install the verified '
-        '<a href="https://pypi.org/project/consequa-x/1.1.0/">1.1.0 release from PyPI</a>. '
+        f'<strong>Version {RELEASE} is available.</strong><p>Install the verified '
+        f'<a href="https://pypi.org/project/consequa-x/{RELEASE}/">{RELEASE} release from PyPI</a>. '
         '<a href="changelog.html">Read release notes and the actual platform checks.</a></p>'
         if published else
-        '<strong>1.1 is being prepared.</strong><p>The report command and API below belong '
+        f'<strong>{RELEASE} is being prepared.</strong><p>The report command and API below belong '
         'to 1.1. Check the <a href="https://pypi.org/project/consequa-x/">published version '
         'on PyPI</a> before installing a pinned release. <a href="changelog.html">Read '
         'release status and validated platforms.</a></p>'
     )
-    installation = code("python -m pip install consequa-x==1.1.0\nconsequa-x --version")
+    installation = code(f"python -m pip install consequa-x=={RELEASE}\nconsequa-x --version")
     run_example = code("python report_quickstart.py --output my-first-capture")
     render = code("consequa-x report my-first-capture/verified.json --output another-report.html")
     detailed = code("consequa-x report my-first-capture/verified.json "
@@ -370,7 +372,7 @@ CSS = """/* Documentation: graphite, clear typography and electric-lime wayfindi
 
 
 def platform_table(receipt_paths: list[Path]) -> str:
-    """Publish only three bounded platform fields from successful 1.1 receipts.
+    """Publish only three bounded platform fields from successful release receipts.
 
     No executable paths, account names, complete receipt payloads or source
     locations are copied. Passing a receipt does not publish that JSON file.
@@ -381,8 +383,8 @@ def platform_table(receipt_paths: list[Path]) -> str:
         record = json.loads(path.read_text(encoding="utf-8"))
         if (record.get("passed") is not True
                 or record.get("isolated_imports") is not True
-                or record.get("install", {}).get("version") != "1.1.0"):
-            raise ValueError("Only successful isolated 1.1.0 installation receipts can be listed")
+                or record.get("install", {}).get("version") != RELEASE):
+            raise ValueError(f"Only successful isolated {RELEASE} installation receipts can be listed")
         digest = record.get("wheel", {}).get("sha256", "")
         if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
             raise ValueError("Platform receipt must identify the checked wheel")
@@ -405,7 +407,7 @@ def platform_table(receipt_paths: list[Path]) -> str:
         return ""
     rendered_rows = "".join("<tr>" + "".join(f"<td>{escape(value)}</td>" for value in row)
                             + "</tr>" for row in rows)
-    return ('<h2>Installed 1.1.0 artifact checks</h2><p>These environments completed the '
+    return (f'<h2>Installed {RELEASE} artifact checks</h2><p>These environments completed the '
             'same reviewed wheel’s isolated installation and offline integration checks. '
             'The table lists actual environments; it does not imply coverage of every '
             'Python or operating-system version.</p><div class="docs-table-wrap" '
@@ -418,27 +420,24 @@ def platform_table(receipt_paths: list[Path]) -> str:
 
 def build(*, published: bool = False, platform_receipts: list[Path] | None = None) -> None:
     # Only these public files can reach the website and example archive.
-    community = ROOT / "community"
     dist = ROOT / "website" / "dist"
     source_examples = {name: (ROOT / "examples" / name).read_bytes() for name in EXAMPLES}
-    quickstart = (community / "QUICKSTART.md").read_bytes()
-    license_bytes = (community / "LICENSE").read_bytes()
-    security = (community / "SECURITY.md").read_text(encoding="utf-8")
-    changelog = (community / "CHANGELOG.md").read_text(encoding="utf-8")
+    quickstart = (ROOT / "docs" / "quickstart.md").read_bytes()
+    license_bytes = (ROOT / "LICENSE").read_bytes()
+    security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
+    changelog = (ROOT / "docs" / "release-notes.md").read_text(encoding="utf-8")
     platforms = platform_table(platform_receipts or [])
-    # Read the public community overview as a required, auditable input.
-    overview = (community / "README.md").read_text(encoding="utf-8")
+    # The public README must name the same repository and site as these pages.
+    overview = (ROOT / "README.md").read_text(encoding="utf-8")
     if PUBLIC_REPOSITORY not in overview or SITE not in overview:
         raise ValueError("Public support overview does not match the selected destinations")
     if "MIT License" not in license_bytes.decode("utf-8"):
         raise ValueError("Quickstart must carry the public MIT license")
     (dist / "examples").mkdir(parents=True, exist_ok=True)
-    (community / "examples").mkdir(parents=True, exist_ok=True)
     for name, data in source_examples.items():
         (dist / "examples" / name).write_bytes(data)
-        (community / "examples" / name).write_bytes(data)
     (dist / "docs.css").write_text(CSS, encoding="utf-8", newline="\n")
-    support = f'''<p>Questions and reproducible bug reports live in the <a href="{PUBLIC_REPOSITORY}">public community repository</a>. You do not need access to the private research repository to read the documentation or contribute a synthetic reproduction.</p><div class="support-grid"><section class="support-path"><h2>Something broke?</h2><p>Use the bug template for unexpected package behavior. Include a minimal synthetic trace, expected and actual behavior, and your environment.</p><a class="text-link" href="{PUBLIC_REPOSITORY}/issues/new/choose">Report a reproducible bug <span aria-hidden="true">↗</span></a></section><section class="support-path"><h2>Finding your way?</h2><p>Use the question template for integration and usage help. Start with the artifact-delivery quickstart and share the smallest example that explains your question.</p><a class="text-link" href="{PUBLIC_REPOSITORY}/issues/new/choose">Ask a question <span aria-hidden="true">↗</span></a></section></div><div class="contact-checklist"><h2>A useful report includes</h2><ul><li>Consequa-X version, Python version and operating system.</li><li>Reproduction steps and the smallest synthetic input.</li><li>The expected result and the actual error or conclusion.</li><li>Relevant sanitized output, with no customer or production data.</li></ul></div><h2>Keep private evidence private.</h2><p>Public issues require a GitHub account and are visible to everyone. Do not post credentials, exploit details, private traces or identifying customer data. Minimal-disclosure HTML still retains timing, counts and relationships; review it before sharing. Use a synthetic reproduction whenever possible.</p><p>Suspected vulnerabilities belong in <a href="security.html">private vulnerability reporting</a>, rather than a public issue. Maintainer help is best effort; no response deadline or long-term support period is promised.</p><h2>Source and distribution</h2><p>The research/source repository is private. The public community repository contains documentation, synthetic examples and issue templates. The <a href="https://pypi.org/project/consequa-x/">MIT-licensed Python wheel and source distribution</a> are public; the source distribution includes implementation, application examples, tests and documentation.</p>'''
+    support = f'''<p>Questions and reproducible bug reports live in the <a href="{PUBLIC_REPOSITORY}">public GitHub repository</a>, alongside the source, documentation and examples.</p><div class="support-grid"><section class="support-path"><h2>Something broke?</h2><p>Use the bug template for unexpected package behavior. Include a minimal synthetic trace, expected and actual behavior, and your environment.</p><a class="text-link" href="{PUBLIC_REPOSITORY}/issues/new/choose">Report a reproducible bug <span aria-hidden="true">↗</span></a></section><section class="support-path"><h2>Finding your way?</h2><p>Use the question template for integration and usage help. Start with the artifact-delivery quickstart and share the smallest example that explains your question.</p><a class="text-link" href="{PUBLIC_REPOSITORY}/issues/new/choose">Ask a question <span aria-hidden="true">↗</span></a></section></div><div class="contact-checklist"><h2>A useful report includes</h2><ul><li>Consequa-X version, Python version and operating system.</li><li>Reproduction steps and the smallest synthetic input.</li><li>The expected result and the actual error or conclusion.</li><li>Relevant sanitized output, with no customer or production data.</li></ul></div><h2>Keep private evidence private.</h2><p>Public issues require a GitHub account and are visible to everyone. Do not post credentials, exploit details, private traces or identifying customer data. Minimal-disclosure HTML still retains timing, counts and relationships; review it before sharing. Use a synthetic reproduction whenever possible.</p><p>Suspected vulnerabilities belong in <a href="security.html">private vulnerability reporting</a>, rather than a public issue. Maintainer help is best effort; no response deadline or long-term support period is promised.</p><h2>Source and distribution</h2><p>The <a href="{PUBLIC_REPOSITORY}">source repository</a> is public under the MIT license, including the implementation, tests, documentation, examples and research records. The <a href="https://pypi.org/project/consequa-x/">Python wheel and source distribution</a> are published on PyPI.</p>'''
     pages = {
         "docs": ("Documentation", "A five-minute offline artifact-delivery quickstart and the Consequa-X report API.", documentation(published=published)),
         "support": ("Support", "Public questions, synthetic bug reports and a private security route for Consequa-X.", article("A little context.<br>A <em>better answer.</em>", "Bring a small, reproducible example. Keep private captures out of public issues.", support, "COMMUNITY / HELP & SUPPORT")),
@@ -464,8 +463,8 @@ def build(*, published: bool = False, platform_receipts: list[Path] | None = Non
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--published", action="store_true",
-                        help="Declare 1.1.0 available only after verifying its public PyPI release")
+                        help=f"Declare {RELEASE} available only after verifying its public PyPI release")
     parser.add_argument("--platform-receipt", action="append", type=Path, default=[],
-                        help="Successful isolated 1.1.0 installed-wheel receipt; repeat per environment")
+                        help=f"Successful isolated {RELEASE} installed-wheel receipt; repeat per environment")
     args = parser.parse_args()
     build(published=args.published, platform_receipts=args.platform_receipt)

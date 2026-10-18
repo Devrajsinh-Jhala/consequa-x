@@ -1,14 +1,14 @@
 # Five-minute offline quickstart
 
 Use Python 3.11 or 3.12. No model, API key, provider account or runtime dependency
-is required. Version 1.1.0 is public on PyPI. The core schema stays at 0.1.
+is required. Version 1.1.1 is public on PyPI. The core schema stays at 0.1.
 
 ```console
-python -m pip install consequa-x==1.1.0
+python -m pip install consequa-x==1.1.1
 consequa-x --version
 ```
 
-Download and extract the [quickstart archive](https://consequa-x.brawny-deer-5658.chatgpt.site/quickstart.zip)
+Download and extract the [quickstart archive](https://consequa-x.onrender.com/quickstart.zip)
 or use the two Python files in examples in this repository. Run from the folder
 containing both files:
 
@@ -62,7 +62,7 @@ The schema validates structure and identity linkage. Source authentication,
 transaction guarantees and the truth of adapter-provided metadata remain your
 application's responsibility. Unknown evidence must stay unknown.
 
-The version-1 core and schema 0.1 remain compatible in 1.1. Research replay
+The version-1 core and schema 0.1 remain compatible in 1.1.x. Research replay
 interfaces have separate assumptions; no baseline superiority or live-model
 accuracy improvement is claimed. Platform validation is listed in release notes
 using actual environments, rather than inferred from a pure-Python wheel.

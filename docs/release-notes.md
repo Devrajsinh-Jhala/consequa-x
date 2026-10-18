@@ -1,5 +1,13 @@
 # Release notes
 
+## 1.1.1 — 18 October 2026
+
+- Documentation and metadata release: runtime code and schema 0.1 are identical
+  to 1.1.0 apart from the version number.
+- A rewritten package description and project links for PyPI.
+- The source repository is now public and is the home for questions, bug reports
+  and private vulnerability reports.
+
 ## 1.1.0 — 17 October 2026
 
 - A self-contained offline HTML report command and public render_report API.

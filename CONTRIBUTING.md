@@ -1,21 +1,29 @@
 # Contributing to Consequa-X
 
-The current release is **1.1.0**, with offline HTML reports and public onboarding.
-Its [completed launch record](output/release-1.1.0-2026-10-17/README.md) contains
-the frozen source, artifact and installation receipts. The 1.0 core checkpoint
-below describes the API foundation retained by 1.1.
+Thanks for helping. This public repository holds the Python package, its tests
+and documentation, the website, and the research records behind the paper. The
+current release is on [PyPI](https://pypi.org/project/consequa-x/). It separates
+a stable application evidence core from declared research interfaces (refund
+simulation, programmatic policies, replay attribution and an optional local
+Ollama adapter). Recorded studies establish declared implementation behavior,
+not empirical superiority or a new causal estimator. Preserve original samples
+when adding prompt profiles or evaluations.
 
-Collaborators with access to this private repository can contribute to the Python framework and research. Stable [`1.0.0` is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/). It separates the application evidence core from research interfaces using refund simulation, programmatic policies, and an optional local Ollama adapter. [Release receipts](output/release-1.0.0-2026-10-15/README.md) retain the installation and publication checks. Recorded results include [audited synthetic sampling](output/interaction-sampling-findings-2026-10-15/FINDINGS.md) and an exploratory [local-model validation](output/local-validation-2026-10-14/FINDINGS.md). These establish declared implementation behavior, not empirical superiority or a new causal estimator. Preserve original samples when adding prompt profiles or evaluations.
+Start with the [README](README.md), [design](docs/design.md), and
+[research roadmap](docs/research-roadmap.md). The
+[policy replay guide](docs/policy-replay.md) covers bounded context comparisons
+and evidence exports. Release receipts under `output/release-*` record the exact
+artifacts and installation checks for each published version.
 
-Start with the [README](README.md), [design](docs/design.md), and [research roadmap](docs/research-roadmap.md). The [policy replay guide](docs/policy-replay.md) covers bounded context comparisons and evidence exports. Use an issue to discuss a larger adapter, schema change, new domain, or study before investing in the implementation. Small fixes and reproducible bug reports can go straight to a pull request.
-
-The [launch plan](docs/launch-readiness.md) separates shipped functionality from
-proposed adoption features. A private repository issue is available to authorized
-collaborators; it is not yet a public support channel for PyPI users.
+Use a [GitHub issue](https://github.com/Devrajsinh-Jhala/consequa-x/issues/new/choose)
+to discuss a larger adapter, schema change, new domain, or study before investing
+in the implementation. Small fixes and reproducible bug reports can go straight
+to a pull request. Report vulnerabilities privately as described in
+[SECURITY.md](SECURITY.md), never in a public issue.
 
 ## Set up a development environment
 
-With repository access, clone the repository or an authorized fork and create a branch for your change. Use Python 3.11 or 3.12:
+Fork and clone the repository, then create a branch for your change. Use Python 3.11 or 3.12:
 
 ```sh
 python -m venv .venv
@@ -37,9 +45,8 @@ python -m ruff check src tests
 python -m build
 ```
 
-GitHub Actions is currently disabled because the account quota is exhausted.
-Automatic push and pull-request triggers have been removed; use the local
-checks above. The retained workflow is manual only and must not be re-enabled
+GitHub Actions is currently disabled for this repository. Automatic push and
+pull-request triggers have been removed; use the local checks above. The retained workflow is manual only and must not be re-enabled
 or dispatched without the maintainer's authorization. Its configured test matrix
 does not establish a current test result. Local release checks include fresh
 package installations and access to the bundled trace schema.

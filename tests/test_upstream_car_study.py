@@ -255,7 +255,9 @@ def test_serial_and_spawned_parallel_groups_have_identical_semantics(study, car)
     trials = study.trial_schedule(plan)
     serial = list(study.iter_group_results(plan, trials, source))
     parallel = list(study.iter_group_results(replace(plan, workers=2), trials, source))
-    by_index = lambda rows: {row["trial"]["group_index"]: row for row in rows}
+    def by_index(rows):
+        return {row["trial"]["group_index"]: row for row in rows}
+
     serial_by_index, parallel_by_index = by_index(serial), by_index(parallel)
     assert set(serial_by_index) == set(parallel_by_index) == {0, 1}
     for index in serial_by_index:

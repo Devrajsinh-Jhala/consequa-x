@@ -22,8 +22,8 @@ sources, copyright notices, and checksums are in [font attribution](dist/fonts/R
 ## Local preview
 
 From the repository root, run `python -m http.server 8787 --directory website/dist`
-and open `http://127.0.0.1:8787`. The original public Site and hosting identity
-are recorded in `.openai/hosting.json`; publication there uses the Sites workflow.
+and open `http://127.0.0.1:8787`. The original host's identity is recorded in `.openai/hosting.json`; that host is
+no longer updated.
 The report window in the live demo needs an HTTP origin; it cannot script a
 `file://` page.
 
@@ -98,14 +98,14 @@ published release. The UI redesign does not change the Python package or its
 offline report renderer. Do not describe unverified platform support or present
 recorded output as a live application execution.
 
-`scripts/build_public_docs.py` regenerates the four public documentation pages,
+`scripts/build_public_docs.py` regenerates the four public documentation pages
+from `docs/quickstart.md`, `SECURITY.md`, `docs/release-notes.md` and the README,
 `docs.css`, the explicitly allowlisted synthetic examples, and `quickstart.zip`.
 Run it with `--published` to retain the published release status and pass the
 existing successful installed-wheel receipts through repeatable
 `--platform-receipt` arguments to retain the actual platform validation table.
 The downloadable archive contains only its README, MIT license, and two public
-Python examples. Research captures and private repository data are not website
-inputs. GitHub Actions remains disabled.
+Python examples. Research captures and study data are not website inputs. GitHub Actions remains disabled.
 
 HTML references to `styles.css`, `app.js`, `docs.css`, `assets/demo-data.js` and
 the favicon use a shared `?v=20261018-ui5` cache version. Keep references
@@ -128,26 +128,28 @@ download links work. Hidden browser tabs throttle animation frames; judge timing
 in a visible or headless browser. Do not infer a package runtime test result
 from website checks.
 
-The main research repository stays private. Public package users should follow
-the documentation and support links, rather than links to private GitHub issues.
+Questions, bug reports and private vulnerability reports go to this public
+repository; the website's support and security pages link there.
 
 ## Render deployment
 
-The repository-root [render.yaml](../render.yaml) defines a second static host.
-It does not create a Render service by itself. The site-only repository
-`Devrajsinh-Jhala/consequa-x-site` is deployed at
-<https://consequa-x.onrender.com>; on 18 October 2026 it served byte-identical
-copies of the reviewed `dist/` files from that repository's first commit. The
-original public Site remains available, and the sitemap and robots file still
-name it as the canonical host.
+The repository-root [render.yaml](../render.yaml) defines the static site served
+at <https://consequa-x.onrender.com>, which is the canonical public address: the
+sitemap, robots file and package metadata name it. Render builds nothing
+(`buildCommand: "true"`), publishes `website/dist`, and deploys automatically on
+each commit (`autoDeployTrigger: "commit"`). Because `rootDir` is `website`,
+Render's monorepo handling skips automatic deploys for commits that change only
+files outside that directory, such as the package or the paper. The original
+host at `consequa-x.brawny-deer-5658.chatgpt.site` is no longer updated.
 
-Use a **site-only repository** for this deployment. Copy `render.yaml` and only
-the reviewed files under `website/dist/`, retaining that directory structure.
-Do not mirror the private research repository, its history, `website/.openai/`,
-study captures, PDFs, review files, package-release archives, or credentials.
-The publish directory controls which files visitors receive; it does not limit
-the repository access granted to a hosting provider. Keep the main repository
-private and grant Render access only to the site-only repository.
+The service previously deployed from the site-only repository
+`Devrajsinh-Jhala/consequa-x-site`, created while this repository was private.
+After this repository became public, the service should be connected to it
+instead; the site-only repository is then redundant.
+
+Every file under `website/dist/` is public. `scripts/export_render_site.py`
+remains a reviewed allowlist check: it refuses unlisted files, external
+resources and changed report bytes.
 
 The current public asset allowlist is:
 
@@ -179,7 +181,7 @@ website/dist/fonts/JetBrainsMono-Variable.ttf
 website/dist/fonts/JetBrainsMono-OFL.txt
 ```
 
-Review changes to this list before exporting a later version. In particular,
+Review changes to this list before publishing a later version. In particular,
 `quickstart.zip` contains only the public README, MIT license, and two synthetic
 examples; it is not a research artifact download. `assets/demo-data.js` contains
 only recorded output from the synthetic demo. Preserve the three font licenses
@@ -193,15 +195,15 @@ challenge script to served HTML, including the browser preview of the report.
 The ZIP preserves the original package bytes when extracted. It uses fixed ZIP
 metadata and contains synthetic example data only.
 
-1. Connect the intended Render account and the site-only Git repository.
+1. Connect the intended Render account and this Git repository.
 2. Create a Blueprint from that repository and select its root `render.yaml`.
 3. Confirm that the resource is a static site, root directory is `website`,
    build command is `true`, and publish directory is `dist`. No frontend build,
    secret, environment variable, database, server, or paid compute plan is needed.
-4. Automatic deploys are **On commit**: every push to the site-only repository's
-   branch deploys. Review the site-only snapshot before pushing it, because the
-   push is the release. If the service predates this setting, enable On Commit in
-   its Render settings or sync the Blueprint once.
+4. Automatic deploys are **On commit**: a push that changes `website/` deploys.
+   Review website changes before pushing them, because the push is the release.
+   If the service predates this setting, enable On Commit in its Render settings
+   or sync the Blueprint once.
 5. After Render reports success, record its returned URL and deployed commit.
    Check the five pages, the four inspector traces, the live demo, mobile
    navigation, fonts, copy feedback, and the public quickstart download on that URL.
@@ -212,9 +214,9 @@ select “After CI Checks Pass” as the deployment trigger. The Blueprint uses
 static CDN resource. It also omits an SPA rewrite: documentation pages are real
 HTML files, and unknown paths should retain their normal not-found response.
 
-The existing sitemap and canonical links identify the original public Site.
-Treat Render as a mirror until a primary domain is chosen; review those links
-before changing the canonical host.
+The sitemap and robots file name the Render address as the canonical host.
+Review them, the package metadata and the README together if a custom domain
+is added later.
 
 Configuration checked against Render's official [Blueprint reference](https://render.com/docs/blueprint-spec)
 and [monorepo support](https://render.com/docs/monorepo-support), accessed

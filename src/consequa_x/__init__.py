@@ -1,6 +1,6 @@
 """Evidence-aware consequence explanations for agent applications."""
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 from .attribution import EffectEstimate, Intervention, leave_one_out, recency_attribution
 from .explanation import ConsequenceExplanation, TargetMatcher, explain

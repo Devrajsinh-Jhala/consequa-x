@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "consequa-x"
-version = "1.1.0"
+version = "1.1.1"
 description = "Evidence-aware explanation of consequential agent actions"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -24,12 +24,12 @@ classifiers = [
 dev = ["pytest>=8", "build>=1.2", "ruff>=0.8", "jsonschema>=4.23"]
 
 [project.urls]
-Homepage = "https://consequa-x.brawny-deer-5658.chatgpt.site"
-Documentation = "https://consequa-x.brawny-deer-5658.chatgpt.site/docs.html"
-Changelog = "https://consequa-x.brawny-deer-5658.chatgpt.site/changelog.html"
+Homepage = "https://consequa-x.onrender.com"
+Documentation = "https://consequa-x.onrender.com/docs.html"
+Changelog = "https://consequa-x.onrender.com/changelog.html"
 Repository = "https://github.com/Devrajsinh-Jhala/consequa-x"
-Issues = "https://github.com/Devrajsinh-Jhala/consequa-x-community/issues"
-Security = "https://github.com/Devrajsinh-Jhala/consequa-x-community/security/policy"
+Issues = "https://github.com/Devrajsinh-Jhala/consequa-x/issues"
+Security = "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
 
 [project.scripts]
 consequa-x = "consequa_x.cli:main"

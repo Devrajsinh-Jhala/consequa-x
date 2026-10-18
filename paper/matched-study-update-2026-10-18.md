@@ -1,7 +1,9 @@
 # Matched local-model collection update
 
-18 October 2026. This note describes ongoing work; it is not a final results
-section or a claim that the existing PDF contains the new experiment.
+18 October 2026. The collection is now closed and the results are integrated
+into the [new IEEE revision](../output/pdf/matched-2026-10-18/Consequa-X_IEEE_Paper.pdf).
+The [final findings](matched-study-findings-2026-10-18.md) retain the design,
+fractions and limits. The original execution plan below remains historical.
 
 ## Frozen collection
 
@@ -55,23 +57,26 @@ prompts, schedule, primary metrics and stopping rules remain unchanged.
 The audit records are under `output/study-audit-2026-10-18/`; AI-assisted checking
 does not count as independent human validation.
 
-Final analysis must wait for a closed, valid journal with no active runner lock.
+Final analysis required a closed, valid journal with no active runner lock.
 The [one-time local completion job](../output/matched-local-completion-2026-10-18/README.md)
-is queued to perform those checks, seal the analysis and create the figures.
-It launches no generation and uses no scheduled automation or GitHub Actions.
-It will retain completed, failed, interrupted and unstarted counts globally and
+completed those checks, sealed the analysis and created the figures.
+It launched no generation and used no scheduled automation or GitHub Actions.
+The retained analysis includes completed, failed, interrupted and unstarted counts globally and
 within every planned stratum, including empty groups. Definite coverage, error
 among definite claims, correct-definite yield and full-planned operational yield
 remain separate. No denominator of zero becomes a perfect score. No pooled
 independent-task confidence interval or significance claim is planned.
 
-## Paper integration still pending
+## Completed collection and integration
 
-After closure, audit every retained artifact and denominator, produce the source
-fractions and new figures, and revise both manuscript sources before compiling
-and visually checking a new PDF. Preserve all earlier PDFs and sealed study
-receipts. The next author block will use **Independent Researcher**, as supplied;
-no contact email has been supplied.
+Normal completion at 17:30 IST retained 503 completed episodes and one failed
+strict-JSON policy response, with no partial or unstarted episodes. There were
+896/1,512 attempted local calls and no transport failures. Every slot remains
+accounted for. A separate AI-assisted audit checked inventories, source hashes,
+the hash-chained journal and aggregate fractions. Both sources now include the
+study and two new figures; the new 12-page PDF was compiled and visually checked.
+Earlier PDFs and sealed studies remain unchanged. The author block uses
+**Independent Researcher**; no contact email has been supplied.
 
 This collection advances review items T1 and T3 within the factual-auditing
 scope. Independent human annotations, a standard task-domain benchmark or

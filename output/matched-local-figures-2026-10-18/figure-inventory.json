@@ -1,0 +1,52 @@
+{
+  "schema_version": "consequa-matched-figure-inventory-v1",
+  "created_utc": "2026-10-18T12:02:04.158847+00:00",
+  "postcollection_presentation": true,
+  "synthetic_fixture": false,
+  "script_sha256": "f09db1deb452d09918e881515a30d1263c03a65a2dbda5df8bc616986df1ff4c",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "matplotlib": "3.11.2",
+  "inputs": {
+    "analysis": {
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\matched-local-analysis-2026-10-18\\analysis.json",
+      "sha256": "42c10cc7b39546e6a3308d3248bab9ac485de07f96bdd3e4197130c084724d54"
+    },
+    "protocol": {
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\matched-local-study-2026-10-18\\protocol.json",
+      "sha256": "e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab"
+    },
+    "disposition": {
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\matched-local-analysis-2026-10-18\\final-disposition.json",
+      "sha256": "4632e7bb98c2911cc801e37700ae85e08747fe4ffebda64d6a4e7f9de9465984"
+    },
+    "execution_diagnostics": {
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\matched-local-analysis-2026-10-18\\execution\\execution-summary.json",
+      "sha256": "17753823ea09dbb5cd968a566d87efd96086d70dc94fc9a0cc508c0e34b0f951"
+    },
+    "journal": {
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\matched-local-study-2026-10-18\\request-journal.jsonl",
+      "sha256": "e49368964d6c310a90267c7616d81c4b940ac53271c59b7e65b0e7296939f4a1"
+    },
+    "execution_diagnostic_inventory": {
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\output\\matched-local-analysis-2026-10-18\\execution\\input-inventory.json",
+      "sha256": "5c8b56e371f916f3537dddaaeda2fa3b202bb959f6faa2e180739c68a4793f95"
+    }
+  },
+  "files": {
+    "figure-fractions.csv": "48bdffc87260008ede4f2515d9ea158d9c286908fd2ccd7c3ba834f799f8c5ef",
+    "figure-fractions.json": "176859dc4d98045206a5c8421ecf9fdde187352028f8147724bd5e9464578f6c",
+    "matched-baseline-metrics.pdf": "310709074a7e4c8ef5a383b0c68001d73f93b247aaec3c3b8d85821a543cdc4a",
+    "matched-baseline-metrics.png": "cff372aee0372af1316b1fc340b7e0cfffed8ecd50aa0029a9da221e4613e761",
+    "matched-baseline-metrics.svg": "22a6f4cae4afd51b20cbf3a81452fc0e118c848dc795bf89962d89c5a9e2dccd",
+    "matched-model-disposition.pdf": "27d9da0b95ca740831ef507784c114bbd84367af129f22256d3506a2373b72be",
+    "matched-model-disposition.png": "059cf21809800fc60b35692a7a31e26e7cfc3262287253819a539e0e691660fa",
+    "matched-model-disposition.svg": "a0f49b2f3b86a2f79735e6a7b3e4b090ce983ae440a0a21327ce6b057505f5d6",
+    "README.md": "f01766268187e0c83747ed7694650b0cabf2ede79f193af90b235cd503f83050",
+    "source-inputs/analysis.json": "42c10cc7b39546e6a3308d3248bab9ac485de07f96bdd3e4197130c084724d54",
+    "source-inputs/disposition.json": "4632e7bb98c2911cc801e37700ae85e08747fe4ffebda64d6a4e7f9de9465984",
+    "source-inputs/execution_diagnostic_inventory.json": "5c8b56e371f916f3537dddaaeda2fa3b202bb959f6faa2e180739c68a4793f95",
+    "source-inputs/execution_diagnostics.json": "17753823ea09dbb5cd968a566d87efd96086d70dc94fc9a0cc508c0e34b0f951",
+    "source-inputs/journal.jsonl": "e49368964d6c310a90267c7616d81c4b940ac53271c59b7e65b0e7296939f4a1",
+    "source-inputs/protocol.json": "e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab"
+  }
+}

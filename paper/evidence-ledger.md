@@ -39,6 +39,23 @@ and methods even when the current framework changes.
 
 ## Numeric insertion rules
 
+The later matched factual-auditor collection is separate from all historical
+studies above. Its source was frozen as
+`bcd733d8f8c5712e4413afe030b6a20bf7080de1`, with protocol SHA-256
+`e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab`.
+The [sealed analysis](../output/matched-local-analysis-2026-10-18/analysis.md),
+[final receipt](../output/matched-local-analysis-2026-10-18/finalization-receipt.json),
+[separate AI-assisted audit](../output/matched-local-audit-2026-10-18/README.md)
+and [findings](matched-study-findings-2026-10-18.md) support 503 completed plus
+one failed episode out of 504, and 896 calls. Consequa-X and the same-information
+reference agree on every completed prediction; correct state/linked yields
+are 431/503 and 385/503, or 431/504 and 385/504 on the full planned denominator.
+Origin yield is 216/310 assessable, or 216/504 planned. Gemma dispatched 0/168;
+no-action correctness is not refund execution or dispatched fault handling.
+Two new vector figures use the retained fraction tables without additional
+generation. No causal-method superiority or independent human validation is
+established. This advances, but does not close, the strong-comparison gaps.
+
 1. Insert final values from an audited structured output tied to a frozen source
    and study protocol. Retain the exact numerator, denominator and unavailable
    count for every rate.

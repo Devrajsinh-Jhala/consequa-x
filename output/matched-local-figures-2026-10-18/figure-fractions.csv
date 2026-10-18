@@ -1,0 +1,329 @@
+group,method,target,metric,numerator,denominator,value,postcollection_diagnostic
+overall,response_only,state,coverage,201,503,0.3996023856858847,False
+overall,response_only,state,claim_error,53,201,0.263681592039801,False
+overall,response_only,state,correct_yield,148,503,0.294234592445328,False
+overall,response_only,state,full_planned_correct_yield,148,504,0.29365079365079366,False
+overall,response_only,action_linked,coverage,201,503,0.3996023856858847,False
+overall,response_only,action_linked,claim_error,53,201,0.263681592039801,False
+overall,response_only,action_linked,correct_yield,148,503,0.294234592445328,False
+overall,response_only,action_linked,full_planned_correct_yield,148,504,0.29365079365079366,False
+overall,agent_self_report,state,coverage,252,503,0.5009940357852882,False
+overall,agent_self_report,state,claim_error,148,252,0.5873015873015873,False
+overall,agent_self_report,state,correct_yield,104,503,0.20675944333996024,False
+overall,agent_self_report,state,full_planned_correct_yield,104,504,0.20634920634920634,False
+overall,agent_self_report,action_linked,coverage,252,503,0.5009940357852882,False
+overall,agent_self_report,action_linked,claim_error,136,252,0.5396825396825397,False
+overall,agent_self_report,action_linked,correct_yield,116,503,0.23061630218687873,False
+overall,agent_self_report,action_linked,full_planned_correct_yield,116,504,0.23015873015873015,False
+overall,readback_state_only,state,coverage,431,503,0.856858846918489,False
+overall,readback_state_only,state,claim_error,0,431,0.0,False
+overall,readback_state_only,state,correct_yield,431,503,0.856858846918489,False
+overall,readback_state_only,state,full_planned_correct_yield,431,504,0.8551587301587301,False
+overall,readback_state_only,action_linked,coverage,0,503,0.0,False
+overall,readback_state_only,action_linked,claim_error,0,0,,False
+overall,readback_state_only,action_linked,correct_yield,0,503,0.0,False
+overall,readback_state_only,action_linked,full_planned_correct_yield,0,504,0.0,False
+overall,independent_public_reference,state,coverage,431,503,0.856858846918489,False
+overall,independent_public_reference,state,claim_error,0,431,0.0,False
+overall,independent_public_reference,state,correct_yield,431,503,0.856858846918489,False
+overall,independent_public_reference,state,full_planned_correct_yield,431,504,0.8551587301587301,False
+overall,independent_public_reference,action_linked,coverage,385,503,0.7654075546719682,False
+overall,independent_public_reference,action_linked,claim_error,0,385,0.0,False
+overall,independent_public_reference,action_linked,correct_yield,385,503,0.7654075546719682,False
+overall,independent_public_reference,action_linked,full_planned_correct_yield,385,504,0.7638888888888888,False
+overall,consequa_state_origin,state,coverage,431,503,0.856858846918489,False
+overall,consequa_state_origin,state,claim_error,0,431,0.0,False
+overall,consequa_state_origin,state,correct_yield,431,503,0.856858846918489,False
+overall,consequa_state_origin,state,full_planned_correct_yield,431,504,0.8551587301587301,False
+overall,consequa_state_origin,action_linked,coverage,385,503,0.7654075546719682,False
+overall,consequa_state_origin,action_linked,claim_error,0,385,0.0,False
+overall,consequa_state_origin,action_linked,correct_yield,385,503,0.7654075546719682,False
+overall,consequa_state_origin,action_linked,full_planned_correct_yield,385,504,0.7638888888888888,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,coverage,84,84,1.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,claim_error,59,84,0.7023809523809523,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,correct_yield,25,84,0.2976190476190476,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,full_planned_correct_yield,25,84,0.2976190476190476,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,coverage,84,84,1.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,claim_error,63,84,0.75,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,correct_yield,21,84,0.25,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,full_planned_correct_yield,21,84,0.25,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,claim_error,0,0,,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,coverage,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,claim_error,0,72,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,coverage,48,84,0.5714285714285714,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,claim_error,12,48,0.25,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,full_planned_correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,coverage,48,84,0.5714285714285714,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,claim_error,12,48,0.25,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,full_planned_correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,coverage,84,84,1.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,claim_error,40,84,0.47619047619047616,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,correct_yield,44,84,0.5238095238095238,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,full_planned_correct_yield,44,84,0.5238095238095238,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,coverage,84,84,1.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,claim_error,36,84,0.42857142857142855,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,correct_yield,48,84,0.5714285714285714,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,full_planned_correct_yield,48,84,0.5714285714285714,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,claim_error,0,72,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,claim_error,0,0,,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,claim_error,0,72,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,coverage,60,84,0.7142857142857143,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,claim_error,0,60,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,full_planned_correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,claim_error,0,72,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,coverage,60,84,0.7142857142857143,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,claim_error,0,60,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,full_planned_correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,coverage,46,83,0.5542168674698795,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,claim_error,12,46,0.2608695652173913,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,correct_yield,34,83,0.40963855421686746,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,full_planned_correct_yield,34,84,0.40476190476190477,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,coverage,46,83,0.5542168674698795,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,claim_error,12,46,0.2608695652173913,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,correct_yield,34,83,0.40963855421686746,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,full_planned_correct_yield,34,84,0.40476190476190477,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,coverage,0,83,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,claim_error,0,0,,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,correct_yield,0,83,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,coverage,0,83,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,claim_error,0,0,,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,correct_yield,0,83,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,coverage,71,83,0.8554216867469879,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,claim_error,0,71,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,correct_yield,71,83,0.8554216867469879,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,full_planned_correct_yield,71,84,0.8452380952380952,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,coverage,0,83,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,claim_error,0,0,,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,correct_yield,0,83,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,coverage,71,83,0.8554216867469879,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,claim_error,0,71,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,correct_yield,71,83,0.8554216867469879,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,full_planned_correct_yield,71,84,0.8452380952380952,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,coverage,61,83,0.7349397590361446,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,claim_error,0,61,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,correct_yield,61,83,0.7349397590361446,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,full_planned_correct_yield,61,84,0.7261904761904762,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,coverage,71,83,0.8554216867469879,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,claim_error,0,71,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,correct_yield,71,83,0.8554216867469879,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,full_planned_correct_yield,71,84,0.8452380952380952,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,coverage,61,83,0.7349397590361446,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,claim_error,0,61,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,correct_yield,61,83,0.7349397590361446,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,full_planned_correct_yield,61,84,0.7261904761904762,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,coverage,48,84,0.5714285714285714,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,claim_error,12,48,0.25,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,state,full_planned_correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,coverage,48,84,0.5714285714285714,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,claim_error,12,48,0.25,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",response_only,action_linked,full_planned_correct_yield,36,84,0.42857142857142855,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,coverage,84,84,1.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,claim_error,49,84,0.5833333333333334,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,correct_yield,35,84,0.4166666666666667,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,state,full_planned_correct_yield,35,84,0.4166666666666667,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,coverage,84,84,1.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,claim_error,37,84,0.44047619047619047,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,correct_yield,47,84,0.5595238095238095,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_self_report,action_linked,full_planned_correct_yield,47,84,0.5595238095238095,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,claim_error,0,72,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,claim_error,0,0,,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",readback_state_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,claim_error,0,72,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,coverage,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,claim_error,0,60,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",independent_public_reference,action_linked,full_planned_correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,claim_error,0,72,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,coverage,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,claim_error,0,60,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",consequa_state_origin,action_linked,full_planned_correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,coverage,59,84,0.7023809523809523,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,claim_error,17,59,0.288135593220339,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,correct_yield,42,84,0.5,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,state,full_planned_correct_yield,42,84,0.5,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,coverage,59,84,0.7023809523809523,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,claim_error,17,59,0.288135593220339,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,correct_yield,42,84,0.5,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",response_only,action_linked,full_planned_correct_yield,42,84,0.5,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,coverage,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,claim_error,0,0,,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,state,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,coverage,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,claim_error,0,0,,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_self_report,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,claim_error,0,72,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,coverage,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,claim_error,0,0,,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",readback_state_only,action_linked,full_planned_correct_yield,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,claim_error,0,72,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,coverage,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,claim_error,0,60,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",independent_public_reference,action_linked,full_planned_correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,coverage,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,claim_error,0,72,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,state,full_planned_correct_yield,72,84,0.8571428571428571,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,coverage,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,claim_error,0,60,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",consequa_state_origin,action_linked,full_planned_correct_yield,60,84,0.7142857142857143,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,completed,84,84,1.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,failed,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,interrupted_partial,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,unstarted,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,completed,84,84,1.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,failed,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,interrupted_partial,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,unstarted,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,completed,84,84,1.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,failed,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,interrupted_partial,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,unstarted,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,completed,83,84,0.9880952380952381,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,failed,1,84,0.011904761904761904,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,interrupted_partial,0,84,0.0,False
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,unstarted,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,completed,84,84,1.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,failed,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,interrupted_partial,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",collection,episode_disposition,unstarted,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,completed,84,84,1.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,failed,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,interrupted_partial,0,84,0.0,False
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",collection,episode_disposition,unstarted,0,84,0.0,False
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,action_selected_per_completed,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,action_selected_per_planned,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,dispatched_per_completed,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,dispatched_per_planned,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,action_selected_per_completed,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,action_selected_per_planned,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,dispatched_per_completed,0,84,0.0,True
+"{""model"": ""gemma3:1b-it-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,dispatched_per_planned,0,84,0.0,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,action_selected_per_completed,84,84,1.0,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,action_selected_per_planned,84,84,1.0,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,dispatched_per_completed,84,84,1.0,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,dispatched_per_planned,84,84,1.0,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,action_selected_per_completed,82,83,0.9879518072289156,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,action_selected_per_planned,82,84,0.9761904761904762,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,dispatched_per_completed,82,83,0.9879518072289156,True
+"{""model"": ""llama3.2:3b-instruct-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,dispatched_per_planned,82,84,0.9761904761904762,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,action_selected_per_completed,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,action_selected_per_planned,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,dispatched_per_completed,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v1""}",agent_execution,operation,dispatched_per_planned,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,action_selected_per_completed,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,action_selected_per_planned,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,dispatched_per_completed,84,84,1.0,True
+"{""model"": ""qwen3:4b-instruct-2507-q4_K_M"", ""prompt_version"": ""refund-policy-v2""}",agent_execution,operation,dispatched_per_planned,84,84,1.0,True

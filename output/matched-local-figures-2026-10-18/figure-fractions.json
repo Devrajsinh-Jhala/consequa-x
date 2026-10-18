@@ -1,0 +1,3282 @@
+[
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 201,
+    "value": 0.3996023856858847,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 201,
+    "numerator": 53,
+    "value": 0.263681592039801,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 148,
+    "value": 0.294234592445328,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 148,
+    "value": 0.29365079365079366,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 201,
+    "value": 0.3996023856858847,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 201,
+    "numerator": 53,
+    "value": 0.263681592039801,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 148,
+    "value": 0.294234592445328,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 148,
+    "value": 0.29365079365079366,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 252,
+    "value": 0.5009940357852882,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 252,
+    "numerator": 148,
+    "value": 0.5873015873015873,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 104,
+    "value": 0.20675944333996024,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 104,
+    "value": 0.20634920634920634,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 252,
+    "value": 0.5009940357852882,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 252,
+    "numerator": 136,
+    "value": 0.5396825396825397,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 116,
+    "value": 0.23061630218687873,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 116,
+    "value": 0.23015873015873015,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 431,
+    "value": 0.856858846918489,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 431,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 431,
+    "value": 0.856858846918489,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 431,
+    "value": 0.8551587301587301,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 431,
+    "value": 0.856858846918489,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 431,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 431,
+    "value": 0.856858846918489,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 431,
+    "value": 0.8551587301587301,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 385,
+    "value": 0.7654075546719682,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 385,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 385,
+    "value": 0.7654075546719682,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 385,
+    "value": 0.7638888888888888,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 431,
+    "value": 0.856858846918489,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 431,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 431,
+    "value": 0.856858846918489,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 431,
+    "value": 0.8551587301587301,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 503,
+    "numerator": 385,
+    "value": 0.7654075546719682,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 385,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 503,
+    "numerator": 385,
+    "value": 0.7654075546719682,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "overall",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 504,
+    "numerator": 385,
+    "value": 0.7638888888888888,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 84,
+    "numerator": 59,
+    "value": 0.7023809523809523,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 25,
+    "value": 0.2976190476190476,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 25,
+    "value": 0.2976190476190476,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 84,
+    "numerator": 63,
+    "value": 0.75,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 21,
+    "value": 0.25,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 21,
+    "value": 0.25,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 48,
+    "value": 0.5714285714285714,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 48,
+    "numerator": 12,
+    "value": 0.25,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 48,
+    "value": 0.5714285714285714,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 48,
+    "numerator": 12,
+    "value": 0.25,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 84,
+    "numerator": 40,
+    "value": 0.47619047619047616,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 44,
+    "value": 0.5238095238095238,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 44,
+    "value": 0.5238095238095238,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 48,
+    "value": 0.5714285714285714,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 48,
+    "value": 0.5714285714285714,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 60,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 60,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 46,
+    "value": 0.5542168674698795,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 46,
+    "numerator": 12,
+    "value": 0.2608695652173913,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 34,
+    "value": 0.40963855421686746,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 34,
+    "value": 0.40476190476190477,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 46,
+    "value": 0.5542168674698795,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 46,
+    "numerator": 12,
+    "value": 0.2608695652173913,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 34,
+    "value": 0.40963855421686746,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 34,
+    "value": 0.40476190476190477,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 71,
+    "value": 0.8554216867469879,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 71,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 71,
+    "value": 0.8554216867469879,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 71,
+    "value": 0.8452380952380952,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 71,
+    "value": 0.8554216867469879,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 71,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 71,
+    "value": 0.8554216867469879,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 71,
+    "value": 0.8452380952380952,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 61,
+    "value": 0.7349397590361446,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 61,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 61,
+    "value": 0.7349397590361446,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 61,
+    "value": 0.7261904761904762,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 71,
+    "value": 0.8554216867469879,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 71,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 71,
+    "value": 0.8554216867469879,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 71,
+    "value": 0.8452380952380952,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 83,
+    "numerator": 61,
+    "value": 0.7349397590361446,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 61,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 83,
+    "numerator": 61,
+    "value": 0.7349397590361446,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 61,
+    "value": 0.7261904761904762,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 48,
+    "value": 0.5714285714285714,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 48,
+    "numerator": 12,
+    "value": 0.25,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 48,
+    "value": 0.5714285714285714,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 48,
+    "numerator": 12,
+    "value": 0.25,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 36,
+    "value": 0.42857142857142855,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 84,
+    "numerator": 49,
+    "value": 0.5833333333333334,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 35,
+    "value": 0.4166666666666667,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 35,
+    "value": 0.4166666666666667,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 84,
+    "numerator": 37,
+    "value": 0.44047619047619047,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 47,
+    "value": 0.5595238095238095,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 47,
+    "value": 0.5595238095238095,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 60,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 60,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 59,
+    "value": 0.7023809523809523,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 59,
+    "numerator": 17,
+    "value": 0.288135593220339,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 42,
+    "value": 0.5,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 42,
+    "value": 0.5,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 59,
+    "value": 0.7023809523809523,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 59,
+    "numerator": 17,
+    "value": 0.288135593220339,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 42,
+    "value": 0.5,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "response_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 42,
+    "value": 0.5,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_self_report",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 0,
+    "numerator": 0,
+    "value": null,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "readback_state_only",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 60,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "denominator": 72,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "state",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 72,
+    "value": 0.8571428571428571,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "denominator": 60,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "full_planned_correct_yield",
+    "denominator": 84,
+    "numerator": 60,
+    "value": 0.7142857142857143,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "completed",
+    "numerator": 84,
+    "denominator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "failed",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "interrupted_partial",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "unstarted",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "completed",
+    "numerator": 84,
+    "denominator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "failed",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "interrupted_partial",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "unstarted",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "completed",
+    "numerator": 84,
+    "denominator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "failed",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "interrupted_partial",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "unstarted",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "completed",
+    "numerator": 83,
+    "denominator": 84,
+    "value": 0.9880952380952381,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "failed",
+    "numerator": 1,
+    "denominator": 84,
+    "value": 0.011904761904761904,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "interrupted_partial",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "unstarted",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "completed",
+    "numerator": 84,
+    "denominator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "failed",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "interrupted_partial",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "unstarted",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "completed",
+    "numerator": 84,
+    "denominator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "failed",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "interrupted_partial",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "collection",
+    "target": "episode_disposition",
+    "metric": "unstarted",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0,
+    "postcollection_diagnostic": false
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_completed",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_planned",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_completed",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_planned",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_completed",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_planned",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_completed",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"gemma3:1b-it-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_planned",
+    "denominator": 84,
+    "numerator": 0,
+    "value": 0.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_completed",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_planned",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_completed",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_planned",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_completed",
+    "denominator": 83,
+    "numerator": 82,
+    "value": 0.9879518072289156,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_planned",
+    "denominator": 84,
+    "numerator": 82,
+    "value": 0.9761904761904762,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_completed",
+    "denominator": 83,
+    "numerator": 82,
+    "value": 0.9879518072289156,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"llama3.2:3b-instruct-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_planned",
+    "denominator": 84,
+    "numerator": 82,
+    "value": 0.9761904761904762,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_completed",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_planned",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_completed",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v1\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_planned",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_completed",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "action_selected_per_planned",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_completed",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  },
+  {
+    "group": "{\"model\": \"qwen3:4b-instruct-2507-q4_K_M\", \"prompt_version\": \"refund-policy-v2\"}",
+    "method": "agent_execution",
+    "target": "operation",
+    "metric": "dispatched_per_planned",
+    "denominator": 84,
+    "numerator": 84,
+    "value": 1.0,
+    "postcollection_diagnostic": true
+  }
+]

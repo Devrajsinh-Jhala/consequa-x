@@ -240,12 +240,23 @@ abstention, assessable-claim errors and rationale assertions must be scored
 separately. These results establish neither improved accuracy nor held-out
 superiority.
 
+The subsequent [matched factual-auditor study](paper/matched-study-findings-2026-10-18.md)
+completed 503 of 504 planned episodes across three small local model families,
+using 896 calls. Five offline auditors share the completed episodes with
+declared information budgets. Consequa-X agrees with the equally informed
+independent reference; the paper reports no method advantage. Gemma dispatched
+no actions, so observing its empty ledger does not establish fault handling.
+The [new 12-page IEEE revision](output/pdf/matched-2026-10-18/Consequa-X_IEEE_Paper.pdf)
+contains six figures and retains failed samples, abstentions and all planned
+denominators. The two wording families and fourteen fixed case cells are not
+504 independently sampled tasks.
+
 The paper is a protocol/software contribution with synthetic and exploratory
 local-model evidence. It does not claim a new attribution estimator, calibrated
 live-model confidence, broad domain generalization or superiority over a matched
 strong baseline. The IEEE draft and retained data remain private repository
 materials; no submission or acceptance is claimed. Joint context/fault methods,
-matched live baselines and held-out template/fault-composition studies remain
+faithful causal/controller comparisons and held-out template/fault-composition studies remain
 future research. No npm package is published.
 
 ## Develop and contribute

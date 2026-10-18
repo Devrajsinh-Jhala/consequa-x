@@ -1,5 +1,20 @@
 # Research and release roadmap
 
+Current update, 18 October 2026: stable 1.1.0 is public. The
+[matched factual study](../paper/matched-study-findings-2026-10-18.md) closed
+with 503 completed episodes and one retained failure out of 504, using 896 local
+calls across three small model families. Both sources and the
+[12-page IEEE revision](../output/pdf/matched-2026-10-18/Consequa-X_IEEE_Paper.pdf)
+include its five factual auditors and two new figures. Same-information
+reference parity, fixed cases, Gemma's zero dispatches and post-freeze
+descriptive diagnostics remain explicit. Independent human checking, standard
+benchmark/real-service transfer, faithful causal-method comparisons and a
+reviewer-access plan remain open. No conference submission or acceptance is
+claimed. GitHub Actions is disabled at repository level.
+
+The dated 16 October checkpoint below is historical and does not supersede
+the current paper findings or release receipts.
+
 Updated 16 October 2026; public release verification completed 15 October 2026.
 The stable evidence
 core is complete and [version 1.0.0 is public on PyPI](https://pypi.org/project/consequa-x/1.0.0/).

@@ -1,0 +1,219 @@
+{
+  "schema_version": "consequa-independent-agent-closed-study-audit-v1",
+  "created_utc": "2026-10-18T12:32:02.831942+00:00",
+  "audit_kind": "Read-only computational and visual checks by an AI agent; not independent human validation. No generation or primary analyzer rerun. Only this new audit directory is written.",
+  "inputs": {
+    "protocol_sha256": "e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab",
+    "analysis_sha256": "42c10cc7b39546e6a3308d3248bab9ac485de07f96bdd3e4197130c084724d54",
+    "execution_summary_sha256": "17753823ea09dbb5cd968a566d87efd96086d70dc94fc9a0cc508c0e34b0f951",
+    "finalization_receipt_sha256": "1b0cd78291d83776fe10bd63a6cabccde29ac245af35db6b6fa53a3e086cc4e6"
+  },
+  "inventory_checks": [
+    {
+      "inventory": "output/matched-local-analysis-2026-10-18/closed-study-inventory.json",
+      "inventory_sha256": "6c450ee84aeb7ac04efe36dafd4e742ecef5d489221d17dea968ed9c19431348",
+      "files_verified": 4317,
+      "mismatches": []
+    },
+    {
+      "inventory": "output/matched-local-analysis-2026-10-18/analysis-artifacts-inventory.json",
+      "inventory_sha256": "67e674089db2908d8ba59e5f86ad54282ea5295670ee9cd2f6f6d15531658924",
+      "files_verified": 7,
+      "mismatches": []
+    },
+    {
+      "inventory": "output/matched-local-figures-2026-10-18/figure-inventory.json",
+      "inventory_sha256": "0aca13d6f91a9fe1ef8abc04b8f4e5caaae402b3861ae8e010bdf20daa1d7caa",
+      "files_verified": 15,
+      "mismatches": []
+    }
+  ],
+  "frozen_source_checks": {
+    "code_entries": 41,
+    "source_inventory_entries": 4,
+    "total_bindings_verified": 45,
+    "unique_current_repo_paths": 43,
+    "mismatches": []
+  },
+  "journal_checks": {
+    "events_verified": 2803,
+    "complete_lines": true,
+    "valid_hash_chain": true,
+    "terminal_event": "run_stopped",
+    "no_runner_lock": true,
+    "duration_seconds": 17870.021745,
+    "stop_mode": "normal_all_frozen_slots_finalized; no budget stop"
+  },
+  "disposition": {
+    "completed": 503,
+    "failed": 1,
+    "interrupted_partial": 0,
+    "unstarted": 0
+  },
+  "calls": {
+    "attempted": 896,
+    "budget": 1512,
+    "transport_failures": 0
+  },
+  "retained_failure": [
+    {
+      "elapsed_seconds": 73.07899999999972,
+      "error": "Response is not strict JSON",
+      "error_type": "PolicyError",
+      "finished_utc": "2026-10-18T08:10:19.526199+00:00",
+      "infrastructure_failure": false,
+      "policy_calls": 1,
+      "slot": {
+        "case_id": "matched.desk.missing-provenance",
+        "family_id": "refund-desk-log",
+        "model": "llama3.2:3b-instruct-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 1,
+        "reserved_phase_seeds": [
+          108000186,
+          108000187,
+          108000188,
+          108000189,
+          108000190,
+          108000191
+        ],
+        "slot": 109,
+        "slot_id": "episode_00109",
+        "template_id": "refund-desk-log-v1",
+        "trial_seed": 18000031,
+        "wording_sha256": "fe398563ef991c338ec1a0e616da8ea5c12f7664096694a4176833a975ff26a9",
+        "world_seed": 18000031
+      },
+      "status": "failed"
+    }
+  ],
+  "independently_recounted_summary": {
+    "agent_self_report": {
+      "action_linked": {
+        "assessable": 503,
+        "claims": 252,
+        "correct": 116,
+        "wrong": 136,
+        "planned": 504
+      },
+      "origin": {
+        "assessable": 310,
+        "claims": 0,
+        "correct": 0,
+        "wrong": 0,
+        "planned": 504
+      },
+      "state": {
+        "assessable": 503,
+        "claims": 252,
+        "correct": 104,
+        "wrong": 148,
+        "planned": 504
+      }
+    },
+    "consequa_state_origin": {
+      "action_linked": {
+        "assessable": 503,
+        "claims": 385,
+        "correct": 385,
+        "wrong": 0,
+        "planned": 504
+      },
+      "origin": {
+        "assessable": 310,
+        "claims": 216,
+        "correct": 216,
+        "wrong": 0,
+        "planned": 504
+      },
+      "state": {
+        "assessable": 503,
+        "claims": 431,
+        "correct": 431,
+        "wrong": 0,
+        "planned": 504
+      }
+    },
+    "independent_public_reference": {
+      "action_linked": {
+        "assessable": 503,
+        "claims": 385,
+        "correct": 385,
+        "wrong": 0,
+        "planned": 504
+      },
+      "origin": {
+        "assessable": 310,
+        "claims": 216,
+        "correct": 216,
+        "wrong": 0,
+        "planned": 504
+      },
+      "state": {
+        "assessable": 503,
+        "claims": 431,
+        "correct": 431,
+        "wrong": 0,
+        "planned": 504
+      }
+    },
+    "readback_state_only": {
+      "action_linked": {
+        "assessable": 503,
+        "claims": 0,
+        "correct": 0,
+        "wrong": 0,
+        "planned": 504
+      },
+      "origin": {
+        "assessable": 310,
+        "claims": 0,
+        "correct": 0,
+        "wrong": 0,
+        "planned": 504
+      },
+      "state": {
+        "assessable": 503,
+        "claims": 431,
+        "correct": 431,
+        "wrong": 0,
+        "planned": 504
+      }
+    },
+    "response_only": {
+      "action_linked": {
+        "assessable": 503,
+        "claims": 201,
+        "correct": 148,
+        "wrong": 53,
+        "planned": 504
+      },
+      "origin": {
+        "assessable": 310,
+        "claims": 0,
+        "correct": 0,
+        "wrong": 0,
+        "planned": 504
+      },
+      "state": {
+        "assessable": 503,
+        "claims": 201,
+        "correct": 148,
+        "wrong": 53,
+        "planned": 504
+      }
+    }
+  },
+  "reference_prediction_agreement_including_origin": {
+    "numerator": 503,
+    "denominator": 503
+  },
+  "interpretation": {
+    "origin": "310 assessable origin gold =238 confirmed+72 other_actor; 193 unknown origin gold excluded from origin semantic coverage. These are not 310 state-satisfied episodes: five matching excess-effect cases have identifiable origin but fail the exact-count state contract. 216 emitted claims=144 confirmed+72 other_actor; remaining assessable-origin abstentions94=48 lag+46 omitted public provenance.",
+    "abstention": "State72=lag72; action-linked118=lag72+omitted provenance46. Abstention is not correct. Undefined zero-denominator errors remain null.",
+    "execution": "Gemma 0/168 dispatches. Llama166/167 completed dispatches (168 planned); Qwen168/168 dispatches. Total334/503 completed dispatches;58 retries, all Qwen. Empty-ledger correctness does not establish executing the requested action or handling an injected dispatched fault.",
+    "study_scope": "3 models x2 profiles x14 case cells x6 repetitions. The 14 cells are two wording families across seven exposed mechanisms; 504 slots are not independent task families. Models are small, quantized, single local CPU environment, family/size confounded. No human rationale validation, held-out fault generalization, causal attribution, faithful named-system reproduction, statistical superiority or conference readiness established.",
+    "postfreeze_disclosure": "Execution diagnostics and presentation are disclosed post-freeze descriptive additions. Primary protocol/runner/analyzer/runtime source hashes still match.",
+    "figures": "Both PNGs inspected: labels, fractions, N/A for undefined error, all-planned operational yield and postcollection dispatch diagnostics visible. Vector export and source copies bound in verified inventory."
+  }
+}

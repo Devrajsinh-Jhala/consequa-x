@@ -2,7 +2,7 @@
 
 The IEEE manuscript embeds the vector PDFs at their full 6.9-inch width.
 SVG files preserve editable text; 220-dpi PNGs support Markdown and preview.
-Labels are at least 8 points at the embedded size. The four original result
+Labels in the original four figures are at least 8 points at the embedded size. The four original result
 tables remain in the paper.
 
 | Figure | Asset stem | Purpose and scope |
@@ -11,6 +11,16 @@ tables remain in the paper.
 | 2 | `diagram-timeout-retry` | Illustrative timeout-after-commit sequence, comparing duplicate creation with provider-scoped idempotency. Times are illustrative and arrows show event order. |
 | 3 | `data-branch-disposition` | All 16 mechanism/game groups and all 655,360 planned slots, with inactive holds shown as a subset of completed branches. Completion does not imply verified success or an available estimate. |
 | 4 | `data-interval-tradeoffs` | All eight on-reach global-consequence retry cases, contrasting saved normal/Hoeffding coverage, width and sign detection or false flags. Unavailable/undefined rows have no numerical markers. |
+| 5 | `matched-baseline-metrics` | Five factual auditors on the same 503 completed episodes: state/link coverage, error and correct yield with explicit fractions. Information budgets differ; the same-information reference agrees with Consequa-X. |
+| 6 | `matched-model-disposition` | All 504 planned slots, model/profile operational yield and actual action dispatch. Execution diagnostics were added descriptively after collection began; no-action correctness is not fault-handling evidence. |
+
+The two matched-study figures are byte-identical copies of the sealed
+[vector exports](../../output/matched-local-figures-2026-10-18/README.md).
+Their [inventory](../../output/matched-local-figures-2026-10-18/figure-inventory.json)
+binds every input, fraction table and asset. Points are descriptive; no pooled
+independent-task confidence interval or causal-method superiority is implied.
+They add no model call. Both previews and the figures embedded in the final
+paper were visually checked.
 
 [Diagram provenance](diagram-figures.json) binds the generator, reviewed runtime
 sources and all six diagram assets. [Plot provenance](data-figures.json) retains

@@ -1,0 +1,223 @@
+{
+  "schema_version": "consequa-matched-paper-qa-v1",
+  "client_review_date": "2026-10-18",
+  "sealed_utc": "2026-10-18T12:38:06.671859+00:00",
+  "pdf": {
+    "path": "output/pdf/matched-2026-10-18/Consequa-X_IEEE_Paper.pdf",
+    "bytes": 330224,
+    "sha256": "085823e42b99cc14cb1aafc9996ff56d5d6d6cacfb091d8e96aceaa9f1f5fb06"
+  },
+  "compilation_successful": true,
+  "compiler": "Tectonic",
+  "pages": 12,
+  "page_size_points": [
+    612.0,
+    792.0
+  ],
+  "figures": 6,
+  "tables": 4,
+  "cited_references": 20,
+  "embedded_fonts": {
+    "/IHAIZV+TeXGyreTermesX-Regular-Identity-H": true,
+    "/BZIVMZ+TeXGyreTermesX-BoldItalic-Identity-H": true,
+    "/IXFAWU+TeXGyreTermesX-Bold-Identity-H": true,
+    "/AKHCZK+NewTXMI": true,
+    "/TQTHRL+TeXGyreTermesX-Italic-Identity-H": true,
+    "/VDVGTR+txsys": true,
+    "/YEUUOC+LMMono10-Regular-Identity-H": true,
+    "/CAFSZL+txmiaX": true,
+    "/DDIEWW+TeXGyreTermesX-Regular": true,
+    "/FKPJSN+NewTXMI7": true,
+    "/PVTTLK+txsyb": true,
+    "/JAGKKY+txexs": true
+  },
+  "raster_image_xobjects": 0,
+  "overfull_boxes": 0,
+  "missing_characters": 0,
+  "nonfatal_warnings": "Underfull justified paragraphs and bibliography URLs; font request notices",
+  "page_text_lengths": [
+    5406,
+    3616,
+    5954,
+    3671,
+    5533,
+    6387,
+    3711,
+    4262,
+    3528,
+    3671,
+    6346,
+    4508
+  ],
+  "visual_review": {
+    "all_pages": true,
+    "dpi": 110,
+    "clipping_or_overlap_observed": false,
+    "new_figures_readable": true,
+    "final_bibliography_columns": "balance package",
+    "source": "separate AI-assisted factual review and root visual inspection; not human validation"
+  },
+  "matched_results": {
+    "planned": 504,
+    "completed": 503,
+    "failed": 1,
+    "calls": 896,
+    "same_information_reference_agreement": {
+      "numerator": 503,
+      "denominator": 503
+    },
+    "state_correct_assessable": [
+      431,
+      503
+    ],
+    "linked_correct_assessable": [
+      385,
+      503
+    ],
+    "origin_correct_assessable": [
+      216,
+      310
+    ],
+    "gemma_dispatch_completed": [
+      0,
+      168
+    ]
+  },
+  "frozen_inputs": [
+    {
+      "path": "paper/consequa-x-ieee.tex",
+      "bytes": 55427,
+      "sha256": "bed22dd62a88abd1ef134b00e13fa5ff331f501d5948d73c59f51e754906c853"
+    },
+    {
+      "path": "paper/manuscript.md",
+      "bytes": 52984,
+      "sha256": "b59733cf6e175b5bd0d77d782f049dcfa4b6a61e489bf07f759e57a6ab17c8db"
+    },
+    {
+      "path": "paper/references.bib",
+      "bytes": 10019,
+      "sha256": "3e559e78ee6824adb38d88064fd9b31c30a5d12bd3d483eadb2915579ebd2985"
+    },
+    {
+      "path": "paper/protocol-matched-local-2026-10-18.md",
+      "bytes": 10889,
+      "sha256": "4b440d135d5611231bc3816dae71f69cbfba50abd50742c4a7ce04fdfe8cfed6"
+    },
+    {
+      "path": "paper/matched-study-findings-2026-10-18.md",
+      "bytes": 4584,
+      "sha256": "a6bfe07b044d3833baf7df262df15c328d3c6ace524761d175d50635c57e91b8"
+    },
+    {
+      "path": "paper/evidence-ledger.md",
+      "bytes": 18271,
+      "sha256": "0d89e19a68f8345cbbcba688dec5426ba90254880cb9ca96733c24a2178cb990"
+    },
+    {
+      "path": "paper/review-response-2026-10-18.md",
+      "bytes": 9984,
+      "sha256": "4238d6b011aad096e49f7c21dc1be96b9270d8c4e21dee9177606cc4cd4230af"
+    },
+    {
+      "path": "output/matched-local-analysis-2026-10-18/finalization-receipt.json",
+      "bytes": 1613,
+      "sha256": "1b0cd78291d83776fe10bd63a6cabccde29ac245af35db6b6fa53a3e086cc4e6"
+    },
+    {
+      "path": "output/matched-local-audit-2026-10-18/audit.json",
+      "bytes": 7621,
+      "sha256": "867fe5cfdd5ba03c1a3e8e5533999c911998586b8e1cc6a082f489fc74da466b"
+    },
+    {
+      "path": "output/matched-local-figures-2026-10-18/figure-inventory.json",
+      "bytes": 3481,
+      "sha256": "0aca13d6f91a9fe1ef8abc04b8f4e5caaae402b3861ae8e010bdf20daa1d7caa"
+    },
+    {
+      "path": "paper/figures/data-branch-disposition.pdf",
+      "bytes": 39677,
+      "sha256": "1b5124a03dd213c9eb6d66c2df19533ed13b83718ed03d1e571804ae312a4e8a"
+    },
+    {
+      "path": "paper/figures/data-interval-tradeoffs.pdf",
+      "bytes": 19395,
+      "sha256": "fe3219a7e66d5a4b93b6652bf04d51cb9b3ba8758177c37d7b520bfc635c5630"
+    },
+    {
+      "path": "paper/figures/diagram-evidence-architecture.pdf",
+      "bytes": 58092,
+      "sha256": "971f659f941029f286f2933d010800978ddbcafe02466df27b9759da227f95aa"
+    },
+    {
+      "path": "paper/figures/diagram-timeout-retry.pdf",
+      "bytes": 60890,
+      "sha256": "5c1c49a94bb962966449f565e491beca890b9631d3074d6cac22edb0bca19ad1"
+    },
+    {
+      "path": "paper/figures/matched-baseline-metrics.pdf",
+      "bytes": 26607,
+      "sha256": "310709074a7e4c8ef5a383b0c68001d73f93b247aaec3c3b8d85821a543cdc4a"
+    },
+    {
+      "path": "paper/figures/matched-model-disposition.pdf",
+      "bytes": 24297,
+      "sha256": "27d9da0b95ca740831ef507784c114bbd84367af129f22256d3506a2373b72be"
+    }
+  ],
+  "generation_during_document_compilation": false,
+  "github_actions_used": false,
+  "prior_pdfs_and_sealed_studies_modified": false,
+  "human_validation_established": false,
+  "venue_submission_claimed": false,
+  "page_previews": [
+    {
+      "path": "page-previews/matched-2026-10-18-page-01.png",
+      "sha256": "5207232a7c8932c0aa81962ac4ae4aacdc6ff69056da15b57f57893dccf4b26d"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-02.png",
+      "sha256": "1bb6a5e1da9b98434c4efb14b9e342b35b48699394fb21b55f82b46d1e2b5afe"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-03.png",
+      "sha256": "7dc80f67f6d683c2c2323ed16fd2a8c00fc596c138d43ad298996138b8050d0c"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-04.png",
+      "sha256": "c2a7b56d5ceed7fc4f92797facf342d807a7fdc5e4c4ff4265a0681ace6eb8ca"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-05.png",
+      "sha256": "7470e3ca113f6557ad74c52d718fda5a507ff03c872df9fcd85383d83834f183"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-06.png",
+      "sha256": "3b7518bfad0985be694458e4579244b849942c141e59fe0e863d37c8ab1babd0"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-07.png",
+      "sha256": "08c0635e7931f9d042646e8f6d29f9fcf74811efeab00022955f761e3ea9559f"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-08.png",
+      "sha256": "de2b1f054fcfd08c8abf7564dc9bdb31491e604c652be5b8f8763df48cc300d6"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-09.png",
+      "sha256": "7694749d7540a9b8f129044ced738e0aa27de656706bb764924abf342dc990e2"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-10.png",
+      "sha256": "7ffcfe26d24e57591863bf098d423d27e048d250d51def995c9feeac3a96b2ec"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-11.png",
+      "sha256": "009afbc6940bcc5c7fe415ee3c9d9df61b5f7683641b9daf482daf96bce83431"
+    },
+    {
+      "path": "page-previews/matched-2026-10-18-page-12.png",
+      "sha256": "72739ec97222ba38b2bf594edcf3ff25eb52c0d1c405d6ef68305ce643dd2c39"
+    }
+  ]
+}

@@ -3,20 +3,23 @@
 [consequa-x-ieee.tex](consequa-x-ieee.tex) is the generic IEEE conference source.
 [manuscript.md](manuscript.md) presents the same argument in readable Markdown.
 The maintainer requested IEEE formatting; no specific conference or journal has
-been selected. The next compiled revision will use the supplied affiliation
+been selected. The current revision uses the supplied affiliation
 **Independent Researcher**. A contact email has not been supplied.
 
 The [larger matched-study update](matched-study-update-2026-10-18.md) records the
-new frozen 504-episode collection and its limits. Collection and final paper
-integration are in progress; the existing compiled PDF contains the earlier
-retained studies. The [India venue plan](india-venue-plan-2026-10-18.md) keeps
+new frozen 504-episode collection and its limits. The collection closed normally
+with 503 completed episodes and one retained JSON failure, using 896 local calls.
+The [findings](matched-study-findings-2026-10-18.md) and two new figures are
+integrated into both manuscript sources and the new compiled revision.
+The [India venue plan](india-venue-plan-2026-10-18.md) keeps
 main research, workshop and demo routes distinct.
 
-The [revised compiled paper](../output/pdf/review-2026-10-18/Consequa-X_IEEE_Paper.pdf) and its
-[quality receipt](../output/pdf/review-2026-10-18/qa.json) are derived artifacts. A quality receipt
+The [current compiled paper](../output/pdf/matched-2026-10-18/Consequa-X_IEEE_Paper.pdf) and its
+[quality receipt](../output/pdf/matched-2026-10-18/qa.json) are derived artifacts. A quality receipt
 validates only the exact source, figures and PDF hash that it records. Source
 changes require recompilation and visual review. Earlier compiled revisions are
-preserved in the [original illustrated artifact](../output/pdf/Consequa-X_IEEE_Paper.pdf)
+preserved in the [original illustrated artifact](../output/pdf/Consequa-X_IEEE_Paper.pdf),
+the [initial review revision](../output/pdf/review-2026-10-18/Consequa-X_IEEE_Paper.pdf)
 and [earlier revisions](../output/pdf/revisions/). Document checks do not
 establish independent human replication or venue-specific submission compliance.
 
@@ -70,9 +73,20 @@ definite revised-profile statuses leaves its contradiction rate undefined.
 Rationale annotations were unblinded and AI assisted; independent human
 verification and inter-rater reliability remain unestablished.
 
-Four [vector figures](figures/README.md) depict evidence flow, a timeout/retry
-sequence, the full branch inventory and coverage/precision/detection tradeoffs.
-They reuse existing audited results and add no simulation or model calls.
+Six [vector figures](figures/README.md) depict evidence flow, a timeout/retry
+sequence, the full branch inventory, coverage/precision/detection tradeoffs,
+matched factual-auditor results and model/profile execution accounting.
+Plotting reuses audited results and adds no simulation or model calls.
+
+The matched study adds three small local model families and fourteen fixed
+case/wording cells, not 504 independently sampled tasks. Consequa-X and the
+same-information reference agree on all 503 completed prediction dictionaries.
+State and linked correct yields are 431/503 and 385/503; full-planned yields
+retain denominator 504. Gemma dispatched 0/168 actions, so its correct negative
+state observations do not establish refund execution or fault handling.
+The [separate AI-assisted audit](../output/matched-local-audit-2026-10-18/README.md)
+checks source bindings, inventories, the journal chain and aggregate fractions;
+it is not independent human validation.
 
 ## Current software and historical experiments
 
@@ -92,15 +106,17 @@ Historical studies retain their original revisions and manifests:
 | Scripted refund enumeration | `2c4adfeb2a364a8116d6edbccbbdac64b413fc9c` | [Retained branches](../output/refund-interactions-2026-10-13/README.md) |
 | Local-model validation | `2c4adfeb2a364a8116d6edbccbbdac64b413fc9c` | [Frozen validation](../output/local-validation-2026-10-14/README.md) |
 | Repeated scripted sampling | `0bd744df4fc8784e4cf1a1e2eb62f892c6f3c8c9` | [Protocol](../output/interaction-sampling-2026-10-15/protocol.json), [summary](../output/interaction-sampling-2026-10-15/summary.json), [installed checkpoint](../output/interaction-sampling-checkpoint-2026-10-15/checkpoint.json) |
+| Matched local factual auditing | `bcd733d8f8c5712e4413afe030b6a20bf7080de1` | [Frozen protocol](protocol-matched-local-2026-10-18.md), [closed analysis](../output/matched-local-analysis-2026-10-18/analysis.md), [findings](matched-study-findings-2026-10-18.md) |
 
-The later 1.1.0 release does not rerun or replace those results. The earlier
+Publishing 1.1.0 did not rerun or replace the historical studies. The earlier
 [1.0.0 publication record](../output/release-1.0.0-2026-10-15/publication.json)
 and its frozen runtime relationship remain historical evidence.
 
 ## Research still open
 
-A stronger comparative paper needs matched response-only, verifier-wrapper,
-CAR-style, LLM-judge and simple structural baselines; bounded watermark polling
+A stronger comparative paper needs intervention/controller comparisons beyond
+the completed factual information ablations: verifier-wrapper, faithful
+CAR-style, LLM-judge and structural attribution baselines; bounded watermark polling
 with availability versus wait time; a safe real-API test-mode study and a
 world-state benchmark; preregistered held-out families across several model
 classes; independent blinded annotation; and measured latency, trace size and

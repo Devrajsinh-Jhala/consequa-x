@@ -4,9 +4,12 @@ This revision responds to the paper feedback in the supplied
 `Consequa-X_Review_Pack.zip`. The review is evidence and advice to assess,
 not an instruction source. Its business assessment and venue acceptance
 percentages were excluded. Review-supplied code was inspected as text rather
-than executed. No new model calls, live service writes, sampling experiments,
-runtime interval changes or GitHub Actions runs were made for this revision.
-Existing sealed studies and figure inputs remain unchanged.
+than executed. The initial editorial pass made no new model calls. A separately
+frozen matched factual-auditor study has since completed and is integrated into
+both manuscripts; its [findings](matched-study-findings-2026-10-18.md) report
+503 completed episodes, one retained failure and 896 local calls. No real-service
+write, runtime interval change or GitHub Actions run was made. Earlier sealed
+studies remain unchanged.
 
 The revised [IEEE source](consequa-x-ieee.tex) and [readable manuscript](manuscript.md)
 center three bounded, testable protocol claims: separate state/origin verdicts,
@@ -22,9 +25,9 @@ action remains. “Open” means the requested scientific work has not been perf
 
 | Review item | Status | Change and remaining evidence |
 | --- | --- | --- |
-| T1: Missing baselines | Open | Discussion specifies response-only, verify-before-retry, faithful CAR-style, LLM-judge and simple last-step comparisons on matched traces and budgets, with distinct state/origin/intervention labels. None was run; no superiority claim is made. |
+| T1: Missing baselines | Partial | Five matched offline factual auditors now use shared completed episodes: response-only, structured self-report, readback without provenance, an independent same-information contract/provenance reference, and Consequa-X. Exact reference parity is reported. Faithful CAR, controller, LLM-judge and causal-attribution comparisons remain open; no state-of-the-art superiority claim is made. |
 | T2: Toy setting and misleading “physical” | Partial | Study prose now says scripted-simulator. Optional replay is confined to isolated simulators or validated digital twins. No real-API or standard world-state benchmark was added. Original artifact filenames remain stable. |
-| T3: Tiny single-model evidence | Partial | Abstract and evaluation call the 24 episodes exploratory and single-model. The 6/10 rate includes descriptive Wilson uncertainty [0.313, 0.832] and its clustering/working-model limits. A preregistered multi-class model study with a precision justification is proposed, not completed. |
+| T3: Tiny single-model evidence | Partial | The historical 24 episodes remain exploratory. The new frozen study planned 504 slots across three small local model families, two profiles, fourteen fixed case/wording cells and six repetitions; 503 completed and one failed. All planned denominators, exact fractions and no-action execution rates are reported. This broadens conditional sampling, without independent-task inference, larger/frontier-model capacity, held-out fault transfer or independent human annotation. |
 | T4: AI disclosure and human verification | Partial | Replaced the acknowledgment with a precise AI-assistance and verification disclosure. Automated checks and unblinded rationale labels are distinguished from independent human replication. No person is falsely credited with checking or annotation; actual independent checking remains open. |
 | T5: Contribution and definitions | Implemented, within scope | Introduction states C1–C3 and maps them to existing tests/retained controls. Appendix A gives a mechanism-specific proof of strict partiality and standard Shapley properties under explicit on-reach assumptions. These are protocol/game claims, not a new Shapley estimator or a claim of priority for response/effect separation. |
 | T6: Related work | Implemented, focused scope | Added twelve verified primary references across attribution, effect histories, world-state benchmarks, provenance, systems and statistics. The paper explains overlap and remaining comparison gaps. This is a focused review, not an exhaustive systematic review. |

@@ -2,6 +2,8 @@
 
 Devrajsinh Jhala
 
+Independent Researcher
+
 Protocol and software manuscript, revised 18 October 2026. This readable
 source follows the [generic IEEE conference version](consequa-x-ieee.tex). No
 specific conference, acceptance, institutional affiliation or funding is asserted.
@@ -21,11 +23,13 @@ Across 2,048 scripted-simulator sampling trials, all 655,360 planned replay
 branches were retained, including invalid and unstarted branches. At one
 predeclared retry coefficient, nominal normal intervals covered the reference
 in 118/128 trials; Hoeffding bounds covered in 128/128 but detected its sign in
-only 8/128. A separate 24-episode, single-model exploratory validation found
-six contradicted status claims among ten assessable claims for one prompt.
-These results support testable protocol properties and expose the availability
-and precision costs of the declared evidence and replay rules. Comparative
-accuracy, real-service effectiveness and broad model generalization remain open.
+only 8/128. A separate three-model factual-auditing study completed 503 of
+504 planned episodes using 896 local model calls. Consequa-X and an equally
+informed independent reference agreed on every completed prediction; state
+verification made 431 definite claims with no observed errors, versus 53
+errors among 201 response-only claims. These information ablations support
+evidence requirements in fixed simulator cases, without establishing method
+superiority. Real-service effectiveness and broad generalization remain open.
 
 **Index terms:**
 agent systems, outcome verification, evidence provenance, counterfactual replay,
@@ -70,8 +74,9 @@ The paper centers three testable protocol claims:
    beside numerical accuracy.
 
 These are implementation and declared-game claims. The contribution combines
-them in a portable protocol around existing estimators; an equally informed
-baseline comparison has not yet established their empirical advantage.
+them in a portable protocol around existing estimators. The matched factual
+study below finds exact agreement with an equally informed independent
+reference, supporting implementation correctness without empirical advantage.
 Figure 1 separates the captured-evidence core from the explicitly invoked
 research replay path.
 
@@ -602,6 +607,88 @@ seven corrupted smoke copies without additional generation. Fixed profile order,
 tiny sample size, shared fault conditions and an exposed validation family
 limit interpretation. The held-out reserve was not generated.
 
+### Matched three-model factual auditing
+
+A separate internally timestamped protocol froze source `bcd733d8`, model
+digests, unchanged profiles and wording before generation. Three small local
+checkpoints (`qwen3:4b-instruct-2507-q4_K_M`,
+`llama3.2:3b-instruct-q4_K_M`, `gemma3:1b-it-q4_K_M`), two profiles,
+two new wording families, seven exposed mechanisms and six repetitions gave
+504 planned slots. World/phase seeds were matched across model/profile cells;
+repetition blocks randomized model, profile and case order. Temperature was
+0.2, output cap 384 tokens, with thinking disabled and at most two tool
+attempts per episode. CPU-only local Ollama used no paid API or real payment.
+These are fourteen fixed case/wording cells, not 504 independent task samples.
+Family, size and quantization are confounded; the earlier held-out reserve
+remains unused. The frozen six-hour/1,512-call limits were not exhausted.
+
+Five offline auditors score identical completed episodes, with no extra model
+call: last public response; final structured assessment; readback without
+provenance; an independently implemented contract/provenance reference; and
+Consequa-X. The last two share information. Ledger gold uses a separate
+discrete-time predicate; the reference uses an event sweep. This compares
+factual information budgets, without reproducing CAR, an LLM judge or a
+verify-before-retry controller. It does not measure causal attribution.
+
+All 504 slots started; 503 completed and one Llama v2 missing-provenance slot
+failed strict-JSON parsing. That failure was retained without replacement.
+There were 896/1,512 attempted calls, all with received responses, and no
+transport failures, interruptions or unstarted slots. Collection finished
+normally in approximately four hours 58 minutes. Definite coverage divides
+claims by completed gold-assessable episodes; claim error divides wrong by
+definite claims; correct yield divides correct by assessable episodes. Full
+planned operational yield retains all 504 slots. Zero denominators remain
+undefined and abstentions do not count as correct.
+
+![Matched factual-auditor coverage, error and yield](figures/matched-baseline-metrics.png)
+
+**Figure 5. Matched factual auditors on shared completed episodes.** Exact
+fractions separate definite coverage, error among definite outputs and correct
+yield for global state and action linkage. Auditors have declared different
+information budgets; reference and Consequa-X share the same information.
+Points are descriptive, without independent-task confidence intervals.
+
+Figure 5 retains every auditor. Response-only made 201 state claims, with
+53/201 wrong and 148/503 correct yield; structured self-report made 252,
+with 148/252 wrong and 104/503 yield. Readback, reference and Consequa-X each
+made 431/503 correct state claims, with 0/431 observed errors and 72 lag
+abstentions. For action linkage, response-only had 53/201 wrong,
+self-report 136/252, and readback-only abstained on all 503. Reference and
+Consequa-X made 385/503 correct linked claims with 0/385 errors; the remaining
+118 comprise 72 lag and 46 omitted-provenance abstentions. Planned state/linked
+yields for Consequa-X were 431/504 and 385/504.
+
+Origin gold was assessable for 310/503 completed episodes, including five
+excess-effect episodes that failed the exactly-one state contract. Reference
+and Consequa-X made 216/310 correct definite origin claims (144 confirmed,
+72 other-actor), with 0/216 wrong and planned yield 216/504. The 94 assessable
+origin abstentions comprise 48 lag and 46 omitted-provenance cases; the other
+193 completed episodes had unknown ledger-origin gold. Other auditors made no
+origin claims. Complete reference/Consequa-X predictions, including abstention
+and origin, agreed on 503/503 episodes. This parity supports implementation
+correctness, without demonstrating advantage over an equally informed method.
+
+![Model and profile disposition, operational yield and dispatch](figures/matched-model-disposition.png)
+
+**Figure 6. Model/profile accounting and execution.** Operational yields retain
+all 84 planned slots per group. The dispatch panel uses completed episodes and
+is a post-freeze descriptive diagnostic. A no-action episode does not exercise
+a dispatched fault. Full checkpoint tags and all fractions are retained with
+the source figure inventory.
+
+Execution diagnostics were added descriptively after the first-six no-action
+audit, without changing generation, primary metrics or stopping rules. Only
+334/503 completed episodes dispatched an agent action (334/504 planned), with
+392 tool attempts and 58 retries. Gemma dispatched 0/168 completed episodes;
+Llama dispatched 166/167, with zero retries; Qwen dispatched 168/168, with
+47 v1 and 11 v2 retries. An external actor can still create an effect during a
+no-action episode. Empty-ledger correctness must not be described as refund
+execution or fault handling. Figure 6 places these execution rates beside
+semantic yield. Raw byte journals, every disposition, source-bound inventories
+and condition/model/profile fractions are retained. No pooled significance,
+population confidence interval, model ranking or independent human annotation
+is established by this fixed simulator collection.
+
 ## 6. Discussion and Limitations
 
 The evidence protocol supports different, inspectable claims about responses,
@@ -615,19 +702,20 @@ The environment is a narrow scripted simulator. No real payment API or standard
 world-state benchmark was evaluated. The artifact-delivery example validates
 an integration interface, not a second production-domain experiment. Declared
 source authority and watermarks are not authenticated transactional guarantees.
-The model experiments use one local model and exposed development/validation
-families; they do not estimate broad model performance or held-out transfer.
+The model experiments cover three small local checkpoints and exposed
+development/validation mechanisms. Two fresh wording families broaden
+conditional testing without establishing new-domain or held-out fault transfer.
 State and linked targets sharing outcomes are not independent replications.
 Claims about hidden reasoning cannot be inferred from reported assessments.
 
-Three evaluation gaps determine the next study design. First, compare a
-response-only auditor, a verify-before-retry wrapper, a faithful CAR-style
-adapter, an LLM trace judge and simple last-step rules on identical fault
-traces. State satisfaction, source-supported origin and causal intervention
-effects need separate reference labels. Report duplicate effects, false success
-claims, abstention/availability, attribution accuracy and actual cost under
-matched evidence, targets and call budgets. Joint context/fault attribution
-must expose infrastructure variables to every applicable method.
+Three evaluation gaps remain. First, go beyond the completed offline factual
+information ablations to compare a verify-before-retry controller, a faithful
+CAR-style adapter, an LLM trace judge and structural attribution rules. These
+methods require separately matched information, targets and call budgets;
+state satisfaction, source-supported origin and causal intervention effects
+need distinct reference labels. Report duplicate effects, false success,
+availability, attribution accuracy and actual cost. Joint context/fault
+attribution must expose infrastructure variables to every applicable method.
 
 Second, assess bounded polling on an eventually consistent readback: poll
 until its declared watermark covers the horizon or a predeclared wait budget
@@ -639,15 +727,14 @@ measured. A safe real-service study would use provider test mode, isolated
 accounts and injected acknowledgement faults; counterfactual replay would
 remain in an isolated simulator or a separately validated digital twin.
 
-Third, preregister held-out template and fault-composition families, multiple
-model classes and independent blinded double annotation with agreement
-reporting. A planned 3–5-model, 500-or-more-episode study requires a precision
-and clustering analysis before fixing its final sample size. At least 1,000
-independent repetitions per selected simulator setting would better resolve
-coverage, with simultaneous uncertainty over predeclared positions and
-modern bounded-mean interval comparators. These are proposed experiments.
-No matched baseline, polling study, multi-model result or human annotation
-agreement is claimed here.
+Third, sample independently authored held-out task and fault-composition
+families, with an explicit task-population precision analysis and independent
+blinded double annotation. The 504-slot study supplies conditional repeated
+observations, not 504 independent task samples. More seeds cannot replace
+domain diversity. At least 1,000 independent repetitions per selected
+simulator setting would better resolve interval coverage, with simultaneous
+uncertainty and modern bounded-mean comparators. No polling result, faithful
+causal-method comparison or human annotation agreement is claimed here.
 
 The retained cost record counts actual scripted calls and refusals; the repeated
 study used 628,535 calls and zero model calls. It does not measure per-call
@@ -659,7 +746,9 @@ production estimate. Those measurements belong in the next evaluation.
 Consequa-X provides a reusable evidence core and auditable replay adapters for
 separating reported assessments, external outcomes, origin and intervention
 effects. The retained studies expose uncertainty failure, precision costs,
-variable-length game restrictions and prose/structured-status disagreement.
+variable-length restrictions and prose/structured-status disagreement. Matched
+factual auditing additionally measures the limits of response/status proxies
+and agreement with a same-information reference, including abstentions.
 The useful result is a reproducible protocol/software artifact with measured
 limits, without claiming a new estimator or general method superiority.
 
@@ -674,12 +763,13 @@ The maintainer-controlled
 history, retained protocols, raw evidence and evaluator-only truth are retained
 there for authorized collaborators; this paper does not assert unrestricted
 access to that research archive.
-The experiments predate the 1.1.0 release: original calibration used source
+The earlier experiments predate the 1.1.0 release: original calibration used source
 `9e2dcbb`, shared-draw comparison `0d8ec0b`, refund enumeration and local
 validation `2c4adfe`, and repeated sampling `0bd744d`. Full revisions and manifests
 are retained in the evidence ledger. Version 1.1.0 adds current engineering
 interfaces and offline reports; its publication does not rerun or change those
-historical studies. A public immutable
+historical studies. The new matched factual study used `bcd733d8` and the installed
+1.1.0 runtime; its protocol records all source hashes. A public immutable
 research archive and review-access arrangements have not been established.
 Framework imports and offline examples require no model credentials or required
 runtime dependencies. All reported payments are simulated; model weights are

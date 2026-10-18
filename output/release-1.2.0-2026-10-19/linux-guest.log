@@ -1,0 +1,37 @@
+cd /root/release-check; sha256sum agent_loop_sqlite.py consequa_x-1
+.2.0-py3-none-any.whl check_installed_release.py linux-receipt.json; cat agent.e
+xit; cat agent.log; cat cli.log; /root/consequa-venv/bin/python -I -c 'import sq
+lite3, platform; print(sqlite3.sqlite_version, platform.python_version())'; cat 
+check.exit; printf '\n__CQ_DONE__%s\n' "$?"
+c6a193d0e24a90375bfb167cdc821d269690ae6c8979e0e66ef8c920fa0ae072  agent_loop_sqlite.py
+4cdfb44c6a56e1671e50ee9efddc97816d8742fa388130ffa7d351eee3686438  consequa_x-1.2.0-py3-none-any.whl
+ac1b6d5b00710b5927b0386ae458c10a50528f669d4efa401d6760534e8f1f22  check_installed_release.py
+84e5b658b43a58ec8e4ffc4755ce9ba5e83798ecafad11f7e4204a667287bb70  linux-receipt.json
+0
+  tool response: timeout
+ agent reported: failure
+          state: satisfied
+         origin: confirmed
+      alignment: contradicted
+      diagnoses: ASSESSMENT_DIVERGENCE, ACKNOWLEDGEMENT_EFFECT_DIVERGENCE
+Open /root/release-check/agent-timeout_after_commit/report.html in your browser.
+  tool response: timeout
+ agent reported: failure
+          state: satisfied
+         origin: other_actor
+      alignment: unassessable
+      diagnoses: UNASSESSABLE_ASSESSMENT, EXTERNAL_ACTOR_EFFECT
+Open /root/release-check/agent-other_actor/report.html in your browser.
+  tool response: success
+ agent reported: success
+          state: unknown
+         origin: unknown
+      alignment: unassessable
+      diagnoses: UNKNOWN_OUTCOME, UNVERIFIED_ASSESSMENT
+Open /root/release-check/agent-stale_readback/report.html in your browser.
+1.2.0
+0
+3.53.4 3.14.8
+0
+
+__CQ_DONE__0

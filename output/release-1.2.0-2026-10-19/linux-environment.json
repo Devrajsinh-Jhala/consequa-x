@@ -1,0 +1,59 @@
+{
+  "checker_sha256": "ac1b6d5b00710b5927b0386ae458c10a50528f669d4efa401d6760534e8f1f22",
+  "emulator": {
+    "accelerator": "TCG software emulation",
+    "architecture": "x86_64",
+    "archive_sha512_recorded_for_1_1_0": "5bcf9eed634e8575a37b74f445af41a2fe4106da512d0c30c368301d4c105037fdfab40a5287367a28a957624cddebbc8c07e16c88ab6634f554cdf3d16bf543",
+    "cpus": 2,
+    "network": "Unprivileged QEMU user-mode network",
+    "product": "QEMU",
+    "ram_mib": 1024,
+    "version": "11.1.0 (v11.1.0-12130-ge470268ff4)"
+  },
+  "example": {
+    "file": "examples/agent_loop_sqlite.py",
+    "log": "linux-guest.log",
+    "modes_passed": [
+      "timeout_after_commit",
+      "other_actor",
+      "stale_readback"
+    ],
+    "sha256": "c6a193d0e24a90375bfb167cdc821d269690ae6c8979e0e66ef8c920fa0ae072"
+  },
+  "guest": {
+    "distribution": "Alpine Linux 3.24.2",
+    "installation": "Fresh venv; exact local wheel installed using pip --no-index --no-deps",
+    "iso": "alpine-virt-3.24.2-x86_64.iso",
+    "iso_sha256": "3ab424762af704b2c2a9e57df1dc37f982af260071504d977f2fb96822e7130b",
+    "iso_sha256_matches_publisher_file": true,
+    "kernel": "6.18.52-0-virt",
+    "python": "3.14.8",
+    "python_package": "python3 3.14.8-r0",
+    "python_package_repository": "https://dl-cdn.alpinelinux.org/alpine/v3.24/main",
+    "source_repository_mounted": false,
+    "sqlite": "3.53.4",
+    "venv": "/root/consequa-venv",
+    "working_directory": "/root/release-check"
+  },
+  "host": {
+    "changes": "Workspace-local QEMU and ISO reused from the 1.1.0 check; no system changes",
+    "cloud_runner_used": false,
+    "docker_used": false,
+    "github_actions_used": false,
+    "os": "Microsoft Windows 11 Pro",
+    "version": "10.0.26300",
+    "wsl_used": false
+  },
+  "installed_console_script_check": {
+    "command": "/root/consequa-venv/bin/consequa-x --version",
+    "exit_code": 0,
+    "output": "1.2.0"
+  },
+  "passed": true,
+  "receipt_filename": "linux.json",
+  "receipt_sha256": "84e5b658b43a58ec8e4ffc4755ce9ba5e83798ecafad11f7e4204a667287bb70",
+  "validated_on": "2026-10-19",
+  "validation_scope": "Actual installed-wheel checks and the SQLite agent-loop example inside an emulated Linux guest, not a native Linux host or all distributions",
+  "wheel_filename": "consequa_x-1.2.0-py3-none-any.whl",
+  "wheel_sha256": "4cdfb44c6a56e1671e50ee9efddc97816d8742fa388130ffa7d351eee3686438"
+}

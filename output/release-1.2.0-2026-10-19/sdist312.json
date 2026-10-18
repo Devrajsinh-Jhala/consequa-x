@@ -1,0 +1,50 @@
+{
+  "checks": {
+    "agent_loop_example_from_sdist": {
+      "other_actor": {
+        "alignment": "unassessable",
+        "assessment": "failure",
+        "origin": "other_actor",
+        "response": "timeout",
+        "state": "satisfied"
+      },
+      "stale_readback": {
+        "alignment": "unassessable",
+        "assessment": "success",
+        "origin": "unknown",
+        "response": "success",
+        "state": "unknown"
+      },
+      "timeout_after_commit": {
+        "alignment": "contradicted",
+        "assessment": "failure",
+        "origin": "confirmed",
+        "response": "timeout",
+        "state": "satisfied"
+      }
+    },
+    "cli_version": "1.2.0",
+    "consequa_x_version": "1.2.0",
+    "demo_scenarios_generated": 12,
+    "project_urls": [
+      "Homepage, https://consequa-x.onrender.com",
+      "Documentation, https://consequa-x.onrender.com/docs.html",
+      "Changelog, https://consequa-x.onrender.com/changelog.html",
+      "Repository, https://github.com/Devrajsinh-Jhala/consequa-x",
+      "Issues, https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+      "Security, https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+    ],
+    "report_from_episode_01_sha256": "52c320078c79e5a071a15c051e024c3e541d86dfda6cbbd3685711a8b81492e7",
+    "report_matches_published_sample": true
+  },
+  "input_artifact": {
+    "bytes": 557611,
+    "path": "consequa_x-1.2.0.tar.gz",
+    "sha256": "d47c9b433f746ef5c263487ec668f908538f6485cff7d444649d62e2fde2af43"
+  },
+  "installer": "fresh Windows Python 3.12.10 venv; pip with default build isolation (fetched the setuptools build backend from PyPI)",
+  "module_file_in_site_packages": true,
+  "passed": true,
+  "python": "3.12.10",
+  "scope": "Smoke install of the source distribution and a run of its SQLite agent-loop example against the installed package; not the full installed-artifact checker."
+}

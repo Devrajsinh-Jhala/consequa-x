@@ -1,0 +1,67 @@
+{
+  "api_process_benchmark_imports": 0,
+  "capture": {
+    "attempt_context": true,
+    "capture_tool": true,
+    "exception_messages_dropped": true,
+    "mcp_error_recorded": true,
+    "record_verifier": true,
+    "recorded_modes": [
+      "other_actor",
+      "stale",
+      "timeout_after_commit"
+    ],
+    "recorder_call": true
+  },
+  "checker_sha256": "ac1b6d5b00710b5927b0386ae458c10a50528f669d4efa401d6760534e8f1f22",
+  "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+  "executable": "/root/consequa-venv/bin/python",
+  "install": {
+    "matching_wheel_payloads": 40,
+    "module_file": "/root/consequa-venv/lib/python3.14/site-packages/consequa_x/__init__.py",
+    "runtime_dependencies": 0,
+    "version": "1.2.0"
+  },
+  "isolated_imports": true,
+  "kernel_release": "6.18.52-0-virt",
+  "linux_distribution": {
+    "BUG_REPORT_URL": "https://gitlab.alpinelinux.org/alpine/aports/-/issues",
+    "HOME_URL": "https://alpinelinux.org/",
+    "ID": "alpine",
+    "NAME": "Alpine Linux",
+    "PRETTY_NAME": "Alpine Linux v3.24",
+    "VERSION_ID": "3.24.2"
+  },
+  "machine": "x86_64",
+  "passed": true,
+  "platform": "Linux-6.18.52-0-virt-x86_64-with-musl1",
+  "provider_calls": 0,
+  "python": "3.14.8",
+  "reports": {
+    "cli_checks": 12,
+    "default_omits_captured_details": true,
+    "existing_output_preserved": true,
+    "explicit_details_escaped": true,
+    "invalid_inputs_refused_without_output": 8,
+    "source_unchanged": true
+  },
+  "strict_schema_refusals": 16,
+  "system": "Linux",
+  "wheel": {
+    "bytes": 168920,
+    "filename": "consequa_x-1.2.0-py3-none-any.whl",
+    "sha256": "4cdfb44c6a56e1671e50ee9efddc97816d8742fa388130ffa7d351eee3686438"
+  },
+  "workflow": {
+    "custom_target_matcher": true,
+    "custom_verifier": true,
+    "missing_verification_refused": true,
+    "observed_statuses": [
+      "satisfied",
+      "unknown",
+      "violated"
+    ],
+    "trace_roundtrips": 4,
+    "unknown_origin_preserved": true
+  }
+}

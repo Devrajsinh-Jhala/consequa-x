@@ -1,0 +1,78 @@
+{
+  "artifacts": [
+    {
+      "bytes": 168920,
+      "path": "consequa_x-1.2.0-py3-none-any.whl",
+      "sha256": "4cdfb44c6a56e1671e50ee9efddc97816d8742fa388130ffa7d351eee3686438"
+    },
+    {
+      "bytes": 557611,
+      "path": "consequa_x-1.2.0.tar.gz",
+      "sha256": "d47c9b433f746ef5c263487ec668f908538f6485cff7d444649d62e2fde2af43"
+    }
+  ],
+  "changed_since_build": {
+    "head": "1bc1222a16722729c143accdf9fd06e6e421e02a",
+    "note": "Website files only; not part of the wheel or sdist",
+    "paths": [
+      "website/dist/index.html",
+      "website/dist/styles.css"
+    ]
+  },
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "installed_artifact_receipts": [
+    "windows311.json",
+    "windows312.json",
+    "linux.json",
+    "sdist312.json"
+  ],
+  "installed_environments": {
+    "linux.json": "Alpine Linux 3.24.2, Python 3.14.8, QEMU TCG guest on Windows; see linux-environment.json",
+    "sdist312.json": "Fresh Windows Python 3.12.10 venv, sdist built and installed; SQLite example run",
+    "windows311.json": "Official Windows embedded Python 3.11.9, wheel unpacked into an isolated site-packages",
+    "windows312.json": "Fresh Windows Python 3.12.10 venv, wheel installed with --no-deps --no-index"
+  },
+  "limits": [
+    "macOS has never been tested.",
+    "Linux coverage is one emulated Alpine guest, not every distribution or a native host.",
+    "Windows checks ran on one Windows 11 host.",
+    "MCP capture was checked with a stand-in session, not a live MCP server or the MCP SDK."
+  ],
+  "local_checks": {
+    "artifact_inventory": true,
+    "lint": true,
+    "linux_wheel_install": true,
+    "public_docs_support": false,
+    "python311_conformance": true,
+    "release_helper_tests": true,
+    "report_browser_qa": true,
+    "report_security": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "pending": {
+    "public_docs_support": "Private vulnerability reporting is enabled on the public repository (checked 19 October 2026). The 1.2.0 site and docs pages are on release-1.2 and state 1.2.0 as published, so they deploy only after PyPI publication and the merge to main, and Render must serve the site from this repository."
+  },
+  "public_repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+  "public_site": "https://consequa-x.onrender.com",
+  "recorded_at_utc": "2026-10-18T19:00:23.714990+00:00",
+  "release_kind": "Additive feature release",
+  "runtime_changes_since_1_1_1": [
+    "src/consequa_x/__init__.py",
+    "src/consequa_x/capture.py",
+    "src/consequa_x/mcp_capture.py",
+    "src/consequa_x/record_verifier.py"
+  ],
+  "source_revision": "2afea71f2b8facf90562564aa8cdfee7168bb945",
+  "source_tests": {
+    "failures": 0,
+    "passed": 1839,
+    "receipt": "source-tests.log",
+    "skipped": 21,
+    "subtests": 240
+  },
+  "version": "1.2.0"
+}

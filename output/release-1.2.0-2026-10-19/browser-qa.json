@@ -1,0 +1,38 @@
+{
+  "default_reports_omit_captured_values": true,
+  "details_report_includes_escaped_values": true,
+  "document_horizontal_overflow": false,
+  "evidence_graph_svg": true,
+  "external_references": 0,
+  "focusable_named_scroll_regions": 6,
+  "github_actions_used": false,
+  "passed": true,
+  "physical_printer_pagination": "not exercised",
+  "published_sample_report_reproduced_byte_for_byte": true,
+  "renderer_changed_since_1_1_1": false,
+  "reports": "Default reports of the SQLite example's three modes and one --include-details report, rendered by the installed 1.2.0 wheel from recorder-built traces",
+  "review_date": "2026-10-19",
+  "review_method": "AI-assisted headless Chrome DOM checks and rendered screenshot review",
+  "runtime_files_changed_since_1_1_1": [
+    "src/consequa_x/__init__.py",
+    "src/consequa_x/capture.py",
+    "src/consequa_x/mcp_capture.py",
+    "src/consequa_x/record_verifier.py"
+  ],
+  "screenshots": [
+    {
+      "path": "report-desktop.png",
+      "sha256": "0b35735c5956c91f5fc1b47d47b1641781353d6b1e3852ce5d248a8008e1abb3"
+    },
+    {
+      "path": "report-mobile.png",
+      "sha256": "a32a98f9e7197865580b0e8720b1120d7be2a92172dc5914ff74e0c16cdac301"
+    }
+  ],
+  "scripts": 0,
+  "site_review": "Homepage and docs at 1440, 1280, 1024, 800 and 375 px: no page or code-card overflow, no script errors; 1.2.0 badge, install command and docs integration section render",
+  "viewports": [
+    "1440x900 desktop",
+    "390x844 mobile"
+  ]
+}

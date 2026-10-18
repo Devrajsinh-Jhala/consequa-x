@@ -33,6 +33,10 @@ Additive only: the 1.x API and trace schema `0.1` are unchanged.
 - The website's workflow cards, documentation and quickstart show the capture
   API. `scripts/check_installed_release.py` now also exercises the recorder,
   tool capture and record verifier from the installed wheel.
+- Checked before publication; see the
+  [release record](output/release-1.2.0-2026-10-19/README.md). Installed checks
+  passed on Windows Python 3.11.9 and 3.12.10 and on one Alpine Linux 3.24.2
+  QEMU guest with Python 3.14.8. macOS has never been tested.
 
 ## 1.1.1 - 18 October 2026
 

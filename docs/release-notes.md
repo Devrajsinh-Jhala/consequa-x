@@ -14,6 +14,15 @@
   framework integration guide.
 - Additive only: the 1.x API and schema 0.1 are unchanged.
 
+The source suite passed 1,839 tests plus 240 subtests. Installed checks of the
+same wheel, now covering the recorder, tool capture and record verifier, passed
+on Windows with embedded Python 3.11.9 and Python 3.12.10, and on Alpine Linux
+3.24.2 with Python 3.14.8 in a local QEMU guest, where the SQLite example also
+ran in all three modes. The source distribution installed and ran the example on
+Windows Python 3.12.10. The Linux result covers one emulated guest; macOS has
+not been tested. MCP capture was checked with a stand-in session, not a live
+MCP server.
+
 ## 1.1.1 — 18 October 2026
 
 - Documentation and metadata release: runtime code and schema 0.1 are identical

@@ -1,0 +1,40 @@
+{
+  "distribution": "consequa-x",
+  "gate_exceptions": {
+    "pending": [
+      "public_docs_support"
+    ]
+  },
+  "maintainer_instruction": "Publish 1.2.0 to PyPI now with the recorded checks; the docs/support gate stays pending until the site deploys after the merge to main. (19 October 2026)",
+  "project_urls": {
+    "Changelog": "https://consequa-x.onrender.com/changelog.html",
+    "Documentation": "https://consequa-x.onrender.com/docs.html",
+    "Homepage": "https://consequa-x.onrender.com",
+    "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+    "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+    "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+  },
+  "published": true,
+  "published_files": [
+    {
+      "filename": "consequa_x-1.2.0-py3-none-any.whl",
+      "sha256": "4cdfb44c6a56e1671e50ee9efddc97816d8742fa388130ffa7d351eee3686438",
+      "size": 168920,
+      "upload_time_utc": "2026-10-18T19:02:55.849224Z"
+    },
+    {
+      "filename": "consequa_x-1.2.0.tar.gz",
+      "sha256": "d47c9b433f746ef5c263487ec668f908538f6485cff7d444649d62e2fde2af43",
+      "size": 557611,
+      "upload_time_utc": "2026-10-18T19:02:58.875165Z"
+    }
+  ],
+  "registry": "https://pypi.org/project/consequa-x/1.2.0/",
+  "registry_hashes_and_sizes_match_review": true,
+  "registry_install": "Fresh Windows Python 3.12.10 venv, pip install --no-cache-dir from PyPI; the first attempt ran before the simple index listed 1.2.0 and found no matching distribution, the retry about a minute later passed",
+  "registry_install_receipt": "registry312.json",
+  "source_revision": "2afea71f2b8facf90562564aa8cdfee7168bb945",
+  "uploader": "twine via the maintainer's local keyring credential; GitHub Actions not used",
+  "verified_at_utc": "2026-10-18T19:06:05.179482+00:00",
+  "version": "1.2.0"
+}

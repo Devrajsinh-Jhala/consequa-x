@@ -7,9 +7,8 @@ revision `2afea71f2b8facf90562564aa8cdfee7168bb945`; the later commit
 `1bc1222` changed only `website/dist/index.html` and `website/dist/styles.css`,
 which are not in either distribution file.
 
-**Not yet published.** This record holds the pre-publication checks. Publication
-needs the maintainer's approval; `publication.json` will be added after upload
-and registry verification.
+Published to PyPI on 19 October 2026 (18 October, 19:02 UTC) on the maintainer's
+instruction, with the public docs/support gate recorded as pending.
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -39,12 +38,17 @@ and registry verification.
   no scripts or external references, captured values omitted by default
   ([browser-qa.json](browser-qa.json), [desktop](report-desktop.png),
   [mobile](report-mobile.png)).
+- After upload: PyPI serves both files with the reviewed sizes and hashes, and a
+  fresh install from PyPI on Windows Python 3.12.10 passed the installed-wheel
+  checker ([registry312.json](registry312.json), [publication.json](publication.json),
+  [upload log](publication-upload.log)). The first install attempt ran before
+  PyPI's simple index listed 1.2.0; the retry a minute later passed.
 
 ## Pending and limits
 
 - Public docs/support gate: pending. Private vulnerability reporting is enabled.
-  The 1.2.0 site states 1.2.0 as published, so it deploys only after publication
-  and the merge to `main`, and Render must serve the site from this repository.
+  The 1.2.0 site and docs deploy from `main` after the merge, and only once
+  Render serves the site from this repository.
 - macOS has never been tested. Linux coverage is one emulated Alpine guest.
 - MCP capture was checked with a stand-in session, not a live MCP server.
 

@@ -24,8 +24,8 @@ fix design choices before any user feedback.
 
 - Features are built one at a time on the `release-1.2` branch. Each feature is
   one reviewed commit with its own tests and docs, pushed to GitHub when done.
-- `main` stays at the released 1.1.1 state until 1.2 is complete; then
-  `release-1.2` is merged, the version is bumped and release checks run.
+- `main` stayed at the released 1.1.1 state until 1.2 was complete; then
+  the version was bumped, release checks ran and `release-1.2` was merged.
 - Nothing is published to PyPI without the maintainer's explicit approval.
 - Paper and study work (`paper/`, `output/`) continues independently on `main`.
   1.2 does not change any runtime behavior those materials describe.
@@ -36,12 +36,12 @@ Status: `planned`, `in progress`, `done` (on `release-1.2`), `released`.
 
 | ID | Feature | What it gives a user | Status |
 | --- | --- | --- | --- |
-| B1 | `TraceRecorder` capture helper | Record an action as it happens (contract, context, dispatch, response, the agent's report, readback, verification) and get a validated `Trace`, without hand-linking events or positional constructors. | done |
-| B3 | `RecordVerifier` and `RecordTargetMatcher` | A built-in `record_present` check for any record-shaped outcome (rows, orders, tickets, files): field values, exact or minimum count, commit deadline, persistence window, origin from configurable fields. Same evidence discipline as the refund verifier: unavailable, incomplete, out-of-scope, stale or malformed readback stays `unknown`. | done |
-| B2 | `capture_tool` wrapper | A decorator/context manager that records dispatch, response status and timing around any tool function, including timeouts and errors. | done |
-| X1 | Real agent-loop example | `examples/agent_loop_sqlite.py`: a stdlib-only tool-calling loop writing to a real SQLite file, read back through a separate read-only connection. Modes `timeout_after_commit`, `other_actor` and `stale_readback`; each writes a trace and an offline report. This is the launch-video demo. | done |
-| X2 | Framework integration guide | Where each capture call goes in OpenAI Agents SDK, LangChain, Claude Agent SDK and MCP tool loops; prose and pseudo-code, no dependencies. | done |
-| C4 | MCP tool-call wrapper | A thin, optional wrapper around an MCP client's tool calls that uses the recorder; no MCP dependency in the core. | done |
+| B1 | `TraceRecorder` capture helper | Record an action as it happens (contract, context, dispatch, response, the agent's report, readback, verification) and get a validated `Trace`, without hand-linking events or positional constructors. | released |
+| B3 | `RecordVerifier` and `RecordTargetMatcher` | A built-in `record_present` check for any record-shaped outcome (rows, orders, tickets, files): field values, exact or minimum count, commit deadline, persistence window, origin from configurable fields. Same evidence discipline as the refund verifier: unavailable, incomplete, out-of-scope, stale or malformed readback stays `unknown`. | released |
+| B2 | `capture_tool` wrapper | A decorator/context manager that records dispatch, response status and timing around any tool function, including timeouts and errors. | released |
+| X1 | Real agent-loop example | `examples/agent_loop_sqlite.py`: a stdlib-only tool-calling loop writing to a real SQLite file, read back through a separate read-only connection. Modes `timeout_after_commit`, `other_actor` and `stale_readback`; each writes a trace and an offline report. This is the launch-video demo. | released |
+| X2 | Framework integration guide | Where each capture call goes in OpenAI Agents SDK, LangChain, Claude Agent SDK and MCP tool loops; prose and pseudo-code, no dependencies. | released |
+| C4 | MCP tool-call wrapper | A thin, optional wrapper around an MCP client's tool calls that uses the recorder; no MCP dependency in the core. | released |
 
 The 1.2 API as built (the [SQLite example](../examples/agent_loop_sqlite.py)
 is a complete, runnable version):
@@ -62,6 +62,10 @@ rec.assessment("failure")
 rec.verify(readback, verifier=verifier)      # readback: an Observation from a read-only source
 explanation = explain(rec.trace(), target_matcher=verifier.target_matcher())
 ```
+
+Released as 1.2.0 on 19 October 2026; see the
+[release record](../output/release-1.2.0-2026-10-19/README.md). Linux was
+checked in a local QEMU guest instead of GitHub Actions; macOS is still untested.
 
 Release engineering for 1.2: README section for the recorder, changelog,
 website "How it works" and demo updated to the recorder and SQLite example,

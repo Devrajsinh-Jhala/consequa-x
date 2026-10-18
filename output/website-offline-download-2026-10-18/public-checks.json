@@ -1,0 +1,184 @@
+{
+  "passed": true,
+  "url": "https://consequa-x.brawny-deer-5658.chatgpt.site",
+  "public_assets_checked": 25,
+  "anonymous_requests": true,
+  "cookies_or_auth_used": false,
+  "assets": [
+    {
+      "path": "app.js",
+      "status": 200,
+      "authored_bytes_verified": 9913,
+      "authored_sha256": "ebecf0aebdd5821ecea87bcb80a340ce6fde98353bff0c40bd5f0ab8b3cdaa6d",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "assets/package-demo-poster.png",
+      "status": 200,
+      "authored_bytes_verified": 366518,
+      "authored_sha256": "20d4144663850a787cc35f95eb71fb8c4abf93f3bda80550eee40bba7358d922",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "assets/package-demo.gif",
+      "status": 200,
+      "authored_bytes_verified": 945235,
+      "authored_sha256": "20c7655c2defe73c40fcd58fa58a02a5d55b70087070986cb61411896966aae3",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "assets/sample-report.html",
+      "status": 200,
+      "authored_bytes_verified": 22674,
+      "authored_sha256": "52c320078c79e5a071a15c051e024c3e541d86dfda6cbbd3685711a8b81492e7",
+      "hosting_challenge_bytes": 938
+    },
+    {
+      "path": "assets/sample-report.zip",
+      "status": 200,
+      "authored_bytes_verified": 5597,
+      "authored_sha256": "dc52433357c1a392485cdb6869dd4a958c06b4f1cc0681466129f167c254edc1",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "changelog.html",
+      "status": 200,
+      "authored_bytes_verified": 4319,
+      "authored_sha256": "ce91d4ddd171ca7274c069eb03b4876d585b04317def73c4602d92c750351f98",
+      "hosting_challenge_bytes": 938
+    },
+    {
+      "path": "docs.css",
+      "status": 200,
+      "authored_bytes_verified": 17075,
+      "authored_sha256": "206ff187e727bc457746e83b2a20e1810b937a28a876c0dc171bfd5a52a4fb2e",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "docs.html",
+      "status": 200,
+      "authored_bytes_verified": 13004,
+      "authored_sha256": "e2568badda1d5dc68c8a2310e8ac7efdb5b6ad09da9e80febab91495eb2dbe92",
+      "hosting_challenge_bytes": 938
+    },
+    {
+      "path": "examples/artifact_delivery.py",
+      "status": 200,
+      "authored_bytes_verified": 9834,
+      "authored_sha256": "0c40af6b4389512c92e812835a5a9043aa889c6a626a2409f79410be4d68f473",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "examples/report_quickstart.py",
+      "status": 200,
+      "authored_bytes_verified": 1486,
+      "authored_sha256": "a0c671c6d988243215147722ddfd412660e1c69abc2fd3a1ab6a009e052c8679",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "authored_bytes_verified": 267,
+      "authored_sha256": "4a02d45a8d9910c1e58ba301530ad8608633846e84063baca82b2baffef9afa7",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/JetBrainsMono-OFL.txt",
+      "status": 200,
+      "authored_bytes_verified": 4399,
+      "authored_sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/JetBrainsMono-Variable.ttf",
+      "status": 200,
+      "authored_bytes_verified": 187208,
+      "authored_sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/Manrope-OFL.txt",
+      "status": 200,
+      "authored_bytes_verified": 4387,
+      "authored_sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/Manrope-Variable.ttf",
+      "status": 200,
+      "authored_bytes_verified": 164700,
+      "authored_sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/README.md",
+      "status": 200,
+      "authored_bytes_verified": 2273,
+      "authored_sha256": "dda5d5687fc2af28b592c5a5ec77160938ebb14614e4515965825523ee9d0b50",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/SpaceGrotesk-OFL.txt",
+      "status": 200,
+      "authored_bytes_verified": 4495,
+      "authored_sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "fonts/SpaceGrotesk-Variable.ttf",
+      "status": 200,
+      "authored_bytes_verified": 136676,
+      "authored_sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "authored_bytes_verified": 20700,
+      "authored_sha256": "f04557eeb6539627e00f9202446cfe13c61a893f78babe61d4fad88f505100ee",
+      "hosting_challenge_bytes": 938
+    },
+    {
+      "path": "quickstart.zip",
+      "status": 200,
+      "authored_bytes_verified": 6339,
+      "authored_sha256": "b985fad0772f8c68bc0150db0f4be843803f8511158bcd880663a6cb7d7ac75c",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "authored_bytes_verified": 93,
+      "authored_sha256": "9ad00d9c9c299566af77f7d21cd32922945a4a6e8978b1492943c43997268a69",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "security.html",
+      "status": 200,
+      "authored_bytes_verified": 3904,
+      "authored_sha256": "3b2a25ff1740972c6d18b826f33686d42842f088e755face2bfd3281c4e85b66",
+      "hosting_challenge_bytes": 938
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "authored_bytes_verified": 528,
+      "authored_sha256": "c78d5f3941e43d13c3847637656285fb0c0b6b9d672face22a05452db9c896a2",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "styles.css",
+      "status": 200,
+      "authored_bytes_verified": 55532,
+      "authored_sha256": "64fd6562d9e96a147aaef6438f04d92437a38da61b02f7ed442bdeb51031cfba",
+      "hosting_challenge_bytes": 0
+    },
+    {
+      "path": "support.html",
+      "status": 200,
+      "authored_bytes_verified": 4798,
+      "authored_sha256": "bb9374b3cb9192789d9cd634f4a95799d8725812ef8533c1fa7c64981afde451",
+      "hosting_challenge_bytes": 938
+    }
+  ]
+}

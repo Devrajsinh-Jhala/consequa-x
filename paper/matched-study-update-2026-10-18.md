@@ -56,6 +56,9 @@ The audit records are under `output/study-audit-2026-10-18/`; AI-assisted checki
 does not count as independent human validation.
 
 Final analysis must wait for a closed, valid journal with no active runner lock.
+The [one-time local completion job](../output/matched-local-completion-2026-10-18/README.md)
+is queued to perform those checks, seal the analysis and create the figures.
+It launches no generation and uses no scheduled automation or GitHub Actions.
 It will retain completed, failed, interrupted and unstarted counts globally and
 within every planned stratum, including empty groups. Definite coverage, error
 among definite claims, correct-definite yield and full-planned operational yield

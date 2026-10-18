@@ -1,0 +1,16 @@
+{
+  "source_revision": "5eb48cf5b092630d4a2634107215a04c8393aa4a",
+  "runner_pid": 4264,
+  "protocol_sha256": "e8859ef64006780298922ef24215f4e080fa84575032a65944268317a6ee55ab",
+  "study_output": "output/matched-local-study-2026-10-18",
+  "analysis_output": "output/matched-local-analysis-2026-10-18",
+  "figure_output": "output/matched-local-figures-2026-10-18",
+  "files": {
+    "scripts/finalize_matched_local_study.py": "15a63af5ce44c6a974f16c5c14a3189fbbc15a4fad29bd93bd0d9fc230926545",
+    "scripts/summarize_matched_execution.py": "6959d6968a68db9d2b57966164683f3527b2c22aaf00f8d3f2e3f2b4724275e8",
+    "scripts/build_matched_study_figures.py": "f09db1deb452d09918e881515a30d1263c03a65a2dbda5df8bc616986df1ff4c"
+  },
+  "generation_in_this_job": false,
+  "github_actions_used": false,
+  "requires_manual_results_and_visual_review": true
+}

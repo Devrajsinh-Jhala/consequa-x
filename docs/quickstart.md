@@ -60,26 +60,28 @@ This is deliberate field omission, not universal anonymization. The optional
 --include-details flag includes the complete trace as escaped text and may
 expose sensitive information. Keep the original trace separately as evidence.
 
-Rendering performs no verifier call, target matching, application action or
-replay. It shows captured verification; it does not establish source truth.
-Assessment alignment is unassessable in the report. An application's explicit
-TargetMatcher can qualify alignment through explain(trace, target_matcher=...).
+Rendering performs no verifier call, application action or replay. It shows
+captured verification; it does not establish source truth. Each action's
+assessment alignment and diagnosis codes are computed from the recorded
+receipts, exactly as explain(trace) computes them.
 
 ## Connect your own application
 
 Declare the target contract before the action and register it with
-TraceRecorder. Wrap each tool call in rec.attempt() or capture_tool, and record
-the agent's assessment as it was stated. Obtain an independent readback with
-explicit source, scope, completeness, watermark and origin metadata. Use the
-built-in RecordVerifier for records such as rows, orders or tickets, or implement
-a read-only Verifier for another domain, with a TargetMatcher when alignment is
-meaningful. The artifact_delivery.py example implements both interfaces by hand.
+TraceRecorder; register returns that action's ActionCapture. Wrap each tool call
+in capture.attempt() or capture_tool, and record the agent's assessment as it was
+stated. Obtain an independent readback with explicit source, scope, completeness,
+watermark and origin metadata, or let poll_readback re-read a lagging source. Use
+the built-in RecordVerifier for records such as rows, orders or tickets, or
+implement a read-only Verifier for another domain that also records which effects
+match the target. The artifact_delivery.py example implements one by hand.
 
 The schema validates structure and identity linkage. Source authentication,
 transaction guarantees and the truth of adapter-provided metadata remain your
 application's responsibility. Unknown evidence must stay unknown.
 
-The version-1 core and schema 0.1 remain compatible in 1.2. Research replay
+Traces use schema 1.0. Convert traces saved by Consequa-X 1.x with
+consequa-x migrate OLD.json --output NEW.json. Research replay
 interfaces have separate assumptions; no baseline superiority or live-model
 accuracy improvement is claimed. Platform validation is listed in release notes
 using actual environments, rather than inferred from a pure-Python wheel.

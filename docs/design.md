@@ -1,6 +1,6 @@
 # Evidence core semantics
 
-The version 1 core and public trace schema `0.1` are separate versioned
+The version 2 core and public trace schema `1.0` are separate versioned
 interfaces. Core imports and offline examples have no required runtime
 dependencies or provider credentials. See [the stable API](stable-api.md),
 [application integration](application-integration.md) and
@@ -14,7 +14,7 @@ An `Action` identifies one logical operation. A `ToolResponse` identifies an exe
 
 The source and watermark declarations are trusted adapter inputs. Structural JSON validation does not authenticate a provider, certify its consistency guarantee, or prove that an imported verifier receipt is honest. Real integrations will need provider-specific evidence and trust assumptions.
 
-Frozen dataclasses copy input JSON payloads. Payload containers remain ordinary dictionaries/lists: applications should replace records rather than mutate captured payloads. Export validates strict JSON, including finite numbers and unique record identities. Import rejects unknown record fields and incompatible schema versions.
+Frozen, keyword-only dataclasses copy input JSON payloads into read-only containers (`FrozenDict`, `FrozenList`); a captured payload cannot be changed, and `thaw()` gives an editable copy. A trace can hold several actions; responses, assessments and verifications name the action they concern. Export validates strict JSON, including finite numbers and unique record identities. Import rejects unknown record fields and incompatible schema versions.
 
 ## Initial refund predicate
 

@@ -1,6 +1,7 @@
 # Offline visual reports
 
-Version 1.1 adds a dependency-free HTML report for a captured, validated trace:
+Consequa-X renders a dependency-free HTML report for a captured, validated
+trace:
 
 ```console
 consequa-x report trace.json --output report.html
@@ -40,7 +41,14 @@ consequa-x report trace.json --output detailed-report.html --include-details
 ```
 
 This explicitly includes potentially sensitive data as escaped inert text.
-It is not the recommended form for a public bug report. Both forms preserve
+It is not the recommended form for a public bug report. To keep the details but
+blank particular keys everywhere in the included trace:
+
+```console
+consequa-x report trace.json --output detailed.html --include-details --redact card_number --redact email
+```
+
+Redaction is by key name only; values under other keys are kept. Both forms preserve
 `unknown`, `other_actor` and unassessable conclusions. Missing evidence is not
 shown as a successful verification.
 
@@ -59,6 +67,9 @@ with Path("report.html").open("x", encoding="utf-8") as destination:
     destination.write(document)
 ```
 
-`render_report` returns HTML and writes no files. It accepts a `Trace` and a
-boolean `include_details` argument. The schema stays at version `0.1`; the
-package release and portable wire version are separate.
+`render_report` returns HTML and writes no files. It accepts a `Trace`, a
+boolean `include_details` argument and a `redact` sequence of key names. Reports
+cover every action in the trace, with each action's latest state, origin,
+assessment alignment and diagnosis codes; codes from custom verifiers are counted
+rather than printed in the default view. Traces use schema `1.0`; the package
+release and portable wire version are separate.

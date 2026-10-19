@@ -1,48 +1,40 @@
 # Integrating an application
 
-Consequa-X can explain captured application actions without using the refund
-simulator, calling a model, or executing a write. Register the target before the
-action, retain the response and the agent's reported assessment, then obtain a
-separate readback observation. The response is evidence about the request; the
-readback is evidence about the external outcome.
+Consequa-X explains captured application actions without using the refund
+simulator, calling a model, or executing a write. Register each action's target
+before running it, keep its responses and the agent's reported assessments, then
+obtain a separate readback observation. A response is evidence about the request;
+the readback is evidence about the external outcome.
 
-The public records and trace JSON schema remain at version `0.1`. An application
-uses `Action`, `OutcomeContract`, `Event`, `ToolResponse`, `AgentAssessment`, and
-`Observation`, then adds a `VerificationResult`. These records, `Evidence`,
-`ResponseStatus`, `Verifier`, and `TargetMatcher` are available from `consequa_x`.
-`Trace.from_json(trace.to_json())` validates the record types and identity links.
-It does not authenticate a source or prove a predicate's domain semantics.
+Traces use schema `1.0`. The easiest way to build one is `TraceRecorder` (see
+[capturing agents built with a framework](framework-integration.md)); the records
+it produces (`Action`, `OutcomeContract`, `Event`, `ToolResponse`,
+`AgentAssessment`, `Observation`, `VerificationResult`) can also be constructed
+by hand with keyword arguments. `Trace.from_json(trace.to_json())` validates the
+record types and identity links. It does not authenticate a source or prove a
+predicate's domain semantics.
 
 ## Outcome verification
 
-`verify(action, observation)` retains the built-in `refund_processed` verifier.
 For an outcome that leaves records behind (rows, orders, tickets, files), start
-with the built-in `RecordVerifier` before writing an adapter. Use the predicate
-`record_present`; `contract.expected` lists the field values a matching record
-must carry, and `scope_fields` names the fields the readback snapshot covers:
+with the built-in `RecordVerifier`. Use the predicate `record_present`;
+`contract.expected` lists the field values a matching record must carry, and
+`scope_fields` names the fields the readback snapshot covers:
 
 ```python
 verifier = RecordVerifier(scope_fields=("order_id",))
-receipt = verify(action, observation, verifier=verifier)
-explanation = explain(trace, target_matcher=verifier.target_matcher())
+receipt = capture.verify(observation, verifier=verifier)   # or verify(action, observation, verifier=...)
 ```
 
 It checks the exact or minimum count, the commit deadline and the persistence
 window, and returns `unknown` for unavailable, out-of-scope, incomplete, stale
 or malformed readback. Record identifier, commit time, removal time, action,
-actor and attempt field names are configurable; with the defaults the
-evidence graph also links each record to its dispatch.
+actor and attempt field names are configurable; with the defaults the evidence
+graph also links each record to its dispatch. `RefundVerifier` (the default of
+`verify`) does the same for `refund_processed` payments.
 
-To capture an action while an agent runs, use `TraceRecorder`; see
-[capturing agents built with a framework](framework-integration.md).
-
-For any other domain, explicitly supply a read-only adapter:
-
-```python
-receipt = verify(action, observation, verifier=application_verifier)
-```
-
-The adapter implements the typed `Verifier` protocol:
+For any other domain, supply a read-only verifier implementing the `Verifier`
+protocol:
 
 ```python
 class ApplicationVerifier:
@@ -50,20 +42,21 @@ class ApplicationVerifier:
         ...
 ```
 
-The wrapper checks that the result is a `VerificationResult`, that its contract
-identity matches the action, and that every evidence item identifies the
-supplied observation with exactly its source and watermark. A receipt cannot
-precede the observation's capture time. A result from another contract, source,
-observation, or watermark raises a controlled error before it can be used.
+`verify` checks that the result is a `VerificationResult` whose action and
+contract identities match, and that every evidence item identifies the supplied
+observation with exactly its source and watermark. A receipt cannot precede the
+observation's capture time. A result that crosses that boundary raises
+`ReceiptError` before it can be used. `averify` does the same for a verifier whose
+`verify` method is a coroutine.
 
-The application owns the adapter's predicate, source authentication, scope,
+The application owns the verifier's predicate, source authentication, scope,
 record validation, completeness, deadline and persistence checks, and effect
-origin rules. The wrapper cannot establish those facts or sandbox an adapter's
+origin rules. The wrapper cannot establish those facts or sandbox a verifier's
 behavior. A tool acknowledgement, agent statement, or copied expected value is
 insufficient independent evidence. Missing, unavailable, malformed, incomplete,
 or temporally insufficient readback should produce `UNKNOWN` whenever the
-predicate cannot be established. Positive witnesses and absence claims may
-have different completeness requirements; define them for the domain.
+predicate cannot be established. Positive witnesses and absence claims may have
+different completeness requirements; define them for the domain.
 
 Populate `attributable_effect_ids` only when trustworthy source metadata links
 an observed effect to this action. A satisfied state may instead result from
@@ -71,48 +64,40 @@ another actor, or have unknown origin. Those distinctions must survive the
 receipt. An origin link is evidence about provenance, not an intervention-based
 causal attribution score.
 
-## Assessment and target matching
+## Target matching and findings
 
-`explain(trace)` uses refund payload and timing rules for refund contracts.
-Other predicates receive a domain-neutral explanation. Their details are never
-treated as money, refund counts, or currencies. Their assessment alignment
-stays `unassessable` unless an application supplies target semantics:
+A verifier also records what `explain` needs to judge the agent's report:
 
-```python
-explanation = explain(trace, target_matcher=application_target_matcher)
-```
+- `target_effect_ids`: for a known outcome, the attributable effects that match
+  the full target: requested payload, commit deadline and persistence horizon.
+  Leave it `None` when the agent's success or failure does not refer to this
+  contract, or when the verifier does not match targets; alignment then stays
+  `unassessable`. An unrelated effect with the same action ID does not qualify,
+  and an `unknown` receipt cannot have target matches.
+- `findings`: domain facts such as `EXCESS_EFFECTS` or `PARAMETER_MISMATCH`, each
+  a `Finding(code, effect_ids, detail)` with an UPPER_SNAKE_CASE code and the
+  observed effects it rests on.
 
-The typed `TargetMatcher` protocol implements
-`matching_effect_ids(action, verification) -> tuple[str, ...]`. It must check
-the captured effect's requested payload, commit deadline, and persistence
-horizon. Return only unique IDs within the receipt's `attributable_effect_ids`.
-An unrelated effect with the same action ID does not qualify. An invalid
-matcher return raises `ValueError`. Matchers are never called for `UNKNOWN`
-receipts, so malformed or insufficient source evidence remains uninterpreted.
+Setting `target_effect_ids` declares that the agent's `SUCCESS` or `FAILURE`
+assessment concerns satisfaction of this contract. Known violations can then be
+compared with those reports; known satisfaction requires at least one target
+match before alignment or a lost-response diagnosis is claimed. Unknown outcomes,
+unknown assessments, other-actor satisfaction and unconfirmed origin remain
+unassessable.
 
-Supplying the matcher also declares that the agent's `SUCCESS` or `FAILURE`
-assessment concerns satisfaction of this action's outcome contract. Known
-violations can then be compared with those reports. Known satisfaction requires
-an attributable target witness before assessment alignment or a lost-response
-diagnosis is claimed. Unknown outcomes, unknown assessments, other-actor state
-satisfaction, and unconfirmed origin remain unassessable. Omitting the matcher
-is appropriate when the application's assessment has a different meaning.
-
-For known refund results, domain-invalid evidence such as `records: [17]`,
-non-integer refund counts, or malformed linked payloads raises `ValueError`.
-Unknown receipts can retain malformed source records without interpreting them
-as target witnesses. This distinction keeps wire-valid JSON separate from
-valid domain evidence.
+`explain` never re-reads evidence details: domain interpretation happens once,
+when the verifier runs, and the receipt is the verifier's claim.
 
 ## Offline artifact example
 
 [examples/artifact_delivery.py](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/artifact_delivery.py)
 implements a second domain, `artifact_delivered`, using only the public API and
-the Python standard library. It registers a path, content digest, deadline, and
+the Python standard library. It registers a path, content digest, deadline and
 persistence horizon; captures a timeout response and failure assessment;
-consumes a separately captured artifact-store snapshot; verifies it; and
-round-trips the trace before explaining it. The fixture's digest is computed
-from the bytes read back, rather than copied from the requested digest.
+consumes a separately captured artifact-store snapshot; verifies it, recording
+target matches; and round-trips the trace before explaining it. The fixture's
+digest is computed from the bytes read back, rather than copied from the
+requested digest.
 
 Run it from the repository with an installed package:
 
@@ -121,7 +106,7 @@ python examples/artifact_delivery.py
 ```
 
 The default captured fixture contains the requested artifact with independently
-reported action and actor metadata. Its custom matcher qualifies that target,
+reported action and actor metadata. The verifier records it as a target match,
 so the timeout and reported failure diverge from the verified outcome. The
 example also supports absent content, wrong content, unavailable readback,
 another actor, and missing provenance, covered by application integration tests.
@@ -138,8 +123,8 @@ in the closed interval from action registration through the horizon. That one
 revision must commit by the inclusive deadline and have a presence witness
 through the inclusive horizon. A second matching revision committed before the
 deadline, at the deadline, or during the stability interval violates the
-contract. A commit strictly after the horizon is outside its scope. The matcher
-qualifies only deadline-eligible revisions with sufficient persistence witnesses;
-it does not treat later origin-linked revisions as target matches. Implement and
-test other predicates, current-state artifact replacement semantics, or count
-semantics explicitly in the application's verifier.
+contract. A commit strictly after the horizon is outside its scope. Only
+deadline-eligible revisions with sufficient persistence witnesses are target
+matches; later origin-linked revisions are not. Implement and test other
+predicates, current-state replacement semantics, or count semantics explicitly
+in the application's verifier.

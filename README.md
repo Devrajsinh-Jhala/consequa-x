@@ -49,98 +49,103 @@ evaluation only; never pass it to an explainer.
 
 ## Use it in Python
 
-Register the intended outcome before the action, capture what happened, read the
-outcome back from a trusted read-only source, then verify and explain:
+Register each consequential action with its intended outcome before running it,
+let the recorder capture what happens, read the outcome back from a trusted
+read-only source, then verify and explain:
 
 ```python
 from consequa_x import (
-    Action, AgentAssessment, AssessmentStatus, Observation, OutcomeContract,
-    Trace, explain, render_report, verify,
+    Observation, OutcomeContract, RecordVerifier, TraceRecorder, explain, render_report,
 )
 
-expected = {"payment_id": "p1", "amount_minor": 1000, "currency": "INR"}
-contract = OutcomeContract("contract-1", "refund_processed", expected,
-                           deadline_ms=50, stability_ms=20)
-action = Action("refund-1", "trace-1", "agent", "refund", expected, 0, contract)
-
-# In an application, capture this independently from a trusted read-only source.
-observation = Observation(
-    "readback-1", "independent-ledger", 100, 100, {"payment_id": "p1"},
-    ({**expected, "effect_id": "effect-1", "committed_at_ms": 25,
-      "status": "processed", "action_id": "refund-1", "actor": "agent"},),
-)
-receipt = verify(action, observation)
-trace = Trace("trace-1", action, (), (),
-              AgentAssessment(AssessmentStatus.FAILURE, 10),
-              (observation,), (receipt,))
-
-assert receipt.status.value == "satisfied"      # the refund really happened
-assert receipt.origin.value == "confirmed"      # and this action produced it
-assert explain(trace).assessment_alignment == "contradicted"  # the agent said failure
-html = render_report(trace)                      # offline, minimal disclosure
-```
-
-The built-in `refund_processed` verifier checks payment, integer amount,
-currency, exact count, commit deadline and a persistence window. Unavailable,
-incomplete, wrongly scoped or stale readback produces `unknown`. Effect origin is
-a separate conclusion: `confirmed`, `other_actor` or `unknown`.
-
-Traces round-trip through a portable, versioned JSON schema (`0.1`):
-`Trace.from_json(trace.to_json())` rejects unknown fields, broken identity links
-and dependency cycles. `consequa_x.schema.get_trace_schema()` returns the bundled
-JSON Schema.
-
-## Capture a real agent's tool call
-
-`TraceRecorder` records an action while your agent runs, and `RecordVerifier`
-checks any outcome that leaves records behind (rows, orders, tickets, files):
-
-```python
-from consequa_x import OutcomeContract, RecordVerifier, TraceRecorder, explain
-
-contract = OutcomeContract("refund-o-17", "record_present",
-                           {"order_id": "o-17", "amount_minor": 5000, "currency": "INR"},
-                           deadline_ms=200, stability_ms=50)
 verifier = RecordVerifier(scope_fields=("order_id",))
+rec = TraceRecorder("run-17", actor="support-agent", time_base="relative_ms")
+refund = rec.register(
+    "refund-o-17", "issue_refund", {"order_id": "o-17"}, at_ms=0,
+    contract=OutcomeContract(contract_id="refund-o-17", predicate="record_present",
+                             expected={"order_id": "o-17", "amount_minor": 5000},
+                             deadline_ms=200, stability_ms=50))
 
-rec = TraceRecorder("run-17", actor="support-agent")
-rec.register("refund-o-17", "issue_refund", {"order_id": "o-17"}, contract=contract)
 try:
-    with rec.attempt(data={"tool": "issue_refund"}) as attempt:
-        issue_refund("o-17", attempt_id=attempt.attempt_id)   # your tool
-    rec.assessment("success")                                  # what the agent reported
+    with refund.attempt(at_ms=5) as attempt:      # your tool call goes here
+        attempt.at_ms = 30
+        raise TimeoutError                        # ...and it timed out
 except TimeoutError:
-    rec.assessment("failure")
-rec.verify(read_refunds_for("o-17"), verifier=verifier)       # your read-only readback
-print(explain(rec.trace(), target_matcher=verifier.target_matcher()).diagnoses)
+    refund.assessment("failure", at_ms=31)        # what the agent reported
+
+# Captured independently, after the horizon, from a read-only replica of the orders table.
+readback = Observation(
+    observation_id="read-1", source="orders-replica", observed_at_ms=300, as_of_ms=300,
+    scope={"order_id": "o-17"},
+    records=({"effect_id": "rf-1", "order_id": "o-17", "amount_minor": 5000,
+              "committed_at_ms": 20, "action_id": "refund-o-17",
+              "attempt_id": "refund-o-17:attempt-1", "actor": "support-agent"},))
+receipt = refund.verify(readback, verifier=verifier)
+
+result = explain(rec.trace()).for_action("refund-o-17")
+assert receipt.status.value == "satisfied"         # the refund really happened
+assert receipt.origin.value == "confirmed"         # and this action produced it
+assert result.assessment_alignment == "contradicted"   # the agent said failure
+print(result.codes)  # ('ASSESSMENT_DIVERGENCE', 'ACKNOWLEDGEMENT_EFFECT_DIVERGENCE')
+html = render_report(rec.trace())                  # offline, minimal disclosure
 ```
 
-`capture_tool` decorates a synchronous tool so every call is recorded the same
-way. The
-[agent-loop example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/agent_loop_sqlite.py)
-runs this end to end against a real SQLite database, offline, in three modes:
-a timeout after the refund committed, a refund made by someone else, and a
-readback too stale to decide.
+A run can register several actions; each `register` returns that action's
+`ActionCapture`, and its attempts, assessments and verifications stay separate.
+`capture_tool` decorates a tool (synchronous or `async def`) so every call is
+recorded. `poll_readback` re-reads a lagging source until the outcome is known,
+and `retry_advice` turns the receipt into a retry decision.
+
+The built-in verifiers are `RecordVerifier` (rows, orders, tickets, files:
+`record_present`) and `RefundVerifier` (`refund_processed`). Both check values,
+count, commit deadline and persistence; unavailable, incomplete, wrongly scoped or
+stale readback produces `unknown`. Effect origin is a separate conclusion:
+`confirmed`, `other_actor` or `unknown`. Verifiers also record which effects match
+the target and domain findings (excess, duplicate, mismatched, reversed or
+removed effects); `explain` reads those receipts without any domain logic of its
+own.
+
+The [agent-loop example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/agent_loop_sqlite.py)
+runs this end to end against a real SQLite database, offline, in three modes: a
+timeout after the refund committed, a refund made by someone else, and a readback
+too stale to decide. The
+[framework guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/framework-integration.md)
+shows where the calls go in OpenAI Agents SDK, LangChain, Claude Agent SDK and MCP
+tool loops.
+
+Traces round-trip through a portable, versioned JSON schema (`1.0`):
+`Trace.from_json(trace.to_json())` rejects unknown fields, broken identity links
+and dependency cycles, and every captured payload is read-only.
 
 ## Bring your own domain
 
-Supply a read-only `Verifier` for your predicate, and a `TargetMatcher` when the
-agent's reported success or failure should be judged against that contract:
+Write a read-only `Verifier` for your predicate. It returns a
+`VerificationResult` with the state, origin and the effects it saw; to let the
+agent's report be judged, it also records `target_effect_ids` (this action's
+effects that match the full target):
 
 ```python
 receipt = verify(action, observation, verifier=MyVerifier())
-explanation = explain(trace, target_matcher=MyTargetMatcher())
 ```
 
 Your application owns source trust, scope, completeness, timing and provenance;
-Consequa-X checks that receipts bind to the supplied contract and observation,
-and keeps the evidence structured. The
+Consequa-X checks that receipts bind to the supplied action, contract and
+observation, and keeps the evidence structured. The
 [artifact-delivery example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/artifact_delivery.py)
-implements both adapters with public APIs only, and the
+implements a verifier with public APIs only, and the
 [integration guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/application-integration.md)
 describes the boundary in detail. The
 [stable API](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/stable-api.md)
-page lists what version 1 guarantees.
+page lists what version 2 guarantees.
+
+## Upgrading from 1.x
+
+Version 2.0 changes the trace schema to `1.0` (several actions per trace, a
+declared time base, keyword-only and read-only records) and moves domain
+interpretation into verifiers. Convert saved 1.x traces with
+`consequa-x migrate OLD.json --output NEW.json` or `migrate_trace()`. The
+[migration guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/migrating-to-2.0.md)
+lists every change and its replacement.
 
 ## Command line
 
@@ -148,12 +153,17 @@ page lists what version 1 guarantees.
 | --- | --- |
 | `consequa-x demo --output DIR` | Write the twelve synthetic refund scenarios: traces, explanations, schema and manifest |
 | `consequa-x explain TRACE [--output FILE]` | Explain an existing trace without replay; prints JSON or writes a new file |
-| `consequa-x report TRACE --output FILE` | Render a self-contained HTML report; add `--include-details` to embed the full capture |
+| `consequa-x report TRACE --output FILE` | Render a self-contained HTML report; `--include-details` embeds the full capture, `--redact KEY` blanks named keys in it |
+| `consequa-x summarize PATH... [--format markdown]` | Count outcomes, alignment and divergences across trace files, folders and `.jsonl` stores |
+| `consequa-x compare A B` | Compare two traces action by action |
+| `consequa-x verify TRACE --readback OBS --output NEW` | Verify a captured readback file with a built-in verifier |
+| `consequa-x validate TRACE...` / `consequa-x migrate OLD --output NEW` | Check traces; convert schema `0.1` traces |
 | `consequa-x experiment …` and research commands | Paired replay, decision attribution and calibration studies (see Research) |
 
 ## What it does not do
 
 - It does not watch or control a live agent; your application captures the records.
+  `retry_advice` is advice derived from captured evidence, not a guarantee.
 - It does not authenticate a readback source or prove that provider metadata is true.
 - An evidence-graph link records provenance, not causal necessity.
 - Default reports omit captured strings and identifiers, but keep times, counts
@@ -162,8 +172,8 @@ page lists what version 1 guarantees.
 
 ## Research
 
-The repository also contains declared research interfaces, separate from the
-stable core: isolated replay, contrastive and Shapley-style decision attribution,
+The repository also contains declared research interfaces, imported from
+`consequa_x.research`: isolated replay, contrastive and Shapley-style decision attribution,
 calibration studies, an optional local Ollama adapter, and the retained evidence
 for each study. Results so far are synthetic or exploratory local-model studies
 and are reported with their denominators and limits. Start with the

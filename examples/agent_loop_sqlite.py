@@ -16,7 +16,7 @@ outcome:
 - ``stale_readback``: the tool succeeds, but readback comes from a replica that
   lags behind the contract horizon, so the outcome stays unknown.
 
-Run from this folder with Consequa-X 1.2 or newer installed::
+Run from this folder with Consequa-X 2.0 or newer installed::
 
     python agent_loop_sqlite.py --mode timeout_after_commit --output agent-run
 

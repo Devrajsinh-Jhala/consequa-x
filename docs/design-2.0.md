@@ -1,7 +1,8 @@
 # Consequa-X 2.0 design
 
-Status: agreed direction, built on the `release-2.0` branch. Decided 19 October
-2026, after publishing 1.2.0. The package leads: the paper will be reshaped
+Status: built on the `release-2.0` branch (steps 1 to 6 below are done; verifier
+composition and step 7 are deferred to 2.1). Decided 19 October 2026, after
+publishing 1.2.0. The package leads: the paper will be reshaped
 around 2.0 rather than 2.0 waiting for the paper. Research code (benchmark,
 replay, attribution, policies) is ported to the 2.0 data model, not split out.
 

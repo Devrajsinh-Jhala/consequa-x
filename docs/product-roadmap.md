@@ -93,8 +93,8 @@ Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move 
 | B6 | Retry guard: check readback before retrying a timed-out action. Moves from explanation to control; wording must stay careful. (done on `release-2.0`) |
 | B7 | Async recorder, verifiers and wrapper (done on `release-2.0`) |
 | B8 | `consequa-x summarize`: divergence and unknown counts across many traces (done on `release-2.0`) |
-| C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras |
-| C5 | OpenTelemetry export/import using the GenAI conventions |
+| C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras. Deferred to 2.1: they need the SDKs installed and tested; the framework guide shows where the calls go. |
+| C5 | OpenTelemetry export/import using the GenAI conventions. Deferred to 2.1. |
 | D1 | Reports for several actions (needs A1) (done on `release-2.0`) |
 | D2 | Compare two traces (done on `release-2.0`) |
 | D3 | Markdown and JSON summary output (done on `release-2.0`) |

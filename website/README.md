@@ -192,7 +192,7 @@ when copying assets.
 
 `assets/sample-report.zip` contains exactly `my-report.html`, the unmodified
 self-contained package report with SHA-256
-`5ca06033bdaad60615c28bb23eed6c83a61099cf96b9e05c5f018e9bedcf0ed4`.
+`3c8f09d0365ad9c03b6ecafee164037ad23b73ecac2a3e00cb79c2f32d0f7190`.
 Use this ZIP for the offline download: the public Site host can append a browser
 challenge script to served HTML, including the browser preview of the report.
 The ZIP preserves the original package bytes when extracted. It uses fixed ZIP

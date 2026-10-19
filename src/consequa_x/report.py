@@ -41,6 +41,7 @@ font-weight:650;font-size:.85rem}.status-satisfied,.status-confirmed{background:
 .status-unknown,.status-unassessable{background:#fff2cd}.status-consistent{background:#dff4e9}
 .codes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
 .codes li{font:12px/1.5 ui-monospace,Consolas,monospace;background:#eef4f6;border-radius:6px;
+max-width:100%;overflow-wrap:anywhere;
 padding:2px 7px}
 dl{display:grid;grid-template-columns:minmax(130px,1fr) 2fr;gap:8px 16px;margin:0}
 dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}.table-wrap{overflow:auto}

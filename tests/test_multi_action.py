@@ -79,17 +79,17 @@ def test_one_trace_holds_several_actions_with_separate_evidence():
 
 def test_explain_judges_each_action_from_its_own_latest_records():
     trace = two_action_run().trace()
-    explanation = explain(trace, target_matcher=VERIFIER.target_matcher())
+    explanation = explain(trace)
     refund = explanation.for_action("refund-1")
     email = explanation.for_action("email-1")
     assert (refund.consequence.status.value, refund.consequence.origin.value) == (
         "satisfied", "confirmed")
     assert refund.agent_assessment.status is AssessmentStatus.FAILURE  # the latest report
     assert refund.assessment_alignment == "contradicted"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in refund.diagnoses
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in refund.codes
     assert email.consequence.status.value == "violated"
     assert email.assessment_alignment == "contradicted"
-    assert "RESPONSE_EFFECT_DIVERGENCE" in email.diagnoses
+    assert "RESPONSE_EFFECT_DIVERGENCE" in email.codes
     with pytest.raises(ValidationError, match="2 actions"):
         explanation.single_action
     assert json.loads(json.dumps(explanation.to_dict()))["actions"][1]["action_id"] == "email-1"
@@ -102,7 +102,7 @@ def test_an_action_without_verification_is_reported_not_treated_as_success():
     rec.assessment("success", at_ms=1)
     action = explain(rec.trace()).single_action
     assert action.consequence is None
-    assert action.diagnoses == ("NO_VERIFICATION", "UNVERIFIED_ASSESSMENT")
+    assert action.codes == ("NO_VERIFICATION", "UNVERIFIED_ASSESSMENT")
     assert action.assessment_alignment == "unassessable"
     assert "no independent verification" in action.summary
 

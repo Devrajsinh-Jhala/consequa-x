@@ -6,6 +6,7 @@ from .errors import ConsequaTypeError, ContractError, ReceiptError
 from .models import (
     Action,
     Evidence,
+    Finding,
     Observation,
     OriginStatus,
     VerificationResult,
@@ -61,7 +62,8 @@ class RefundVerifier:
             "expected": dict(expected),
             "records": [dict(record) for record in observation.records],
         }
-        def result(status, reason, origin=OriginStatus.UNKNOWN, effect_ids=(), linked_ids=()):
+        def result(status, reason, origin=OriginStatus.UNKNOWN, effect_ids=(), linked_ids=(),
+                   target_ids=None, findings=()):
             evidence = (Evidence(
                 observation_id=observation.observation_id,
                 source=observation.source,
@@ -77,6 +79,8 @@ class RefundVerifier:
                 origin=origin,
                 effect_ids=effect_ids,
                 attributable_effect_ids=linked_ids,
+                target_effect_ids=target_ids,
+                findings=findings,
                 reason=reason,
             )
 
@@ -159,13 +163,54 @@ class RefundVerifier:
         count_ok = bool(eligible) if contract.exact_count is None else (
             len(eligible) == contract.exact_count and peak_count == contract.exact_count
         )
+        linked = [record for record in relevant if record["effect_id"] in linked_ids]
+        target_ids = tuple(record["effect_id"] for record in linked if (
+            record["amount_minor"] == expected["amount_minor"]
+            and record["currency"] == expected["currency"]
+            and action.registered_at_ms <= record["committed_at_ms"] <= contract.deadline_ms
+            and record.get("reversed_at_ms", contract.horizon_ms + 1) > contract.horizon_ms
+        ))
+        findings = _refund_findings(contract, expected, payload_matches, linked, peak_count)
         if count_ok:
             return result(VerificationStatus.SATISFIED,
                           "Refund predicate is satisfied through the declared horizon",
-                          origin, effect_ids, linked_ids)
+                          origin, effect_ids, linked_ids, target_ids, findings)
         return result(VerificationStatus.VIOLATED,
                       "Refund predicate is violated in an exhaustive horizon-covering snapshot",
-                      origin, effect_ids, linked_ids)
+                      origin, effect_ids, linked_ids, target_ids, findings)
+
+
+def _refund_findings(contract, expected, payload_matches, linked, peak_count) -> tuple[Finding, ...]:
+    """Refund facts established by a complete, horizon-covering snapshot."""
+    findings = []
+    exact = contract.exact_count
+    if exact is not None and peak_count > exact:
+        findings.append(Finding(
+            code="EXCESS_EFFECTS",
+            effect_ids=tuple(record["effect_id"] for record in payload_matches),
+            detail=f"Up to {peak_count} matching refunds; the contract allows {exact}."))
+        if len(linked) > exact:
+            findings.append(Finding(
+                code="DUPLICATE_EFFECT", effect_ids=tuple(record["effect_id"] for record in linked),
+                detail=f"{len(linked)} refunds carry this action's identity."))
+    mismatched = tuple(record["effect_id"] for record in linked
+                       if record["amount_minor"] != expected["amount_minor"]
+                       or record["currency"] != expected["currency"])
+    if mismatched:
+        findings.append(Finding(code="PARAMETER_MISMATCH", effect_ids=mismatched,
+                                detail="A refund from this action has a different amount or currency."))
+    partial = tuple(record["effect_id"] for record in linked
+                    if 0 < record["amount_minor"] < expected["amount_minor"])
+    if partial:
+        findings.append(Finding(code="PARTIAL_EFFECT", effect_ids=partial,
+                                detail="A refund from this action is smaller than requested."))
+    reversed_ids = tuple(record["effect_id"] for record in linked
+                         if record.get("reversed_at_ms", contract.horizon_ms + 1)
+                         <= contract.horizon_ms)
+    if reversed_ids:
+        findings.append(Finding(code="REVERSED_EFFECT", effect_ids=reversed_ids,
+                                detail="A refund from this action was reversed before the horizon."))
+    return tuple(findings)
 
 
 def _identifier(value: object) -> bool:

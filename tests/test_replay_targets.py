@@ -140,7 +140,8 @@ def test_origin_label_without_supported_evidence_cannot_establish_external_failu
 def test_external_origin_label_cannot_override_a_matching_agent_record():
     registered = action()
     result = verify(registered, observation(effect()))
-    mislabeled = replace(result, origin=OriginStatus.OTHER_ACTOR, attributable_effect_ids=())
+    mislabeled = replace(result, origin=OriginStatus.OTHER_ACTOR, attributable_effect_ids=(),
+                         target_effect_ids=())
     assert action_linked_consequence(registered, mislabeled) is None
 
 

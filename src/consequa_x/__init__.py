@@ -8,24 +8,25 @@ from .errors import (
     ConsequaError, ConsequaTypeError, ContractError, ReceiptError, RecorderError,
     SchemaVersionError, ValidationError,
 )
-from .explanation import ActionExplanation, TargetMatcher, TraceExplanation, explain
+from .explanation import CORE_DIAGNOSES, ActionExplanation, Diagnosis, TraceExplanation, explain
 from .graph import ConsequenceGraph, build_graph
 from .models import (
-    Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, FrozenDict,
+    Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, Finding, FrozenDict,
     FrozenList, Observation,
     OriginStatus, OutcomeContract, ResponseStatus, TimeBase, ToolResponse, Trace,
     VerificationResult, VerificationStatus, thaw,
 )
-from .record_verifier import RecordTargetMatcher, RecordVerifier
+from .record_verifier import RecordVerifier
 from .policies import Policy, PolicyDecision, PolicyError, PolicyReply, PolicyRequest, ScriptedRefundPolicy
 from .verification import RefundVerifier, Verifier, verify
 from .report import render_report
 
 __all__ = [
+    "CORE_DIAGNOSES", "Diagnosis", "Finding",
     "Action", "ActionCapture", "ActionExplanation", "AgentAssessment", "AssessmentStatus",
     "ConsequenceGraph", "EffectEstimate", "Evidence", "Event", "EventType", "Intervention",
-    "Observation", "OriginStatus", "OutcomeContract", "RecordTargetMatcher", "RecordVerifier",
-    "RefundVerifier", "TargetMatcher", "TimeBase", "Trace", "TraceExplanation",
+    "Observation", "OriginStatus", "OutcomeContract", "RecordVerifier",
+    "RefundVerifier", "TimeBase", "Trace", "TraceExplanation",
     "Policy", "PolicyDecision", "PolicyError", "PolicyReply", "PolicyRequest", "ScriptedRefundPolicy",
     "ResponseStatus", "ToolResponse", "TraceRecorder", "VerificationResult", "VerificationStatus", "Verifier",
     "Attempt", "build_graph", "capture_tool", "explain",

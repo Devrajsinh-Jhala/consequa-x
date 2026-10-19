@@ -168,7 +168,9 @@ def test_successive_witnesses_and_their_provenance_remain_individually_visible()
     assert f'Complete graph: {len(graph.edges)} links' in document
     assert document.count('<td>Shared effect identifier</td>') == 2
     assert "other_actor" in document
-    assert "unassessable in this report" in document
+    assert "Alignment and diagnoses come from the recorded receipts" in document
+    assert '<span class="pill status-unassessable">unassessable</span>' in document
+    assert "<li>UNASSESSABLE_ASSESSMENT</li><li>EXTERNAL_ACTOR_EFFECT</li>" in document
 
 
 def test_all_captured_verifications_remain_visible_including_unknown():

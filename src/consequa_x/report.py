@@ -11,6 +11,7 @@ from html import escape
 import json
 
 from .errors import ConsequaTypeError, ValidationError
+from .explanation import CORE_DIAGNOSES, explain
 from .graph import ConsequenceGraph, GraphNode, build_graph
 from .models import EventType, Trace, to_dict
 
@@ -36,7 +37,11 @@ border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:24px}
 .value{font-size:1.4rem;font-weight:750;overflow-wrap:anywhere}.small{font-size:.87rem}
 .pill{display:inline-block;padding:2px 9px;border-radius:20px;background:#e5eff3;
 font-weight:650;font-size:.85rem}.status-satisfied,.status-confirmed{background:#dff4e9}
-.status-violated,.status-other_actor{background:#ffeadb}.status-unknown{background:#fff2cd}
+.status-violated,.status-other_actor,.status-contradicted{background:#ffeadb}
+.status-unknown,.status-unassessable{background:#fff2cd}.status-consistent{background:#dff4e9}
+.codes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
+.codes li{font:12px/1.5 ui-monospace,Consolas,monospace;background:#eef4f6;border-radius:6px;
+padding:2px 7px}
 dl{display:grid;grid-template-columns:minmax(130px,1fr) 2fr;gap:8px 16px;margin:0}
 dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}.table-wrap{overflow:auto}
 table{border-collapse:collapse;width:100%;font-size:.9rem;text-align:left}
@@ -71,6 +76,10 @@ thead{display:table-header-group}tr,.timeline li{break-inside:avoid}
 a{color:inherit;text-decoration:none}details:not([open]){display:none}}
 """
 
+# Finding codes of the built-in verifiers. Other verifier findings are counted, not shown,
+# because their codes are application-defined strings.
+_BUILT_IN_FINDINGS = {"EXCESS_EFFECTS", "DUPLICATE_EFFECT", "PARAMETER_MISMATCH",
+                      "PARTIAL_EFFECT", "REVERSED_EFFECT", "REMOVED_EFFECT"}
 _NODE_LABELS = {item.value: item.value.replace("_", " ") for item in EventType}
 _NODE_LABELS.update({
     "postcondition": "outcome contract",
@@ -235,8 +244,9 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
     captured trace as escaped, inert JSON; that file may contain sensitive data.
     This is field omission, not a general redaction or anonymization guarantee.
 
-    All verification records are displayed as captured. Assessment alignment is
-    unassessable *in this report*: no domain matcher or verifier is invoked.
+    All verification records are displayed as captured. Assessment alignment and
+    diagnoses are derived from the recorded receipts exactly as ``explain`` derives
+    them; no verifier is invoked.
     Source authenticity and causal necessity are not inferred. The returned
     presentation does not replace the original trace or its verification data.
     """
@@ -256,6 +266,7 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         # Graph identity errors can include captured IDs; never repeat them.
         raise ValidationError("Cannot render a trace with conflicting evidence graph identities") from None
     aliases = _aliases(snapshot, graph)
+    explanation = explain(snapshot)
     numbers = {action.action_id: index for index, action in enumerate(snapshot.actions, 1)}
     several = len(snapshot.actions) > 1
     detail_notice = (
@@ -277,6 +288,14 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         state = _status(latest.status.value) if latest else "not recorded"
         origin = _status(latest.origin.value) if latest else "not recorded"
         reported = _status(assessment.status.value) if assessment else "not recorded"
+        judged = explanation.for_action(action.action_id)
+        shown = [code for code in judged.codes
+                 if code in CORE_DIAGNOSES or code in _BUILT_IN_FINDINGS]
+        other = len(judged.codes) - len(shown)
+        codes = ('<ul class="codes" aria-label="Diagnoses">'
+                 + ''.join(f'<li>{_text(code)}</li>' for code in shown)
+                 + (f'<li>{other} other verifier finding{"s" if other != 1 else ""}</li>'
+                    if other else '') + '</ul>')
         summary_cards.append(
             (f'<h3>Action {index}</h3>' if several else '') + '<div class="cards">'
             f'<div class="card"><h3>Tool responses</h3><div class="value">'
@@ -287,7 +306,9 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
             f'<div class="card"><h3>Latest verified state</h3><div class="value">{state}</div>'
             '<p class="small muted">Captured independent verification</p></div>'
             f'<div class="card"><h3>Latest effect origin</h3><div class="value">{origin}</div>'
-            '<p class="small muted">Separate from state satisfaction</p></div></div>')
+            '<p class="small muted">Separate from state satisfaction</p></div>'
+            f'<div class="card"><h3>Assessment alignment</h3><div class="value">'
+            f'{_status(judged.assessment_alignment)}</div>{codes}</div></div>')
         contract = action.contract
         exact = contract.exact_count if contract.exact_count is not None else "not constrained"
         contract_lists.append(
@@ -318,9 +339,10 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         '</strong><p>', _text(detail_notice), '</p></aside>',
         '<section id="summary"><h2>Response is separate from consequence</h2>',
         *summary_cards,
-        '<p><strong>Assessment alignment: unassessable in this report.</strong> '
-        'The renderer does not run application target matching. A reported success, '
-        'a successful response and a satisfied state are separate claims.</p>',
+        '<p><strong>Alignment and diagnoses come from the recorded receipts.</strong> '
+        'They are computed as explain() computes them; the renderer runs no verifier, readback '
+        'or application action. A reported success, a successful response and a satisfied '
+        'state are separate claims.</p>',
         _table("Every captured tool response", ("Response", "Action", "Time", "Status"), [
             (f"Response {index}", f"Action {numbers[response.action_id]}",
              f"{response.time_ms} ms", _status(response.status.value))

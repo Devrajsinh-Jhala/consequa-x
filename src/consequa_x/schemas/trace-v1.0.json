@@ -466,6 +466,29 @@
           "uniqueItems": true,
           "default": []
         },
+        "target_effect_ids": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "uniqueItems": true
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Finding"
+          },
+          "default": []
+        },
         "reason": {
           "type": "string",
           "default": ""
@@ -560,6 +583,33 @@
         "source",
         "as_of_ms",
         "details"
+      ],
+      "additionalProperties": false
+    },
+    "Finding": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "effect_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "detail": {
+          "type": "string",
+          "pattern": "\\S",
+          "default": ""
+        }
+      },
+      "required": [
+        "code"
       ],
       "additionalProperties": false
     }

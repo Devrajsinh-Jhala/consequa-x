@@ -76,8 +76,8 @@ installed-artifact checks, then publication on approval.
 | --- | --- | --- | --- |
 | A1 | Several actions, contracts and verifications per trace | Real agent runs take several consequential actions; today a trace holds one. | done |
 | A2 | Keyword-only record constructors | Seven positional arguments are easy to misorder. | done |
-| A3 | Refund logic as a domain plugin; diagnoses from verifier-supplied facts | `explain()` has refund-only branches. | planned |
-| A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. | planned |
+| A3 | Refund logic as a domain plugin; diagnoses from verifier-supplied facts | `explain()` has refund-only branches. | done |
+| A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. | done |
 | A5 | Schema `1.0` with absolute timestamps and a time base, plus `consequa-x migrate` | Real systems log wall-clock time. | done |
 | A6 | Several agent assessments per action | Agents can report before and after a retry. | done |
 | A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. | planned (reduced to `consequa_x.research` imports; research is ported) |

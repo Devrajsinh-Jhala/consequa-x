@@ -225,7 +225,7 @@ def scenario(demo, cases, stem, label):
         "timeline": timeline(trace), "ribbon": ribbon(trace), "graph": graph_subset(trace),
         "explanation": {"state": latest.status.value, "origin": latest.origin.value,
                         "alignment": action.assessment_alignment,
-                        "diagnoses": list(action.diagnoses), "diagnosis": action.diagnosis,
+                        "diagnoses": list(action.codes), "diagnosis": action.diagnosis,
                         "summary": action.summary, "reason": latest.reason},
     }
 

@@ -173,7 +173,7 @@ def run(mode: str, output: Path) -> dict:
     receipt = rec.verify(observation, verifier=VERIFIER)
 
     trace = rec.trace()
-    explanation = explain(trace, target_matcher=VERIFIER.target_matcher())
+    explanation = explain(trace)
     (output / "trace.json").write_text(trace.to_json(indent=2), encoding="utf-8")
     (output / "explanation.json").write_text(
         json.dumps(explanation.to_dict(), indent=2, sort_keys=True), encoding="utf-8")
@@ -182,7 +182,7 @@ def run(mode: str, output: Path) -> dict:
         "mode": mode, "tool_response": trace.responses[-1].status.value,
         "agent_reported": trace.latest_assessment().status.value, "state": receipt.status.value,
         "origin": receipt.origin.value, "alignment": explanation.single_action.assessment_alignment,
-        "diagnoses": list(explanation.single_action.diagnoses), "reason": receipt.reason,
+        "diagnoses": list(explanation.single_action.codes), "reason": receipt.reason,
     }
 
 

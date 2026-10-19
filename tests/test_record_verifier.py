@@ -4,8 +4,8 @@ import pytest
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Observation, OriginStatus, OutcomeContract,
-    RecordTargetMatcher, RecordVerifier, ResponseStatus, ToolResponse, TimeBase, Trace, VerificationStatus,
-    explain, verify,
+    RecordVerifier, ResponseStatus, ToolResponse, TimeBase, Trace, VerificationResult,
+    VerificationStatus, explain, verify,
 )
 
 
@@ -94,7 +94,9 @@ def test_wrong_value_is_relevant_but_not_matching():
     receipt = check(observe(row(amount_minor=4000)))
     assert receipt.status is VerificationStatus.VIOLATED
     assert receipt.origin is OriginStatus.CONFIRMED
-    assert VERIFIER.target_matcher().matching_effect_ids(action(), receipt) == ()
+    assert receipt.target_effect_ids == ()
+    assert [item.code for item in receipt.findings] == ["PARAMETER_MISMATCH"]
+    assert receipt.findings[0].effect_ids == ("r1",)
 
 
 def trace_for(receipt, observation, *, response="timeout", reported="failure"):
@@ -103,34 +105,51 @@ def trace_for(receipt, observation, *, response="timeout", reported="failure"):
                  assessments=(AgentAssessment(status=AssessmentStatus(reported), time_ms=35, assessment_id="assessment-1", action_id=act.action_id),), observations=(observation,), verifications=(receipt,))
 
 
-def test_matcher_lets_explain_judge_the_agents_report():
-    matcher = VERIFIER.target_matcher()
+def test_receipt_target_matches_let_explain_judge_the_agents_report():
     observation = observe(row())
     receipt = check(observation)
-    assert matcher.matching_effect_ids(action(), receipt) == ("r1",)
-    failure = explain(trace_for(receipt, observation), target_matcher=matcher)
-    assert failure.single_action.assessment_alignment == "contradicted"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in failure.single_action.diagnoses
-    success = explain(trace_for(receipt, observation, response="success", reported="success"),
-                      target_matcher=matcher)
-    assert success.single_action.assessment_alignment == "consistent"
-    assert success.single_action.diagnoses == ("CONSISTENT_OUTCOME",)
-    without_matcher = explain(trace_for(receipt, observation))
-    assert without_matcher.single_action.assessment_alignment == "unassessable"
+    assert receipt.target_effect_ids == ("r1",) and receipt.findings == ()
+    failure = explain(trace_for(receipt, observation)).single_action
+    assert failure.assessment_alignment == "contradicted"
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in failure.codes
+    divergence = failure.diagnoses[failure.codes.index("ASSESSMENT_DIVERGENCE")]
+    assert divergence.evidence == ("assessment-1", "readback-1") and divergence.message
+    success = explain(trace_for(receipt, observation, response="success",
+                                reported="success")).single_action
+    assert success.assessment_alignment == "consistent"
+    assert success.codes == ("CONSISTENT_OUTCOME",)
+    unmatched = VerificationResult(**{**receipt.__dict__, "target_effect_ids": None})
+    without_matching = explain(trace_for(unmatched, observation)).single_action
+    assert without_matching.assessment_alignment == "unassessable"
+    assert "UNASSESSABLE_ASSESSMENT" in without_matching.codes
 
 
 def test_other_actor_and_unknown_cannot_judge_the_report():
-    matcher = VERIFIER.target_matcher()
     other = observe(row(action_id=None, attempt_id=None, actor="support-staff"))
     receipt = check(other)
-    explanation = explain(trace_for(receipt, other), target_matcher=matcher)
-    assert explanation.single_action.assessment_alignment == "unassessable"
-    assert "EXTERNAL_ACTOR_EFFECT" in explanation.single_action.diagnoses
+    assert receipt.target_effect_ids == ()
+    explanation = explain(trace_for(receipt, other)).single_action
+    assert explanation.assessment_alignment == "unassessable"
+    assert explanation.codes == ("UNASSESSABLE_ASSESSMENT", "EXTERNAL_ACTOR_EFFECT")
+    assert explanation.diagnoses[-1].evidence == ("r1",)
     stale = observe(row(), watermark=120)
     unknown = check(stale)
-    assert matcher.matching_effect_ids(action(), unknown) == ()
-    assert explain(trace_for(unknown, stale), target_matcher=matcher).single_action.diagnoses == (
+    assert unknown.target_effect_ids is None and unknown.findings == ()
+    assert explain(trace_for(unknown, stale)).single_action.codes == (
         "UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
+
+
+def test_excess_duplicate_and_removed_records_become_findings():
+    duplicate = check(observe(row("r1"), row("r2", committed=30)))
+    assert duplicate.status is VerificationStatus.VIOLATED
+    assert [item.code for item in duplicate.findings] == ["EXCESS_EFFECTS", "DUPLICATE_EFFECT"]
+    assert duplicate.findings[1].effect_ids == ("r1", "r2")
+    removed = check(observe(row(removed_at_ms=120)))
+    assert removed.status is VerificationStatus.VIOLATED
+    assert [item.code for item in removed.findings] == ["REMOVED_EFFECT"]
+    assert removed.target_effect_ids == ()
+    codes = explain(trace_for(removed, observe(row(removed_at_ms=120)))).single_action.codes
+    assert "REMOVED_EFFECT" in codes and "CONSEQUENCE_VIOLATION" in codes
 
 
 def test_custom_field_names():
@@ -143,7 +162,7 @@ def test_custom_field_names():
     receipt = verify(action(), observe(record), verifier=custom)
     assert receipt.status is VerificationStatus.SATISFIED
     assert receipt.origin is OriginStatus.CONFIRMED
-    assert custom.target_matcher().matching_effect_ids(action(), receipt) == ("x1",)
+    assert receipt.target_effect_ids == ("x1",)
 
 
 @pytest.mark.parametrize("kwargs,message", [
@@ -165,5 +184,3 @@ def test_invalid_configuration_is_refused():
         RecordVerifier(scope_fields=("order_id",), actor_field="effect_id")
     with pytest.raises(ValueError, match="scope fields cannot"):
         RecordVerifier(scope_fields=("effect_id",))
-    with pytest.raises(TypeError):
-        RecordTargetMatcher(object())

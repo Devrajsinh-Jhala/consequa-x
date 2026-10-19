@@ -70,7 +70,7 @@ def test_recorded_trace_explains_and_links_the_effect_to_its_dispatch():
     explanation = explain(trace)
     assert receipt.status is VerificationStatus.SATISFIED
     assert explanation.single_action.assessment_alignment == "contradicted"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in explanation.single_action.diagnoses
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in explanation.single_action.codes
     edges = {(edge.source, edge.target, edge.kind) for edge in build_graph(trace).edges}
     assert ("dispatch-1", "response-1", "RESPONSE") in edges
     assert ("dispatch-1", "effect:effect-1", "EFFECT") in edges

@@ -9,7 +9,7 @@ import pytest
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Observation, OriginStatus, OutcomeContract,
-    TargetMatcher, TimeBase, Trace, VerificationStatus, explain, verify,
+    TimeBase, Trace, VerificationStatus, explain, verify,
 )
 from consequa_x.models import Evidence, VerificationResult
 from consequa_x.schema import validate_trace
@@ -73,14 +73,10 @@ def test_explain_requires_a_typed_trace(trace):
         explain(trace)
 
 
-@pytest.mark.parametrize("unknown", [False, True])
-@pytest.mark.parametrize("adapter", [object(), {}, "matcher",
-                                   SimpleNamespace(matching_effect_ids=17)])
-def test_target_matcher_requires_a_callable_method_without_executing_unknowns(adapter, unknown):
-    observation = _example.captured_readback(available=not unknown)
-    trace = _example.build_trace(observation)
-    with pytest.raises(TypeError, match="callable matching_effect_ids method"):
-        explain(trace, target_matcher=adapter)
+@pytest.mark.parametrize("adapter", [object(), SimpleNamespace(matching_effect_ids=17)])
+def test_explain_takes_no_domain_matcher_because_verifiers_record_target_matches(adapter):
+    with pytest.raises(TypeError):
+        explain(_example.build_trace(), target_matcher=adapter)
 
 
 def test_builtin_verifier_remains_explicitly_refund_only():
@@ -96,27 +92,28 @@ def test_offline_artifact_example_round_trips_and_qualifies_a_target_match():
     assert restored.verifications[0].status is VerificationStatus.SATISFIED
     assert restored.verifications[0].origin is OriginStatus.CONFIRMED
     assert trace.observations[0].records[0]["sha256"] == trace.single_action.contract.expected["sha256"]
-    explanation = explain(restored, target_matcher=_example.ArtifactTargetMatcher())
+    assert restored.verifications[0].target_effect_ids == ("artifact-revision-7",)
+    explanation = explain(restored)
     assert explanation.single_action.assessment_alignment == "contradicted"
     assert explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
-    assert set(explanation.single_action.diagnoses) == {
+    assert set(explanation.single_action.codes) == {
         "ASSESSMENT_DIVERGENCE", "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
     }
 
 
-def test_custom_predicate_is_unassessable_without_an_explicit_domain_matcher():
+def test_custom_predicate_is_unassessable_when_its_verifier_does_no_target_matching():
     trace = _example.build_trace()
     receipt = trace.verifications[0]
     # Linked IDs and an unrelated, valid-JSON detail payload are insufficient.
-    receipt = replace(receipt, evidence=(replace(receipt.evidence[0], details={
+    receipt = replace(receipt, target_effect_ids=None, evidence=(replace(receipt.evidence[0], details={
         "records": [17], "matching_count": "not a refund count",
     }),))
     trace = replace(trace, verifications=(receipt,))
     explanation = explain(trace)
     assert explanation.single_action.assessment_alignment == "unassessable"
-    assert explanation.single_action.diagnoses == ("UNASSESSABLE_ASSESSMENT",)
-    assert "PARAMETER_MISMATCH" not in explanation.single_action.diagnoses
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.single_action.diagnoses
+    assert explanation.single_action.codes == ("UNASSESSABLE_ASSESSMENT",)
+    assert "PARAMETER_MISMATCH" not in explanation.single_action.codes
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.single_action.codes
 
 
 @pytest.mark.parametrize("observation,status,origin,alignment,required", [
@@ -137,25 +134,22 @@ def test_custom_domain_failure_unknown_and_origin_do_not_become_refund_claims(
     trace = _example.build_trace(observation)
     receipt = trace.verifications[0]
     assert receipt.status is status and receipt.origin is origin
-    explanation = explain(trace, target_matcher=_example.ArtifactTargetMatcher())
+    explanation = explain(trace)
     assert explanation.single_action.assessment_alignment == alignment
-    assert required in explanation.single_action.diagnoses
+    assert required in explanation.single_action.codes
     assert not {"PARTIAL_EFFECT", "PARAMETER_MISMATCH", "DUPLICATE_EFFECT",
-                "EXCESS_EFFECTS", "REVERSED_EFFECT"} & set(explanation.single_action.diagnoses)
+                "EXCESS_EFFECTS", "REVERSED_EFFECT"} & set(explanation.single_action.codes)
 
 
-def test_target_matcher_cannot_qualify_an_unrelated_attributable_effect_as_a_target():
+def test_satisfied_state_and_action_metadata_without_a_target_match_cannot_judge_the_report():
     trace = _example.build_trace()
     receipt = trace.verifications[0]
-    wrong_record = {**receipt.evidence[0].details["records"][0], "sha256": "0" * 64}
     # A satisfied state receipt and propagated action metadata alone do not
     # prove this action produced the requested artifact.
-    receipt = replace(receipt, evidence=(replace(receipt.evidence[0],
-                                               details={"records": [wrong_record]}),))
-    explanation = explain(replace(trace, verifications=(receipt,)),
-                          target_matcher=_example.ArtifactTargetMatcher())
+    receipt = replace(receipt, target_effect_ids=())
+    explanation = explain(replace(trace, verifications=(receipt,)))
     assert explanation.single_action.assessment_alignment == "unassessable"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.single_action.diagnoses
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.single_action.codes
 
 
 @pytest.mark.parametrize("committed_at,status", [
@@ -176,9 +170,7 @@ def test_artifact_exact_count_includes_extra_deliveries_through_inclusive_horizo
         assert trace.verifications[0].effect_ids == ("artifact-revision-7",)
     else:
         assert trace.verifications[0].effect_ids == ("artifact-revision-7", "extra-delivery")
-    matching = _example.ArtifactTargetMatcher().matching_effect_ids(
-        trace.single_action, trace.verifications[0],
-    )
+    matching = trace.verifications[0].target_effect_ids
     assert ("extra-delivery" in matching) is (committed_at <= trace.single_action.contract.deadline_ms)
 
 
@@ -214,32 +206,25 @@ def test_artifact_short_presence_witness_is_unknown_at_the_horizon_boundary(pres
 
 
 @pytest.mark.parametrize("missing_witness", [False, True])
-def test_unknown_artifact_does_not_call_a_target_matcher(missing_witness):
+def test_unknown_artifact_records_no_target_match(missing_witness):
     view = _example.captured_readback()
     record = {**view.records[0], "present_through_ms": 69}
     if missing_witness:
         record.pop("present_through_ms")
     trace = _example.build_trace(replace(view, records=(record,)))
     assert trace.verifications[0].status is VerificationStatus.UNKNOWN
-
-    class UnexpectedMatcher:
-        def matching_effect_ids(self, action, verification):
-            raise AssertionError("An unknown outcome's source payload must not be interpreted")
-
-    explanation = explain(trace, target_matcher=UnexpectedMatcher())
+    assert trace.verifications[0].target_effect_ids is None
+    explanation = explain(trace)
     assert explanation.single_action.assessment_alignment == "unassessable"
-    assert explanation.single_action.diagnoses == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
+    assert explanation.single_action.codes == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
 
 
 @pytest.mark.parametrize("ids", [["artifact-revision-7"], ("unobserved",),
                                 ("artifact-revision-7", "artifact-revision-7"), (17,), (" ",)])
-def test_target_matcher_result_is_a_unique_subset_of_attributable_ids(ids):
-    class BadMatcher:
-        def matching_effect_ids(self, action, verification):
-            return ids
-
-    with pytest.raises(ValueError, match="unique attributable effect IDs"):
-        explain(_example.build_trace(), target_matcher=BadMatcher())
+def test_target_matches_are_a_unique_subset_of_attributable_ids(ids):
+    receipt = _example.build_trace().verifications[0]
+    with pytest.raises((TypeError, ValueError)):
+        replace(receipt, target_effect_ids=ids)
 
 
 def refund_trace():
@@ -260,16 +245,17 @@ def refund_trace():
     {"records": [], "matching_count": True}, {"records": [], "peak_matching_count": "2"},
     {"records": [], "eligible_count": -1}, {"records": [], "relevant_count": []},
 ])
-def test_known_refund_malformed_detail_shapes_raise_controlled_errors(details):
+def test_explain_reads_receipts_and_never_reinterprets_evidence_details(details):
     trace = refund_trace()
     receipt = trace.verifications[0]
     receipt = replace(receipt, evidence=(replace(receipt.evidence[0], details=details),))
     malformed = replace(trace, verifications=(receipt,))
-    # All these values pass wire validation; refund interpretation validates
-    # its own domain instead of leaking AttributeError or comparing JSON types.
+    # These details pass wire validation. Domain interpretation happened when
+    # the verifier ran; explain uses only the receipt's recorded conclusions.
     assert Trace.from_json(malformed.to_json()) == malformed
-    with pytest.raises(ValueError, match="Refund evidence"):
-        explain(malformed)
+    explanation = explain(malformed).single_action
+    assert explanation.codes == ("CONSISTENT_OUTCOME",)
+    assert explanation.assessment_alignment == "consistent"
 
 
 @pytest.mark.parametrize("changes", [
@@ -279,14 +265,15 @@ def test_known_refund_malformed_detail_shapes_raise_controlled_errors(details):
     {"reversed_at_ms": None}, {"reversed_at_ms": 49}, {"reversed_at_ms": 70},
     {"status": "reversed", "reversed_at_ms": 201},
 ])
-def test_known_linked_refund_malformed_payload_is_rejected(changes):
+def test_refund_verifier_keeps_a_malformed_linked_record_unknown(changes):
     trace = refund_trace()
-    receipt = trace.verifications[0]
-    details = {**receipt.evidence[0].details,
-               "records": [{**receipt.evidence[0].details["records"][0], **changes}]}
-    receipt = replace(receipt, evidence=(replace(receipt.evidence[0], details=details),))
-    with pytest.raises(ValueError, match="Linked refund evidence"):
-        explain(replace(trace, verifications=(receipt,)))
+    view = trace.observations[0]
+    view = replace(view, records=({**view.records[0], **changes},))
+    receipt = verify(trace.single_action, view)
+    assert receipt.status is VerificationStatus.UNKNOWN
+    assert receipt.target_effect_ids is None and receipt.findings == ()
+    explanation = explain(replace(trace, observations=(view,), verifications=(receipt,)))
+    assert explanation.single_action.codes == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
 
 
 def test_unknown_refund_keeps_malformed_source_evidence_without_claiming_alignment():
@@ -297,11 +284,12 @@ def test_unknown_refund_keeps_malformed_source_evidence_without_claiming_alignme
                                            details={"records": [17]}),), action_id=receipt.action_id)
     explanation = explain(replace(trace, verifications=(receipt,)))
     assert explanation.single_action.assessment_alignment == "unassessable"
-    assert explanation.single_action.diagnoses == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
+    assert explanation.single_action.codes == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
 
 
-def test_refund_explanation_default_and_public_matcher_export_remain_available():
-    assert TargetMatcher is not None
-    explanation = explain(refund_trace())
+def test_refund_verifier_records_target_matches_for_explanation():
+    trace = refund_trace()
+    assert trace.verifications[0].target_effect_ids == ("refund-effect",)
+    explanation = explain(trace)
     assert explanation.single_action.assessment_alignment == "consistent"
-    assert explanation.single_action.diagnoses == ("CONSISTENT_OUTCOME",)
+    assert explanation.single_action.codes == ("CONSISTENT_OUTCOME",)

@@ -11,10 +11,11 @@ from __future__ import annotations
 
 from typing import Any
 
-from .errors import ConsequaTypeError, ContractError, ReceiptError, ValidationError
+from .errors import ContractError, ValidationError
 from .models import (
     Action,
     Evidence,
+    Finding,
     Observation,
     OriginStatus,
     VerificationResult,
@@ -60,6 +61,12 @@ class RecordVerifier:
     links this action, otherwise ``unknown``. With the default field names the
     evidence graph also links each record to its dispatch through
     ``attempt_field``.
+
+    When the outcome is known, the receipt's ``target_effect_ids`` lists this
+    action's records that carry every expected value, committed between
+    registration and the deadline, and persist through the horizon. Findings:
+    ``EXCESS_EFFECTS``, ``DUPLICATE_EFFECT``, ``PARAMETER_MISMATCH`` and
+    ``REMOVED_EFFECT``.
     """
 
     predicate = RECORD_PRESENT
@@ -84,10 +91,6 @@ class RecordVerifier:
             raise ValidationError("record metadata field names must be distinct")
         if self._metadata & set(self.scope_fields):
             raise ValidationError("scope fields cannot also be record metadata fields")
-
-    def target_matcher(self) -> RecordTargetMatcher:
-        """A matcher with the same field configuration, for ``explain``."""
-        return RecordTargetMatcher(self)
 
     def fields(self) -> dict[str, Any]:
         return {"scope_fields": list(self.scope_fields), "effect_id": self.effect_id_field,
@@ -126,13 +129,15 @@ class RecordVerifier:
             "records": [dict(record) for record in observation.records],
         }
 
-        def result(status, reason, origin=OriginStatus.UNKNOWN, effect_ids=(), linked=()):
+        def result(status, reason, origin=OriginStatus.UNKNOWN, effect_ids=(), linked=(),
+                   target_ids=None, findings=()):
             evidence = (Evidence(observation_id=observation.observation_id, source=observation.source,
                                  as_of_ms=observation.as_of_ms, details=details),)
             return VerificationResult(
                 action_id=action.action_id, contract_id=contract.contract_id, status=status,
                 observed_at_ms=observation.observed_at_ms, evidence=evidence, origin=origin,
-                effect_ids=effect_ids, attributable_effect_ids=linked, reason=reason)
+                effect_ids=effect_ids, attributable_effect_ids=linked, target_effect_ids=target_ids,
+                findings=findings, reason=reason)
 
         unknown = VerificationStatus.UNKNOWN
         if not observation.available:
@@ -191,13 +196,46 @@ class RecordVerifier:
                        peak_matching_count=peak, relevant_count=len(relevant))
         count_ok = bool(eligible) if contract.exact_count is None else (
             len(eligible) == contract.exact_count and peak == contract.exact_count)
+        linked_records = [record for record in relevant if record[self.effect_id_field] in linked]
+        target_ids = tuple(record[self.effect_id_field] for record in linked_records if (
+            all(name in record and record[name] == value for name, value in expected.items())
+            and action.registered_at_ms <= record[self.committed_field] <= contract.deadline_ms
+            and self._removed_at(record, horizon) > horizon
+        ))
+        findings = self._findings(contract, expected, value_matches, linked_records, peak)
         if count_ok:
             return result(VerificationStatus.SATISFIED,
                           "Record predicate is satisfied through the declared horizon",
-                          origin, effect_ids, linked)
+                          origin, effect_ids, linked, target_ids, findings)
         return result(VerificationStatus.VIOLATED,
                       "Record predicate is violated in an exhaustive horizon-covering snapshot",
-                      origin, effect_ids, linked)
+                      origin, effect_ids, linked, target_ids, findings)
+
+    def _findings(self, contract, expected, value_matches, linked, peak) -> tuple[Finding, ...]:
+        """Record facts established by a complete, horizon-covering snapshot."""
+        ids = self.effect_id_field
+        findings = []
+        exact = contract.exact_count
+        if exact is not None and peak > exact:
+            findings.append(Finding(
+                code="EXCESS_EFFECTS", effect_ids=tuple(record[ids] for record in value_matches),
+                detail=f"Up to {peak} matching records; the contract allows {exact}."))
+            if len(linked) > exact:
+                findings.append(Finding(
+                    code="DUPLICATE_EFFECT", effect_ids=tuple(record[ids] for record in linked),
+                    detail=f"{len(linked)} records carry this action's identity."))
+        mismatched = tuple(record[ids] for record in linked
+                           if any(name not in record or record[name] != value
+                                  for name, value in expected.items()))
+        if mismatched:
+            findings.append(Finding(code="PARAMETER_MISMATCH", effect_ids=mismatched,
+                                    detail="A record from this action differs from the expected values."))
+        removed = tuple(record[ids] for record in linked
+                        if self._removed_at(record, contract.horizon_ms) <= contract.horizon_ms)
+        if removed:
+            findings.append(Finding(code="REMOVED_EFFECT", effect_ids=removed,
+                                    detail="A record from this action was removed before the horizon."))
+        return tuple(findings)
 
     def _peak_count(self, records: list[dict], deadline_ms: int, horizon_ms: int) -> int:
         """Maximum matching count during the closed interval from deadline to horizon.
@@ -220,44 +258,3 @@ class RecordVerifier:
             count += changes[time_ms]
             peak = max(peak, count)
         return peak
-
-
-class RecordTargetMatcher:
-    """Qualify attributable records against a ``record_present`` contract.
-
-    Returns the attributable effect identifiers whose records carry every
-    expected value, committed between registration and the deadline, and
-    persist through the horizon. Supplying it to ``explain`` declares that the
-    agent's success or failure report refers to this contract.
-    """
-
-    def __init__(self, verifier: RecordVerifier) -> None:
-        if not isinstance(verifier, RecordVerifier):
-            raise ConsequaTypeError("RecordTargetMatcher requires the RecordVerifier it matches")
-        self.verifier = verifier
-
-    def matching_effect_ids(self, action: Action,
-                            verification: VerificationResult) -> tuple[str, ...]:
-        verifier = self.verifier
-        expected = verifier.check_contract(action)
-        if verification.status is VerificationStatus.UNKNOWN:
-            return ()
-        details = verification.evidence[-1].details
-        records = details.get("records")
-        if not isinstance(records, list) or any(not isinstance(record, dict) for record in records):
-            raise ReceiptError("Record evidence must be an array of objects")
-        contract = action.contract
-        attributable = set(verification.attributable_effect_ids)
-        matches = []
-        for record in records:
-            effect_id = record.get(verifier.effect_id_field)
-            if effect_id not in attributable or effect_id in matches:
-                continue
-            committed = record.get(verifier.committed_field)
-            if type(committed) is not int:
-                raise ReceiptError("Linked record evidence has an invalid commit time")
-            if (all(name in record and record[name] == value for name, value in expected.items())
-                    and action.registered_at_ms <= committed <= contract.deadline_ms
-                    and verifier._removed_at(record, contract.horizon_ms) > contract.horizon_ms):
-                matches.append(effect_id)
-        return tuple(matches)

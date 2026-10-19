@@ -16,6 +16,7 @@ from enum import Enum
 from functools import lru_cache
 import json
 import math
+import re
 import types
 from typing import Any, get_args, get_origin, get_type_hints
 
@@ -352,8 +353,40 @@ class Evidence(_Record):
         _payload(self, "details")
 
 
+_CODE = re.compile(r"[A-Z][A-Z0-9_]*")
+
+
+@dataclass(frozen=True, kw_only=True)
+class Finding(_Record):
+    """A domain fact a verifier established, such as ``EXCESS_EFFECTS``.
+
+    ``code`` is an UPPER_SNAKE_CASE identifier. ``effect_ids`` names the
+    observed effects the finding rests on; ``detail`` is optional text.
+    """
+
+    code: str
+    effect_ids: tuple[str, ...] = ()
+    detail: str = ""
+
+    def __post_init__(self) -> None:
+        _string(self.code, "code")
+        if not _CODE.fullmatch(self.code):
+            raise ValidationError("finding code must be UPPER_SNAKE_CASE")
+        _string_tuple(self.effect_ids, "effect_ids")
+        _string(self.detail, "detail", nonempty=False)
+
+
 @dataclass(frozen=True, kw_only=True)
 class VerificationResult(_Record):
+    """A verifier's receipt for one action's contract and captured readback.
+
+    ``target_effect_ids`` is ``None`` when the verifier did no target matching;
+    otherwise it lists the attributable effects that match the full target
+    (payload, timing and persistence), possibly none. ``findings`` are domain
+    facts the verifier established. Both are the verifier's claims, recorded
+    with the receipt; ``explain`` interprets them without domain knowledge.
+    """
+
     action_id: str
     contract_id: str
     status: VerificationStatus
@@ -362,6 +395,8 @@ class VerificationResult(_Record):
     origin: OriginStatus = OriginStatus.UNKNOWN
     effect_ids: tuple[str, ...] = ()
     attributable_effect_ids: tuple[str, ...] = ()
+    target_effect_ids: tuple[str, ...] | None = None
+    findings: tuple[Finding, ...] = ()
     reason: str = ""
 
     def __post_init__(self) -> None:
@@ -385,6 +420,19 @@ class VerificationResult(_Record):
             raise ValidationError("other_actor origin requires observed effect_ids")
         if any(item.as_of_ms > self.observed_at_ms for item in self.evidence):
             raise ValidationError("evidence.as_of_ms must not be later than verification observed_at_ms")
+        if self.target_effect_ids is not None:
+            _string_tuple(self.target_effect_ids, "target_effect_ids")
+            if not set(self.target_effect_ids).issubset(self.attributable_effect_ids):
+                raise ValidationError("target_effect_ids must be a subset of attributable_effect_ids")
+            if self.status is VerificationStatus.UNKNOWN and self.target_effect_ids:
+                raise ValidationError("an unknown outcome cannot have target matches")
+        _records(self.findings, Finding, "findings")
+        codes = [item.code for item in self.findings]
+        if len(set(codes)) != len(codes):
+            raise ValidationError("findings must have unique codes")
+        for item in self.findings:
+            if not set(item.effect_ids).issubset(self.effect_ids):
+                raise ValidationError("finding effect_ids must be a subset of effect_ids")
         _string(self.reason, "reason", nonempty=False)
 
 

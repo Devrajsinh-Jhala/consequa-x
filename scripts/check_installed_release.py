@@ -95,7 +95,7 @@ def checked_install(wheel: dict, expected_version: str) -> dict:
 
 
 def artifact_trace(*, content: bytes = b"approved artifact", available: bool = True,
-                   origin: bool = True):
+                   origin: bool = True, match_targets: bool = True):
     """Build a self-contained captured fixture using only the installed public API.
 
     The application owns the exactly-one delivery predicate and its independent
@@ -146,10 +146,17 @@ def artifact_trace(*, content: bytes = b"approved artifact", available: bool = T
             linked = tuple(item["effect_id"] for item in observation.records
                            if item.get("action_id") == action.action_id
                            and item.get("actor") == action.actor)
-            return VerificationResult(contract_id=action.contract.contract_id, status=status,
-                                      observed_at_ms=observation.observed_at_ms, evidence=evidence,
-                                      origin=OriginStatus.CONFIRMED if linked else OriginStatus.UNKNOWN,
-                                      effect_ids=identifiers, attributable_effect_ids=linked, reason=UNSAFE_TEXT, action_id=action.action_id)
+            # Content and time are checked separately from the fixture's origin link.
+            target = None
+            if match_targets and status is not VerificationStatus.UNKNOWN:
+                target = tuple(item["effect_id"] for item in matching
+                               if item["effect_id"] in linked)
+            return VerificationResult(
+                action_id=action.action_id, contract_id=action.contract.contract_id,
+                status=status, observed_at_ms=observation.observed_at_ms, evidence=evidence,
+                origin=OriginStatus.CONFIRMED if linked else OriginStatus.UNKNOWN,
+                effect_ids=identifiers, attributable_effect_ids=linked, target_effect_ids=target,
+                reason=UNSAFE_TEXT)
 
     decision = Event(id=PRIVATE_MARKER + "-decision", type=EventType.AGENT_DECISION,
                      time_ms=1, actor=action.actor, data={"captured_payload": UNSAFE_TEXT})
@@ -165,54 +172,36 @@ def artifact_trace(*, content: bytes = b"approved artifact", available: bool = T
                  observations=(observation,), verifications=(receipt,))
 
 
-class ArtifactTargetMatcher:
-    """Check captured content and time separately from the fixture's origin link."""
-
-    def matching_effect_ids(self, action, verification):
-        from consequa_x import VerificationStatus
-
-        if verification.status is VerificationStatus.UNKNOWN:
-            return ()
-        return tuple(item["effect_id"] for item in verification.evidence[-1].details["records"]
-                     if item["effect_id"] in verification.attributable_effect_ids
-                     and item["path"] == action.contract.expected["path"]
-                     and item["sha256"] == action.contract.expected["sha256"]
-                     and action.registered_at_ms <= item["committed_at_ms"]
-                     <= action.contract.deadline_ms
-                     and item["present_through_ms"] >= action.contract.horizon_ms)
-
-
 def check_trace_workflow() -> dict:
     from consequa_x import OriginStatus, Trace, explain
     from consequa_x.schema import validate_trace
 
-    matcher = ArtifactTargetMatcher()
     statuses = set()
     traces = (artifact_trace(), artifact_trace(content=b"different captured bytes"),
               artifact_trace(available=False), artifact_trace(origin=False))
     for trace in traces:
         require(Trace.from_json(trace.to_json()) == validate_trace(trace.to_json())
                 == validate_trace(trace.to_dict()) == trace, "Trace round-trip changed evidence")
-        explanation = explain(trace, target_matcher=matcher)
+        explanation = explain(trace)
         statuses.add(explanation.single_action.consequence.status.value)
         require(bool(explanation.graph.nodes), "Evidence graph is empty")
     require(statuses == {"satisfied", "violated", "unknown"}, "Outcome coverage differs")
-    require(explain(traces[0]).single_action.assessment_alignment == "unassessable",
-            "Generic predicate must be neutral without a target matcher")
-    require(explain(traces[0], target_matcher=matcher).single_action.assessment_alignment == "contradicted",
+    require(explain(artifact_trace(match_targets=False)).single_action.assessment_alignment
+            == "unassessable", "A receipt without target matching must leave alignment neutral")
+    require(explain(traces[0]).single_action.assessment_alignment == "contradicted",
             "Independent matching delivery must contradict a reported failure")
-    require(explain(traces[2], target_matcher=matcher).single_action.assessment_alignment == "unassessable",
+    require(explain(traces[2]).single_action.assessment_alignment == "unassessable",
             "Unavailable readback must preserve unknown assessment alignment")
-    unknown_origin = explain(traces[3], target_matcher=matcher)
+    unknown_origin = explain(traces[3])
     require(unknown_origin.single_action.consequence.origin is OriginStatus.UNKNOWN
             and unknown_origin.single_action.assessment_alignment == "unassessable",
             "Satisfied state alone cannot establish action origin")
     missing = explain(replace(traces[0], verifications=())).single_action
-    require(missing.consequence is None and missing.diagnoses[0] == "NO_VERIFICATION"
+    require(missing.consequence is None and missing.codes[0] == "NO_VERIFICATION"
             and missing.assessment_alignment == "unassessable",
             "Missing independent verification must be reported, never treated as an outcome")
     return {"trace_roundtrips": len(traces), "observed_statuses": sorted(statuses),
-            "custom_verifier": True, "custom_target_matcher": True,
+            "custom_verifier": True, "verifier_target_matching": True,
             "missing_verification_reported": True, "unknown_origin_preserved": True}
 
 
@@ -304,7 +293,7 @@ def check_capture_workflow() -> dict:
         if response.status is ResponseStatus.TIMEOUT:
             require(response.result == {"exception": "TimeoutError"},
                     "Recorded exception kept more than its type name")
-        explanation = explain(trace, target_matcher=verifier.target_matcher())
+        explanation = explain(trace)
         observed = (response.status.value, explanation.single_action.consequence.status.value,
                     explanation.single_action.consequence.origin.value, explanation.single_action.assessment_alignment)
         require(observed == outcome, f"Recorded {mode} outcome differs: {observed}")

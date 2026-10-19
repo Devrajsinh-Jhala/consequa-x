@@ -42,6 +42,11 @@ class ArtifactVerifier:
     ``present_through_ms`` must be the read adapter's persistence witness, not an
     assertion copied from the agent or the delivery response. Source authenticity
     and the veracity of that witness are application responsibilities.
+
+    When the outcome is known, the receipt's ``target_effect_ids`` names this
+    action's revisions whose path, content and timing match the target, checked
+    separately from origin metadata. That lets ``explain`` judge the agent's
+    report without any artifact-specific logic of its own.
     """
 
     def verify(self, action: Action, observation: Observation) -> VerificationResult:
@@ -59,8 +64,14 @@ class ArtifactVerifier:
         }),)
 
         def result(status, reason, origin=OriginStatus.UNKNOWN, ids=(), linked=()):
-            return VerificationResult(contract_id=contract.contract_id, status=status, observed_at_ms=observation.observed_at_ms,
-                                      evidence=evidence, origin=origin, effect_ids=ids, attributable_effect_ids=linked, reason=reason, action_id=action.action_id)
+            target = None
+            if status is not VerificationStatus.UNKNOWN:
+                target = tuple(item for item in _matches(action, records) if item in linked)
+            return VerificationResult(
+                action_id=action.action_id, contract_id=contract.contract_id, status=status,
+                observed_at_ms=observation.observed_at_ms, evidence=evidence, origin=origin,
+                effect_ids=ids, attributable_effect_ids=linked, target_effect_ids=target,
+                reason=reason)
 
         if (not observation.available or not observation.complete
                 or observation.scope.get("artifact_path") != contract.expected["artifact_path"]
@@ -108,17 +119,6 @@ class ArtifactVerifier:
         return result(VerificationStatus.SATISFIED,
                       "One matching delivery committed by deadline and persisted through horizon",
                       origin, ids, linked)
-
-
-class ArtifactTargetMatcher:
-    """Qualify payload and temporal matches separately from origin metadata."""
-
-    def matching_effect_ids(self, action: Action, verification: VerificationResult) -> tuple[str, ...]:
-        if verification.status is VerificationStatus.UNKNOWN:
-            return ()
-        matches = _matches(action, verification.evidence[-1].details["records"])
-        return tuple(identifier for identifier in matches
-                     if identifier in verification.attributable_effect_ids)
 
 
 def captured_readback(
@@ -173,5 +173,5 @@ def build_trace(observation: Observation | None = None) -> Trace:
 
 if __name__ == "__main__":
     restored = Trace.from_json(build_trace().to_json())
-    explanation = explain(restored, target_matcher=ArtifactTargetMatcher())
+    explanation = explain(restored)
     print(json.dumps({"trace": restored.to_dict(), "explanation": explanation.to_dict()}, indent=2))

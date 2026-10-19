@@ -24,8 +24,8 @@ window.CONSEQUA_DEMO = {
     "  delayed_reconciled: CONSISTENT_OUTCOME",
     "  unsafe_retry: ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / EXCESS_EFFECTS / DUPLICATE_EFFECT",
     "  safe_retry: ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
-    "  external_actor: EXTERNAL_ACTOR_EFFECT",
-    "  missing_provenance: UNCONFIRMED_ORIGIN",
+    "  external_actor: UNASSESSABLE_ASSESSMENT / EXTERNAL_ACTOR_EFFECT",
+    "  missing_provenance: UNASSESSABLE_ASSESSMENT / UNCONFIRMED_ORIGIN",
     "  synthetic_compensation: ASSESSMENT_DIVERGENCE / RESPONSE_EFFECT_DIVERGENCE / CONSEQUENCE_VIOLATION / REVERSED_EFFECT"
    ]
   },
@@ -38,7 +38,7 @@ window.CONSEQUA_DEMO = {
  ],
  "report": {
   "path": "assets/sample-report.html",
-  "sha256": "0f78d0589d01ed51e86f0a1d4b8a971d1a0b7e067624161aee995cf109c47bee",
+  "sha256": "5ca06033bdaad60615c28bb23eed6c83a61099cf96b9e05c5f018e9bedcf0ed4",
   "trace": "my-demo/traces/episode_01.json"
  },
  "scenarios": [
@@ -700,9 +700,10 @@ window.CONSEQUA_DEMO = {
     "origin": "other_actor",
     "alignment": "unassessable",
     "diagnoses": [
+     "UNASSESSABLE_ASSESSMENT",
      "EXTERNAL_ACTOR_EFFECT"
     ],
-    "diagnosis": "EXTERNAL_ACTOR_EFFECT",
+    "diagnosis": "UNASSESSABLE_ASSESSMENT / EXTERNAL_ACTOR_EFFECT",
     "summary": "Agent reported failure; independent verification is satisfied; effect origin is other_actor.",
     "reason": "Refund predicate is satisfied through the declared horizon"
    }

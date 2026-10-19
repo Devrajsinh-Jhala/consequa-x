@@ -71,7 +71,7 @@ def test_demo_outcomes_are_grounded_in_the_declared_contract(name, status, origi
     result = episode.trace.verifications[-1]
     assert result.status is status
     assert result.origin is origin
-    assert diagnosis in episode.explanation.single_action.diagnoses
+    assert diagnosis in episode.explanation.single_action.codes
 
 
 def test_lost_response_does_not_hide_committed_effect_or_rewrite_agent_assessment():
@@ -85,7 +85,7 @@ def test_lost_response_does_not_hide_committed_effect_or_rewrite_agent_assessmen
     assert result.effect_ids == result.attributable_effect_ids
     assert episode.explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
     assert episode.explanation.single_action.assessment_alignment == "contradicted"
-    assert set(episode.explanation.single_action.diagnoses) == {
+    assert set(episode.explanation.single_action.codes) == {
         "ASSESSMENT_DIVERGENCE", "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
     }
 
@@ -105,8 +105,8 @@ def test_same_selected_refund_and_response_sequence_can_have_different_effects()
     assert unsafe.trace.verifications[-1].status is VerificationStatus.VIOLATED
     assert len(safe.trace.verifications[-1].effect_ids) == 1
     assert len(unsafe.trace.verifications[-1].effect_ids) == 2
-    assert "DUPLICATE_EFFECT" in unsafe.explanation.single_action.diagnoses
-    assert "DUPLICATE_EFFECT" not in safe.explanation.single_action.diagnoses
+    assert "DUPLICATE_EFFECT" in unsafe.explanation.single_action.codes
+    assert "DUPLICATE_EFFECT" not in safe.explanation.single_action.codes
 
 
 def test_external_actor_state_satisfaction_does_not_claim_agent_effect_origin():
@@ -115,9 +115,9 @@ def test_external_actor_state_satisfaction_does_not_claim_agent_effect_origin():
     assert result.status is VerificationStatus.SATISFIED
     assert result.origin is OriginStatus.OTHER_ACTOR
     assert result.effect_ids and result.attributable_effect_ids == ()
-    assert "EXTERNAL_ACTOR_EFFECT" in episode.explanation.single_action.diagnoses
+    assert "EXTERNAL_ACTOR_EFFECT" in episode.explanation.single_action.codes
     assert episode.explanation.single_action.assessment_alignment == "unassessable"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in episode.explanation.single_action.diagnoses
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in episode.explanation.single_action.codes
     assert episode.explanation.single_action.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
 
 
@@ -127,7 +127,7 @@ def test_missing_origin_does_not_prevent_state_verification_or_infer_provenance(
     assert result.status is VerificationStatus.SATISFIED
     assert result.origin is OriginStatus.UNKNOWN
     assert result.attributable_effect_ids == ()
-    assert "UNCONFIRMED_ORIGIN" in episode.explanation.single_action.diagnoses
+    assert "UNCONFIRMED_ORIGIN" in episode.explanation.single_action.codes
     assert episode.explanation.single_action.assessment_alignment == "unassessable"
     for record in episode.trace.observations[-1].records:
         assert not {"action_id", "attempt_id", "actor"} & record.keys()
@@ -137,8 +137,8 @@ def test_cautious_timeout_assessment_is_not_called_an_incorrect_belief():
     episode = run_scenario(ScenarioConfig(timeout_assessment=AssessmentStatus.UNKNOWN))
     assert episode.trace.verifications[-1].status is VerificationStatus.SATISFIED
     assert episode.explanation.single_action.assessment_alignment == "unassessable"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in episode.explanation.single_action.diagnoses
-    assert "ASSESSMENT_DIVERGENCE" not in episode.explanation.single_action.diagnoses
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in episode.explanation.single_action.codes
+    assert "ASSESSMENT_DIVERGENCE" not in episode.explanation.single_action.codes
     assert episode.explanation.single_action.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
 
 
@@ -148,7 +148,7 @@ def test_delayed_readback_remains_unknown_until_horizon_is_covered():
     reconciled = run_scenario(configs["delayed_reconciled"])
     assert delayed.trace.verifications[-1].status is VerificationStatus.UNKNOWN
     assert delayed.explanation.single_action.assessment_alignment == "unassessable"
-    assert "ASSESSMENT_DIVERGENCE" not in delayed.explanation.single_action.diagnoses
+    assert "ASSESSMENT_DIVERGENCE" not in delayed.explanation.single_action.codes
     assert len(reconciled.trace.observations) == len(reconciled.trace.verifications) == 2
     assert [result.status for result in reconciled.trace.verifications] == [
         VerificationStatus.UNKNOWN, VerificationStatus.SATISFIED,

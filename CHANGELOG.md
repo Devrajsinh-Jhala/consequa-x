@@ -41,6 +41,27 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   contract node per action, and offline reports show every action, with an
   Action column for responses and verifications and the time base in the
   footer.
+- Verifiers own domain interpretation. `VerificationResult` gains
+  `target_effect_ids` (`None` when the verifier did no target matching,
+  otherwise this action's effects that match the full target) and `findings`
+  (`Finding(code, effect_ids, detail)`). `RefundVerifier` records refund
+  matches and the `EXCESS_EFFECTS`, `DUPLICATE_EFFECT`, `PARAMETER_MISMATCH`,
+  `PARTIAL_EFFECT` and `REVERSED_EFFECT` findings; `RecordVerifier` records
+  record matches and `EXCESS_EFFECTS`, `DUPLICATE_EFFECT`,
+  `PARAMETER_MISMATCH` and `REMOVED_EFFECT`. `TargetMatcher`,
+  `RecordTargetMatcher`, `RecordVerifier.target_matcher()` and
+  `explain(..., target_matcher=...)` are removed; a custom verifier sets
+  `target_effect_ids` instead.
+- `explain()` is domain-independent: it reads receipts, responses and
+  assessments and never reinterprets evidence details. Diagnoses are
+  structured `Diagnosis(code, evidence, message)` records; `codes` gives the
+  codes and `diagnosis` a display label. `UNASSESSABLE_ASSESSMENT` now applies
+  to every predicate whenever the outcome is known but alignment cannot be
+  judged (1.x omitted it for refunds). `CORE_DIAGNOSES` lists the codes
+  `explain()` produces.
+- Offline reports show each action's assessment alignment and diagnosis
+  codes, computed from the recorded receipts. Codes from custom verifiers are
+  counted rather than printed.
 - Research code (benchmark, replay, policies, studies and their audit
   scripts) produces and reads schema `1.0` traces. Retained 1.x study outputs
   under `output/` are unchanged.

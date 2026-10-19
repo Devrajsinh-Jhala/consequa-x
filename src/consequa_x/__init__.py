@@ -11,9 +11,10 @@ from .errors import (
 from .explanation import ConsequenceExplanation, TargetMatcher, explain
 from .graph import ConsequenceGraph, build_graph
 from .models import (
-    Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, Observation,
+    Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, FrozenDict,
+    FrozenList, Observation,
     OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, Trace,
-    VerificationResult, VerificationStatus,
+    VerificationResult, VerificationStatus, thaw,
 )
 from .record_verifier import RecordTargetMatcher, RecordVerifier
 from .policies import Policy, PolicyDecision, PolicyError, PolicyReply, PolicyRequest, ScriptedRefundPolicy
@@ -28,6 +29,7 @@ __all__ = [
     "Policy", "PolicyDecision", "PolicyError", "PolicyReply", "PolicyRequest", "ScriptedRefundPolicy",
     "ResponseStatus", "ToolResponse", "TraceRecorder", "VerificationResult", "VerificationStatus", "Verifier",
     "Attempt", "build_graph", "capture_tool", "explain",
+    "FrozenDict", "FrozenList", "thaw",
     "ConsequaError", "ConsequaTypeError", "ContractError", "ReceiptError", "RecorderError",
     "SchemaVersionError", "ValidationError",
     "leave_one_out", "recency_attribution", "render_report", "verify",

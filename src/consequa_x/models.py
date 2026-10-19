@@ -1,10 +1,12 @@
 """Versioned records for the public trace and independently observed evidence.
 
 Records are frozen dataclasses. JSON payloads are validated and copied on input
-and on export, so a caller's input dictionary cannot change a captured record.
-Payload dictionaries remain ordinary JSON containers; callers should create a
-new record instead of mutating them. External observations are distinct from
-evaluator-only simulator truth, which is deliberately absent from this schema.
+and made deeply read-only: objects become ``FrozenDict`` and arrays become
+``FrozenList``. They still compare equal to, and serialize like, ordinary dicts
+and lists, but any attempt to change them raises ``ConsequaTypeError``; create a
+new record instead. ``to_dict`` returns ordinary, mutable copies. External
+observations are distinct from evaluator-only simulator truth, which is
+deliberately absent from this schema.
 """
 
 from __future__ import annotations
@@ -99,38 +101,96 @@ def _records(value: Any, record_type: type, label: str) -> None:
             raise ConsequaTypeError(f"{label}[{index}] must be a {record_type.__name__}")
 
 
-def _json_copy(value: Any, path: str = "value", active: set[int] | None = None) -> Any:
-    """Validate strict JSON data, reject cycles, and return an isolated copy."""
+def _read_only(self: Any, *args: Any, **kwargs: Any) -> Any:
+    raise ConsequaTypeError("captured payloads are read-only; create a new record instead")
+
+
+class FrozenDict(dict):
+    """A captured JSON object: it reads like a ``dict`` but cannot be changed."""
+
+    __slots__ = ()
+    __setitem__ = __delitem__ = __ior__ = _read_only
+    clear = pop = popitem = setdefault = update = _read_only
+
+    def __copy__(self) -> FrozenDict:
+        return self
+
+    def __deepcopy__(self, memo: dict) -> FrozenDict:
+        return self
+
+    def __reduce__(self) -> tuple:
+        return (FrozenDict, (dict(self),))
+
+
+class FrozenList(list):
+    """A captured JSON array: it reads like a ``list`` but cannot be changed."""
+
+    __slots__ = ()
+    __setitem__ = __delitem__ = __iadd__ = __imul__ = _read_only
+    append = extend = insert = remove = pop = clear = sort = reverse = _read_only
+
+    def __copy__(self) -> FrozenList:
+        return self
+
+    def __deepcopy__(self, memo: dict) -> FrozenList:
+        return self
+
+    def __reduce__(self) -> tuple:
+        return (FrozenList, (list(self),))
+
+
+_OBJECT_TYPES = (dict, FrozenDict)
+_ARRAY_TYPES = (list, FrozenList)
+
+
+def _json_copy(value: Any, path: str = "value", active: set[int] | None = None, *,
+               frozen: bool = False) -> Any:
+    """Validate strict JSON data, reject cycles, and return an isolated copy.
+
+    With ``frozen`` the copy is deeply read-only (``FrozenDict``/``FrozenList``);
+    otherwise it is made of ordinary dicts and lists.
+    """
     if value is None or type(value) in (str, bool, int):
         return value
     if type(value) is float:
         if not math.isfinite(value):
             raise ValidationError(f"{path} must contain only finite JSON numbers")
         return value
-    if type(value) not in (dict, list):
+    if type(value) not in _OBJECT_TYPES + _ARRAY_TYPES:
         raise ConsequaTypeError(f"{path} contains a non-JSON value: {type(value).__name__}")
     active = set() if active is None else active
     if id(value) in active:
         raise ValidationError(f"{path} contains a circular reference")
     active.add(id(value))
     try:
-        if type(value) is list:
-            return [_json_copy(item, f"{path}[{index}]", active) for index, item in enumerate(value)]
+        if type(value) in _ARRAY_TYPES:
+            items = [_json_copy(item, f"{path}[{index}]", active, frozen=frozen)
+                     for index, item in enumerate(value)]
+            return FrozenList(items) if frozen else items
         result = {}
         for key, item in value.items():
             if type(key) is not str:
                 raise ConsequaTypeError(f"{path} keys must be strings")
-            result[key] = _json_copy(item, f"{path}.{key}", active)
-        return result
+            result[key] = _json_copy(item, f"{path}.{key}", active, frozen=frozen)
+        return FrozenDict(result) if frozen else result
     finally:
         active.remove(id(value))
 
 
+def thaw(value: Any) -> Any:
+    """Return an ordinary, mutable deep copy of a captured JSON payload.
+
+    ``copy.deepcopy`` of a read-only payload returns the same read-only value,
+    as for any immutable object; use ``thaw`` to edit a copy.
+    """
+    return _json_copy(value, "value")
+
+
 def _payload(record: Any, name: str) -> None:
     value = getattr(record, name)
-    if type(value) is not dict:
+    if type(value) not in _OBJECT_TYPES:
         raise ConsequaTypeError(f"{name} must be a JSON object")
-    object.__setattr__(record, name, _json_copy(value, name))
+    object.__setattr__(record, name, _json_copy(value, name, frozen=True))
 
 
 class _Record:
@@ -259,9 +319,9 @@ class Observation(_Record):
             raise ConsequaTypeError("records must be a tuple of JSON objects")
         isolated = []
         for index, record in enumerate(self.records):
-            if type(record) is not dict:
+            if type(record) not in _OBJECT_TYPES:
                 raise ConsequaTypeError(f"records[{index}] must be a JSON object")
-            isolated.append(_json_copy(record, f"records[{index}]"))
+            isolated.append(_json_copy(record, f"records[{index}]", frozen=True))
         object.__setattr__(self, "records", tuple(isolated))
         for name in ("complete", "available"):
             if type(getattr(self, name)) is not bool:
@@ -446,12 +506,12 @@ def _serialize(value: Any, path: str, active: set[int]) -> Any:
             }
         finally:
             active.remove(id(value))
-    if type(value) in (dict, list, tuple):
+    if type(value) in _OBJECT_TYPES + _ARRAY_TYPES + (tuple,):
         if id(value) in active:
             raise ValidationError(f"{path} contains a circular reference")
         active.add(id(value))
         try:
-            if type(value) is dict:
+            if type(value) in _OBJECT_TYPES:
                 if any(type(key) is not str for key in value):
                     raise ConsequaTypeError(f"{path} keys must be strings")
                 return {

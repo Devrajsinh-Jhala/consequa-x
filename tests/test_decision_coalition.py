@@ -7,6 +7,7 @@ from jsonschema import Draft202012Validator
 import pytest
 
 import consequa_x.benchmark.decision_coalition as coalition_module
+from consequa_x.models import thaw
 from consequa_x.benchmark.decision_coalition import replay_decision_coalition
 from consequa_x.benchmark.evaluation import BudgetedPolicy
 from consequa_x.benchmark.payments import Fault, PaymentWorld
@@ -65,7 +66,7 @@ def decisions(episode):
 def changed_capture(episode, index, edit):
     events = list(episode.trace.events)
     event = decisions(episode)[index]
-    data = deepcopy(event.data)
+    data = thaw(event.data)
     edit(data)
     events[events.index(event)] = replace(event, data=data)
     return replace(episode, trace=replace(episode.trace, events=tuple(events)))
@@ -333,7 +334,9 @@ def test_held_metadata_and_receipts_do_not_alias_factual_capture():
     )
     replay.decisions[0].reply["metadata"]["decision_coalition_replay"]["factual_reply_metadata"]["seed"] = 99
     replay.decisions[0].request["task"]["amount_minor"] = 1
-    decisions(replay.episode)[0].data["policy_reply"]["metadata"]["decision_coalition_replay"]["factual_reply_metadata"]["seed"] = 98
+    held = decisions(replay.episode)[0].data["policy_reply"]["metadata"]["decision_coalition_replay"]
+    with pytest.raises(TypeError, match="read-only"):
+        held["factual_reply_metadata"]["seed"] = 98
     assert original.trace.to_json() == snapshot
 
 

@@ -181,7 +181,8 @@ def test_policy_mutations_do_not_rewrite_task_context_responses_or_prompt_captur
             request.task["amount_minor"] = 1
             request.context["vip_memory"] = "Tampered memory"
             if request.responses:
-                request.responses[-1].result["code"] = "Tampered response"
+                with pytest.raises(TypeError, match="read-only"):
+                    request.responses[-1].result["code"] = "Tampered response"
             return reply
 
     policy = MutatingPolicy()

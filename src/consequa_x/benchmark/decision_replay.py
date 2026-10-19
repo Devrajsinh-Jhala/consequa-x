@@ -103,7 +103,7 @@ def _json_key(value) -> str:
 
 
 def _object_fields(value, names: set[str], label: str) -> dict:
-    if type(value) is not dict or set(value) != names:
+    if not isinstance(value, dict) or set(value) != names:
         raise ValueError(f"{label} must contain exactly {sorted(names)}")
     return value
 
@@ -111,7 +111,7 @@ def _object_fields(value, names: set[str], label: str) -> dict:
 def _request_from_capture(value) -> PolicyRequest:
     value = _object_fields(value, {"stage", "task", "context", "responses",
                                    "attempts_remaining"}, "captured policy_request")
-    if type(value["responses"]) is not list:
+    if not isinstance(value["responses"], list):
         raise ValueError("captured responses must be a JSON array")
     responses = []
     for item in value["responses"]:

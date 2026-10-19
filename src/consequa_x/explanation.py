@@ -184,7 +184,7 @@ def _refund_target(trace: Trace, verified: VerificationResult) -> tuple[list[dic
         raise ContractError("Known refund explanations require a valid refund contract payload")
     details = verified.evidence[-1].details
     records = details.get("records", [])
-    if type(records) is not list or any(type(record) is not dict for record in records):
+    if not isinstance(records, list) or any(not isinstance(record, dict) for record in records):
         raise ReceiptError("Refund evidence records must be an array of objects")
     for field in ("matching_count", "peak_matching_count", "eligible_count", "relevant_count"):
         if field in details and (type(details[field]) is not int or details[field] < 0):

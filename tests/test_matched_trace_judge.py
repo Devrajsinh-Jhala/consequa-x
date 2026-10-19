@@ -99,14 +99,15 @@ def factory(opener):
 
 
 def test_allowlist_excludes_hidden_text_and_consistently_aliases_ids():
-    captured = deepcopy(trace())
     marker = "NEVER_SEND_HIDDEN_LABEL_OR_RATIONALE"
-    captured.action.arguments["hidden_gold"] = marker
-    captured.action.contract.expected["hidden_fault"] = marker
-    captured.events[0].data["value"] = marker
-    captured.events[0].data["model"] = marker
-    captured.responses[0].result["private_error_detail"] = marker
-    captured.observations[0].records[0]["evaluator_truth"] = marker
+    data = trace().to_dict()
+    data["action"]["arguments"]["hidden_gold"] = marker
+    data["action"]["contract"]["expected"]["hidden_fault"] = marker
+    data["events"][0]["data"]["value"] = marker
+    data["events"][0]["data"]["model"] = marker
+    data["responses"][0]["result"]["private_error_detail"] = marker
+    data["observations"][0]["records"][0]["evaluator_truth"] = marker
+    captured = type(trace()).from_dict(data)
     value = judge.public_input(captured)
     encoded = json.dumps(value)
     assert marker not in encoded

@@ -2,7 +2,9 @@ from dataclasses import FrozenInstanceError, dataclass, replace
 import json
 import unittest
 
+from consequa_x.errors import ConsequaTypeError
 from consequa_x.models import (
+    FrozenDict, FrozenList,
     Action,
     AgentAssessment,
     AssessmentStatus,
@@ -112,9 +114,43 @@ class ModelTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "circular"):
             Event("e", "t", EventType.USER_INPUT, 0, data=circular)
 
-    def test_shared_serializer_rejects_unsafe_mutated_payload(self):
+    def test_captured_payloads_are_deeply_read_only(self):
         trace = sample_trace()
-        trace.action.arguments["bad"] = float("nan")
+        arguments = trace.action.arguments
+        self.assertIsInstance(arguments, FrozenDict)
+        for change in (lambda: arguments.__setitem__("bad", 1), lambda: arguments.pop("x", None),
+                       lambda: arguments.update(bad=1), lambda: arguments.clear(),
+                       lambda: arguments.setdefault("bad", 1)):
+            with self.assertRaisesRegex(ConsequaTypeError, "read-only"):
+                change()
+        nested = OutcomeContract("c", "p", {"items": [{"a": 1}]}, 10).expected
+        self.assertIsInstance(nested["items"], FrozenList)
+        self.assertEqual(nested, {"items": [{"a": 1}]})
+        for change in (lambda: nested["items"].append(2), lambda: nested["items"].sort(),
+                       lambda: nested["items"].__setitem__(0, 1),
+                       lambda: nested["items"][0].__setitem__("a", 2)):
+            with self.assertRaises(ConsequaTypeError):
+                change()
+
+    def test_read_only_payloads_export_copy_and_pickle_as_plain_json(self):
+        import copy
+        import pickle
+
+        contract = OutcomeContract("c", "p", {"items": [{"a": 1}], "n": 2}, 10)
+        exported = contract.to_dict()["expected"]
+        self.assertIs(type(exported), dict)
+        self.assertIs(type(exported["items"]), list)
+        exported["items"].append(3)  # Exports are ordinary, independent copies.
+        self.assertEqual(contract.expected, {"items": [{"a": 1}], "n": 2})
+        self.assertEqual(json.loads(json.dumps(contract.expected)), {"items": [{"a": 1}], "n": 2})
+        self.assertIs(copy.deepcopy(contract.expected), contract.expected)
+        restored = pickle.loads(pickle.dumps(contract))
+        self.assertEqual(restored, contract)
+        self.assertIsInstance(restored.expected["items"], FrozenList)
+
+    def test_shared_serializer_rejects_a_payload_changed_by_bypassing_read_only(self):
+        trace = sample_trace()
+        dict.__setitem__(trace.action.arguments, "bad", float("nan"))
         with self.assertRaisesRegex(ValueError, "finite"):
             trace.to_json()
         self.assertEqual(to_dict(ResponseStatus.TIMEOUT), "timeout")

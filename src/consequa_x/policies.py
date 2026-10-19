@@ -13,7 +13,7 @@ import math
 from typing import Any, Literal, Protocol, runtime_checkable
 
 from .errors import ConsequaError
-from .models import AssessmentStatus, ResponseStatus, ToolResponse, to_dict
+from .models import AssessmentStatus, FrozenDict, FrozenList, ResponseStatus, ToolResponse, to_dict
 
 
 class PolicyError(ConsequaError, ValueError):
@@ -25,14 +25,14 @@ def _copy_json(value: Any, label: str = "value", active: set[int] | None = None)
         return value
     if type(value) is float and math.isfinite(value):
         return value
-    if type(value) not in (dict, list):
+    if type(value) not in (dict, list, FrozenDict, FrozenList):
         raise PolicyError(f"{label} must contain strict, finite JSON values")
     active = set() if active is None else active
     if id(value) in active:
         raise PolicyError(f"{label} must not contain circular references")
     active.add(id(value))
     try:
-        if type(value) is list:
+        if type(value) in (list, FrozenList):
             return [_copy_json(item, f"{label}[{i}]", active) for i, item in enumerate(value)]
         if any(type(key) is not str for key in value):
             raise PolicyError(f"{label} object keys must be strings")
@@ -42,7 +42,7 @@ def _copy_json(value: Any, label: str = "value", active: set[int] | None = None)
 
 
 def _object(value: Any, label: str) -> dict:
-    if type(value) is not dict:
+    if type(value) not in (dict, FrozenDict):
         raise PolicyError(f"{label} must be a JSON object")
     return _copy_json(value, label)
 

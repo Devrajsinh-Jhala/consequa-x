@@ -6,6 +6,7 @@ from dataclasses import replace
 from jsonschema import Draft202012Validator
 import pytest
 
+from consequa_x.models import thaw
 from consequa_x.benchmark.decision_replay import replay_decision_prefix
 from consequa_x.benchmark.evaluation import BudgetedPolicy
 from consequa_x.benchmark.payments import Fault, PaymentWorld
@@ -57,7 +58,7 @@ def decisions(episode):
 def change_capture(episode, index, edit):
     events = list(episode.trace.events)
     event = decisions(episode)[index]
-    data = deepcopy(event.data)
+    data = thaw(event.data)
     edit(data)
     events[events.index(event)] = replace(event, data=data)
     return replace(episode, trace=replace(episode.trace, events=tuple(events)))
@@ -118,7 +119,8 @@ def test_held_reply_metadata_is_detached_from_the_factual_trace():
     replay = replay_decision_prefix(original, BudgetedPolicy(RecordingPolicy(), 2),
                                     hold_count=2, continuation_seed=4)
     held = decisions(replay.episode)[0].data["policy_reply"]["metadata"]["decision_prefix_replay"]
-    held["factual_reply_metadata"]["seed"] = 999
+    with pytest.raises(TypeError, match="read-only"):
+        held["factual_reply_metadata"]["seed"] = 999
     replay.decisions[0].request["task"]["amount_minor"] = 1
     assert original.trace.to_json() == original_snapshot
 

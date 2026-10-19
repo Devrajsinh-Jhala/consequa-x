@@ -13,6 +13,7 @@ from statistics import NormalDist
 
 import pytest
 
+from consequa_x.models import thaw
 from consequa_x.attribution import ReplayOutcome
 from consequa_x.benchmark import decision_shapley as subject
 from consequa_x.benchmark.evaluation import BudgetedPolicy
@@ -466,7 +467,7 @@ def test_entire_factual_capture_is_validated_before_first_fresh_call():
     original = recorded()
     events = list(original.trace.events)
     last = next(event for event in reversed(events) if event.type is EventType.AGENT_DECISION)
-    data = deepcopy(last.data)
+    data = thaw(last.data)
     data["policy_request"]["responses"][0]["result"]["fabricated"] = True
     events[events.index(last)] = replace(last, data=data)
     corrupted = replace(original, trace=replace(original.trace, events=tuple(events)))

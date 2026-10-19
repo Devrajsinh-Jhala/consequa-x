@@ -257,7 +257,9 @@ def test_details_opt_in_requires_actual_boolean(value):
 
 def test_mutated_nested_payload_is_revalidated_without_exposing_its_error():
     trace = captured_trace()
-    trace.action.arguments[SECRET] = float("nan")
+    with pytest.raises(TypeError, match="read-only"):
+        trace.action.arguments[SECRET] = float("nan")
+    dict.__setitem__(trace.action.arguments, SECRET, float("nan"))  # Deliberate bypass.
     with pytest.raises(ValueError) as error:
         render_report(trace)
     assert str(error.value) == "Cannot render an invalid trace"

@@ -29,12 +29,12 @@ def request(**changes):
 def test_public_records_copy_json_and_export_without_aliasing():
     task = {"order_age_days": 43, "details": {"items": [1]}}
     context = {"customer_request": "Please refund."}
-    original = response()
-    original.result["nested"] = {"items": [1]}
+    original = replace(response(), result={**response().result, "nested": {"items": [1]}})
     captured = request(stage="after_response", task=task, context=context, responses=(original,))
     task["details"]["items"].append(2)
     context["customer_request"] = "Modified"
-    original.result["nested"]["items"].append(2)
+    with pytest.raises(TypeError, match="read-only"):
+        original.result["nested"]["items"].append(2)
     assert captured.task["details"]["items"] == [1]
     assert captured.context["customer_request"] == "Please refund."
     assert captured.responses[0].result["nested"]["items"] == [1]

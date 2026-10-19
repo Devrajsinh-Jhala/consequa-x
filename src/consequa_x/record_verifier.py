@@ -242,7 +242,7 @@ class RecordTargetMatcher:
             return ()
         details = verification.evidence[-1].details
         records = details.get("records")
-        if type(records) is not list or any(type(record) is not dict for record in records):
+        if not isinstance(records, list) or any(not isinstance(record, dict) for record in records):
             raise ReceiptError("Record evidence must be an array of objects")
         contract = action.contract
         attributable = set(verification.attributable_effect_ids)

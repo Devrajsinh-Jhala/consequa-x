@@ -301,7 +301,8 @@ class PaymentWorldTests(unittest.TestCase):
         attempts = gold_attempts(world)
         attempts[0]["response_result"]["amount_minor"] = 1
         view = world.read_refunds("pay_42")
-        view.records[0]["amount_minor"] = 1
+        with self.assertRaises(TypeError):
+            view.records[0]["amount_minor"] = 1
         fork = world.fork()
         fork.reverse(gold_effects(fork)[0]["effect_id"])
         fork.external_refund("pay_42", 50_000)
@@ -356,7 +357,8 @@ class PaymentWorldTests(unittest.TestCase):
     def test_invalid_caller_mutated_payload_does_not_enter_gold_as_non_json(self) -> None:
         world = PaymentWorld()
         action = refund_action()
-        action.arguments["memo"] = float("nan")
+        # Captured payloads are read-only; this deliberately bypasses that guard.
+        dict.__setitem__(action.arguments, "memo", float("nan"))
         response = world.refund(action, "attempt_1")
         self.assertEqual(response.result["code"], "invalid_payload")
         (attempt,) = gold_attempts(world)
@@ -369,7 +371,7 @@ class PaymentWorldTests(unittest.TestCase):
             with self.subTest(amount=amount):
                 world = PaymentWorld()
                 action = refund_action()
-                action.arguments["amount_minor"] = amount
+                action = replace(action, arguments={**action.arguments, "amount_minor": amount})
                 response = world.refund(action, "attempt_1")
                 self.assertEqual(response.status, ResponseStatus.ERROR)
                 self.assertEqual(response.result["code"], "invalid_amount")

@@ -12,6 +12,12 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   boundary, or recorded evidence cannot support the interpretation) and
   `RecorderError`. `InsufficientEvidenceError` and `PolicyError` join the
   hierarchy.
+- Captured payloads are deeply read-only. Event data, arguments, contract
+  expectations, results, readback records, scopes and evidence details are
+  `FrozenDict` and `FrozenList` values: they compare equal to and serialize
+  like ordinary dicts and lists, but any change raises `ConsequaTypeError`.
+  `copy.deepcopy` returns the same read-only value; `thaw()` returns an
+  editable copy, and `to_dict()` still exports ordinary dicts and lists.
 
 ## 1.2.0 - 19 October 2026
 

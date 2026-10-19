@@ -12,6 +12,7 @@ import random
 
 import pytest
 
+from consequa_x.models import thaw
 from consequa_x.benchmark.decision_contrastive import contrastive_decisions
 from consequa_x.benchmark.evaluation import BudgetedPolicy
 from consequa_x.benchmark.payments import Fault
@@ -502,7 +503,7 @@ def test_full_factual_capture_is_checked_before_first_new_policy_call():
     original = recorded()
     events = list(original.trace.events)
     terminal = decision_events(original)[-1]
-    data = deepcopy(terminal.data)
+    data = thaw(terminal.data)
     data["policy_request"]["responses"][0]["result"]["fabricated"] = True
     events[events.index(terminal)] = replace(terminal, data=data)
     corrupted = replace(original, trace=replace(original.trace, events=tuple(events)))

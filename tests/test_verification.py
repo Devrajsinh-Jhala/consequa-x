@@ -5,6 +5,7 @@ from dataclasses import replace
 import unittest
 
 from consequa_x.benchmark.payments import Fault, PaymentWorld
+from consequa_x.errors import ConsequaTypeError
 from consequa_x.models import Action, Observation, OriginStatus, OutcomeContract, VerificationStatus
 from consequa_x.verification import RefundVerifier, verify
 
@@ -274,8 +275,10 @@ class RefundVerificationTests(unittest.TestCase):
         result = RefundVerifier().verify(action, view)
         self.assertEqual(view.to_dict(), before_view)
         self.assertEqual(action.to_dict(), before_action)
-        result.evidence[0].details["scope"]["metadata"]["label"] = "changed"
-        result.evidence[0].details["records"][0]["amount_minor"] = 1
+        with self.assertRaises(ConsequaTypeError):
+            result.evidence[0].details["scope"]["metadata"]["label"] = "changed"
+        with self.assertRaises(ConsequaTypeError):
+            result.evidence[0].details["records"][0]["amount_minor"] = 1
         self.assertEqual(view.to_dict(), before_view)
         self.assertEqual(action.to_dict(), before_action)
 

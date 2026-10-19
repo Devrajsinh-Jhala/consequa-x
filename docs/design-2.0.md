@@ -21,7 +21,7 @@ evidence stays unknown.
 | Time (A5) | unlabelled integer milliseconds | integer milliseconds with a declared `time_base`: `unix_ms` (UTC epoch) or `relative_ms` |
 | Redundant identity | `trace_id` repeated on every action and event | stated once, on the trace |
 | Construction (A2) | positional dataclass arguments | keyword-only arguments |
-| Payloads (A9) | copied on input, mutable afterwards | deeply immutable: objects become read-only mappings, arrays become tuples |
+| Payloads (A9) | copied on input, mutable afterwards | deeply read-only: `FrozenDict` and `FrozenList` still compare equal to and serialize like dicts and lists, but cannot change; `thaw()` gives an editable copy |
 | Errors (A8) | bare `ValueError`/`TypeError` | typed exceptions under `ConsequaError`, still subclassing `ValueError`/`TypeError` |
 
 Times stay integers so ordering and arithmetic remain exact. A `unix_ms` trace

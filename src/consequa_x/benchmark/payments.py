@@ -11,7 +11,7 @@ from enum import Enum
 import json
 from typing import Any
 
-from consequa_x.models import Action, Observation, ResponseStatus, ToolResponse
+from consequa_x.models import Action, Observation, ResponseStatus, ToolResponse, thaw
 
 
 class Fault(str, Enum):
@@ -214,7 +214,7 @@ class PaymentWorld:
                     "fault": fault.value,
                     "fault_applied": fault_applied,
                     "response_status": status.value,
-                    "response_result": deepcopy(response.result),
+                    "response_result": thaw(response.result),
                     "committed_effect_ids": list(committed_effect_ids),
                     "result_effect_ids": list(result_effect_ids),
                     "cache_hit": cache_origin is not None,

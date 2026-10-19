@@ -26,7 +26,7 @@ class StandInSession:
 def recorder():
     ticks = iter(range(0, 1000, 5))
     rec = TraceRecorder("trace-1", actor="agent", clock=lambda: next(ticks))
-    contract = OutcomeContract("c1", "record_present", {"order_id": "o-17"}, deadline_ms=100)
+    contract = OutcomeContract(contract_id="c1", predicate="record_present", expected={"order_id": "o-17"}, deadline_ms=100)
     rec.register("refund-1", "issue_refund", {"order_id": "o-17"}, contract=contract)
     return rec
 

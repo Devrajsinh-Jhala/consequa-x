@@ -85,7 +85,7 @@ def checked_install(wheel: dict, expected_version: str) -> dict:
         installed = package_file.parent.parent / relative
         require(installed.is_file() and sha256(installed.read_bytes()).hexdigest() == digest,
                 f"Installed payload differs from reviewed wheel: {relative}")
-    schema = resources.files("consequa_x").joinpath("schemas/trace-v0.1.json")
+    schema = resources.files("consequa_x").joinpath("schemas/trace-v1.0.json")
     require(get_trace_schema() == generate_trace_schema() == json.loads(
         schema.read_text(encoding="utf-8")), "Installed portable trace schema differs")
     require(resources.files("consequa_x").joinpath("py.typed").is_file(),
@@ -104,30 +104,29 @@ def artifact_trace(*, content: bytes = b"approved artifact", available: bool = T
     """
     from consequa_x import (
         Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, Observation,
-        OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, Trace,
+        OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, TimeBase, Trace,
         VerificationResult, VerificationStatus, verify,
     )
 
     expected = {"path": PRIVATE_MARKER + "/report.txt",
                 "sha256": sha256(b"approved artifact").hexdigest()}
-    action = Action(PRIVATE_MARKER + "-action", PRIVATE_MARKER + "-trace",
-                    PRIVATE_MARKER + "-agent", PRIVATE_MARKER + "-deliver", expected, 0,
-                    OutcomeContract(PRIVATE_MARKER + "-contract", "artifact_delivered",
-                                    expected, 50, stability_ms=20),
+    action = Action(action_id=PRIVATE_MARKER + "-action", actor=PRIVATE_MARKER + "-agent", name=PRIVATE_MARKER + "-deliver", arguments=expected, registered_at_ms=0,
+                    contract=OutcomeContract(contract_id=PRIVATE_MARKER + "-contract", predicate="artifact_delivered",
+                                    expected=expected, deadline_ms=50, stability_ms=20),
                     idempotency_key=PRIVATE_MARKER + "-key")
     record = {"effect_id": PRIVATE_MARKER + "-effect", "path": expected["path"],
               "sha256": sha256(content).hexdigest(), "committed_at_ms": 25,
               "present_through_ms": 100}
     if origin:
         record.update(action_id=action.action_id, actor=action.actor)
-    observation = Observation(PRIVATE_MARKER + "-observation", PRIVATE_MARKER + "-readback",
-                              100, 100, {"path": expected["path"]}, (record,),
+    observation = Observation(observation_id=PRIVATE_MARKER + "-observation", source=PRIVATE_MARKER + "-readback",
+                              observed_at_ms=100, as_of_ms=100, scope={"path": expected["path"]}, records=(record,),
                               available=available)
 
     class CapturedArtifactVerifier:
         def verify(self, action, observation):
-            evidence = (Evidence(observation.observation_id, observation.source,
-                                 observation.as_of_ms, {"records": list(observation.records),
+            evidence = (Evidence(observation_id=observation.observation_id, source=observation.source,
+                                 as_of_ms=observation.as_of_ms, details={"records": list(observation.records),
                                                        "scope": observation.scope}),)
             matching = [item for item in observation.records
                         if item["path"] == action.contract.expected["path"]
@@ -147,23 +146,23 @@ def artifact_trace(*, content: bytes = b"approved artifact", available: bool = T
             linked = tuple(item["effect_id"] for item in observation.records
                            if item.get("action_id") == action.action_id
                            and item.get("actor") == action.actor)
-            return VerificationResult(action.contract.contract_id, status,
-                                      observation.observed_at_ms, evidence,
-                                      OriginStatus.CONFIRMED if linked else OriginStatus.UNKNOWN,
-                                      identifiers, linked, UNSAFE_TEXT)
+            return VerificationResult(contract_id=action.contract.contract_id, status=status,
+                                      observed_at_ms=observation.observed_at_ms, evidence=evidence,
+                                      origin=OriginStatus.CONFIRMED if linked else OriginStatus.UNKNOWN,
+                                      effect_ids=identifiers, attributable_effect_ids=linked, reason=UNSAFE_TEXT, action_id=action.action_id)
 
-    decision = Event(PRIVATE_MARKER + "-decision", action.trace_id, EventType.AGENT_DECISION,
-                     1, action.actor, data={"captured_payload": UNSAFE_TEXT})
-    dispatch = Event(PRIVATE_MARKER + "-dispatch", action.trace_id, EventType.ACTION_DISPATCH,
-                     5, action.actor, (decision.id,), {"action_id": action.action_id})
-    timeout = Event(PRIVATE_MARKER + "-timeout", action.trace_id, EventType.TOOL_RESPONSE,
-                    10, action.actor, (dispatch.id,), {"attempt_id": PRIVATE_MARKER + "-attempt"})
-    response = ToolResponse(PRIVATE_MARKER + "-attempt", ResponseStatus.TIMEOUT, 10,
-                            PRIVATE_MARKER + "-request", {"payload": UNSAFE_TEXT})
-    assessment = AgentAssessment(AssessmentStatus.FAILURE, 11, (timeout.id,), UNSAFE_TEXT)
+    decision = Event(id=PRIVATE_MARKER + "-decision", type=EventType.AGENT_DECISION,
+                     time_ms=1, actor=action.actor, data={"captured_payload": UNSAFE_TEXT})
+    dispatch = Event(id=PRIVATE_MARKER + "-dispatch", type=EventType.ACTION_DISPATCH,
+                     time_ms=5, actor=action.actor, parent_ids=(decision.id,), data={"action_id": action.action_id})
+    timeout = Event(id=PRIVATE_MARKER + "-timeout", type=EventType.TOOL_RESPONSE,
+                    time_ms=10, actor=action.actor, parent_ids=(dispatch.id,), data={"attempt_id": PRIVATE_MARKER + "-attempt"})
+    response = ToolResponse(attempt_id=PRIVATE_MARKER + "-attempt", status=ResponseStatus.TIMEOUT, time_ms=10,
+                            provider_request_id=PRIVATE_MARKER + "-request", result={"payload": UNSAFE_TEXT}, action_id=action.action_id)
+    assessment = AgentAssessment(status=AssessmentStatus.FAILURE, time_ms=11, evidence_event_ids=(timeout.id,), rationale=UNSAFE_TEXT, assessment_id=PRIVATE_MARKER + "-assessment", action_id=action.action_id)
     receipt = verify(action, observation, verifier=CapturedArtifactVerifier())
-    return Trace(action.trace_id, action, (decision, dispatch, timeout), (response,), assessment,
-                 (observation,), (receipt,))
+    return Trace(trace_id=PRIVATE_MARKER + "-trace", time_base=TimeBase.RELATIVE_MS, actions=(action,), events=(decision, dispatch, timeout), responses=(response,), assessments=(assessment,),
+                 observations=(observation,), verifications=(receipt,))
 
 
 class ArtifactTargetMatcher:
@@ -195,29 +194,26 @@ def check_trace_workflow() -> dict:
         require(Trace.from_json(trace.to_json()) == validate_trace(trace.to_json())
                 == validate_trace(trace.to_dict()) == trace, "Trace round-trip changed evidence")
         explanation = explain(trace, target_matcher=matcher)
-        statuses.add(explanation.consequence.status.value)
+        statuses.add(explanation.single_action.consequence.status.value)
         require(bool(explanation.graph.nodes), "Evidence graph is empty")
     require(statuses == {"satisfied", "violated", "unknown"}, "Outcome coverage differs")
-    require(explain(traces[0]).assessment_alignment == "unassessable",
+    require(explain(traces[0]).single_action.assessment_alignment == "unassessable",
             "Generic predicate must be neutral without a target matcher")
-    require(explain(traces[0], target_matcher=matcher).assessment_alignment == "contradicted",
+    require(explain(traces[0], target_matcher=matcher).single_action.assessment_alignment == "contradicted",
             "Independent matching delivery must contradict a reported failure")
-    require(explain(traces[2], target_matcher=matcher).assessment_alignment == "unassessable",
+    require(explain(traces[2], target_matcher=matcher).single_action.assessment_alignment == "unassessable",
             "Unavailable readback must preserve unknown assessment alignment")
     unknown_origin = explain(traces[3], target_matcher=matcher)
-    require(unknown_origin.consequence.origin is OriginStatus.UNKNOWN
-            and unknown_origin.assessment_alignment == "unassessable",
+    require(unknown_origin.single_action.consequence.origin is OriginStatus.UNKNOWN
+            and unknown_origin.single_action.assessment_alignment == "unassessable",
             "Satisfied state alone cannot establish action origin")
-    incomplete = replace(traces[0], verifications=())
-    try:
-        explain(incomplete)
-    except ValueError:
-        pass
-    else:
-        raise ValueError("Missing independent verification was accepted")
+    missing = explain(replace(traces[0], verifications=())).single_action
+    require(missing.consequence is None and missing.diagnoses[0] == "NO_VERIFICATION"
+            and missing.assessment_alignment == "unassessable",
+            "Missing independent verification must be reported, never treated as an outcome")
     return {"trace_roundtrips": len(traces), "observed_statuses": sorted(statuses),
             "custom_verifier": True, "custom_target_matcher": True,
-            "missing_verification_refused": True, "unknown_origin_preserved": True}
+            "missing_verification_reported": True, "unknown_origin_preserved": True}
 
 
 def captured_record_trace(mode: str):
@@ -234,7 +230,7 @@ def captured_record_trace(mode: str):
     rec = TraceRecorder(PRIVATE_MARKER + "-capture", actor=PRIVATE_MARKER + "-agent",
                         clock=lambda: now[0])
     expected = {"order_id": PRIVATE_MARKER + "-order", "amount_minor": 5000}
-    contract = OutcomeContract(PRIVATE_MARKER + "-record-contract", "record_present", expected,
+    contract = OutcomeContract(contract_id=PRIVATE_MARKER + "-record-contract", predicate="record_present", expected=expected,
                                deadline_ms=200, exact_count=1, stability_ms=50)
     verifier = RecordVerifier(scope_fields=("order_id",))
     store = []
@@ -242,7 +238,8 @@ def captured_record_trace(mode: str):
     now[0] = 2
     rec.decision({"tool": "issue_refund"}, inputs=(message,))
     now[0] = 3
-    action = rec.register(PRIVATE_MARKER + "-refund", "issue_refund", expected, contract=contract)
+    action = rec.register(PRIVATE_MARKER + "-refund", "issue_refund", expected,
+                          contract=contract).action
     now[0] = 5
 
     def write(effect_id, **origin):
@@ -279,9 +276,9 @@ def captured_record_trace(mode: str):
     now[0] = 61
     rec.assessment("success" if mode == "stale" else "failure")
     now[0] = 300
-    observation = Observation(PRIVATE_MARKER + "-readback", PRIVATE_MARKER + "-replica",
-                              rec.now(), 100 if mode == "stale" else 300,
-                              {"order_id": expected["order_id"]}, tuple(store))
+    observation = Observation(observation_id=PRIVATE_MARKER + "-readback", source=PRIVATE_MARKER + "-replica",
+                              observed_at_ms=rec.now(), as_of_ms=100 if mode == "stale" else 300,
+                              scope={"order_id": expected["order_id"]}, records=tuple(store))
     rec.verify(observation, verifier=verifier)
     return rec.trace(), verifier
 
@@ -308,8 +305,8 @@ def check_capture_workflow() -> dict:
             require(response.result == {"exception": "TimeoutError"},
                     "Recorded exception kept more than its type name")
         explanation = explain(trace, target_matcher=verifier.target_matcher())
-        observed = (response.status.value, explanation.consequence.status.value,
-                    explanation.consequence.origin.value, explanation.assessment_alignment)
+        observed = (response.status.value, explanation.single_action.consequence.status.value,
+                    explanation.single_action.consequence.origin.value, explanation.single_action.assessment_alignment)
         require(observed == outcome, f"Recorded {mode} outcome differs: {observed}")
         require(PRIVATE_MARKER not in render_report(trace),
                 "Default report of a recorded trace leaked captured identity")
@@ -320,9 +317,10 @@ def check_capture_workflow() -> dict:
         async def call_tool(self, name, arguments):
             return SimpleNamespace(isError=True, content=[UNSAFE_TEXT])
 
-    rec = TraceRecorder(PRIVATE_MARKER + "-mcp", actor=PRIVATE_MARKER + "-agent")
+    rec = TraceRecorder(PRIVATE_MARKER + "-mcp", actor=PRIVATE_MARKER + "-agent",
+                        time_base="relative_ms")
     rec.register(PRIVATE_MARKER + "-mcp-action", "issue_refund", {}, contract=OutcomeContract(
-        PRIVATE_MARKER + "-mcp-contract", "record_present", {"order_id": "o-1"}, 200))
+        contract_id=PRIVATE_MARKER + "-mcp-contract", predicate="record_present", expected={"order_id": "o-1"}, deadline_ms=200))
     asyncio.run(call_mcp_tool(rec, StandInSession(), "issue_refund", {}))
     rec.assessment("unknown")
     (response,) = rec.trace().responses
@@ -339,10 +337,10 @@ def invalid_trace_inputs() -> dict[str, str]:
     good = artifact_trace().to_dict()
     mutations = {
         "unknown_top_level": lambda item: item.update(unexpected=True),
-        "unknown_nested_field": lambda item: item["action"].update(unexpected=True),
-        "boolean_time": lambda item: item["action"].update(registered_at_ms=True),
-        "wrong_trace_identity": lambda item: item["action"].update(trace_id="different"),
-        "missing_evidence_event": lambda item: item["assessment"].update(
+        "unknown_nested_field": lambda item: item["actions"][0].update(unexpected=True),
+        "boolean_time": lambda item: item["actions"][0].update(registered_at_ms=True),
+        "wrong_action_identity": lambda item: item["responses"][0].update(action_id="different"),
+        "missing_evidence_event": lambda item: item["assessments"][0].update(
             evidence_event_ids=["missing"]),
         "unsupported_version": lambda item: item.update(schema_version="999"),
     }

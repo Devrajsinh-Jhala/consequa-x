@@ -13,7 +13,7 @@ from copy import deepcopy
 from ..attribution import Intervention, ReplayOutcome
 from ..explanation import explain
 from ..models import (
-    Action, AgentAssessment, Event, EventType, OutcomeContract, Trace,
+    Action, AgentAssessment, Event, EventType, OutcomeContract, TimeBase, Trace,
     VerificationStatus, to_dict,
 )
 from ..policies import Policy, PolicyError, PolicyRequest, validate_reply
@@ -77,19 +77,19 @@ def run_policy_scenario(
     world = PaymentWorld({"pay_42": 1_000_000, "pay_other": 1_000_000}, seed=seed)
     trace_id = f"trace:{seed}"
     events = [
-        Event(name, trace_id, kind, index, data={"value": visible_context[name]})
+        Event(id=name, type=kind, time_ms=index, data={"value": visible_context[name]})
         for index, (name, kind) in enumerate(_CONTEXT_TYPES)
     ]
     context_ids = tuple(name for name, _ in _CONTEXT_TYPES)
     world.advance(len(_CONTEXT_TYPES))
     action = Action(
-        action_id=f"refund:{seed}", trace_id=trace_id, actor="RefundAgent", name="refund",
+        action_id=f"refund:{seed}", actor="RefundAgent", name="refund",
         arguments={"payment_id": "pay_42", "amount_minor": config.amount_minor, "currency": "INR"},
         registered_at_ms=world.time_ms,
         contract=OutcomeContract(
-            f"contract:{seed}", "refund_processed",
-            {"payment_id": "pay_42", "amount_minor": config.amount_minor, "currency": "INR"},
-            config.deadline_ms, stability_ms=config.stability_ms,
+            contract_id=f"contract:{seed}", predicate="refund_processed",
+            expected={"payment_id": "pay_42", "amount_minor": config.amount_minor, "currency": "INR"},
+            deadline_ms=config.deadline_ms, stability_ms=config.stability_ms,
         ),
         idempotency_key=f"consequa-refund-{seed}" if config.use_idempotency else None,
     )
@@ -125,7 +125,7 @@ def run_policy_scenario(
         reply = deepcopy(reply)
         decision_id = "refund_decision" if stage == "select" else f"response_decision_{number}"
         events.append(Event(
-            decision_id, trace_id, EventType.AGENT_DECISION, world.time_ms,
+            id=decision_id, type=EventType.AGENT_DECISION, time_ms=world.time_ms,
             actor=action.actor, parent_ids=context_ids + tuple(response_ids),
             data={
                 "selected": reply.decision.operation in {"refund", "retry"},
@@ -136,11 +136,13 @@ def run_policy_scenario(
             },
         ))
         assessment = AgentAssessment(
-            reply.decision.assessment, world.time_ms,
-            tuple(response_ids) or (decision_id,), reply.decision.rationale,
+            assessment_id=f"assessment_{number}", action_id=action.action_id,
+            status=reply.decision.assessment, time_ms=world.time_ms,
+            evidence_event_ids=tuple(response_ids) or (decision_id,),
+            rationale=reply.decision.rationale,
         )
         events.append(Event(
-            f"assessment_{number}", trace_id, EventType.AGENT_ASSESSMENT, world.time_ms,
+            id=f"assessment_{number}", type=EventType.AGENT_ASSESSMENT, time_ms=world.time_ms,
             actor=action.actor, parent_ids=(decision_id,), data=assessment.to_dict(),
         ))
         return reply.decision, decision_id, assessment
@@ -151,7 +153,7 @@ def run_policy_scenario(
         for number in range(1, max_attempts + 1):
             intent_id = "refund_intent" if number == 1 else f"retry_intent_{number}"
             events.append(Event(
-                intent_id, trace_id, EventType.ACTION_INTENT, world.time_ms,
+                id=intent_id, type=EventType.ACTION_INTENT, time_ms=world.time_ms,
                 actor=action.actor, parent_ids=(decision_id,),
                 data={"action_id": action.action_id, "arguments": action.arguments},
             ))
@@ -162,13 +164,13 @@ def run_policy_scenario(
             if response.result.get("code") != "dispatch_failed":
                 response_parent = f"dispatch_{number}"
                 events.append(Event(
-                    response_parent, trace_id, EventType.ACTION_DISPATCH, dispatch_time,
+                    id=response_parent, type=EventType.ACTION_DISPATCH, time_ms=dispatch_time,
                     actor=action.actor, parent_ids=(intent_id,),
                     data={"action_id": action.action_id, "attempt_id": attempt_id},
                 ))
             response_id = f"response_{number}"
             events.append(Event(
-                response_id, trace_id, EventType.TOOL_RESPONSE, response.time_ms,
+                id=response_id, type=EventType.TOOL_RESPONSE, time_ms=response.time_ms,
                 parent_ids=(response_parent,), data=response.to_dict(),
             ))
             responses.append(response)
@@ -197,8 +199,8 @@ def run_policy_scenario(
         ))
         verifications.append(verify(action, observations[-1]))
     trace = Trace(
-        trace_id, action, tuple(events), tuple(responses), assessment,
-        tuple(observations), tuple(verifications),
+        trace_id=trace_id, time_base=TimeBase.RELATIVE_MS, actions=(action,), events=tuple(events), responses=tuple(responses), assessments=(assessment,),
+        observations=tuple(observations), verifications=tuple(verifications),
     )
     return Episode(trace, explain(trace), world.ground_truth, selected, config, seed)
 

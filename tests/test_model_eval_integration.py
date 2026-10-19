@@ -35,8 +35,8 @@ def local_policy_server(*, installed=True, chat_status=200, stop=False,
                 return
             public = json.loads(payload["messages"][1]["content"])
             responses = tuple(ToolResponse(
-                response["attempt_id"], ResponseStatus(response["status"]), response["time_ms"],
-                response["provider_request_id"], response["result"],
+                attempt_id=response["attempt_id"], status=ResponseStatus(response["status"]), time_ms=response["time_ms"],
+                provider_request_id=response["provider_request_id"], result=response["result"], action_id=response["action_id"],
             ) for response in public["responses"])
             request = PolicyRequest(public["stage"], public["task"], public["context"],
                                     responses, public["attempts_remaining"])
@@ -96,7 +96,7 @@ def test_cli_local_http_path_exports_model_identity_and_evidence(tmp_path, capsy
     for receipt in report["samples"]:
         trace = Trace.from_dict(read_json(output / receipt["trace"]))
         assert trace.verifications[-1].status is VerificationStatus.SATISFIED
-        assert trace.action.arguments == trace.action.contract.expected
+        assert trace.single_action.arguments == trace.single_action.contract.expected
         assert read_json(output / receipt["evaluator_truth"])["scenario"] == receipt["scenario"]
     initial = [json.loads(payload["messages"][1]["content"])
                for _, path, payload in requests if path == "/api/chat"]
@@ -139,7 +139,7 @@ def test_local_model_decline_preserves_fixed_contract_and_counts_violation(tmp_p
         trace = Trace.from_dict(read_json(output / receipt["trace"]))
         assert not receipt["action_selected"]
         assert trace.responses == ()
-        assert trace.action.contract.expected == {
+        assert trace.single_action.contract.expected == {
             "payment_id": "pay_42", "amount_minor": 500_000, "currency": "INR",
         }
     capsys.readouterr()

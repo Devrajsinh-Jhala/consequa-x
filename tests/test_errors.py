@@ -32,8 +32,8 @@ def test_every_error_is_a_consequa_error_and_keeps_its_builtin_base(error, bases
 def action(predicate="refund_processed", expected=None):
     if expected is None:
         expected = {"payment_id": "p1", "amount_minor": 500, "currency": "INR"}
-    return Action("a1", "t1", "agent", "refund", {}, 0,
-                  OutcomeContract("c1", predicate, expected, 100))
+    return Action(action_id="a1", actor="agent", name="refund", arguments={}, registered_at_ms=0,
+                  contract=OutcomeContract(contract_id="c1", predicate=predicate, expected=expected, deadline_ms=100))
 
 
 def observation(**changes):
@@ -45,9 +45,9 @@ def observation(**changes):
 
 def test_record_and_trace_errors_are_typed():
     with pytest.raises(ConsequaTypeError):
-        OutcomeContract("c1", "p", {}, True)
+        OutcomeContract(contract_id="c1", predicate="p", expected={}, deadline_ms=True)
     with pytest.raises(ValidationError):
-        OutcomeContract("c1", "p", {}, -1)
+        OutcomeContract(contract_id="c1", predicate="p", expected={}, deadline_ms=-1)
     with pytest.raises(ValidationError, match="not valid JSON"):
         Trace.from_json("{")
     with pytest.raises(ValidationError, match="duplicate JSON object key"):
@@ -56,7 +56,7 @@ def test_record_and_trace_errors_are_typed():
 
 def test_unsupported_schema_version_is_a_schema_version_error():
     rec = TraceRecorder("t1", actor="agent", clock=lambda: 0)
-    rec.register("a1", "refund", {}, contract=OutcomeContract("c1", "p", {"k": 1}, 10))
+    rec.register("a1", "refund", {}, contract=OutcomeContract(contract_id="c1", predicate="p", expected={"k": 1}, deadline_ms=10))
     rec.assessment("unknown")
     data = json.loads(rec.trace().to_json())
     data["schema_version"] = "9.9"
@@ -72,8 +72,8 @@ def test_verifiers_distinguish_unsupported_contracts_from_bad_receipts():
 
     class WrongContract:
         def verify(self, action, observation):
-            return VerificationResult("other", VerificationStatus.UNKNOWN, 200,
-                                      (Evidence("o1", "ledger", 200, {}),))
+            return VerificationResult(contract_id="other", status=VerificationStatus.UNKNOWN, observed_at_ms=200,
+                                      evidence=(Evidence(observation_id="o1", source="ledger", as_of_ms=200, details={}),), action_id="a1")
 
     with pytest.raises(ReceiptError, match="contract_id"):
         verify(action(), observation(), verifier=WrongContract())

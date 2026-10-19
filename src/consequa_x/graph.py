@@ -94,9 +94,12 @@ def build_graph(trace: Trace, estimates: Iterable[EffectEstimate] = ()) -> Conse
             if dispatch:
                 edge(dispatch.id, event.id, "RESPONSE", "captured_attempt_identity")
 
-    contract_node = f"contract:{trace.action.contract.contract_id}"
-    evidence_node(contract_node, "postcondition", trace.action.registered_at_ms,
-                  trace.action.contract.to_dict())
+    actions = {action.action_id: action for action in trace.actions}
+    contract_nodes = {}
+    for action in trace.actions:
+        contract_nodes[action.action_id] = f"contract:{action.contract.contract_id}"
+        evidence_node(contract_nodes[action.action_id], "postcondition", action.registered_at_ms,
+                      action.contract.to_dict())
     # A single observation keeps the original effect:<id> representation. For
     # repeated identities, that node identifies only the declared effect; each
     # snapshot gets its own witness. In particular, a later actor/payload change
@@ -155,19 +158,22 @@ def build_graph(trace: Trace, estimates: Iterable[EffectEstimate] = ()) -> Conse
             edge(effect_node, observation_node, "OBSERVATION", "readback_record")
             attempt_id = record.get("attempt_id")
             dispatch = dispatches.get(attempt_id) if isinstance(attempt_id, str) else None
-            if (dispatch and record.get("action_id") == trace.action.action_id
-                    and dispatch.data.get("action_id") == trace.action.action_id
-                    and dispatch.actor == trace.action.actor
-                    and record.get("actor", trace.action.actor) == trace.action.actor
+            action_id = record.get("action_id")
+            action = actions.get(action_id) if isinstance(action_id, str) else None
+            if (dispatch and action
+                    and dispatch.data.get("action_id") == action.action_id
+                    and dispatch.actor == action.actor
+                    and record.get("actor", action.actor) == action.actor
                     and dispatch.time_ms <= committed_at
-                    and trace.action.registered_at_ms <= committed_at <= observation.as_of_ms):
+                    and action.registered_at_ms <= committed_at <= observation.as_of_ms):
                 edge(dispatch.id, effect_node, "EFFECT", "provider_origin_metadata")
 
     for index, verification in enumerate(trace.verifications):
         verification_node = f"verification:{verification.contract_id}:{index}"
         evidence_node(verification_node, "verification", verification.observed_at_ms,
                       verification.to_dict())
-        edge(contract_node, verification_node, "CONTRACT", "declared_predicate")
+        edge(contract_nodes[verification.action_id], verification_node, "CONTRACT",
+             "declared_predicate")
         for evidence in verification.evidence:
             edge(f"observation:{evidence.observation_id}", verification_node,
                  "VERIFICATION", "read_only_verifier")
@@ -177,16 +183,20 @@ def build_graph(trace: Trace, estimates: Iterable[EffectEstimate] = ()) -> Conse
                 ):
                     edge(identifier, verification_node, "VERIFICATION", "predicate_evidence")
 
+    estimates = tuple(estimates)
+    if estimates and len(trace.actions) != 1:
+        raise ValidationError("Intervention estimates apply to single-action traces only")
     for estimate in estimates:
+        action = trace.actions[0]
         if estimate.event_id not in event_ids:
             raise ValidationError("Attribution candidate must identify a captured trace event")
         decisions = [event.id for event in trace.events if event.type is EventType.AGENT_DECISION]
         intent = next((event for event in trace.events
                        if event.type is EventType.ACTION_INTENT
-                       and event.data.get("action_id") == trace.action.action_id), None)
+                       and event.data.get("action_id") == action.action_id), None)
         decision = next((parent for parent in intent.parent_ids if parent in decisions), None) if intent else None
         initial_decision = decision or (decisions[0] if decisions else None)
-        target = initial_decision if estimate.target == "action" else contract_node
+        target = initial_decision if estimate.target == "action" else contract_nodes[action.action_id]
         if target:
             edge(estimate.event_id, target, "ESTIMATED_INFLUENCE",
                  "isolated_simulated_intervention", estimate.to_dict())

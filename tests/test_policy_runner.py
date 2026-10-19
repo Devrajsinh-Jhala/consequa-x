@@ -112,7 +112,7 @@ def test_model_choice_controls_selection_without_fixture_eligibility_or_probabil
     assert not scripted.action_selected
     assert chosen.action_selected
     assert chosen.trace.verifications[-1].status is VerificationStatus.SATISFIED
-    assert chosen.trace.action == scripted.trace.action
+    assert chosen.trace.single_action == scripted.trace.single_action
 
 
 def test_requests_and_trace_prompts_contain_only_declared_visible_inputs():
@@ -149,7 +149,7 @@ def test_requests_and_trace_prompts_contain_only_declared_visible_inputs():
     for event, (request, model_seed) in zip(decision_events(episode), policy.calls, strict=True):
         assert event.data["policy_request"] == request.to_dict()
         assert event.data["model_seed"] == model_seed
-        assert event.data["policy_reply"]["decision"]["rationale"] == episode.trace.assessment.rationale
+        assert event.data["policy_reply"]["decision"]["rationale"] == episode.trace.latest_assessment().rationale
         assert event.time_ms < episode.trace.observations[0].observed_at_ms
 
 
@@ -165,13 +165,13 @@ def test_commit_before_or_after_timeout_is_indistinguishable_to_the_policy():
 
 def test_captured_policy_assessment_is_not_replaced_by_later_verification():
     episode = run_policy_scenario(ScenarioConfig(), SpyPolicy(assessment=AssessmentStatus.FAILURE))
-    assert episode.trace.assessment.status is AssessmentStatus.FAILURE
+    assert episode.trace.latest_assessment().status is AssessmentStatus.FAILURE
     assert episode.trace.verifications[-1].status is VerificationStatus.SATISFIED
-    assert episode.explanation.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
-    assert episode.trace.assessment.evidence_event_ids == ("response_1",)
+    assert episode.explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.trace.latest_assessment().evidence_event_ids == ("response_1",)
     assessment_event = [event for event in episode.trace.events
                         if event.type is EventType.AGENT_ASSESSMENT][-1]
-    assert assessment_event.data == episode.trace.assessment.to_dict()
+    assert assessment_event.data == episode.trace.latest_assessment().to_dict()
 
 
 def test_policy_mutations_do_not_rewrite_task_context_responses_or_prompt_capture():
@@ -187,7 +187,7 @@ def test_policy_mutations_do_not_rewrite_task_context_responses_or_prompt_captur
 
     policy = MutatingPolicy()
     episode = run_policy_scenario(ScenarioConfig(), policy)
-    assert episode.trace.action.arguments["amount_minor"] == 500_000
+    assert episode.trace.single_action.arguments["amount_minor"] == 500_000
     assert episode.trace.responses[0].result == {"code": "timeout"}
     for event in decision_events(episode):
         assert event.data["policy_request"]["task"]["amount_minor"] == 500_000
@@ -318,7 +318,7 @@ def test_intervention_changes_visible_context_with_fixed_action_target_and_model
     factual = run_policy_scenario(ScenarioConfig(), policy, seed=7)
     changed = run_policy_scenario(ScenarioConfig(), policy, seed=7,
                                   intervention=Intervention("vip_memory"))
-    assert factual.trace.action == changed.trace.action
+    assert factual.trace.single_action == changed.trace.single_action
     assert changed.action_selected
     assert decision_events(changed)[0].data["policy_request"]["context"]["vip_memory"] == ""
     assert [event.data["model_seed"] for event in decision_events(factual)] == [
@@ -361,7 +361,7 @@ def test_external_actor_provenance_and_delayed_reconciliation_are_unchanged_by_p
         ScenarioConfig(fault=Fault.TIMEOUT_BEFORE_COMMIT, external_actor=True), SpyPolicy(),
     )
     assert external.trace.verifications[-1].origin is OriginStatus.OTHER_ACTOR
-    assert external.explanation.assessment_alignment == "unassessable"
+    assert external.explanation.single_action.assessment_alignment == "unassessable"
     policy = SpyPolicy()
     reconciled = run_policy_scenario(
         ScenarioConfig(fault=Fault.DELAYED_VISIBILITY, reconcile_readback=True), policy,

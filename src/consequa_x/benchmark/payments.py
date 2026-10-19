@@ -122,12 +122,14 @@ class PaymentWorld:
     def _response(
         self,
         attempt_id: str,
+        action_id: str,
         request_id: str,
         status: ResponseStatus,
         result: dict[str, Any],
     ) -> ToolResponse:
         return ToolResponse(
             attempt_id=attempt_id,
+            action_id=action_id,
             status=status,
             time_ms=self.time_ms,
             provider_request_id=request_id,
@@ -199,12 +201,11 @@ class PaymentWorld:
         fault_applied = False
 
         def finish(status: ResponseStatus, result: dict[str, Any]) -> ToolResponse:
-            response = self._response(attempt_id, request_id, status, result)
+            response = self._response(attempt_id, action.action_id, request_id, status, result)
             self._execution_attempts.append(
                 {
                     "kind": "execution_attempt",
                     "action_id": action.action_id,
-                    "trace_id": action.trace_id,
                     "actor": action.actor,
                     "attempt_id": attempt_id,
                     "provider_request_id": request_id,

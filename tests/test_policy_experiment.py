@@ -80,8 +80,8 @@ def test_same_seed_preserves_contract_and_phase_keys_while_worlds_are_fresh():
     )
     factual, changed = experiment.branches[:2], experiment.branches[2:]
     for original, intervened in zip(factual, changed, strict=True):
-        assert original.episode.trace.action == intervened.episode.trace.action
-        assert original.episode.trace.action.contract == intervened.episode.trace.action.contract
+        assert original.episode.trace.single_action == intervened.episode.trace.single_action
+        assert original.episode.trace.single_action.contract == intervened.episode.trace.single_action.contract
         original_decisions = [event for event in original.episode.trace.events
                               if event.type is EventType.AGENT_DECISION]
         changed_decisions = [event for event in intervened.episode.trace.events
@@ -262,7 +262,7 @@ def test_typed_replacements_rerun_the_declared_context_only(event_id, replacemen
         assert not factual.action_selected and changed.action_selected
     if event_id == "distractor":
         assert changed_context["distractor"] == replacement
-    assert factual.trace.action.contract == changed.trace.action.contract
+    assert factual.trace.single_action.contract == changed.trace.single_action.contract
 
 
 def test_largest_accepted_seed_schedule_keeps_all_phase_keys_in_model_range():

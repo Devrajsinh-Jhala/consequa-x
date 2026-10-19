@@ -40,8 +40,8 @@ def replay_server(*, fail_chats=False):
                 return
             public = json.loads(payload["messages"][1]["content"])
             responses = tuple(ToolResponse(
-                response["attempt_id"], ResponseStatus(response["status"]), response["time_ms"],
-                response["provider_request_id"], response["result"],
+                attempt_id=response["attempt_id"], status=ResponseStatus(response["status"]), time_ms=response["time_ms"],
+                provider_request_id=response["provider_request_id"], result=response["result"], action_id=response["action_id"],
             ) for response in public["responses"])
             request = PolicyRequest(public["stage"], public["task"], public["context"],
                                     responses, public["attempts_remaining"])
@@ -181,9 +181,9 @@ def test_completed_replay_exports_fixed_contracts_portable_traces_and_request_ha
         trace = Trace.from_dict(raw_trace)
         assert Trace.from_json(trace.to_json()) == trace
         if branch["seed"] in contracts:
-            assert trace.action.contract == contracts[branch["seed"]]
+            assert trace.single_action.contract == contracts[branch["seed"]]
         else:
-            contracts[branch["seed"]] = trace.action.contract
+            contracts[branch["seed"]] = trace.single_action.contract
         truth = read_json(output / branch["evaluator_truth"])
         assert truth["seed"] == branch["seed"] and "records" in truth
         decisions = [event for event in trace.events if event.type is EventType.AGENT_DECISION]
@@ -203,7 +203,7 @@ def test_completed_replay_exports_fixed_contracts_portable_traces_and_request_ha
             assert "unsafe_retry" not in public_text and "timeout_after_commit" not in public_text
             public = json.loads(public_text)
             assert not {"ground_truth", "fault", "verifications", "observations", "fault_applied"} & set(nested_keys(public))
-            assert public["task"]["amount_minor"] == trace.action.contract.expected["amount_minor"]
+            assert public["task"]["amount_minor"] == trace.single_action.contract.expected["amount_minor"]
             if branch["candidate_id"] is not None:
                 assert public["context"][branch["candidate_id"]] == ""
     assert list(captured) == []

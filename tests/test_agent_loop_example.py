@@ -41,7 +41,7 @@ def test_each_mode_records_the_expected_evidence(mode, tmp_path, no_network):
     files = {path.name for path in (tmp_path / mode).iterdir()}
     assert {"refunds.sqlite", "trace.json", "explanation.json", "report.html"} <= files
     trace = Trace.from_json((tmp_path / mode / "trace.json").read_text(encoding="utf-8"))
-    assert trace.action.contract.predicate == "record_present"
+    assert trace.single_action.contract.predicate == "record_present"
 
 
 def test_runs_are_deterministic_and_never_reuse_an_output(tmp_path, no_network):

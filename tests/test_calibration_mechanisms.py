@@ -23,7 +23,7 @@ from consequa_x.policies import PolicyError, PolicyRequest
 def timeout_request(*, remaining=1, status=ResponseStatus.TIMEOUT):
     return PolicyRequest(
         "after_response", {"idempotency_available": False}, {},
-        (ToolResponse("attempt", status, 6, "request", {"code": "timeout"}),), remaining,
+        (ToolResponse(attempt_id="attempt", status=status, time_ms=6, provider_request_id="request", result={"code": "timeout"}, action_id="refund:0"),), remaining,
     )
 
 

@@ -40,7 +40,7 @@ def test_demo_exports_portable_traces_and_separates_evaluator_truth(tmp_path, ca
         trace = Trace.from_json(trace_path.read_text(encoding="utf-8"))
         assert trace.to_dict() == exported
         assert trace.trace_id == f"trace:{7 + index}"
-        assert trace.action.action_id == f"refund:{7 + index}"
+        assert trace.single_action.action_id == f"refund:{7 + index}"
         assert case["scenario"] not in trace.trace_id
         assert "ground_truth" not in exported
         assert "scenario" not in exported

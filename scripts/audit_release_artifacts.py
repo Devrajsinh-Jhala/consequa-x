@@ -122,7 +122,7 @@ def source_files(root: Path, version: str) -> tuple[dict[str, bytes], dict]:
                 "Unreviewed runtime package data")
         selected.add(relative)
     require({"src/consequa_x/__init__.py", "src/consequa_x/cli.py",
-             "src/consequa_x/py.typed", "src/consequa_x/schemas/trace-v0.1.json"}.issubset(selected),
+             "src/consequa_x/py.typed", "src/consequa_x/schemas/trace-v1.0.json"}.issubset(selected),
             "Required runtime/typing/schema source files are absent")
     files = {name: source_file(root, name) for name in sorted(selected)}
     tree = ast.parse(files["src/consequa_x/__init__.py"].decode("utf-8"))

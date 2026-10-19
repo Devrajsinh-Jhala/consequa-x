@@ -7,6 +7,7 @@ from .errors import ConsequaTypeError, ContractError, ReceiptError, ValidationEr
 from .attribution import EffectEstimate, recency_attribution
 from .graph import ConsequenceGraph, build_graph
 from .models import (
+    SCHEMA_VERSION,
     Action,
     AgentAssessment,
     AssessmentStatus,
@@ -37,18 +38,45 @@ class TargetMatcher(Protocol):
 
 
 @dataclass(frozen=True)
-class ConsequenceExplanation:
+class ActionExplanation:
+    """What the captured evidence supports about one action."""
+
     action_id: str
-    consequence: VerificationResult
-    agent_assessment: AgentAssessment
+    consequence: VerificationResult | None
+    agent_assessment: AgentAssessment | None
     assessment_alignment: str
     diagnoses: tuple[str, ...]
     diagnosis: str
     summary: str
-    graph: ConsequenceGraph
     recency_candidate_id: str | None
+
+    def to_dict(self) -> dict:
+        return to_dict(self)
+
+
+@dataclass(frozen=True)
+class TraceExplanation:
+    """One explanation per action, plus the trace's evidence graph."""
+
+    trace_id: str
+    actions: tuple[ActionExplanation, ...]
+    graph: ConsequenceGraph
     attribution: tuple[EffectEstimate, ...] = ()
-    schema_version: str = "0.1"
+    schema_version: str = SCHEMA_VERSION
+
+    def for_action(self, action_id: str) -> ActionExplanation:
+        for item in self.actions:
+            if item.action_id == action_id:
+                return item
+        raise ValidationError(f"explanation has no action {action_id!r}")
+
+    @property
+    def single_action(self) -> ActionExplanation:
+        """The explanation of the trace's only action."""
+        if len(self.actions) != 1:
+            raise ValidationError(
+                f"explanation covers {len(self.actions)} actions; use for_action()")
+        return self.actions[0]
 
     def to_dict(self) -> dict:
         return to_dict(self)
@@ -57,15 +85,18 @@ class ConsequenceExplanation:
 def explain(
     trace: Trace, estimates: Iterable[EffectEstimate] = (), *,
     target_matcher: TargetMatcher | None = None,
-) -> ConsequenceExplanation:
-    """Explain the latest verification, with separate state and effect-origin claims.
+) -> TraceExplanation:
+    """Explain every action from its latest verification and assessment.
 
-    A reported assessment is not hidden chain of thought. Unknown outcomes do
-    not establish an incorrect belief. This function neither replays a policy
-    nor executes a tool; estimates must come from an explicit research runner.
-    Refund target matching is built in. Other predicates remain unassessable
-    unless an application explicitly supplies domain-specific target matching;
-    their evidence is never interpreted as refund amounts or currencies.
+    State and effect origin stay separate claims. A reported assessment is not
+    hidden chain of thought, and unknown outcomes do not establish an incorrect
+    belief. An action without verification is reported as ``NO_VERIFICATION``;
+    missing readback is never treated as success. This function neither
+    replays a policy nor executes a tool; estimates must come from an explicit
+    research runner. Refund target matching is built in. Other predicates
+    remain unassessable unless an application explicitly supplies domain-specific
+    target matching; their evidence is never interpreted as refund amounts or
+    currencies.
     """
     if not isinstance(trace, Trace):
         raise ConsequaTypeError("explain requires a Trace")
@@ -74,19 +105,54 @@ def explain(
         matching_method = getattr(target_matcher, "matching_effect_ids", None)
         if not callable(matching_method):
             raise ConsequaTypeError("A target matcher must provide a callable matching_effect_ids method")
-    if not trace.verifications:
-        raise ValidationError("An explanation requires an independent verification record")
-    verified = trace.verifications[-1]
-    assessment = trace.assessment
     estimates = tuple(estimates)
+    return TraceExplanation(
+        trace_id=trace.trace_id,
+        actions=tuple(_explain_action(trace, action, matching_method)
+                      for action in trace.actions),
+        graph=build_graph(trace, estimates),
+        attribution=estimates,
+    )
+
+
+def _recency_candidate(trace: Trace, action: Action) -> str | None:
+    decisions = {event.id: event for event in trace.events
+                 if event.type is EventType.AGENT_DECISION}
+    intent = next((event for event in trace.events if event.type is EventType.ACTION_INTENT
+                   and event.data.get("action_id") == action.action_id), None)
+    decision = next((decisions[parent] for parent in intent.parent_ids if parent in decisions),
+                    None) if intent else None
+    if decision is None and decisions:
+        decision = next(iter(decisions.values()))
+    return recency_attribution(trace.events, before_ms=decision.time_ms) if decision else None
+
+
+def _explain_action(trace: Trace, action: Action, matching_method) -> ActionExplanation:
+    verified = trace.latest_verification(action.action_id)
+    assessment = trace.latest_assessment(action.action_id)
+    responses = trace.responses_for(action.action_id)
+    reported = assessment.status if assessment else AssessmentStatus.UNKNOWN
+    reported_text = assessment.status.value if assessment else "nothing"
+    if verified is None:
+        diagnoses = ["NO_VERIFICATION"]
+        if reported is not AssessmentStatus.UNKNOWN:
+            diagnoses.append("UNVERIFIED_ASSESSMENT")
+        return ActionExplanation(
+            action_id=action.action_id, consequence=None, agent_assessment=assessment,
+            assessment_alignment="unassessable", diagnoses=tuple(diagnoses),
+            diagnosis=" / ".join(diagnoses),
+            summary=(f"Agent reported {reported_text}; no independent verification "
+                     "was recorded."),
+            recency_candidate_id=_recency_candidate(trace, action),
+        )
     diagnoses = []
     alignment = "unassessable"
     details = verified.evidence[-1].details if verified.evidence else {}
-    expected = trace.action.contract.expected
-    is_refund = trace.action.contract.predicate == "refund_processed"
-    linked_records, matching_ids = _refund_target(trace, verified) if is_refund else ([], ())
+    expected = action.contract.expected
+    is_refund = action.contract.predicate == "refund_processed"
+    linked_records, matching_ids = _refund_target(action, verified) if is_refund else ([], ())
     if matching_method is not None and verified.status is not VerificationStatus.UNKNOWN:
-        matching_ids = matching_method(trace.action, verified)
+        matching_ids = matching_method(action, verified)
         if (type(matching_ids) is not tuple
                 or any(not isinstance(item, str) or not item.strip() for item in matching_ids)
                 or len(set(matching_ids)) != len(matching_ids)
@@ -94,22 +160,22 @@ def explain(
             raise ReceiptError("Target matcher must return unique attributable effect IDs as a tuple")
     if verified.status is VerificationStatus.UNKNOWN:
         diagnoses.append("UNKNOWN_OUTCOME")
-        if assessment.status is not AssessmentStatus.UNKNOWN:
+        if reported is not AssessmentStatus.UNKNOWN:
             diagnoses.append("UNVERIFIED_ASSESSMENT")
     else:
         is_success = verified.status is VerificationStatus.SATISFIED
-        origin_sufficient = (is_refund or target_matcher is not None) and (
+        origin_sufficient = (is_refund or matching_method is not None) and (
             not is_success or bool(matching_ids)
         )
-        if origin_sufficient and assessment.status in {AssessmentStatus.SUCCESS, AssessmentStatus.FAILURE}:
-            contradicted = (assessment.status is AssessmentStatus.SUCCESS) != is_success
+        if origin_sufficient and reported in {AssessmentStatus.SUCCESS, AssessmentStatus.FAILURE}:
+            contradicted = (reported is AssessmentStatus.SUCCESS) != is_success
             alignment = "contradicted" if contradicted else "consistent"
             if contradicted:
                 diagnoses.append("ASSESSMENT_DIVERGENCE")
-        if (any(response.status is ResponseStatus.TIMEOUT for response in trace.responses)
+        if (any(response.status is ResponseStatus.TIMEOUT for response in responses)
                 and is_success and matching_ids):
             diagnoses.append("ACKNOWLEDGEMENT_EFFECT_DIVERGENCE")
-        if any(response.status is ResponseStatus.SUCCESS for response in trace.responses) and not is_success:
+        if any(response.status is ResponseStatus.SUCCESS for response in responses) and not is_success:
             diagnoses.append("RESPONSE_EFFECT_DIVERGENCE")
         if not is_success:
             diagnoses.append("CONSEQUENCE_VIOLATION")
@@ -119,7 +185,7 @@ def explain(
     if verified.status is not VerificationStatus.UNKNOWN:
         if is_refund:
             count = details.get("peak_matching_count", details.get("matching_count", 0))
-            exact = trace.action.contract.exact_count
+            exact = action.contract.exact_count
             if exact is not None and count > exact:
                 diagnoses.append("EXCESS_EFFECTS")
                 if len(linked_records) > exact:
@@ -131,8 +197,8 @@ def explain(
             if linked_records and any(0 < record["amount_minor"] < expected["amount_minor"]
                                       for record in linked_records):
                 diagnoses.append("PARTIAL_EFFECT")
-            if any(record.get("reversed_at_ms", trace.action.contract.horizon_ms + 1)
-                   <= trace.action.contract.horizon_ms for record in linked_records):
+            if any(record.get("reversed_at_ms", action.contract.horizon_ms + 1)
+                   <= action.contract.horizon_ms for record in linked_records):
                 diagnoses.append("REVERSED_EFFECT")
         if verified.origin is OriginStatus.OTHER_ACTOR:
             diagnoses.append("EXTERNAL_ACTOR_EFFECT")
@@ -146,27 +212,23 @@ def explain(
         diagnosis = "BELIEF / RESPONSE DIVERGENCE"
     else:
         diagnosis = " / ".join(diagnoses)
-    decision_times = [event.time_ms for event in trace.events if event.type is EventType.AGENT_DECISION]
-    recency = recency_attribution(trace.events, before_ms=decision_times[0]) if decision_times else None
     summary = (
-        f"Agent reported {assessment.status.value}; independent verification is "
+        f"Agent reported {reported_text}; independent verification is "
         f"{verified.status.value}; effect origin is {verified.origin.value}."
     )
-    return ConsequenceExplanation(
-        action_id=trace.action.action_id,
+    return ActionExplanation(
+        action_id=action.action_id,
         consequence=verified,
         agent_assessment=assessment,
         assessment_alignment=alignment,
         diagnoses=tuple(diagnoses),
         diagnosis=diagnosis,
         summary=summary,
-        graph=build_graph(trace, estimates),
-        recency_candidate_id=recency,
-        attribution=estimates,
+        recency_candidate_id=_recency_candidate(trace, action),
     )
 
 
-def _refund_target(trace: Trace, verified: VerificationResult) -> tuple[list[dict], tuple[str, ...]]:
+def _refund_target(action: Action, verified: VerificationResult) -> tuple[list[dict], tuple[str, ...]]:
     """Validate known refund detail shapes before deriving refund diagnoses.
 
     An UNKNOWN receipt may deliberately contain malformed source records, so
@@ -175,12 +237,12 @@ def _refund_target(trace: Trace, verified: VerificationResult) -> tuple[list[dic
     """
     if verified.status is VerificationStatus.UNKNOWN:
         return [], ()
-    expected = trace.action.contract.expected
+    expected = action.contract.expected
     if (set(expected) != {"payment_id", "amount_minor", "currency"}
             or not isinstance(expected["payment_id"], str) or not expected["payment_id"].strip()
             or not isinstance(expected["currency"], str) or not expected["currency"].strip()
             or type(expected["amount_minor"]) is not int or expected["amount_minor"] <= 0
-            or trace.action.contract.deadline_ms < trace.action.registered_at_ms):
+            or action.contract.deadline_ms < action.registered_at_ms):
         raise ContractError("Known refund explanations require a valid refund contract payload")
     details = verified.evidence[-1].details
     records = details.get("records", [])
@@ -210,8 +272,8 @@ def _refund_target(trace: Trace, verified: VerificationResult) -> tuple[list[dic
                      if record["payment_id"] == expected["payment_id"]
                      and record["amount_minor"] == expected["amount_minor"]
                      and record["currency"] == expected["currency"]
-                     and trace.action.registered_at_ms <= record["committed_at_ms"]
-                     <= trace.action.contract.deadline_ms
-                     and record.get("reversed_at_ms", trace.action.contract.horizon_ms + 1)
-                     > trace.action.contract.horizon_ms)
+                     and action.registered_at_ms <= record["committed_at_ms"]
+                     <= action.contract.deadline_ms
+                     and record.get("reversed_at_ms", action.contract.horizon_ms + 1)
+                     > action.contract.horizon_ms)
     return linked, matching

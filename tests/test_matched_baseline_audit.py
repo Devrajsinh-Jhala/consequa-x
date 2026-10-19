@@ -87,8 +87,8 @@ def test_accounting_rejects_duplicate_or_unknown_slots_and_small_denominator():
 
 def action(exact_count=1):
     expected = {"payment_id": "payment", "amount_minor": 100, "currency": "INR"}
-    return Action("action", "trace", "agent", "refund", expected, 5,
-                  OutcomeContract("contract", "refund_processed", expected, 10,
+    return Action(action_id="action", actor="agent", name="refund", arguments=expected, registered_at_ms=5,
+                  contract=OutcomeContract(contract_id="contract", predicate="refund_processed", expected=expected, deadline_ms=10,
                                   exact_count=exact_count, stability_ms=10))
 
 
@@ -104,8 +104,8 @@ def effect(number, committed, reversed_at=None, *, actor="agent", amount=100):
 
 
 def observation(history):
-    return Observation("observation", "ledger", 25, 25, {"payment_id": "payment"},
-                       tuple({key: value for key, value in row.items() if key != "kind"}
+    return Observation(observation_id="observation", source="ledger", observed_at_ms=25, as_of_ms=25, scope={"payment_id": "payment"},
+                       records=tuple({key: value for key, value in row.items() if key != "kind"}
                              for row in history))
 
 

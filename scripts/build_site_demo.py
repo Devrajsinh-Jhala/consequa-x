@@ -75,7 +75,7 @@ def plural(count, word):
 
 def timeline(trace):
     """Readable entries derived only from captured records, in recorded order."""
-    action, contract = trace.action, trace.action.contract
+    action, contract = trace.single_action, trace.single_action.contract
     entries = []
     context = [event for event in trace.events if event.type.value in CONTEXT_LABELS]
     if context:
@@ -113,7 +113,7 @@ def timeline(trace):
                             "detail": "A response describes the call, not the outcome"})
         elif kind == "agent_assessment":
             entries.append({"t": event.time_ms, "kind": "assessment",
-                            "label": f"Agent reports {trace.assessment.status.value}",
+                            "label": f"Agent reports {trace.latest_assessment().status.value}",
                             "detail": "Reported assessment, not verification"})
     for index, observation in enumerate(trace.observations, 1):
         coverage = ("complete" if observation.complete else "incomplete") + (
@@ -133,7 +133,7 @@ def timeline(trace):
 
 
 def ribbon(trace):
-    action, contract = trace.action, trace.action.contract
+    action, contract = trace.single_action, trace.single_action.contract
     observations = []
     for observation in trace.observations:
         effects = []
@@ -187,7 +187,7 @@ def graph_subset(trace):
                           "lane": GRAPH_LANES[node.kind], "time_ms": node.time_ms,
                           "reveal_ms": reveal[node.id], "status": status,
                           "origin": node.data.get("origin") if node.kind == "verification" else None,
-                          "actor": ("agent" if node.data.get("actor") == trace.action.actor else
+                          "actor": ("agent" if node.data.get("actor") == trace.single_action.actor else
                                     "other" if node.data.get("actor") else "unknown")
                           if node.kind == "observed_external_effect" else None})
     edges = [{"source": aliases[edge.source], "target": aliases[edge.target],
@@ -214,18 +214,19 @@ def scenario(demo, cases, stem, label):
     if result.to_dict() != exported:
         raise ValueError(f"Fresh explain() differs from the CLI export for {stem}")
     name, printed = cases[int(stem.split("_")[1])]
-    if printed != result.diagnosis:
+    action = result.single_action
+    if printed != action.diagnosis:
         raise ValueError(f"Printed demo diagnosis differs from explain() for {stem}")
     latest = trace.verifications[-1]
     return {
         "id": stem, "label": label, "scenario": name, "file": f"traces/{stem}.json",
         "response": [item.status.value for item in trace.responses],
-        "assessment": trace.assessment.status.value,
+        "assessment": trace.latest_assessment().status.value,
         "timeline": timeline(trace), "ribbon": ribbon(trace), "graph": graph_subset(trace),
         "explanation": {"state": latest.status.value, "origin": latest.origin.value,
-                        "alignment": result.assessment_alignment,
-                        "diagnoses": list(result.diagnoses), "diagnosis": result.diagnosis,
-                        "summary": result.summary, "reason": latest.reason},
+                        "alignment": action.assessment_alignment,
+                        "diagnoses": list(action.diagnoses), "diagnosis": action.diagnosis,
+                        "summary": action.summary, "reason": latest.reason},
     }
 
 

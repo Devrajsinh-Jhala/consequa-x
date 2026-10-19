@@ -1,4 +1,4 @@
-"""Record one consequential action as it happens and build a validated trace.
+"""Record consequential actions as they happen and build a validated trace.
 
 A recorder arranges records that the application supplies. It never reads a
 source or decides an outcome, and it runs a tool only when the application hands
@@ -30,6 +30,7 @@ from .models import (
     OutcomeContract,
     ResponseStatus,
     ToolResponse,
+    TimeBase,
     Trace,
     VerificationResult,
 )
@@ -66,7 +67,7 @@ def _result_payload(value: Any) -> dict[str, Any]:
 
 
 class Attempt:
-    """One in-flight tool attempt inside ``TraceRecorder.attempt``.
+    """One in-flight tool attempt inside ``attempt()``.
 
     Set ``result`` to keep a JSON payload with the response, ``status`` to
     report an error the tool returned without raising,
@@ -74,8 +75,9 @@ class Attempt:
     give the response an explicit time instead of the recorder's clock.
     """
 
-    def __init__(self, attempt_id: str) -> None:
+    def __init__(self, attempt_id: str, action_id: str) -> None:
         self.attempt_id = attempt_id
+        self.action_id = action_id
         self.status: str | ResponseStatus | None = None
         self.result: dict[str, Any] = {}
         self.provider_request_id: str | None = None
@@ -83,46 +85,221 @@ class Attempt:
         self.response: ToolResponse | None = None
 
 
+class ActionCapture:
+    """Capture calls for one registered action; returned by ``TraceRecorder.register``.
+
+    Every record made through this handle names its action, so several actions
+    can be captured in one trace without mixing their attempts, assessments or
+    verifications.
+    """
+
+    def __init__(self, recorder: TraceRecorder, action: Action, intent_id: str) -> None:
+        self._recorder = recorder
+        self.action = action
+        self._intent_id = intent_id
+        self._attempts = 0
+        self._response_event_ids: list[str] = []
+
+    @property
+    def action_id(self) -> str:
+        return self.action.action_id
+
+    def dispatch(self, *, attempt_id: str | None = None, at_ms: int | None = None,
+                 data: dict[str, Any] | None = None) -> str:
+        """Record one dispatched attempt of this action and return its attempt identity."""
+        recorder = self._recorder
+        extra = dict(data or {})
+        if _RESERVED_DISPATCH_KEYS & extra.keys():
+            raise RecorderError("dispatch data cannot override action_id or attempt_id")
+        if attempt_id is None:
+            attempt_id = f"{self.action_id}:attempt-{self._attempts + 1}"
+        _identifier(attempt_id, "attempt_id")
+        if attempt_id in recorder._attempts:
+            raise RecorderError(f"attempt is already dispatched: {attempt_id!r}")
+        event_id = recorder._add_event(Event(
+            id=recorder._new_event_id("dispatch", None), type=EventType.ACTION_DISPATCH,
+            time_ms=recorder._time(at_ms), actor=self.action.actor, parent_ids=(self._intent_id,),
+            data={**extra, "action_id": self.action_id, "attempt_id": attempt_id},
+        ))
+        self._attempts += 1
+        recorder._attempts[attempt_id] = (self, event_id)
+        return attempt_id
+
+    def response(self, attempt_id: str, status: str | ResponseStatus, *,
+                 at_ms: int | None = None, provider_request_id: str | None = None,
+                 result: dict[str, Any] | None = None) -> ToolResponse:
+        """Record what the tool returned for an attempt: success, error or timeout."""
+        owner = self._recorder._attempts.get(attempt_id)
+        if owner is None:
+            raise RecorderError(f"response refers to an undispatched attempt: {attempt_id!r}")
+        if owner[0] is not self:
+            raise RecorderError(f"attempt {attempt_id!r} belongs to another action")
+        recorder = self._recorder
+        record = ToolResponse(
+            attempt_id=attempt_id, action_id=self.action_id, status=ResponseStatus(status),
+            time_ms=recorder._time(at_ms),
+            provider_request_id=provider_request_id if provider_request_id is not None else attempt_id,
+            result=dict(result or {}),
+        )
+        event_id = recorder._add_event(Event(
+            id=recorder._new_event_id("response", None), type=EventType.TOOL_RESPONSE,
+            time_ms=record.time_ms, parent_ids=(owner[1],), data=record.to_dict(),
+        ))
+        recorder._responses.append(record)
+        self._response_event_ids.append(event_id)
+        return record
+
+    @contextmanager
+    def attempt(self, *, attempt_id: str | None = None, data: dict[str, Any] | None = None,
+                at_ms: int | None = None,
+                classify: Callable[[Exception], str | ResponseStatus] | None = None,
+                ) -> Iterator[Attempt]:
+        """Record the dispatch on entry and the tool's response on exit.
+
+        A normal exit records ``success`` unless the block set ``attempt.status``.
+        An exception records ``timeout`` for ``TimeoutError`` and ``error``
+        otherwise (or what ``classify`` returns), keeps only the exception's
+        type name, and is re-raised. A timeout says nothing about whether the
+        tool's effect happened; that is what readback is for. The block may
+        ``await``: the context manager itself is synchronous.
+        """
+        handle = Attempt(self.dispatch(attempt_id=attempt_id, at_ms=at_ms, data=data),
+                         self.action_id)
+        try:
+            yield handle
+        except Exception as error:
+            status = (classify or _default_status)(error)
+            handle.response = self.response(
+                handle.attempt_id, status, at_ms=handle.at_ms,
+                provider_request_id=handle.provider_request_id,
+                result={**handle.result, "exception": type(error).__name__},
+            )
+            raise
+        handle.response = self.response(handle.attempt_id, handle.status or "success",
+                                        at_ms=handle.at_ms,
+                                        provider_request_id=handle.provider_request_id,
+                                        result=handle.result)
+
+    def call(self, tool: Callable[..., Any], /, *args: Any, **kwargs: Any) -> Any:
+        """Run ``tool(*args, **kwargs)`` as one recorded attempt and return its result.
+
+        JSON results are kept with the response; other values keep only their
+        type name. Use ``attempt`` for custom status, identity or payloads.
+        """
+        if inspect.iscoroutinefunction(tool):
+            raise ConsequaTypeError("asynchronous tools are not supported here; use attempt() "
+                                    "around the awaited call")
+        name = getattr(tool, "__name__", type(tool).__name__)
+        with self.attempt(data={"tool": name}) as handle:
+            value = tool(*args, **kwargs)
+            handle.result = _result_payload(value)
+        return value
+
+    def assessment(self, status: str | AssessmentStatus, *, at_ms: int | None = None,
+                   rationale: str = "", evidence: tuple[str, ...] | None = None,
+                   assessment_id: str | None = None) -> AgentAssessment:
+        """Record what the agent reported about this action's outcome.
+
+        An action may have several assessments, for example before and after a
+        retry. ``evidence`` names the events the agent based its report on; it
+        defaults to this action's recorded tool responses. Use ``"unknown"``
+        when the agent made no explicit claim. This is the agent's claim, not
+        verification.
+        """
+        recorder = self._recorder
+        evidence = tuple(self._response_event_ids if evidence is None else evidence)
+        unknown = [item for item in evidence if item not in recorder._event_ids]
+        if unknown:
+            raise RecorderError(f"assessment evidence refers to unrecorded events: {unknown}")
+        event_id = recorder._new_event_id("assessment", None)
+        if assessment_id is None:
+            assessment_id = event_id
+        _identifier(assessment_id, "assessment_id")
+        if assessment_id in recorder._assessment_ids:
+            raise RecorderError(f"assessment_id is already recorded: {assessment_id!r}")
+        record = AgentAssessment(
+            assessment_id=assessment_id, action_id=self.action_id, status=AssessmentStatus(status),
+            time_ms=recorder._time(at_ms), evidence_event_ids=evidence, rationale=rationale,
+        )
+        recorder._add_event(Event(
+            id=event_id, type=EventType.AGENT_ASSESSMENT, time_ms=record.time_ms,
+            actor=self.action.actor, parent_ids=evidence, data=record.to_dict(),
+        ))
+        recorder._assessments.append(record)
+        recorder._assessment_ids.add(assessment_id)
+        return record
+
+    def verify(self, observation: Observation, *,
+               verifier: Verifier | None = None) -> VerificationResult:
+        """Verify a readback for this action and keep the receipt.
+
+        Earlier receipts are retained; a later readback can resolve an earlier
+        ``unknown`` without rewriting it.
+        """
+        recorder = self._recorder
+        recorded = recorder.observe(observation)
+        receipt = _verify(self.action, recorded, verifier=verifier)
+        recorder._verifications.append(receipt)
+        return receipt
+
+
 class TraceRecorder:
-    """Capture the history of one registered action, step by step.
+    """Capture the history of one run, with one or more consequential actions.
 
     Each method takes an optional ``at_ms``: an explicit nonnegative integer
-    time in milliseconds. Without it, the recorder asks its ``clock``, which
-    defaults to milliseconds elapsed since the recorder was created. Pass a
-    clock or explicit times when traces must be reproducible.
+    time in milliseconds. Without it, the recorder asks its ``clock``. By
+    default that is wall-clock time in milliseconds since the Unix epoch, and the
+    trace's ``time_base`` is ``unix_ms``. A custom ``clock`` (or
+    ``time_base="relative_ms"`` without one) records ``relative_ms`` times;
+    pass ``time_base`` explicitly if a custom clock returns Unix milliseconds.
 
-    Typical order: optional ``context`` and ``decision`` events, ``register``
-    (the outcome contract is declared before the action), ``dispatch`` for each
-    attempt, ``response`` for each returned or timed-out attempt, the agent's
-    ``assessment``, then ``verify`` with a captured readback. Recording a
+    Typical order: optional ``context`` and ``decision`` events; ``register``
+    each action with its outcome contract before dispatching it; then, through
+    the returned ``ActionCapture``, its attempts, the agent's assessments and
+    the verification of captured readback. While exactly one action is
+    registered, the same calls can be made on the recorder itself. Recording a
     response or a success assessment establishes nothing about the outcome.
     """
 
     def __init__(self, trace_id: str, *, actor: str,
-                 clock: Callable[[], int] | None = None) -> None:
+                 clock: Callable[[], int] | None = None,
+                 time_base: str | TimeBase | None = None) -> None:
         self.trace_id = _identifier(trace_id, "trace_id")
         self.actor = _identifier(actor, "actor")
         if clock is not None and not callable(clock):
             raise ConsequaTypeError("clock must be callable and return integer milliseconds")
-        start = time.monotonic_ns()
-        self._clock = clock or (lambda: (time.monotonic_ns() - start) // 1_000_000)
+        if time_base is not None:
+            try:
+                time_base = TimeBase(time_base)
+            except ValueError:
+                raise RecorderError("time_base must be 'unix_ms' or 'relative_ms'") from None
+        if clock is None and time_base in (None, TimeBase.UNIX_MS):
+            self.time_base = TimeBase.UNIX_MS
+            self._clock = lambda: time.time_ns() // 1_000_000
+        elif clock is None:
+            start = time.monotonic_ns()
+            self.time_base = TimeBase.RELATIVE_MS
+            self._clock = lambda: (time.monotonic_ns() - start) // 1_000_000
+        else:
+            self.time_base = time_base or TimeBase.RELATIVE_MS
+            self._clock = clock
         self._events: list[Event] = []
         self._event_ids: set[str] = set()
         self._counters: dict[str, int] = {}
         self._responses: list[ToolResponse] = []
+        self._assessments: list[AgentAssessment] = []
+        self._assessment_ids: set[str] = set()
         self._observations: list[Observation] = []
         self._verifications: list[VerificationResult] = []
-        self._action: Action | None = None
-        self._assessment: AgentAssessment | None = None
-        self._intent_id: str | None = None
+        self._captures: dict[str, ActionCapture] = {}
+        self._contract_ids: set[str] = set()
+        self._attempts: dict[str, tuple[ActionCapture, str]] = {}
         self._last_decision_id: str | None = None
-        self._dispatch_event_ids: dict[str, str] = {}
-        self._response_event_ids: list[str] = []
 
     @property
-    def action(self) -> Action | None:
-        """The registered action, or ``None`` before ``register``."""
-        return self._action
+    def actions(self) -> tuple[Action, ...]:
+        """The registered actions, in registration order."""
+        return tuple(capture.action for capture in self._captures.values())
 
     @property
     def events(self) -> tuple[Event, ...]:
@@ -159,10 +336,20 @@ class TraceRecorder:
         self._event_ids.add(event.id)
         return event.id
 
-    def _require_action(self) -> Action:
-        if self._action is None:
+    def _sole(self) -> ActionCapture:
+        if not self._captures:
             raise RecorderError("register the action and its outcome contract first")
-        return self._action
+        if len(self._captures) > 1:
+            raise RecorderError("several actions are registered; use the ActionCapture that "
+                                "register() returned, or capture_for(action_id)")
+        return next(iter(self._captures.values()))
+
+    def capture_for(self, action_id: str) -> ActionCapture:
+        """The capture handle of a registered action."""
+        try:
+            return self._captures[action_id]
+        except KeyError:
+            raise RecorderError(f"no registered action {action_id!r}") from None
 
     def context(self, kind: str | EventType, data: dict[str, Any] | None = None, *,
                 at_ms: int | None = None, event_id: str | None = None) -> str:
@@ -170,10 +357,10 @@ class TraceRecorder:
         event_type = EventType(kind)
         if event_type not in _CONTEXT_TYPES:
             raise RecorderError("context kind must be user_input, system_instruction, "
-                             "retrieval or memory_read")
+                                "retrieval or memory_read")
         identifier = self._new_event_id("context", event_id)
-        return self._add_event(Event(identifier, self.trace_id, event_type, self._time(at_ms),
-                                     None, (), dict(data or {})))
+        return self._add_event(Event(id=identifier, type=event_type, time_ms=self._time(at_ms),
+                                     data=dict(data or {})))
 
     def decision(self, data: dict[str, Any] | None = None, *, inputs: tuple[str, ...] = (),
                  at_ms: int | None = None, event_id: str | None = None) -> str:
@@ -184,135 +371,86 @@ class TraceRecorder:
             raise RecorderError(f"decision inputs refer to unrecorded events: {unknown}")
         identifier = self._new_event_id("decision", event_id)
         self._last_decision_id = self._add_event(Event(
-            identifier, self.trace_id, EventType.AGENT_DECISION, self._time(at_ms),
-            self.actor, inputs, dict(data or {}),
+            id=identifier, type=EventType.AGENT_DECISION, time_ms=self._time(at_ms),
+            actor=self.actor, parent_ids=inputs, data=dict(data or {}),
         ))
         return identifier
 
     def register(self, action_id: str, name: str, arguments: dict[str, Any], *,
                  contract: OutcomeContract, at_ms: int | None = None,
-                 idempotency_key: str | None = None) -> Action:
-        """Register the action and its outcome contract before dispatching it.
+                 idempotency_key: str | None = None, decision: str | None = None,
+                 actor: str | None = None) -> ActionCapture:
+        """Register an action and its outcome contract before dispatching it.
 
-        The intent event depends on the most recent recorded decision, if any.
+        Returns the action's ``ActionCapture``. The intent event depends on
+        ``decision`` (an event ID), or on the most recent recorded decision.
+        ``actor`` defaults to the recorder's actor.
         """
-        if self._action is not None:
-            raise RecorderError("a recorder captures exactly one registered action")
+        _identifier(action_id, "action_id")
+        if action_id in self._captures:
+            raise RecorderError(f"action is already registered: {action_id!r}")
+        if not isinstance(contract, OutcomeContract):
+            raise ConsequaTypeError("contract must be an OutcomeContract")
+        if contract.contract_id in self._contract_ids:
+            raise RecorderError(f"contract_id is already used by another action: "
+                                f"{contract.contract_id!r}")
+        if decision is not None and decision not in self._event_ids:
+            raise RecorderError(f"decision refers to an unrecorded event: {decision!r}")
+        parent = decision or self._last_decision_id
         registered = self._time(at_ms)
-        action = Action(action_id, self.trace_id, self.actor, name, arguments, registered,
-                        contract, idempotency_key)
-        parents = (self._last_decision_id,) if self._last_decision_id else ()
-        self._intent_id = self._add_event(Event(
-            self._new_event_id("intent", None), self.trace_id, EventType.ACTION_INTENT,
-            registered, self.actor, parents,
-            {"action_id": action.action_id, "arguments": action.arguments},
+        action = Action(action_id=action_id, actor=actor or self.actor, name=name,
+                        arguments=arguments, registered_at_ms=registered, contract=contract,
+                        idempotency_key=idempotency_key)
+        intent_id = self._add_event(Event(
+            id=self._new_event_id("intent", None), type=EventType.ACTION_INTENT,
+            time_ms=registered, actor=action.actor, parent_ids=(parent,) if parent else (),
+            data={"action_id": action.action_id, "arguments": action.arguments},
         ))
-        self._action = action
-        return action
+        capture = ActionCapture(self, action, intent_id)
+        self._captures[action_id] = capture
+        self._contract_ids.add(contract.contract_id)
+        return capture
+
+    # While exactly one action is registered, these delegate to its ActionCapture.
 
     def dispatch(self, *, attempt_id: str | None = None, at_ms: int | None = None,
                  data: dict[str, Any] | None = None) -> str:
-        """Record one dispatched attempt and return its attempt identity."""
-        action = self._require_action()
-        extra = dict(data or {})
-        if _RESERVED_DISPATCH_KEYS & extra.keys():
-            raise RecorderError("dispatch data cannot override action_id or attempt_id")
-        if attempt_id is None:
-            attempt_id = f"{action.action_id}:attempt-{len(self._dispatch_event_ids) + 1}"
-        _identifier(attempt_id, "attempt_id")
-        if attempt_id in self._dispatch_event_ids:
-            raise RecorderError(f"attempt is already dispatched: {attempt_id!r}")
-        event_id = self._add_event(Event(
-            self._new_event_id("dispatch", None), self.trace_id, EventType.ACTION_DISPATCH,
-            self._time(at_ms), self.actor, (self._intent_id,),
-            {**extra, "action_id": action.action_id, "attempt_id": attempt_id},
-        ))
-        self._dispatch_event_ids[attempt_id] = event_id
-        return attempt_id
+        """Record one dispatched attempt of the only registered action."""
+        return self._sole().dispatch(attempt_id=attempt_id, at_ms=at_ms, data=data)
 
     def response(self, attempt_id: str, status: str | ResponseStatus, *,
                  at_ms: int | None = None, provider_request_id: str | None = None,
                  result: dict[str, Any] | None = None) -> ToolResponse:
-        """Record what the tool returned for an attempt: success, error or timeout."""
-        if attempt_id not in self._dispatch_event_ids:
+        """Record the response to a dispatched attempt of any registered action."""
+        owner = self._attempts.get(attempt_id)
+        if owner is None:
             raise RecorderError(f"response refers to an undispatched attempt: {attempt_id!r}")
-        record = ToolResponse(attempt_id, ResponseStatus(status), self._time(at_ms),
-                              provider_request_id if provider_request_id is not None else attempt_id,
-                              dict(result or {}))
-        event_id = self._add_event(Event(
-            self._new_event_id("response", None), self.trace_id, EventType.TOOL_RESPONSE,
-            record.time_ms, None, (self._dispatch_event_ids[attempt_id],), record.to_dict(),
-        ))
-        self._responses.append(record)
-        self._response_event_ids.append(event_id)
-        return record
+        return owner[0].response(attempt_id, status, at_ms=at_ms,
+                                 provider_request_id=provider_request_id, result=result)
 
-    @contextmanager
     def attempt(self, *, attempt_id: str | None = None, data: dict[str, Any] | None = None,
                 at_ms: int | None = None,
                 classify: Callable[[Exception], str | ResponseStatus] | None = None,
-                ) -> Iterator[Attempt]:
-        """Record the dispatch on entry and the tool's response on exit.
-
-        A normal exit records ``success`` unless the block set ``attempt.status``.
-        An exception records ``timeout`` for ``TimeoutError`` and ``error``
-        otherwise (or what ``classify`` returns), keeps only the exception's
-        type name, and is re-raised. A timeout says nothing about whether the
-        tool's effect happened; that is what readback is for.
-        """
-        handle = Attempt(self.dispatch(attempt_id=attempt_id, at_ms=at_ms, data=data))
-        try:
-            yield handle
-        except Exception as error:
-            status = (classify or _default_status)(error)
-            handle.response = self.response(
-                handle.attempt_id, status, at_ms=handle.at_ms,
-                provider_request_id=handle.provider_request_id,
-                result={**handle.result, "exception": type(error).__name__},
-            )
-            raise
-        handle.response = self.response(handle.attempt_id, handle.status or "success",
-                                        at_ms=handle.at_ms,
-                                        provider_request_id=handle.provider_request_id,
-                                        result=handle.result)
+                ):
+        """``ActionCapture.attempt`` for the only registered action."""
+        return self._sole().attempt(attempt_id=attempt_id, data=data, at_ms=at_ms,
+                                    classify=classify)
 
     def call(self, tool: Callable[..., Any], /, *args: Any, **kwargs: Any) -> Any:
-        """Run ``tool(*args, **kwargs)`` as one recorded attempt and return its result.
-
-        JSON results are kept with the response; other values keep only their
-        type name. Use ``attempt`` for custom status, identity or payloads.
-        """
-        if inspect.iscoroutinefunction(tool):
-            raise ConsequaTypeError("asynchronous tools are not supported yet; use attempt() around "
-                            "the awaited call")
-        name = getattr(tool, "__name__", type(tool).__name__)
-        with self.attempt(data={"tool": name}) as handle:
-            value = tool(*args, **kwargs)
-            handle.result = _result_payload(value)
-        return value
+        """``ActionCapture.call`` for the only registered action."""
+        return self._sole().call(tool, *args, **kwargs)
 
     def assessment(self, status: str | AssessmentStatus, *, at_ms: int | None = None,
-                   rationale: str = "", evidence: tuple[str, ...] | None = None) -> AgentAssessment:
-        """Record what the agent reported about the outcome.
+                   rationale: str = "", evidence: tuple[str, ...] | None = None,
+                   assessment_id: str | None = None) -> AgentAssessment:
+        """``ActionCapture.assessment`` for the only registered action."""
+        return self._sole().assessment(status, at_ms=at_ms, rationale=rationale,
+                                       evidence=evidence, assessment_id=assessment_id)
 
-        ``evidence`` names the events the agent based its report on; it defaults
-        to the recorded tool responses. Use ``"unknown"`` when the agent reported
-        nothing. This is the agent's claim, not verification.
-        """
-        self._require_action()
-        if self._assessment is not None:
-            raise RecorderError("the agent's assessment is already recorded")
-        evidence = tuple(self._response_event_ids if evidence is None else evidence)
-        unknown = [item for item in evidence if item not in self._event_ids]
-        if unknown:
-            raise RecorderError(f"assessment evidence refers to unrecorded events: {unknown}")
-        record = AgentAssessment(AssessmentStatus(status), self._time(at_ms), evidence, rationale)
-        self._add_event(Event(
-            self._new_event_id("assessment", None), self.trace_id, EventType.AGENT_ASSESSMENT,
-            record.time_ms, self.actor, evidence, record.to_dict(),
-        ))
-        self._assessment = record
-        return record
+    def verify(self, observation: Observation, *,
+               verifier: Verifier | None = None) -> VerificationResult:
+        """``ActionCapture.verify`` for the only registered action."""
+        return self._sole().verify(observation, verifier=verifier)
 
     def observe(self, observation: Observation) -> Observation:
         """Retain an independently captured readback observation."""
@@ -326,39 +464,34 @@ class TraceRecorder:
         self._observations.append(observation)
         return observation
 
-    def verify(self, observation: Observation, *,
-               verifier: Verifier | None = None) -> VerificationResult:
-        """Verify a readback with the built-in or a supplied verifier and keep the receipt.
-
-        Earlier receipts are retained; a later readback can resolve an earlier
-        ``unknown`` without rewriting it.
-        """
-        action = self._require_action()
-        recorded = self.observe(observation)
-        receipt = _verify(action, recorded, verifier=verifier)
-        self._verifications.append(receipt)
-        return receipt
-
     def trace(self) -> Trace:
         """Return the validated trace captured so far."""
-        action = self._require_action()
-        if self._assessment is None:
-            raise RecorderError("record the agent's assessment first; use 'unknown' if it "
-                             "reported nothing")
-        return Trace(self.trace_id, action, tuple(self._events), tuple(self._responses),
-                     self._assessment, tuple(self._observations), tuple(self._verifications))
+        if not self._captures:
+            raise RecorderError("register the action and its outcome contract first")
+        return Trace(trace_id=self.trace_id, time_base=self.time_base, actions=self.actions,
+                     events=tuple(self._events), responses=tuple(self._responses),
+                     assessments=tuple(self._assessments),
+                     observations=tuple(self._observations),
+                     verifications=tuple(self._verifications))
 
 
-def capture_tool(recorder: TraceRecorder, *,
+def _target(recorder: TraceRecorder | ActionCapture, label: str) -> TraceRecorder | ActionCapture:
+    if not isinstance(recorder, (TraceRecorder, ActionCapture)):
+        raise ConsequaTypeError(f"{label} requires a TraceRecorder or an ActionCapture")
+    return recorder
+
+
+def capture_tool(recorder: TraceRecorder | ActionCapture, *,
                  classify: Callable[[Exception], str | ResponseStatus] | None = None,
                  ) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """Decorate a synchronous tool so every call is one recorded attempt.
 
-    The wrapped function behaves as before: it returns the tool's result or
-    re-raises its exception after the response is recorded.
+    Pass an ``ActionCapture`` to record attempts for that action, or the
+    recorder while it has exactly one registered action. The wrapped function
+    behaves as before: it returns the tool's result or re-raises its exception
+    after the response is recorded.
     """
-    if not isinstance(recorder, TraceRecorder):
-        raise ConsequaTypeError("capture_tool requires a TraceRecorder")
+    target = _target(recorder, "capture_tool")
 
     def decorate(tool: Callable[..., Any]) -> Callable[..., Any]:
         if inspect.iscoroutinefunction(tool):
@@ -367,7 +500,7 @@ def capture_tool(recorder: TraceRecorder, *,
 
         @functools.wraps(tool)
         def wrapped(*args: Any, **kwargs: Any) -> Any:
-            with recorder.attempt(data={"tool": name}, classify=classify) as handle:
+            with target.attempt(data={"tool": name}, classify=classify) as handle:
                 value = tool(*args, **kwargs)
                 handle.result = _result_payload(value)
             return value

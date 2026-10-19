@@ -158,11 +158,11 @@ def test_annotation_cache_preserves_value_and_type_validation_on_every_trace():
     raw = factual.trace.to_dict()
     first = Trace.from_dict(raw)
     changed = factual.trace.to_dict()
-    changed["assessment"]["rationale"] = "A different captured statement."
+    changed["assessments"][0]["rationale"] = "A different captured statement."
     second = Trace.from_dict(changed)
-    assert first.assessment.rationale != second.assessment.rationale
+    assert first.latest_assessment().rationale != second.latest_assessment().rationale
     invalid = factual.trace.to_dict()
-    invalid["assessment"]["time_ms"] = True
+    invalid["assessments"][0]["time_ms"] = True
     with pytest.raises(TypeError):
         Trace.from_dict(invalid)
 

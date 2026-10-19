@@ -56,8 +56,8 @@ def test_invalid_report_input_creates_no_output_tree(tmp_path, capsys, mutation)
     if mutation == "json":
         text = "not json"
     elif mutation == "duplicate":
-        text = trace.to_json().replace('"schema_version": "0.1"',
-                                       '"schema_version": "0.1", "schema_version": "0.1"')
+        text = trace.to_json().replace('"schema_version": "1.0"',
+                                       '"schema_version": "1.0", "schema_version": "1.0"')
     else:
         if mutation == "version":
             value["schema_version"] = "9.0"

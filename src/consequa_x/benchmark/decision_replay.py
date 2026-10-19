@@ -115,11 +115,12 @@ def _request_from_capture(value) -> PolicyRequest:
         raise ValueError("captured responses must be a JSON array")
     responses = []
     for item in value["responses"]:
-        item = _object_fields(item, {"attempt_id", "status", "time_ms",
+        item = _object_fields(item, {"attempt_id", "action_id", "status", "time_ms",
                                     "provider_request_id", "result"}, "captured response")
         responses.append(ToolResponse(
-            item["attempt_id"], ResponseStatus(item["status"]), item["time_ms"],
-            item["provider_request_id"], item["result"],
+            attempt_id=item["attempt_id"], action_id=item["action_id"],
+            status=ResponseStatus(item["status"]), time_ms=item["time_ms"],
+            provider_request_id=item["provider_request_id"], result=item["result"],
         ))
     return PolicyRequest(value["stage"], value["task"], value["context"], tuple(responses),
                          value["attempts_remaining"])

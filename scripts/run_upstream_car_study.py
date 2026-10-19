@@ -273,8 +273,10 @@ def load_car(upstream_root):
 
 def request_from_dict(value):
     return PolicyRequest(value["stage"], value["task"], value["context"], tuple(ToolResponse(
-        item["attempt_id"], ResponseStatus(item["status"]), item["time_ms"],
-        item["provider_request_id"], item["result"]) for item in value["responses"]),
+        attempt_id=item["attempt_id"], action_id=item["action_id"],
+        status=ResponseStatus(item["status"]), time_ms=item["time_ms"],
+        provider_request_id=item["provider_request_id"], result=item["result"])
+        for item in value["responses"]),
         value["attempts_remaining"])
 
 
@@ -291,7 +293,7 @@ def evidence_record(episode, target):
     value = outcomes[target]
     trace = to_dict(episode.trace)
     return {"target_values": outcomes, "bad": None if value is None else int(not value),
-            "trace_sha256": digest(trace), "action": trace["action"],
+            "trace_sha256": digest(trace), "action": trace["actions"][0],
             "observations": trace["observations"], "verifications": trace["verifications"]}
 
 

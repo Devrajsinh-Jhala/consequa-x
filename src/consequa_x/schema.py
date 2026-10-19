@@ -126,10 +126,12 @@ def generate_trace_schema(version: str = SCHEMA_VERSION) -> dict[str, Any]:
             ]
         if name == "Trace":
             definition["description"] = (
+                "A trace holds one or more actions. Responses, assessments and verifications name "
+                "a declared action; identities are unique and each action has its own contract. "
                 "Event and assessment references must resolve; event dependencies must be acyclic. "
                 "Verification evidence must resolve to observations with matching source and watermark. "
-                "Action, event and contract identities must agree. Validate these relationships with "
-                "consequa_x.schema.validate_trace; JSON Schema covers record structure only."
+                "Validate these relationships with consequa_x.schema.validate_trace; JSON Schema "
+                "covers record structure only."
             )
 
     record_schema(Trace)

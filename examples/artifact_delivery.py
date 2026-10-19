@@ -11,7 +11,7 @@ import json
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, Observation,
-    OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, Trace,
+    OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, TimeBase, Trace,
     VerificationResult, VerificationStatus,
     explain, verify,
 )
@@ -53,14 +53,14 @@ class ArtifactVerifier:
                 or contract.deadline_ms < action.registered_at_ms):
             raise ValueError("This adapter requires a bounded, exactly-one artifact contract")
         records = [dict(record) for record in observation.records]
-        evidence = (Evidence(observation.observation_id, observation.source, observation.as_of_ms, {
+        evidence = (Evidence(observation_id=observation.observation_id, source=observation.source, as_of_ms=observation.as_of_ms, details={
             "scope": observation.scope, "records": records, "complete": observation.complete,
             "available": observation.available,
         }),)
 
         def result(status, reason, origin=OriginStatus.UNKNOWN, ids=(), linked=()):
-            return VerificationResult(contract.contract_id, status, observation.observed_at_ms,
-                                      evidence, origin, ids, linked, reason)
+            return VerificationResult(contract_id=contract.contract_id, status=status, observed_at_ms=observation.observed_at_ms,
+                                      evidence=evidence, origin=origin, effect_ids=ids, attributable_effect_ids=linked, reason=reason, action_id=action.action_id)
 
         if (not observation.available or not observation.complete
                 or observation.scope.get("artifact_path") != contract.expected["artifact_path"]
@@ -142,33 +142,33 @@ def captured_readback(
         if action_id is not None:
             record["action_id"] = action_id
         records.append(record)
-    return Observation("artifact-snapshot-1", "artifact-store/read-only-snapshot", 100, 100,
-                       {"artifact_path": "reports/quarterly.txt"}, tuple(records),
+    return Observation(observation_id="artifact-snapshot-1", source="artifact-store/read-only-snapshot", observed_at_ms=100, as_of_ms=100,
+                       scope={"artifact_path": "reports/quarterly.txt"}, records=tuple(records),
                        available=available)
 
 
 def build_trace(observation: Observation | None = None) -> Trace:
     expected = {"artifact_path": "reports/quarterly.txt", "sha256": sha256(REPORT).hexdigest()}
-    action = Action("deliver-report", "artifact-example", "delivery-agent", "deliver_artifact",
-                    expected, 0, OutcomeContract("delivery-contract", "artifact_delivered",
-                                                 expected, 50, stability_ms=20))
+    action = Action(action_id="deliver-report", actor="delivery-agent", name="deliver_artifact",
+                    arguments=expected, registered_at_ms=0, contract=OutcomeContract(contract_id="delivery-contract", predicate="artifact_delivered",
+                                                 expected=expected, deadline_ms=50, stability_ms=20))
     events = (
-        Event("delivery-decision", action.trace_id, EventType.AGENT_DECISION, 1,
-              action.actor, data={"decision": "deliver_artifact"}),
-        Event("delivery-dispatch", action.trace_id, EventType.ACTION_DISPATCH, 5,
-              action.actor, ("delivery-decision",),
-              {"action_id": action.action_id, "attempt_id": "delivery-attempt-1"}),
-        Event("delivery-timeout", action.trace_id, EventType.TOOL_RESPONSE, 10,
+        Event(id="delivery-decision", type=EventType.AGENT_DECISION, time_ms=1,
+              actor=action.actor, data={"decision": "deliver_artifact"}),
+        Event(id="delivery-dispatch", type=EventType.ACTION_DISPATCH, time_ms=5,
+              actor=action.actor, parent_ids=("delivery-decision",),
+              data={"action_id": action.action_id, "attempt_id": "delivery-attempt-1"}),
+        Event(id="delivery-timeout", type=EventType.TOOL_RESPONSE, time_ms=10,
               parent_ids=("delivery-dispatch",), data={"attempt_id": "delivery-attempt-1"}),
     )
-    response = ToolResponse("delivery-attempt-1", ResponseStatus.TIMEOUT, 10, "request-1",
-                            {"message": "Delivery acknowledgement was not received"})
-    assessment = AgentAssessment(AssessmentStatus.FAILURE, 11, ("delivery-timeout",),
-                                 "The delivery timed out, so I reported failure.")
+    response = ToolResponse(attempt_id="delivery-attempt-1", status=ResponseStatus.TIMEOUT, time_ms=10, provider_request_id="request-1",
+                            result={"message": "Delivery acknowledgement was not received"}, action_id=action.action_id)
+    assessment = AgentAssessment(status=AssessmentStatus.FAILURE, time_ms=11, evidence_event_ids=("delivery-timeout",),
+                                 rationale="The delivery timed out, so I reported failure.", assessment_id="delivery-assessment", action_id=action.action_id)
     observation = captured_readback() if observation is None else observation
     receipt = verify(action, observation, verifier=ArtifactVerifier())
-    return Trace(action.trace_id, action, events, (response,), assessment,
-                 (observation,), (receipt,))
+    return Trace(trace_id="artifact-delivery", time_base=TimeBase.RELATIVE_MS, actions=(action,), events=events, responses=(response,), assessments=(assessment,),
+                 observations=(observation,), verifications=(receipt,))
 
 
 if __name__ == "__main__":

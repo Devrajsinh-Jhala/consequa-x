@@ -71,21 +71,21 @@ def test_demo_outcomes_are_grounded_in_the_declared_contract(name, status, origi
     result = episode.trace.verifications[-1]
     assert result.status is status
     assert result.origin is origin
-    assert diagnosis in episode.explanation.diagnoses
+    assert diagnosis in episode.explanation.single_action.diagnoses
 
 
 def test_lost_response_does_not_hide_committed_effect_or_rewrite_agent_assessment():
     episode = run_scenario(seed=9)
     assert episode.action_selected
     assert episode.trace.responses[0].status is ResponseStatus.TIMEOUT
-    assert episode.trace.assessment.status is AssessmentStatus.FAILURE
+    assert episode.trace.latest_assessment().status is AssessmentStatus.FAILURE
     result = episode.trace.verifications[-1]
     assert result.status is VerificationStatus.SATISFIED
     assert result.origin is OriginStatus.CONFIRMED
     assert result.effect_ids == result.attributable_effect_ids
-    assert episode.explanation.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
-    assert episode.explanation.assessment_alignment == "contradicted"
-    assert set(episode.explanation.diagnoses) == {
+    assert episode.explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.explanation.single_action.assessment_alignment == "contradicted"
+    assert set(episode.explanation.single_action.diagnoses) == {
         "ASSESSMENT_DIVERGENCE", "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
     }
 
@@ -95,18 +95,18 @@ def test_same_selected_refund_and_response_sequence_can_have_different_effects()
     safe = run_scenario(configs["safe_retry"], seed=6)
     unsafe = run_scenario(configs["unsafe_retry"], seed=6)
     assert safe.action_selected == unsafe.action_selected is True
-    assert safe.trace.action.arguments == unsafe.trace.action.arguments
-    assert safe.trace.action.contract == unsafe.trace.action.contract
+    assert safe.trace.single_action.arguments == unsafe.trace.single_action.arguments
+    assert safe.trace.single_action.contract == unsafe.trace.single_action.contract
     assert [response.status for response in safe.trace.responses] == [
         response.status for response in unsafe.trace.responses
     ] == [ResponseStatus.TIMEOUT, ResponseStatus.SUCCESS]
-    assert safe.trace.assessment.status == unsafe.trace.assessment.status
+    assert safe.trace.latest_assessment().status == unsafe.trace.latest_assessment().status
     assert safe.trace.verifications[-1].status is VerificationStatus.SATISFIED
     assert unsafe.trace.verifications[-1].status is VerificationStatus.VIOLATED
     assert len(safe.trace.verifications[-1].effect_ids) == 1
     assert len(unsafe.trace.verifications[-1].effect_ids) == 2
-    assert "DUPLICATE_EFFECT" in unsafe.explanation.diagnoses
-    assert "DUPLICATE_EFFECT" not in safe.explanation.diagnoses
+    assert "DUPLICATE_EFFECT" in unsafe.explanation.single_action.diagnoses
+    assert "DUPLICATE_EFFECT" not in safe.explanation.single_action.diagnoses
 
 
 def test_external_actor_state_satisfaction_does_not_claim_agent_effect_origin():
@@ -115,10 +115,10 @@ def test_external_actor_state_satisfaction_does_not_claim_agent_effect_origin():
     assert result.status is VerificationStatus.SATISFIED
     assert result.origin is OriginStatus.OTHER_ACTOR
     assert result.effect_ids and result.attributable_effect_ids == ()
-    assert "EXTERNAL_ACTOR_EFFECT" in episode.explanation.diagnoses
-    assert episode.explanation.assessment_alignment == "unassessable"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in episode.explanation.diagnoses
-    assert episode.explanation.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
+    assert "EXTERNAL_ACTOR_EFFECT" in episode.explanation.single_action.diagnoses
+    assert episode.explanation.single_action.assessment_alignment == "unassessable"
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in episode.explanation.single_action.diagnoses
+    assert episode.explanation.single_action.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
 
 
 def test_missing_origin_does_not_prevent_state_verification_or_infer_provenance():
@@ -127,8 +127,8 @@ def test_missing_origin_does_not_prevent_state_verification_or_infer_provenance(
     assert result.status is VerificationStatus.SATISFIED
     assert result.origin is OriginStatus.UNKNOWN
     assert result.attributable_effect_ids == ()
-    assert "UNCONFIRMED_ORIGIN" in episode.explanation.diagnoses
-    assert episode.explanation.assessment_alignment == "unassessable"
+    assert "UNCONFIRMED_ORIGIN" in episode.explanation.single_action.diagnoses
+    assert episode.explanation.single_action.assessment_alignment == "unassessable"
     for record in episode.trace.observations[-1].records:
         assert not {"action_id", "attempt_id", "actor"} & record.keys()
 
@@ -136,10 +136,10 @@ def test_missing_origin_does_not_prevent_state_verification_or_infer_provenance(
 def test_cautious_timeout_assessment_is_not_called_an_incorrect_belief():
     episode = run_scenario(ScenarioConfig(timeout_assessment=AssessmentStatus.UNKNOWN))
     assert episode.trace.verifications[-1].status is VerificationStatus.SATISFIED
-    assert episode.explanation.assessment_alignment == "unassessable"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in episode.explanation.diagnoses
-    assert "ASSESSMENT_DIVERGENCE" not in episode.explanation.diagnoses
-    assert episode.explanation.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.explanation.single_action.assessment_alignment == "unassessable"
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in episode.explanation.single_action.diagnoses
+    assert "ASSESSMENT_DIVERGENCE" not in episode.explanation.single_action.diagnoses
+    assert episode.explanation.single_action.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
 
 
 def test_delayed_readback_remains_unknown_until_horizon_is_covered():
@@ -147,23 +147,23 @@ def test_delayed_readback_remains_unknown_until_horizon_is_covered():
     delayed = run_scenario(configs["delayed_visibility"])
     reconciled = run_scenario(configs["delayed_reconciled"])
     assert delayed.trace.verifications[-1].status is VerificationStatus.UNKNOWN
-    assert delayed.explanation.assessment_alignment == "unassessable"
-    assert "ASSESSMENT_DIVERGENCE" not in delayed.explanation.diagnoses
+    assert delayed.explanation.single_action.assessment_alignment == "unassessable"
+    assert "ASSESSMENT_DIVERGENCE" not in delayed.explanation.single_action.diagnoses
     assert len(reconciled.trace.observations) == len(reconciled.trace.verifications) == 2
     assert [result.status for result in reconciled.trace.verifications] == [
         VerificationStatus.UNKNOWN, VerificationStatus.SATISFIED,
     ]
     assert reconciled.trace.verifications[0] == delayed.trace.verifications[0]
-    assert reconciled.trace.observations[0].as_of_ms < reconciled.trace.action.contract.horizon_ms
-    assert reconciled.trace.observations[-1].as_of_ms >= reconciled.trace.action.contract.horizon_ms
-    assert reconciled.explanation.consequence == reconciled.trace.verifications[-1]
+    assert reconciled.trace.observations[0].as_of_ms < reconciled.trace.single_action.contract.horizon_ms
+    assert reconciled.trace.observations[-1].as_of_ms >= reconciled.trace.single_action.contract.horizon_ms
+    assert reconciled.explanation.single_action.consequence == reconciled.trace.verifications[-1]
 
 
 @pytest.mark.parametrize("stability,status", [
     (0, VerificationStatus.SATISFIED), (20, VerificationStatus.VIOLATED),
 ])
 def test_compensation_is_evaluated_at_contract_horizon(stability, status):
-    action = run_scenario(ScenarioConfig("clean", Fault.CLEAN)).trace.action
+    action = run_scenario(ScenarioConfig("clean", Fault.CLEAN)).trace.single_action
     action = replace(action, contract=replace(action.contract, stability_ms=stability))
     world = PaymentWorld(seed=4)
     world.advance(action.registered_at_ms)
@@ -204,9 +204,9 @@ def test_counterfactual_without_selected_action_keeps_same_consequence_target():
     original = run_scenario(seed=11)
     changed = run_scenario(seed=11, intervention=Intervention("customer_request"))
     assert original.action_selected and not changed.action_selected
-    assert changed.trace.action == original.trace.action
+    assert changed.trace.single_action == original.trace.single_action
     assert changed.trace.responses == ()
-    assert changed.trace.assessment.status is AssessmentStatus.UNKNOWN
+    assert changed.trace.latest_assessment().status is AssessmentStatus.UNKNOWN
     assert changed.trace.verifications[-1].status is VerificationStatus.VIOLATED
     assert changed.trace.verifications[-1].contract_id == original.trace.verifications[-1].contract_id
 

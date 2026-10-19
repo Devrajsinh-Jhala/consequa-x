@@ -75,7 +75,7 @@ def test_prefix_holds_exact_decisions_and_resamples_with_fresh_phase_seeds(hold_
     assert replay.policy_calls == bounded.calls == len(policy.requests) == expected_calls
     assert [seed for _, seed in policy.requests] == list(range(29 * 6 + hold_count, 29 * 6 + 2))
     assert replay.episode.seed == original.seed == 7
-    assert replay.episode.trace.action == original.trace.action
+    assert replay.episode.trace.single_action == original.trace.single_action
     assert replay.episode.ground_truth == original.ground_truth
     assert replay.episode.trace.responses == original.trace.responses
     assert replay.episode.trace.verifications == original.trace.verifications
@@ -191,7 +191,7 @@ def test_each_branch_resets_the_world_and_shared_budget_counts_only_its_new_call
     second = replay_decision_prefix(original, bounded, hold_count=1, continuation_seed=6)
     assert first.policy_calls == second.policy_calls == 2 and bounded.calls == 4
     assert first.episode.ground_truth == second.episode.ground_truth == original.ground_truth
-    assert first.episode.trace.action == second.episode.trace.action == original.trace.action
+    assert first.episode.trace.single_action == second.episode.trace.single_action == original.trace.single_action
     assert first.episode.trace.responses == second.episode.trace.responses
     assert [seed for _, seed in policy.requests] == [31, 32, 37, 38]
 
@@ -359,4 +359,4 @@ def test_factual_early_stop_full_prefix_needs_no_new_calls():
     assert replay.episode is not None and not replay.episode.action_selected
     assert replay.policy_calls == 0 and len(replay.decisions) == 1
     assert replay.decisions[0].continuation_model_seed == MAX_TRIAL_SEED * 6
-    assert replay.episode.trace.assessment.status is AssessmentStatus.UNKNOWN
+    assert replay.episode.trace.latest_assessment().status is AssessmentStatus.UNKNOWN

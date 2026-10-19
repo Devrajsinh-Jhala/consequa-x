@@ -19,8 +19,8 @@ def request(stage="select", attempts_remaining=2):
                          {"customer_request": "Please refund.", "vip_memory": "VIP status",
                           "vip_policy": "VIP refunds allowed through 60 days."},
                          () if stage == "select" else (
-                             ToolResponse("attempt:1", ResponseStatus.TIMEOUT, 6,
-                                          "request:1", {"code": "timeout"}),
+                             ToolResponse(attempt_id="attempt:1", status=ResponseStatus.TIMEOUT, time_ms=6,
+                                          provider_request_id="request:1", result={"code": "timeout"}, action_id="refund:1"),
                          ), attempts_remaining)
 
 

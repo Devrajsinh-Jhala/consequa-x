@@ -251,7 +251,7 @@ def audit(root, expected_source=None):
             operations = [event["data"]["policy_reply"]["decision"]["operation"] for event in decisions]
             expected_operations = ["stop"] if not selected else ["refund", "retry", "stop"] if retried else ["refund", "stop"]
             check(operations == expected_operations and len(decisions) == expected_count, "actual operations")
-            observation, action = trace["observations"][-1], trace["action"]
+            observation, action = trace["observations"][-1], trace["actions"][0]
             contract = action["contract"]
             horizon = contract["deadline_ms"] + contract["stability_ms"]
             qualifies = [record for record in observation["records"]

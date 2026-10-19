@@ -69,6 +69,7 @@ class RefundVerifier:
                 details=details,
             ),)
             return VerificationResult(
+                action_id=action.action_id,
                 contract_id=contract.contract_id,
                 status=status,
                 observed_at_ms=observation.observed_at_ms,
@@ -216,6 +217,8 @@ def verify(
     result = verify_method(action, observation)
     if not isinstance(result, VerificationResult):
         raise ConsequaTypeError("A verifier must return a VerificationResult")
+    if result.action_id != action.action_id:
+        raise ReceiptError("Verifier receipt action_id must match the verified action")
     if result.contract_id != action.contract.contract_id:
         raise ReceiptError("Verifier receipt contract_id must match the action contract")
     if result.observed_at_ms < observation.observed_at_ms:

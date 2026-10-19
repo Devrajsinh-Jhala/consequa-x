@@ -93,8 +93,8 @@ class PolicyExperiment:
             "budget_exhausted": self.budget_exhausted,
             "estimates": estimates,
             "assessment_metrics": assessment_metrics(
-                (branch.episode.trace.assessment.status,
-                 branch.episode.explanation.assessment_alignment)
+                (branch.episode.trace.latest_assessment().status,
+                 branch.episode.explanation.single_action.assessment_alignment)
                 for branch in self.branches if branch.episode is not None
             ),
         }
@@ -286,9 +286,9 @@ def branch_record(branch: ExperimentBranch, *, root: Path | None = None) -> dict
             action_selected=episode.action_selected,
             verified_outcome=result.status.value,
             effect_origin=result.origin.value,
-            reported_assessment=episode.trace.assessment.status.value,
-            assessment_alignment=episode.explanation.assessment_alignment,
-            diagnosis=episode.explanation.diagnosis,
+            reported_assessment=episode.trace.latest_assessment().status.value,
+            assessment_alignment=episode.explanation.single_action.assessment_alignment,
+            diagnosis=episode.explanation.single_action.diagnosis,
             action_linked_consequence_satisfied=episode_outcome(episode).action_linked_consequence_satisfied,
         )
         if root is not None:

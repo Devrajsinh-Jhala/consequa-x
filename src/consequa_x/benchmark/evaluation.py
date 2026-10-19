@@ -72,9 +72,9 @@ class PolicyEvaluation:
             verification = sample.episode.trace.verifications[-1]
             counts[verification.status.value] += 1
             origin[verification.origin.value] += 1
-            label = sample.episode.explanation.assessment_alignment
+            label = sample.episode.explanation.single_action.assessment_alignment
             alignment[label] = alignment.get(label, 0) + 1
-            value = action_linked_consequence(sample.episode.trace.action, verification)
+            value = action_linked_consequence(sample.episode.trace.single_action, verification)
             linked["unknown" if value is None else "satisfied" if value else "not_satisfied"] += 1
         return {
             "planned_samples": self.planned_samples,
@@ -90,8 +90,8 @@ class PolicyEvaluation:
             "assessment_alignment": alignment,
             "action_linked_consequence": linked,
             "assessment_metrics": assessment_metrics(
-                (sample.episode.trace.assessment.status,
-                 sample.episode.explanation.assessment_alignment)
+                (sample.episode.trace.latest_assessment().status,
+                 sample.episode.explanation.single_action.assessment_alignment)
                 for sample in self.samples if sample.episode is not None
             ),
             "known_outcome_samples": counts["satisfied"] + counts["violated"],
@@ -175,10 +175,10 @@ def evaluation_sample_record(sample: EvaluationSample, *, root: Path | None = No
             action_selected=episode.action_selected,
             verified_outcome=result.status.value,
             effect_origin=result.origin.value,
-            reported_assessment=episode.trace.assessment.status.value,
-            assessment_alignment=episode.explanation.assessment_alignment,
-            diagnosis=episode.explanation.diagnosis,
-            action_linked_consequence_satisfied=action_linked_consequence(episode.trace.action, result),
+            reported_assessment=episode.trace.latest_assessment().status.value,
+            assessment_alignment=episode.explanation.single_action.assessment_alignment,
+            diagnosis=episode.explanation.single_action.diagnosis,
+            action_linked_consequence_satisfied=action_linked_consequence(episode.trace.single_action, result),
         )
         if root is not None:
             stem = f"episode_{sample.index:04d}.json"

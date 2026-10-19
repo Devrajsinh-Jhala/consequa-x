@@ -41,13 +41,13 @@ def test_duplicate_readback_records_are_preserved_without_overwriting_each_other
     original = view.records[0]
     changed = dict(original, amount_minor=250_000, actor="another_actor")
     view = replace(view, records=(original, changed))
-    receipt = verify(trace.action, view)
+    receipt = verify(trace.single_action, view)
     assert receipt.status.value == "unknown"
     graph = build_graph(replace(trace, observations=(view,), verifications=(receipt,)))
     witnesses = [node for node in graph.nodes if node.kind == "observed_external_effect"]
     assert len(witnesses) == 2 and len({node.id for node in witnesses}) == 2
     assert {node.data["amount_minor"] for node in witnesses} == {500_000, 250_000}
-    assert {node.data["actor"] for node in witnesses} == {trace.action.actor, "another_actor"}
+    assert {node.data["actor"] for node in witnesses} == {trace.single_action.actor, "another_actor"}
 
 
 def test_witness_identifiers_do_not_collide_when_source_identities_contain_delimiters():
@@ -57,7 +57,7 @@ def test_witness_identifiers_do_not_collide_when_source_identities_contain_delim
     observations = tuple(replace(view, observation_id=value, records=records)
                          for value in ("a:b", "a"))
     graph = build_graph(replace(trace, observations=observations,
-                               verifications=tuple(verify(trace.action, item)
+                               verifications=tuple(verify(trace.single_action, item)
                                                    for item in observations)))
     witnesses = [node for node in graph.nodes if node.kind == "observed_external_effect"]
     assert len(witnesses) == len({node.id for node in witnesses}) == 4
@@ -71,7 +71,7 @@ def test_event_identity_cannot_overwrite_a_generated_repeated_effect_witness():
     view = trace.observations[0]
     later = replace(view, observation_id="later")
     trace = replace(trace, observations=(view, later),
-                    verifications=tuple(verify(trace.action, item) for item in (view, later)))
+                    verifications=tuple(verify(trace.single_action, item) for item in (view, later)))
     witness = next(node for node in build_graph(trace).nodes
                    if node.kind == "observed_external_effect")
     additional = replace(trace.events[0], id=witness.id)
@@ -85,7 +85,7 @@ def test_origin_edge_requires_a_temporally_possible_witness(committed_at):
     view = trace.observations[0]
     view = replace(view, records=(dict(view.records[0], committed_at_ms=committed_at),))
     graph = build_graph(replace(trace, observations=(view,),
-                               verifications=(verify(trace.action, view),)))
+                               verifications=(verify(trace.single_action, view),)))
     assert not any(edge.kind == "EFFECT" for edge in graph.edges)
 
 
@@ -102,7 +102,7 @@ def test_reserved_graph_metadata_preserves_the_complete_verbatim_source_record(r
     view = replace(view, records=(dict(view.records[0], **reserved),))
     observations = (view, replace(view, observation_id="later")) if repeated else (view,)
     trace = replace(trace, observations=observations,
-                    verifications=tuple(verify(trace.action, item) for item in observations))
+                    verifications=tuple(verify(trace.single_action, item) for item in observations))
     graph = build_graph(trace)
     witnesses = [node for node in graph.nodes if node.kind == "observed_external_effect"]
     assert len(witnesses) == len(observations)

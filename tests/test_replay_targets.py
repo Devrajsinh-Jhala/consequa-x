@@ -18,8 +18,8 @@ from consequa_x.verification import verify
 def action(*, exact_count=1):
     expected = {"payment_id": "pay_42", "amount_minor": 200_000, "currency": "INR"}
     return Action(
-        "action_1", "trace_1", "agent", "refund", expected, 10,
-        OutcomeContract("contract_1", "refund_processed", expected, 100,
+        action_id="action_1", actor="agent", name="refund", arguments=expected, registered_at_ms=10,
+        contract=OutcomeContract(contract_id="contract_1", predicate="refund_processed", expected=expected, deadline_ms=100,
                         exact_count=exact_count, stability_ms=20),
     )
 

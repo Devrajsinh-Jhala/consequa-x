@@ -48,11 +48,11 @@ def _demo(args):
                              "sha256": sha256(path.read_bytes()).hexdigest()})
         verification = episode.trace.verifications[-1]
         matching = verification.evidence[-1].details.get("matching_count", "unknown")
-        rows.append(f"| {config.name} | {episode.trace.assessment.status.value} | "
+        rows.append(f"| {config.name} | {episode.trace.latest_assessment().status.value} | "
                     f"{verification.status.value} | {verification.origin.value} | {matching} |")
         cases.append({"scenario": config.name, "trace": paths["trace"].relative_to(output).as_posix(),
                       "explanation": paths["explanation"].relative_to(output).as_posix(),
-                      "diagnosis": episode.explanation.diagnosis})
+                      "diagnosis": episode.explanation.single_action.diagnosis})
     _write_json(output / "evaluator_truth" / "cases.json", cases)
     _write_json(output / "trace-schema.json", get_trace_schema())
     _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": manifest})

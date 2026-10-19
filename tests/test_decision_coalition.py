@@ -91,7 +91,7 @@ def test_arbitrary_coalitions_hold_positions_and_only_fresh_decisions_call_polic
         174 + index for index in range(3) if index not in held_indices
     ]
     assert replay.episode.seed == original.seed == 7
-    assert replay.episode.trace.action == original.trace.action
+    assert replay.episode.trace.single_action == original.trace.single_action
     assert replay.episode.trace.responses == original.trace.responses
     assert replay.episode.ground_truth == original.ground_truth
     assert replay.episode.trace.verifications == original.trace.verifications

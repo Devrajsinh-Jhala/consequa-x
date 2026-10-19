@@ -22,7 +22,7 @@ from typing import Any, get_args, get_origin, get_type_hints
 from .errors import ConsequaTypeError, SchemaVersionError, ValidationError
 
 
-SCHEMA_VERSION = "0.1"
+SCHEMA_VERSION = "1.0"
 
 
 class EventType(str, Enum):
@@ -38,6 +38,13 @@ class EventType(str, Enum):
     EXTERNAL_OBSERVATION = "external_observation"
     VERIFICATION = "verification"
     EXTERNAL_EFFECT = "external_effect"
+
+
+class TimeBase(str, Enum):
+    """What the integer millisecond times in a trace count from."""
+
+    UNIX_MS = "unix_ms"          # milliseconds since 1970-01-01T00:00:00Z
+    RELATIVE_MS = "relative_ms"  # milliseconds from an unrecorded run origin
 
 
 class ResponseStatus(str, Enum):
@@ -198,10 +205,9 @@ class _Record:
         return to_dict(self)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Event(_Record):
     id: str
-    trace_id: str
     type: EventType
     time_ms: int
     actor: str | None = None
@@ -210,7 +216,6 @@ class Event(_Record):
 
     def __post_init__(self) -> None:
         _string(self.id, "id")
-        _string(self.trace_id, "trace_id")
         _enum(self.type, EventType, "type")
         _time(self.time_ms, "time_ms")
         if self.actor is not None:
@@ -221,7 +226,7 @@ class Event(_Record):
         _payload(self, "data")
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OutcomeContract(_Record):
     contract_id: str
     predicate: str
@@ -244,10 +249,9 @@ class OutcomeContract(_Record):
         return self.deadline_ms + self.stability_ms
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Action(_Record):
     action_id: str
-    trace_id: str
     actor: str
     name: str
     arguments: dict[str, Any]
@@ -256,7 +260,7 @@ class Action(_Record):
     idempotency_key: str | None = None
 
     def __post_init__(self) -> None:
-        for name in ("action_id", "trace_id", "actor", "name"):
+        for name in ("action_id", "actor", "name"):
             _string(getattr(self, name), name)
         _payload(self, "arguments")
         _time(self.registered_at_ms, "registered_at_ms")
@@ -266,9 +270,10 @@ class Action(_Record):
             _string(self.idempotency_key, "idempotency_key")
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ToolResponse(_Record):
     attempt_id: str
+    action_id: str
     status: ResponseStatus
     time_ms: int
     provider_request_id: str
@@ -276,27 +281,32 @@ class ToolResponse(_Record):
 
     def __post_init__(self) -> None:
         _string(self.attempt_id, "attempt_id")
+        _string(self.action_id, "action_id")
         _enum(self.status, ResponseStatus, "status")
         _time(self.time_ms, "time_ms")
         _string(self.provider_request_id, "provider_request_id")
         _payload(self, "result")
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class AgentAssessment(_Record):
+    assessment_id: str
+    action_id: str
     status: AssessmentStatus
     time_ms: int
     evidence_event_ids: tuple[str, ...] = ()
     rationale: str = ""
 
     def __post_init__(self) -> None:
+        _string(self.assessment_id, "assessment_id")
+        _string(self.action_id, "action_id")
         _enum(self.status, AssessmentStatus, "status")
         _time(self.time_ms, "time_ms")
         _string_tuple(self.evidence_event_ids, "evidence_event_ids")
         _string(self.rationale, "rationale", nonempty=False)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Observation(_Record):
     observation_id: str
     source: str
@@ -328,7 +338,7 @@ class Observation(_Record):
                 raise ConsequaTypeError(f"{name} must be a boolean")
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Evidence(_Record):
     observation_id: str
     source: str
@@ -342,8 +352,9 @@ class Evidence(_Record):
         _payload(self, "details")
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class VerificationResult(_Record):
+    action_id: str
     contract_id: str
     status: VerificationStatus
     observed_at_ms: int
@@ -354,6 +365,7 @@ class VerificationResult(_Record):
     reason: str = ""
 
     def __post_init__(self) -> None:
+        _string(self.action_id, "action_id")
         _string(self.contract_id, "contract_id")
         _enum(self.status, VerificationStatus, "status")
         _time(self.observed_at_ms, "observed_at_ms")
@@ -376,58 +388,85 @@ class VerificationResult(_Record):
         _string(self.reason, "reason", nonempty=False)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Trace(_Record):
+    """One run: one or more consequential actions and the evidence about each.
+
+    Every time in a trace uses the declared ``time_base``. Responses,
+    assessments and verifications each name the action they concern.
+    """
+
     trace_id: str
-    action: Action
-    events: tuple[Event, ...]
-    responses: tuple[ToolResponse, ...]
-    assessment: AgentAssessment
+    time_base: TimeBase
+    actions: tuple[Action, ...]
+    events: tuple[Event, ...] = ()
+    responses: tuple[ToolResponse, ...] = ()
+    assessments: tuple[AgentAssessment, ...] = ()
     observations: tuple[Observation, ...] = ()
     verifications: tuple[VerificationResult, ...] = ()
     schema_version: str = SCHEMA_VERSION
 
     def __post_init__(self) -> None:
         _string(self.trace_id, "trace_id")
+        if type(self.schema_version) is not str:
+            raise ConsequaTypeError("schema_version must be a string")
         if self.schema_version != SCHEMA_VERSION:
-            raise SchemaVersionError(f"unsupported schema_version: {self.schema_version!r}")
-        if not isinstance(self.action, Action):
-            raise ConsequaTypeError("action must be an Action")
-        if self.action.trace_id != self.trace_id:
-            raise ValidationError("action.trace_id must equal trace_id")
-        if not isinstance(self.assessment, AgentAssessment):
-            raise ConsequaTypeError("assessment must be an AgentAssessment")
+            hint = (" Convert it with consequa_x.migrate.migrate_trace or "
+                    "'consequa-x migrate'." if self.schema_version == "0.1" else "")
+            raise SchemaVersionError(
+                f"unsupported schema_version: {self.schema_version!r}.{hint}")
+        _enum(self.time_base, TimeBase, "time_base")
         for name, record_type in (
+            ("actions", Action),
             ("events", Event),
             ("responses", ToolResponse),
+            ("assessments", AgentAssessment),
             ("observations", Observation),
             ("verifications", VerificationResult),
         ):
             _records(getattr(self, name), record_type, name)
-        for event in self.events:
-            if event.trace_id != self.trace_id:
-                raise ValidationError("every event.trace_id must equal trace_id")
+        if not self.actions:
+            raise ValidationError("a trace must contain at least one action")
         for name, identity in (
+            ("actions", "action_id"),
             ("events", "id"),
             ("responses", "attempt_id"),
+            ("assessments", "assessment_id"),
             ("observations", "observation_id"),
         ):
             identifiers = [getattr(record, identity) for record in getattr(self, name)]
             if len(set(identifiers)) != len(identifiers):
                 raise ValidationError(f"{name} must have unique {identity} values")
+        contracts = [action.contract.contract_id for action in self.actions]
+        if len(set(contracts)) != len(contracts):
+            raise ValidationError("every action must have its own contract_id")
+        actions = {action.action_id: action for action in self.actions}
         events_by_id = {event.id: event for event in self.events}
         for event in self.events:
             missing = set(event.parent_ids) - events_by_id.keys()
             if missing:
                 raise ValidationError(f"event.parent_ids refer to missing events: {sorted(missing)}")
-        missing = set(self.assessment.evidence_event_ids) - events_by_id.keys()
-        if missing:
-            raise ValidationError(f"assessment.evidence_event_ids refer to missing events: {sorted(missing)}")
+            if (event.type in (EventType.ACTION_INTENT, EventType.ACTION_DISPATCH)
+                    and "action_id" in event.data and event.data["action_id"] not in actions):
+                raise ValidationError(f"{event.type.value} event refers to an undeclared action")
         _validate_event_dag(self.events)
+        for response in self.responses:
+            if response.action_id not in actions:
+                raise ValidationError("response.action_id refers to an undeclared action")
+        for assessment in self.assessments:
+            if assessment.action_id not in actions:
+                raise ValidationError("assessment.action_id refers to an undeclared action")
+            missing = set(assessment.evidence_event_ids) - events_by_id.keys()
+            if missing:
+                raise ValidationError(
+                    f"assessment.evidence_event_ids refer to missing events: {sorted(missing)}")
         observations_by_id = {item.observation_id: item for item in self.observations}
         for verification in self.verifications:
-            if verification.contract_id != self.action.contract.contract_id:
-                raise ValidationError("verification.contract_id must match the action contract")
+            action = actions.get(verification.action_id)
+            if action is None:
+                raise ValidationError("verification.action_id refers to an undeclared action")
+            if verification.contract_id != action.contract.contract_id:
+                raise ValidationError("verification.contract_id must match its action's contract")
             for evidence in verification.evidence:
                 observation = observations_by_id.get(evidence.observation_id)
                 if observation is None:
@@ -439,9 +478,58 @@ class Trace(_Record):
                 if observation.observed_at_ms > verification.observed_at_ms:
                     raise ValidationError("verification cannot precede its evidence observation")
 
+    def get_action(self, action_id: str) -> Action:
+        """The declared action with this ID."""
+        for action in self.actions:
+            if action.action_id == action_id:
+                return action
+        raise ValidationError(f"trace has no action {action_id!r}")
+
+    @property
+    def single_action(self) -> Action:
+        """The trace's only action; a ``ValidationError`` if it declares several."""
+        if len(self.actions) != 1:
+            raise ValidationError(
+                f"trace declares {len(self.actions)} actions; name one with get_action()")
+        return self.actions[0]
+
+    def _action_id(self, action_id: str | None) -> str:
+        if action_id is None:
+            return self.single_action.action_id
+        return self.get_action(action_id).action_id
+
+    def responses_for(self, action_id: str | None = None) -> tuple[ToolResponse, ...]:
+        """Responses for one action, in recorded order (the only action if omitted)."""
+        action_id = self._action_id(action_id)
+        return tuple(item for item in self.responses if item.action_id == action_id)
+
+    def assessments_for(self, action_id: str | None = None) -> tuple[AgentAssessment, ...]:
+        """Assessments for one action, in recorded order (the only action if omitted)."""
+        action_id = self._action_id(action_id)
+        return tuple(item for item in self.assessments if item.action_id == action_id)
+
+    def verifications_for(self, action_id: str | None = None) -> tuple[VerificationResult, ...]:
+        """Verifications for one action, in recorded order (the only action if omitted)."""
+        action_id = self._action_id(action_id)
+        return tuple(item for item in self.verifications if item.action_id == action_id)
+
+    def latest_assessment(self, action_id: str | None = None) -> AgentAssessment | None:
+        """The last recorded assessment for one action, or ``None``."""
+        items = self.assessments_for(action_id)
+        return items[-1] if items else None
+
+    def latest_verification(self, action_id: str | None = None) -> VerificationResult | None:
+        """The last recorded verification for one action, or ``None``."""
+        items = self.verifications_for(action_id)
+        return items[-1] if items else None
+
     @classmethod
     def from_dict(cls, value: dict[str, Any]) -> Trace:
         """Decode strictly: no field coercion or unknown nested record fields."""
+        if type(value) is dict and value.get("schema_version") == "0.1":
+            raise SchemaVersionError(
+                "unsupported schema_version: '0.1'. Convert it with "
+                "consequa_x.migrate.migrate_trace or 'consequa-x migrate'.")
         return _decode_record(cls, value, "trace")
 
     def to_json(self, *, indent: int | None = None) -> str:

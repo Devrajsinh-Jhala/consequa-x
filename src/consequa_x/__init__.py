@@ -3,17 +3,17 @@
 __version__ = "1.2.0"
 
 from .attribution import EffectEstimate, Intervention, leave_one_out, recency_attribution
-from .capture import Attempt, TraceRecorder, capture_tool
+from .capture import ActionCapture, Attempt, TraceRecorder, capture_tool
 from .errors import (
     ConsequaError, ConsequaTypeError, ContractError, ReceiptError, RecorderError,
     SchemaVersionError, ValidationError,
 )
-from .explanation import ConsequenceExplanation, TargetMatcher, explain
+from .explanation import ActionExplanation, TargetMatcher, TraceExplanation, explain
 from .graph import ConsequenceGraph, build_graph
 from .models import (
     Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType, FrozenDict,
     FrozenList, Observation,
-    OriginStatus, OutcomeContract, ResponseStatus, ToolResponse, Trace,
+    OriginStatus, OutcomeContract, ResponseStatus, TimeBase, ToolResponse, Trace,
     VerificationResult, VerificationStatus, thaw,
 )
 from .record_verifier import RecordTargetMatcher, RecordVerifier
@@ -22,10 +22,10 @@ from .verification import RefundVerifier, Verifier, verify
 from .report import render_report
 
 __all__ = [
-    "Action", "AgentAssessment", "AssessmentStatus", "ConsequenceExplanation",
+    "Action", "ActionCapture", "ActionExplanation", "AgentAssessment", "AssessmentStatus",
     "ConsequenceGraph", "EffectEstimate", "Evidence", "Event", "EventType", "Intervention",
     "Observation", "OriginStatus", "OutcomeContract", "RecordTargetMatcher", "RecordVerifier",
-    "RefundVerifier", "TargetMatcher", "Trace",
+    "RefundVerifier", "TargetMatcher", "TimeBase", "Trace", "TraceExplanation",
     "Policy", "PolicyDecision", "PolicyError", "PolicyReply", "PolicyRequest", "ScriptedRefundPolicy",
     "ResponseStatus", "ToolResponse", "TraceRecorder", "VerificationResult", "VerificationStatus", "Verifier",
     "Attempt", "build_graph", "capture_tool", "explain",

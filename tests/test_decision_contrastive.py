@@ -121,7 +121,7 @@ def test_stateless_planted_middle_decision_is_latest_statistical_rescue():
     assert found.event_id == events[1].id
     for branch in result.branches:
         assert branch.replay.hold_count == branch.decision_index
-        assert branch.replay.episode.trace.action == original.trace.action
+        assert branch.replay.episode.trace.single_action == original.trace.single_action
         assert branch.replay.episode.seed == original.seed
     assert original.trace.to_json() == original_json
 

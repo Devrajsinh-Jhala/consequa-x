@@ -20,7 +20,7 @@ from consequa_x.models import (
     OutcomeContract,
     ResponseStatus,
     ToolResponse,
-    Trace,
+    TimeBase, Trace,
     VerificationResult,
     VerificationStatus,
 )
@@ -34,48 +34,48 @@ HOSTILE = SECRET + '</pre><script>alert("x")</script><img src="https://invalid.t
 def captured_trace():
     """An application-defined target with conflicting successive witnesses."""
     action = Action(
-        action_id=SECRET + "_action", trace_id=SECRET + "_trace", actor=SECRET + "_actor",
+        action_id=SECRET + "_action", actor=SECRET + "_actor",
         name=SECRET + "_name", arguments={SECRET: HOSTILE, "arbitrary_number": 739124896},
         registered_at_ms=0,
-        contract=OutcomeContract(SECRET + "_contract", SECRET + "_predicate",
-                                 {SECRET: HOSTILE, "currency": SECRET}, 60, stability_ms=10),
+        contract=OutcomeContract(contract_id=SECRET + "_contract", predicate=SECRET + "_predicate",
+                                 expected={SECRET: HOSTILE, "currency": SECRET}, deadline_ms=60, stability_ms=10),
         idempotency_key=SECRET + "_idempotency",
     )
     events = (
-        Event(SECRET + "_dispatch", action.trace_id, EventType.ACTION_DISPATCH, 10,
-              action.actor, data={"action_id": action.action_id, "attempt_id": SECRET + "_attempt",
+        Event(id=SECRET + "_dispatch", type=EventType.ACTION_DISPATCH, time_ms=10,
+              actor=action.actor, data={"action_id": action.action_id, "attempt_id": SECRET + "_attempt",
                                   "payload": HOSTILE}),
-        Event(SECRET + "_response", action.trace_id, EventType.TOOL_RESPONSE, 20,
-              action.actor, parent_ids=(SECRET + "_dispatch",),
+        Event(id=SECRET + "_response", type=EventType.TOOL_RESPONSE, time_ms=20,
+              actor=action.actor, parent_ids=(SECRET + "_dispatch",),
               data={"attempt_id": SECRET + "_attempt", "message": HOSTILE}),
     )
     record = {"effect_id": SECRET + "_effect", "committed_at_ms": 15,
               "action_id": action.action_id, "attempt_id": SECRET + "_attempt",
               "actor": action.actor, "file_path": SECRET + "/secret/file", "payload": HOSTILE}
     observations = (
-        Observation(SECRET + "_view1", SECRET + "_source", 80, 70,
-                    {SECRET: HOSTILE}, (record,)),
-        Observation(SECRET + "_view2", SECRET + "_source", 100, 90,
-                    {SECRET: HOSTILE}, (dict(record, actor=SECRET + "_other_actor"),)),
+        Observation(observation_id=SECRET + "_view1", source=SECRET + "_source", observed_at_ms=80, as_of_ms=70,
+                    scope={SECRET: HOSTILE}, records=(record,)),
+        Observation(observation_id=SECRET + "_view2", source=SECRET + "_source", observed_at_ms=100, as_of_ms=90,
+                    scope={SECRET: HOSTILE}, records=(dict(record, actor=SECRET + "_other_actor"),)),
     )
     verifications = tuple(
         VerificationResult(
-            action.contract.contract_id, VerificationStatus.SATISFIED, view.observed_at_ms,
-            (Evidence(view.observation_id, view.source, view.as_of_ms,
-                      {SECRET: HOSTILE, "error": SECRET}),),
+            contract_id=action.contract.contract_id, status=VerificationStatus.SATISFIED, observed_at_ms=view.observed_at_ms,
+            evidence=(Evidence(observation_id=view.observation_id, source=view.source, as_of_ms=view.as_of_ms,
+                      details={SECRET: HOSTILE, "error": SECRET}),),
             origin=OriginStatus.CONFIRMED if index == 0 else OriginStatus.OTHER_ACTOR,
             effect_ids=(SECRET + "_effect",),
             attributable_effect_ids=(SECRET + "_effect",) if index == 0 else (),
-            reason=HOSTILE,
+            reason=HOSTILE, action_id=action.action_id,
         )
         for index, view in enumerate(observations)
     )
     return Trace(
-        action.trace_id, action, events,
-        (ToolResponse(SECRET + "_attempt", ResponseStatus.TIMEOUT, 20,
-                      SECRET + "_request", {SECRET: HOSTILE}),),
-        AgentAssessment(AssessmentStatus.FAILURE, 25, (events[-1].id,), HOSTILE),
-        observations, verifications,
+        trace_id=SECRET + "_trace", time_base=TimeBase.RELATIVE_MS, actions=(action,), events=events,
+        responses=(ToolResponse(attempt_id=SECRET + "_attempt", status=ResponseStatus.TIMEOUT, time_ms=20,
+                      provider_request_id=SECRET + "_request", result={SECRET: HOSTILE}, action_id=action.action_id),),
+        assessments=(AgentAssessment(status=AssessmentStatus.FAILURE, time_ms=25, evidence_event_ids=(events[-1].id,), rationale=HOSTILE, assessment_id="assessment-1", action_id=action.action_id),),
+        observations=observations, verifications=verifications,
     )
 
 
@@ -121,7 +121,7 @@ def test_default_file_omits_every_captured_string_even_in_hidden_content():
     assert "Minimal disclosure mode" in document
     assert "not a universal anonymization guarantee" in document
     assert "Keep the original trace separately as evidence" in document
-    assert "Trace schema 0.1" in document
+    assert "Trace schema 1.0" in document and "Times in relative_ms" in document
 
 
 @pytest.mark.parametrize("include_details", [False, True])
@@ -176,8 +176,8 @@ def test_all_captured_verifications_remain_visible_including_unknown():
     first = replace(trace.verifications[0], status=VerificationStatus.UNKNOWN,
                     origin=OriginStatus.UNKNOWN, effect_ids=(), attributable_effect_ids=())
     document = render_report(replace(trace, verifications=(first, trace.verifications[1])))
-    assert '<td>Verification 1</td><td>80 ms</td><td><span class="pill status-unknown">unknown' in document
-    assert '<td>Verification 2</td><td>100 ms</td><td><span class="pill status-satisfied">satisfied' in document
+    assert '<td>Verification 1</td><td>Action 1</td><td>80 ms</td><td><span class="pill status-unknown">unknown' in document
+    assert '<td>Verification 2</td><td>Action 1</td><td>100 ms</td><td><span class="pill status-satisfied">satisfied' in document
     assert "origin unknown" in document
     assert "origin other_actor" in document
 
@@ -190,8 +190,8 @@ def test_latest_summary_uses_verification_time_not_tuple_position():
     document = render_report(trace)
     assert 'Latest verified state</h3><div class="value"><span class="pill status-unknown">' in document
     assert 'Latest effect origin</h3><div class="value"><span class="pill status-unknown">' in document
-    assert '<td>Verification 1</td><td>100 ms</td>' in document
-    assert '<td>Verification 2</td><td>80 ms</td>' in document
+    assert '<td>Verification 1</td><td>Action 1</td><td>100 ms</td>' in document
+    assert '<td>Verification 2</td><td>Action 1</td><td>80 ms</td>' in document
 
 
 def test_equal_time_latest_summary_uses_last_capture_without_reordering_records():
@@ -200,8 +200,8 @@ def test_equal_time_latest_summary_uses_last_capture_without_reordering_records(
     trace = replace(trace, verifications=(trace.verifications[1], first))
     document = render_report(trace)
     assert 'Latest effect origin</h3><div class="value"><span class="pill status-confirmed">' in document
-    assert '<td>Verification 1</td><td>100 ms</td>' in document
-    assert '<td>Verification 2</td><td>100 ms</td>' in document
+    assert '<td>Verification 1</td><td>Action 1</td><td>100 ms</td>' in document
+    assert '<td>Verification 2</td><td>Action 1</td><td>100 ms</td>' in document
 
 
 @pytest.mark.parametrize("event_type", list(EventType))
@@ -209,7 +209,7 @@ def test_every_public_event_type_is_supported_by_generic_report(event_type):
     trace = captured_trace()
     event = replace(trace.events[0], type=event_type, data={SECRET: HOSTILE})
     trace = replace(trace, events=(event,),
-                    assessment=replace(trace.assessment, evidence_event_ids=(event.id,)))
+                    assessments=(replace(trace.latest_assessment(), evidence_event_ids=(event.id,)),))
     document = render_report(trace)
     assert event_type.value.replace("_", " ") in document
     assert SECRET not in document
@@ -217,10 +217,10 @@ def test_every_public_event_type_is_supported_by_generic_report(event_type):
 
 def test_valid_empty_generic_trace_and_unconstrained_contract():
     trace = captured_trace()
-    trace = replace(trace, action=replace(trace.action,
-                    contract=replace(trace.action.contract, exact_count=None)),
+    trace = replace(trace, actions=(replace(trace.single_action,
+                    contract=replace(trace.single_action.contract, exact_count=None)),),
                     events=(), responses=(), observations=(), verifications=(),
-                    assessment=replace(trace.assessment, evidence_event_ids=()))
+                    assessments=(replace(trace.latest_assessment(), evidence_event_ids=()),))
     document = render_report(trace)
     assert document.count("not recorded") == 2
     assert "not constrained" in document
@@ -258,8 +258,8 @@ def test_details_opt_in_requires_actual_boolean(value):
 def test_mutated_nested_payload_is_revalidated_without_exposing_its_error():
     trace = captured_trace()
     with pytest.raises(TypeError, match="read-only"):
-        trace.action.arguments[SECRET] = float("nan")
-    dict.__setitem__(trace.action.arguments, SECRET, float("nan"))  # Deliberate bypass.
+        trace.single_action.arguments[SECRET] = float("nan")
+    dict.__setitem__(trace.single_action.arguments, SECRET, float("nan"))  # Deliberate bypass.
     with pytest.raises(ValueError) as error:
         render_report(trace)
     assert str(error.value) == "Cannot render an invalid trace"
@@ -268,7 +268,7 @@ def test_mutated_nested_payload_is_revalidated_without_exposing_its_error():
 
 def test_forged_enum_value_cannot_inject_a_status_class_or_text():
     trace = captured_trace()
-    object.__setattr__(trace.assessment, "status", HOSTILE)
+    object.__setattr__(trace.latest_assessment(), "status", HOSTILE)
     with pytest.raises(ValueError, match="Cannot render an invalid trace") as error:
         render_report(trace)
     assert SECRET not in str(error.value)
@@ -276,7 +276,7 @@ def test_forged_enum_value_cannot_inject_a_status_class_or_text():
 
 def test_graph_identity_refusal_does_not_echo_captured_secret():
     trace = captured_trace()
-    collision = replace(trace.events[0], id=f"contract:{trace.action.contract.contract_id}")
+    collision = replace(trace.events[0], id=f"contract:{trace.single_action.contract.contract_id}")
     trace = replace(trace, events=(*trace.events, collision))
     with pytest.raises(ValueError, match="conflicting evidence graph identities") as error:
         render_report(trace)
@@ -285,9 +285,9 @@ def test_graph_identity_refusal_does_not_echo_captured_secret():
 
 def test_large_graph_overview_is_bounded_but_full_evidence_tables_remain():
     trace = captured_trace()
-    events = tuple(Event(f"{SECRET}_{index}", trace.trace_id, EventType.AGENT_DECISION,
-                         index, data={SECRET: HOSTILE}) for index in range(50))
-    trace = replace(trace, events=events, assessment=replace(trace.assessment, evidence_event_ids=()))
+    events = tuple(Event(id=f"{SECRET}_{index}", type=EventType.AGENT_DECISION,
+                         time_ms=index, data={SECRET: HOSTILE}) for index in range(50))
+    trace = replace(trace, events=events, assessments=(replace(trace.latest_assessment(), evidence_event_ids=()),))
     graph = build_graph(trace)
     document = render_report(trace)
     assert document.count('<rect class="node') == 32
@@ -334,10 +334,10 @@ def test_accessible_text_tables_keyboard_navigation_print_and_wrapping():
 def test_very_long_hostile_details_are_retained_and_escaped_without_attributes():
     trace = captured_trace()
     long_payload = HOSTILE * 500
-    trace = replace(trace, action=replace(trace.action, arguments={"payload": long_payload}))
+    trace = replace(trace, actions=(replace(trace.single_action, arguments={"payload": long_payload}),))
     structural = render_report(trace)
     detailed = render_report(trace, include_details=True)
     assert SECRET not in structural
     parsed = ParsedReport(detailed)
-    assert json.loads(''.join(parsed.pre_text))["action"]["arguments"]["payload"] == long_payload
+    assert json.loads(''.join(parsed.pre_text))["actions"][0]["arguments"]["payload"] == long_payload
     assert "script" not in parsed.tags

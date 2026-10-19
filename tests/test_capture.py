@@ -1,10 +1,12 @@
 """TraceRecorder arranges application-supplied records into an ordinary trace."""
 
+import time
+
 import pytest
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Event, EventType, Observation, OutcomeContract,
-    ResponseStatus, ToolResponse, Trace, TraceRecorder, VerificationStatus, build_graph,
+    ResponseStatus, ToolResponse, TimeBase, Trace, TraceRecorder, VerificationStatus, build_graph,
     capture_tool, explain,
 )
 
@@ -13,20 +15,20 @@ EXPECTED = {"payment_id": "p1", "amount_minor": 1000, "currency": "INR"}
 
 
 def contract():
-    return OutcomeContract("contract-1", "refund_processed", dict(EXPECTED),
+    return OutcomeContract(contract_id="contract-1", predicate="refund_processed", expected=dict(EXPECTED),
                            deadline_ms=50, stability_ms=20)
 
 
 def readback(observation_id="readback-1", *, observed=100, watermark=100, attempt="refund-1:attempt-1"):
-    return Observation(observation_id, "independent-ledger", observed, watermark,
-                       {"payment_id": "p1"},
-                       ({**EXPECTED, "effect_id": "effect-1", "committed_at_ms": 25,
+    return Observation(observation_id=observation_id, source="independent-ledger", observed_at_ms=observed, as_of_ms=watermark,
+                       scope={"payment_id": "p1"},
+                       records=({**EXPECTED, "effect_id": "effect-1", "committed_at_ms": 25,
                          "status": "processed", "action_id": "refund-1", "attempt_id": attempt,
                          "actor": "agent"},))
 
 
 def recorded(**kwargs):
-    rec = TraceRecorder("trace-1", actor="agent", **kwargs)
+    rec = TraceRecorder("trace-1", actor="agent", **{"time_base": "relative_ms", **kwargs})
     context = rec.context("user_input", {"text": "refund please"}, at_ms=0)
     rec.decision({"selected": True}, inputs=(context,), at_ms=2)
     rec.register("refund-1", "refund", dict(EXPECTED), contract=contract(), at_ms=5)
@@ -39,23 +41,23 @@ def recorded(**kwargs):
 def test_recorder_trace_equals_the_hand_built_trace():
     rec = recorded()
     receipt = rec.verify(readback())
-    response = ToolResponse("refund-1:attempt-1", ResponseStatus.TIMEOUT, 20, "refund-1:attempt-1")
-    assessment = AgentAssessment(AssessmentStatus.FAILURE, 25, ("response-1",), "The tool timed out.")
+    response = ToolResponse(attempt_id="refund-1:attempt-1", status=ResponseStatus.TIMEOUT, time_ms=20, provider_request_id="refund-1:attempt-1", action_id="refund-1")
+    assessment = AgentAssessment(status=AssessmentStatus.FAILURE, time_ms=25, evidence_event_ids=("response-1",), rationale="The tool timed out.", assessment_id="assessment-1", action_id="refund-1")
     events = (
-        Event("context-1", "trace-1", EventType.USER_INPUT, 0, None, (), {"text": "refund please"}),
-        Event("decision-1", "trace-1", EventType.AGENT_DECISION, 2, "agent", ("context-1",),
-              {"selected": True}),
-        Event("intent-1", "trace-1", EventType.ACTION_INTENT, 5, "agent", ("decision-1",),
-              {"action_id": "refund-1", "arguments": dict(EXPECTED)}),
-        Event("dispatch-1", "trace-1", EventType.ACTION_DISPATCH, 5, "agent", ("intent-1",),
-              {"action_id": "refund-1", "attempt_id": "refund-1:attempt-1"}),
-        Event("response-1", "trace-1", EventType.TOOL_RESPONSE, 20, None, ("dispatch-1",),
-              response.to_dict()),
-        Event("assessment-1", "trace-1", EventType.AGENT_ASSESSMENT, 25, "agent", ("response-1",),
-              assessment.to_dict()),
+        Event(id="context-1", type=EventType.USER_INPUT, time_ms=0, actor=None, parent_ids=(), data={"text": "refund please"}),
+        Event(id="decision-1", type=EventType.AGENT_DECISION, time_ms=2, actor="agent", parent_ids=("context-1",),
+              data={"selected": True}),
+        Event(id="intent-1", type=EventType.ACTION_INTENT, time_ms=5, actor="agent", parent_ids=("decision-1",),
+              data={"action_id": "refund-1", "arguments": dict(EXPECTED)}),
+        Event(id="dispatch-1", type=EventType.ACTION_DISPATCH, time_ms=5, actor="agent", parent_ids=("intent-1",),
+              data={"action_id": "refund-1", "attempt_id": "refund-1:attempt-1"}),
+        Event(id="response-1", type=EventType.TOOL_RESPONSE, time_ms=20, actor=None, parent_ids=("dispatch-1",),
+              data=response.to_dict()),
+        Event(id="assessment-1", type=EventType.AGENT_ASSESSMENT, time_ms=25, actor="agent", parent_ids=("response-1",),
+              data=assessment.to_dict()),
     )
-    action = Action("refund-1", "trace-1", "agent", "refund", dict(EXPECTED), 5, contract())
-    expected = Trace("trace-1", action, events, (response,), assessment, (readback(),), (receipt,))
+    action = Action(action_id="refund-1", actor="agent", name="refund", arguments=dict(EXPECTED), registered_at_ms=5, contract=contract())
+    expected = Trace(trace_id="trace-1", time_base=TimeBase.RELATIVE_MS, actions=(action,), events=events, responses=(response,), assessments=(assessment,), observations=(readback(),), verifications=(receipt,))
     trace = rec.trace()
     assert trace == expected
     assert Trace.from_json(trace.to_json()) == trace
@@ -67,8 +69,8 @@ def test_recorded_trace_explains_and_links_the_effect_to_its_dispatch():
     trace = rec.trace()
     explanation = explain(trace)
     assert receipt.status is VerificationStatus.SATISFIED
-    assert explanation.assessment_alignment == "contradicted"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in explanation.diagnoses
+    assert explanation.single_action.assessment_alignment == "contradicted"
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in explanation.single_action.diagnoses
     edges = {(edge.source, edge.target, edge.kind) for edge in build_graph(trace).edges}
     assert ("dispatch-1", "response-1", "RESPONSE") in edges
     assert ("dispatch-1", "effect:effect-1", "EFFECT") in edges
@@ -94,11 +96,20 @@ def test_clock_supplies_times_when_none_are_given():
     rec.assessment(AssessmentStatus.SUCCESS)
     trace = rec.trace()
     assert [event.time_ms for event in trace.events] == [0, 4, 9, 30]
-    assert trace.action.registered_at_ms == 0
+    assert trace.single_action.registered_at_ms == 0
+
+    assert trace.time_base is TimeBase.RELATIVE_MS  # A custom clock claims no wall-clock origin.
 
     default = TraceRecorder("trace-2", actor="agent")
     default.register("refund-1", "refund", dict(EXPECTED), contract=contract())
-    assert type(default.action.registered_at_ms) is int and default.action.registered_at_ms >= 0
+    registered = default.actions[0].registered_at_ms
+    assert default.time_base is TimeBase.UNIX_MS
+    assert type(registered) is int and abs(registered - time.time() * 1000) < 60_000
+    relative = TraceRecorder("trace-3", actor="agent", time_base="relative_ms")
+    relative.register("refund-1", "refund", dict(EXPECTED), contract=contract())
+    assert relative.time_base is TimeBase.RELATIVE_MS and relative.actions[0].registered_at_ms < 60_000
+    with pytest.raises(ValueError, match="time_base"):
+        TraceRecorder("trace-4", actor="agent", time_base="iso")
 
 
 @pytest.mark.parametrize("bad_time", [-1, 1.5, True, "5"])
@@ -117,15 +128,18 @@ def test_steps_out_of_order_are_refused():
     with pytest.raises(ValueError, match="register the action"):
         rec.trace()
     rec.register("refund-1", "refund", dict(EXPECTED), contract=contract(), at_ms=5)
-    with pytest.raises(ValueError, match="exactly one registered action"):
+    with pytest.raises(ValueError, match="already registered"):
+        rec.register("refund-1", "refund", dict(EXPECTED), contract=contract(), at_ms=5)
+    with pytest.raises(ValueError, match="contract_id is already used"):
         rec.register("refund-2", "refund", dict(EXPECTED), contract=contract(), at_ms=5)
     with pytest.raises(ValueError, match="undispatched attempt"):
         rec.response("missing", "success", at_ms=6)
-    with pytest.raises(ValueError, match="assessment first"):
-        rec.trace()
-    rec.assessment("unknown", at_ms=7)
+    assert rec.trace().assessments == ()  # An agent's report is optional in schema 1.0.
+    rec.assessment("unknown", at_ms=7, assessment_id="first")
     with pytest.raises(ValueError, match="already recorded"):
-        rec.assessment("success", at_ms=8)
+        rec.assessment("success", at_ms=8, assessment_id="first")
+    rec.assessment("success", at_ms=8)
+    assert [item.status.value for item in rec.trace().assessments] == ["unknown", "success"]
 
 
 def test_identities_and_references_are_checked():
@@ -208,8 +222,8 @@ def test_attempt_allows_explicit_status_identity_payload_and_time():
         attempt.result = {"code": "card_declined"}
         attempt.provider_request_id = "req-9"
         attempt.at_ms = 140
-    assert attempt.response == ToolResponse("a1", ResponseStatus.ERROR, 140, "req-9",
-                                            {"code": "card_declined"})
+    assert attempt.response == ToolResponse(attempt_id="a1", status=ResponseStatus.ERROR, time_ms=140, provider_request_id="req-9",
+                                            result={"code": "card_declined"}, action_id="refund-1")
     with pytest.raises(ValueError):
         with rec.attempt(classify=lambda error: "timeout") as second:
             raise ValueError("bad input")

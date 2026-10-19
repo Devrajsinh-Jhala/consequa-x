@@ -145,5 +145,5 @@ def episode_outcome(episode: Episode) -> ReplayOutcome:
     )
     return ReplayOutcome(
         episode.action_selected, consequence,
-        action_linked_consequence(episode.trace.action, result),
+        action_linked_consequence(episode.trace.single_action, result),
     )

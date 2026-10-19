@@ -13,9 +13,9 @@ from consequa_x.verification import RefundVerifier, verify
 def refund_action(*, exact_count=1, stability_ms=20, registered_at_ms=10):
     expected = {"payment_id": "pay_42", "amount_minor": 200_000, "currency": "INR"}
     return Action(
-        action_id="action_1", trace_id="trace_1", actor="agent", name="refund",
+        action_id="action_1", actor="agent", name="refund",
         arguments=expected, registered_at_ms=registered_at_ms,
-        contract=OutcomeContract("contract_1", "refund_processed", expected, 100,
+        contract=OutcomeContract(contract_id="contract_1", predicate="refund_processed", expected=expected, deadline_ms=100,
                                  exact_count=exact_count, stability_ms=stability_ms),
     )
 

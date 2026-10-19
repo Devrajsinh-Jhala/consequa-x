@@ -118,7 +118,7 @@ def public_input(trace):
         return {key: alias(source[key]) if key in identity_keys else source[key]
                 for key in allowed if key in source}
 
-    action = trace.action
+    action = trace.single_action
     contract = action.contract
     output = {"action": {
         "action_id": alias(action.action_id), "actor": alias(action.actor),

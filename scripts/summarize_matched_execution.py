@@ -80,7 +80,7 @@ def episode_execution(trace, truth):
             if effect_id not in by_effect or by_effect[effect_id].get("attempt_id") != row["attempt_id"]:
                 raise ValueError("Attempt references an unbound committed effect")
 
-    action, observation = trace.action, trace.observations[-1]
+    action, observation = trace.single_action, trace.observations[-1]
     expected = action.contract.expected
     matching = [row for row in effects if all(row.get(key) == value for key, value in expected.items())]
     agent_effects = [row for row in effects if row.get("action_id") == action.action_id
@@ -115,7 +115,7 @@ def episode_execution(trace, truth):
         "retry_intent_count": operations.count("retry"),
         "retry_attempt_count": max(0, len(attempts) - 1),
         "repeat_dispatch_count": max(0, len(dispatches) - 1),
-        "structured_assessment": trace.assessment.status.value,
+        "structured_assessment": trace.latest_assessment().status.value,
         "operations": operations, "model_decision_count": len(operations),
         "response_status_history": [response.status.value for response in trace.responses],
         "refund_effect_count": len(effects), "agent_effect_count": len(agent_effects),

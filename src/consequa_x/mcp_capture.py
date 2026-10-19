@@ -16,16 +16,19 @@ from __future__ import annotations
 from typing import Any, Callable
 
 from .errors import ConsequaTypeError, ValidationError
-from .capture import TraceRecorder
+from .capture import ActionCapture, TraceRecorder
 from .models import ResponseStatus
 
 
-async def call_mcp_tool(recorder: TraceRecorder, session: Any, name: str,
+async def call_mcp_tool(recorder: TraceRecorder | ActionCapture, session: Any, name: str,
                         arguments: dict[str, Any] | None = None, *,
                         attempt_id: str | None = None,
                         classify: Callable[[Exception], str | ResponseStatus] | None = None,
                         ) -> Any:
     """Await one MCP tool call as a recorded attempt and return the server's result.
+
+    Pass the ``ActionCapture`` of the action this call performs, or the recorder
+    while it has exactly one registered action.
 
     A result whose ``isError`` is true is recorded as ``error``; any other
     returned result as ``success``. ``TimeoutError`` is recorded as ``timeout``
@@ -33,8 +36,8 @@ async def call_mcp_tool(recorder: TraceRecorder, session: Any, name: str,
     example, an SDK-specific timeout error); the exception is re-raised. As with
     any tool response, none of this establishes whether the effect happened.
     """
-    if not isinstance(recorder, TraceRecorder):
-        raise ConsequaTypeError("call_mcp_tool requires a TraceRecorder")
+    if not isinstance(recorder, (TraceRecorder, ActionCapture)):
+        raise ConsequaTypeError("call_mcp_tool requires a TraceRecorder or an ActionCapture")
     call_tool = getattr(session, "call_tool", None)
     if not callable(call_tool):
         raise ConsequaTypeError("session must provide an awaitable call_tool(name, arguments)")

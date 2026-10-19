@@ -143,7 +143,7 @@ def test_real_repeated_captures_and_methods_have_exact_actual_cost(repeated):
             encoded = json.dumps(episode.trace.to_dict(), sort_keys=True, separators=(",", ":"),
                                  allow_nan=False, ensure_ascii=True).encode("utf-8")
             assert record["trace_sha256"] == hashlib.sha256(encoded).hexdigest()
-            assert Trace.from_json(encoded.decode()).action == episode.trace.action
+            assert Trace.from_json(encoded.decode()).single_action == episode.trace.single_action
     summary = result.summary()
     assert summary["planned_trials"] == summary["retained_trials"] == 2
     assert summary["paired_factual_disagreements"] == summary["factual_failures"] == 0

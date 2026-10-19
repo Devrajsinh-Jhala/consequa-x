@@ -4,7 +4,7 @@ import pytest
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Observation, OriginStatus, OutcomeContract,
-    RecordTargetMatcher, RecordVerifier, ResponseStatus, ToolResponse, Trace, VerificationStatus,
+    RecordTargetMatcher, RecordVerifier, ResponseStatus, ToolResponse, TimeBase, Trace, VerificationStatus,
     explain, verify,
 )
 
@@ -14,10 +14,10 @@ VERIFIER = RecordVerifier(scope_fields=("order_id",))
 
 
 def action(*, exact_count=1, expected=None, predicate="record_present", deadline=100):
-    contract = OutcomeContract("contract-1", predicate,
-                               dict(EXPECTED if expected is None else expected),
+    contract = OutcomeContract(contract_id="contract-1", predicate=predicate,
+                               expected=dict(EXPECTED if expected is None else expected),
                                deadline_ms=deadline, exact_count=exact_count, stability_ms=50)
-    return Action("refund-1", "trace-1", "agent", "issue_refund", {"order_id": "o-17"}, 10, contract)
+    return Action(action_id="refund-1", actor="agent", name="issue_refund", arguments={"order_id": "o-17"}, registered_at_ms=10, contract=contract)
 
 
 def row(effect_id="r1", committed=20, **fields):
@@ -28,9 +28,9 @@ def row(effect_id="r1", committed=20, **fields):
 
 
 def observe(*records, watermark=200, scope=None, complete=True, available=True):
-    return Observation("readback-1", "orders-db (read-only)", watermark, watermark,
-                       {"order_id": "o-17"} if scope is None else scope, tuple(records),
-                       complete, available)
+    return Observation(observation_id="readback-1", source="orders-db (read-only)", observed_at_ms=watermark, as_of_ms=watermark,
+                       scope={"order_id": "o-17"} if scope is None else scope, records=tuple(records),
+                       complete=complete, available=available)
 
 
 def check(observation, **kwargs):
@@ -99,8 +99,8 @@ def test_wrong_value_is_relevant_but_not_matching():
 
 def trace_for(receipt, observation, *, response="timeout", reported="failure"):
     act = action()
-    return Trace("trace-1", act, (), (ToolResponse("a1", ResponseStatus(response), 30, "a1"),),
-                 AgentAssessment(AssessmentStatus(reported), 35), (observation,), (receipt,))
+    return Trace(trace_id="trace-1", time_base=TimeBase.RELATIVE_MS, actions=(act,), events=(), responses=(ToolResponse(attempt_id="a1", status=ResponseStatus(response), time_ms=30, provider_request_id="a1", action_id=act.action_id),),
+                 assessments=(AgentAssessment(status=AssessmentStatus(reported), time_ms=35, assessment_id="assessment-1", action_id=act.action_id),), observations=(observation,), verifications=(receipt,))
 
 
 def test_matcher_lets_explain_judge_the_agents_report():
@@ -109,14 +109,14 @@ def test_matcher_lets_explain_judge_the_agents_report():
     receipt = check(observation)
     assert matcher.matching_effect_ids(action(), receipt) == ("r1",)
     failure = explain(trace_for(receipt, observation), target_matcher=matcher)
-    assert failure.assessment_alignment == "contradicted"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in failure.diagnoses
+    assert failure.single_action.assessment_alignment == "contradicted"
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in failure.single_action.diagnoses
     success = explain(trace_for(receipt, observation, response="success", reported="success"),
                       target_matcher=matcher)
-    assert success.assessment_alignment == "consistent"
-    assert success.diagnoses == ("CONSISTENT_OUTCOME",)
+    assert success.single_action.assessment_alignment == "consistent"
+    assert success.single_action.diagnoses == ("CONSISTENT_OUTCOME",)
     without_matcher = explain(trace_for(receipt, observation))
-    assert without_matcher.assessment_alignment == "unassessable"
+    assert without_matcher.single_action.assessment_alignment == "unassessable"
 
 
 def test_other_actor_and_unknown_cannot_judge_the_report():
@@ -124,12 +124,12 @@ def test_other_actor_and_unknown_cannot_judge_the_report():
     other = observe(row(action_id=None, attempt_id=None, actor="support-staff"))
     receipt = check(other)
     explanation = explain(trace_for(receipt, other), target_matcher=matcher)
-    assert explanation.assessment_alignment == "unassessable"
-    assert "EXTERNAL_ACTOR_EFFECT" in explanation.diagnoses
+    assert explanation.single_action.assessment_alignment == "unassessable"
+    assert "EXTERNAL_ACTOR_EFFECT" in explanation.single_action.diagnoses
     stale = observe(row(), watermark=120)
     unknown = check(stale)
     assert matcher.matching_effect_ids(action(), unknown) == ()
-    assert explain(trace_for(unknown, stale), target_matcher=matcher).diagnoses == (
+    assert explain(trace_for(unknown, stale), target_matcher=matcher).single_action.diagnoses == (
         "UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
 
 

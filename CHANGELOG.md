@@ -18,6 +18,32 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   like ordinary dicts and lists, but any change raises `ConsequaTypeError`.
   `copy.deepcopy` returns the same read-only value; `thaw()` returns an
   editable copy, and `to_dict()` still exports ordinary dicts and lists.
+- Trace schema `1.0`. A trace holds one or more `actions`, each with its own
+  contract; `responses`, `assessments` (zero or more per action) and
+  `verifications` each name their `action_id`. A required `time_base`
+  (`unix_ms` or `relative_ms`) says what the integer millisecond times count
+  from. `trace_id` is no longer repeated on actions and events. All records
+  are keyword-only. Schema `0.1` input is refused with a `SchemaVersionError`
+  that names the migration route; the packaged schema is `trace-v1.0.json`.
+  New helpers: `Trace.get_action`, `single_action`, `responses_for`,
+  `assessments_for`, `verifications_for`, `latest_assessment`,
+  `latest_verification`.
+- `TraceRecorder.register` can be called for several actions and returns an
+  `ActionCapture` whose `attempt`, `call`, `dispatch`, `response`,
+  `assessment` and `verify` record for that action. The recorder-level methods
+  still work while exactly one action is registered. Assessments are optional
+  and may be repeated. The default clock is wall-clock `unix_ms`; a custom
+  clock records `relative_ms` unless told otherwise. `capture_tool` and
+  `call_mcp_tool` accept an `ActionCapture`.
+- `explain()` returns a `TraceExplanation` with one `ActionExplanation` per
+  action (`for_action`, `single_action`). An action without verification is
+  reported as `NO_VERIFICATION` instead of raising. The evidence graph has a
+  contract node per action, and offline reports show every action, with an
+  Action column for responses and verifications and the time base in the
+  footer.
+- Research code (benchmark, replay, policies, studies and their audit
+  scripts) produces and reads schema `1.0` traces. Retained 1.x study outputs
+  under `output/` are unchanged.
 
 ## 1.2.0 - 19 October 2026
 

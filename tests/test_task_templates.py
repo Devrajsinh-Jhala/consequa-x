@@ -88,7 +88,7 @@ def test_templates_change_only_visible_wording_without_exposing_evaluator_ids(te
                                  "base_refund_policy", "idempotency_available", "deadline_ms",
                                  "horizon_ms"}
     assert episode.trace.trace_id == "trace:8"
-    assert episode.trace.action.action_id == "refund:8"
+    assert episode.trace.single_action.action_id == "refund:8"
     assert [seed for _, seed in policy.calls] == [48, 49]
     for request, _ in policy.calls:
         serialized = json.dumps(request.to_dict(), sort_keys=True)

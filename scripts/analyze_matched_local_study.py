@@ -159,24 +159,24 @@ def public_reference(action, observation):
 def matched_predictions(trace):
     response = trace.responses[-1].status.value if trace.responses else None
     response_value = {"success": True, "error": False}.get(response)
-    reported_value = {"success": True, "failure": False}.get(trace.assessment.status.value)
+    reported_value = {"success": True, "failure": False}.get(trace.latest_assessment().status.value)
     # Remove all provenance before state-only verification, including action and
     # actor names. The omitted information cannot affect its state prediction.
     observation = trace.observations[-1]
     stripped = replace(observation, records=tuple(
         {key: value for key, value in row.items() if key not in {"actor", "action_id", "attempt_id"}}
         for row in observation.records))
-    state_receipt = verify(trace.action, stripped)
-    full_receipt = verify(trace.action, observation)
+    state_receipt = verify(trace.single_action, stripped)
+    full_receipt = verify(trace.single_action, observation)
     state_map = {"satisfied": True, "violated": False}
     return {
         "response_only": {"state": response_value, "action_linked": response_value, "origin": "unknown"},
         "agent_self_report": {"state": reported_value, "action_linked": reported_value, "origin": "unknown"},
         "readback_state_only": {"state": state_map.get(state_receipt.status.value),
                                 "action_linked": None, "origin": "unknown"},
-        "independent_public_reference": public_reference(trace.action, observation),
+        "independent_public_reference": public_reference(trace.single_action, observation),
         "consequa_state_origin": {"state": state_map.get(full_receipt.status.value),
-                                  "action_linked": action_linked_consequence(trace.action, full_receipt),
+                                  "action_linked": action_linked_consequence(trace.single_action, full_receipt),
                                   "origin": full_receipt.origin.value},
     }
 
@@ -363,7 +363,7 @@ def analyze(out):
                 raise ValueError("Completed episode artifact changed")
         trace = Trace.from_json((folder / "trace.json").read_text(encoding="utf-8"))
         truth = read_json(folder / "evaluator-truth.json")
-        gold = ledger_gold(trace.action, truth["records"])
+        gold = ledger_gold(trace.single_action, truth["records"])
         predictions = matched_predictions(trace)
         for method, prediction in predictions.items():
             support = {target: (None if prediction[target] is None else (
@@ -374,7 +374,7 @@ def analyze(out):
             rows.append({"slot": slot, "method": method, "prediction": prediction, "gold": gold,
                          "evidence_supported": support,
                          "action_selected": truth["action_selected"],
-                         "reported_status": trace.assessment.status.value,
+                         "reported_status": trace.latest_assessment().status.value,
                          "response_count": len(trace.responses), "policy_calls": receipt["policy_calls"]})
     calls = [event for event in journal.records if event["event"] == "chat_started"]
     if len(calls) > protocol["max_chat_calls"]:

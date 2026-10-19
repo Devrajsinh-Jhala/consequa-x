@@ -334,7 +334,7 @@ def _measurement(episode):
         "verification": verified.status.value,
         "origin": verified.origin.value,
         "watermark_ms": obs.as_of_ms,
-        "horizon_ms": episode.trace.action.contract.horizon_ms,
+        "horizon_ms": episode.trace.single_action.contract.horizon_ms,
         "available": obs.available,
         "complete": obs.complete,
         "readback_records": len(obs.records),

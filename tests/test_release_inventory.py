@@ -92,7 +92,7 @@ consequa-x = "consequa_x.cli:main"
         "src/consequa_x/cli.py": b"def main():\n    return 0\n",
         "src/consequa_x/report.py": b"def render_report(trace):\n    return '<html></html>'\n",
         "src/consequa_x/py.typed": b"",
-        "src/consequa_x/schemas/trace-v0.1.json": b'{"version": "0.1"}\n',
+        "src/consequa_x/schemas/trace-v1.0.json": b'{"version": "1.0"}\n',
     }
     for name, data in sources.items():
         path = root / name

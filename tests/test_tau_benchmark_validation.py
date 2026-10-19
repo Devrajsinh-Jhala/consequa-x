@@ -48,8 +48,8 @@ def test_payload_compiler_has_no_task_or_reward_input():
 @pytest.mark.parametrize("variant", ["missing", "partial", "stale", "scope", "malformed"])
 def test_unavailable_incomplete_stale_or_outside_scope_never_succeeds(variant):
     before, args, expected = cancellation()
-    action = Action("a", "t", "actor", "cancel_pending_order", args, 0,
-                    OutcomeContract("c", "tau_record_fields", expected, 1))
+    action = Action(action_id="a", actor="actor", name="cancel_pending_order", arguments=args, registered_at_ms=0,
+                    contract=OutcomeContract(contract_id="c", predicate="tau_record_fields", expected=expected, deadline_ms=1))
     scope = {"domain": "retail", "read_arguments": {"order_id": "#TEST"}}
     record = deepcopy(before)
     record["value"].update(status="cancelled", cancel_reason=args["reason"])
@@ -57,8 +57,8 @@ def test_unavailable_incomplete_stale_or_outside_scope_never_succeeds(variant):
         scope["read_arguments"]["order_id"] = "#OTHER"
     if variant == "malformed":
         record["value"].pop("status")
-    observation = Observation("o", "read", 2, 0 if variant == "stale" else 2, scope,
-                              () if variant == "missing" else (record,),
+    observation = Observation(observation_id="o", source="read", observed_at_ms=2, as_of_ms=0 if variant == "stale" else 2, scope=scope,
+                              records=() if variant == "missing" else (record,),
                               complete=variant != "partial", available=variant != "missing")
     assert verify(action, observation, verifier=tau.TauRecordVerifier()).status is VerificationStatus.UNKNOWN
 
@@ -71,7 +71,7 @@ def test_false_acknowledgement_cannot_establish_success_or_origin():
     assert receipt["status"] == "violated"
     assert receipt["origin"] == "unknown"
     assert capture["withheld_status"] == "unknown"
-    assert capture["explanation"]["assessment_alignment"] == "unassessable"
+    assert capture["explanation"]["actions"][0]["assessment_alignment"] == "unassessable"
     assert capture["inputs_unchanged"] is True
 
 

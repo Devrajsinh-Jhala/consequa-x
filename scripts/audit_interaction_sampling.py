@@ -1140,7 +1140,7 @@ def audit(root, expected_source=None):
                                 measured["linked_count"],
                                 "full linked effect count",
                             )
-                            action = trace["action"]
+                            action = trace["actions"][0]
                             compare(
                                 action["action_id"],
                                 f"refund:{factual_seed}",
@@ -1288,17 +1288,17 @@ def audit(root, expected_source=None):
                                     "evidence snapshot records",
                                 )
                             compare(
-                                record["explanation"]["consequence"],
+                                record["explanation"]["actions"][0]["consequence"],
                                 verified,
                                 "explanation supported consequence",
                             )
                             compare(
-                                record["explanation"]["agent_assessment"],
-                                trace["assessment"],
+                                record["explanation"]["actions"][0]["agent_assessment"],
+                                trace["assessments"][-1],
                                 "explanation reported assessment",
                             )
                             compare(
-                                record["explanation"]["assessment_alignment"],
+                                record["explanation"]["actions"][0]["assessment_alignment"],
                                 "unassessable",
                                 "unknown fixture assessment alignment",
                             )
@@ -1321,12 +1321,12 @@ def audit(root, expected_source=None):
                                 visiting.remove(event_id)
                                 visited.add(event_id)
 
+                            declared = {item["action_id"] for item in trace["actions"]}
+                            for field in ("responses", "assessments", "verifications"):
+                                for item in trace[field]:
+                                    check(item["action_id"] in declared,
+                                          "consistent full trace identity")
                             for event in events.values():
-                                compare(
-                                    event["trace_id"],
-                                    trace["trace_id"],
-                                    "consistent full trace identity",
-                                )
                                 visit(event["id"])
                             check(
                                 "ground_truth" not in trace and "fault" not in trace,

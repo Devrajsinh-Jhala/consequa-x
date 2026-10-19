@@ -9,10 +9,10 @@ import math
 import random
 
 from ..attribution import Intervention, ReplayOutcome
-from ..explanation import ConsequenceExplanation, explain
+from ..explanation import TraceExplanation, explain
 from ..models import (
     Action, AgentAssessment, AssessmentStatus, Event, EventType, OutcomeContract,
-    ResponseStatus, Trace, VerificationStatus,
+    ResponseStatus, TimeBase, Trace, VerificationStatus,
 )
 from ..verification import verify
 from .payments import Fault, PaymentWorld
@@ -78,7 +78,7 @@ class ScenarioConfig:
 @dataclass(frozen=True)
 class Episode:
     trace: Trace
-    explanation: ConsequenceExplanation
+    explanation: TraceExplanation
     ground_truth: tuple[dict, ...]
     action_selected: bool
     config: ScenarioConfig
@@ -121,7 +121,7 @@ def run_scenario(config: ScenarioConfig = ScenarioConfig(), *, seed: int = 0,
         ("distractor", EventType.RETRIEVAL),
     )
     for index, (name, kind) in enumerate(types):
-        events.append(Event(name, trace_id, kind, index, data={"value": getattr(context, name)}))
+        events.append(Event(id=name, type=kind, time_ms=index, data={"value": getattr(context, name)}))
     world.advance(len(types))
     # Separate keyed streams keep factual/counterfactual exogenous draws aligned.
     selection_draw = random.Random(f"selection:{seed}").random()
@@ -130,23 +130,25 @@ def run_scenario(config: ScenarioConfig = ScenarioConfig(), *, seed: int = 0,
         config.order_age_days <= 30 or (context.vip_memory and context.vip_policy)
     )
     selected = allowed and selection_draw < config.selection_probability
-    events.append(Event("refund_decision", trace_id, EventType.AGENT_DECISION, world.time_ms,
+    events.append(Event(id="refund_decision", type=EventType.AGENT_DECISION, time_ms=world.time_ms,
                         actor="RefundAgent", parent_ids=("customer_request", "vip_memory", "vip_policy"),
                         data={"selected": selected, "order_age_days": config.order_age_days}))
     action = Action(
-        action_id=f"refund:{seed}", trace_id=trace_id, actor="RefundAgent", name="refund",
+        action_id=f"refund:{seed}", actor="RefundAgent", name="refund",
         arguments={"payment_id": "pay_42", "amount_minor": config.amount_minor, "currency": "INR"},
         registered_at_ms=world.time_ms,
-        contract=OutcomeContract(f"contract:{seed}", "refund_processed",
-                                 {"payment_id": "pay_42", "amount_minor": config.amount_minor, "currency": "INR"},
-                                 config.deadline_ms, stability_ms=config.stability_ms),
+        contract=OutcomeContract(contract_id=f"contract:{seed}", predicate="refund_processed",
+                                 expected={"payment_id": "pay_42", "amount_minor": config.amount_minor, "currency": "INR"},
+                                 deadline_ms=config.deadline_ms, stability_ms=config.stability_ms),
         idempotency_key=f"consequa-refund-{seed}" if config.use_idempotency else None,
     )
     responses = []
-    assessment = AgentAssessment(AssessmentStatus.UNKNOWN, world.time_ms, ("refund_decision",),
-                                 "No refund action was selected.")
+    assessment = AgentAssessment(assessment_id="assessment_0", action_id=action.action_id,
+                                 status=AssessmentStatus.UNKNOWN, time_ms=world.time_ms,
+                                 evidence_event_ids=("refund_decision",),
+                                 rationale="No refund action was selected.")
     if selected:
-        events.append(Event("refund_intent", trace_id, EventType.ACTION_INTENT, world.time_ms,
+        events.append(Event(id="refund_intent", type=EventType.ACTION_INTENT, time_ms=world.time_ms,
                             actor=action.actor, parent_ids=("refund_decision",),
                             data={"action_id": action.action_id, "arguments": action.arguments}))
 
@@ -159,27 +161,29 @@ def run_scenario(config: ScenarioConfig = ScenarioConfig(), *, seed: int = 0,
             response_parent = parent
             if dispatched:
                 response_parent = f"dispatch_{number}"
-                events.append(Event(response_parent, trace_id, EventType.ACTION_DISPATCH, dispatch_time,
+                events.append(Event(id=response_parent, type=EventType.ACTION_DISPATCH, time_ms=dispatch_time,
                                     actor=action.actor, parent_ids=(parent,),
                                     data={"action_id": action.action_id, "attempt_id": attempt_id}))
             response_event_id = f"response_{number}"
-            events.append(Event(response_event_id, trace_id, EventType.TOOL_RESPONSE, response.time_ms,
+            events.append(Event(id=response_event_id, type=EventType.TOOL_RESPONSE, time_ms=response.time_ms,
                                 parent_ids=(response_parent,), data=response.to_dict()))
             responses.append(response)
             status = (AssessmentStatus.SUCCESS if response.status is ResponseStatus.SUCCESS else
                       config.timeout_assessment if response.status is ResponseStatus.TIMEOUT else
                       AssessmentStatus.FAILURE)
-            assessment = AgentAssessment(status, response.time_ms, (response_event_id,),
-                                         "Fixture assessment based only on the returned response.")
             assessment_id = f"assessment_{number}"
-            events.append(Event(assessment_id, trace_id, EventType.AGENT_ASSESSMENT, response.time_ms,
+            assessment = AgentAssessment(assessment_id=assessment_id, action_id=action.action_id,
+                                         status=status, time_ms=response.time_ms,
+                                         evidence_event_ids=(response_event_id,),
+                                         rationale="Fixture assessment based only on the returned response.")
+            events.append(Event(id=assessment_id, type=EventType.AGENT_ASSESSMENT, time_ms=response.time_ms,
                                 actor=action.actor, parent_ids=(response_event_id,), data=assessment.to_dict()))
             return response, assessment_id
 
         response, assessment_id = attempt(1, config.fault, "refund_intent")
         if (response.status is ResponseStatus.TIMEOUT and context.retry_instruction
                 and retry_draw < config.retry_probability):
-            events.append(Event("retry_decision", trace_id, EventType.AGENT_DECISION, world.time_ms,
+            events.append(Event(id="retry_decision", type=EventType.AGENT_DECISION, time_ms=world.time_ms,
                                 actor=action.actor, parent_ids=(assessment_id, "retry_instruction"),
                                 data={"selected": True, "reason": "retry_on_timeout"}))
             attempt(2, Fault.CLEAN, "retry_decision")
@@ -202,8 +206,9 @@ def run_scenario(config: ScenarioConfig = ScenarioConfig(), *, seed: int = 0,
         observations.append(world.read_refunds("pay_42", lag_ms=config.read_lag_ms,
                                                include_provenance=config.include_provenance))
         verifications.append(verify(action, observations[-1]))
-    trace = Trace(trace_id, action, tuple(events), tuple(responses), assessment,
-                  tuple(observations), tuple(verifications))
+    trace = Trace(trace_id=trace_id, time_base=TimeBase.RELATIVE_MS, actions=(action,),
+                  events=tuple(events), responses=tuple(responses), assessments=(assessment,),
+                  observations=tuple(observations), verifications=tuple(verifications))
     return Episode(trace, explain(trace), world.ground_truth, selected, config, seed)
 
 

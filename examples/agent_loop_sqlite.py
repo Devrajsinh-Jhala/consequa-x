@@ -43,7 +43,7 @@ ORDER = {"order_id": "o-17", "amount_minor": 5000, "currency": "INR"}
 MESSAGE = "Order o-17 arrived damaged. Please refund the INR 50 I paid."
 AGENT = "support-agent"
 # The contract: exactly one matching refund row by 200 ms, still present at 250 ms.
-CONTRACT = OutcomeContract("refund-o-17", "record_present", dict(ORDER),
+CONTRACT = OutcomeContract(contract_id="refund-o-17", predicate="record_present", expected=dict(ORDER),
                            deadline_ms=200, exact_count=1, stability_ms=50)
 VERIFIER = RecordVerifier(scope_fields=("order_id",))
 SCHEMA = """CREATE TABLE refunds (
@@ -118,8 +118,8 @@ def read_back(path: Path, *, observation_id: str, observed_at_ms: int,
         rows = connection.execute("SELECT * FROM refunds WHERE order_id = ? ORDER BY effect_id",
                                   (ORDER["order_id"],)).fetchall()
     records = tuple({key: row[key] for key in row.keys() if row[key] is not None} for row in rows)
-    return Observation(observation_id, f"{path.name} (read-only)", observed_at_ms, watermark_ms,
-                       {"order_id": ORDER["order_id"]}, records)
+    return Observation(observation_id=observation_id, source=f"{path.name} (read-only)", observed_at_ms=observed_at_ms, as_of_ms=watermark_ms,
+                       scope={"order_id": ORDER["order_id"]}, records=records)
 
 
 def run(mode: str, output: Path) -> dict:
@@ -180,9 +180,9 @@ def run(mode: str, output: Path) -> dict:
     (output / "report.html").write_text(render_report(trace), encoding="utf-8")
     return {
         "mode": mode, "tool_response": trace.responses[-1].status.value,
-        "agent_reported": trace.assessment.status.value, "state": receipt.status.value,
-        "origin": receipt.origin.value, "alignment": explanation.assessment_alignment,
-        "diagnoses": list(explanation.diagnoses), "reason": receipt.reason,
+        "agent_reported": trace.latest_assessment().status.value, "state": receipt.status.value,
+        "origin": receipt.origin.value, "alignment": explanation.single_action.assessment_alignment,
+        "diagnoses": list(explanation.single_action.diagnoses), "reason": receipt.reason,
     }
 
 

@@ -15,7 +15,6 @@ def refund_action(
     arguments = {"payment_id": "pay_42", "amount_minor": amount, "currency": "INR"}
     return Action(
         action_id=action_id,
-        trace_id="trace_1",
         actor="agent",
         name="refund",
         arguments=arguments,

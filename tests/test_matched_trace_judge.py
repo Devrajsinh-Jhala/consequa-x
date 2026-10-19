@@ -101,8 +101,8 @@ def factory(opener):
 def test_allowlist_excludes_hidden_text_and_consistently_aliases_ids():
     marker = "NEVER_SEND_HIDDEN_LABEL_OR_RATIONALE"
     data = trace().to_dict()
-    data["action"]["arguments"]["hidden_gold"] = marker
-    data["action"]["contract"]["expected"]["hidden_fault"] = marker
+    data["actions"][0]["arguments"]["hidden_gold"] = marker
+    data["actions"][0]["contract"]["expected"]["hidden_fault"] = marker
     data["events"][0]["data"]["value"] = marker
     data["events"][0]["data"]["model"] = marker
     data["responses"][0]["result"]["private_error_detail"] = marker

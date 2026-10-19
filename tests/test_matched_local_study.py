@@ -42,7 +42,7 @@ class FixturePolicy(ScriptedRefundPolicy):
 ])
 def test_independent_ledger_gold_and_same_info_reference(fault, state):
     episode = run_policy_scenario(ScenarioConfig(fault=fault), FixturePolicy(), seed=27)
-    gold = analysis.ledger_gold(episode.trace.action, episode.ground_truth)
+    gold = analysis.ledger_gold(episode.trace.single_action, episode.ground_truth)
     assert gold["state"] is state
     assert gold["action_linked"] is state
     predictions = analysis.matched_predictions(episode.trace)
@@ -56,7 +56,7 @@ def test_independent_ledger_gold_and_same_info_reference(fault, state):
 def test_external_actor_is_not_agent_origin_and_state_ablation_abstains():
     episode = run_policy_scenario(ScenarioConfig(fault=Fault.TIMEOUT_BEFORE_COMMIT,
                                   external_actor=True), FixturePolicy())
-    gold = analysis.ledger_gold(episode.trace.action, episode.ground_truth)
+    gold = analysis.ledger_gold(episode.trace.single_action, episode.ground_truth)
     assert gold["state"] is True and gold["action_linked"] is False
     predictions = analysis.matched_predictions(episode.trace)
     assert predictions["consequa_state_origin"] == predictions["independent_public_reference"]
@@ -70,7 +70,7 @@ def test_lost_acknowledgement_and_false_success_are_distinct_targets():
     false = run_policy_scenario(ScenarioConfig(fault=Fault.FALSE_SUCCESS), FixturePolicy())
     assert analysis.matched_predictions(lost.trace)["response_only"]["state"] is None
     assert analysis.matched_predictions(false.trace)["response_only"]["state"] is True
-    assert analysis.ledger_gold(false.trace.action, false.ground_truth)["state"] is False
+    assert analysis.ledger_gold(false.trace.single_action, false.ground_truth)["state"] is False
 
 
 def test_missing_provenance_never_becomes_known_origin():
@@ -84,11 +84,11 @@ def test_missing_provenance_never_becomes_known_origin():
 @pytest.mark.parametrize("fault", [Fault.CLEAN, Fault.DUPLICATE_EFFECT])
 def test_compensation_and_unsafe_retry_controls(fault):
     compensated = run_policy_scenario(ScenarioConfig(fault=fault, compensate=True), FixturePolicy())
-    assert analysis.ledger_gold(compensated.trace.action, compensated.ground_truth)["state"] is (fault is Fault.DUPLICATE_EFFECT)
+    assert analysis.ledger_gold(compensated.trace.single_action, compensated.ground_truth)["state"] is (fault is Fault.DUPLICATE_EFFECT)
     assert analysis.matched_predictions(compensated.trace)["independent_public_reference"] == analysis.matched_predictions(compensated.trace)["consequa_state_origin"]
     duplicate = run_policy_scenario(ScenarioConfig(context=RefundContext(retry_instruction=True),
                                    use_idempotency=False), FixturePolicy())
-    assert analysis.ledger_gold(duplicate.trace.action, duplicate.ground_truth)["state"] is False
+    assert analysis.ledger_gold(duplicate.trace.single_action, duplicate.ground_truth)["state"] is False
 
 
 def test_schedule_has_exact_pairs_and_disjoint_phase_reservation():
@@ -243,7 +243,7 @@ def test_reference_rejects_stale_incomplete_and_malformed_readback():
     for altered in (replace(observation, complete=False), replace(observation, available=False),
                     replace(observation, as_of_ms=99),
                     replace(observation, records=({"effect_id": "incomplete"},))):
-        assert analysis.public_reference(episode.trace.action, altered)["state"] is None
+        assert analysis.public_reference(episode.trace.single_action, altered)["state"] is None
 
 
 class FakeResponse:

@@ -125,7 +125,8 @@ def _table(caption: str, headings: tuple[str, ...], rows: list[tuple[str, ...]])
 
 def _aliases(trace: Trace, graph: ConsequenceGraph) -> dict[str, str]:
     aliases = {event.id: f"Event {index}" for index, event in enumerate(trace.events, 1)}
-    aliases[f"contract:{trace.action.contract.contract_id}"] = "Contract 1"
+    for index, action in enumerate(trace.actions, 1):
+        aliases[f"contract:{action.contract.contract_id}"] = f"Contract {index}"
     for index, observation in enumerate(trace.observations, 1):
         aliases[f"observation:{observation.observation_id}"] = f"Observation {index}"
     for index, verification in enumerate(trace.verifications):
@@ -196,20 +197,26 @@ def _graph_svg(graph: ConsequenceGraph, aliases: dict[str, str]) -> str:
             'aria-label="Captured evidence graph overview">' + ''.join(parts) + '</svg></div>')
 
 
-def _timeline(trace: Trace) -> str:
-    entries = [(trace.action.registered_at_ms, "Action 1 registered", "Contract 1 declared")]
+def _timeline(trace: Trace, numbers: dict[str, int]) -> str:
+    entries = [(action.registered_at_ms, f"Action {index} registered", f"Contract {index} declared")
+               for index, action in enumerate(trace.actions, 1)]
     entries.extend((event.time_ms, f"Event {index}", _NODE_LABELS[event.type.value])
                    for index, event in enumerate(trace.events, 1))
-    entries.extend((response.time_ms, f"Response {index}", response.status.value)
+    entries.extend((response.time_ms, f"Response {index}",
+                    f"Action {numbers[response.action_id]}: {response.status.value}")
                    for index, response in enumerate(trace.responses, 1))
-    entries.append((trace.assessment.time_ms, "Agent assessment", trace.assessment.status.value))
+    entries.extend((assessment.time_ms, f"Assessment {index}",
+                    f"Action {numbers[assessment.action_id]}: agent reported "
+                    f"{assessment.status.value}")
+                   for index, assessment in enumerate(trace.assessments, 1))
     entries.extend((observation.observed_at_ms, f"Observation {index}",
                     f"Readback watermark {observation.as_of_ms} ms; "
                     f"{'complete' if observation.complete else 'incomplete'}; "
                     f"{'available' if observation.available else 'unavailable'}")
                    for index, observation in enumerate(trace.observations, 1))
     entries.extend((verification.observed_at_ms, f"Verification {index}",
-                    f"State {verification.status.value}; origin {verification.origin.value}")
+                    f"Action {numbers[verification.action_id]}: state "
+                    f"{verification.status.value}; origin {verification.origin.value}")
                    for index, verification in enumerate(trace.verifications, 1))
     entries.sort(key=lambda entry: entry[0])  # Stable within equal timestamps.
     return '<ol class="timeline">' + ''.join(
@@ -249,13 +256,8 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         # Graph identity errors can include captured IDs; never repeat them.
         raise ValidationError("Cannot render a trace with conflicting evidence graph identities") from None
     aliases = _aliases(snapshot, graph)
-    # The portable schema does not require records to be chronologically sorted.
-    # Break equal-time ties by capture order without rewriting the evidence.
-    latest = max(enumerate(snapshot.verifications),
-                 key=lambda item: (item[1].observed_at_ms, item[0]), default=(0, None))[1]
-    contract = snapshot.action.contract
-    state = _status(latest.status.value) if latest else "not recorded"
-    origin = _status(latest.origin.value) if latest else "not recorded"
+    numbers = {action.action_id: index for index, action in enumerate(snapshot.actions, 1)}
+    several = len(snapshot.actions) > 1
     detail_notice = (
         "Captured details included. This file contains the complete original trace and may contain "
         "sensitive data. Review it before sharing."
@@ -264,6 +266,39 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         "file. Times, counts, relationships and status enums remain visible; these can still be "
         "sensitive. This is not a universal anonymization guarantee."
     )
+    summary_cards = []
+    contract_lists = []
+    for index, action in enumerate(snapshot.actions, 1):
+        # The portable schema does not require records to be chronologically sorted.
+        # Break equal-time ties by capture order without rewriting the evidence.
+        latest = max(enumerate(snapshot.verifications_for(action.action_id)),
+                     key=lambda item: (item[1].observed_at_ms, item[0]), default=(0, None))[1]
+        assessment = snapshot.latest_assessment(action.action_id)
+        state = _status(latest.status.value) if latest else "not recorded"
+        origin = _status(latest.origin.value) if latest else "not recorded"
+        reported = _status(assessment.status.value) if assessment else "not recorded"
+        summary_cards.append(
+            (f'<h3>Action {index}</h3>' if several else '') + '<div class="cards">'
+            f'<div class="card"><h3>Tool responses</h3><div class="value">'
+            f'{len(snapshot.responses_for(action.action_id))}</div><p class="small muted">'
+            'All captured responses below</p></div>'
+            f'<div class="card"><h3>Agent assessment</h3><div class="value">{reported}</div>'
+            '<p class="small muted">Latest report by the agent</p></div>'
+            f'<div class="card"><h3>Latest verified state</h3><div class="value">{state}</div>'
+            '<p class="small muted">Captured independent verification</p></div>'
+            f'<div class="card"><h3>Latest effect origin</h3><div class="value">{origin}</div>'
+            '<p class="small muted">Separate from state satisfaction</p></div></div>')
+        contract = action.contract
+        exact = contract.exact_count if contract.exact_count is not None else "not constrained"
+        contract_lists.append(
+            f'<dl><dt>Action</dt><dd>Action {index}</dd><dt>Contract</dt><dd>Contract {index}</dd>'
+            f'<dt>Registered</dt><dd>{action.registered_at_ms} ms</dd>'
+            f'<dt>Deadline</dt><dd>{contract.deadline_ms} ms</dd>'
+            f'<dt>Stability window</dt><dd>{contract.stability_ms} ms</dd>'
+            f'<dt>Observation horizon</dt><dd>{contract.horizon_ms} ms</dd>'
+            f'<dt>Exact count</dt><dd>{exact}</dd></dl>')
+    count = len(snapshot.actions)
+    subtitle = ("One captured action." if count == 1 else f"{count} captured actions.")
     sections = [
         '<!doctype html><html lang="en"><head><meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -273,7 +308,7 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         'base-uri &#39;none&#39;; form-action &#39;none&#39;">',
         '<title>Consequa-X | Captured evidence report</title><style>', _CSS, '</style></head><body>',
         '<header><div class="eyebrow">Consequa-X / Offline report</div>',
-        '<h1>Follow the evidence.</h1><p class="subtitle">One captured action. Separate response, '
+        '<h1>Follow the evidence.</h1><p class="subtitle">', subtitle, ' Separate response, '
         'assessment, observed state and origin.</p><nav aria-label="Report sections">'
         '<a href="#summary">Summary</a><a href="#timeline">Timeline</a>'
         '<a href="#contract">Contract</a><a href="#evidence">Readback</a>'
@@ -281,33 +316,24 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         '<aside class="notice" aria-label="Disclosure mode"><strong>',
         'Captured details mode' if include_details else 'Minimal disclosure mode',
         '</strong><p>', _text(detail_notice), '</p></aside>',
-        '<section id="summary"><h2>Response is separate from consequence</h2><div class="cards">',
-        f'<div class="card"><h3>Tool responses</h3><div class="value">'
-        f'{len(snapshot.responses)}</div><p class="small muted">All captured responses below</p></div>',
-        f'<div class="card"><h3>Agent assessment</h3><div class="value">'
-        f'{_status(snapshot.assessment.status.value)}</div><p class="small muted">Reported by the agent</p></div>',
-        f'<div class="card"><h3>Latest verified state</h3><div class="value">{state}</div>'
-        '<p class="small muted">Captured independent verification</p></div>',
-        f'<div class="card"><h3>Latest effect origin</h3><div class="value">{origin}</div>'
-        '<p class="small muted">Separate from state satisfaction</p></div></div>',
+        '<section id="summary"><h2>Response is separate from consequence</h2>',
+        *summary_cards,
         '<p><strong>Assessment alignment: unassessable in this report.</strong> '
         'The renderer does not run application target matching. A reported success, '
         'a successful response and a satisfied state are separate claims.</p>',
-        _table("Every captured tool response", ("Response", "Time", "Status"), [
-            (f"Response {index}", f"{response.time_ms} ms", _status(response.status.value))
+        _table("Every captured tool response", ("Response", "Action", "Time", "Status"), [
+            (f"Response {index}", f"Action {numbers[response.action_id]}",
+             f"{response.time_ms} ms", _status(response.status.value))
             for index, response in enumerate(snapshot.responses, 1)
         ]),
         '</section><section id="timeline"><h2>Captured chronology</h2>'
         '<p class="muted">Times are the recorded millisecond values. Ties retain record order; '
         'chronology does not establish causation. Typed records may also appear as captured events.</p>',
-        _timeline(snapshot), '</section><section id="contract"><h2>Registered outcome contract</h2>',
-        '<dl><dt>Action</dt><dd>Action 1</dd><dt>Contract</dt><dd>Contract 1</dd>'
-        f'<dt>Registered</dt><dd>{snapshot.action.registered_at_ms} ms</dd>'
-        f'<dt>Deadline</dt><dd>{contract.deadline_ms} ms</dd>'
-        f'<dt>Stability window</dt><dd>{contract.stability_ms} ms</dd>'
-        f'<dt>Observation horizon</dt><dd>{contract.horizon_ms} ms</dd>'
-        f'<dt>Exact count</dt><dd>{contract.exact_count if contract.exact_count is not None else "not constrained"}</dd>'
-        '</dl><p class="muted">Predicate, expected payload, action arguments and raw identifiers '
+        _timeline(snapshot, numbers),
+        '</section><section id="contract"><h2>Registered outcome '
+        + ('contracts' if several else 'contract') + '</h2>',
+        *contract_lists,
+        '<p class="muted">Predicate, expected payload, action arguments and raw identifiers '
         'are omitted from the structural view. Outcome semantics remain application-defined.</p></section>',
         '<section id="evidence"><h2>Independent readback and verification</h2>',
         '<p class="muted">These are previously captured records. Rendering performs no readback, '
@@ -320,8 +346,10 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
             for index, observation in enumerate(snapshot.observations, 1)
         ]),
         _table("Every captured verification; earlier unknown results are retained",
-               ("Verification", "Observed", "State", "Origin", "Effects", "Attributable", "Evidence"), [
-            (f"Verification {index}", f"{verification.observed_at_ms} ms",
+               ("Verification", "Action", "Observed", "State", "Origin", "Effects", "Attributable",
+                "Evidence"), [
+            (f"Verification {index}", f"Action {numbers[verification.action_id]}",
+             f"{verification.observed_at_ms} ms",
              _status(verification.status.value), _status(verification.origin.value),
              str(len(verification.effect_ids)), str(len(verification.attributable_effect_ids)),
              ", ".join(aliases[f"observation:{item.observation_id}"] for item in verification.evidence))
@@ -359,6 +387,7 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
             '<details><summary>Show original trace as inert JSON</summary><pre>',
             _text(captured_json), '</pre></details></section>',
         ])
-    sections.append('</main><footer>Consequa-X · Trace schema 0.1 · Self-contained offline '
+    sections.append(f'</main><footer>Consequa-X · Trace schema {_text(snapshot.schema_version)} · '
+                    f'Times in {_text(snapshot.time_base.value)} · Self-contained offline '
                     'presentation · Keep the original trace separately as evidence.</footer></body></html>')
     return ''.join(sections)

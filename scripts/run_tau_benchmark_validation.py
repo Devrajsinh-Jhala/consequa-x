@@ -25,7 +25,7 @@ import types
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Evidence, Event, EventType,
     Observation, OriginStatus, OutcomeContract, ResponseStatus, ToolResponse,
-    Trace, VerificationResult, VerificationStatus, explain, verify,
+    TimeBase, Trace, VerificationResult, VerificationStatus, explain, verify,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -397,8 +397,8 @@ class TauRecordVerifier:
         details = {"scope": observation.scope, "checks": expected["checks"],
                    "complete": observation.complete, "available": observation.available,
                    "as_of_ms": observation.as_of_ms, "records": list(observation.records)}
-        evidence = (Evidence(observation.observation_id, observation.source,
-                             observation.as_of_ms, details),)
+        evidence = (Evidence(observation_id=observation.observation_id, source=observation.source,
+                             as_of_ms=observation.as_of_ms, details=details),)
         status, reason = VerificationStatus.UNKNOWN, "Readback is unavailable, incomplete, stale or outside scope"
         if (observation.source == "upstream_native_read_tool"
                 and observation.available and observation.complete
@@ -415,39 +415,39 @@ class TauRecordVerifier:
                 if results is not None:
                     status = VerificationStatus.SATISFIED if all(results) else VerificationStatus.VIOLATED
                     reason = "Requested record fields match captured readback" if all(results) else "Requested record fields differ from captured readback"
-        return VerificationResult(action.contract.contract_id, status, observation.observed_at_ms,
-                                  evidence, origin=OriginStatus.UNKNOWN, reason=reason)
+        return VerificationResult(contract_id=action.contract.contract_id, status=status, observed_at_ms=observation.observed_at_ms,
+                                  evidence=evidence, origin=OriginStatus.UNKNOWN, reason=reason, action_id=action.action_id)
 
 
 def audit_capture(action_id, domain, name, args, expected, snapshot, response_status, response_content):
     """The auditor receives only intent, acknowledgement and captured readback."""
-    action = Action(action_id, action_id, "reference_replay", name, args, 0,
-                    OutcomeContract(action_id + ":contract", "tau_record_fields", expected,
+    action = Action(action_id=action_id, actor="reference_replay", name=name, arguments=args, registered_at_ms=0,
+                    contract=OutcomeContract(contract_id=action_id + ":contract", predicate="tau_record_fields", expected=expected,
                                     deadline_ms=1, exact_count=None))
     scope = {"domain": domain, "read_arguments": expected["read_arguments"]}
-    observation = Observation(action_id + ":read", "upstream_native_read_tool", 2, 2,
-                              scope, (snapshot,), available=True, complete=True)
+    observation = Observation(observation_id=action_id + ":read", source="upstream_native_read_tool", observed_at_ms=2, as_of_ms=2,
+                              scope=scope, records=(snapshot,), available=True, complete=True)
     before_bytes = encoded({"action": action.to_dict(), "observation": observation.to_dict()})
     result = verify(action, observation, verifier=TauRecordVerifier())
     if before_bytes != encoded({"action": action.to_dict(), "observation": observation.to_dict()}):
         raise ValueError("Application verifier mutated captured inputs")
     # Missing readback must abstain even if a fabricated acknowledgement claims success.
-    missing = Observation(action_id + ":withheld", observation.source, 2, 2, scope,
-                          (), available=False, complete=False)
+    missing = Observation(observation_id=action_id + ":withheld", source=observation.source, observed_at_ms=2, as_of_ms=2, scope=scope,
+                          records=(), available=False, complete=False)
     missing_result = verify(action, missing, verifier=TauRecordVerifier())
     if missing_result.status is not VerificationStatus.UNKNOWN:
         raise ValueError("Missing readback must remain unknown")
     events = (
-        Event(action_id + ":intent", action_id, EventType.ACTION_INTENT, 0,
+        Event(id=action_id + ":intent", type=EventType.ACTION_INTENT, time_ms=0,
               data={"name": name, "arguments": args}),
-        Event(action_id + ":read_event", action_id, EventType.EXTERNAL_OBSERVATION, 2,
+        Event(id=action_id + ":read_event", type=EventType.EXTERNAL_OBSERVATION, time_ms=2,
               parent_ids=(action_id + ":intent",), data={"observation_id": observation.observation_id}),
     )
-    trace = Trace(action_id, action, events,
-                  (ToolResponse(action_id + ":attempt", response_status, 1,
-                                action_id + ":request", {"content": response_content}),),
-                  AgentAssessment(AssessmentStatus.UNKNOWN, 1, rationale="Model-free replay has no reported agent assessment"),
-                  (observation,), (result,))
+    trace = Trace(trace_id=action_id, time_base=TimeBase.RELATIVE_MS, actions=(action,), events=events,
+                  responses=(ToolResponse(attempt_id=action_id + ":attempt", status=response_status, time_ms=1,
+                                provider_request_id=action_id + ":request", result={"content": response_content}, action_id=action_id),),
+                  assessments=(AgentAssessment(status=AssessmentStatus.UNKNOWN, time_ms=1, rationale="Model-free replay has no reported agent assessment", assessment_id=action_id + ":assessment", action_id=action_id),),
+                  observations=(observation,), verifications=(result,))
     trace_bytes = trace.to_json()
     explanation = explain(trace)
     if trace.to_json() != trace_bytes:

@@ -127,10 +127,12 @@ class RecordVerifier:
         }
 
         def result(status, reason, origin=OriginStatus.UNKNOWN, effect_ids=(), linked=()):
-            evidence = (Evidence(observation.observation_id, observation.source,
-                                 observation.as_of_ms, details),)
-            return VerificationResult(contract.contract_id, status, observation.observed_at_ms,
-                                      evidence, origin, effect_ids, linked, reason)
+            evidence = (Evidence(observation_id=observation.observation_id, source=observation.source,
+                                 as_of_ms=observation.as_of_ms, details=details),)
+            return VerificationResult(
+                action_id=action.action_id, contract_id=contract.contract_id, status=status,
+                observed_at_ms=observation.observed_at_ms, evidence=evidence, origin=origin,
+                effect_ids=effect_ids, attributable_effect_ids=linked, reason=reason)
 
         unknown = VerificationStatus.UNKNOWN
         if not observation.available:

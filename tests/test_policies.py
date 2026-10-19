@@ -12,7 +12,7 @@ from consequa_x.policies import (
 
 
 def response(status=ResponseStatus.TIMEOUT):
-    return ToolResponse("attempt:1", status, 6, "request:1", {"code": "timeout"})
+    return ToolResponse(attempt_id="attempt:1", status=status, time_ms=6, provider_request_id="request:1", result={"code": "timeout"}, action_id="refund:1")
 
 
 def request(**changes):

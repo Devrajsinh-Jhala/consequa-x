@@ -75,7 +75,7 @@ def test_reconciled_graph_retains_both_observation_and_verification_records():
     episode = run_scenario(configs()["delayed_reconciled"])
     graph = episode.explanation.graph
     by_id = {node.id: node for node in graph.nodes}
-    contract_id = episode.trace.action.contract.contract_id
+    contract_id = episode.trace.single_action.contract.contract_id
     first_id, second_id = (f"verification:{contract_id}:{index}" for index in range(2))
     assert by_id[first_id].data["status"] == "unknown"
     assert by_id[second_id].data["status"] == "satisfied"
@@ -94,7 +94,7 @@ def test_experimental_overlays_are_explicit_and_target_the_registered_estimand()
     graph = build_graph(episode.trace, action_estimates + consequence_estimates)
     assert links(graph, "ESTIMATED_INFLUENCE") == {
         ("retry_instruction", "refund_decision"),
-        ("retry_instruction", f"contract:{episode.trace.action.contract.contract_id}"),
+        ("retry_instruction", f"contract:{episode.trace.single_action.contract.contract_id}"),
     }
     experimental = [edge for edge in graph.edges if edge.kind == "ESTIMATED_INFLUENCE"]
     assert {edge.basis for edge in experimental} == {"isolated_simulated_intervention"}
@@ -116,7 +116,7 @@ def test_conflicting_actor_metadata_does_not_assert_dispatch_effect_origin():
     observation = episode.trace.observations[0]
     record = dict(observation.records[0], actor="some_other_actor")
     observation = replace(observation, records=(record,))
-    verification = verify(episode.trace.action, observation)
+    verification = verify(episode.trace.single_action, observation)
     assert verification.origin is OriginStatus.UNKNOWN
     trace = replace(episode.trace, observations=(observation,), verifications=(verification,))
     assert not links(build_graph(trace), "EFFECT")
@@ -126,7 +126,11 @@ def test_origin_join_checks_action_identity_on_both_dispatch_and_readback():
     trace = run_scenario(configs()["clean"]).trace
     events = tuple(replace(event, data={**event.data, "action_id": "another_action"})
                    if event.type is EventType.ACTION_DISPATCH else event for event in trace.events)
-    conflicting = replace(trace, events=events)
+    with pytest.raises(ValueError, match="undeclared action"):
+        replace(trace, events=events)
+    other = replace(trace.single_action, action_id="another_action",
+                    contract=replace(trace.single_action.contract, contract_id="another_contract"))
+    conflicting = replace(trace, actions=trace.actions + (other,), events=events)
     assert conflicting.verifications[-1].origin is OriginStatus.CONFIRMED
     assert links(build_graph(conflicting), "RESPONSE") == {("dispatch_1", "response_1")}
     assert not links(build_graph(conflicting), "EFFECT")
@@ -154,7 +158,7 @@ def successive_readbacks(*changes):
         for index, change in enumerate(changes, start=1)
     )
     return replace(trace, observations=observations,
-                   verifications=tuple(verify(trace.action, view) for view in observations))
+                   verifications=tuple(verify(trace.single_action, view) for view in observations))
 
 
 def effect_witnesses(graph):
@@ -169,7 +173,7 @@ def test_conflicting_later_origin_cannot_overwrite_an_earlier_witness_and_inheri
     original_id = trace.observations[0].observation_id
     earlier, later = witnesses[original_id], witnesses["readback_1"]
     assert trace.verifications[-1].origin is OriginStatus.UNKNOWN
-    assert earlier.data["actor"] == trace.action.actor
+    assert earlier.data["actor"] == trace.single_action.actor
     assert later.data["actor"] == "another_actor"
     assert links(graph, "EFFECT") == {("dispatch_1", earlier.id)}
     identity = next(node for node in graph.nodes if node.kind == "external_effect_identity")
@@ -189,7 +193,7 @@ def test_corrected_payload_and_verification_retain_their_own_evidence():
     assert witnesses["readback_1"].data["amount_minor"] == 250_000
     assert [receipt.status.value for receipt in trace.verifications] == ["satisfied", "violated"]
     for index, view in enumerate(trace.observations):
-        receipt_id = f"verification:{trace.action.contract.contract_id}:{index}"
+        receipt_id = f"verification:{trace.single_action.contract.contract_id}:{index}"
         observed = {edge.source for edge in graph.edges
                     if edge.kind == "VERIFICATION" and edge.target == receipt_id
                     and edge.basis == "predicate_evidence"}
@@ -240,7 +244,7 @@ def test_later_missing_provenance_does_not_inherit_the_earlier_origin():
               if key not in {"action_id", "attempt_id", "actor"}}
     later = replace(later, records=(record,))
     trace = replace(trace, observations=(trace.observations[0], later),
-                    verifications=(trace.verifications[0], verify(trace.action, later)))
+                    verifications=(trace.verifications[0], verify(trace.single_action, later)))
     graph = build_graph(trace)
     witnesses = effect_witnesses(graph)
     earlier_id = trace.observations[0].observation_id
@@ -256,7 +260,7 @@ def test_verification_never_borrows_an_effect_record_from_another_observation():
     # source snapshot. Structural decoding does not authenticate that claim.
     trace = replace(trace, observations=(trace.observations[0], missing_view))
     graph = build_graph(trace)
-    later_id = f"verification:{trace.action.contract.contract_id}:1"
+    later_id = f"verification:{trace.single_action.contract.contract_id}:1"
     assert not {edge.source for edge in graph.edges
                 if edge.kind == "VERIFICATION" and edge.target == later_id
                 and edge.basis == "predicate_evidence"}

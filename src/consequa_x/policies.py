@@ -78,13 +78,6 @@ class PolicyRequest:
             self.stage == "after_response" and not self.responses
         ):
             raise PolicyError("select requires no responses; after_response requires a response")
-        # ToolResponse is frozen, but its JSON result is mutable: copy it too.
-        responses = tuple(
-            ToolResponse(response.attempt_id, response.status, response.time_ms,
-                         response.provider_request_id, _object(response.result, "response.result"))
-            for response in self.responses
-        )
-        object.__setattr__(self, "responses", responses)
 
     def to_dict(self) -> dict:
         return to_dict(self)

@@ -30,7 +30,7 @@ def test_policy_seed_changes_recorded_model_keys_without_changing_world_or_publi
     config = ScenarioConfig(fault=Fault.CLEAN)
     first = run_policy_scenario(config, ScriptedRefundPolicy(), seed=4)
     second = run_policy_scenario(config, ScriptedRefundPolicy(), seed=4, policy_seed=99)
-    assert first.trace.action == second.trace.action
+    assert first.trace.single_action == second.trace.single_action
     assert first.trace.responses == second.trace.responses
     assert first.trace.observations == second.trace.observations
     first_events = [event for event in first.trace.events if "policy_request" in event.data]

@@ -9,7 +9,7 @@ import pytest
 
 from consequa_x import (
     Action, AgentAssessment, AssessmentStatus, Observation, OriginStatus, OutcomeContract,
-    TargetMatcher, Trace, VerificationStatus, explain, verify,
+    TargetMatcher, TimeBase, Trace, VerificationStatus, explain, verify,
 )
 from consequa_x.models import Evidence, VerificationResult
 from consequa_x.schema import validate_trace
@@ -36,7 +36,7 @@ class FixedVerifier:
 def test_custom_verifier_receipt_must_bind_to_supplied_contract_and_observation(change, message):
     trace = _example.build_trace()
     observation = replace(trace.observations[0], as_of_ms=70)
-    receipt = _example.ArtifactVerifier().verify(trace.action, observation)
+    receipt = _example.ArtifactVerifier().verify(trace.single_action, observation)
     evidence = receipt.evidence[0]
     if change == "contract":
         receipt = replace(receipt, contract_id="different-contract")
@@ -49,22 +49,22 @@ def test_custom_verifier_receipt_must_bind_to_supplied_contract_and_observation(
     else:
         receipt = replace(receipt, observed_at_ms=99)
     with pytest.raises(ValueError, match=message):
-        verify(trace.action, observation, verifier=FixedVerifier(receipt))
+        verify(trace.single_action, observation, verifier=FixedVerifier(receipt))
 
 
 def test_custom_verifier_return_type_and_input_types_are_checked():
     trace = _example.build_trace()
     with pytest.raises(TypeError, match="VerificationResult"):
-        verify(trace.action, trace.observations[0], verifier=FixedVerifier({"status": "satisfied"}))
+        verify(trace.single_action, trace.observations[0], verifier=FixedVerifier({"status": "satisfied"}))
     with pytest.raises(TypeError, match="Action and an Observation"):
-        verify(trace.action.to_dict(), trace.observations[0], verifier=FixedVerifier(None))
+        verify(trace.single_action.to_dict(), trace.observations[0], verifier=FixedVerifier(None))
 
 
 @pytest.mark.parametrize("adapter", [object(), {}, "verifier", SimpleNamespace(verify=17)])
 def test_custom_verifier_requires_a_callable_method(adapter):
     trace = _example.build_trace()
     with pytest.raises(TypeError, match="callable verify method"):
-        verify(trace.action, trace.observations[0], verifier=adapter)
+        verify(trace.single_action, trace.observations[0], verifier=adapter)
 
 
 @pytest.mark.parametrize("trace", [None, {}, "trace", []])
@@ -86,7 +86,7 @@ def test_target_matcher_requires_a_callable_method_without_executing_unknowns(ad
 def test_builtin_verifier_remains_explicitly_refund_only():
     trace = _example.build_trace()
     with pytest.raises(ValueError, match="Unsupported predicate"):
-        verify(trace.action, trace.observations[0])
+        verify(trace.single_action, trace.observations[0])
 
 
 def test_offline_artifact_example_round_trips_and_qualifies_a_target_match():
@@ -95,11 +95,11 @@ def test_offline_artifact_example_round_trips_and_qualifies_a_target_match():
     assert validate_trace(restored.to_json()) == trace
     assert restored.verifications[0].status is VerificationStatus.SATISFIED
     assert restored.verifications[0].origin is OriginStatus.CONFIRMED
-    assert trace.observations[0].records[0]["sha256"] == trace.action.contract.expected["sha256"]
+    assert trace.observations[0].records[0]["sha256"] == trace.single_action.contract.expected["sha256"]
     explanation = explain(restored, target_matcher=_example.ArtifactTargetMatcher())
-    assert explanation.assessment_alignment == "contradicted"
-    assert explanation.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
-    assert set(explanation.diagnoses) == {
+    assert explanation.single_action.assessment_alignment == "contradicted"
+    assert explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
+    assert set(explanation.single_action.diagnoses) == {
         "ASSESSMENT_DIVERGENCE", "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
     }
 
@@ -113,10 +113,10 @@ def test_custom_predicate_is_unassessable_without_an_explicit_domain_matcher():
     }),))
     trace = replace(trace, verifications=(receipt,))
     explanation = explain(trace)
-    assert explanation.assessment_alignment == "unassessable"
-    assert explanation.diagnoses == ("UNASSESSABLE_ASSESSMENT",)
-    assert "PARAMETER_MISMATCH" not in explanation.diagnoses
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.diagnoses
+    assert explanation.single_action.assessment_alignment == "unassessable"
+    assert explanation.single_action.diagnoses == ("UNASSESSABLE_ASSESSMENT",)
+    assert "PARAMETER_MISMATCH" not in explanation.single_action.diagnoses
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.single_action.diagnoses
 
 
 @pytest.mark.parametrize("observation,status,origin,alignment,required", [
@@ -138,10 +138,10 @@ def test_custom_domain_failure_unknown_and_origin_do_not_become_refund_claims(
     receipt = trace.verifications[0]
     assert receipt.status is status and receipt.origin is origin
     explanation = explain(trace, target_matcher=_example.ArtifactTargetMatcher())
-    assert explanation.assessment_alignment == alignment
-    assert required in explanation.diagnoses
+    assert explanation.single_action.assessment_alignment == alignment
+    assert required in explanation.single_action.diagnoses
     assert not {"PARTIAL_EFFECT", "PARAMETER_MISMATCH", "DUPLICATE_EFFECT",
-                "EXCESS_EFFECTS", "REVERSED_EFFECT"} & set(explanation.diagnoses)
+                "EXCESS_EFFECTS", "REVERSED_EFFECT"} & set(explanation.single_action.diagnoses)
 
 
 def test_target_matcher_cannot_qualify_an_unrelated_attributable_effect_as_a_target():
@@ -154,8 +154,8 @@ def test_target_matcher_cannot_qualify_an_unrelated_attributable_effect_as_a_tar
                                                details={"records": [wrong_record]}),))
     explanation = explain(replace(trace, verifications=(receipt,)),
                           target_matcher=_example.ArtifactTargetMatcher())
-    assert explanation.assessment_alignment == "unassessable"
-    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.diagnoses
+    assert explanation.single_action.assessment_alignment == "unassessable"
+    assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in explanation.single_action.diagnoses
 
 
 @pytest.mark.parametrize("committed_at,status", [
@@ -172,14 +172,14 @@ def test_artifact_exact_count_includes_extra_deliveries_through_inclusive_horizo
     extra = {**view.records[0], "effect_id": "extra-delivery", "committed_at_ms": committed_at}
     trace = _example.build_trace(replace(view, records=(*view.records, extra)))
     assert trace.verifications[0].status is status
-    if committed_at > trace.action.contract.horizon_ms:
+    if committed_at > trace.single_action.contract.horizon_ms:
         assert trace.verifications[0].effect_ids == ("artifact-revision-7",)
     else:
         assert trace.verifications[0].effect_ids == ("artifact-revision-7", "extra-delivery")
     matching = _example.ArtifactTargetMatcher().matching_effect_ids(
-        trace.action, trace.verifications[0],
+        trace.single_action, trace.verifications[0],
     )
-    assert ("extra-delivery" in matching) is (committed_at <= trace.action.contract.deadline_ms)
+    assert ("extra-delivery" in matching) is (committed_at <= trace.single_action.contract.deadline_ms)
 
 
 @pytest.mark.parametrize("committed_at,status", [
@@ -194,7 +194,7 @@ def test_artifact_single_delivery_requires_inclusive_deadline(committed_at, stat
 
 def test_artifact_deliveries_before_registration_do_not_count():
     trace = _example.build_trace()
-    action = replace(trace.action, registered_at_ms=10)
+    action = replace(trace.single_action, registered_at_ms=10)
     view = trace.observations[0]
     earlier = {**view.records[0], "effect_id": "earlier-delivery", "committed_at_ms": 9}
     view = replace(view, records=(earlier, *view.records))
@@ -227,8 +227,8 @@ def test_unknown_artifact_does_not_call_a_target_matcher(missing_witness):
             raise AssertionError("An unknown outcome's source payload must not be interpreted")
 
     explanation = explain(trace, target_matcher=UnexpectedMatcher())
-    assert explanation.assessment_alignment == "unassessable"
-    assert explanation.diagnoses == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
+    assert explanation.single_action.assessment_alignment == "unassessable"
+    assert explanation.single_action.diagnoses == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
 
 
 @pytest.mark.parametrize("ids", [["artifact-revision-7"], ("unobserved",),
@@ -244,15 +244,15 @@ def test_target_matcher_result_is_a_unique_subset_of_attributable_ids(ids):
 
 def refund_trace():
     expected = {"payment_id": "p1", "amount_minor": 2000, "currency": "INR"}
-    action = Action("refund-1", "refund-test", "agent", "refund", expected, 0,
-                    OutcomeContract("refund-contract", "refund_processed", expected, 100))
-    observation = Observation("refund-observation", "independent-ledger", 200, 200,
-                              {"payment_id": "p1"}, ({
+    action = Action(action_id="refund-1", actor="agent", name="refund", arguments=expected, registered_at_ms=0,
+                    contract=OutcomeContract(contract_id="refund-contract", predicate="refund_processed", expected=expected, deadline_ms=100))
+    observation = Observation(observation_id="refund-observation", source="independent-ledger", observed_at_ms=200, as_of_ms=200,
+                              scope={"payment_id": "p1"}, records=({
                                   "effect_id": "refund-effect", **expected, "committed_at_ms": 50,
                                   "status": "processed", "action_id": "refund-1", "actor": "agent",
                               },))
-    return Trace(action.trace_id, action, (), (), AgentAssessment(AssessmentStatus.SUCCESS, 80),
-                 (observation,), (verify(action, observation),))
+    return Trace(trace_id="refund-trace", time_base=TimeBase.RELATIVE_MS, actions=(action,), events=(), responses=(), assessments=(AgentAssessment(status=AssessmentStatus.SUCCESS, time_ms=80, assessment_id="assessment-1", action_id="refund-1"),),
+                 observations=(observation,), verifications=(verify(action, observation),))
 
 
 @pytest.mark.parametrize("details", [
@@ -292,16 +292,16 @@ def test_known_linked_refund_malformed_payload_is_rejected(changes):
 def test_unknown_refund_keeps_malformed_source_evidence_without_claiming_alignment():
     trace = refund_trace()
     receipt = trace.verifications[0]
-    receipt = VerificationResult(receipt.contract_id, VerificationStatus.UNKNOWN, 200,
-                                 (Evidence("refund-observation", "independent-ledger", 200,
-                                           {"records": [17]}),))
+    receipt = VerificationResult(contract_id=receipt.contract_id, status=VerificationStatus.UNKNOWN, observed_at_ms=200,
+                                 evidence=(Evidence(observation_id="refund-observation", source="independent-ledger", as_of_ms=200,
+                                           details={"records": [17]}),), action_id=receipt.action_id)
     explanation = explain(replace(trace, verifications=(receipt,)))
-    assert explanation.assessment_alignment == "unassessable"
-    assert explanation.diagnoses == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
+    assert explanation.single_action.assessment_alignment == "unassessable"
+    assert explanation.single_action.diagnoses == ("UNKNOWN_OUTCOME", "UNVERIFIED_ASSESSMENT")
 
 
 def test_refund_explanation_default_and_public_matcher_export_remain_available():
     assert TargetMatcher is not None
     explanation = explain(refund_trace())
-    assert explanation.assessment_alignment == "consistent"
-    assert explanation.diagnoses == ("CONSISTENT_OUTCOME",)
+    assert explanation.single_action.assessment_alignment == "consistent"
+    assert explanation.single_action.diagnoses == ("CONSISTENT_OUTCOME",)

@@ -164,7 +164,7 @@ def test_seeded_public_choices_match_declared_rng_and_do_not_read_hidden_fields(
     policy = RefundInteractionPolicy(.2, .8, 4_040_000)
     selection = PolicyRequest("select", {"public": "refund"}, {"request": "refund"})
     timeout = PolicyRequest("after_response", selection.task, selection.context,
-        (ToolResponse("attempt", ResponseStatus.TIMEOUT, 6, "request", {"code": "timeout"}),), 1)
+        (ToolResponse(attempt_id="attempt", status=ResponseStatus.TIMEOUT, time_ms=6, provider_request_id="request", result={"code": "timeout"}, action_id="refund"),), 1)
     selected, retried = 0, 0
     for seed in range(24_300_000, 24_301_000, 6):
         first = policy.decide(selection, seed=seed)

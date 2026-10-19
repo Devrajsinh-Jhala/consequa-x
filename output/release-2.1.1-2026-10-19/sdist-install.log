@@ -1,0 +1,18 @@
+Processing c:\users\dell\appdata\local\temp\claude\c--users-dell-onedrive-desktop-conseqax\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\scratchpad\release-2.1.1\dist\consequa_x-2.1.1.tar.gz
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: consequa-x
+  Building wheel for consequa-x (pyproject.toml): started
+  Building wheel for consequa-x (pyproject.toml): finished with status 'done'
+  Created wheel for consequa-x: filename=consequa_x-2.1.1-py3-none-any.whl size=215139 sha256=0db57bbf2ed321a556f3a033e358707120638d2190614e311ca0e455fb96f824
+  Stored in directory: c:\users\dell\appdata\local\pip\cache\wheels\ba\aa\38\8617fc73c7aae50336f3cc02195c14545d8882c4f44a07e4c5
+Successfully built consequa-x
+Installing collected packages: consequa-x
+Successfully installed consequa-x-2.1.1
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-OneDrive-Desktop-ConseqaX\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\scratchpad\release-2.1.1\env-sdist\Scripts\python.exe -m pip install --upgrade pip

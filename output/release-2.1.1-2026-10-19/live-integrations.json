@@ -1,0 +1,116 @@
+{
+  "claude_model_alias": "haiku",
+  "local_model": "qwen3:4b-instruct-2507-q4_K_M",
+  "passed": true,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.10",
+  "runs": [
+    {
+      "agent_reported": "failure",
+      "alignment": "contradicted",
+      "diagnoses": [
+        "ASSESSMENT_DIVERGENCE",
+        "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+      ],
+      "final_answer_tail": "I'm unable to process the refund at this time due to an error. Please try again later or contact support for assistance. OUTCOME: failure",
+      "framework": "openai-agents",
+      "origin": "confirmed",
+      "passed": true,
+      "recorded_actions": [
+        "refund-o-17"
+      ],
+      "recorded_attempts": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ],
+      "recording_matches_reality": true,
+      "refund_rows": 1,
+      "retry_advice": "do_not_retry",
+      "run_error": null,
+      "seconds": 55.9,
+      "state": "satisfied",
+      "tool_calls_that_ran": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ]
+    },
+    {
+      "agent_reported": "failure",
+      "alignment": "contradicted",
+      "diagnoses": [
+        "ASSESSMENT_DIVERGENCE",
+        "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+      ],
+      "final_answer_tail": "OUTCOME: failure",
+      "framework": "langchain",
+      "origin": "confirmed",
+      "passed": true,
+      "recorded_actions": [
+        "refund-o-17"
+      ],
+      "recorded_attempts": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ],
+      "recording_matches_reality": true,
+      "refund_rows": 1,
+      "retry_advice": "do_not_retry",
+      "run_error": null,
+      "seconds": 25.6,
+      "state": "satisfied",
+      "tool_calls_that_ran": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ]
+    },
+    {
+      "agent_reported": "failure",
+      "alignment": "contradicted",
+      "diagnoses": [
+        "ASSESSMENT_DIVERGENCE",
+        "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+      ],
+      "final_answer_tail": "sing it, and we're confirming that the refund has posted. We'll follow up as soon as it's confirmed. If you don't see it within [timeframe], please reply to this message and we'll chase it up.\"\n\nDon't send the customer a confirmation until someone verifies the refund on the ledger.\n\nOUTCOME: failure",
+      "framework": "claude-agent-sdk",
+      "origin": "confirmed",
+      "passed": true,
+      "recorded_actions": [
+        "refund-o-17"
+      ],
+      "recorded_attempts": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ],
+      "recording_matches_reality": true,
+      "refund_rows": 1,
+      "retry_advice": "do_not_retry",
+      "run_error": null,
+      "seconds": 13.2,
+      "state": "satisfied",
+      "tool_calls_that_ran": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ]
+    }
+  ],
+  "versions": {
+    "claude-agent-sdk": "0.2.168",
+    "consequa-x": "2.1.1",
+    "langchain-core": "1.6.12",
+    "langchain-openai": "1.7.2",
+    "openai": "3.35.1",
+    "openai-agents": "0.24.0"
+  }
+}

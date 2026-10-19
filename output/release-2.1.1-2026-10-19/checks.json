@@ -1,0 +1,66 @@
+{
+  "artifacts": [
+    {
+      "bytes": 215139,
+      "path": "consequa_x-2.1.1-py3-none-any.whl",
+      "sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98"
+    },
+    {
+      "bytes": 676766,
+      "path": "consequa_x-2.1.1.tar.gz",
+      "sha256": "9841f34842c89bbbdffa6776bbc5baf32e2288f25a35cfc1ad1e3f665021fa69"
+    }
+  ],
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "installed_environments": {
+    "extras312.json": "Windows Python 3.12.10 venv with openai-agents, langchain-core, claude-agent-sdk and opentelemetry; integration, OpenTelemetry and composite tests run against the installed wheel",
+    "linux.json": "Alpine Linux 3.24.2, Python 3.14.8, local QEMU TCG guest; fresh venv",
+    "live-integrations.json": "Each integration in a real agent loop with a real model against the installed wheel: local qwen3 4B via Ollama for the OpenAI Agents SDK and LangChain, Claude Haiku via the local Claude Code login for the Claude Agent SDK",
+    "sdist312.json": "Fresh Windows Python 3.12.10 venv; sdist built and installed; demo, summarize, SQLite example, 1.2.0-trace migration, OpenTelemetry export/import and a composite verify",
+    "windows311.json": "Official Windows embedded Python 3.11.9, wheel unpacked into an isolated site-packages",
+    "windows312.json": "Fresh Windows Python 3.12.10 venv, wheel installed with --no-deps --no-index",
+    "windows313.json": "Official Windows embedded Python 3.13.16 (Sigstore-verified), isolated site-packages",
+    "windows314.json": "Official Windows embedded Python 3.14.8 (Sigstore-verified), isolated site-packages",
+    "windows315.json": "Official Windows embedded Python 3.15.0 (Sigstore-verified), isolated site-packages"
+  },
+  "limits": [
+    "macOS has never been tested.",
+    "Linux coverage is one emulated Alpine guest, not every distribution or a native host.",
+    "Windows checks ran on one Windows 11 host.",
+    "Framework integrations were tested against one version of each SDK, offline and with one live run each; no MCP server, collector or tracing backend was used.",
+    "The source suites on Python 3.13 to 3.15 ran on 4f2cf80 (before the version bump); their one failure each was the demo-data comparison racing a regeneration, and it passed on rerun.",
+    "The framework SDKs were installed only in the Windows extras environment; the Linux guest checked the core package and the integrations' missing-extra import errors."
+  ],
+  "local_checks": {
+    "artifact_inventory": true,
+    "framework_extras_installed_tests": true,
+    "framework_live_runs": true,
+    "lint": true,
+    "linux_wheel_install": true,
+    "public_docs_support": false,
+    "python311_conformance": true,
+    "python313_315_installed": true,
+    "release_helper_tests": true,
+    "report_browser_qa": true,
+    "report_security": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "pending": {
+    "public_docs_support": "The 2.1.1 site and docs pages state 2.1.1 as published; they deploy only after PyPI publication. Private vulnerability reporting is enabled."
+  },
+  "public_repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+  "public_site": "https://consequa-x.onrender.com",
+  "recorded_at_utc": "2026-10-19T15:14:22.538950+00:00",
+  "release_kind": "Additive feature release (trace schema 1.0 unchanged)",
+  "source_revision": "b73ecd00fc9b4b8b3f9b8182aa8ed652419d7e54",
+  "source_tests": {
+    "failures": 0,
+    "receipt": "source-tests.log",
+    "summary": "1952 passed, 27 skipped, 241 subtests passed in 317.74s (0:05:17)"
+  },
+  "version": "2.1.1"
+}

@@ -1,0 +1,71 @@
+{
+ "openai-agents": {
+  "passed": true,
+  "tool_calls_that_ran": [
+   {
+    "order_id": "o-17",
+    "status": "timeout"
+   }
+  ],
+  "recorded_attempts": [
+   {
+    "order_id": "o-17",
+    "status": "timeout"
+   }
+  ],
+  "state": "satisfied",
+  "alignment": "contradicted",
+  "diagnoses": [
+   "ASSESSMENT_DIVERGENCE",
+   "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+  ],
+  "run_error": null,
+  "seconds": 55.9
+ },
+ "langchain": {
+  "passed": true,
+  "tool_calls_that_ran": [
+   {
+    "order_id": "o-17",
+    "status": "timeout"
+   }
+  ],
+  "recorded_attempts": [
+   {
+    "order_id": "o-17",
+    "status": "timeout"
+   }
+  ],
+  "state": "satisfied",
+  "alignment": "contradicted",
+  "diagnoses": [
+   "ASSESSMENT_DIVERGENCE",
+   "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+  ],
+  "run_error": null,
+  "seconds": 25.6
+ },
+ "claude-agent-sdk": {
+  "passed": true,
+  "tool_calls_that_ran": [
+   {
+    "order_id": "o-17",
+    "status": "timeout"
+   }
+  ],
+  "recorded_attempts": [
+   {
+    "order_id": "o-17",
+    "status": "timeout"
+   }
+  ],
+  "state": "satisfied",
+  "alignment": "contradicted",
+  "diagnoses": [
+   "ASSESSMENT_DIVERGENCE",
+   "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+  ],
+  "run_error": null,
+  "seconds": 13.2
+ }
+}

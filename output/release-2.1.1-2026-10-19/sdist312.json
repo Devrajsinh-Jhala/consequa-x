@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "agent_loop_example_from_sdist": {
+      "other_actor": {
+        "alignment": "unassessable",
+        "assessment": "failure",
+        "origin": "other_actor",
+        "response": "timeout",
+        "state": "satisfied"
+      },
+      "stale_readback": {
+        "alignment": "unassessable",
+        "assessment": "success",
+        "origin": "unknown",
+        "response": "success",
+        "state": "unknown"
+      },
+      "timeout_after_commit": {
+        "alignment": "contradicted",
+        "assessment": "failure",
+        "origin": "confirmed",
+        "response": "timeout",
+        "state": "satisfied"
+      }
+    },
+    "cli_version": "2.1.1",
+    "composite_verify_command_two_readbacks": true,
+    "consequa_x_version": "2.1.1",
+    "demo_scenarios_generated": 12,
+    "demo_summary_actions": 12,
+    "migrated_1_2_0_fixture_reproduces_1_x_explanation": true,
+    "otel_export_import_round_trip": true,
+    "project_urls": [
+      "Homepage, https://consequa-x.onrender.com",
+      "Documentation, https://consequa-x.onrender.com/docs.html",
+      "Changelog, https://consequa-x.onrender.com/changelog.html",
+      "Repository, https://github.com/Devrajsinh-Jhala/consequa-x",
+      "Issues, https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+      "Security, https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+    ],
+    "report_from_episode_01_sha256": "9a34912b6ca79770d2107eba99ceab1a0ac174015c788b2c6603eda31bf07bf7",
+    "two_part_example_from_sdist": true
+  },
+  "input_artifact": {
+    "bytes": 676766,
+    "path": "consequa_x-2.1.1.tar.gz",
+    "sha256": "9841f34842c89bbbdffa6776bbc5baf32e2288f25a35cfc1ad1e3f665021fa69"
+  },
+  "module_file_in_site_packages": true,
+  "passed": true,
+  "python": "3.12.10",
+  "scope": "Smoke install of the source distribution: demo, report, summarize, the SQLite agent-loop example, migration of a trace written by 1.2.0, OpenTelemetry export/import and a composite verify from two readback files; not the full installed-artifact checker."
+}

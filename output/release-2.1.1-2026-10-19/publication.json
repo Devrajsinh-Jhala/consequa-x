@@ -1,0 +1,40 @@
+{
+  "distribution": "consequa-x",
+  "gate_exceptions": {
+    "pending": [
+      "public_docs_support"
+    ]
+  },
+  "maintainer_instruction": "You can do all 3 (tag the GitHub releases, test Python 3.13 and 3.14 and publish a 2.1.1 metadata release, run each integration with a real model); 19 October 2026",
+  "project_urls": {
+    "Changelog": "https://consequa-x.onrender.com/changelog.html",
+    "Documentation": "https://consequa-x.onrender.com/docs.html",
+    "Homepage": "https://consequa-x.onrender.com",
+    "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+    "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+    "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+  },
+  "published": true,
+  "published_files": [
+    {
+      "filename": "consequa_x-2.1.1-py3-none-any.whl",
+      "sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98",
+      "size": 215139,
+      "upload_time_utc": "2026-10-19T15:15:04.635972Z"
+    },
+    {
+      "filename": "consequa_x-2.1.1.tar.gz",
+      "sha256": "9841f34842c89bbbdffa6776bbc5baf32e2288f25a35cfc1ad1e3f665021fa69",
+      "size": 676766,
+      "upload_time_utc": "2026-10-19T15:15:06.448514Z"
+    }
+  ],
+  "registry": "https://pypi.org/project/consequa-x/2.1.1/",
+  "registry_hashes_and_sizes_match_review": true,
+  "registry_install": "Fresh Windows Python 3.12.10 venv, pip install --no-cache-dir from PyPI, first attempt",
+  "registry_install_receipt": "registry312.json",
+  "source_revision": "b73ecd00fc9b4b8b3f9b8182aa8ed652419d7e54",
+  "uploader": "twine via the maintainer's local keyring credential; GitHub Actions not used",
+  "verified_at_utc": "2026-10-19T15:17:00.572874+00:00",
+  "version": "2.1.1"
+}

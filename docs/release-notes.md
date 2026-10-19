@@ -11,6 +11,12 @@
 - A new example, two_part_outcome.py, checks a refund and a ticket closure
   as one outcome.
 
+Both files are published on PyPI with their registry hashes and sizes verified,
+and a fresh install from PyPI passed the installed checks. Installed checks of
+the same wheel passed on Windows with Python 3.11.9, 3.12.10, 3.13.16, 3.14.8
+and 3.15.0, and on Alpine Linux 3.24.2 with Python 3.14.8 in a local QEMU guest.
+The Linux result covers one emulated guest; macOS has not been tested.
+
 ## 2.1.0 — 19 October 2026
 
 An additive release with the features 2.0.0 left out. Saved traces and code

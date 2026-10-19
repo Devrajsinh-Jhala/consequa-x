@@ -2,7 +2,11 @@
 
 ## 2.1.1 - 19 October 2026
 
-A maintenance release; the API and trace schema are unchanged.
+A maintenance release; the API and trace schema are unchanged. Published to
+PyPI with registry hashes verified; see the
+[release record](output/release-2.1.1-2026-10-19/README.md). Installed checks
+passed on Windows Python 3.11 to 3.15, on one Alpine Linux QEMU guest with
+Python 3.14 and from a fresh PyPI install. macOS has never been tested.
 
 - The project's name is written ConseqaX: README, documentation, report title
   and footer, the trace schema's title and command-line text. The package,

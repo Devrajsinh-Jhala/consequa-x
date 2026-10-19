@@ -8,8 +8,12 @@ two-part outcome example ships in the source archive. See the
 [changelog](../../CHANGELOG.md). Built from source revision
 `b73ecd00fc9b4b8b3f9b8182aa8ed652419d7e54`.
 
-**Not yet published.** This record holds the pre-publication checks.
-`publication.json` will be added after upload and registry verification.
+Published to PyPI on 19 October 2026 (15:15 UTC) on the maintainer's
+instruction. PyPI serves both files with the reviewed sizes and hashes, the
+2.1.1 metadata lists Python 3.11 to 3.15 and the README headed ConseqaX, and a
+fresh no-cache install from PyPI on Windows Python 3.12.10 passed the
+installed-wheel checker ([registry312.json](registry312.json),
+[publication.json](publication.json), [upload log](publication-upload.log)).
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -59,8 +63,8 @@ two-part outcome example ships in the source archive. See the
 
 ## Pending and limits
 
-- Public docs/support gate: pending until the 2.1.1 site deploys. Private
-  vulnerability reporting is enabled.
+- Public docs/support gate: pending at upload; see `site-publication.json` once
+  the 2.1.1 site is live. Private vulnerability reporting is enabled.
 - macOS has never been tested. Linux coverage is one emulated Alpine guest.
 - One live run per framework, with one model each, shows the wiring works; it
   does not cover every model or SDK release. No MCP server, OpenTelemetry

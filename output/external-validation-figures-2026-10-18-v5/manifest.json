@@ -1,0 +1,22 @@
+{
+  "script_sha256": "0aa99f28ba635a63218723e75f22fbf9ae9b1c47783d734952cccaee587a7915",
+  "matplotlib": "3.11.2",
+  "inputs": {
+    "D:\\ConsequaX-Research\\paper-writing\\output\\matched-trace-judge-analysis-2026-10-18\\analysis.json": "117ea516eadd2e171fef5f8ffbe7337f5d70dd32add6647a3ee6496f2a51528f",
+    "D:\\ConsequaX-Research\\paper-writing\\output\\tau3-state-transfer-2026-10-18\\summary.json": "2d042cbd8f138c9f31f82d1c33e91786f4e2237c27bcc5a6805714ffbc50c75e"
+  },
+  "files": {
+    "benchmark-state-transfer.pdf": "4f0a66c4a234688cbdff75998193823b45c89d58b0e19307274faf2b140f5b9f",
+    "benchmark-state-transfer.png": "899ea63cd0330fd259c121ebbdecb975d8da4b01d232e5dac7b6211175af4156",
+    "benchmark-state-transfer.svg": "b986367718b17c7dc85ee4fb1d3ad087e89dd14eccb4512caeecce15f28d1f85",
+    "fractions.csv": "f20ec6f90a3dbe7998fafe0fb79482233d788b4957fdb343c4c39698c61020fc",
+    "fractions.json": "fbef522e6eb8d1fd09406cd27209f2f4b610bb8d7aed2942cccf2c78e5a303fb",
+    "same-evidence-trace-judge.pdf": "a37a28d4259ccdd9bba5012f10f8450be3c9a56858f7ceadfbb5af2823992a8f",
+    "same-evidence-trace-judge.png": "597f00455715bc5f72e5ba3681752f741f579d7c79beddfd64ebe2804fdb47ba",
+    "same-evidence-trace-judge.svg": "251e7df9ffebdf7d7ab6c53e3e284184459bc8d1db484a6a7c90538f3608eee2",
+    "source-inputs/judge-analysis.json": "117ea516eadd2e171fef5f8ffbe7337f5d70dd32add6647a3ee6496f2a51528f",
+    "source-inputs/tau-summary.json": "2d042cbd8f138c9f31f82d1c33e91786f4e2237c27bcc5a6805714ffbc50c75e"
+  },
+  "model_calls": 0,
+  "postcollection_presentation": true
+}

@@ -1,0 +1,731 @@
+{
+  "actions": [
+    {
+      "action_id": "refund:18000010",
+      "actor": "RefundAgent",
+      "arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "contract": {
+        "contract_id": "contract:18000010",
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "predicate": "refund_processed",
+        "stability_ms": 20
+      },
+      "idempotency_key": "consequa-refund-18000010",
+      "name": "refund",
+      "registered_at_ms": 5
+    }
+  ],
+  "assessments": [
+    {
+      "action_id": "refund:18000010",
+      "assessment_id": "assessment_2",
+      "evidence_event_ids": [
+        "response_1",
+        "response_2"
+      ],
+      "rationale": "The refund tool successfully processed the request in the second attempt, but the final outcome cannot be independently verified due to lack of effect observation. The policy allows refunds up to 60 days for VIP members, and the order is 43 days old, satisfying eligibility. However, since the assessment depends on observed effect and no such effect is reported, the outcome remains unknown.",
+      "status": "unknown",
+      "time_ms": 7
+    }
+  ],
+  "events": [
+    {
+      "actor": null,
+      "data": {
+        "value": "The customer has asked the service desk to refund the payment specified in this task."
+      },
+      "id": "customer_request",
+      "parent_ids": [],
+      "time_ms": 0,
+      "type": "user_input"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "The account record identifies this customer as a VIP member."
+      },
+      "id": "vip_memory",
+      "parent_ids": [],
+      "time_ms": 1,
+      "type": "memory_read"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "The refund exception for VIP members allows an order age of 60 days or less."
+      },
+      "id": "vip_policy",
+      "parent_ids": [],
+      "time_ms": 2,
+      "type": "retrieval"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "Service desk procedure: if the refund tool times out, retry that same refund once."
+      },
+      "id": "retry_instruction",
+      "parent_ids": [],
+      "time_ms": 3,
+      "type": "system_instruction"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "The service desk operates on weekdays."
+      },
+      "id": "distractor",
+      "parent_ids": [],
+      "time_ms": 4,
+      "type": "retrieval"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "model_seed": 108000060,
+        "policy": {
+          "base_url": "http://127.0.0.1:11435",
+          "num_predict": 384,
+          "prompt_version": "refund-policy-v2",
+          "provider": "ollama",
+          "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+          "temperature": 0.2,
+          "timeout_seconds": 180.0
+        },
+        "policy_reply": {
+          "decision": {
+            "assessment": "unknown",
+            "operation": "refund",
+            "rationale": "The customer is a VIP member, and the VIP policy allows refunds for orders up to 60 days old. The order age is 43 days, which is within the VIP exception limit. Therefore, the refund is eligible. The service desk procedure specifies retrying if the tool times out, and there are two attempts remaining. The operation is selected as refund based on eligibility."
+          },
+          "metadata": {
+            "base_url": "http://127.0.0.1:11435",
+            "done_reason": "stop",
+            "eval_count": 100,
+            "eval_duration": 17581454000,
+            "load_duration": 5375400,
+            "local_inspection": {
+              "capabilities": [
+                "tools",
+                "thinking",
+                "completion"
+              ],
+              "details": {
+                "families": [
+                  "qwen3"
+                ],
+                "family": "qwen3",
+                "format": "gguf",
+                "parameter_size": "4.0B",
+                "quantization_level": "Q4_K_M"
+              },
+              "endpoint": "/api/show",
+              "inspection_sha256": "80909a71c0cfac56dd67383b55d8078759a9ee0d7be4ff7dc3085b4e68da6257",
+              "no_declared_remote_routing": true,
+              "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+              "routing_fields_present": []
+            },
+            "num_predict": 384,
+            "prompt_eval_count": 637,
+            "prompt_eval_duration": 6660352000,
+            "prompt_version": "refund-policy-v2",
+            "provider": "ollama",
+            "request_payload_sha256": "3dff0058181934c9873ecb82fd0b901425915e3520265f5bffbb8f237489be5d",
+            "request_sha256": "70095db67a1fdfcc2e6440c38354cf4a492bfa767c8b734f3b513a2155039538",
+            "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "returned_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "seed": 108000060,
+            "system_prompt_sha256": "141ab9ae275703cdbe23bd55376f40ce0069bb67a172d8af65ee852d577be6ed",
+            "temperature": 0.2,
+            "timeout_seconds": 180.0,
+            "total_duration": 24269036100
+          }
+        },
+        "policy_request": {
+          "attempts_remaining": 2,
+          "context": {
+            "customer_request": "The customer has asked the service desk to refund the payment specified in this task.",
+            "distractor": "The service desk operates on weekdays.",
+            "retry_instruction": "Service desk procedure: if the refund tool times out, retry that same refund once.",
+            "vip_memory": "The account record identifies this customer as a VIP member.",
+            "vip_policy": "The refund exception for VIP members allows an order age of 60 days or less."
+          },
+          "responses": [],
+          "stage": "select",
+          "task": {
+            "amount_minor": 125000,
+            "base_refund_policy": "The standard refund rule allows a requested refund when the order is 30 days old or younger.",
+            "currency": "INR",
+            "deadline_ms": 100,
+            "horizon_ms": 120,
+            "idempotency_available": true,
+            "order_age_days": 43,
+            "payment_id": "pay_42"
+          }
+        },
+        "selected": true
+      },
+      "id": "refund_decision",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy",
+        "retry_instruction",
+        "distractor"
+      ],
+      "time_ms": 5,
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "refund_decision"
+        ],
+        "rationale": "The customer is a VIP member, and the VIP policy allows refunds for orders up to 60 days old. The order age is 43 days, which is within the VIP exception limit. Therefore, the refund is eligible. The service desk procedure specifies retrying if the tool times out, and there are two attempts remaining. The operation is selected as refund based on eligibility.",
+        "status": "unknown",
+        "time_ms": 5
+      },
+      "id": "assessment_0",
+      "parent_ids": [
+        "refund_decision"
+      ],
+      "time_ms": 5,
+      "type": "agent_assessment"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:18000010",
+        "arguments": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        }
+      },
+      "id": "refund_intent",
+      "parent_ids": [
+        "refund_decision"
+      ],
+      "time_ms": 5,
+      "type": "action_intent"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:18000010",
+        "attempt_id": "attempt:18000010:1"
+      },
+      "id": "dispatch_1",
+      "parent_ids": [
+        "refund_intent"
+      ],
+      "time_ms": 5,
+      "type": "action_dispatch"
+    },
+    {
+      "actor": null,
+      "data": {
+        "attempt_id": "attempt:18000010:1",
+        "provider_request_id": "req_18000010_000001",
+        "result": {
+          "code": "timeout"
+        },
+        "status": "timeout",
+        "time_ms": 6
+      },
+      "id": "response_1",
+      "parent_ids": [
+        "dispatch_1"
+      ],
+      "time_ms": 6,
+      "type": "tool_response"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "model_seed": 108000061,
+        "policy": {
+          "base_url": "http://127.0.0.1:11435",
+          "local_inspection": {
+            "capabilities": [
+              "tools",
+              "thinking",
+              "completion"
+            ],
+            "details": {
+              "families": [
+                "qwen3"
+              ],
+              "family": "qwen3",
+              "format": "gguf",
+              "parameter_size": "4.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "endpoint": "/api/show",
+            "inspection_sha256": "80909a71c0cfac56dd67383b55d8078759a9ee0d7be4ff7dc3085b4e68da6257",
+            "no_declared_remote_routing": true,
+            "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "routing_fields_present": []
+          },
+          "num_predict": 384,
+          "prompt_version": "refund-policy-v2",
+          "provider": "ollama",
+          "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+          "temperature": 0.2,
+          "timeout_seconds": 180.0
+        },
+        "policy_reply": {
+          "decision": {
+            "assessment": "unknown",
+            "operation": "retry",
+            "rationale": "The customer is a VIP member, and the VIP policy allows refunds for orders up to 60 days old. The order is 43 days old, which falls within the VIP exception policy. The refund tool timed out, and the retry instruction permits a retry. With one attempt remaining, a retry is appropriate to attempt the refund."
+          },
+          "metadata": {
+            "base_url": "http://127.0.0.1:11435",
+            "done_reason": "stop",
+            "eval_count": 91,
+            "eval_duration": 16233788000,
+            "load_duration": 6515700,
+            "local_inspection": {
+              "capabilities": [
+                "tools",
+                "thinking",
+                "completion"
+              ],
+              "details": {
+                "families": [
+                  "qwen3"
+                ],
+                "family": "qwen3",
+                "format": "gguf",
+                "parameter_size": "4.0B",
+                "quantization_level": "Q4_K_M"
+              },
+              "endpoint": "/api/show",
+              "inspection_sha256": "80909a71c0cfac56dd67383b55d8078759a9ee0d7be4ff7dc3085b4e68da6257",
+              "no_declared_remote_routing": true,
+              "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+              "routing_fields_present": []
+            },
+            "num_predict": 384,
+            "prompt_eval_count": 691,
+            "prompt_eval_duration": 8462171000,
+            "prompt_version": "refund-policy-v2",
+            "provider": "ollama",
+            "request_payload_sha256": "add0104fa6fc00389d56a496fdc8d7b681e5ee2c004170a0f0e679ef47b67e9c",
+            "request_sha256": "e7bb76fef0953d7de0277a8a92e5be7bbabe41a832dfb5a1ef16c53e52d4509f",
+            "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "returned_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "seed": 108000061,
+            "system_prompt_sha256": "141ab9ae275703cdbe23bd55376f40ce0069bb67a172d8af65ee852d577be6ed",
+            "temperature": 0.2,
+            "timeout_seconds": 180.0,
+            "total_duration": 24722988900
+          }
+        },
+        "policy_request": {
+          "attempts_remaining": 1,
+          "context": {
+            "customer_request": "The customer has asked the service desk to refund the payment specified in this task.",
+            "distractor": "The service desk operates on weekdays.",
+            "retry_instruction": "Service desk procedure: if the refund tool times out, retry that same refund once.",
+            "vip_memory": "The account record identifies this customer as a VIP member.",
+            "vip_policy": "The refund exception for VIP members allows an order age of 60 days or less."
+          },
+          "responses": [
+            {
+              "attempt_id": "attempt:18000010:1",
+              "provider_request_id": "req_18000010_000001",
+              "result": {
+                "code": "timeout"
+              },
+              "status": "timeout",
+              "time_ms": 6
+            }
+          ],
+          "stage": "after_response",
+          "task": {
+            "amount_minor": 125000,
+            "base_refund_policy": "The standard refund rule allows a requested refund when the order is 30 days old or younger.",
+            "currency": "INR",
+            "deadline_ms": 100,
+            "horizon_ms": 120,
+            "idempotency_available": true,
+            "order_age_days": 43,
+            "payment_id": "pay_42"
+          }
+        },
+        "selected": true
+      },
+      "id": "response_decision_1",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy",
+        "retry_instruction",
+        "distractor",
+        "response_1"
+      ],
+      "time_ms": 6,
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "response_1"
+        ],
+        "rationale": "The customer is a VIP member, and the VIP policy allows refunds for orders up to 60 days old. The order is 43 days old, which falls within the VIP exception policy. The refund tool timed out, and the retry instruction permits a retry. With one attempt remaining, a retry is appropriate to attempt the refund.",
+        "status": "unknown",
+        "time_ms": 6
+      },
+      "id": "assessment_1",
+      "parent_ids": [
+        "response_decision_1"
+      ],
+      "time_ms": 6,
+      "type": "agent_assessment"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:18000010",
+        "arguments": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        }
+      },
+      "id": "retry_intent_2",
+      "parent_ids": [
+        "response_decision_1"
+      ],
+      "time_ms": 6,
+      "type": "action_intent"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:18000010",
+        "attempt_id": "attempt:18000010:2"
+      },
+      "id": "dispatch_2",
+      "parent_ids": [
+        "retry_intent_2"
+      ],
+      "time_ms": 6,
+      "type": "action_dispatch"
+    },
+    {
+      "actor": null,
+      "data": {
+        "attempt_id": "attempt:18000010:2",
+        "provider_request_id": "req_18000010_000002",
+        "result": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42",
+          "refund_id": "rf_18000010_000001",
+          "status": "processed"
+        },
+        "status": "success",
+        "time_ms": 7
+      },
+      "id": "response_2",
+      "parent_ids": [
+        "dispatch_2"
+      ],
+      "time_ms": 7,
+      "type": "tool_response"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "model_seed": 108000062,
+        "policy": {
+          "base_url": "http://127.0.0.1:11435",
+          "local_inspection": {
+            "capabilities": [
+              "tools",
+              "thinking",
+              "completion"
+            ],
+            "details": {
+              "families": [
+                "qwen3"
+              ],
+              "family": "qwen3",
+              "format": "gguf",
+              "parameter_size": "4.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "endpoint": "/api/show",
+            "inspection_sha256": "80909a71c0cfac56dd67383b55d8078759a9ee0d7be4ff7dc3085b4e68da6257",
+            "no_declared_remote_routing": true,
+            "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "routing_fields_present": []
+          },
+          "num_predict": 384,
+          "prompt_version": "refund-policy-v2",
+          "provider": "ollama",
+          "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+          "temperature": 0.2,
+          "timeout_seconds": 180.0
+        },
+        "policy_reply": {
+          "decision": {
+            "assessment": "unknown",
+            "operation": "stop",
+            "rationale": "The refund tool successfully processed the request in the second attempt, but the final outcome cannot be independently verified due to lack of effect observation. The policy allows refunds up to 60 days for VIP members, and the order is 43 days old, satisfying eligibility. However, since the assessment depends on observed effect and no such effect is reported, the outcome remains unknown."
+          },
+          "metadata": {
+            "base_url": "http://127.0.0.1:11435",
+            "done_reason": "stop",
+            "eval_count": 98,
+            "eval_duration": 18730352000,
+            "load_duration": 5082400,
+            "local_inspection": {
+              "capabilities": [
+                "tools",
+                "thinking",
+                "completion"
+              ],
+              "details": {
+                "families": [
+                  "qwen3"
+                ],
+                "family": "qwen3",
+                "format": "gguf",
+                "parameter_size": "4.0B",
+                "quantization_level": "Q4_K_M"
+              },
+              "endpoint": "/api/show",
+              "inspection_sha256": "80909a71c0cfac56dd67383b55d8078759a9ee0d7be4ff7dc3085b4e68da6257",
+              "no_declared_remote_routing": true,
+              "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+              "routing_fields_present": []
+            },
+            "num_predict": 384,
+            "prompt_eval_count": 788,
+            "prompt_eval_duration": 12091325000,
+            "prompt_version": "refund-policy-v2",
+            "provider": "ollama",
+            "request_payload_sha256": "adc4f744533c1cfc2f101c0b57655bfe588e63e96289119c7c267097cf886226",
+            "request_sha256": "3d6836ec65f138ab27fe9ac90bd855c4592d5ef44b775aa367e783fd1563c68c",
+            "requested_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "returned_model": "qwen3:4b-instruct-2507-q4_K_M",
+            "seed": 108000062,
+            "system_prompt_sha256": "141ab9ae275703cdbe23bd55376f40ce0069bb67a172d8af65ee852d577be6ed",
+            "temperature": 0.2,
+            "timeout_seconds": 180.0,
+            "total_duration": 30847933400
+          }
+        },
+        "policy_request": {
+          "attempts_remaining": 0,
+          "context": {
+            "customer_request": "The customer has asked the service desk to refund the payment specified in this task.",
+            "distractor": "The service desk operates on weekdays.",
+            "retry_instruction": "Service desk procedure: if the refund tool times out, retry that same refund once.",
+            "vip_memory": "The account record identifies this customer as a VIP member.",
+            "vip_policy": "The refund exception for VIP members allows an order age of 60 days or less."
+          },
+          "responses": [
+            {
+              "attempt_id": "attempt:18000010:1",
+              "provider_request_id": "req_18000010_000001",
+              "result": {
+                "code": "timeout"
+              },
+              "status": "timeout",
+              "time_ms": 6
+            },
+            {
+              "attempt_id": "attempt:18000010:2",
+              "provider_request_id": "req_18000010_000002",
+              "result": {
+                "amount_minor": 125000,
+                "currency": "INR",
+                "payment_id": "pay_42",
+                "refund_id": "rf_18000010_000001",
+                "status": "processed"
+              },
+              "status": "success",
+              "time_ms": 7
+            }
+          ],
+          "stage": "after_response",
+          "task": {
+            "amount_minor": 125000,
+            "base_refund_policy": "The standard refund rule allows a requested refund when the order is 30 days old or younger.",
+            "currency": "INR",
+            "deadline_ms": 100,
+            "horizon_ms": 120,
+            "idempotency_available": true,
+            "order_age_days": 43,
+            "payment_id": "pay_42"
+          }
+        },
+        "selected": false
+      },
+      "id": "response_decision_2",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy",
+        "retry_instruction",
+        "distractor",
+        "response_1",
+        "response_2"
+      ],
+      "time_ms": 7,
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "response_1",
+          "response_2"
+        ],
+        "rationale": "The refund tool successfully processed the request in the second attempt, but the final outcome cannot be independently verified due to lack of effect observation. The policy allows refunds up to 60 days for VIP members, and the order is 43 days old, satisfying eligibility. However, since the assessment depends on observed effect and no such effect is reported, the outcome remains unknown.",
+        "status": "unknown",
+        "time_ms": 7
+      },
+      "id": "assessment_2",
+      "parent_ids": [
+        "response_decision_2"
+      ],
+      "time_ms": 7,
+      "type": "agent_assessment"
+    }
+  ],
+  "observations": [
+    {
+      "as_of_ms": 120,
+      "available": true,
+      "complete": true,
+      "observation_id": "obs_18000010_000001",
+      "observed_at_ms": 120,
+      "records": [
+        {
+          "action_id": "refund:18000010",
+          "actor": "RefundAgent",
+          "amount_minor": 125000,
+          "attempt_id": "attempt:18000010:1",
+          "committed_at_ms": 6,
+          "currency": "INR",
+          "effect_id": "rf_18000010_000001",
+          "payment_id": "pay_42",
+          "status": "processed"
+        }
+      ],
+      "scope": {
+        "currency": "INR",
+        "lag_ms": 0,
+        "payment_id": "pay_42"
+      },
+      "source": "payment_ledger"
+    }
+  ],
+  "responses": [
+    {
+      "action_id": "refund:18000010",
+      "attempt_id": "attempt:18000010:1",
+      "provider_request_id": "req_18000010_000001",
+      "result": {
+        "code": "timeout"
+      },
+      "status": "timeout",
+      "time_ms": 6
+    },
+    {
+      "action_id": "refund:18000010",
+      "attempt_id": "attempt:18000010:2",
+      "provider_request_id": "req_18000010_000002",
+      "result": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42",
+        "refund_id": "rf_18000010_000001",
+        "status": "processed"
+      },
+      "status": "success",
+      "time_ms": 7
+    }
+  ],
+  "schema_version": "1.0",
+  "time_base": "relative_ms",
+  "trace_id": "trace:18000010",
+  "verifications": [
+    {
+      "action_id": "refund:18000010",
+      "attributable_effect_ids": [
+        "rf_18000010_000001"
+      ],
+      "contract_id": "contract:18000010",
+      "effect_ids": [
+        "rf_18000010_000001"
+      ],
+      "evidence": [
+        {
+          "as_of_ms": 120,
+          "details": {
+            "available": true,
+            "complete": true,
+            "eligible_count": 1,
+            "expected": {
+              "amount_minor": 125000,
+              "currency": "INR",
+              "payment_id": "pay_42"
+            },
+            "horizon_ms": 120,
+            "matching_count": 1,
+            "peak_matching_count": 1,
+            "records": [
+              {
+                "action_id": "refund:18000010",
+                "actor": "RefundAgent",
+                "amount_minor": 125000,
+                "attempt_id": "attempt:18000010:1",
+                "committed_at_ms": 6,
+                "currency": "INR",
+                "effect_id": "rf_18000010_000001",
+                "payment_id": "pay_42",
+                "status": "processed"
+              }
+            ],
+            "relevant_count": 1,
+            "scope": {
+              "currency": "INR",
+              "lag_ms": 0,
+              "payment_id": "pay_42"
+            },
+            "watermark_ms": 120
+          },
+          "observation_id": "obs_18000010_000001",
+          "source": "payment_ledger"
+        }
+      ],
+      "findings": [],
+      "observed_at_ms": 120,
+      "origin": "confirmed",
+      "reason": "Refund predicate is satisfied through the declared horizon",
+      "status": "satisfied",
+      "target_effect_ids": [
+        "rf_18000010_000001"
+      ]
+    }
+  ]
+}

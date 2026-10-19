@@ -1,0 +1,273 @@
+{
+  "alignment_became_unassessable": false,
+  "clock_origin_unrecoverable": true,
+  "code_changes": {
+    "fresh_added": [
+      "UNASSESSABLE_ASSESSMENT"
+    ],
+    "fresh_removed": [],
+    "migration_added": [
+      "UNASSESSABLE_ASSESSMENT"
+    ],
+    "migration_removed": []
+  },
+  "fresh_alignment": "unassessable",
+  "fresh_codes": [
+    "UNASSESSABLE_ASSESSMENT",
+    "EXTERNAL_ACTOR_EFFECT"
+  ],
+  "fresh_prediction": {
+    "action_linked": false,
+    "origin": "other_actor",
+    "state": true
+  },
+  "fresh_receipts": [
+    {
+      "action_id": "refund:18000067",
+      "attributable_effect_ids": [],
+      "contract_id": "contract:18000067",
+      "effect_ids": [
+        "ext_18000067_000001"
+      ],
+      "evidence": [
+        {
+          "as_of_ms": 120,
+          "details": {
+            "available": true,
+            "complete": true,
+            "eligible_count": 1,
+            "expected": {
+              "amount_minor": 125000,
+              "currency": "INR",
+              "payment_id": "pay_42"
+            },
+            "horizon_ms": 120,
+            "matching_count": 1,
+            "peak_matching_count": 1,
+            "records": [
+              {
+                "actor": "external_operator",
+                "amount_minor": 125000,
+                "committed_at_ms": 7,
+                "currency": "INR",
+                "effect_id": "ext_18000067_000001",
+                "payment_id": "pay_42",
+                "status": "processed"
+              }
+            ],
+            "relevant_count": 1,
+            "scope": {
+              "currency": "INR",
+              "lag_ms": 0,
+              "payment_id": "pay_42"
+            },
+            "watermark_ms": 120
+          },
+          "observation_id": "obs_18000067_000001",
+          "source": "payment_ledger"
+        }
+      ],
+      "findings": [],
+      "observed_at_ms": 120,
+      "origin": "other_actor",
+      "reason": "Refund predicate is satisfied through the declared horizon",
+      "status": "satisfied",
+      "target_effect_ids": []
+    }
+  ],
+  "fresh_target_matching": {
+    "empty": 1,
+    "nonempty": 0,
+    "unavailable": 0
+  },
+  "historical_analysis_prediction": {
+    "action_linked": false,
+    "origin": "other_actor",
+    "state": true
+  },
+  "metrics": {
+    "assessment_status_preserved": true,
+    "fresh_action_linked_equal": true,
+    "fresh_alignment_equal": true,
+    "fresh_codes_equal": false,
+    "fresh_core_equal": true,
+    "fresh_full_legacy_receipts_equal": true,
+    "fresh_origin_equal": true,
+    "fresh_receipt_identity_equal": true,
+    "fresh_state_equal": true,
+    "migration_alignment_equal": true,
+    "migration_codes_equal": false,
+    "migration_receipts_preserved": true,
+    "migration_success": true,
+    "old_analysis_prediction_equal": true,
+    "old_recorded_explanation_alignment_equal": true,
+    "old_reverify_core_equal": true,
+    "old_reverify_full_receipts_equal": true,
+    "schema_roundtrip_equal": true,
+    "structural_legacy_projection_equal": true
+  },
+  "migration_alignment": "unassessable",
+  "migration_codes": [
+    "UNASSESSABLE_ASSESSMENT",
+    "EXTERNAL_ACTOR_EFFECT"
+  ],
+  "migration_report": {
+    "not_reproduced": 0,
+    "reproduced": 1,
+    "schema_version": "1.0",
+    "source_schema_version": "0.1",
+    "time_base": "relative_ms",
+    "verifications": 1
+  },
+  "old": {
+    "assessment_status": "failure",
+    "fresh_alignment": "unassessable",
+    "fresh_codes": [
+      "EXTERNAL_ACTOR_EFFECT"
+    ],
+    "fresh_prediction": {
+      "action_linked": false,
+      "origin": "other_actor",
+      "state": true
+    },
+    "fresh_receipts": [
+      {
+        "attributable_effect_ids": [],
+        "contract_id": "contract:18000067",
+        "effect_ids": [
+          "ext_18000067_000001"
+        ],
+        "evidence": [
+          {
+            "as_of_ms": 120,
+            "details": {
+              "available": true,
+              "complete": true,
+              "eligible_count": 1,
+              "expected": {
+                "amount_minor": 125000,
+                "currency": "INR",
+                "payment_id": "pay_42"
+              },
+              "horizon_ms": 120,
+              "matching_count": 1,
+              "peak_matching_count": 1,
+              "records": [
+                {
+                  "actor": "external_operator",
+                  "amount_minor": 125000,
+                  "committed_at_ms": 7,
+                  "currency": "INR",
+                  "effect_id": "ext_18000067_000001",
+                  "payment_id": "pay_42",
+                  "status": "processed"
+                }
+              ],
+              "relevant_count": 1,
+              "scope": {
+                "currency": "INR",
+                "lag_ms": 0,
+                "payment_id": "pay_42"
+              },
+              "watermark_ms": 120
+            },
+            "observation_id": "obs_18000067_000001",
+            "source": "payment_ledger"
+          }
+        ],
+        "observed_at_ms": 120,
+        "origin": "other_actor",
+        "reason": "Refund predicate is satisfied through the declared horizon",
+        "status": "satisfied"
+      }
+    ],
+    "recorded_alignment": "unassessable",
+    "recorded_codes": [
+      "EXTERNAL_ACTOR_EFFECT"
+    ],
+    "recorded_prediction": {
+      "action_linked": false,
+      "origin": "other_actor",
+      "state": true
+    },
+    "recorded_receipts": [
+      {
+        "attributable_effect_ids": [],
+        "contract_id": "contract:18000067",
+        "effect_ids": [
+          "ext_18000067_000001"
+        ],
+        "evidence": [
+          {
+            "as_of_ms": 120,
+            "details": {
+              "available": true,
+              "complete": true,
+              "eligible_count": 1,
+              "expected": {
+                "amount_minor": 125000,
+                "currency": "INR",
+                "payment_id": "pay_42"
+              },
+              "horizon_ms": 120,
+              "matching_count": 1,
+              "peak_matching_count": 1,
+              "records": [
+                {
+                  "actor": "external_operator",
+                  "amount_minor": 125000,
+                  "committed_at_ms": 7,
+                  "currency": "INR",
+                  "effect_id": "ext_18000067_000001",
+                  "payment_id": "pay_42",
+                  "status": "processed"
+                }
+              ],
+              "relevant_count": 1,
+              "scope": {
+                "currency": "INR",
+                "lag_ms": 0,
+                "payment_id": "pay_42"
+              },
+              "watermark_ms": 120
+            },
+            "observation_id": "obs_18000067_000001",
+            "source": "payment_ledger"
+          }
+        ],
+        "observed_at_ms": 120,
+        "origin": "other_actor",
+        "reason": "Refund predicate is satisfied through the declared horizon",
+        "status": "satisfied"
+      }
+    ]
+  },
+  "slot": {
+    "case_id": "matched.card.other-actor",
+    "family_id": "refund-resolution-card",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_version": "refund-policy-v1",
+    "repetition": 1,
+    "reserved_phase_seeds": [
+      108000402,
+      108000403,
+      108000404,
+      108000405,
+      108000406,
+      108000407
+    ],
+    "slot": 155,
+    "slot_id": "episode_00155",
+    "template_id": "refund-resolution-card-v1",
+    "trial_seed": 18000067,
+    "wording_sha256": "84b65ebd7cbb1731aaa578451856984b08401de35dcf66f25b727a66295fc629",
+    "world_seed": 18000067
+  },
+  "target_matching": {
+    "empty": 1,
+    "nonempty": 0,
+    "unavailable": 0
+  },
+  "time_base": "relative_ms",
+  "trace_sha256": "afe9325aa4f11add53e6a8f6be6cc5e0d2534b0907ea575cf12640bebe93606d"
+}

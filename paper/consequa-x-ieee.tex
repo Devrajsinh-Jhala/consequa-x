@@ -16,23 +16,30 @@
 
 \begin{abstract}
 A lost acknowledgement can turn a successful agent action into a duplicate
-when the agent retries. Reliable diagnosis must distinguish what the agent
-reported, whether the requested state holds and which actor produced it.
-Consequa-X contributes an evidence protocol that preserves those distinctions,
-observation-specific provenance and explicit unknown verdicts. Its optional
-research adapter adds a declared on-reach intervention game and refusal-aware
-accounting around existing contrastive and permutation Shapley estimators.
-Across 2,048 scripted-simulator sampling trials, all 655,360 planned replay
-branches were retained, including invalid and unstarted branches. At one
-predeclared retry coefficient, nominal normal intervals covered the reference
-in 118/128 trials; Hoeffding bounds covered in 128/128 but detected its sign in
-only 8/128. A separate three-model factual-auditing study completed 503 of
-504 planned episodes using 896 local model calls. Consequa-X and an equally
-informed independent reference agreed on every completed prediction; state
-verification made 431 definite claims with no observed errors, versus 53
-errors among 201 response-only claims. These information ablations support
-evidence requirements in fixed simulator cases, without establishing method
-superiority. Real-service effectiveness and broad generalization remain open.
+when retried. Consequa-X separates reported assessment, verified state and
+source-supported effect origin, preserving observation-specific provenance
+and explicit unknown verdicts. Its research adapter declares an on-reach
+intervention game and refusal-aware accounting around existing contrastive
+and permutation Shapley estimators. Across 2,048 scripted-simulator sampling
+trials, all 655,360 planned branches were retained. At one retry coefficient,
+normal intervals covered the reference in 118/128 trials; Hoeffding bounds
+covered in 128/128 but detected its sign in 8/128. A three-model factual study
+completed 503/504 episodes using 896 local calls. An equally informed,
+independently implemented reference agreed throughout; state verification
+made 431 correct definite claims, compared with 53 errors among 201
+response-only claims. A same-evidence local judge made 9 errors among 60
+definite state claims across 84 traces. Model-free transfer retained 656
+retail/airline task-control cells and 900 operation captures, separating
+native whole-task DB equality from immediate field contracts. A pinned native
+Causal Agent Replay comparison retained 1,024 paired groups: all 640 eligible
+point vectors agreed exactly; 384 pairs remained unavailable. A collector
+deviation limits refused-attempt accounting in 64 already ineligible groups.
+These experiments use Consequa-X 1.1.0. Separately frozen offline migration
+to 2.0 preserved canonical conclusions on all 503 retained traces, including
+72 unknown states, while diagnosis codes changed on 275. These conditional
+results support an inspectable protocol, without estimator novelty or general
+superiority; real-service effectiveness and independent human validation
+remain open.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -87,7 +94,7 @@ explicitly invoked research replay path.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{diagram-evidence-architecture.pdf}
-\caption{Evidence flow and trust boundaries. Application verifiers interpret
+\caption{Evaluated 1.x evidence flow and trust boundaries. Application verifiers interpret
 independent readback; explanations use captured evidence. Explicitly invoked
 replay can supply estimates, while evaluator truth remains audit-only. Source
 trust and domain semantics remain application responsibilities.}
@@ -139,9 +146,10 @@ conditions, bounded watermark polling cannot guarantee exactly-once execution.
 Idempotence and eventual consistency are established systems concerns~\cite{helland,vogels}.
 
 AppWorld, ToolSandbox and $\tau$-bench already evaluate world-state outcomes
-or stateful trajectories~\cite{appworld,toolsandbox,taubench}. They provide
-future transfer targets; this paper evaluates none of their task populations.
-For statistics, known binomial Wald-interval limitations~\cite{brown} motivate
+or stateful trajectories~\cite{appworld,toolsandbox,taubench}. The maintained
+tau3 task corpus supplies the retail/airline tool-state transfer experiment
+below~\cite{tau3tasks}; AppWorld, ToolSandbox and autonomous benchmark
+evaluation remain future comparisons. For statistics, known binomial Wald-interval limitations~\cite{brown} motivate
 careful interval checks but do not by themselves establish paired-Shapley
 undercoverage. Modern bounded-mean betting intervals~\cite{betting} are planned
 comparators, with the sampling unit and stopping rule still requiring explicit
@@ -149,6 +157,13 @@ validation for this replay setting.
 
 \section{Evidence Protocol and Core Interfaces}
 \subsection{Objects, contracts and trust}
+The empirical studies below evaluate the versioned 1.x reference
+implementation and schema 0.1, with study-specific source pins. The current
+2.x line uses schema 1.0, multiple actions per trace and explicit time
+bases. It refuses direct loading of 0.1 traces and provides an explicit,
+conservative migration path. Historical interfaces and results must therefore
+remain distinct from current product capabilities~\cite{experimentartifact,artifact}.
+
 Let $H$ be visible history, $A$ a logical action, $E$ an execution attempt,
 $R$ its response, $B$ a timestamped reported assessment and $O$ an independent
 readback observation. A contract $C$ declares payload, count, deadline and
@@ -194,12 +209,17 @@ strings. An offline artifact-delivery example constructs captured records and
 checks independently read-back content digests without importing the refund
 simulator or executing writes.
 
-\texttt{explain(trace)} reads a captured verification and performs no replay.
+In the evaluated 1.x interface, \texttt{explain(trace)} reads a captured
+verification and performs no replay.
 Refund target matching is built in; other predicates receive a neutral
 explanation unless a trusted domain matcher explicitly qualifies attributable
 effects against payload and temporal rules. Matchers can return only unique
 IDs within the receipt's attributable IDs. Unknown receipts are not interpreted
 as target matches. A qualified provenance link still is not a causal effect.
+In 2.0, verifiers record target-effect IDs and findings in each receipt;
+explanation consumes those records per action rather than invoking a separate
+target matcher. This API change requires explicit migration and version-specific
+conformance checking.
 
 \subsection{Successive witnesses and graph meanings}
 Repeated readbacks can disagree about the same effect identifier. The graph
@@ -650,8 +670,9 @@ call: last public response; final structured assessment; readback without
 provenance; an independently implemented contract/provenance reference; and
 Consequa-X. The last two share information. Ledger gold uses a separate
 discrete-time predicate; the reference uses an event sweep. This compares
-factual information budgets, without reproducing CAR, an LLM judge or a
-verify-before-retry controller. It does not measure causal attribution.
+factual information budgets without extra model calls; the separately frozen
+trace-judge comparison follows below. This five-auditor analysis does not
+measure causal attribution or a verify-before-retry controller.
 
 All 504 slots started; 503 completed and one Llama v2 missing-provenance slot
 failed strict-JSON parsing. That failure was retained without replacement.
@@ -718,32 +739,270 @@ source-bound inventories and condition/model/profile fractions are retained.
 No pooled significance, population confidence interval, model ranking or
 independent human annotation is established by this fixed simulator collection.
 
+\subsection{Same-evidence local trace judge}
+A separate protocol froze source \texttt{be842879}, aliased inputs, prompt,
+checkpoint and budget before judge generation. It selected the 84 original
+schedule slots with repetition zero after factual collection, retaining every
+selected input; these span fourteen fixed wording/mechanism cells and
+seventeen distinct public evidence patterns. The judge was the installed
+Qwen3 4B checkpoint used in the factual study, at temperature 0.2, a 192-token
+cap and thinking disabled. Each input received one call without repair or
+replacement. The allowlisted input contained action/contract,
+dispatch/response context and captured readback with scope, completeness,
+watermark and provenance. Equality-preserving aliases hid identifiers;
+generator/fault labels, reported assessments, rationales,
+verification/explanation outputs and evaluator truth were excluded. The strict
+output schema requested only state, action-linked satisfaction and origin.
+
+All 84 selected traces completed in 84 local calls, with no failed,
+interrupted, unavailable or unstarted slots. The judge made 60/84 definite
+state claims: 9/60 were wrong, all false positives, giving 51/84 correct yield
+and 24 abstentions. An automated public-reference rule qualified 43 state
+claims as evidence-supported; eight other correct guesses lacked that
+support. All 84 action-linked outputs were unknown: claim error is undefined,
+not zero. Of 52 origin claims with assessable gold, 40 were correct and 12
+wrong; eight additional definite origin outputs had unassessable gold and
+receive no invented true/false label. Of the 40 correct origin claims, 24
+were supported by the public rule and 16 were unsupported correct guesses.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{same-evidence-trace-judge.pdf}
+\caption{Same-evidence local trace judging. Coverage uses gold-assessable
+episodes, error uses definite claims with assessable gold, and correct
+operational yield retains all 84 selected slots. Undefined zero-claim error remains undefined. Eight extra
+origin claims with unassessable gold are retained separately. Points compare
+one local judge and two equally informed deterministic implementations,
+without independent-task intervals or a general model-superiority claim.}
+\label{fig:trace-judge}
+\end{figure*}
+
+Reference and Consequa-X remained exactly equal, making 72/84 correct state,
+64/84 correct action-linked and 36/52 correct assessable-origin claims, with
+no observed wrong claims; selected-slot origin yield was 36/84. Hindsight
+correctness therefore remains distinct from source-qualified explanation.
+The subset is not held out or externally preregistered; repeated evidence,
+one small judge sharing a generator family, and rule-based qualification
+limit inference. This comparison supplies neither independent human
+annotation nor population-level evidence about LLM judges
+(Fig.~\ref{fig:trace-judge}).
+
+\subsection{Maintained benchmark tool-state transfer}
+A separately frozen, model-free experiment used the MIT-licensed maintained
+tau3 corpus at \texttt{96a3ef92}: all 114 retail and 50 airline \texttt{base}
+tasks in source order, with unchanged native tools, environments and
+DB/environment evaluator~\cite{tau3tasks,tau3eval}. Three development tasks (retail 0; airline 19 and 20) exercised the adapter;
+none were removed from the complete corpus. Four fixed controls replayed reference actions, omitted all writes,
+omitted writes with a fabricated success acknowledgement, or altered the
+first write's identity/scope while retaining later calls. All 656 cells
+completed, with zero failures or unstarted cells and no model calls. Source/data, dependency bodies, protocols, starts and
+result hashes were audited against the frozen source \texttt{7f6ef0c}.
+
+Application contracts used each intended operation's payload and native
+public preflight lookup. The read-only auditor received subsequent native
+order, user or reservation lookups, without the complete reference action
+list, gold DB or native reward. Contracts checked requested record fields,
+not full financial settlement, policy or causal origin. The separate native
+evaluator compared complete task DB end states after replaying the reference
+on a fresh environment; it does not require a unique action sequence.
+No dynamic user simulator, autonomous agent, communication criterion or NL
+judge was evaluated.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{benchmark-state-transfer.pdf}
+\caption{Model-free benchmark tool-state transfer. Task-level native DB
+matching has denominators 114 retail and 50 airline tasks per control;
+immediate requested-field checks have denominators 176 and 49 operations.
+These targets and units differ. Reference DB equality is self-replay
+consistency; field satisfaction is not independent predicate accuracy.
+This figure reports no autonomous agent benchmark score or pass@k result.}
+\label{fig:benchmark-transfer}
+\end{figure*}
+
+In reference/omit/fabricated-acknowledgement/alter-first-write order, native DB
+matches were (114, 11, 11, 13)/114 for retail and (50, 24, 24, 24)/50 for
+airline. Corresponding immediate field satisfactions were
+(174, 2, 2, 72)/176 and (49, 0, 0, 23)/49. Ten retail and 24 airline reference
+tasks contained no mutating call. All 900 operation captures were valid;
+every withheld-readback check returned unknown, origin remained unknown
+and assessment alignment unassessable. Native reference DB equality of
+164/164 is not task correctness: retail task 64 has a rejected exchange
+followed by a successful pending-order modification; task 105 has a
+balance-rejected exchange and an unmeasured NL criterion requiring both
+exchanges. These are retained without a dataset-bug claim. In tasks 22/110,
+omitted writes can satisfy two individual address-field predicates because
+the original address already matches a requested or restored state, without
+proving mutation. The experiment supports cross-domain interface transfer,
+with task-level and operation-level targets kept separate; it does not
+establish production effectiveness or end-to-end benchmark performance
+(Fig.~\ref{fig:benchmark-transfer}).
+
+\subsection{Pinned native CAR comparison}
+The earlier studies compare independent adaptations. A separate prospective
+protocol at local source \texttt{940ebfc} executes native CAR 0.2.0,
+revision \texttt{db90fa28}, without changing its contrastive, permutation,
+NumPy percentile-bootstrap or SciPy normal-interval algorithms~\cite{carcode}.
+The bridge supplies the same isolated refund world, planted factual
+selection/retry/stop, continuation policy, outcome contract, captured
+readback and on-reach game to both engines. Shared branch/phase seeds and
+permutation order match draws rather than only nominal budgets. Native CAR
+postdates the cited paper version; this is compatibility testing of the
+pinned implementation through the declared bridge, not a reproduction of
+the complete CAR paper or a live-model attribution benchmark.
+
+Eight fixed mechanisms, two algorithms and 64 repetitions form 1,024 paired
+groups, each containing two engine trials. Contrastive sampling uses 32
+draws per factual position (96 slots per engine trial); Shapley uses 32
+antithetic permutation pairs with one rollout per coalition and 16 extra
+independent endpoints per arm (288 slots). There are 393,216 planned engine
+draw slots. Independent finite Bernoulli enumeration supplies population
+references. Repeats characterize fixed simulator settings: nominal 0.95
+coverage has Monte Carlo standard error about 0.027 at 64 repeats, without
+independent-task or multiplicity-adjusted inference.
+
+Both engines share a cap on actual fresh policy calls, counting factual
+capture and supplemental endpoints; held decisions consume no fresh calls.
+The four-call control cannot increase its cap. Native rollout-budget charges,
+deterministic prefix reconstruction, public tool re-execution and wall time
+are separate cost fields. Native unknown labels and truncated vectors remain
+raw diagnostics. An identical complete-method gate requires known factual
+evidence and every planned draw before either primary coefficient vector is
+released; it does not establish population-game validity from a finite sample.
+Predeclared budget-start/refusal timing differences remain visible, while
+other paired semantic mismatches stop collection without redraw.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{upstream-car-intervals.pdf}
+\caption{Pinned native CAR and frozen Consequa-X 1.1.0 on the same timeout-retry
+coefficient and replay draws. Every fraction uses 64 repetitions within a fixed
+mechanism; A reports primary vector availability. Numerical coverage uses
+reference-eligible available intervals, while missing evidence and budget
+refusal remain undefined. Fraction order is CAR / Consequa-X original /
+Consequa-X conservative. The budget control has coalesced native refusal
+records, disclosed separately; none yields an eligible estimate. These are
+conditional implementation/calibration checks, without a method ranking or
+task-population claim.}
+\label{fig:native-car}
+\end{figure*}
+
+Collection closed with all 1,024 paired groups and 2,048 engine files retained,
+including all 393,216 canonical planned draw slots and zero redraws. The
+independent audit checked every file, paired slot and source binding and
+recomputed all summary rows without importing either implementation.
+All factual traces and successful fresh-call totals match in all 1,024 pairs.
+Both engines release 640 paired coefficient vectors and withhold 384;
+every eligible paired point estimate agrees exactly. All non-budget draws
+agree semantically. Unknown-provenance, lag and budget groups remain visible
+with zero primary availability.
+
+At the $p=q=0.5$ timeout-retry coordinate, native bootstrap coverage is
+59/64 with mean width 0.331, compared with 60/64 and 0.329 for the independent
+bootstrap adaptation. Its Clopper--Pearson alternative covers 62/64 at width
+0.356. Native and adapted normal Shapley intervals both cover 60/64 at width
+0.225; Hoeffding covers 64/64 at width 0.960. Finite bootstrap resampling
+implementations remain distinct. Figure~\ref{fig:native-car} displays all
+eight mechanisms at that coordinate; all three coordinates and 144 summary
+rows remain in the artifact. These descriptive repeats do not establish a
+method ranking or precise population calibration.
+
+The audit found one collector deviation: in 64 native contrastive budget
+groups, concurrent zero-spend refusals coalesce under one failed canonical
+slot. Their 6,144 canonical slots are 40 known, 64 failed and 6,040 unstarted.
+These labels do not identify actual coroutine starts one-to-one: source and
+retained refusal records support 2,048 first-coalition invocations, with
+40 completed and 2,008 refused. Individual refused-coroutine identities were
+not retained. All 64 affected vectors are already ineligible; no accepted
+estimate or successful-call cap changes. This limits refused-attempt
+attribution, without changing the frozen records or silently amending the plan.
+
+Each engine uses 209,666 successful fresh scripted policy calls, including
+factual capture and endpoints, with zero live model calls. The native bridge
+records 845,672 deterministic reconstruction/probe worlds and 968,304 tool
+dispatches. These counters are adapter work, separately recorded rather than
+independently reconstructed from full bridge histories. CX completed replay
+worlds and preflights have different scopes. Wall times include worker
+contention and bridge overhead, so they do not establish intrinsic speed.
+
+\subsection{Offline conformance across the breaking 2.0 release}
+The preceding experiments remain frozen on 1.1.0/schema 0.1. To assess a
+narrow migration boundary, source \texttt{f64bf49} and a separate protocol
+were committed before processing all 503 retained factual traces. The
+original 504-slot schedule and its failed strict-JSON policy output remain
+unchanged; no replacement trace was generated. This is an exposed-data,
+post-hoc conformance study, with zero new model calls or action executions.
+Isolated 1.1.0 and 2.0.0 environments load the exact pinned implementations.
+Each legacy observation is bound by its recorded ID, source and watermark;
+fresh verification uses that same stored observation rather than a new
+readback. Each version's action-linked target helper is used, without
+substituting a nonempty target-ID list for its provenance-qualified result.
+
+All 503 traces migrate, round-trip through schema 1.0 and preserve the
+declared legacy structural projection. Migration preserves recorded
+conclusions by construction; separately, fresh 2.0 verification agrees with
+fresh frozen-1.1.0 verification on all legacy receipt fields, state, origin,
+action-linked target and assessment alignment. The recorded old analysis
+and explanation also agree with their frozen recomputation. Every primary
+comparison is 503/503 with zero processing failures or unavailable
+comparisons. This is 503 usable inputs per 504 historical slots, not a
+disagreement assigned to the missing input. Agreement includes unknown:
+fresh state is satisfied on 257, violated on 174 and unknown on 72.
+Alignment is consistent on 48, contradicted on 108 and unassessable on 347.
+
+Diagnosis codes are deliberately not a canonical invariant. They agree on
+228/503 traces and change on 275: 2.0 adds
+\texttt{UNASSESSABLE\_ASSESSMENT} in all 275 and removes
+\texttt{CONSISTENT\_OUTCOME} in 24 of those. Migrated and freshly verified
+explanations show the same changes. Target-match metadata is nonempty on
+144 receipts, empty on 287 and unavailable on 72; these categories are
+neither action-linked accuracy nor independent labels for the new fields.
+All 503 migrate to \texttt{relative\_ms}, because schema 0.1 did not record a
+clock origin. The receipt-reproduction gate checks status, origin, effect
+IDs and attributable IDs; it does not certify every added metadata field.
+
+An independent artifact auditor checks hashes, all slot identities,
+structural projections and refund evidence arithmetic without importing the
+framework or collection runner. Its JSON-level checks are distinct from the
+runner's recorded framework round-trip assertion. This single-action refund
+corpus supplies no conformance claim for general multiple-action traces,
+custom verifiers, polling, controllers or the changed replay transport.
+Canonical agreement is a migration result, not new predicate accuracy or
+end-to-end equivalence of the two releases.
+
 \section{Discussion and Limitations}
 The evidence protocol supports different, inspectable claims about responses,
-state, origin and intervention effects. Its refusal rules prevent unsupported
-numerical outputs but can sharply reduce availability. Availability can depend
+state, origin and intervention effects. Its refusal rules withhold affected
+numerical outputs when captured factual evidence or a planned draw is invalid
+or unavailable, but can sharply reduce availability. Availability can depend
 on interventions and must remain visible beside numerical results. Conservative
 intervals do not make undefined games numeric, resolve missing evidence, or
 remove the need to assess the actual sampling law.
 
-The environment is a narrow scripted simulator. No real payment API or standard
-world-state benchmark was evaluated. The artifact-delivery example validates
-an integration interface, not a second production-domain experiment. Declared
-source authority and watermarks are not authenticated transactional guarantees.
-The model experiments cover three small local checkpoints and exposed
-development/validation mechanisms. Two fresh wording families broaden
-conditional testing without establishing new-domain or held-out fault transfer.
-State and linked targets sharing outcomes are not independent replications.
-Claims about hidden reasoning cannot be inferred from reported assessments.
+The refund experiments remain a narrow scripted simulator, and no real payment
+API was evaluated. The local trace judge adds a same-evidence model comparator;
+the native retail/airline replays add maintained benchmark tool-state transfer,
+not autonomous benchmark performance or a second production-domain study.
+Declared source authority and watermarks are not authenticated transactional
+guarantees. The three small generator checkpoints and one overlapping judge
+cover exposed development/validation mechanisms. Fresh wording, seventeen
+judge evidence patterns and canonical task/control replays do not establish
+held-out fault transfer or independent task-population inference. State and
+linked targets sharing outcomes are not independent replications. Claims
+about hidden reasoning cannot be inferred from reported assessments.
 
-Three evaluation gaps remain. First, go beyond the completed offline factual
-information ablations to compare a verify-before-retry controller, a faithful
-CAR-style adapter, an LLM trace judge and structural attribution rules. These
-methods require separately matched information, targets and call budgets;
-state satisfaction, source-supported origin and causal intervention effects
-need distinct reference labels. Report duplicate effects, false success,
-availability, attribution accuracy and actual cost. Joint context/fault
-attribution must expose infrastructure variables to every applicable method.
+Three evaluation gaps remain. First, extend the completed factual ablations,
+local trace-judge comparison, model-free tool-state transfer and pinned
+native CAR bridge to a live verify-before-retry controller, full autonomous
+benchmark runs and joint causal/structural attribution. The bridge tests
+native estimators on a matched scripted game; it does not reproduce CAR's
+full live-agent evaluation. Further comparisons require matched information,
+targets and call budgets; state satisfaction, source-supported origin and
+causal intervention effects need distinct reference labels. Report duplicate
+effects, false success, availability, attribution accuracy and actual cost.
+Joint context/fault attribution must expose infrastructure variables to every
+applicable method. The current trace judge is one small local checkpoint,
+not an independently validated population of stronger judges.
 
 Second, assess bounded polling on an eventually consistent readback: poll
 until its declared watermark covers the horizon or a predeclared wait budget
@@ -761,8 +1020,10 @@ blinded double annotation. The 504-slot study supplies conditional repeated
 observations, not 504 independent task samples. More seeds cannot replace
 domain diversity. At least 1,000 independent repetitions per selected
 simulator setting would better resolve interval coverage, with simultaneous
-uncertainty and modern bounded-mean comparators. No polling result, faithful
-causal-method comparison or human annotation agreement is claimed here.
+uncertainty and modern bounded-mean comparators. No polling effectiveness,
+full live-agent causal-method comparison or human annotation agreement is
+claimed here. Offline 2.0 conformance reuses exposed saved evidence; its
+503 agreements do not add independent task samples or validate new features.
 
 The retained cost record counts actual scripted calls and refusals; the repeated
 study used 628,535 calls and zero model calls. It does not measure per-call
@@ -776,28 +1037,58 @@ effects. The retained studies expose uncertainty failure, precision costs,
 variable-length restrictions and prose/structured-status disagreement. Matched
 factual auditing additionally measures the limits of response/status proxies
 and agreement with a same-information reference, including abstentions.
+The same-evidence local judge exposes unsupported correct guesses, while
+maintained benchmark replays separate task DB equality from immediate operation
+fields. Neither supplies a general method ranking or independent human labels.
+Pinned native CAR runs additionally show exact point agreement for 640
+eligible paired vectors, with unavailable groups and a refusal-recording
+deviation disclosed. Offline 2.0 migration preserves canonical conclusions
+on 503 retained traces while changing diagnosis codes on 275; the earlier
+experiments retain their evaluated version and source pins.
 The useful result is a reproducible protocol/software artifact with measured
 limits, without claiming a new estimator or general method superiority.
 
-Stable version 1.1.0 is publicly available under MIT on PyPI~\cite{artifact}.
-Its wheel and source distribution were independently downloaded and
-hash-checked, and an isolated registry installation was verified on
-October 17, 2026. The wheel contains the
-runtime, schemas and typing marker; the source distribution also includes
-documentation, offline examples, tests and audit scripts. Private research
-outputs and model weights are excluded. The maintainer-controlled repository
-at \url{https://github.com/Devrajsinh-Jhala/consequa-x} is private. Git history,
-retained protocols, raw evidence and evaluator-only truth are retained there
-for authorized collaborators; this paper does not assert unrestricted access
-to that research archive.
-The earlier experiments predate the 1.1.0 release: original calibration used source
-\texttt{9e2dcbb}, shared-draw comparison \texttt{0d8ec0b}, refund enumeration
-and local validation \texttt{2c4adfe}, and repeated sampling \texttt{0bd744d}.
-Full revisions and manifests are retained in the evidence ledger. Version
-1.1.0 adds current engineering interfaces and offline reports; its publication
-does not rerun or change those historical studies. The new matched factual study used \texttt{bcd733d8} and the installed
-1.1.0 runtime; its protocol records all source hashes. A public immutable
-research archive and review-access arrangements have not been established.
+Version 2.1.1, now branded ConseqaX, is publicly available under MIT on PyPI~\cite{artifact},
+with source and retained research records in the public repository at
+\url{https://github.com/Devrajsinh-Jhala/consequa-x}. Its release record binds
+the distribution hashes to build source \texttt{b73ecd0}. The earlier breaking
+2.0 release introduced schema 1.0, multiple actions and assessments, declared
+time bases and immutable keyword-only records. Target matches and findings
+move into verifier receipts; explanation selects the latest assessment per
+action. Migration has the separate offline conformance check above. Capture,
+polling and retry-advice interfaces are later product capabilities, not
+interventions measured by the frozen 1.1.0 experiments. The 2.1 line adds
+verifier composition, OpenTelemetry interchange and optional framework
+integrations. Models, the built-in refund verifier, explanation, target helper
+and numerical estimator modules remain unchanged from the measured 2.0
+source, but the public verification wrappers now accept multiple readbacks.
+The 2.0 result therefore does not validate all 2.1.1 execution paths.
+Release-specific installed-artifact checks cover Windows Python 3.11--3.15
+and one emulated Alpine Linux/Python 3.14 guest; macOS remains untested.
+The release retains one live engineering smoke run per integration:
+OpenAI Agents SDK and LangChain use local Ollama, while Claude Agent SDK
+uses authenticated remote Haiku with an in-process SDK MCP tool server.
+These runs test wiring, not comparative task accuracy, deployed MCP services
+or OpenTelemetry collectors. They are separate from the frozen scientific
+experiments. A DOI-backed immutable research archive
+has not been established.
+
+The earlier experiments retain source pins \texttt{9e2dcbb} (original
+calibration), \texttt{0d8ec0b} (shared draws), \texttt{2c4adfe}
+(enumeration/local validation) and \texttt{0bd744d} (repeated sampling).
+The three-model factual study used \texttt{bcd733d8}; the judge protocol
+declared \texttt{be842879}; tool-state transfer froze \texttt{7f6ef0c},
+with maintained external source \texttt{96a3ef92}; native CAR used
+\texttt{940ebfc} with upstream \texttt{db90fa28}. Full revisions, protocol
+hashes and inventories remain study-specific. Those experiments used
+the 1.1.0 runtime and schema 0.1~\cite{experimentartifact}. The 2.0 estimator
+modules retain their numerical implementations, but record models, verifiers,
+explanation and replay transport have changed. The offline migration study
+uses separate source \texttt{f64bf49} and a separately committed protocol;
+byte identity of estimator modules alone does not establish end-to-end
+equivalence. Later releases do
+not rerun, reseal or relabel the frozen studies. Readback trust and completeness remain application
+responsibilities. GitHub Actions remains disabled.
 Framework imports and offline examples require no model credentials or required
 runtime dependencies. All reported payments are simulated; model weights are
 identified rather than redistributed.
@@ -909,8 +1200,24 @@ C. J. Clopper and E. S. Pearson, ``The Use of Confidence or Fiducial Limits Illu
 \bibitem{hoeffding} W. Hoeffding, ``Probability Inequalities for Sums of
 Bounded Random Variables,'' Journal of the American Statistical Association,
 vol. 58, no. 301, pp. 13--30, 1963.
-\bibitem{artifact} D. Jhala, ``Consequa-X,'' MIT Python distribution,
+\bibitem{tau3tasks}
+Sierra Research, ``tau2-bench: Maintained retail and airline task corpus,''
+MIT software, commit 96a3ef92329baf908ffe9dfe188cea34e8701d2a, 2026.
+[Online]. Available:
+\url{https://github.com/sierra-research/tau2-bench/tree/96a3ef92329baf908ffe9dfe188cea34e8701d2a}
+\bibitem{tau3eval}
+Sierra Research, ``Native environment evaluator,'' tau2-bench, same pinned
+commit, 2026. [Online]. Available:
+\url{https://github.com/sierra-research/tau2-bench/blob/96a3ef92329baf908ffe9dfe188cea34e8701d2a/src/tau2/evaluator/evaluator_env.py}
+\bibitem{carcode}
+J. Shah, ``Causal Agent Replay,'' software ver. 0.2.0, commit
+db90fa28b97164c35e7c524e4597b8cbdb3035af, 2026. [Online]. Available:
+\url{https://github.com/jaineet17/causal-agent-replay/tree/db90fa28b97164c35e7c524e4597b8cbdb3035af}
+\bibitem{experimentartifact} D. Jhala, ``Consequa-X,'' MIT Python distribution,
 ver. 1.1.0, Oct. 17, 2026. [Online]. Available:
 \url{https://pypi.org/project/consequa-x/1.1.0/}
+\bibitem{artifact} D. Jhala, ``ConseqaX,'' MIT Python distribution,
+ver. 2.1.1, Oct. 19, 2026. [Online]. Available:
+\url{https://pypi.org/project/consequa-x/2.1.1/}
 \end{thebibliography}
 \end{document}

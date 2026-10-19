@@ -1,0 +1,198 @@
+{
+  "audited_utc": "2026-10-18T13:09:02.632854+00:00",
+  "auditor_role": "Implementation-author read-only audit, separate from root execution; independently recomputed hashes and inspected raw receipts, not independent implementer or human annotation",
+  "dependency_versions_verified": {
+    "PyYAML": "6.0.3",
+    "addict": "2.4.0",
+    "deepdiff": "9.1.0",
+    "docstring-parser": "0.18.0",
+    "loguru": "0.7.3",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pydantic": "2.14.1",
+    "pydantic-core": "2.50.1",
+    "python-dateutil": "2.9.0.post0",
+    "python-dotenv": "1.2.4",
+    "toml": "0.10.2",
+    "typing-extensions": "4.16.0",
+    "tzdata": "2026.5"
+  },
+  "episodes": [
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "satisfied",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0000.json",
+      "native_db_match": true,
+      "sha256": "40f3ac0fccfa0e2cb0fb811433cf7681bd59c12e0452ec39edab0fe71549a914",
+      "slot": 0,
+      "task_id": "0",
+      "variant": "reference"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "violated",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0001.json",
+      "native_db_match": false,
+      "sha256": "fdc232f8b62f57bf3d141648df4dd879250a7d391dd780ff844c655eaaf15a20",
+      "slot": 1,
+      "task_id": "0",
+      "variant": "omit_writes"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "violated",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0002.json",
+      "native_db_match": false,
+      "sha256": "9b5af0008fcaa41c9cb08f283b1f3887a80894df19b8f6d2d417e75d2440be4a",
+      "slot": 2,
+      "task_id": "0",
+      "variant": "false_acknowledgement"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "violated",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0003.json",
+      "native_db_match": false,
+      "sha256": "6bdf38b37ea2c4c0d13aebc1b02f6214236f460222eefa95a912563151aa6c7a",
+      "slot": 3,
+      "task_id": "0",
+      "variant": "altered_first_write"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "satisfied",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0004.json",
+      "native_db_match": true,
+      "sha256": "3f2b4ad31cbe3d4782984c70a7a03665961776cbffe0780ec37ec6e0c0b89e41",
+      "slot": 4,
+      "task_id": "1",
+      "variant": "reference"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "violated",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0005.json",
+      "native_db_match": false,
+      "sha256": "93eb7c43019e3a4ac80d8f1cf1971a85b890c3c6e0a3b55928bac2cdc083826a",
+      "slot": 5,
+      "task_id": "1",
+      "variant": "omit_writes"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "violated",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0006.json",
+      "native_db_match": false,
+      "sha256": "7cc87eec19850017213667b59cd7976f01adaaebdca074d98e66eb172a5ccbc7",
+      "slot": 6,
+      "task_id": "1",
+      "variant": "false_acknowledgement"
+    },
+    {
+      "action_audits": [
+        {
+          "auditor_contains_task_reward_or_gold_fields": false,
+          "captured_explanation_recomputed_without_mutation": true,
+          "name": "exchange_delivered_order_items",
+          "origin": "unknown",
+          "status": "violated",
+          "withheld_status": "unknown"
+        }
+      ],
+      "domain": "retail",
+      "file": "output/tau3-state-transfer-2026-10-18/episodes/episode_0007.json",
+      "native_db_match": false,
+      "sha256": "efde55492a98b751a0fed3964980b79cef7017fd5b4a0029cb7e7214e1ccb894",
+      "slot": 7,
+      "task_id": "1",
+      "variant": "altered_first_write"
+    }
+  ],
+  "exact_schedule_verified": true,
+  "imported_dependency_files_verified": 542,
+  "limitations": [
+    "Early snapshot does not establish final study completion or cross-domain execution coverage.",
+    "Task-level native DB reward and action-level requested-field status are different targets; no predicate accuracy or pass@k is inferred.",
+    "Recorded input/native-DB immutability guards were inspected; external-tool calls were not re-executed by this audit.",
+    "Source reference actions define experimental intent, not autonomous agent correctness.",
+    "Preliminary run failure before protocol existed is outside successful frozen collection and generated no study slots."
+  ],
+  "local_files_verified": 38,
+  "overall": "pass_for_frozen_identity_and_inspected_early_cells",
+  "planned_cells": 656,
+  "protocol_anchor_commit": "c0fcd7f",
+  "protocol_sha256": "cf3f80e687b4a5094e54748964d46af032eb47406bd0d506fa15b33f20ac0d29",
+  "runner_pid": 8072,
+  "schema": "consequa-tau3-early-implementation-author-audit-v1",
+  "scope": "First up to8 complete episode files available at one bounded snapshot, no extra native benchmark execution",
+  "source_revision": "7f6ef0cea960495d9d07e97c5e02dc31d010f176",
+  "task_counts": {
+    "airline": 50,
+    "retail": 114
+  },
+  "upstream_commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a",
+  "upstream_files_verified": 263
+}

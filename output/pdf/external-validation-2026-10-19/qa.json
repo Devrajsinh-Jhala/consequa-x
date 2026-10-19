@@ -1,0 +1,234 @@
+{
+  "checked_utc": "2026-10-19T15:41:13.643055+00:00",
+  "compilation": {
+    "compiler": "Tectonic / XeTeX / xdvipdfmx",
+    "overfull_boxes": 0,
+    "remaining_warning_scope": "Underfull bibliography/column boxes; no clipping or overlap observed.",
+    "success": true,
+    "unresolved_citations_or_references": 0
+  },
+  "evidence_bindings": [
+    {
+      "bytes": 98717,
+      "path": "output/matched-trace-judge-2026-10-18/protocol.json",
+      "sha256": "4439983d1f861eaffaffbc4140750a8a1740653baa8eb7037ae5df600ca074ae"
+    },
+    {
+      "bytes": 174785,
+      "path": "output/matched-trace-judge-analysis-2026-10-18/analysis.json",
+      "sha256": "117ea516eadd2e171fef5f8ffbe7337f5d70dd32add6647a3ee6496f2a51528f"
+    },
+    {
+      "bytes": 227687,
+      "path": "output/tau3-state-transfer-2026-10-18/protocol.json",
+      "sha256": "cf3f80e687b4a5094e54748964d46af032eb47406bd0d506fa15b33f20ac0d29"
+    },
+    {
+      "bytes": 65542,
+      "path": "output/tau3-state-transfer-2026-10-18/summary.json",
+      "sha256": "2d042cbd8f138c9f31f82d1c33e91786f4e2237c27bcc5a6805714ffbc50c75e"
+    },
+    {
+      "bytes": 8960,
+      "path": "output/external-validation-portable-audit-2026-10-19/audit.json",
+      "sha256": "ae0483d9c8b3d2312e78298876a959b3520d99eac901304e1922ec7551067315"
+    },
+    {
+      "bytes": 313375,
+      "path": "output/upstream-car-protocol-2026-10-18/protocol.json",
+      "sha256": "038993678ab8902a5eb48bffabc37d88697bdddd30544d8e2404155271ed207d"
+    },
+    {
+      "bytes": 221794,
+      "path": "output/upstream-car-study-2026-10-18/manifest.json",
+      "sha256": "36e80b2afaeaacb5d5b4695ba997fe949b8d4cc84ce63154791e87a9ccec556d"
+    },
+    {
+      "bytes": 1569,
+      "path": "output/upstream-car-audit-2026-10-18/audit-receipt.json",
+      "sha256": "8f2415305cc725e9d465ffbcd766a3e2b1dc8462cebb2acd80c4af68b550cb2f"
+    },
+    {
+      "bytes": 60653,
+      "path": "output/upstream-car-audit-2026-10-18/final-audit.json",
+      "sha256": "fa4e6c08d26db580d001a4b8d7b8fae9ffbd1ac99f072418e66c1e424bc537e8"
+    },
+    {
+      "bytes": 10917,
+      "path": "output/upstream-car-audit-2026-10-18/protocol-deviation.json",
+      "sha256": "b9fce0448f371e8f8c7abf4eff9973ab97fb0d6d6dcf031ca8f90735aedb8e66"
+    },
+    {
+      "bytes": 1597,
+      "path": "output/external-validation-figures-2026-10-18-v5/manifest.json",
+      "sha256": "0f51911e8c05f7ff70af59225d521c5e6b48c31b4e16a65af400d4144796053d"
+    },
+    {
+      "bytes": 2404,
+      "path": "output/upstream-car-figures-2026-10-19-v2/manifest.json",
+      "sha256": "8d691316035ee38e9797379f20950676ffc649f22a02e95e909a9aefc04f86ab"
+    },
+    {
+      "bytes": 1359027,
+      "path": "output/v2-migration-protocol-2026-10-19/protocol.json",
+      "sha256": "ec736f462be44c1c442bb4a7b9c071006a1ec7e9dd9915f6e0c4c53d7e196e1e"
+    },
+    {
+      "bytes": 10374,
+      "path": "output/v2-migration-conformance-2026-10-19/summary.json",
+      "sha256": "4be0d95f6ec9afd853fd58e55aa46abdfb0ad01ffb64fddd2210415dbaf7b1d9"
+    },
+    {
+      "bytes": 149239,
+      "path": "output/v2-migration-conformance-2026-10-19/artifacts-inventory.json",
+      "sha256": "805539ca30b8007ccb314b4d4d4101d7857a12745991c44ba38b3de82d1c7cfc"
+    },
+    {
+      "bytes": 450,
+      "path": "output/v2-migration-conformance-2026-10-19/completion-receipt.json",
+      "sha256": "4b955336fe34f52a083ab889b0ea54ee326e0a0f5900b125f0f2b5deb62cd1fe"
+    },
+    {
+      "bytes": 5653,
+      "path": "output/v2-migration-audit-2026-10-19/audit.json",
+      "sha256": "fb23304e9f1bd042787dd06bb8d1f89f74747631dc4e253af9beb4edbe91287e"
+    },
+    {
+      "bytes": 84633,
+      "path": "output/claude-2.1.1-paper-review-2026-10-19/review.json",
+      "sha256": "31e013e690e38066784425ddacfd2c9375c5dea895690667d5353eadd64ce52c"
+    },
+    {
+      "bytes": 845,
+      "path": "output/claude-2.1.1-paper-review-2026-10-19/registry-verification.json",
+      "sha256": "5c4e9f74315a284a9a0ed910ce5ea3ecc253b7640a60720e58ac0a7d216f4308"
+    }
+  ],
+  "figure_caption_pages": {
+    "1": 2,
+    "2": 4,
+    "3": 7,
+    "4": 8,
+    "5": 10,
+    "6": 11,
+    "7": 12,
+    "8": 13,
+    "9": 14
+  },
+  "fonts": {
+    "all_embedded": true,
+    "details": {
+      "/AKHCZK+NewTXMI": true,
+      "/BZIVMZ+TeXGyreTermesX-BoldItalic-Identity-H": true,
+      "/CAFSZL+txmiaX": true,
+      "/DDIEWW+TeXGyreTermesX-Regular": true,
+      "/FKPJSN+NewTXMI7": true,
+      "/IHAIZV+TeXGyreTermesX-Regular-Identity-H": true,
+      "/IXFAWU+TeXGyreTermesX-Bold-Identity-H": true,
+      "/JAGKKY+txexs": true,
+      "/PVTTLK+txsyb": true,
+      "/TQTHRL+TeXGyreTermesX-Italic-Identity-H": true,
+      "/VDVGTR+txsys": true,
+      "/YEUUOC+LMMono10-Regular-Identity-H": true
+    },
+    "font_count": 12
+  },
+  "format": "Extended generic IEEE conference research draft, US Letter; no specific venue/page-limit compliance asserted.",
+  "pdf": {
+    "bytes": 425490,
+    "pages": 17,
+    "path": "Consequa-X_IEEE_Paper.pdf",
+    "sha256": "2586a400e0f3165c28af9ed72c86829fd938187cf74b684e370e1e926e269619"
+  },
+  "schema": "consequa-paper-document-qa-v1",
+  "scientific_scope": "Document QA is not scientific validation. 1.1.0 comparison studies, 2.0 offline conformance, and current 2.1.1 engineering evidence retain separate pins and scopes. No human annotation or venue acceptance/submission asserted.",
+  "source_bindings": [
+    {
+      "bytes": 75053,
+      "path": "paper/consequa-x-ieee.tex",
+      "sha256": "189e81ae65858d3203a10fdcd776d490442e852b85bc318a84f86492a8cd2c85"
+    },
+    {
+      "bytes": 72742,
+      "path": "paper/manuscript.md",
+      "sha256": "72f9b8ed591e390f40d7769b8cfd4f8cab93641c16f0d072a7c2da7163e92c0e"
+    },
+    {
+      "bytes": 12459,
+      "path": "paper/references.bib",
+      "sha256": "a60d76a2ad0d6faffb3646e73f9a710dd901694805b0875ba72579cd6a9b2de9"
+    },
+    {
+      "bytes": 23100,
+      "path": "paper/figures/benchmark-state-transfer.pdf",
+      "sha256": "4f0a66c4a234688cbdff75998193823b45c89d58b0e19307274faf2b140f5b9f"
+    },
+    {
+      "bytes": 39677,
+      "path": "paper/figures/data-branch-disposition.pdf",
+      "sha256": "1b5124a03dd213c9eb6d66c2df19533ed13b83718ed03d1e571804ae312a4e8a"
+    },
+    {
+      "bytes": 19395,
+      "path": "paper/figures/data-interval-tradeoffs.pdf",
+      "sha256": "fe3219a7e66d5a4b93b6652bf04d51cb9b3ba8758177c37d7b520bfc635c5630"
+    },
+    {
+      "bytes": 58092,
+      "path": "paper/figures/diagram-evidence-architecture.pdf",
+      "sha256": "971f659f941029f286f2933d010800978ddbcafe02466df27b9759da227f95aa"
+    },
+    {
+      "bytes": 60890,
+      "path": "paper/figures/diagram-timeout-retry.pdf",
+      "sha256": "5c1c49a94bb962966449f565e491beca890b9631d3074d6cac22edb0bca19ad1"
+    },
+    {
+      "bytes": 26607,
+      "path": "paper/figures/matched-baseline-metrics.pdf",
+      "sha256": "310709074a7e4c8ef5a383b0c68001d73f93b247aaec3c3b8d85821a543cdc4a"
+    },
+    {
+      "bytes": 24297,
+      "path": "paper/figures/matched-model-disposition.pdf",
+      "sha256": "27d9da0b95ca740831ef507784c114bbd84367af129f22256d3506a2373b72be"
+    },
+    {
+      "bytes": 26666,
+      "path": "paper/figures/same-evidence-trace-judge.pdf",
+      "sha256": "a37a28d4259ccdd9bba5012f10f8450be3c9a56858f7ceadfbb5af2823992a8f"
+    },
+    {
+      "bytes": 28824,
+      "path": "paper/figures/upstream-car-intervals.pdf",
+      "sha256": "8d417082a4c6d244ac1f0e1ef84534bba494466b9308573c85d350eafa2295a1"
+    }
+  ],
+  "source_parent_commit": "3ff37d57e8f8f09cad8c1e3b15a8377f451a2500",
+  "visual_review": {
+    "car_figure_detail_scale_max_pixels": 2000,
+    "method": "Assistant inspection of all rendered page contact sheets, new figure pages and final text/reference pages.",
+    "page_count": 17,
+    "pages_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "render_scale_max_pixels": 1400,
+    "result": "No clipping, overlap, broken labels or unreadable figures observed. All nine figure captions/denominators checked; Figure 9 now precedes references near its discussion."
+  }
+}

@@ -1,7 +1,8 @@
 # Paper figures
 
-The IEEE manuscript embeds the vector PDFs at their full 6.9-inch width.
-SVG files preserve editable text; 220-dpi PNGs support Markdown and preview.
+The IEEE manuscript embeds vector PDFs at the full text width.
+SVG files preserve editable text; PNGs support Markdown and preview
+(220 dpi for the original figures, 160 dpi for the new validation figures).
 Labels in the original four figures are at least 8 points at the embedded size. The four original result
 tables remain in the paper.
 
@@ -13,6 +14,9 @@ tables remain in the paper.
 | 4 | `data-interval-tradeoffs` | All eight on-reach global-consequence retry cases, contrasting saved normal/Hoeffding coverage, width and sign detection or false flags. Unavailable/undefined rows have no numerical markers. |
 | 5 | `matched-baseline-metrics` | Five factual auditors on the same 503 completed episodes: state/link coverage, error and correct yield with explicit fractions. Information budgets differ; the same-information reference agrees with Consequa-X. |
 | 6 | `matched-model-disposition` | All 504 planned slots, model/profile operational yield and actual action dispatch. Execution diagnostics were added descriptively after collection began; no-action correctness is not fault-handling evidence. |
+| 7 | `same-evidence-trace-judge` | One Qwen3 4B judge, the independent reference and Consequa-X on 84 selected traces / 17 public evidence patterns. Semantic and full-planned denominators differ; zero-claim error is undefined. |
+| 8 | `benchmark-state-transfer` | Native task DB matches and immediate requested-field checks in all 656 model-free retail/airline controls. Right-side field fractions are satisfied / intended operations; DB equality is not an autonomous benchmark score or predicate ground truth. |
+| 9 | `upstream-car-intervals` | Pinned native CAR/CX availability, coverage and width for retry position 1, selected explicitly after collection. All 144 coefficient rows remain retained. Unavailable coverage is undefined; 64 repeats per fixed mechanism are not independent tasks or precise superiority evidence. |
 
 The two matched-study figures are byte-identical copies of the sealed
 [vector exports](../../output/matched-local-figures-2026-10-18/README.md).
@@ -21,6 +25,55 @@ binds every input, fraction table and asset. Points are descriptive; no pooled
 independent-task confidence interval or causal-method superiority is implied.
 They add no model call. Both previews and the figures embedded in the final
 paper were visually checked.
+
+Figures 7 and 8 are byte-identical copies of the postcollection
+[validation exports](../../output/external-validation-figures-2026-10-18-v5/).
+Their [manifest](../../output/external-validation-figures-2026-10-18-v5/manifest.json)
+binds the plotter, audited source summaries, fraction tables and each export.
+These presentation choices were made after collection. The source studies and
+their frozen analysis definitions were not changed. Earlier layout drafts are
+retained locally; version 5 supplies the manuscript assets.
+
+Figure 9 is a byte-identical copy of the
+[native CAR exports](../../output/upstream-car-figures-2026-10-19-v2/README.md).
+Their [manifest](../../output/upstream-car-figures-2026-10-19-v2/manifest.json)
+binds the source terminal manifest, plotter, fraction tables and three exports.
+Version 2 supplies the manuscript asset. The selected retry coefficient is a
+postcollection presentation choice; `fractions.csv/json` retain all positions
+and all 144 mechanism/method/interval/position rows. Numeric coverage uses
+covered/scored intervals, availability uses available/64, and covered/planned
+yield remains separate. Missing numeric coverage is not a zero coverage value.
+
+The [final independent artifact audit](../../output/upstream-car-audit-2026-10-18/final-audit.md),
+[results/cost context](../../output/upstream-car-audit-2026-10-18/final-findings-context.md)
+and [collector deviation](../../output/upstream-car-audit-2026-10-18/protocol-deviation.md)
+support interpretation of the figure, which does not independently establish
+point parity. The audit finds 640 eligible pairs with exact point parity and
+384 unavailable, with factual/call parity in all 1,024 pairs and no non-budget
+discrepancy. The 64 native budget contrastive groups retain coalesced zero-spend
+refusals rather than per-refused-coroutine identities; no eligible estimate is
+affected. Plotting adds no policy calls. These frozen 1.1.0 results do not
+validate the breaking 2.0 API or current 2.1.1 additions.
+
+The separate [sealed offline 2.0 conformance run](../../output/v2-migration-conformance-2026-10-19/summary.json)
+is a text/table result and adds no figure or policy/model call. Frozen source
+`f64bf49f1a99c22f67d8f393a01dea4e6e22fe04` and
+[protocol](../../output/v2-migration-protocol-2026-10-19/protocol.json) SHA-256
+`ec736f462be44c1c442bb4a7b9c071006a1ec7e9dd9915f6e0c4c53d7e196e1e`
+bind 503 retained traces / 504 original slots. All structural and fresh canonical
+comparisons agree, including unknown evidence, while exact diagnosis-code lists
+change on 275 traces. The [completion receipt](../../output/v2-migration-conformance-2026-10-19/completion-receipt.json)
+records unchanged inputs; its [independent artifact audit](../../output/v2-migration-audit-2026-10-19/README.md)
+completed 71,383 checks with zero errors, using saved artifacts and public-evidence
+arithmetic without framework/runner execution. This computational check is not
+independent human validation.
+
+This is post-hoc single-action refund conformance, not new accuracy
+or general 2.0-feature validation. Current 2.1.1 composite verifiers, OpenTelemetry
+and SDK integrations have separate engineering evidence and no new scientific
+feature evaluation here. The completed PDF and exact-byte visual QA are in
+`output/pdf/external-validation-2026-10-19/`; existing figure manifests remain unchanged.
+
 
 [Diagram provenance](diagram-figures.json) binds the generator, reviewed runtime
 sources and all six diagram assets. [Plot provenance](data-figures.json) retains
@@ -45,11 +98,13 @@ installed (retained artifacts used 3.11.2):
 ```console
 python scripts/draw_paper_diagrams.py --output-dir tmp/paper-figures-fresh
 python scripts/plot_paper_results.py --output tmp/paper-figures-fresh
+python scripts/plot_external_validation.py --judge-analysis output/matched-trace-judge-analysis-2026-10-18/analysis.json --tau-summary output/tau3-state-transfer-2026-10-18/summary.json --output tmp/external-validation-figures-fresh
+python scripts/plot_upstream_car_validation.py --study-dir output/upstream-car-study-2026-10-18 --position 1 --output tmp/upstream-car-figures-fresh
 ```
 
 Each script refuses to overwrite its existing named outputs. Use a fresh
-directory for another run. Both can share that directory because their filenames
-differ. The conceptual generator requires its destination to stay inside the
+directory for another run. The original diagram/result pair can share a fresh directory because their
+filenames differ; validation exporters use separate fresh directories. The conceptual generator requires its destination to stay inside the
 repository; the empirical generator refuses output inside the sealed study.
 The conceptual script uses an installed serif font and records its selected
 font; the retained diagrams use Times New Roman. Font versions and rendering

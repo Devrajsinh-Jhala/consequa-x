@@ -1,0 +1,293 @@
+{
+  "alignment_became_unassessable": 0,
+  "completed_utc": "2026-10-19T10:20:17.788538+00:00",
+  "fresh_alignment_counts": {
+    "consistent": 48,
+    "contradicted": 108,
+    "unassessable": 347
+  },
+  "fresh_state_counts": {
+    "False": 174,
+    "None": 72,
+    "True": 257
+  },
+  "fresh_state_unavailable": 0,
+  "fresh_target_matching_receipt_denominator": 503,
+  "fresh_target_matching_receipts": {
+    "empty": 287,
+    "nonempty": 144,
+    "unavailable": 72
+  },
+  "historical_failed_slots": [
+    {
+      "error": "Response is not strict JSON",
+      "error_type": "PolicyError",
+      "receipt": "episodes/episode_00109/receipt.json",
+      "receipt_sha256": "1fb4beab1b8927e9d3c93fa2b12f2fd10eca694bb48599f2ef5db9da1c123757",
+      "slot": {
+        "case_id": "matched.desk.missing-provenance",
+        "family_id": "refund-desk-log",
+        "model": "llama3.2:3b-instruct-q4_K_M",
+        "prompt_version": "refund-policy-v2",
+        "repetition": 1,
+        "reserved_phase_seeds": [
+          108000186,
+          108000187,
+          108000188,
+          108000189,
+          108000190,
+          108000191
+        ],
+        "slot": 109,
+        "slot_id": "episode_00109",
+        "template_id": "refund-desk-log-v1",
+        "trial_seed": 18000031,
+        "wording_sha256": "fe398563ef991c338ec1a0e616da8ea5c12f7664096694a4176833a975ff26a9",
+        "world_seed": 18000031
+      },
+      "status": "failed"
+    }
+  ],
+  "interpretation": "Offline post-hoc conformance on retained single-action factual traces only",
+  "metrics": {
+    "assessment_status_preserved": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_action_linked_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_alignment_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_codes_equal": {
+      "different_or_failed": 275,
+      "equal_or_success": 228,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.4523809523809524,
+      "unavailable": 0
+    },
+    "fresh_core_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_full_legacy_receipts_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_origin_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_receipt_identity_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_state_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "migration_alignment_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "migration_codes_equal": {
+      "different_or_failed": 275,
+      "equal_or_success": 228,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.4523809523809524,
+      "unavailable": 0
+    },
+    "migration_receipts_preserved": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "migration_success": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_analysis_prediction_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_recorded_explanation_alignment_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_reverify_core_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_reverify_full_receipts_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "schema_roundtrip_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "structural_legacy_projection_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    }
+  },
+  "migrated_target_matching_receipt_denominator": 503,
+  "migrated_target_matching_receipts": {
+    "empty": 287,
+    "nonempty": 144,
+    "unavailable": 72
+  },
+  "migration_receipts_not_reproduced": 0,
+  "migration_receipts_reproduced": 503,
+  "plan": {
+    "action_linked_mapping": "each pinned version's benchmark.targets.action_linked_consequence",
+    "alignment_mapping": {
+      "consistent": "consistent",
+      "contradicted": "contradicted",
+      "unassessable": "unassessable"
+    },
+    "assessment_mapping": {
+      "failure": "failure",
+      "partial": "partial",
+      "success": "success",
+      "unknown": "unknown"
+    },
+    "denominators": "Every trace-level metric reports true/false/unavailable among all 503 retained traces; also show success/504 planned slots without scoring the failed slot as disagreement. Receipt-level counts report their own observed receipt denominator. Equal null states or unassessable alignments are agreement only, not known-state coverage.",
+    "design": "post-hoc offline migration conformance; retained factual single-action traces",
+    "development_disclosure": "Runner development may use four existing tests/fixtures/v0.1 migration examples and synthetic mutation/error fixtures, including an isolated frozen-1.1 integration check. These are development checks, excluded from the 503-trace measured corpus.",
+    "diagnosis_policy": "Compare exact ordered codes secondarily, retain all additions/removals; no normalization. 2.0 may add UNASSESSABLE_ASSESSMENT for known refund outcomes with unknown/partial reports or unsupported target linkage. Display labels/messages/graphs are not invariants.",
+    "failures": "retain every failure/unavailable value; no retries, replacements, or exclusions",
+    "historical_failed_slots": 1,
+    "historical_model_calls": 896,
+    "inference": "descriptive paired conformance counts only; no p-values or population generalization",
+    "latest_rule": "last recorded receipt/assessment for the action, preserving recorded order",
+    "limitations": [
+      "0.1 never recorded its clock origin: migrate to relative_ms, not an inferred epoch",
+      "one recorded action becomes a one-item list; no general multi-action validation",
+      "migration preserves recorded conclusions by construction; fresh verification is separate",
+      "target matches/findings are rederived metadata, absent from the legacy receipt",
+      "only the retained refund predicate is measured; custom verifier fixtures are development only",
+      "historical policies, labels, gold, analysis, and collection provenance remain unchanged"
+    ],
+    "migration_reproduction_rule": [
+      "status",
+      "origin",
+      "effect_ids",
+      "attributable_effect_ids"
+    ],
+    "new_action_executions": 0,
+    "new_model_calls": 0,
+    "origin_mapping": {
+      "confirmed": "confirmed",
+      "other_actor": "other_actor",
+      "unknown": "unknown"
+    },
+    "planned_slots": 504,
+    "primary_metrics": [
+      "migration_success",
+      "structural_legacy_projection_equal",
+      "schema_roundtrip_equal",
+      "migration_receipts_preserved",
+      "old_reverify_core_equal",
+      "fresh_core_equal",
+      "fresh_state_equal",
+      "fresh_origin_equal",
+      "fresh_action_linked_equal",
+      "fresh_receipt_identity_equal",
+      "assessment_status_preserved",
+      "migration_alignment_equal",
+      "fresh_alignment_equal",
+      "old_recorded_explanation_alignment_equal",
+      "old_analysis_prediction_equal"
+    ],
+    "receipt_identity_fields": [
+      "contract_id",
+      "observed_at_ms",
+      "effect_ids",
+      "attributable_effect_ids",
+      "evidence[*].observation_id",
+      "evidence[*].source",
+      "evidence[*].as_of_ms"
+    ],
+    "receipt_observation_binding": "exactly one evidence item; join by observation_id; no fallback",
+    "retained_traces": 503,
+    "secondary_metrics": [
+      "fresh_full_legacy_receipts_equal",
+      "old_reverify_full_receipts_equal",
+      "migration_codes_equal",
+      "fresh_codes_equal",
+      "migration_reproduced_receipt_count",
+      "migration_not_reproduced_receipt_count",
+      "target_matching_unavailable",
+      "target_matching_empty",
+      "target_matching_nonempty",
+      "alignment_became_unassessable"
+    ],
+    "state_mapping": {
+      "satisfied": true,
+      "unknown": null,
+      "violated": false
+    },
+    "verifiers": {
+      "refund_processed": "public built-in RefundVerifier, via verify"
+    }
+  },
+  "planned_slots": 504,
+  "processing_errors": 0,
+  "protocol_sha256": "ec736f462be44c1c442bb4a7b9c071006a1ec7e9dd9915f6e0c4c53d7e196e1e",
+  "retained_traces": 503,
+  "schema_version": "consequa-v2-migration-conformance-v1"
+}

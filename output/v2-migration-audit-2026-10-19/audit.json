@@ -1,0 +1,171 @@
+{
+  "audited_utc": "2026-10-19T15:34:24.158931+00:00",
+  "auditor_sha256": "c4ccba5bd81053dce74a3fd25aea840f1a445a3ca14d146081be2af65c135a11",
+  "bound_file_checks": 5434,
+  "checks": 71383,
+  "completion_receipt_sha256": "4b955336fe34f52a083ab889b0ea54ee326e0a0f5900b125f0f2b5deb62cd1fe",
+  "fresh_alignment_counts": {
+    "consistent": 48,
+    "contradicted": 108,
+    "unassessable": 347
+  },
+  "fresh_code_additions": {
+    "UNASSESSABLE_ASSESSMENT": 275
+  },
+  "fresh_code_removals": {
+    "CONSISTENT_OUTCOME": 24
+  },
+  "fresh_state_counts": {
+    "False": 174,
+    "None": 72,
+    "True": 257
+  },
+  "historical_failed_slot": "episode_00109",
+  "metrics": {
+    "assessment_status_preserved": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_action_linked_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_alignment_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_codes_equal": {
+      "different_or_failed": 275,
+      "equal_or_success": 228,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.4523809523809524,
+      "unavailable": 0
+    },
+    "fresh_core_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_full_legacy_receipts_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_origin_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_receipt_identity_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "fresh_state_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "migration_alignment_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "migration_codes_equal": {
+      "different_or_failed": 275,
+      "equal_or_success": 228,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.4523809523809524,
+      "unavailable": 0
+    },
+    "migration_receipts_preserved": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "migration_success": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_analysis_prediction_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_recorded_explanation_alignment_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_reverify_core_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "old_reverify_full_receipts_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "schema_roundtrip_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    },
+    "structural_legacy_projection_equal": {
+      "different_or_failed": 0,
+      "equal_or_success": 503,
+      "retained_denominator": 503,
+      "success_over_504_planned": 0.998015873015873,
+      "unavailable": 0
+    }
+  },
+  "model_roundtrip_scope": "Runner model roundtrip assertion is counted from sealed rows; auditor independently parses/roundtrips JSON and checks the structural legacy projection, without executing Trace.from_json.",
+  "processing_errors": 0,
+  "protocol_sha256": "ec736f462be44c1c442bb4a7b9c071006a1ec7e9dd9915f6e0c4c53d7e196e1e",
+  "retained_traces": 503,
+  "schema": "consequa-v2-migration-artifact-audit-v1",
+  "scope": "Separate standard-library artifact/fraction and public-evidence arithmetic check. No framework/runner imports or execution, model calls, raw-file repairs, or human annotation. It is exposed-data conformance, not held-out accuracy, multi-action or all-feature validation.",
+  "summary_sha256": "4be0d95f6ec9afd853fd58e55aa46abdfb0ad01ffb64fddd2210415dbaf7b1d9",
+  "target_matching": {
+    "empty": 287,
+    "nonempty": 144,
+    "unavailable": 72
+  }
+}

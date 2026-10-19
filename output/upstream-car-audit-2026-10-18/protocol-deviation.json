@@ -1,0 +1,252 @@
+{
+  "actual_native_coroutine_invocations_inferred_from_source_and_retained_records": 2048,
+  "affected_groups": 64,
+  "affected_stratum": "native CAR / budget-p50-q50 / contrastive",
+  "all_affected_engine_trials_primary_ineligible": true,
+  "all_planned_canonical_slots_retained": true,
+  "audit_response": "Only these two exact failure shapes are admitted by the separate independent auditor. Every known/completed draw still requires ordered contiguous decisions, held-source semantics, seed/request binding and independently reconstructed public outcomes. The raw collection and original summary remain unchanged; no redraws or model calls.",
+  "canonical_receipt_counts": {
+    "failed": 64,
+    "known": 40,
+    "unstarted": 6040
+  },
+  "cause": "Native asyncio.gather starts K32 coroutine rollouts after a whole-coalition rollout-budget charge. The fresh-call wrapper cap is exhausted after one continuation reply. NativeRefundBridge.sample appends each zero-spend refusal without advancing its canonical slot; fail_current appends their shared decisions list once. Failed native coroutine IDs/individual refused-slot seeds are not retained, so a one-to-one attempted-slot inventory cannot be reconstructed.",
+  "classification": "Post-collection diagnostic-slot attribution deviation; not a prospective protocol amendment",
+  "completed_scored_native_invocations": 40,
+  "examples": [
+    {
+      "canonical_gate_counts": {
+        "failed": 1,
+        "known": 1,
+        "unstarted": 94
+      },
+      "copied_path": "diagnostic-examples/00896-upstream_car.json.gz",
+      "failed_receipt_decision_indices": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "original_path": "trials/00896-upstream_car.json.gz",
+      "refusal_records": 31,
+      "sha256": "e54166f4868d8502711b45bc3de5087843814b03bcb03148bfcdeb09130ba76e",
+      "successful_fresh_calls": 4
+    },
+    {
+      "canonical_gate_counts": {
+        "failed": 1,
+        "unstarted": 95
+      },
+      "copied_path": "diagnostic-examples/00900-upstream_car.json.gz",
+      "failed_receipt_decision_indices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "original_path": "trials/00900-upstream_car.json.gz",
+      "refusal_records": 32,
+      "sha256": "50c5bac29abe95c5c79b2c47e2880e892d867d426324db2a3f445598b46d3f0b",
+      "successful_fresh_calls": 4
+    }
+  ],
+  "impact": "The original canonical failed/unstarted counts must not be interpreted as actual native invocation dispositions. All successful fresh calls remain recorded and cap4 reconciliation is intact. Every affected primary result is unavailable, so no eligible numeric estimate or non-budget paired semantic check is altered.",
+  "native_estimator_result_available_for_primary_inference": false,
+  "native_invocations_not_started_beyond_first_K32_coalition": 4096,
+  "planned_canonical_slots": 6144,
+  "protocol_sha256": "038993678ab8902a5eb48bffabc37d88697bdddd30544d8e2404155271ed207d",
+  "schema": "upstream-car-collector-protocol-deviation-v1",
+  "shape_counts": [
+    {
+      "completed_stop_draw_then31_initial_refusals": 40
+    },
+    {
+      "partial_refund_then1_retry_refusal_and31_initial_refusals": 24
+    }
+  ],
+  "source_bindings": [
+    {
+      "ranges": [
+        {
+          "end": 47,
+          "lines": [
+            "        budget.charge(k_samples)  # the whole branch, before any model call is spent"
+          ],
+          "start": 47
+        },
+        {
+          "end": 63,
+          "lines": [
+            "    async def one_rollout(i: int) -> Outcome:",
+            "        async with semaphore:",
+            "            child = await coalition_forward(",
+            "                trajectory_id=f\"{factual.trajectory_id}:{label}:{i}\",",
+            "                factual=factual,",
+            "                held=held,",
+            "                policy=policy,",
+            "                environment=environment,",
+            "                codec=codec,",
+            "            )",
+            "            return await outcome_fn.score(child)",
+            "",
+            "    outcomes = await asyncio.gather(*(one_rollout(i) for i in range(k_samples)))"
+          ],
+          "start": 51
+        }
+      ],
+      "sha256": "637d570ca5d9892b52ddab3bd28781b1460c3de348d77a1939ed4f42fae972ec",
+      "source": "upstream_car/src/car/attribute/sampling.py"
+    },
+    {
+      "ranges": [
+        {
+          "end": 340,
+          "lines": [
+            "    def slot(self):",
+            "        if len(self.receipts) >= len(self.slots):",
+            "            raise PolicyError(\"Native CAR attempted an unplanned rollout\")",
+            "        return self.slots[len(self.receipts)]"
+          ],
+          "start": 337
+        },
+        {
+          "end": 381,
+          "lines": [
+            "    async def sample(self, state):",
+            "        request = self._public_request(state)",
+            "        index = (len(state.messages) - 1) // 2",
+            "        seed = self.slot[\"continuation_seed\"] * 6 + index",
+            "        try:",
+            "            reply = self.bounded.decide(request, seed=seed)",
+            "            validate_reply(request, reply)",
+            "        except CallBudgetExceeded as error:",
+            "            self.decisions.append({\"index\": index, \"source\": \"resampled\", \"request\": to_dict(request),",
+            "                                   \"reply\": None, \"model_seed\": seed, \"error_type\": type(error).__name__})",
+            "            raise self.car[\"budget\"].BudgetExceeded(str(error)) from error",
+            "        return self.action(reply, request, source=\"resampled\", seed=seed)"
+          ],
+          "start": 370
+        },
+        {
+          "end": 469,
+          "lines": [
+            "",
+            "    async def score(self, trajectory):",
+            "        if trajectory is self.factual_native:",
+            "            value = evidence_record(self.factual, self.trial[\"target\"])[\"bad\"]",
+            "        else:",
+            "            self._accept(trajectory.steps[-1].action)",
+            "            episode, requests = self._simulate(self.prefix, self.slot[\"continuation_seed\"])",
+            "            if len(requests) != len(self.prefix):",
+            "                raise PolicyError(\"Native trajectory ended before a required production decision\")",
+            "            evidence = evidence_record(episode, self.trial[\"target\"])",
+            "            held = set(self.slot[\"held_indices\"])",
+            "            self.receipts.append({\"slot\": self.slot, \"status\": \"unknown\" if evidence[\"bad\"] is None else \"known\",",
+            "                \"decisions\": self.decisions, \"policy_calls\": sum(item[\"source\"] == \"resampled\" for item in self.decisions),",
+            "                \"inactive_held_indices\": sorted(held - set(range(len(self.prefix)))),",
+            "                \"native_trajectory_id\": trajectory.trajectory_id, **evidence})",
+            "            value = evidence[\"bad\"]",
+            "            self.prefix, self.decisions = [], []",
+            "        # Upstream has no abstention outcome. This placeholder is never eligible",
+            "        # for primary inference: the complete-method gate below rejects unknowns.",
+            "        return self.car[\"trajectory\"].Outcome(label=\"unavailable\" if value is None else \"bad\" if value else \"ok\",",
+            "                                              score=0. if value is None else float(value))",
+            "",
+            "    def fail_current(self, error):",
+            "        if len(self.receipts) < len(self.slots):",
+            "            self.receipts.append({\"slot\": self.slot, \"status\": \"failed\", \"decisions\": self.decisions,",
+            "                \"policy_calls\": sum(item[\"source\"] == \"resampled\" and item[\"reply\"] is not None for item in self.decisions),",
+            "                \"error_type\": type(error).__name__, \"error\": str(error), \"bad\": None})",
+            "            self.prefix, self.decisions = [], []",
+            "",
+            ""
+          ],
+          "start": 440
+        },
+        {
+          "end": 510,
+          "lines": [
+            "                k_samples=plan.samples, confidence=plan.confidence,",
+            "                budget=native_budget, max_concurrency=1)",
+            "        else:",
+            "            for slot in bridge.slots[:2 * plan.endpoint_samples]:",
+            "                child = await car[\"forward\"].coalition_forward(trajectory_id=f\"endpoint-{slot['index']}\",",
+            "                    factual=native, held=set(slot[\"held_indices\"]), policy=bridge,",
+            "                    environment=bridge, codec=bridge.codec)",
+            "                await bridge.score(child)",
+            "            raw = await car[\"shapley\"].shapley_attribution(native, policy=bridge,",
+            "                environment=bridge, codec=bridge.codec, outcome_fn=bridge, bad_label=\"bad\",",
+            "                n_permutations=plan.pairs, samples_per_eval=1, antithetic=True,",
+            "                confidence=plan.confidence, budget=native_budget,",
+            "                seed=trial[\"permutation_seed\"], max_concurrency=1)",
+            "    except car[\"budget\"].BudgetExceeded as caught:",
+            "        error = {\"type\": type(caught).__name__, \"message\": str(caught)}",
+            "        bridge.fail_current(caught)"
+          ],
+          "start": 495
+        }
+      ],
+      "sha256": "d48567c800ae29af69c4998341f28c1cb2dd5b51790942827f691c2303562297",
+      "source": "frozen940/scripts/run_upstream_car_study.py"
+    }
+  ],
+  "successful_fresh_policy_calls_per_engine_trial": 4,
+  "terminal_manifest_sha256": "36e80b2afaeaacb5d5b4695ba997fe949b8d4cc84ce63154791e87a9ccec556d",
+  "zero_spend_refused_native_invocations": 2008
+}

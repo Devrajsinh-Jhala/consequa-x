@@ -1,0 +1,72 @@
+{
+  "checked_utc": "2026-10-19T15:44:49.131398+00:00",
+  "code_bindings": [
+    {
+      "path": "scripts/audit_external_validation_artifacts.py",
+      "sha256": "84a7ae8434a8f2f3edefa3e64dcd727d24cfe54aa938a2fd72477a943c300528"
+    },
+    {
+      "path": "scripts/audit_upstream_car_artifacts.py",
+      "sha256": "897e31a21b14c9145a8641030b980ca4ef2d99de2f0612e8f72ffc2aa3c2362e"
+    },
+    {
+      "path": "scripts/audit_v2_migration_conformance.py",
+      "sha256": "c4ccba5bd81053dce74a3fd25aea840f1a445a3ca14d146081be2af65c135a11"
+    },
+    {
+      "path": "scripts/build_blinded_trace_review.py",
+      "sha256": "d82253a4423c89dc1c22cc330b0373371f46e6b77544bc722c904fb4b59fe6a4"
+    },
+    {
+      "path": "scripts/plot_external_validation.py",
+      "sha256": "0aa99f28ba635a63218723e75f22fbf9ae9b1c47783d734952cccaee587a7915"
+    },
+    {
+      "path": "scripts/plot_upstream_car_validation.py",
+      "sha256": "c933e048e4caf70073a44d1b493e9fbbede33ce3c329f9156e780459609bd9ac"
+    },
+    {
+      "path": "tests/test_external_validation_artifact_audit.py",
+      "sha256": "66b3893fa7d5a79433e0ebb35f97f6fd2613ca9aaaf2dc9f323d2f8f0aff0ae0"
+    },
+    {
+      "path": "tests/test_v2_migration_artifact_audit.py",
+      "sha256": "7ced0c77ac9eea75e72c728b3621a93c21f759238a1affff35dab18a138b823b"
+    },
+    {
+      "path": "tests/test_snapshot_integrity.py",
+      "sha256": "23f5f70689a7d25efb1e88da9bad5f05480a35b2c0981fca731b6d78e3694313"
+    }
+  ],
+  "final_pdf_sha256": "2586a400e0f3165c28af9ed72c86829fd938187cf74b684e370e1e926e269619",
+  "pytest": {
+    "duration_seconds": 85.81,
+    "failed": 0,
+    "log_sha256": "c44b8715f67c60f62efe4261c6828d130be90da0ff17a3a68f888f960574f1f9",
+    "passed": 191,
+    "tests": [
+      "tests/test_snapshot_integrity.py",
+      "tests/test_external_validation_artifact_audit.py",
+      "tests/test_v2_migration_artifact_audit.py"
+    ]
+  },
+  "qa_source_and_evidence_bindings_rechecked": true,
+  "ruff": {
+    "checked_paths": [
+      "scripts/audit_external_validation_artifacts.py",
+      "scripts/audit_upstream_car_artifacts.py",
+      "scripts/audit_v2_migration_conformance.py",
+      "scripts/build_blinded_trace_review.py",
+      "scripts/plot_external_validation.py",
+      "scripts/plot_upstream_car_validation.py",
+      "tests/test_external_validation_artifact_audit.py",
+      "tests/test_v2_migration_artifact_audit.py",
+      "tests/test_snapshot_integrity.py"
+    ],
+    "log_sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0",
+    "passed": true
+  },
+  "schema": "consequa-research-checks-v1",
+  "scope": "Targeted research artifact, corruption/accounting and snapshot checks. Does not rerun model/native collection, general 2.1.1 package tests, or human validation. No package, website or workflow changes; GitHub Actions not used.",
+  "source_parent_commit": "3ff37d57e8f8f09cad8c1e3b15a8377f451a2500"
+}

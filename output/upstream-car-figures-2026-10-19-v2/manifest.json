@@ -1,0 +1,46 @@
+{
+  "schema": "consequa-upstream-car-figure-v1",
+  "postcollection_presentation": true,
+  "script_sha256": "c933e048e4caf70073a44d1b493e9fbbede33ce3c329f9156e780459609bd9ac",
+  "matplotlib": "3.11.2",
+  "source_study": "D:\\ConsequaX-Research\\paper-writing\\output\\upstream-car-study-2026-10-18",
+  "source_manifest_sha256": "36e80b2afaeaacb5d5b4695ba997fe949b8d4cc84ce63154791e87a9ccec556d",
+  "source_input_hashes": {
+    "protocol.json": "038993678ab8902a5eb48bffabc37d88697bdddd30544d8e2404155271ed207d",
+    "summary.json": "4d6823dffc703b8c510850a70159fefcd6428c5fbfe88f0f1362f1d95dceb30f",
+    "study-manifest.source.json": "36e80b2afaeaacb5d5b4695ba997fe949b8d4cc84ce63154791e87a9ccec556d",
+    "disposition.json": "a15b096c4896b78d4548105dc52d3d039bec73508c4fba22a9b1834c7faa576c"
+  },
+  "terminal_bound_files_verified": 2053,
+  "source_revision": "940ebfcc0059c992977dd8e9f112361ff5b31edd",
+  "upstream_revision": "db90fa28b97164c35e7c524e4597b8cbdb3035af",
+  "nominal_confidence": 0.95,
+  "repeats_per_fixed_mechanism": 64,
+  "selected_figure_position": 1,
+  "all_positions_retained": [
+    0,
+    1,
+    2
+  ],
+  "fraction_rows": 144,
+  "figure_count": 1,
+  "print_width_inches": 7.16,
+  "design_width_inches": 9.5,
+  "minimum_design_font_pt": 10.5,
+  "minimum_print_font_pt": 7.913684210526316,
+  "model_calls": 0,
+  "simulation_trials": 0,
+  "point_parity_claimed": false,
+  "files": {
+    "fractions.csv": "1eb76ded10f9c1806265fc664974392e8a5332f731548789c8e6266b2b2eda16",
+    "fractions.json": "bd8cc147a3066fabd97df3d516dec97a893a0efb25f363820ef288f8b41acd22",
+    "README.md": "511852abc17410e6baf51bf931bc1e3b4d2ca391c481bf50ef7807f2fd9031a1",
+    "source-inputs/disposition.json": "a15b096c4896b78d4548105dc52d3d039bec73508c4fba22a9b1834c7faa576c",
+    "source-inputs/protocol.json": "038993678ab8902a5eb48bffabc37d88697bdddd30544d8e2404155271ed207d",
+    "source-inputs/study-manifest.source.json": "36e80b2afaeaacb5d5b4695ba997fe949b8d4cc84ce63154791e87a9ccec556d",
+    "source-inputs/summary.json": "4d6823dffc703b8c510850a70159fefcd6428c5fbfe88f0f1362f1d95dceb30f",
+    "upstream-car-intervals.pdf": "8d417082a4c6d244ac1f0e1ef84534bba494466b9308573c85d350eafa2295a1",
+    "upstream-car-intervals.png": "6025c2f5061629a0ec78ba503c2454df7ba7ab7449d970d4a279908845a00622",
+    "upstream-car-intervals.svg": "f7396e5798a180ac47e639ff0f4c3a3ac4efa3b3db7f35859390613a5384f1cf"
+  }
+}

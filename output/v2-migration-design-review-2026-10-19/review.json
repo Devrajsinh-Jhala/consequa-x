@@ -1,0 +1,122 @@
+{
+  "schema": "consequa-x.v2-migration-design-review.v1",
+  "reviewed_at_utc": "2026-10-19T10:15:30.541629+00:00",
+  "worktree_head_before_source_freeze": "f64bf49f1a99c22f67d8f393a01dea4e6e22fe04",
+  "role": "Separate AI-assisted read-only design/code review. Not independent human validation or an empirical result.",
+  "actions": "Read source, tests and completed design documentation; AST parsing and hashes only. Did not import/execute runner/package/fixtures or access measured corpus through migration/verifier/explanation. No model or service calls. No source/test/doc/data/workflow edits; only this review directory written.",
+  "reviewed_files": {
+    "scripts/run_v2_migration_conformance.py": {
+      "sha256": "398515a1fe2f91f7d9ccdfe3e1c9dfa7bb1b7cae894e50e85154edf8a5bcf843",
+      "bytes": 41861,
+      "functions": {
+        "utc": 107,
+        "digest": 111,
+        "read_json": 116,
+        "write_json": 120,
+        "git": 127,
+        "inventory": 133,
+        "source_pin": 139,
+        "check_inventory": 171,
+        "check_source": 179,
+        "slot_indices": 185,
+        "historical_inputs": 202,
+        "freeze": 261,
+        "legacy_projection": 298,
+        "core": 302,
+        "receipt_identity": 306,
+        "canonical": 314,
+        "binding": 319,
+        "error_record": 329,
+        "python_pin": 333,
+        "source_runtime_pin": 345,
+        "runtime_metadata": 362,
+        "old_semantics": 373,
+        "legacy_worker": 400,
+        "get_legacy": 422,
+        "structural_projection": 434,
+        "compare_trace": 447,
+        "compare_migrated": 483,
+        "summarize": 593,
+        "run": 631,
+        "main": 724
+      }
+    },
+    "tests/test_v2_migration_conformance.py": {
+      "sha256": "8872d1d3a378ed1e00d396296f14504b20358224ba5ac5c71e551a96d3d459fb",
+      "bytes": 16296,
+      "functions": {
+        "fixture": 30,
+        "saved_explanation": 34,
+        "baseline": 44,
+        "test_public_api_conformance_on_disclosed_released_examples": 56,
+        "test_migration_preservation_is_distinct_from_fresh_verifier_agreement": 69,
+        "test_malformed_legacy_input_is_retained_as_a_migration_failure": 89,
+        "test_later_verification_error_does_not_get_counted_as_migration_failure": 98,
+        "test_legacy_fresh_error_preserves_available_recorded_alignment_comparison": 114,
+        "test_semantic_agreement_does_not_normalize_away_diagnosis_changes": 129,
+        "test_target_matching_unavailable_is_separate_from_an_empty_match": 147,
+        "test_observation_binding_uses_recorded_identity_and_never_the_latest_readback": 159,
+        "test_receipt_identity_and_full_evidence_are_separate_invariants": 170,
+        "test_inventory_rejects_tampering_and_additional_files": 182,
+        "test_source_freeze_cannot_hide_a_deleted_tracked_runtime_module": 196,
+        "test_exclusive_artifacts_preserve_an_interrupted_claim": 213,
+        "slot_fixture": 222,
+        "test_slot_identity_guard_accepts_exact_development_schedule_coverage": 231,
+        "test_slot_identity_guard_rejects_duplicates_and_missing_coverage": 243,
+        "test_denominators_retain_errors_failed_slot_and_unknown_agreement": 265,
+        "test_protocol_hash_gate_precedes_all_runtime_or_corpus_execution": 278,
+        "test_freeze_inventories_without_comparing_any_trace": 288,
+        "test_isolated_frozen_1_1_worker_against_three_released_refund_fixtures": 311
+      }
+    },
+    "docs/v2-migration-conformance.md": {
+      "sha256": "e99f20af4903d7d07433c42db3b18d3c5a66e41a539a6a0df16e4d0bd225febe",
+      "bytes": 13554,
+      "functions": {}
+    }
+  },
+  "decision": "No remaining blocking design issue found at the exact reviewed bytes for the narrowly declared post-hoc conformance objective. Commit these bytes and freeze the protocol before any measured processing.",
+  "initial_findings_resolved": [
+    {
+      "id": "R1",
+      "issue": "A fresh verification/explanation failure after successful migration was being classified as migration_success=False and discarded the migrated artifact.",
+      "resolution": "compare_trace and compare_migrated now separate migration, migrated explanation, fresh verification and fresh explanation. Successful structural migration, artifact, target metadata and available alignment metrics are retained after downstream failures. Old worker preserves available recorded/fresh stage outputs separately. Development fixtures check malformed migration, injected fresh verifier error and a legacy fresh-stage failure."
+    },
+    {
+      "id": "R2",
+      "issue": "Dictionary indexing could silently overwrite duplicate schedule/episode/prediction IDs and let count-only checks omit one retained slot.",
+      "resolution": "slot_indices requires exact 504 unique schedule/episode IDs, equal sets,503 unique completed IDs and baseline prediction coverage equal to completed IDs before dictionaries are built. Eight negative identity fixtures plus a valid schedule fixture cover duplicate/extra/missing/failed-slot cases."
+    },
+    {
+      "id": "R3",
+      "issue": "Initial source_pin checked only files present on disk; a deleted tracked runtime file could vanish from the source inventory and Git status pathspec.",
+      "resolution": "Git status now uses the full src/consequa_x and tests/fixtures/v0.1 directory pathspecs plus mandatory files. A development fixture exposes a deleted tracked module and requires rejection before pinning."
+    }
+  ],
+  "checked_design": {
+    "structural_vs_behavior": "Structural migration, legacy projection and receipt preservation are explicitly separate from fresh 2.0 verification against saved observations and fresh explanation. Migration-by-construction parity is not promoted to behavioral evidence.",
+    "canonical_targets": "State enum maps true/false/null; origin values are retained; each pinned source version supplies its own action_linked_consequence helper. It does not collapse target_effect_ids to bool. Alignment uses last recorded receipt/assessment per action, retaining original order.",
+    "input_selection": "Exactly 503 retained factual traces from original 504-slot schedule, with the original failed slot listed rather than repaired or scored as semantic disagreement. Unique-ID sets and receipt/schedule/artifact hashes are bound at freeze.",
+    "gold_boundary": "Historical evaluator truth files are inventoried by hashes only. The measured old/new calls receive public saved traces/readback; saved explanation alignment and old analysis predictions enter equality checks after current predictions, not repairs or target generation.",
+    "missing_and_diagnostics": "Every trace-level metric retains true/false/unavailable across all 503; successes/504 preserve the planned denominator. Unknown/unassessable agreement is not known-state coverage. Exact ordered diagnosis strings and added/removed codes are secondary; no normalization hides changes.",
+    "source_and_runtime": "Full explicit source commits, clean tracked runtime/research files, complete file hashes, old-source match to original runtime inventory, exact interpreter executable/hash/version, imported source path/version and ambient installed distribution metadata are pinned and checked. Source and input bytes are rechecked before completion.",
+    "output_and_stop": "Exclusive protocol/output files and a persistent per-protocol run claim prevent resume, overwrite and accidental redraw. Mismatches are ordinary retained results; processing errors remain explicit. Final receipt requires source/input rechecks.",
+    "detached_checkout": "A detached execution source at the committed runner revision preserves strict HEAD equality while the prospective protocol is separately committed in the writing checkout."
+  },
+  "limits_and_conditions": [
+    "This is a prospective freeze of an already exposed post-hoc compatibility analysis, not an externally preregistered confirmatory study.",
+    "Imported pinned source defines the measured implementation. Ambient distribution metadata is disclosed and guarded, but the runner does not substitute installed-wheel bytes for source. Describe results as pinned-source conformance unless separate release-wheel validation is explicitly cited.",
+    "No source review can establish future measured parity; all actual 503 outcomes, failures and mismatches must be retained and audited after collection.",
+    "New 2.0 target_effect_ids/findings lack direct old recorded field oracles; selected canonical semantics and old-field projections are the measured invariants. Do not claim independent validation of every 2.0 receipt field.",
+    "One-action refund traces do not validate multi-action behavior, arbitrary custom predicates, async/polling/controller/store/report features, held-out task performance, or causal effect recovery.",
+    "Review is bound to these three exact hashes. Any further change requires re-review/re-freeze before measured processing."
+  ],
+  "author_reported_development_checks": {
+    "tests_passed": 42,
+    "composition": "27 new dedicated checks plus 15 existing migration tests, including isolated legacy 3-refund fixture integration",
+    "ruff": "reported clean",
+    "reviewer_reran_tests": false
+  },
+  "measured_corpus_executed_by_reviewer": false,
+  "new_model_calls": 0
+}

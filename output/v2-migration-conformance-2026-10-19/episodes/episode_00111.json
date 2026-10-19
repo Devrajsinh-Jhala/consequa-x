@@ -1,0 +1,219 @@
+{
+  "alignment_became_unassessable": false,
+  "clock_origin_unrecoverable": true,
+  "code_changes": {
+    "fresh_added": [],
+    "fresh_removed": [],
+    "migration_added": [],
+    "migration_removed": []
+  },
+  "fresh_alignment": "unassessable",
+  "fresh_codes": [
+    "UNKNOWN_OUTCOME"
+  ],
+  "fresh_prediction": {
+    "action_linked": null,
+    "origin": "unknown",
+    "state": null
+  },
+  "fresh_receipts": [
+    {
+      "action_id": "refund:18000037",
+      "attributable_effect_ids": [],
+      "contract_id": "contract:18000037",
+      "effect_ids": [],
+      "evidence": [
+        {
+          "as_of_ms": 0,
+          "details": {
+            "available": true,
+            "complete": true,
+            "expected": {
+              "amount_minor": 125000,
+              "currency": "INR",
+              "payment_id": "pay_42"
+            },
+            "horizon_ms": 120,
+            "records": [],
+            "scope": {
+              "currency": "INR",
+              "lag_ms": 200,
+              "payment_id": "pay_42"
+            },
+            "watermark_ms": 0
+          },
+          "observation_id": "obs_18000037_000001",
+          "source": "payment_ledger"
+        }
+      ],
+      "findings": [],
+      "observed_at_ms": 120,
+      "origin": "unknown",
+      "reason": "Readback watermark precedes contract horizon",
+      "status": "unknown",
+      "target_effect_ids": null
+    }
+  ],
+  "fresh_target_matching": {
+    "empty": 0,
+    "nonempty": 0,
+    "unavailable": 1
+  },
+  "historical_analysis_prediction": {
+    "action_linked": null,
+    "origin": "unknown",
+    "state": null
+  },
+  "metrics": {
+    "assessment_status_preserved": true,
+    "fresh_action_linked_equal": true,
+    "fresh_alignment_equal": true,
+    "fresh_codes_equal": true,
+    "fresh_core_equal": true,
+    "fresh_full_legacy_receipts_equal": true,
+    "fresh_origin_equal": true,
+    "fresh_receipt_identity_equal": true,
+    "fresh_state_equal": true,
+    "migration_alignment_equal": true,
+    "migration_codes_equal": true,
+    "migration_receipts_preserved": true,
+    "migration_success": true,
+    "old_analysis_prediction_equal": true,
+    "old_recorded_explanation_alignment_equal": true,
+    "old_reverify_core_equal": true,
+    "old_reverify_full_receipts_equal": true,
+    "schema_roundtrip_equal": true,
+    "structural_legacy_projection_equal": true
+  },
+  "migration_alignment": "unassessable",
+  "migration_codes": [
+    "UNKNOWN_OUTCOME"
+  ],
+  "migration_report": {
+    "not_reproduced": 0,
+    "reproduced": 1,
+    "schema_version": "1.0",
+    "source_schema_version": "0.1",
+    "time_base": "relative_ms",
+    "verifications": 1
+  },
+  "old": {
+    "assessment_status": "unknown",
+    "fresh_alignment": "unassessable",
+    "fresh_codes": [
+      "UNKNOWN_OUTCOME"
+    ],
+    "fresh_prediction": {
+      "action_linked": null,
+      "origin": "unknown",
+      "state": null
+    },
+    "fresh_receipts": [
+      {
+        "attributable_effect_ids": [],
+        "contract_id": "contract:18000037",
+        "effect_ids": [],
+        "evidence": [
+          {
+            "as_of_ms": 0,
+            "details": {
+              "available": true,
+              "complete": true,
+              "expected": {
+                "amount_minor": 125000,
+                "currency": "INR",
+                "payment_id": "pay_42"
+              },
+              "horizon_ms": 120,
+              "records": [],
+              "scope": {
+                "currency": "INR",
+                "lag_ms": 200,
+                "payment_id": "pay_42"
+              },
+              "watermark_ms": 0
+            },
+            "observation_id": "obs_18000037_000001",
+            "source": "payment_ledger"
+          }
+        ],
+        "observed_at_ms": 120,
+        "origin": "unknown",
+        "reason": "Readback watermark precedes contract horizon",
+        "status": "unknown"
+      }
+    ],
+    "recorded_alignment": "unassessable",
+    "recorded_codes": [
+      "UNKNOWN_OUTCOME"
+    ],
+    "recorded_prediction": {
+      "action_linked": null,
+      "origin": "unknown",
+      "state": null
+    },
+    "recorded_receipts": [
+      {
+        "attributable_effect_ids": [],
+        "contract_id": "contract:18000037",
+        "effect_ids": [],
+        "evidence": [
+          {
+            "as_of_ms": 0,
+            "details": {
+              "available": true,
+              "complete": true,
+              "expected": {
+                "amount_minor": 125000,
+                "currency": "INR",
+                "payment_id": "pay_42"
+              },
+              "horizon_ms": 120,
+              "records": [],
+              "scope": {
+                "currency": "INR",
+                "lag_ms": 200,
+                "payment_id": "pay_42"
+              },
+              "watermark_ms": 0
+            },
+            "observation_id": "obs_18000037_000001",
+            "source": "payment_ledger"
+          }
+        ],
+        "observed_at_ms": 120,
+        "origin": "unknown",
+        "reason": "Readback watermark precedes contract horizon",
+        "status": "unknown"
+      }
+    ]
+  },
+  "slot": {
+    "case_id": "matched.desk.delayed-readback",
+    "family_id": "refund-desk-log",
+    "model": "llama3.2:3b-instruct-q4_K_M",
+    "prompt_version": "refund-policy-v2",
+    "repetition": 1,
+    "reserved_phase_seeds": [
+      108000222,
+      108000223,
+      108000224,
+      108000225,
+      108000226,
+      108000227
+    ],
+    "slot": 111,
+    "slot_id": "episode_00111",
+    "template_id": "refund-desk-log-v1",
+    "trial_seed": 18000037,
+    "wording_sha256": "fe398563ef991c338ec1a0e616da8ea5c12f7664096694a4176833a975ff26a9",
+    "world_seed": 18000037
+  },
+  "target_matching": {
+    "empty": 0,
+    "nonempty": 0,
+    "unavailable": 1
+  },
+  "time_base": "relative_ms",
+  "trace_sha256": "96e4fa9ff7a44cc7c25c30d6ade61abbc509a322caf75bb7fed44687ab730157"
+}

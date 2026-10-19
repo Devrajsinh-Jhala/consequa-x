@@ -1,0 +1,478 @@
+{
+  "actions": [
+    {
+      "action_id": "refund:18000080",
+      "actor": "RefundAgent",
+      "arguments": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42"
+      },
+      "contract": {
+        "contract_id": "contract:18000080",
+        "deadline_ms": 100,
+        "exact_count": 1,
+        "expected": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        },
+        "predicate": "refund_processed",
+        "stability_ms": 20
+      },
+      "idempotency_key": "consequa-refund-18000080",
+      "name": "refund",
+      "registered_at_ms": 5
+    }
+  ],
+  "assessments": [
+    {
+      "action_id": "refund:18000080",
+      "assessment_id": "assessment_1",
+      "evidence_event_ids": [
+        "response_1"
+      ],
+      "rationale": "Refund processed successfully",
+      "status": "success",
+      "time_ms": 6
+    }
+  ],
+  "events": [
+    {
+      "actor": null,
+      "data": {
+        "value": "Resolution requested: issue the customer's refund for the payment and amount shown in the task."
+      },
+      "id": "customer_request",
+      "parent_ids": [],
+      "time_ms": 0,
+      "type": "user_input"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "Membership classification on the resolution card: VIP."
+      },
+      "id": "vip_memory",
+      "parent_ids": [],
+      "time_ms": 1,
+      "type": "memory_read"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "An eligible VIP customer may obtain a requested refund through day 60 after the order."
+      },
+      "id": "vip_policy",
+      "parent_ids": [],
+      "time_ms": 2,
+      "type": "retrieval"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": ""
+      },
+      "id": "retry_instruction",
+      "parent_ids": [],
+      "time_ms": 3,
+      "type": "system_instruction"
+    },
+    {
+      "actor": null,
+      "data": {
+        "value": "The service desk operates on weekdays."
+      },
+      "id": "distractor",
+      "parent_ids": [],
+      "time_ms": 4,
+      "type": "retrieval"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "model_seed": 108000480,
+        "policy": {
+          "base_url": "http://127.0.0.1:11435",
+          "num_predict": 384,
+          "prompt_version": "refund-policy-v1",
+          "provider": "ollama",
+          "requested_model": "llama3.2:3b-instruct-q4_K_M",
+          "temperature": 0.2,
+          "timeout_seconds": 180.0
+        },
+        "policy_reply": {
+          "decision": {
+            "assessment": "failure",
+            "operation": "refund",
+            "rationale": "Order is beyond the standard 30-day window for refund eligibility."
+          },
+          "metadata": {
+            "base_url": "http://127.0.0.1:11435",
+            "done_reason": "stop",
+            "eval_count": 38,
+            "eval_duration": 9821974000,
+            "load_duration": 11896800,
+            "local_inspection": {
+              "capabilities": [
+                "completion",
+                "tools"
+              ],
+              "details": {
+                "families": [
+                  "llama"
+                ],
+                "family": "llama",
+                "format": "gguf",
+                "parameter_size": "3.2B",
+                "quantization_level": "Q4_K_M"
+              },
+              "endpoint": "/api/show",
+              "inspection_sha256": "917212d9b6e48988460623ab81e80c21ddf51fa3845914fe661d81e1ad7bea3c",
+              "no_declared_remote_routing": true,
+              "requested_model": "llama3.2:3b-instruct-q4_K_M",
+              "routing_fields_present": []
+            },
+            "num_predict": 384,
+            "prompt_eval_count": 373,
+            "prompt_eval_duration": 11369072000,
+            "prompt_version": "refund-policy-v1",
+            "provider": "ollama",
+            "request_payload_sha256": "b60271bccbf451aa92253ddb29347864bbaf285145b5b59af4f3770fb91384e6",
+            "request_sha256": "d2fea748812afd429b62b54194a14141927505800133b886909314a3f54ee50a",
+            "requested_model": "llama3.2:3b-instruct-q4_K_M",
+            "returned_model": "llama3.2:3b-instruct-q4_K_M",
+            "seed": 108000480,
+            "system_prompt_sha256": "c5e9c07829c569b7382d0187e278c533d450e30c39038e49367f66ceb2468a74",
+            "temperature": 0.2,
+            "timeout_seconds": 180.0,
+            "total_duration": 21258754100
+          }
+        },
+        "policy_request": {
+          "attempts_remaining": 2,
+          "context": {
+            "customer_request": "Resolution requested: issue the customer's refund for the payment and amount shown in the task.",
+            "distractor": "The service desk operates on weekdays.",
+            "retry_instruction": "",
+            "vip_memory": "Membership classification on the resolution card: VIP.",
+            "vip_policy": "An eligible VIP customer may obtain a requested refund through day 60 after the order."
+          },
+          "responses": [],
+          "stage": "select",
+          "task": {
+            "amount_minor": 125000,
+            "base_refund_policy": "Ordinary refund eligibility ends after day 30; an order aged at most 30 days is within the standard window.",
+            "currency": "INR",
+            "deadline_ms": 100,
+            "horizon_ms": 120,
+            "idempotency_available": true,
+            "order_age_days": 43,
+            "payment_id": "pay_42"
+          }
+        },
+        "selected": true
+      },
+      "id": "refund_decision",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy",
+        "retry_instruction",
+        "distractor"
+      ],
+      "time_ms": 5,
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "refund_decision"
+        ],
+        "rationale": "Order is beyond the standard 30-day window for refund eligibility.",
+        "status": "failure",
+        "time_ms": 5
+      },
+      "id": "assessment_0",
+      "parent_ids": [
+        "refund_decision"
+      ],
+      "time_ms": 5,
+      "type": "agent_assessment"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:18000080",
+        "arguments": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42"
+        }
+      },
+      "id": "refund_intent",
+      "parent_ids": [
+        "refund_decision"
+      ],
+      "time_ms": 5,
+      "type": "action_intent"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "action_id": "refund:18000080",
+        "attempt_id": "attempt:18000080:1"
+      },
+      "id": "dispatch_1",
+      "parent_ids": [
+        "refund_intent"
+      ],
+      "time_ms": 5,
+      "type": "action_dispatch"
+    },
+    {
+      "actor": null,
+      "data": {
+        "attempt_id": "attempt:18000080:1",
+        "provider_request_id": "req_18000080_000001",
+        "result": {
+          "amount_minor": 125000,
+          "currency": "INR",
+          "payment_id": "pay_42",
+          "refund_id": "rf_18000080_000001",
+          "status": "processed"
+        },
+        "status": "success",
+        "time_ms": 6
+      },
+      "id": "response_1",
+      "parent_ids": [
+        "dispatch_1"
+      ],
+      "time_ms": 6,
+      "type": "tool_response"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "model_seed": 108000481,
+        "policy": {
+          "base_url": "http://127.0.0.1:11435",
+          "local_inspection": {
+            "capabilities": [
+              "completion",
+              "tools"
+            ],
+            "details": {
+              "families": [
+                "llama"
+              ],
+              "family": "llama",
+              "format": "gguf",
+              "parameter_size": "3.2B",
+              "quantization_level": "Q4_K_M"
+            },
+            "endpoint": "/api/show",
+            "inspection_sha256": "917212d9b6e48988460623ab81e80c21ddf51fa3845914fe661d81e1ad7bea3c",
+            "no_declared_remote_routing": true,
+            "requested_model": "llama3.2:3b-instruct-q4_K_M",
+            "routing_fields_present": []
+          },
+          "num_predict": 384,
+          "prompt_version": "refund-policy-v1",
+          "provider": "ollama",
+          "requested_model": "llama3.2:3b-instruct-q4_K_M",
+          "temperature": 0.2,
+          "timeout_seconds": 180.0
+        },
+        "policy_reply": {
+          "decision": {
+            "assessment": "success",
+            "operation": "stop",
+            "rationale": "Refund processed successfully"
+          },
+          "metadata": {
+            "base_url": "http://127.0.0.1:11435",
+            "done_reason": "stop",
+            "eval_count": 28,
+            "eval_duration": 9026153000,
+            "load_duration": 282829100,
+            "local_inspection": {
+              "capabilities": [
+                "completion",
+                "tools"
+              ],
+              "details": {
+                "families": [
+                  "llama"
+                ],
+                "family": "llama",
+                "format": "gguf",
+                "parameter_size": "3.2B",
+                "quantization_level": "Q4_K_M"
+              },
+              "endpoint": "/api/show",
+              "inspection_sha256": "917212d9b6e48988460623ab81e80c21ddf51fa3845914fe661d81e1ad7bea3c",
+              "no_declared_remote_routing": true,
+              "requested_model": "llama3.2:3b-instruct-q4_K_M",
+              "routing_fields_present": []
+            },
+            "num_predict": 384,
+            "prompt_eval_count": 443,
+            "prompt_eval_duration": 18266549000,
+            "prompt_version": "refund-policy-v1",
+            "provider": "ollama",
+            "request_payload_sha256": "13a9804422ab43c37f3ea13fb63a635bc71f5a2e9f648a9c6df61d32856c30d8",
+            "request_sha256": "3ea80cdb66ad7c1517bbd499e1c43c5565d2b6688dfc96d2732819233c32674f",
+            "requested_model": "llama3.2:3b-instruct-q4_K_M",
+            "returned_model": "llama3.2:3b-instruct-q4_K_M",
+            "seed": 108000481,
+            "system_prompt_sha256": "c5e9c07829c569b7382d0187e278c533d450e30c39038e49367f66ceb2468a74",
+            "temperature": 0.2,
+            "timeout_seconds": 180.0,
+            "total_duration": 27603949300
+          }
+        },
+        "policy_request": {
+          "attempts_remaining": 1,
+          "context": {
+            "customer_request": "Resolution requested: issue the customer's refund for the payment and amount shown in the task.",
+            "distractor": "The service desk operates on weekdays.",
+            "retry_instruction": "",
+            "vip_memory": "Membership classification on the resolution card: VIP.",
+            "vip_policy": "An eligible VIP customer may obtain a requested refund through day 60 after the order."
+          },
+          "responses": [
+            {
+              "attempt_id": "attempt:18000080:1",
+              "provider_request_id": "req_18000080_000001",
+              "result": {
+                "amount_minor": 125000,
+                "currency": "INR",
+                "payment_id": "pay_42",
+                "refund_id": "rf_18000080_000001",
+                "status": "processed"
+              },
+              "status": "success",
+              "time_ms": 6
+            }
+          ],
+          "stage": "after_response",
+          "task": {
+            "amount_minor": 125000,
+            "base_refund_policy": "Ordinary refund eligibility ends after day 30; an order aged at most 30 days is within the standard window.",
+            "currency": "INR",
+            "deadline_ms": 100,
+            "horizon_ms": 120,
+            "idempotency_available": true,
+            "order_age_days": 43,
+            "payment_id": "pay_42"
+          }
+        },
+        "selected": false
+      },
+      "id": "response_decision_1",
+      "parent_ids": [
+        "customer_request",
+        "vip_memory",
+        "vip_policy",
+        "retry_instruction",
+        "distractor",
+        "response_1"
+      ],
+      "time_ms": 6,
+      "type": "agent_decision"
+    },
+    {
+      "actor": "RefundAgent",
+      "data": {
+        "evidence_event_ids": [
+          "response_1"
+        ],
+        "rationale": "Refund processed successfully",
+        "status": "success",
+        "time_ms": 6
+      },
+      "id": "assessment_1",
+      "parent_ids": [
+        "response_decision_1"
+      ],
+      "time_ms": 6,
+      "type": "agent_assessment"
+    }
+  ],
+  "observations": [
+    {
+      "as_of_ms": 0,
+      "available": true,
+      "complete": true,
+      "observation_id": "obs_18000080_000001",
+      "observed_at_ms": 120,
+      "records": [],
+      "scope": {
+        "currency": "INR",
+        "lag_ms": 200,
+        "payment_id": "pay_42"
+      },
+      "source": "payment_ledger"
+    }
+  ],
+  "responses": [
+    {
+      "action_id": "refund:18000080",
+      "attempt_id": "attempt:18000080:1",
+      "provider_request_id": "req_18000080_000001",
+      "result": {
+        "amount_minor": 125000,
+        "currency": "INR",
+        "payment_id": "pay_42",
+        "refund_id": "rf_18000080_000001",
+        "status": "processed"
+      },
+      "status": "success",
+      "time_ms": 6
+    }
+  ],
+  "schema_version": "1.0",
+  "time_base": "relative_ms",
+  "trace_id": "trace:18000080",
+  "verifications": [
+    {
+      "action_id": "refund:18000080",
+      "attributable_effect_ids": [],
+      "contract_id": "contract:18000080",
+      "effect_ids": [],
+      "evidence": [
+        {
+          "as_of_ms": 0,
+          "details": {
+            "available": true,
+            "complete": true,
+            "expected": {
+              "amount_minor": 125000,
+              "currency": "INR",
+              "payment_id": "pay_42"
+            },
+            "horizon_ms": 120,
+            "records": [],
+            "scope": {
+              "currency": "INR",
+              "lag_ms": 200,
+              "payment_id": "pay_42"
+            },
+            "watermark_ms": 0
+          },
+          "observation_id": "obs_18000080_000001",
+          "source": "payment_ledger"
+        }
+      ],
+      "findings": [],
+      "observed_at_ms": 120,
+      "origin": "unknown",
+      "reason": "Readback watermark precedes contract horizon",
+      "status": "unknown",
+      "target_effect_ids": null
+    }
+  ]
+}

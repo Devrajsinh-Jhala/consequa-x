@@ -1,0 +1,443 @@
+{
+  "auditor_role": "Implementation-author read-only audit, separate from root execution; independent recomputation of artifact hashes/counts, not independent implementer or human validation",
+  "conclusion": "Preserve all cases and separate task-end-state DB self-replay consistency from immediate operation field contracts, dynamic user goals, NL/policy criteria and mutation provenance.",
+  "contexts": [
+    {
+      "dataset_bug_claim": false,
+      "interpretation": "Reference includes a rejected exchange followed by a successful pending-order modification on the same order. Retail policy permits modification for pending orders and exchange for delivered orders. The first operation field contract is violated while the later modification and final DB self-replay match. This may represent an error/fallback reference trajectory; this audit does not classify it as a dataset bug or independently judge user satisfaction.",
+      "reference_episode": "output/tau3-state-transfer-2026-10-18/episodes/episode_0256.json",
+      "reference_episode_sha256": "e56b486a17b1b61daf9b6ec413510fe9f806cdf4e116d39b6b7025e51f2082b7",
+      "reference_writes": [
+        {
+          "index": 6,
+          "response_content": "Error: Non-delivered order cannot be exchanged",
+          "response_error": true,
+          "tool": "exchange_delivered_order_items"
+        },
+        {
+          "index": 7,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_pending_order_items"
+        }
+      ],
+      "source_task": {
+        "description": {
+          "notes": null,
+          "purpose": null,
+          "relevant_policies": null
+        },
+        "evaluation_criteria": {
+          "actions": [
+            {
+              "action_id": "64_0",
+              "arguments": {
+                "first_name": "James",
+                "last_name": "Sanchez",
+                "zip": "60623"
+              },
+              "info": null,
+              "name": "find_user_id_by_name_zip"
+            },
+            {
+              "action_id": "64_1",
+              "arguments": {
+                "user_id": "james_sanchez_3954"
+              },
+              "info": null,
+              "name": "get_user_details"
+            },
+            {
+              "action_id": "64_2",
+              "arguments": {
+                "order_id": "#W7464385"
+              },
+              "info": null,
+              "name": "get_order_details"
+            },
+            {
+              "action_id": "64_3",
+              "arguments": {
+                "order_id": "#W8499625"
+              },
+              "info": null,
+              "name": "get_order_details"
+            },
+            {
+              "action_id": "64_4",
+              "arguments": {
+                "order_id": "#W1279004"
+              },
+              "info": null,
+              "name": "get_order_details"
+            },
+            {
+              "action_id": "64_5",
+              "arguments": {
+                "product_id": "3377618313"
+              },
+              "info": null,
+              "name": "get_product_details"
+            },
+            {
+              "action_id": "64_6",
+              "arguments": {
+                "item_ids": [
+                  "1810466394"
+                ],
+                "new_item_ids": [
+                  "6700049080"
+                ],
+                "order_id": "#W7464385",
+                "payment_method_id": "paypal_1261484"
+              },
+              "info": null,
+              "name": "exchange_delivered_order_items"
+            },
+            {
+              "action_id": "64_7",
+              "arguments": {
+                "item_ids": [
+                  "1810466394"
+                ],
+                "new_item_ids": [
+                  "6700049080"
+                ],
+                "order_id": "#W7464385",
+                "payment_method_id": "paypal_1261484"
+              },
+              "info": null,
+              "name": "modify_pending_order_items"
+            }
+          ],
+          "communicate_info": [],
+          "nl_assertions": null,
+          "reward_basis": [
+            "DB",
+            "NL_ASSERTION"
+          ]
+        },
+        "id": "64",
+        "initial_state": null,
+        "user_scenario": {
+          "instructions": {
+            "domain": "retail",
+            "known_info": "You are James Sanchez. You live in Chicago 60623.",
+            "reason_for_call": "You want to exchange the camera for the highest resolution, waterproof camera that you can get with the previous purchaced price.",
+            "task_instructions": ".",
+            "unknown_info": "You do not remember your email address"
+          },
+          "persona": null
+        }
+      },
+      "task_id": "64"
+    },
+    {
+      "dataset_bug_claim": false,
+      "interpretation": "User requests two kettle exchanges; the sole reference exchange is rejected for insufficient gift-card balance. The task also includes an NL assertion requiring both exchanges. This experiment does not evaluate that NL criterion or full task reward. DB equality with a gold environment that repeats the failed call is self-replay consistency, not evidence that the requested exchanges or full task were completed. No dataset-bug conclusion is made.",
+      "reference_episode": "output/tau3-state-transfer-2026-10-18/episodes/episode_0420.json",
+      "reference_episode_sha256": "652e04912ce3fec53cf8238b440d3b42181f420bc04d0d43e78d56bc1d790f86",
+      "reference_writes": [
+        {
+          "index": 0,
+          "response_content": "Error: Insufficient gift card balance to pay for the price difference",
+          "response_error": true,
+          "tool": "exchange_delivered_order_items"
+        }
+      ],
+      "source_task": {
+        "description": {
+          "notes": null,
+          "purpose": null,
+          "relevant_policies": null
+        },
+        "evaluation_criteria": {
+          "actions": [
+            {
+              "action_id": "106_0",
+              "arguments": {
+                "item_ids": [
+                  "7292993796",
+                  "7292993796"
+                ],
+                "new_item_ids": [
+                  "3761330360",
+                  "9647374798"
+                ],
+                "order_id": "#W4316152",
+                "payment_method_id": "gift_card_7245904"
+              },
+              "info": null,
+              "name": "exchange_delivered_order_items"
+            }
+          ],
+          "communicate_info": [],
+          "nl_assertions": [
+            "Agent should exchange both tea kettles (same style) to the items requested"
+          ],
+          "reward_basis": [
+            "DB",
+            "NL_ASSERTION"
+          ]
+        },
+        "id": "105",
+        "initial_state": null,
+        "user_scenario": {
+          "instructions": {
+            "domain": "retail",
+            "known_info": "You name is Aarav Anderson and your zip code is 19031.",
+            "reason_for_call": "For order #W4316152, you want to  exchange one Tea Kettle {'material': 'glass', 'capacity': '2 liters', 'stovetop compatibility': 'induction'} to {'material': 'ceramic', 'stovetop compatibility': 'gas'}; and another Tea Kettle {'material': 'glass', 'capacity': '2 liters', 'stovetop compatibility': 'induction'} to {'capacity': '1.5 liters', 'stovetop compatibility': 'gas'};",
+            "task_instructions": "You are cautious, messy, rigid.",
+            "unknown_info": "You do not remember your email address"
+          },
+          "persona": null
+        }
+      },
+      "task_id": "105"
+    },
+    {
+      "dataset_bug_claim": false,
+      "interpretation": "User asks for address changes and later restoration of the original default user address. The reference contains both the initial user-address change and restoration. Omitting all writes leaves the initial/original address equal to the restoration postcondition, but does not establish that either operation occurred or that the full task succeeded. Origin stays unknown.",
+      "reference_episode": "output/tau3-state-transfer-2026-10-18/episodes/episode_0088.json",
+      "reference_episode_sha256": "5f5570d156b40be481d77b396b05d9297b4b1ce96ec9db5616ae27feb99a6c84",
+      "reference_writes": [
+        {
+          "index": 1,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_user_address"
+        },
+        {
+          "index": 5,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_pending_order_address"
+        },
+        {
+          "index": 6,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_user_address"
+        }
+      ],
+      "source_task": {
+        "description": {
+          "notes": null,
+          "purpose": null,
+          "relevant_policies": null
+        },
+        "evaluation_criteria": {
+          "actions": [
+            {
+              "action_id": "22_0",
+              "arguments": {
+                "first_name": "Ethan",
+                "last_name": "Garcia",
+                "zip": "80280"
+              },
+              "info": null,
+              "name": "find_user_id_by_name_zip"
+            },
+            {
+              "action_id": "22_1",
+              "arguments": {
+                "address1": "101 Highway",
+                "address2": "",
+                "city": "New York",
+                "country": "USA",
+                "state": "NY",
+                "user_id": "ethan_garcia_1261",
+                "zip": "10001"
+              },
+              "info": null,
+              "name": "modify_user_address"
+            },
+            {
+              "action_id": "22_2",
+              "arguments": {
+                "order_id": "#W4967593"
+              },
+              "info": null,
+              "name": "get_order_details"
+            },
+            {
+              "action_id": "22_3",
+              "arguments": {
+                "order_id": "#W9911714"
+              },
+              "info": null,
+              "name": "get_order_details"
+            },
+            {
+              "action_id": "22_4",
+              "arguments": {
+                "order_id": "#W5733668"
+              },
+              "info": null,
+              "name": "get_order_details"
+            },
+            {
+              "action_id": "22_5",
+              "arguments": {
+                "address1": "101 Highway",
+                "address2": "",
+                "city": "New York",
+                "country": "USA",
+                "order_id": "#W9911714",
+                "state": "NY",
+                "zip": "10001"
+              },
+              "info": null,
+              "name": "modify_pending_order_address"
+            },
+            {
+              "action_id": "22_6",
+              "arguments": {
+                "address1": "667 Highland Drive",
+                "address2": "Suite 865",
+                "city": "Denver",
+                "country": "USA",
+                "state": "CO",
+                "user_id": "ethan_garcia_1261",
+                "zip": "80280"
+              },
+              "info": null,
+              "name": "modify_user_address"
+            }
+          ],
+          "communicate_info": [],
+          "nl_assertions": null,
+          "reward_basis": [
+            "DB",
+            "NL_ASSERTION"
+          ]
+        },
+        "id": "22",
+        "initial_state": null,
+        "user_scenario": {
+          "instructions": {
+            "domain": "retail",
+            "known_info": "You are Ethan Garcia, and you live in Denver, 80280.",
+            "reason_for_call": "You want to change your user address and all possible order addresses to be 101 Highway, New York, 10001 (including the orders). Once the agent has confirmed the changes for the default address AND the order addresses, then you regret it and want to change the user address back to the original address.",
+            "task_instructions": "You are a mysterious person and do not want to reveal much about yourself.",
+            "unknown_info": "You do not remember your email address"
+          },
+          "persona": null
+        }
+      },
+      "task_id": "22"
+    },
+    {
+      "dataset_bug_claim": false,
+      "interpretation": "User requests order and default-user address changes plus an item change. The requested default-user address is already present in the initial database. That individual field predicate can hold with every write omitted; other operation predicates and full-task DB comparison remain separate. State satisfaction does not prove a mutation; origin stays unknown.",
+      "reference_episode": "output/tau3-state-transfer-2026-10-18/episodes/episode_0440.json",
+      "reference_episode_sha256": "78a021707dc022725c0d8964c89d2d8f4a017ae6701f47f4be08d3105f10008a",
+      "reference_writes": [
+        {
+          "index": 0,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_pending_order_address"
+        },
+        {
+          "index": 1,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_user_address"
+        },
+        {
+          "index": 2,
+          "response_content": null,
+          "response_error": false,
+          "tool": "modify_pending_order_items"
+        }
+      ],
+      "source_task": {
+        "description": {
+          "notes": null,
+          "purpose": null,
+          "relevant_policies": null
+        },
+        "evaluation_criteria": {
+          "actions": [
+            {
+              "action_id": "111_0",
+              "arguments": {
+                "address1": "760 Elm Avenue",
+                "address2": "Suite 564",
+                "city": "Houston",
+                "country": "USA",
+                "order_id": "#W1092119",
+                "state": "TX",
+                "zip": "77034"
+              },
+              "info": null,
+              "name": "modify_pending_order_address"
+            },
+            {
+              "action_id": "111_1",
+              "arguments": {
+                "address1": "760 Elm Avenue",
+                "address2": "Suite 564",
+                "city": "Houston",
+                "country": "USA",
+                "state": "TX",
+                "user_id": "sophia_martin_8570",
+                "zip": "77034"
+              },
+              "info": null,
+              "name": "modify_user_address"
+            },
+            {
+              "action_id": "111_2",
+              "arguments": {
+                "item_ids": [
+                  "6501071631"
+                ],
+                "new_item_ids": [
+                  "2106335193"
+                ],
+                "order_id": "#W1603792",
+                "payment_method_id": "credit_card_5694100"
+              },
+              "info": null,
+              "name": "modify_pending_order_items"
+            }
+          ],
+          "communicate_info": [],
+          "nl_assertions": [
+            "Agent should modify address for the order",
+            "Agent should modify user address",
+            "Agent should modify the items in the pending order."
+          ],
+          "reward_basis": [
+            "DB",
+            "NL_ASSERTION"
+          ]
+        },
+        "id": "110",
+        "initial_state": null,
+        "user_scenario": {
+          "instructions": {
+            "domain": "retail",
+            "known_info": "You name is Sophia Martin and your email is sophia.martin4832@example.com.",
+            "reason_for_call": "You live on Elm Avenue in Houston, and recently you moved to a new house on the same street and bought a tablet sent to there. But you realize you have another order sent to the old address, and you want to change your wrong order address to the new home, and also your user default address to the new home. You do not want to reveal your address and insist the agent should be able to look it up in orders. You also want to exchange your tablet to the cheapest one due to moving costs.",
+            "task_instructions": "You are organized and outgoing.  Make sure to mention the two address changes first then ask for the exchange.",
+            "unknown_info": null
+          },
+          "persona": null
+        }
+      },
+      "task_id": "110"
+    }
+  ],
+  "created_utc": "2026-10-18T17:38:04.347650+00:00",
+  "extra_model_calls": 0,
+  "extra_native_tool_executions": 0,
+  "policy_file": "data/tau2/domains/retail/policy.md",
+  "policy_sha256": "4313d3fef8acf919f555fa17fbce929cc3ed1cef2dd8f0d35ff5c8c3364de176",
+  "protocol_sha256": "cf3f80e687b4a5094e54748964d46af032eb47406bd0d506fa15b33f20ac0d29",
+  "schema": "consequa-tau3-task-context-audit-v1",
+  "summary_sha256": "2d042cbd8f138c9f31f82d1c33e91786f4e2237c27bcc5a6805714ffbc50c75e",
+  "upstream_commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a"
+}

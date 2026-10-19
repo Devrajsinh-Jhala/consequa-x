@@ -1,0 +1,434 @@
+[
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "state",
+    "metric": "coverage",
+    "numerator": 60,
+    "denominator": 84,
+    "value": 0.7142857142857143
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "state",
+    "metric": "coverage",
+    "numerator": 72,
+    "denominator": 84,
+    "value": 0.8571428571428571
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "state",
+    "metric": "coverage",
+    "numerator": 72,
+    "denominator": 84,
+    "value": 0.8571428571428571
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "state",
+    "metric": "claim_error",
+    "numerator": 9,
+    "denominator": 60,
+    "value": 0.15
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "state",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 72,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "state",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 72,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "state",
+    "metric": "planned_yield",
+    "numerator": 51,
+    "denominator": 84,
+    "value": 0.6071428571428571
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "state",
+    "metric": "planned_yield",
+    "numerator": 72,
+    "denominator": 84,
+    "value": 0.8571428571428571
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "state",
+    "metric": "planned_yield",
+    "numerator": 72,
+    "denominator": 84,
+    "value": 0.8571428571428571
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "action_linked",
+    "metric": "coverage",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "coverage",
+    "numerator": 64,
+    "denominator": 84,
+    "value": 0.7619047619047619
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "coverage",
+    "numerator": 64,
+    "denominator": 84,
+    "value": 0.7619047619047619
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 0,
+    "value": null
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 64,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 64,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "action_linked",
+    "metric": "planned_yield",
+    "numerator": 0,
+    "denominator": 84,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "action_linked",
+    "metric": "planned_yield",
+    "numerator": 64,
+    "denominator": 84,
+    "value": 0.7619047619047619
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "action_linked",
+    "metric": "planned_yield",
+    "numerator": 64,
+    "denominator": 84,
+    "value": 0.7619047619047619
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "origin",
+    "metric": "coverage",
+    "numerator": 52,
+    "denominator": 52,
+    "value": 1.0
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "origin",
+    "metric": "coverage",
+    "numerator": 36,
+    "denominator": 52,
+    "value": 0.6923076923076923
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "origin",
+    "metric": "coverage",
+    "numerator": 36,
+    "denominator": 52,
+    "value": 0.6923076923076923
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "origin",
+    "metric": "claim_error",
+    "numerator": 12,
+    "denominator": 52,
+    "value": 0.23076923076923078
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "origin",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 36,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "origin",
+    "metric": "claim_error",
+    "numerator": 0,
+    "denominator": 36,
+    "value": 0.0
+  },
+  {
+    "study": "judge",
+    "group": "local_trace_judge",
+    "target": "origin",
+    "metric": "planned_yield",
+    "numerator": 40,
+    "denominator": 84,
+    "value": 0.47619047619047616
+  },
+  {
+    "study": "judge",
+    "group": "independent_public_reference",
+    "target": "origin",
+    "metric": "planned_yield",
+    "numerator": 36,
+    "denominator": 84,
+    "value": 0.42857142857142855
+  },
+  {
+    "study": "judge",
+    "group": "consequa_state_origin",
+    "target": "origin",
+    "metric": "planned_yield",
+    "numerator": 36,
+    "denominator": 84,
+    "value": 0.42857142857142855
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "retail",
+    "target": "reference",
+    "metric": "db_match_per_planned",
+    "numerator": 114,
+    "denominator": 114,
+    "value": 1.0
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "reference",
+    "metric": "satisfied",
+    "numerator": 174,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "reference",
+    "metric": "violated",
+    "numerator": 2,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "retail",
+    "target": "omit_writes",
+    "metric": "db_match_per_planned",
+    "numerator": 11,
+    "denominator": 114,
+    "value": 0.09649122807017543
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "omit_writes",
+    "metric": "satisfied",
+    "numerator": 2,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "omit_writes",
+    "metric": "violated",
+    "numerator": 174,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "retail",
+    "target": "false_acknowledgement",
+    "metric": "db_match_per_planned",
+    "numerator": 11,
+    "denominator": 114,
+    "value": 0.09649122807017543
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "false_acknowledgement",
+    "metric": "satisfied",
+    "numerator": 2,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "false_acknowledgement",
+    "metric": "violated",
+    "numerator": 174,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "retail",
+    "target": "altered_first_write",
+    "metric": "db_match_per_planned",
+    "numerator": 13,
+    "denominator": 114,
+    "value": 0.11403508771929824
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "altered_first_write",
+    "metric": "satisfied",
+    "numerator": 72,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "retail",
+    "target": "altered_first_write",
+    "metric": "violated",
+    "numerator": 104,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "airline",
+    "target": "reference",
+    "metric": "db_match_per_planned",
+    "numerator": 50,
+    "denominator": 50,
+    "value": 1.0
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "airline",
+    "target": "reference",
+    "metric": "satisfied",
+    "numerator": 49,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "airline",
+    "target": "omit_writes",
+    "metric": "db_match_per_planned",
+    "numerator": 24,
+    "denominator": 50,
+    "value": 0.48
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "airline",
+    "target": "omit_writes",
+    "metric": "violated",
+    "numerator": 49,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "airline",
+    "target": "false_acknowledgement",
+    "metric": "db_match_per_planned",
+    "numerator": 24,
+    "denominator": 50,
+    "value": 0.48
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "airline",
+    "target": "false_acknowledgement",
+    "metric": "violated",
+    "numerator": 49,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_native_db",
+    "group": "airline",
+    "target": "altered_first_write",
+    "metric": "db_match_per_planned",
+    "numerator": 24,
+    "denominator": 50,
+    "value": 0.48
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "airline",
+    "target": "altered_first_write",
+    "metric": "satisfied",
+    "numerator": 23,
+    "denominator": null,
+    "value": null
+  },
+  {
+    "study": "tau3_action_fields",
+    "group": "airline",
+    "target": "altered_first_write",
+    "metric": "violated",
+    "numerator": 26,
+    "denominator": null,
+    "value": null
+  }
+]

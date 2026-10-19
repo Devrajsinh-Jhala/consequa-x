@@ -1,0 +1,31 @@
+{
+  "audited_engine_receipts": 393216,
+  "draw_status_by_engine": {
+    "consequa_x": {
+      "failed": 88,
+      "invalid": 0,
+      "known": 142999,
+      "unknown": 29101,
+      "unstarted": 24420
+    },
+    "upstream_car": {
+      "failed": 128,
+      "invalid": 0,
+      "known": 142999,
+      "unknown": 29101,
+      "unstarted": 24380
+    }
+  },
+  "eligible_paired_groups": 640,
+  "fresh_scripted_policy_calls_per_engine": {
+    "consequa_x": 209666,
+    "upstream_car": 209666
+  },
+  "interval_limitation": "Engine-produced interval endpoints were read unchanged; point estimates, coverage, bias, RMSE and interval widths were independently recomputed, not the underlying bootstrap/normal/CP/Hoeffding implementations.",
+  "local_source_blobs_checked": 38,
+  "manifest_bound_files": 2053,
+  "schema": "independent-car-final-findings-context-v1",
+  "scope": "Read-only independent stdlib audit of frozen1.1.0 scripted simulator/adapter output, not a rerun, autonomous-agent benchmark, independent human review, live model causal evaluation or superiority result.",
+  "unavailable_paired_groups": 384,
+  "upstream_source_files_checked": 36
+}

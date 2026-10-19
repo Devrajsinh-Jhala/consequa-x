@@ -1,0 +1,2791 @@
+{
+  "schema": "consequa-x.claude-2.0-paper-review.v1",
+  "checked_at_utc": "2026-10-19T10:02:34.942048+00:00",
+  "scope": "Read-only Git/source/publication review; AST parsing only, no execution/import of the package, fixtures or measured traces; no new model calls; no source/data/workflow changes. Only this output directory written.",
+  "refs": {
+    "frozen_experimental": "940ebfcc0059c992977dd8e9f112361ff5b31edd",
+    "previous_review": "53c09ae73f00e5cdd08675cbf58ea89f3b69153e",
+    "reviewed_current": "85c6574101ebec53aa84a6cda8e23e438446bdf7"
+  },
+  "commits_since_1_2": [
+    "85c6574101ebec53aa84a6cda8e23e438446bdf7 Record the live 2.0.0 site deployment and the merge to main",
+    "b1e5bfc0ee081e445d505b7554d9b341c76ef4d6 Record the published 2.0.0 release",
+    "f2f53f8e2d490fb229bfef8b2a3d9804e8b52936 Record the 2.0.0 pre-publication checks",
+    "87463bf290ff1a1da9b270a7b11f48c512549172 Wrap long diagnosis codes inside report cards",
+    "13ce15f7556e62ab61644ef72f6d700ab50bf83d Give each sdist fixture pattern its own MANIFEST line for the release audit",
+    "d58386757f4def28b7ccbc6e0b49007c7c621b1a Prepare 2.0.0: version, website, docs pages and installed checks",
+    "9e87cd108ba7e4c88197e93e7acd7632bd438d9c 2.0 docs: README, stable API, migration guide and integration guides",
+    "b965bd8639abb582518ae49fc320928d06b172f4 2.0 (D2, D4, D6): compare traces, verify command, report redaction",
+    "711b5d4fc85f60f770c1e8dacb84fb13c7a6451e 2.0 (B7): async tools, verifiers and readback polling",
+    "3069b8a9ca11e37eb2e244eb108d73a596ab6ff6 2.0 (B5, B6): poll readback until settled; retry advice from receipts",
+    "ad0e618de4bdaa9fc06d8dad35099b0580ada2b5 2.0 (B8, D3, D7): summarize traces; append-only JSON Lines trace store",
+    "067bc8a60ccf11c40df822698b28fe276a1bacde 2.0 (D5, A7): migrate 0.1 traces, validate/migrate commands, research namespace",
+    "af6da45e986c0e072480ac4a4cdb9c8d1e1fbcdf 2.0 (A3, A4): verifier-owned target matching and findings; structured diagnoses",
+    "9105f032e1204539a25fd429efb2a84972059cfe 2.0 (A1, A2, A5, A6): trace schema 1.0 with several actions",
+    "de6890f0b35d79a7425e203aad5110f36e591aaa 2.0 (A9): deeply read-only captured payloads",
+    "d59f8fa45946b22a34f6571ad43b11d27938de04 2.0 (A8): typed exceptions under ConsequaError",
+    "1ee245fb961a5425681e869b9484d22688e32c78 Plan 2.0: package leads the paper, research ported to schema 1.0"
+  ],
+  "source_runtime_comparison_to_frozen": {
+    "old_count": 37,
+    "new_count": 48,
+    "unchanged": [
+      "src/consequa_x/__main__.py",
+      "src/consequa_x/adapters/__init__.py",
+      "src/consequa_x/adapters/ollama.py",
+      "src/consequa_x/benchmark/__init__.py",
+      "src/consequa_x/benchmark/assessment_metrics.py",
+      "src/consequa_x/benchmark/calibration.py",
+      "src/consequa_x/benchmark/calibration_export.py",
+      "src/consequa_x/benchmark/calibration_mechanisms.py",
+      "src/consequa_x/benchmark/decision_coalition.py",
+      "src/consequa_x/benchmark/decision_contrastive.py",
+      "src/consequa_x/benchmark/decision_shapley.py",
+      "src/consequa_x/benchmark/interaction_export.py",
+      "src/consequa_x/benchmark/interaction_mechanisms.py",
+      "src/consequa_x/benchmark/interval_comparison.py",
+      "src/consequa_x/benchmark/intervals.py",
+      "src/consequa_x/benchmark/study.py",
+      "src/consequa_x/benchmark/templates.py",
+      "src/consequa_x/py.typed"
+    ],
+    "modified": [
+      "src/consequa_x/__init__.py",
+      "src/consequa_x/attribution.py",
+      "src/consequa_x/benchmark/decision_replay.py",
+      "src/consequa_x/benchmark/evaluation.py",
+      "src/consequa_x/benchmark/interaction_sampling.py",
+      "src/consequa_x/benchmark/payments.py",
+      "src/consequa_x/benchmark/policy_experiment.py",
+      "src/consequa_x/benchmark/policy_runner.py",
+      "src/consequa_x/benchmark/runner.py",
+      "src/consequa_x/benchmark/targets.py",
+      "src/consequa_x/cli.py",
+      "src/consequa_x/explanation.py",
+      "src/consequa_x/graph.py",
+      "src/consequa_x/models.py",
+      "src/consequa_x/policies.py",
+      "src/consequa_x/report.py",
+      "src/consequa_x/schema.py",
+      "src/consequa_x/verification.py"
+    ],
+    "removed": [
+      "src/consequa_x/schemas/trace-v0.1.json"
+    ],
+    "added": [
+      "src/consequa_x/capture.py",
+      "src/consequa_x/compare.py",
+      "src/consequa_x/errors.py",
+      "src/consequa_x/guard.py",
+      "src/consequa_x/mcp_capture.py",
+      "src/consequa_x/migrate.py",
+      "src/consequa_x/readback.py",
+      "src/consequa_x/record_verifier.py",
+      "src/consequa_x/research.py",
+      "src/consequa_x/schemas/trace-v1.0.json",
+      "src/consequa_x/store.py",
+      "src/consequa_x/summary.py"
+    ],
+    "blobs": {
+      "src/consequa_x/__init__.py": {
+        "old": "911c80debd468640114829284c17fc181777f028",
+        "new": "10752414d63de14c3c4650e8f43b352c5e080aeb"
+      },
+      "src/consequa_x/__main__.py": {
+        "old": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08",
+        "new": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08"
+      },
+      "src/consequa_x/adapters/__init__.py": {
+        "old": "2a79abc893cda14f920fc05c5293542bb3d97b1f",
+        "new": "2a79abc893cda14f920fc05c5293542bb3d97b1f"
+      },
+      "src/consequa_x/adapters/ollama.py": {
+        "old": "9ff413705d5283ca7d9b6f212b0ca9bce8e382ff",
+        "new": "9ff413705d5283ca7d9b6f212b0ca9bce8e382ff"
+      },
+      "src/consequa_x/attribution.py": {
+        "old": "884e2e45080454171bc546b01e79c78775a8d32d",
+        "new": "2f4e12bbeb63a5380d43a0d464dece80bf674542"
+      },
+      "src/consequa_x/benchmark/__init__.py": {
+        "old": "f639fcc9837437cc33ffa9f911bf713cddc7dc9e",
+        "new": "f639fcc9837437cc33ffa9f911bf713cddc7dc9e"
+      },
+      "src/consequa_x/benchmark/assessment_metrics.py": {
+        "old": "017e6a2262e955da5dd189c906850d1f2d548260",
+        "new": "017e6a2262e955da5dd189c906850d1f2d548260"
+      },
+      "src/consequa_x/benchmark/calibration.py": {
+        "old": "3041167081ae3cc28e4130dd970818efb4ea06fa",
+        "new": "3041167081ae3cc28e4130dd970818efb4ea06fa"
+      },
+      "src/consequa_x/benchmark/calibration_export.py": {
+        "old": "e9f94d717431b90dc3c31be51408845642705f54",
+        "new": "e9f94d717431b90dc3c31be51408845642705f54"
+      },
+      "src/consequa_x/benchmark/calibration_mechanisms.py": {
+        "old": "6412666050a0d0f71b3bdef21c7ad7e159c3b3c7",
+        "new": "6412666050a0d0f71b3bdef21c7ad7e159c3b3c7"
+      },
+      "src/consequa_x/benchmark/decision_coalition.py": {
+        "old": "8e566b3b96998975e832f6392445769ce7d8fcdd",
+        "new": "8e566b3b96998975e832f6392445769ce7d8fcdd"
+      },
+      "src/consequa_x/benchmark/decision_contrastive.py": {
+        "old": "2b00c4e5f00ea84a5f5b024e8fa123d3622c93c4",
+        "new": "2b00c4e5f00ea84a5f5b024e8fa123d3622c93c4"
+      },
+      "src/consequa_x/benchmark/decision_replay.py": {
+        "old": "308c0a46eec503d6eb9652fbb1b95460374949f5",
+        "new": "8751ad29f0c7e815ab9c61412d1af5a4df739ec2"
+      },
+      "src/consequa_x/benchmark/decision_shapley.py": {
+        "old": "7c56612a7b5aa0b4e271e5c6a36039603650662a",
+        "new": "7c56612a7b5aa0b4e271e5c6a36039603650662a"
+      },
+      "src/consequa_x/benchmark/evaluation.py": {
+        "old": "f98c56af8727d60a5cd429a5235a4063913164ee",
+        "new": "dd11d4c64e3f2a7865eaf368df55f22a73bfc90e"
+      },
+      "src/consequa_x/benchmark/interaction_export.py": {
+        "old": "326a70629095c6c8148551d455c389509818a6e7",
+        "new": "326a70629095c6c8148551d455c389509818a6e7"
+      },
+      "src/consequa_x/benchmark/interaction_mechanisms.py": {
+        "old": "0c8a839adc5fcf2fb5fe59e7d372468a25c853d2",
+        "new": "0c8a839adc5fcf2fb5fe59e7d372468a25c853d2"
+      },
+      "src/consequa_x/benchmark/interaction_sampling.py": {
+        "old": "83af066230faf5c1af2b1f3668886d445893c183",
+        "new": "c491c9bc1ea6852bf5f44d6e5bac807e2bf10e34"
+      },
+      "src/consequa_x/benchmark/interval_comparison.py": {
+        "old": "fb8528df459be95aaae317d3331b6154bfa75ba1",
+        "new": "fb8528df459be95aaae317d3331b6154bfa75ba1"
+      },
+      "src/consequa_x/benchmark/intervals.py": {
+        "old": "b5044555d9040c1764c1b8f972676571e8ea7ca8",
+        "new": "b5044555d9040c1764c1b8f972676571e8ea7ca8"
+      },
+      "src/consequa_x/benchmark/payments.py": {
+        "old": "5746c5309c663a39664c5f1031c00d09f4d47d07",
+        "new": "bf6f03e0a533873ddb24d47fa27694362774c62b"
+      },
+      "src/consequa_x/benchmark/policy_experiment.py": {
+        "old": "4c46f47965a5bd8abecbbff4c419df9b462bbec1",
+        "new": "862ce389f2352ec953638814f5603da4d278d67a"
+      },
+      "src/consequa_x/benchmark/policy_runner.py": {
+        "old": "639a992be2b3c26b215456244d977034fe2a0e8c",
+        "new": "5f3a18e3e17fb851c0deb6a918bb468eb0d181bd"
+      },
+      "src/consequa_x/benchmark/runner.py": {
+        "old": "333aefae5fe5ab0b0fc3936b4d5ff0b91ba9f4f3",
+        "new": "0e22f6bec235bd2ffb967d5ba68a1e320988c0bc"
+      },
+      "src/consequa_x/benchmark/study.py": {
+        "old": "cf1ab607ad51e5d3207629fd736fa9d14abee5c0",
+        "new": "cf1ab607ad51e5d3207629fd736fa9d14abee5c0"
+      },
+      "src/consequa_x/benchmark/targets.py": {
+        "old": "f56a53830141c5a6058bfeaeb3024aa4ea194883",
+        "new": "02088259c818e63f9ae6bd188f78d63fc2f33191"
+      },
+      "src/consequa_x/benchmark/templates.py": {
+        "old": "db19b7a3cd7abd8fd732d1d0b3fb86957705552d",
+        "new": "db19b7a3cd7abd8fd732d1d0b3fb86957705552d"
+      },
+      "src/consequa_x/capture.py": {
+        "old": null,
+        "new": "a2c5a56a12f9e7e433ed225e123651da51dda9e4"
+      },
+      "src/consequa_x/cli.py": {
+        "old": "68624856f7c47d0b9bac6892d230ad6f47d9a0d5",
+        "new": "212bc6e4555873aa913c840cf3c1ffc331cf6d1f"
+      },
+      "src/consequa_x/compare.py": {
+        "old": null,
+        "new": "7edfdc0ddf67750b63e557af90d1588ec9faa878"
+      },
+      "src/consequa_x/errors.py": {
+        "old": null,
+        "new": "f01c83bb8bda7df917550e465ef49332390fc30d"
+      },
+      "src/consequa_x/explanation.py": {
+        "old": "43b60cdcd2062caa728dae3d4ca88b95eb478061",
+        "new": "3ec8a4a53a067027687d32517f845416b30afeb5"
+      },
+      "src/consequa_x/graph.py": {
+        "old": "9523123f45fcd46f1f0cd109d0a84a7cbdd21e4a",
+        "new": "7e051b642da9255271fa92a158c32cece814415f"
+      },
+      "src/consequa_x/guard.py": {
+        "old": null,
+        "new": "b2b13f829be713f1c2a5e1f7a2f1d62ec535eed6"
+      },
+      "src/consequa_x/mcp_capture.py": {
+        "old": null,
+        "new": "33808db30e1126af3a18d09b9112639faf2f9503"
+      },
+      "src/consequa_x/migrate.py": {
+        "old": null,
+        "new": "87c16225b6233ab6bd6d006bf45686d92ae0a9f8"
+      },
+      "src/consequa_x/models.py": {
+        "old": "0603680e113755e176ded9d2de62ed89e4084b20",
+        "new": "a31596063344557fc7f1965150ff08a67ec40706"
+      },
+      "src/consequa_x/policies.py": {
+        "old": "e82d75686ba834b3968f81660cc945d86a9f3c47",
+        "new": "281d42398a47b2d80b5b4f80fd071e6b27063ec0"
+      },
+      "src/consequa_x/py.typed": {
+        "old": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "new": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      "src/consequa_x/readback.py": {
+        "old": null,
+        "new": "33de0ee9b1952362f881bcd2c67601efa81b4393"
+      },
+      "src/consequa_x/record_verifier.py": {
+        "old": null,
+        "new": "db4ab090bfc7a73d7233493defdee5c80ed37806"
+      },
+      "src/consequa_x/report.py": {
+        "old": "34f4e805a9bdd5816d71a6cd6826094c4a0e89b2",
+        "new": "258ac426aee9bae1b84ef03c480f91f9da86684a"
+      },
+      "src/consequa_x/research.py": {
+        "old": null,
+        "new": "5ff9287b236be9e3d918eecb51305697ea8bdcbd"
+      },
+      "src/consequa_x/schema.py": {
+        "old": "b2d3e53a7ba63508a94a3b5cef4c79f0c344c521",
+        "new": "314a733f3bd5c746e8a74b3d830a7c196651ca15"
+      },
+      "src/consequa_x/schemas/trace-v0.1.json": {
+        "old": "944a056c0369aa2ada71b99ead88f6f6ce46f657",
+        "new": null
+      },
+      "src/consequa_x/schemas/trace-v1.0.json": {
+        "old": null,
+        "new": "2148ce4a1377d2a6d6bd752558800f8595f2efee"
+      },
+      "src/consequa_x/store.py": {
+        "old": null,
+        "new": "c4592e49eecd48967307d055618aa03017e5c822"
+      },
+      "src/consequa_x/summary.py": {
+        "old": null,
+        "new": "7e3db839a5721db18f4b0e56ca4b6bf7e6ae4f89"
+      },
+      "src/consequa_x/verification.py": {
+        "old": "56fc07a7697cb47857e47a63c4c784cfae7517fd",
+        "new": "0c2139ff5cec0ff2adccb914791e0c81e478fd4a"
+      }
+    }
+  },
+  "source_runtime_comparison_since_1_2": {
+    "old_count": 40,
+    "new_count": 48,
+    "unchanged": [
+      "src/consequa_x/__main__.py",
+      "src/consequa_x/adapters/__init__.py",
+      "src/consequa_x/adapters/ollama.py",
+      "src/consequa_x/benchmark/__init__.py",
+      "src/consequa_x/benchmark/assessment_metrics.py",
+      "src/consequa_x/benchmark/calibration.py",
+      "src/consequa_x/benchmark/calibration_export.py",
+      "src/consequa_x/benchmark/calibration_mechanisms.py",
+      "src/consequa_x/benchmark/decision_coalition.py",
+      "src/consequa_x/benchmark/decision_contrastive.py",
+      "src/consequa_x/benchmark/decision_shapley.py",
+      "src/consequa_x/benchmark/interaction_export.py",
+      "src/consequa_x/benchmark/interaction_mechanisms.py",
+      "src/consequa_x/benchmark/interval_comparison.py",
+      "src/consequa_x/benchmark/intervals.py",
+      "src/consequa_x/benchmark/study.py",
+      "src/consequa_x/benchmark/templates.py",
+      "src/consequa_x/py.typed"
+    ],
+    "modified": [
+      "src/consequa_x/__init__.py",
+      "src/consequa_x/attribution.py",
+      "src/consequa_x/benchmark/decision_replay.py",
+      "src/consequa_x/benchmark/evaluation.py",
+      "src/consequa_x/benchmark/interaction_sampling.py",
+      "src/consequa_x/benchmark/payments.py",
+      "src/consequa_x/benchmark/policy_experiment.py",
+      "src/consequa_x/benchmark/policy_runner.py",
+      "src/consequa_x/benchmark/runner.py",
+      "src/consequa_x/benchmark/targets.py",
+      "src/consequa_x/capture.py",
+      "src/consequa_x/cli.py",
+      "src/consequa_x/explanation.py",
+      "src/consequa_x/graph.py",
+      "src/consequa_x/mcp_capture.py",
+      "src/consequa_x/models.py",
+      "src/consequa_x/policies.py",
+      "src/consequa_x/record_verifier.py",
+      "src/consequa_x/report.py",
+      "src/consequa_x/schema.py",
+      "src/consequa_x/verification.py"
+    ],
+    "removed": [
+      "src/consequa_x/schemas/trace-v0.1.json"
+    ],
+    "added": [
+      "src/consequa_x/compare.py",
+      "src/consequa_x/errors.py",
+      "src/consequa_x/guard.py",
+      "src/consequa_x/migrate.py",
+      "src/consequa_x/readback.py",
+      "src/consequa_x/research.py",
+      "src/consequa_x/schemas/trace-v1.0.json",
+      "src/consequa_x/store.py",
+      "src/consequa_x/summary.py"
+    ],
+    "blobs": {
+      "src/consequa_x/__init__.py": {
+        "old": "953e71575650b3abf8f98f5e60d567b96581cd48",
+        "new": "10752414d63de14c3c4650e8f43b352c5e080aeb"
+      },
+      "src/consequa_x/__main__.py": {
+        "old": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08",
+        "new": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08"
+      },
+      "src/consequa_x/adapters/__init__.py": {
+        "old": "2a79abc893cda14f920fc05c5293542bb3d97b1f",
+        "new": "2a79abc893cda14f920fc05c5293542bb3d97b1f"
+      },
+      "src/consequa_x/adapters/ollama.py": {
+        "old": "9ff413705d5283ca7d9b6f212b0ca9bce8e382ff",
+        "new": "9ff413705d5283ca7d9b6f212b0ca9bce8e382ff"
+      },
+      "src/consequa_x/attribution.py": {
+        "old": "884e2e45080454171bc546b01e79c78775a8d32d",
+        "new": "2f4e12bbeb63a5380d43a0d464dece80bf674542"
+      },
+      "src/consequa_x/benchmark/__init__.py": {
+        "old": "f639fcc9837437cc33ffa9f911bf713cddc7dc9e",
+        "new": "f639fcc9837437cc33ffa9f911bf713cddc7dc9e"
+      },
+      "src/consequa_x/benchmark/assessment_metrics.py": {
+        "old": "017e6a2262e955da5dd189c906850d1f2d548260",
+        "new": "017e6a2262e955da5dd189c906850d1f2d548260"
+      },
+      "src/consequa_x/benchmark/calibration.py": {
+        "old": "3041167081ae3cc28e4130dd970818efb4ea06fa",
+        "new": "3041167081ae3cc28e4130dd970818efb4ea06fa"
+      },
+      "src/consequa_x/benchmark/calibration_export.py": {
+        "old": "e9f94d717431b90dc3c31be51408845642705f54",
+        "new": "e9f94d717431b90dc3c31be51408845642705f54"
+      },
+      "src/consequa_x/benchmark/calibration_mechanisms.py": {
+        "old": "6412666050a0d0f71b3bdef21c7ad7e159c3b3c7",
+        "new": "6412666050a0d0f71b3bdef21c7ad7e159c3b3c7"
+      },
+      "src/consequa_x/benchmark/decision_coalition.py": {
+        "old": "8e566b3b96998975e832f6392445769ce7d8fcdd",
+        "new": "8e566b3b96998975e832f6392445769ce7d8fcdd"
+      },
+      "src/consequa_x/benchmark/decision_contrastive.py": {
+        "old": "2b00c4e5f00ea84a5f5b024e8fa123d3622c93c4",
+        "new": "2b00c4e5f00ea84a5f5b024e8fa123d3622c93c4"
+      },
+      "src/consequa_x/benchmark/decision_replay.py": {
+        "old": "308c0a46eec503d6eb9652fbb1b95460374949f5",
+        "new": "8751ad29f0c7e815ab9c61412d1af5a4df739ec2"
+      },
+      "src/consequa_x/benchmark/decision_shapley.py": {
+        "old": "7c56612a7b5aa0b4e271e5c6a36039603650662a",
+        "new": "7c56612a7b5aa0b4e271e5c6a36039603650662a"
+      },
+      "src/consequa_x/benchmark/evaluation.py": {
+        "old": "f98c56af8727d60a5cd429a5235a4063913164ee",
+        "new": "dd11d4c64e3f2a7865eaf368df55f22a73bfc90e"
+      },
+      "src/consequa_x/benchmark/interaction_export.py": {
+        "old": "326a70629095c6c8148551d455c389509818a6e7",
+        "new": "326a70629095c6c8148551d455c389509818a6e7"
+      },
+      "src/consequa_x/benchmark/interaction_mechanisms.py": {
+        "old": "0c8a839adc5fcf2fb5fe59e7d372468a25c853d2",
+        "new": "0c8a839adc5fcf2fb5fe59e7d372468a25c853d2"
+      },
+      "src/consequa_x/benchmark/interaction_sampling.py": {
+        "old": "83af066230faf5c1af2b1f3668886d445893c183",
+        "new": "c491c9bc1ea6852bf5f44d6e5bac807e2bf10e34"
+      },
+      "src/consequa_x/benchmark/interval_comparison.py": {
+        "old": "fb8528df459be95aaae317d3331b6154bfa75ba1",
+        "new": "fb8528df459be95aaae317d3331b6154bfa75ba1"
+      },
+      "src/consequa_x/benchmark/intervals.py": {
+        "old": "b5044555d9040c1764c1b8f972676571e8ea7ca8",
+        "new": "b5044555d9040c1764c1b8f972676571e8ea7ca8"
+      },
+      "src/consequa_x/benchmark/payments.py": {
+        "old": "5746c5309c663a39664c5f1031c00d09f4d47d07",
+        "new": "bf6f03e0a533873ddb24d47fa27694362774c62b"
+      },
+      "src/consequa_x/benchmark/policy_experiment.py": {
+        "old": "4c46f47965a5bd8abecbbff4c419df9b462bbec1",
+        "new": "862ce389f2352ec953638814f5603da4d278d67a"
+      },
+      "src/consequa_x/benchmark/policy_runner.py": {
+        "old": "639a992be2b3c26b215456244d977034fe2a0e8c",
+        "new": "5f3a18e3e17fb851c0deb6a918bb468eb0d181bd"
+      },
+      "src/consequa_x/benchmark/runner.py": {
+        "old": "333aefae5fe5ab0b0fc3936b4d5ff0b91ba9f4f3",
+        "new": "0e22f6bec235bd2ffb967d5ba68a1e320988c0bc"
+      },
+      "src/consequa_x/benchmark/study.py": {
+        "old": "cf1ab607ad51e5d3207629fd736fa9d14abee5c0",
+        "new": "cf1ab607ad51e5d3207629fd736fa9d14abee5c0"
+      },
+      "src/consequa_x/benchmark/targets.py": {
+        "old": "f56a53830141c5a6058bfeaeb3024aa4ea194883",
+        "new": "02088259c818e63f9ae6bd188f78d63fc2f33191"
+      },
+      "src/consequa_x/benchmark/templates.py": {
+        "old": "db19b7a3cd7abd8fd732d1d0b3fb86957705552d",
+        "new": "db19b7a3cd7abd8fd732d1d0b3fb86957705552d"
+      },
+      "src/consequa_x/capture.py": {
+        "old": "756d1347615b10a26921a4d5c021a17e136a5a68",
+        "new": "a2c5a56a12f9e7e433ed225e123651da51dda9e4"
+      },
+      "src/consequa_x/cli.py": {
+        "old": "68624856f7c47d0b9bac6892d230ad6f47d9a0d5",
+        "new": "212bc6e4555873aa913c840cf3c1ffc331cf6d1f"
+      },
+      "src/consequa_x/compare.py": {
+        "old": null,
+        "new": "7edfdc0ddf67750b63e557af90d1588ec9faa878"
+      },
+      "src/consequa_x/errors.py": {
+        "old": null,
+        "new": "f01c83bb8bda7df917550e465ef49332390fc30d"
+      },
+      "src/consequa_x/explanation.py": {
+        "old": "43b60cdcd2062caa728dae3d4ca88b95eb478061",
+        "new": "3ec8a4a53a067027687d32517f845416b30afeb5"
+      },
+      "src/consequa_x/graph.py": {
+        "old": "9523123f45fcd46f1f0cd109d0a84a7cbdd21e4a",
+        "new": "7e051b642da9255271fa92a158c32cece814415f"
+      },
+      "src/consequa_x/guard.py": {
+        "old": null,
+        "new": "b2b13f829be713f1c2a5e1f7a2f1d62ec535eed6"
+      },
+      "src/consequa_x/mcp_capture.py": {
+        "old": "9f9d2cfd24ada8b41679f15322fbfe41991e8847",
+        "new": "33808db30e1126af3a18d09b9112639faf2f9503"
+      },
+      "src/consequa_x/migrate.py": {
+        "old": null,
+        "new": "87c16225b6233ab6bd6d006bf45686d92ae0a9f8"
+      },
+      "src/consequa_x/models.py": {
+        "old": "0603680e113755e176ded9d2de62ed89e4084b20",
+        "new": "a31596063344557fc7f1965150ff08a67ec40706"
+      },
+      "src/consequa_x/policies.py": {
+        "old": "e82d75686ba834b3968f81660cc945d86a9f3c47",
+        "new": "281d42398a47b2d80b5b4f80fd071e6b27063ec0"
+      },
+      "src/consequa_x/py.typed": {
+        "old": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "new": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      "src/consequa_x/readback.py": {
+        "old": null,
+        "new": "33de0ee9b1952362f881bcd2c67601efa81b4393"
+      },
+      "src/consequa_x/record_verifier.py": {
+        "old": "4d2bc205445f24c62b692daeb1aa825f239dc2d7",
+        "new": "db4ab090bfc7a73d7233493defdee5c80ed37806"
+      },
+      "src/consequa_x/report.py": {
+        "old": "34f4e805a9bdd5816d71a6cd6826094c4a0e89b2",
+        "new": "258ac426aee9bae1b84ef03c480f91f9da86684a"
+      },
+      "src/consequa_x/research.py": {
+        "old": null,
+        "new": "5ff9287b236be9e3d918eecb51305697ea8bdcbd"
+      },
+      "src/consequa_x/schema.py": {
+        "old": "b2d3e53a7ba63508a94a3b5cef4c79f0c344c521",
+        "new": "314a733f3bd5c746e8a74b3d830a7c196651ca15"
+      },
+      "src/consequa_x/schemas/trace-v0.1.json": {
+        "old": "944a056c0369aa2ada71b99ead88f6f6ce46f657",
+        "new": null
+      },
+      "src/consequa_x/schemas/trace-v1.0.json": {
+        "old": null,
+        "new": "2148ce4a1377d2a6d6bd752558800f8595f2efee"
+      },
+      "src/consequa_x/store.py": {
+        "old": null,
+        "new": "c4592e49eecd48967307d055618aa03017e5c822"
+      },
+      "src/consequa_x/summary.py": {
+        "old": null,
+        "new": "7e3db839a5721db18f4b0e56ca4b6bf7e6ae4f89"
+      },
+      "src/consequa_x/verification.py": {
+        "old": "56fc07a7697cb47857e47a63c4c784cfae7517fd",
+        "new": "0c2139ff5cec0ff2adccb914791e0c81e478fd4a"
+      }
+    }
+  },
+  "wheel_runtime_comparison": {
+    "old_count": 37,
+    "new_count": 48,
+    "unchanged": [
+      "consequa_x/__main__.py",
+      "consequa_x/adapters/__init__.py",
+      "consequa_x/adapters/ollama.py",
+      "consequa_x/benchmark/__init__.py",
+      "consequa_x/benchmark/assessment_metrics.py",
+      "consequa_x/benchmark/calibration.py",
+      "consequa_x/benchmark/calibration_export.py",
+      "consequa_x/benchmark/calibration_mechanisms.py",
+      "consequa_x/benchmark/decision_coalition.py",
+      "consequa_x/benchmark/decision_contrastive.py",
+      "consequa_x/benchmark/decision_shapley.py",
+      "consequa_x/benchmark/interaction_export.py",
+      "consequa_x/benchmark/interaction_mechanisms.py",
+      "consequa_x/benchmark/interval_comparison.py",
+      "consequa_x/benchmark/intervals.py",
+      "consequa_x/benchmark/study.py",
+      "consequa_x/benchmark/templates.py",
+      "consequa_x/py.typed"
+    ],
+    "modified": [
+      "consequa_x/__init__.py",
+      "consequa_x/attribution.py",
+      "consequa_x/benchmark/decision_replay.py",
+      "consequa_x/benchmark/evaluation.py",
+      "consequa_x/benchmark/interaction_sampling.py",
+      "consequa_x/benchmark/payments.py",
+      "consequa_x/benchmark/policy_experiment.py",
+      "consequa_x/benchmark/policy_runner.py",
+      "consequa_x/benchmark/runner.py",
+      "consequa_x/benchmark/targets.py",
+      "consequa_x/cli.py",
+      "consequa_x/explanation.py",
+      "consequa_x/graph.py",
+      "consequa_x/models.py",
+      "consequa_x/policies.py",
+      "consequa_x/report.py",
+      "consequa_x/schema.py",
+      "consequa_x/verification.py"
+    ],
+    "removed": [
+      "consequa_x/schemas/trace-v0.1.json"
+    ],
+    "added": [
+      "consequa_x/capture.py",
+      "consequa_x/compare.py",
+      "consequa_x/errors.py",
+      "consequa_x/guard.py",
+      "consequa_x/mcp_capture.py",
+      "consequa_x/migrate.py",
+      "consequa_x/readback.py",
+      "consequa_x/record_verifier.py",
+      "consequa_x/research.py",
+      "consequa_x/schemas/trace-v1.0.json",
+      "consequa_x/store.py",
+      "consequa_x/summary.py"
+    ],
+    "reviewed_new_wheel_sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+  },
+  "models": {
+    "frozen": {
+      "SCHEMA_VERSION": "0.1",
+      "ResponseStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "SUCCESS",
+            "success"
+          ],
+          [
+            "ERROR",
+            "error"
+          ],
+          [
+            "TIMEOUT",
+            "timeout"
+          ]
+        ],
+        "decorators": []
+      },
+      "AssessmentStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "SUCCESS",
+            "success"
+          ],
+          [
+            "FAILURE",
+            "failure"
+          ],
+          [
+            "PARTIAL",
+            "partial"
+          ],
+          [
+            "UNKNOWN",
+            "unknown"
+          ]
+        ],
+        "decorators": []
+      },
+      "VerificationStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "SATISFIED",
+            "satisfied"
+          ],
+          [
+            "VIOLATED",
+            "violated"
+          ],
+          [
+            "UNKNOWN",
+            "unknown"
+          ]
+        ],
+        "decorators": []
+      },
+      "OriginStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "CONFIRMED",
+            "confirmed"
+          ],
+          [
+            "OTHER_ACTOR",
+            "other_actor"
+          ],
+          [
+            "UNKNOWN",
+            "unknown"
+          ]
+        ],
+        "decorators": []
+      },
+      "Event": {
+        "fields": [
+          "id",
+          "trace_id",
+          "type",
+          "time_ms",
+          "actor",
+          "parent_ids",
+          "data"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True)"
+        ]
+      },
+      "Action": {
+        "fields": [
+          "action_id",
+          "trace_id",
+          "actor",
+          "name",
+          "arguments",
+          "registered_at_ms",
+          "contract",
+          "idempotency_key"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True)"
+        ]
+      },
+      "ToolResponse": {
+        "fields": [
+          "attempt_id",
+          "status",
+          "time_ms",
+          "provider_request_id",
+          "result"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True)"
+        ]
+      },
+      "AgentAssessment": {
+        "fields": [
+          "status",
+          "time_ms",
+          "evidence_event_ids",
+          "rationale"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True)"
+        ]
+      },
+      "VerificationResult": {
+        "fields": [
+          "contract_id",
+          "status",
+          "observed_at_ms",
+          "evidence",
+          "origin",
+          "effect_ids",
+          "attributable_effect_ids",
+          "reason"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True)"
+        ]
+      },
+      "Trace": {
+        "fields": [
+          "trace_id",
+          "action",
+          "events",
+          "responses",
+          "assessment",
+          "observations",
+          "verifications",
+          "schema_version"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True)"
+        ]
+      }
+    },
+    "current": {
+      "SCHEMA_VERSION": "1.0",
+      "TimeBase": {
+        "fields": [],
+        "enum_values": [
+          [
+            "UNIX_MS",
+            "unix_ms"
+          ],
+          [
+            "RELATIVE_MS",
+            "relative_ms"
+          ]
+        ],
+        "decorators": []
+      },
+      "ResponseStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "SUCCESS",
+            "success"
+          ],
+          [
+            "ERROR",
+            "error"
+          ],
+          [
+            "TIMEOUT",
+            "timeout"
+          ]
+        ],
+        "decorators": []
+      },
+      "AssessmentStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "SUCCESS",
+            "success"
+          ],
+          [
+            "FAILURE",
+            "failure"
+          ],
+          [
+            "PARTIAL",
+            "partial"
+          ],
+          [
+            "UNKNOWN",
+            "unknown"
+          ]
+        ],
+        "decorators": []
+      },
+      "VerificationStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "SATISFIED",
+            "satisfied"
+          ],
+          [
+            "VIOLATED",
+            "violated"
+          ],
+          [
+            "UNKNOWN",
+            "unknown"
+          ]
+        ],
+        "decorators": []
+      },
+      "OriginStatus": {
+        "fields": [],
+        "enum_values": [
+          [
+            "CONFIRMED",
+            "confirmed"
+          ],
+          [
+            "OTHER_ACTOR",
+            "other_actor"
+          ],
+          [
+            "UNKNOWN",
+            "unknown"
+          ]
+        ],
+        "decorators": []
+      },
+      "Event": {
+        "fields": [
+          "id",
+          "type",
+          "time_ms",
+          "actor",
+          "parent_ids",
+          "data"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      },
+      "Action": {
+        "fields": [
+          "action_id",
+          "actor",
+          "name",
+          "arguments",
+          "registered_at_ms",
+          "contract",
+          "idempotency_key"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      },
+      "ToolResponse": {
+        "fields": [
+          "attempt_id",
+          "action_id",
+          "status",
+          "time_ms",
+          "provider_request_id",
+          "result"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      },
+      "AgentAssessment": {
+        "fields": [
+          "assessment_id",
+          "action_id",
+          "status",
+          "time_ms",
+          "evidence_event_ids",
+          "rationale"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      },
+      "Finding": {
+        "fields": [
+          "code",
+          "effect_ids",
+          "detail"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      },
+      "VerificationResult": {
+        "fields": [
+          "action_id",
+          "contract_id",
+          "status",
+          "observed_at_ms",
+          "evidence",
+          "origin",
+          "effect_ids",
+          "attributable_effect_ids",
+          "target_effect_ids",
+          "findings",
+          "reason"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      },
+      "Trace": {
+        "fields": [
+          "trace_id",
+          "time_base",
+          "actions",
+          "events",
+          "responses",
+          "assessments",
+          "observations",
+          "verifications",
+          "schema_version"
+        ],
+        "enum_values": [],
+        "decorators": [
+          "dataclass(frozen=True, kw_only=True)"
+        ]
+      }
+    }
+  },
+  "top_level_exports": {
+    "retained": [
+      "Action",
+      "AgentAssessment",
+      "AssessmentStatus",
+      "ConsequenceGraph",
+      "Event",
+      "EventType",
+      "Evidence",
+      "Observation",
+      "OriginStatus",
+      "OutcomeContract",
+      "RefundVerifier",
+      "ResponseStatus",
+      "ToolResponse",
+      "Trace",
+      "VerificationResult",
+      "VerificationStatus",
+      "Verifier",
+      "build_graph",
+      "explain",
+      "render_report",
+      "verify"
+    ],
+    "added": [
+      "ActionCapture",
+      "ActionChange",
+      "ActionExplanation",
+      "Attempt",
+      "CORE_DIAGNOSES",
+      "Comparison",
+      "ConsequaError",
+      "ConsequaTypeError",
+      "ContractError",
+      "Diagnosis",
+      "Finding",
+      "FrozenDict",
+      "FrozenList",
+      "MigrationReport",
+      "ReceiptError",
+      "RecordVerifier",
+      "RecorderError",
+      "RetryAdvice",
+      "RetryDecision",
+      "SchemaVersionError",
+      "Summary",
+      "TimeBase",
+      "TraceExplanation",
+      "TraceRecorder",
+      "TraceStore",
+      "ValidationError",
+      "apoll_readback",
+      "averify",
+      "capture_tool",
+      "compare",
+      "migrate_trace",
+      "poll_readback",
+      "retry_advice",
+      "summarize",
+      "thaw"
+    ],
+    "removed": [
+      "ConsequenceExplanation",
+      "EffectEstimate",
+      "Intervention",
+      "Policy",
+      "PolicyDecision",
+      "PolicyError",
+      "PolicyReply",
+      "PolicyRequest",
+      "ScriptedRefundPolicy",
+      "TargetMatcher",
+      "leave_one_out",
+      "recency_attribution"
+    ],
+    "moved_to_research": [
+      "EffectEstimate",
+      "Intervention",
+      "Policy",
+      "PolicyDecision",
+      "PolicyError",
+      "PolicyReply",
+      "PolicyRequest",
+      "ScriptedRefundPolicy",
+      "leave_one_out",
+      "recency_attribution"
+    ]
+  },
+  "release_records": {
+    "README.md": {
+      "git_blob": "f1bf5d15515ef7dfb03e999d088d981095a9b8d5",
+      "bytes": 3913,
+      "sha256": "5478daac7b4bb4486a624d4e3008e11ccb31b65a2bd3c9d0c1978257a08a4a02"
+    },
+    "checks.json": {
+      "git_blob": "6c13836cee946376d9591f2eb8ab9773b05ac87d",
+      "bytes": 2372,
+      "sha256": "b678551c7035f84d1a8e3ef1fb38e0d7d634748d1e9e2c0617c12ccc44957037",
+      "record": {
+        "artifacts": [
+          {
+            "bytes": 191053,
+            "path": "consequa_x-2.0.0-py3-none-any.whl",
+            "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+          },
+          {
+            "bytes": 607605,
+            "path": "consequa_x-2.0.0.tar.gz",
+            "sha256": "70868f903271f2ae9f9dc7f73fd2bb993e406934b115db89018aa76cdb0c9c45"
+          }
+        ],
+        "distribution": "consequa-x",
+        "github_actions_used": false,
+        "installed_environments": {
+          "linux.json": "Alpine Linux 3.24.2, Python 3.14.8, local QEMU TCG guest; fresh venv",
+          "sdist312.json": "Fresh Windows Python 3.12.10 venv; sdist built and installed; demo, summarize, SQLite example and 1.2.0-trace migration",
+          "windows311.json": "Official Windows embedded Python 3.11.9, wheel unpacked into an isolated site-packages",
+          "windows312.json": "Fresh Windows Python 3.12.10 venv, wheel installed with --no-deps --no-index"
+        },
+        "limits": [
+          "macOS has never been tested.",
+          "Linux coverage is one emulated Alpine guest, not every distribution or a native host.",
+          "Windows checks ran on one Windows 11 host.",
+          "MCP capture was checked with a stand-in session, not a live MCP server.",
+          "Framework integrations (C1-C3), OpenTelemetry export (C5) and verifier composition (B4) are not part of 2.0.0."
+        ],
+        "local_checks": {
+          "artifact_inventory": true,
+          "lint": true,
+          "linux_wheel_install": true,
+          "public_docs_support": false,
+          "python311_conformance": true,
+          "release_helper_tests": true,
+          "report_browser_qa": true,
+          "report_security": true,
+          "sdist_install_smoke": true,
+          "source_tests": true,
+          "strict_metadata": true,
+          "wheel_install_smoke": true
+        },
+        "pending": {
+          "public_docs_support": "The 2.0.0 site and docs pages are on release-2.0 and state 2.0.0 as published; they deploy only after PyPI publication. Private vulnerability reporting is enabled."
+        },
+        "public_repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+        "public_site": "https://consequa-x.onrender.com",
+        "recorded_at_utc": "2026-10-19T09:44:27.900551+00:00",
+        "release_kind": "Breaking feature release (trace schema 1.0)",
+        "source_revision": "87463bf290ff1a1da9b270a7b11f48c512549172",
+        "source_tests": {
+          "failures": 0,
+          "passed": 1888,
+          "receipt": "source-tests.log",
+          "skipped": 21,
+          "subtests": 241
+        },
+        "version": "2.0.0"
+      }
+    },
+    "publication.json": {
+      "git_blob": "5553cf39e96667236826cde0fd7201b152ca16d3",
+      "bytes": 1832,
+      "sha256": "35226dfe738be5e75a89aac8422746162dacaa5a0be13f615e02168db1c2bca6",
+      "record": {
+        "distribution": "consequa-x",
+        "gate_exceptions": {
+          "pending": [
+            "public_docs_support"
+          ]
+        },
+        "maintainer_instruction": "Publish 2.0.0 to PyPI with the recorded checks, then merge release-2.0 into main and deploy the 2.0 site. (19 October 2026)",
+        "project_urls": {
+          "Changelog": "https://consequa-x.onrender.com/changelog.html",
+          "Documentation": "https://consequa-x.onrender.com/docs.html",
+          "Homepage": "https://consequa-x.onrender.com",
+          "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+          "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+          "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+        },
+        "published": true,
+        "published_files": [
+          {
+            "filename": "consequa_x-2.0.0-py3-none-any.whl",
+            "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c",
+            "size": 191053,
+            "upload_time_utc": "2026-10-19T09:46:36.419747Z"
+          },
+          {
+            "filename": "consequa_x-2.0.0.tar.gz",
+            "sha256": "70868f903271f2ae9f9dc7f73fd2bb993e406934b115db89018aa76cdb0c9c45",
+            "size": 607605,
+            "upload_time_utc": "2026-10-19T09:46:38.716873Z"
+          }
+        ],
+        "registry": "https://pypi.org/project/consequa-x/2.0.0/",
+        "registry_hashes_and_sizes_match_review": true,
+        "registry_install": "Fresh Windows Python 3.12.10 venv, pip install --no-cache-dir from PyPI; the first attempt ran before PyPI's index served 2.0.0 to pip and found no matching distribution; the retry about twenty seconds later passed",
+        "registry_install_receipt": "registry312.json",
+        "source_revision": "87463bf290ff1a1da9b270a7b11f48c512549172",
+        "uploader": "twine via the maintainer's local keyring credential; GitHub Actions not used",
+        "verified_at_utc": "2026-10-19T09:49:52.657020+00:00",
+        "version": "2.0.0"
+      }
+    },
+    "site-publication.json": {
+      "git_blob": "0d218b0dfbc17b58c3f32ee2f48b6009d9c54005",
+      "bytes": 1345,
+      "sha256": "8d4e9f74a604b0c81894336bf0724b5d57b3f8a30edd99cd2d38bfa1d5e6f489",
+      "record": {
+        "deployed_from": {
+          "blobs_identical_to_mirrored_revision": 25,
+          "commit": "2719334",
+          "mirrors": "website/dist of Devrajsinh-Jhala/consequa-x main at b1e5bfc",
+          "repository": "https://github.com/Devrajsinh-Jhala/consequa-x-site"
+        },
+        "live_checks": {
+          "allowlisted_files_served_byte_identical": 25,
+          "docs": "Version 2.0 hero and 2.0.0 available callout",
+          "homepage": "v2.0 badge, consequa-x==2.0.0 install command; no script errors",
+          "method": "curl byte comparison and headless Chrome DOM checks",
+          "page_horizontal_overflow": "none at 1440 and 390 px",
+          "workflow_code_cards_overflow": "none at 1440 and 390 px"
+        },
+        "main_branch": {
+          "frozen_study_running": false,
+          "merged": true,
+          "method": "fast-forward push",
+          "revision": "b1e5bfc"
+        },
+        "maintainer_instruction": "Publish 2.0.0 to PyPI with the recorded checks, then merge release-2.0 into main and deploy the 2.0 site. (19 October 2026)",
+        "public_docs_support": "Met after publication: the 2.0.0 docs, changelog, support and security pages are live and private vulnerability reporting is enabled. checks.json keeps the gate as it stood at upload. Render still deploys from the consequa-x-site mirror.",
+        "site": "https://consequa-x.onrender.com",
+        "verified_at_utc": "2026-10-19T09:53:36.302910+00:00",
+        "version": "2.0.0"
+      }
+    },
+    "inventory.json": {
+      "git_blob": "d8215f1ede91304c652831f070723768cda6876d",
+      "bytes": 34777,
+      "sha256": "9d04c07525d0ea2feb1f178560b879986dd8001b735acfd29ddd0809e16d9a9a",
+      "record": {
+        "artifacts": [
+          {
+            "bytes": 191053,
+            "filename": "consequa_x-2.0.0-py3-none-any.whl",
+            "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+          },
+          {
+            "bytes": 607605,
+            "filename": "consequa_x-2.0.0.tar.gz",
+            "sha256": "70868f903271f2ae9f9dc7f73fd2bb993e406934b115db89018aa76cdb0c9c45"
+          }
+        ],
+        "auditor_sha256": "16b9e65fe33a99f9d80936b6b032e11c91085d1601592e56e05d03bf1e0ccbab",
+        "checks": {
+          "exact_inventory": true,
+          "metadata_and_entrypoint": true,
+          "network_access": false,
+          "source_bytes_match": true,
+          "unsafe_paths_and_links_refused": true,
+          "wheel_record_integrity": true
+        },
+        "distribution": "consequa-x",
+        "metadata": {
+          "license": "MIT",
+          "name": "consequa-x",
+          "project_urls": {
+            "Changelog": "https://consequa-x.onrender.com/changelog.html",
+            "Documentation": "https://consequa-x.onrender.com/docs.html",
+            "Homepage": "https://consequa-x.onrender.com",
+            "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+            "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+            "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+          },
+          "requires_python": ">=3.11",
+          "runtime_dependencies": 0,
+          "version": "2.0.0"
+        },
+        "passed": true,
+        "runtime_files": 48,
+        "sdist_files": 207,
+        "source_files": [
+          {
+            "bytes": 19083,
+            "path": "CHANGELOG.md",
+            "sha256": "7f520863de1c3d3ac0f1420eef83d043507ba415eac66e8cb938827581e1522b"
+          },
+          {
+            "bytes": 7017,
+            "path": "CONTRIBUTING.md",
+            "sha256": "d520464293ecc67013fea8fdd3d2b3eda988e1a2de3219a97da2cfc120f6da43"
+          },
+          {
+            "bytes": 1073,
+            "path": "LICENSE",
+            "sha256": "ee29222d07490c6812aded1202a73e98fc01f929d2be9f0755f4b2abf3b0347d"
+          },
+          {
+            "bytes": 333,
+            "path": "MANIFEST.in",
+            "sha256": "009ce07530a90c4ddb585ae258b85ffc1d9ee56eec1242571ce7b5b94435556b"
+          },
+          {
+            "bytes": 10322,
+            "path": "README.md",
+            "sha256": "db06758a136a57a9e1c657193a56538736103e254ba6dcc148c3c14e308f05a2"
+          },
+          {
+            "bytes": 1422,
+            "path": "SECURITY.md",
+            "sha256": "943005b5138028d437d4b4b48e207e42363c3e17b033f2044dd1cba54a7049fc"
+          },
+          {
+            "bytes": 7031,
+            "path": "docs/application-integration.md",
+            "sha256": "751b7b1310a43fe9becd0fab041d2ec03774ec29943c974c4c82f3955ae40b9a"
+          },
+          {
+            "bytes": 8245,
+            "path": "docs/attribution-calibration.md",
+            "sha256": "075c9cb4c82d90cb68d83a47c86960c071cceb0579234a684714d54d336bb47f"
+          },
+          {
+            "bytes": 7106,
+            "path": "docs/build-contract.md",
+            "sha256": "aefa5a001618c6c0a93beefe3ceea06b6fadfe2a9c27cdaab4ef2d8231fbadcb"
+          },
+          {
+            "bytes": 5875,
+            "path": "docs/car-reproduction-plan.md",
+            "sha256": "1e482470d79895680f3df115c7d3fc02f9ed396f0816188357719693b6170414"
+          },
+          {
+            "bytes": 6101,
+            "path": "docs/completion-plan.md",
+            "sha256": "c25c3d36c38221cd523e307c10d57e186e997152b47f45023e161381ee825dd5"
+          },
+          {
+            "bytes": 9298,
+            "path": "docs/decision-contrastive.md",
+            "sha256": "39a1ef9f1cc9377b4f484ab285a5671eaf07b2fbb317a8cd48258bd18636271e"
+          },
+          {
+            "bytes": 3315,
+            "path": "docs/decision-replay.md",
+            "sha256": "620405b770c6efd049107cf4817d830956a039208ab9bac01256f05be6e1ffef"
+          },
+          {
+            "bytes": 12134,
+            "path": "docs/decision-shapley.md",
+            "sha256": "db2713215448e92879ffa0e2b0a4f9a5915a7d9c7e9ce6c1ee4ec2a0b0cc57fe"
+          },
+          {
+            "bytes": 6323,
+            "path": "docs/design-2.0.md",
+            "sha256": "a2938fd408ee8347555fd8edb99088f5cfbc08225cdc5867e31a5de0bc270cda"
+          },
+          {
+            "bytes": 7295,
+            "path": "docs/design.md",
+            "sha256": "61331c181963e1725ec2c67c336c65632984c609f4155a898205ad54da7ac04b"
+          },
+          {
+            "bytes": 6194,
+            "path": "docs/framework-integration.md",
+            "sha256": "9dae32c93da19a8093b85ca15fdc08eaeaaabba09ab4c1680901bcb8dd9674bc"
+          },
+          {
+            "bytes": 3190,
+            "path": "docs/graph-witnesses.md",
+            "sha256": "b6a2d02ae84dd618efea40d7bd70f2caf3dec6e2f57cadce320b3742cc940053"
+          },
+          {
+            "bytes": 11560,
+            "path": "docs/interaction-sampling.md",
+            "sha256": "7204a91901a9086cee526351726e043141d1b701857f787f2152690bca8e6993"
+          },
+          {
+            "bytes": 6958,
+            "path": "docs/interval-followup-plan.md",
+            "sha256": "49740c139c11c8c105cb6943f0bf6f20a0b870d6f2ff72c12e570920a0ed0cb6"
+          },
+          {
+            "bytes": 12082,
+            "path": "docs/launch-readiness.md",
+            "sha256": "07a4d5aab37a20b0b531eea15e16103cd015fdc364eb247a291b8ecd9a2d2fc2"
+          },
+          {
+            "bytes": 1708,
+            "path": "docs/local-pypi-setup.md",
+            "sha256": "503666ee9ac583ddf9e9556626f0e6444cf00eb622d5112d04ec1c46902cda5b"
+          },
+          {
+            "bytes": 7351,
+            "path": "docs/matched-trace-judge.md",
+            "sha256": "23862d2f20ace487647974c8d70ab9b8a3da7a7901adc6dabf97d346ed0d5976"
+          },
+          {
+            "bytes": 5340,
+            "path": "docs/migrating-to-2.0.md",
+            "sha256": "e6fd83b3b5890b0ab7a8f53e072fd66ccd90841430611d747c0caf721081fcb5"
+          },
+          {
+            "bytes": 3514,
+            "path": "docs/offline-reports.md",
+            "sha256": "a389bf4efa285382e4aaee5c7d076a4bd0c0d4219fd7726d49705e8c4dc2a2a1"
+          },
+          {
+            "bytes": 12094,
+            "path": "docs/policy-evaluation.md",
+            "sha256": "10f91a6918222fef51e8b8c448c936539abcc34003c8c84753fc229fdabf8e36"
+          },
+          {
+            "bytes": 14219,
+            "path": "docs/policy-replay.md",
+            "sha256": "cecfd3df82cdf60c8d2c38490799e0e2d123b5b8f7b2ec6ab0a0385a708d6105"
+          },
+          {
+            "bytes": 7398,
+            "path": "docs/product-roadmap.md",
+            "sha256": "d7967ff930ccdd553891fb008303cdeda9e3dc752c3eb7366f0c91eac5b60c7e"
+          },
+          {
+            "bytes": 4021,
+            "path": "docs/quickstart.md",
+            "sha256": "8132e080ada50882cd75d9db51625223f0bec7da855b574c062777d06fc5aa99"
+          },
+          {
+            "bytes": 6752,
+            "path": "docs/refund-interactions.md",
+            "sha256": "015cd3b3fb1eeeb9a07180732d6c897681f722d6eba582b1def33f4ec874b256"
+          },
+          {
+            "bytes": 5082,
+            "path": "docs/release-notes.md",
+            "sha256": "453eea15723e12ccd52f5e3c0df783caf589e370fdf9d1f985ab1a8a86bb4982"
+          },
+          {
+            "bytes": 10899,
+            "path": "docs/release-readiness.md",
+            "sha256": "8cbe643824cb64663f7e316d0e387e93d67ea49a57e801893fc6d9f6187cb79a"
+          },
+          {
+            "bytes": 13238,
+            "path": "docs/research-roadmap.md",
+            "sha256": "c19da2a7fd136e5317b3eac6611fafabf16e5366d222ac8e37eaa3fb06d85497"
+          },
+          {
+            "bytes": 5500,
+            "path": "docs/stable-api.md",
+            "sha256": "6c3eaeed02bda5281853370da8302800f0aeedb03394e6dd273491e7d7157ba8"
+          },
+          {
+            "bytes": 11820,
+            "path": "docs/studies/matched-local-2026-10-18.json",
+            "sha256": "f0534690f975b2759c5ba81dd5e408e46f354a5009cf876d67dd2b3cbff5336e"
+          },
+          {
+            "bytes": 15434,
+            "path": "docs/studies/refund-family-candidates-v1.json",
+            "sha256": "1f4950498761f46b75a336b6e901413eaadc3d16e45137e69e39f0294e4d4522"
+          },
+          {
+            "bytes": 4093,
+            "path": "docs/study-manifests.md",
+            "sha256": "7598de7cc015eac0cd4e085ead7573079fe4d1de19380290a5ea59873c4f2a5f"
+          },
+          {
+            "bytes": 15065,
+            "path": "docs/study-plan.md",
+            "sha256": "8948afb208471e5a3ac5d88a753a193e3bb3173f28e8e474cde85ab3e03de4a0"
+          },
+          {
+            "bytes": 10049,
+            "path": "docs/tau-benchmark-validation.md",
+            "sha256": "e5df481d9dc8edbc863a85f10875a11370f4f3453efe847ebd489c932e8ff1ed"
+          },
+          {
+            "bytes": 11367,
+            "path": "docs/upstream-car-comparison.md",
+            "sha256": "822e2d0d19c9c455627c5c40a346d168772957d309e8ad7cebfe784020dda7b6"
+          },
+          {
+            "bytes": 3736,
+            "path": "docs/v1.1-release.md",
+            "sha256": "260fef313db4aee333d7b757fb076ae7fba09a408c475dd306596d7453bf6796"
+          },
+          {
+            "bytes": 4550,
+            "path": "docs/variable-length-game-plan.md",
+            "sha256": "949e9067fbf2894edb02f295b5d8bb7757eca5e27d0021895dd63e2932a2e00f"
+          },
+          {
+            "bytes": 9545,
+            "path": "examples/agent_loop_sqlite.py",
+            "sha256": "3191a484ccad8d0ef7d368975c8d675de54f26c280c103f26a992aabb1a87588"
+          },
+          {
+            "bytes": 10442,
+            "path": "examples/artifact_delivery.py",
+            "sha256": "40c1bd395503293c763d43c73ba5986bad4a31be3d4fdc3dd05f6a9b5a058a68"
+          },
+          {
+            "bytes": 8655,
+            "path": "examples/decision_shapley_fixture.py",
+            "sha256": "1eaba58b962410bd43ecd24e10e1b61b898699a62c0082410449ff3dbc7f1bdc"
+          },
+          {
+            "bytes": 1486,
+            "path": "examples/report_quickstart.py",
+            "sha256": "a0c671c6d988243215147722ddfd412660e1c69abc2fd3a1ab6a009e052c8679"
+          },
+          {
+            "bytes": 1466,
+            "path": "pyproject.toml",
+            "sha256": "a667f410079a33bc2f043edd92035fd657489b0f708b5ef92122286b385f9943"
+          },
+          {
+            "bytes": 415,
+            "path": "requirements-dev.lock",
+            "sha256": "986afeff777c9e690f9242c6f55fca148b261aff93e56244aa332b71836c1252"
+          },
+          {
+            "bytes": 27134,
+            "path": "scripts/analyze_matched_local_study.py",
+            "sha256": "4f39a67e0cc487c5dd5dbdc40dc8207a28718334da277176109706c7ca05bd9b"
+          },
+          {
+            "bytes": 72107,
+            "path": "scripts/audit_interaction_sampling.py",
+            "sha256": "387267f08da0729ab94a17cd2f82d7abe2ee6c7db1e8ec9c3c4e5d562e8b3052"
+          },
+          {
+            "bytes": 25475,
+            "path": "scripts/audit_interval_comparison.py",
+            "sha256": "85b601ce963e90fec505a3b3aa5e30a41b5ee624ec583764ee33ec2e73258e10"
+          },
+          {
+            "bytes": 26703,
+            "path": "scripts/audit_refund_interactions.py",
+            "sha256": "be69dd7016f522733b94c9525ef759ff2e65ee27001611151fe58f1ed0ffc838"
+          },
+          {
+            "bytes": 19667,
+            "path": "scripts/audit_release_artifacts.py",
+            "sha256": "16b9e65fe33a99f9d80936b6b032e11c91085d1601592e56e05d03bf1e0ccbab"
+          },
+          {
+            "bytes": 9292,
+            "path": "scripts/audit_review_revision.py",
+            "sha256": "dcbb8b5a4deef132da963f07f1483b795a0ab6a25363188769477bc41d95b6f3"
+          },
+          {
+            "bytes": 28602,
+            "path": "scripts/build_matched_study_figures.py",
+            "sha256": "f09db1deb452d09918e881515a30d1263c03a65a2dbda5df8bc616986df1ff4c"
+          },
+          {
+            "bytes": 43829,
+            "path": "scripts/build_public_docs.py",
+            "sha256": "f1f1ac958d55899b26ee2d713c406ef266258e5cfb0268b3d5ef6c56167cd486"
+          },
+          {
+            "bytes": 13804,
+            "path": "scripts/build_site_demo.py",
+            "sha256": "9eb931b508c8d57d1e240c0623003019fe29a010d3810f33cac2fc97c8d8ab59"
+          },
+          {
+            "bytes": 31412,
+            "path": "scripts/check_installed_release.py",
+            "sha256": "db3d048f3dd2c6e7e0c0dbc3c5541bfbcbc25a3130cbcb19289719018726f948"
+          },
+          {
+            "bytes": 946,
+            "path": "scripts/configure_pypi_auth.py",
+            "sha256": "25fa19e854caaafb9b0e331265b59bf742a87500d0501e91e6e703e6a900d21b"
+          },
+          {
+            "bytes": 14141,
+            "path": "scripts/draw_paper_diagrams.py",
+            "sha256": "08fb5090d63002333dfebc33886db793aef360b456e102ac021a6510654f15e3"
+          },
+          {
+            "bytes": 18474,
+            "path": "scripts/export_render_site.py",
+            "sha256": "941e2d46996cec350b18c48d714a6ec41b3c0e2532bc849fa24eedb6c8429dc2"
+          },
+          {
+            "bytes": 1933,
+            "path": "scripts/finalize_interval_artifacts.py",
+            "sha256": "3e405d4aeee78935729028d30347d2267dad6ca7a75092e84ae0c0d5834e156b"
+          },
+          {
+            "bytes": 10654,
+            "path": "scripts/finalize_matched_local_study.py",
+            "sha256": "15a63af5ce44c6a974f16c5c14a3189fbbc15a4fad29bd93bd0d9fc230926545"
+          },
+          {
+            "bytes": 1842,
+            "path": "scripts/finalize_refund_artifacts.py",
+            "sha256": "e7b239f452ba524900bf265b98c48a23a7dd62bbdca215d0931aa2abc9074139"
+          },
+          {
+            "bytes": 3122,
+            "path": "scripts/plot_interval_comparison.py",
+            "sha256": "87cc1ff2b56f104f46394667c909be2adf34194a755bb47c878a64e68ba3fdc9"
+          },
+          {
+            "bytes": 22421,
+            "path": "scripts/plot_paper_results.py",
+            "sha256": "030303e2faaf2e6b243d9e164554ab8e72481e963a59422d13113f3a634a5fd4"
+          },
+          {
+            "bytes": 4535,
+            "path": "scripts/publish_alpha.py",
+            "sha256": "2e523737479ade366253e635d57cfc49fa0bd64a7bcae36b5d67ee40dc2d8f8c"
+          },
+          {
+            "bytes": 5407,
+            "path": "scripts/publish_release.py",
+            "sha256": "347ffcff408b7180dd59ea8eeab34ee6f0e3966b1d7cdf2ef49193f56069f980"
+          },
+          {
+            "bytes": 2597,
+            "path": "scripts/refresh_sample_report.py",
+            "sha256": "9fc6d688890ba36c7ce47e47429f5f3331c3cadf748db591f7901cfca7c7fe75"
+          },
+          {
+            "bytes": 4087,
+            "path": "scripts/run_interaction_sampling.py",
+            "sha256": "492a5054a6c0cbba7554dc596aeca8c70be93de7f72b480324aeaef2ba3a0c5b"
+          },
+          {
+            "bytes": 29735,
+            "path": "scripts/run_matched_local_study.py",
+            "sha256": "6dc7f6b79b8eac39b9fe60420aedb03e95bb866b348ac4e99ff2b8b9e4e41b0c"
+          },
+          {
+            "bytes": 38188,
+            "path": "scripts/run_matched_trace_judge.py",
+            "sha256": "df31b84c1efa300269fbe1e51567c7f6bbeb42cd21ffdeda52222826dcb55fff"
+          },
+          {
+            "bytes": 34348,
+            "path": "scripts/run_tau_benchmark_validation.py",
+            "sha256": "b28fa781e479e926a612afc99d7b1e55b1d27cbb65b295025a5bf3b0468a5f86"
+          },
+          {
+            "bytes": 51028,
+            "path": "scripts/run_upstream_car_study.py",
+            "sha256": "1327ce33d9dbaf76e9c63d29f3cc8e5db015dc784f8eea6636386bd6543451eb"
+          },
+          {
+            "bytes": 21885,
+            "path": "scripts/summarize_interaction_sampling.py",
+            "sha256": "47f546acfba731695e2803b9f0fa9253ff470eb3a18a31ea728ce8e7d1420ab3"
+          },
+          {
+            "bytes": 25321,
+            "path": "scripts/summarize_matched_execution.py",
+            "sha256": "ac0c8985ebf83094741223c5f627cb397e6e71d93dd5f0cba305668967ca0d01"
+          },
+          {
+            "bytes": 2383,
+            "path": "src/consequa_x/__init__.py",
+            "sha256": "0f5593af82dc2db78f42e9da7ebdb754d57fad6ecb4be64ca852bc319437ab51"
+          },
+          {
+            "bytes": 48,
+            "path": "src/consequa_x/__main__.py",
+            "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+          },
+          {
+            "bytes": 135,
+            "path": "src/consequa_x/adapters/__init__.py",
+            "sha256": "4f5894f1a872af11e46660789f1f8709821324748cb6751ded0453fab7badeda"
+          },
+          {
+            "bytes": 18220,
+            "path": "src/consequa_x/adapters/ollama.py",
+            "sha256": "e7d752bc2b3751ea279e5b512997c0de9ad9d53858cbe2ac9aa75ac3224da01e"
+          },
+          {
+            "bytes": 17742,
+            "path": "src/consequa_x/attribution.py",
+            "sha256": "5aa352becbb75d1aec15aa5b77465227811505d846d56d8b4c742443557bf717"
+          },
+          {
+            "bytes": 63,
+            "path": "src/consequa_x/benchmark/__init__.py",
+            "sha256": "a231098f8c7abc60e7185b9dceda843b44bd81c72a23399b2b0fb8152309cec2"
+          },
+          {
+            "bytes": 2445,
+            "path": "src/consequa_x/benchmark/assessment_metrics.py",
+            "sha256": "6c6f5cb9386ada10a8f0ce0b2c9d6cc002f4905552b8eacc54c9c8e2f2283c63"
+          },
+          {
+            "bytes": 41933,
+            "path": "src/consequa_x/benchmark/calibration.py",
+            "sha256": "98ae708804af391050b3ea3431a114f0076e13a79134a301880f21b11fd7aebb"
+          },
+          {
+            "bytes": 7524,
+            "path": "src/consequa_x/benchmark/calibration_export.py",
+            "sha256": "b75f54f89f15eaf7206130efd924b7fd3fcd7e4919eb8eb7f9fddb102c8991e9"
+          },
+          {
+            "bytes": 13106,
+            "path": "src/consequa_x/benchmark/calibration_mechanisms.py",
+            "sha256": "84debd9ad20b88398760ee7aa95be4afc38e4ccc835da4a52358a48e00205cb2"
+          },
+          {
+            "bytes": 12052,
+            "path": "src/consequa_x/benchmark/decision_coalition.py",
+            "sha256": "e226ac3b3ea6c8a12ccf87f796f0846048cdfe8e5a5907fa14dfe1d3a95e862f"
+          },
+          {
+            "bytes": 22451,
+            "path": "src/consequa_x/benchmark/decision_contrastive.py",
+            "sha256": "3a4b664de7c1fe056bd69ced02765258882e8f7037af0404df82b4104f1c155a"
+          },
+          {
+            "bytes": 15503,
+            "path": "src/consequa_x/benchmark/decision_replay.py",
+            "sha256": "9c67172eaf907d7bfdeff9ae87dacda2dbd2e6fa6ae5c0c2b07aa3b15512f870"
+          },
+          {
+            "bytes": 32581,
+            "path": "src/consequa_x/benchmark/decision_shapley.py",
+            "sha256": "944d99da393ed5c7e6a7674c88942773498ce4a42279dc43fb80bd7d75e6fccf"
+          },
+          {
+            "bytes": 8541,
+            "path": "src/consequa_x/benchmark/evaluation.py",
+            "sha256": "5782108d6f1728b5940c8842f3caa8a6bcae8279bfa710333d3de0856f6a9403"
+          },
+          {
+            "bytes": 14789,
+            "path": "src/consequa_x/benchmark/interaction_export.py",
+            "sha256": "ce8fc7958157d148de7f3ee9ff28e231c8c89b9f4e104c84c4fe92c0fb38d384"
+          },
+          {
+            "bytes": 9911,
+            "path": "src/consequa_x/benchmark/interaction_mechanisms.py",
+            "sha256": "e529d64e292138e4eeefc2b463fdeb2c8718d4f6766ee2daa75ebadb2589cf35"
+          },
+          {
+            "bytes": 36001,
+            "path": "src/consequa_x/benchmark/interaction_sampling.py",
+            "sha256": "b5cec9b36a4b1b2181d55533fa593cb1df059ad6403b7b03b3b29cb5a520df03"
+          },
+          {
+            "bytes": 17077,
+            "path": "src/consequa_x/benchmark/interval_comparison.py",
+            "sha256": "d981faabded0aeff7bb5582db62f98864022222482fa6554764b0ae667a58103"
+          },
+          {
+            "bytes": 7292,
+            "path": "src/consequa_x/benchmark/intervals.py",
+            "sha256": "13cfd6863e9224c0e609753435bf190f5695b98201d7ce8a8bd36917dfb3e85e"
+          },
+          {
+            "bytes": 17277,
+            "path": "src/consequa_x/benchmark/payments.py",
+            "sha256": "92a654a88bc73055a7927c1e4f22089cdc1dc8dc0b32b6dd0b4fb0cdb7ad8ec2"
+          },
+          {
+            "bytes": 13235,
+            "path": "src/consequa_x/benchmark/policy_experiment.py",
+            "sha256": "14a7f51fde3508eaf8f56034246548c612b8d0e92dade3615d256f9406d18544"
+          },
+          {
+            "bytes": 11257,
+            "path": "src/consequa_x/benchmark/policy_runner.py",
+            "sha256": "91192e53f75ec29e69635035b9c64131ae4dfe18df4e695f48dae37378b1a799"
+          },
+          {
+            "bytes": 12825,
+            "path": "src/consequa_x/benchmark/runner.py",
+            "sha256": "323ebe964800db7261a2a7c0ec1880e6965dc177b9b8b182ec0dd9c21d440c52"
+          },
+          {
+            "bytes": 8973,
+            "path": "src/consequa_x/benchmark/study.py",
+            "sha256": "c7b0b9e0b8398b1353497ee0e154c3b9fc73ab84624974c009be8b040ee6946b"
+          },
+          {
+            "bytes": 7106,
+            "path": "src/consequa_x/benchmark/targets.py",
+            "sha256": "16273ea10b7ac59102ac5abd78dc90511734657d5826f5dc2b1013a33f7ed2d3"
+          },
+          {
+            "bytes": 4990,
+            "path": "src/consequa_x/benchmark/templates.py",
+            "sha256": "2e61a0247f24ad067678649b1cc937f053b2daa0faf6363171bce8a04740e5c7"
+          },
+          {
+            "bytes": 26274,
+            "path": "src/consequa_x/capture.py",
+            "sha256": "9a5ec2db5355b34b4918023c22582746d101fd52d827ee65703dccaf4e22dd92"
+          },
+          {
+            "bytes": 85890,
+            "path": "src/consequa_x/cli.py",
+            "sha256": "84c739bbd8d95815e6666da7a62e5949dc2aa050c6f86b6d19b604af838b83d5"
+          },
+          {
+            "bytes": 4299,
+            "path": "src/consequa_x/compare.py",
+            "sha256": "7f1ed3ff57a81e13c51e391727baf706c1e6fae8e77e5f8092e7b76824dd08db"
+          },
+          {
+            "bytes": 1203,
+            "path": "src/consequa_x/errors.py",
+            "sha256": "f6908ff7b4def631c73952766a88777464fe314c528f9fe0f52875f7be016196"
+          },
+          {
+            "bytes": 9905,
+            "path": "src/consequa_x/explanation.py",
+            "sha256": "233ac34a13690bf2f8cbd2415e4482423c3327a24806d8ad91f76264c1200ab2"
+          },
+          {
+            "bytes": 10387,
+            "path": "src/consequa_x/graph.py",
+            "sha256": "6b746976d24c8bdef99602cbac11cffbc1b60b3f19e2713c1201041a994e220c"
+          },
+          {
+            "bytes": 3679,
+            "path": "src/consequa_x/guard.py",
+            "sha256": "a0d1e4a240e674089a0f2d80e652f87a3ab0166ee82310c024af8952e186c639"
+          },
+          {
+            "bytes": 2681,
+            "path": "src/consequa_x/mcp_capture.py",
+            "sha256": "26d77d0c468abfbfa1a6242ef3dd5d2e2366c6ab8c653976d38f1ac9bc21bbb1"
+          },
+          {
+            "bytes": 8520,
+            "path": "src/consequa_x/migrate.py",
+            "sha256": "47b0263c0a6d0c5102cd8c96b9a63ed602fa7909dc4dce2f04f911199a32828d"
+          },
+          {
+            "bytes": 29609,
+            "path": "src/consequa_x/models.py",
+            "sha256": "953ddf8375dc74bf8f66c29d0a01a5840a094eecc24aab73dd72e6314012185d"
+          },
+          {
+            "bytes": 10732,
+            "path": "src/consequa_x/policies.py",
+            "sha256": "ff6031e4c3dd29eb17419fa921341e839a51995f02517b4c583d41bb5c2398f1"
+          },
+          {
+            "bytes": 0,
+            "path": "src/consequa_x/py.typed",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "bytes": 4479,
+            "path": "src/consequa_x/readback.py",
+            "sha256": "1421655dd94b516ef31a8300887faf7be9136cd4428bb06ff1daa87dc8c21f07"
+          },
+          {
+            "bytes": 14288,
+            "path": "src/consequa_x/record_verifier.py",
+            "sha256": "4d9a4971c2a97a0ba2065edefe44724820620715474463dd5b4d027e9fc28b05"
+          },
+          {
+            "bytes": 26720,
+            "path": "src/consequa_x/report.py",
+            "sha256": "feb4cdb78014e0ae3e74a4456aedb073043d35f22ce589b025192ed3f3bc2834"
+          },
+          {
+            "bytes": 940,
+            "path": "src/consequa_x/research.py",
+            "sha256": "6d2b2d4cdba65eda13736c2f710b30b683a52db5bc95a24bc5ef23438ca72fbd"
+          },
+          {
+            "bytes": 7115,
+            "path": "src/consequa_x/schema.py",
+            "sha256": "5f71ab35ecbe30b655d0d2889d73f891470f2faab04a03e8c143ff35e0878a21"
+          },
+          {
+            "bytes": 13863,
+            "path": "src/consequa_x/schemas/trace-v1.0.json",
+            "sha256": "7617d8f0a3e9a8221d405a9fe6edf38d4294230d63143564a565b503045fc879"
+          },
+          {
+            "bytes": 2289,
+            "path": "src/consequa_x/store.py",
+            "sha256": "2d569b0f1b0ea04dd375846e2178e3f037c9cab9429e7f3a04415532aae8622d"
+          },
+          {
+            "bytes": 6162,
+            "path": "src/consequa_x/summary.py",
+            "sha256": "e5ac2548f01dbf339f171313964aaff9a6a46bf2caa38c9782f8678edb9c9890"
+          },
+          {
+            "bytes": 15767,
+            "path": "src/consequa_x/verification.py",
+            "sha256": "5c315347ca2d181c9f7e7e2e55b08c34bbc754ddb505d31303ff71798436a725"
+          },
+          {
+            "bytes": 637,
+            "path": "tests/fixtures/v0.1/README.md",
+            "sha256": "20422d8fc91086913690907ae841528ac546d6a0cf9f73a2cc2a9dbffc5b82be"
+          },
+          {
+            "bytes": 6025,
+            "path": "tests/fixtures/v0.1/record-timeout-after-commit.json",
+            "sha256": "f039ed8f7f3dba54d0fdbd7a46b920a017c3494e1e95d88ef4e7237d9c63627c"
+          },
+          {
+            "bytes": 6316,
+            "path": "tests/fixtures/v0.1/refund-another-actor.json",
+            "sha256": "08f2f48dead36081fa302ca674a76704f7b2e6cdf8ee0cf9e377e17239f77050"
+          },
+          {
+            "bytes": 6550,
+            "path": "tests/fixtures/v0.1/refund-stale-readback.json",
+            "sha256": "6041cbe5ad366f4db6c9bdcaf4ac254344aeddf4648b875825435f8d9c95c4c1"
+          },
+          {
+            "bytes": 12264,
+            "path": "tests/fixtures/v0.1/refund-timeout-after-commit.explanation.json",
+            "sha256": "9579f551e513ab2e3efd0c15a7210793f2b1e28a90e00b87e6c443062d7f3b5d"
+          },
+          {
+            "bytes": 6494,
+            "path": "tests/fixtures/v0.1/refund-timeout-after-commit.json",
+            "sha256": "07cd79a15162ca1375e19d5fe5b7481e072097f9f8b77f8d4c1d4c885e9f36e1"
+          },
+          {
+            "bytes": 2696,
+            "path": "tests/test_agent_loop_example.py",
+            "sha256": "63b90456c0b09c5d1339ec8fcdd57c1bd115712aed5ec1fa845c31bfb150164b"
+          },
+          {
+            "bytes": 10763,
+            "path": "tests/test_assessment_metrics.py",
+            "sha256": "79b521b4b5db4ecc964196fc17b8f6b4afcc9f999880f822dec737220171f673"
+          },
+          {
+            "bytes": 3657,
+            "path": "tests/test_async_capture.py",
+            "sha256": "4c4ed499a9107312a42353018c4ce036e41dd4f96bcd06404b2efbe34faaeb7d"
+          },
+          {
+            "bytes": 21765,
+            "path": "tests/test_attribution.py",
+            "sha256": "e3be70833693612cd84d144cd4a3e19afe5daf49481dc89dc5541a489fa0c4d5"
+          },
+          {
+            "bytes": 19859,
+            "path": "tests/test_calibration.py",
+            "sha256": "dddcf326d5b0cdfa1811171c4b20a4c8cdd0bd49c16e246ee80be4159f02c028"
+          },
+          {
+            "bytes": 5324,
+            "path": "tests/test_calibration_cli.py",
+            "sha256": "440d1a32514f72d101ccf6fa32afabee94f5fdb82e32c9ead9a8be1c9164dfcc"
+          },
+          {
+            "bytes": 18374,
+            "path": "tests/test_calibration_mechanisms.py",
+            "sha256": "bb1d74af9ba756c5ef2eed308968879c6db429cdca01eea3304fbdac0ea3f3c4"
+          },
+          {
+            "bytes": 12560,
+            "path": "tests/test_capture.py",
+            "sha256": "f9ec644017abe36da6b73a729fefe5d7e39afef41751b0e9aae3ceb504377c93"
+          },
+          {
+            "bytes": 7235,
+            "path": "tests/test_cli.py",
+            "sha256": "bf14ac2a48f4f130c133739b50d155ca41d4361830681cbecfea91315fd190f6"
+          },
+          {
+            "bytes": 4659,
+            "path": "tests/test_compare_verify_redact.py",
+            "sha256": "5c5545bdef10bff03528f29937c5ac3801744c3ee20fbd2b55991de4457ca67d"
+          },
+          {
+            "bytes": 23700,
+            "path": "tests/test_decision_coalition.py",
+            "sha256": "673d99ab4589039b5fc267507453df6a1fc589e16933e66a522b21d6a9668f37"
+          },
+          {
+            "bytes": 26582,
+            "path": "tests/test_decision_contrastive.py",
+            "sha256": "2eb8a133b3682c28f49c99ae417743734a52a46babd8f799d50c6c40a9e5a01e"
+          },
+          {
+            "bytes": 14527,
+            "path": "tests/test_decision_contrastive_cli.py",
+            "sha256": "2f44908832fa347043bf0811fd7f23f0a62d8f7a6ee36e208ad3502ea539ef15"
+          },
+          {
+            "bytes": 18106,
+            "path": "tests/test_decision_replay.py",
+            "sha256": "d902e81c5428dd6e22016a132462b3cc522ae78470080eed4ace118b90832673"
+          },
+          {
+            "bytes": 26051,
+            "path": "tests/test_decision_shapley.py",
+            "sha256": "51760b879d7e2bcb89ddc764f547700397de0a379a2fee763228d8b7b358aaac"
+          },
+          {
+            "bytes": 11211,
+            "path": "tests/test_decision_shapley_cli.py",
+            "sha256": "311f149068ef5ded1e9a729220afee3ae0a08b75584407c586149bd89a048885"
+          },
+          {
+            "bytes": 608,
+            "path": "tests/test_docs_examples.py",
+            "sha256": "579f81dad62d0392677cc54f7166e2cb2f64fe9579c0ee3588f1a335b7fcd9b9"
+          },
+          {
+            "bytes": 3936,
+            "path": "tests/test_errors.py",
+            "sha256": "6133fb5a6c4fc63d708cb789d697582a0e3ee5b02d781804612bc5aea4dba4a6"
+          },
+          {
+            "bytes": 14292,
+            "path": "tests/test_graph.py",
+            "sha256": "bc63b7a27231796c0b4ad036b176fd3bbb60c3a6008478ce33ff930a80cae62e"
+          },
+          {
+            "bytes": 6043,
+            "path": "tests/test_graph_identity.py",
+            "sha256": "a506ef23f1760058832ff015eef0c6716e6d0c858bab23ab859d9ea573ecdc19"
+          },
+          {
+            "bytes": 4570,
+            "path": "tests/test_installed_release_check.py",
+            "sha256": "46cb2c76d291d72ebef224c9435c33e5e5cdb568a413f2e97e2a1fb04cfbeacb"
+          },
+          {
+            "bytes": 12984,
+            "path": "tests/test_integration.py",
+            "sha256": "284c6cfb541c89cc78ae9e06aaae57e2223f5d97530943d0e514e8596fc28642"
+          },
+          {
+            "bytes": 17623,
+            "path": "tests/test_interaction_sampling.py",
+            "sha256": "5ce076e1b30fd5b8f78d8389369ba283e663b037a9d02543ce8c7a53592e54bf"
+          },
+          {
+            "bytes": 1180,
+            "path": "tests/test_interaction_sampling_cli.py",
+            "sha256": "e1106f3a4dc9d288e76905d0be5e3bf68b229348df3ef8205ee250d8f725b6ab"
+          },
+          {
+            "bytes": 1941,
+            "path": "tests/test_interaction_workers.py",
+            "sha256": "6ed6bb618409009fad3f73e18662f644e23e1ea8408819ad5ae899804ac0e1ac"
+          },
+          {
+            "bytes": 4160,
+            "path": "tests/test_interval_comparison.py",
+            "sha256": "63c46254a96e4cb38c38ca8737757ef20295649df3b15d3ed7a6152b3af1771b"
+          },
+          {
+            "bytes": 10607,
+            "path": "tests/test_interval_replay.py",
+            "sha256": "ca9c82f3cb380d2cb812829591dda3a71f3218695f48caea73bf1abd78ef5ef6"
+          },
+          {
+            "bytes": 5368,
+            "path": "tests/test_intervals.py",
+            "sha256": "686c67bdd3dce5f779d139f2b5cf77067ea666ef566fdf332f05b406b74ed5cb"
+          },
+          {
+            "bytes": 8110,
+            "path": "tests/test_matched_baseline_audit.py",
+            "sha256": "b6f355b7f4beedbe6ba6e1f5a14c5baa7e417fa73e91c8ff3396627f7bb6ae31"
+          },
+          {
+            "bytes": 12786,
+            "path": "tests/test_matched_execution_summary.py",
+            "sha256": "e0ae0eb3ebceab3ad0fb4c2dbd079cda312a2be81d0cf92cd44cbccdafbb8af0"
+          },
+          {
+            "bytes": 10599,
+            "path": "tests/test_matched_figure_builder.py",
+            "sha256": "d5c746f8702682f9fdfc87e2d38ddeda9831e40fa98a75603cf9bfbc039647db"
+          },
+          {
+            "bytes": 20970,
+            "path": "tests/test_matched_local_study.py",
+            "sha256": "2be0a6b274d6d3c2d7c43a4949dd30860d7030962d2966af6569d59f83f77c08"
+          },
+          {
+            "bytes": 7909,
+            "path": "tests/test_matched_study_finalizer.py",
+            "sha256": "e90a1a9ee4b33209fed9049835360c3a8dbc40f46cde612c2edb064405c90d2d"
+          },
+          {
+            "bytes": 14653,
+            "path": "tests/test_matched_trace_judge.py",
+            "sha256": "5f8af84aa87bca15b8ff7a00496511fbb9d9da32966259dde093455d4dfb2d13"
+          },
+          {
+            "bytes": 2892,
+            "path": "tests/test_mcp_capture.py",
+            "sha256": "c72189d5838104e283704aa2f39c0ef2039f150f57d8fc76720dea9e071e8e17"
+          },
+          {
+            "bytes": 5445,
+            "path": "tests/test_migrate.py",
+            "sha256": "ecf7f035c3a5ff557e5c469a12ed42c854c5c248d4be8dbf7634a76a5daeb481"
+          },
+          {
+            "bytes": 10982,
+            "path": "tests/test_model_eval_integration.py",
+            "sha256": "331f25c82ff71932878df127b30c64ef3f27510194bb76e894269ede8cd6f388"
+          },
+          {
+            "bytes": 18803,
+            "path": "tests/test_models.py",
+            "sha256": "0163834f44b4c529ffbe58a1ff27e9e4bf494fe3a7eca56a9ac32b3b066e3e51"
+          },
+          {
+            "bytes": 8179,
+            "path": "tests/test_multi_action.py",
+            "sha256": "2547fea9735034d5f92b67535350306436610b1f7fdb4d335985a897cda1540d"
+          },
+          {
+            "bytes": 23903,
+            "path": "tests/test_ollama.py",
+            "sha256": "803bd19317eebe912ce5e1649c4b8b5536bb72c460ac2a03effe7f8298379574"
+          },
+          {
+            "bytes": 22008,
+            "path": "tests/test_payments.py",
+            "sha256": "8d9090eecff8f43ab3c70bb37f140f02cb853aa96e4c7f8df218db29205ab2d7"
+          },
+          {
+            "bytes": 8773,
+            "path": "tests/test_policies.py",
+            "sha256": "1fb3b99c6768f643c6f5595bac592eb13eb23164fe705623ba21eaa9333ae91e"
+          },
+          {
+            "bytes": 6383,
+            "path": "tests/test_policy_evaluation.py",
+            "sha256": "42b3e60eb79fa05a5a1e41fd89974b24cf2793440d672c16a6549b82305f03fd"
+          },
+          {
+            "bytes": 22576,
+            "path": "tests/test_policy_experiment.py",
+            "sha256": "64072e5ed445ca1c56d55834f9ff90d91f2faf5ed819e6950d56a3d914a03bbb"
+          },
+          {
+            "bytes": 13845,
+            "path": "tests/test_policy_experiment_integration.py",
+            "sha256": "656aa17008902cc1e5f6fe5492b5e3fc470a1727008638ffa880e1a53b655a26"
+          },
+          {
+            "bytes": 18957,
+            "path": "tests/test_policy_runner.py",
+            "sha256": "7e3fe17c9436a7cd630e588a78a57532d20de744b04fefea7ee8b09f6a81c435"
+          },
+          {
+            "bytes": 2039,
+            "path": "tests/test_prompt_profile_cli.py",
+            "sha256": "5a8ce76d0c18954cc4bdce32c06a4f10bd077bb8a9a59d797ab1aed2cd751756"
+          },
+          {
+            "bytes": 15230,
+            "path": "tests/test_public_integration.py",
+            "sha256": "8a67cdeaeaa270dddb2dca8f98e9f514e9aa9b6ef7dc4024f171b1efc6247218"
+          },
+          {
+            "bytes": 4397,
+            "path": "tests/test_readback_guard.py",
+            "sha256": "48e7aa494168d80aced406e6ed050b6c1f809743c5c4a3e41c1ecdee135d28f5"
+          },
+          {
+            "bytes": 9797,
+            "path": "tests/test_record_verifier.py",
+            "sha256": "b4c7da2fed228621a1bb63d1199c6e9b9d8fab84161cea83521606e10d302747"
+          },
+          {
+            "bytes": 15937,
+            "path": "tests/test_refund_interactions.py",
+            "sha256": "c08188c12570cc94d99faeb7314983f4a4ea59874d4d1bd9b7759fecc0f1dc9e"
+          },
+          {
+            "bytes": 1227,
+            "path": "tests/test_refund_interactions_cli.py",
+            "sha256": "fb990d10c4e3bc28601a2c7e90b5801d0f3c60d1fa7b4d92f3b63cd693b37f39"
+          },
+          {
+            "bytes": 6386,
+            "path": "tests/test_release_helpers.py",
+            "sha256": "c7a09e51767b6678e4262144792914a2534c53d538ac31918c80121ec4dfee4f"
+          },
+          {
+            "bytes": 13420,
+            "path": "tests/test_release_inventory.py",
+            "sha256": "444629853f527b2c46a937f112ed1a9a52e7524280ae370fa1532992ad0755fd"
+          },
+          {
+            "bytes": 5451,
+            "path": "tests/test_render_site_export.py",
+            "sha256": "a50e5a27f528fcb431d2d87fb5a365ba42df7bd87a0afe2c5f9a5ddd32568f47"
+          },
+          {
+            "bytes": 10859,
+            "path": "tests/test_replay_targets.py",
+            "sha256": "542aadf61932ce7d8e4143171cdffcc0c0feaefafa9949e887c5bb14eb072b0f"
+          },
+          {
+            "bytes": 16619,
+            "path": "tests/test_report.py",
+            "sha256": "9306b67384a8e7fce89a28d9910e2399b4ece3c7c944a01661d3e75dd607a6a1"
+          },
+          {
+            "bytes": 4162,
+            "path": "tests/test_report_cli.py",
+            "sha256": "7c1d6d019922e1fd68cf24dd5cd16bb9d6f4aa396560c8fcc7d70f06be05cba7"
+          },
+          {
+            "bytes": 4093,
+            "path": "tests/test_research_integration.py",
+            "sha256": "ea9ced6a05373caea34da8e0a8eddb37760efa869e5d5e7dcf2f3e44c699b16e"
+          },
+          {
+            "bytes": 7048,
+            "path": "tests/test_schema.py",
+            "sha256": "fd8575a005f8bac1c5f58fdb22925e9c3b91c9b713d627cc702cbe2e952f818e"
+          },
+          {
+            "bytes": 3063,
+            "path": "tests/test_site_demo.py",
+            "sha256": "ebe60fbfa43fb177884e20811ad0d7508a4324416bbb49fe0d448ca35445c29e"
+          },
+          {
+            "bytes": 2410,
+            "path": "tests/test_snapshot_integrity.py",
+            "sha256": "8e1f6fe9eacd538b0013783944f96317c0d6d86fecbe75f6f3e54a4a3f419e7b"
+          },
+          {
+            "bytes": 11391,
+            "path": "tests/test_stable_release.py",
+            "sha256": "8e46a410ff548bd240d4eaef2cf8f9376f62321c9247b98cd14f84d04c3099f7"
+          },
+          {
+            "bytes": 9666,
+            "path": "tests/test_study.py",
+            "sha256": "467e3902bc45c71eeeedce6faf11b4b49298fa13d9adbe55797effc449617eb0"
+          },
+          {
+            "bytes": 5157,
+            "path": "tests/test_summary_store.py",
+            "sha256": "ba8eb7fa718198d5b263000a91c7645dd8345244152acf62a29b4cdbbf3ab5c9"
+          },
+          {
+            "bytes": 9705,
+            "path": "tests/test_task_templates.py",
+            "sha256": "2f55dbd077d9e6833477689cfbd05c4ffc56582db0ad85edcdae1fcefc40d329"
+          },
+          {
+            "bytes": 8551,
+            "path": "tests/test_tau_benchmark_validation.py",
+            "sha256": "0acdffe3f5e29c775fdd997d4de4254a3a824e1958f33d1828ccd80f996660db"
+          },
+          {
+            "bytes": 14702,
+            "path": "tests/test_upstream_car_study.py",
+            "sha256": "f4ea7b7c60d16de96f40c57dc603077350ddb8b3a8dcbe649635c8b2808a31bb"
+          },
+          {
+            "bytes": 18325,
+            "path": "tests/test_verification.py",
+            "sha256": "e73e9d06e5348b5ebb63c1aef94184dc96596ce2712edb86fd9f58028fff8738"
+          }
+        ],
+        "source_inventory_sha256": "bec6279314ab4cebf4bb0906e3a73505d4a5eecd5e991d3af1e80ad9c3980f8a",
+        "source_revision": "87463bf290ff1a1da9b270a7b11f48c512549172",
+        "source_revision_git_verified": true,
+        "source_revision_scope": "Actual Git HEAD; all reviewed source paths tracked and unchanged",
+        "source_root": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\feature-2.0",
+        "version": "2.0.0",
+        "wheel_files": 54
+      }
+    },
+    "registry312.json": {
+      "git_blob": "668edc28ad497b449911286d47a77638a51b5011",
+      "bytes": 2203,
+      "sha256": "11ea384745230cfef0f95606ce9dfffde3388eeeb463452cf2dd53746f3da914",
+      "record": {
+        "api_process_benchmark_imports": 0,
+        "capture": {
+          "attempt_context": true,
+          "capture_tool": true,
+          "exception_messages_dropped": true,
+          "mcp_error_recorded": true,
+          "record_verifier": true,
+          "recorded_modes": [
+            "other_actor",
+            "stale",
+            "timeout_after_commit"
+          ],
+          "recorder_call": true
+        },
+        "checker_sha256": "db3d048f3dd2c6e7e0c0dbc3c5541bfbcbc25a3130cbcb19289719018726f948",
+        "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+        "executable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\registry-2.0.0\\env\\Scripts\\python.exe",
+        "features_2_0": {
+          "migration_conservative": true,
+          "multi_action_trace": true,
+          "readback_polls": 3,
+          "retry_advice": true,
+          "schema_0_1_refused": true,
+          "store_summary_compare": true
+        },
+        "install": {
+          "matching_wheel_payloads": 48,
+          "module_file": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\registry-2.0.0\\env\\Lib\\site-packages\\consequa_x\\__init__.py",
+          "runtime_dependencies": 0,
+          "version": "2.0.0"
+        },
+        "isolated_imports": true,
+        "kernel_release": "11",
+        "machine": "AMD64",
+        "passed": true,
+        "platform": "Windows-11-10.0.26300-SP0",
+        "provider_calls": 0,
+        "python": "3.12.10",
+        "reports": {
+          "cli_checks": 12,
+          "default_omits_captured_details": true,
+          "existing_output_preserved": true,
+          "explicit_details_escaped": true,
+          "invalid_inputs_refused_without_output": 8,
+          "source_unchanged": true
+        },
+        "strict_schema_refusals": 16,
+        "system": "Windows",
+        "wheel": {
+          "bytes": 191053,
+          "filename": "consequa_x-2.0.0-py3-none-any.whl",
+          "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+        },
+        "workflow": {
+          "custom_verifier": true,
+          "missing_verification_reported": true,
+          "observed_statuses": [
+            "satisfied",
+            "unknown",
+            "violated"
+          ],
+          "trace_roundtrips": 4,
+          "unknown_origin_preserved": true,
+          "verifier_target_matching": true
+        }
+      }
+    },
+    "windows311.json": {
+      "git_blob": "ef5fea07387824ba2fcf362844a551fd8e8b0b0d",
+      "bytes": 2202,
+      "sha256": "d0ad73a9696bcb2d86e89cc14e4c1898ac033a9231424bea9e05c37fad390aae",
+      "record": {
+        "api_process_benchmark_imports": 0,
+        "capture": {
+          "attempt_context": true,
+          "capture_tool": true,
+          "exception_messages_dropped": true,
+          "mcp_error_recorded": true,
+          "record_verifier": true,
+          "recorded_modes": [
+            "other_actor",
+            "stale",
+            "timeout_after_commit"
+          ],
+          "recorder_call": true
+        },
+        "checker_sha256": "db3d048f3dd2c6e7e0c0dbc3c5541bfbcbc25a3130cbcb19289719018726f948",
+        "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+        "executable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-2.0.0\\py311-embed\\python.exe",
+        "features_2_0": {
+          "migration_conservative": true,
+          "multi_action_trace": true,
+          "readback_polls": 3,
+          "retry_advice": true,
+          "schema_0_1_refused": true,
+          "store_summary_compare": true
+        },
+        "install": {
+          "matching_wheel_payloads": 48,
+          "module_file": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-2.0.0\\py311-embed\\site-packages\\consequa_x\\__init__.py",
+          "runtime_dependencies": 0,
+          "version": "2.0.0"
+        },
+        "isolated_imports": true,
+        "kernel_release": "10",
+        "machine": "AMD64",
+        "passed": true,
+        "platform": "Windows-10-10.0.26300-SP0",
+        "provider_calls": 0,
+        "python": "3.11.9",
+        "reports": {
+          "cli_checks": 12,
+          "default_omits_captured_details": true,
+          "existing_output_preserved": true,
+          "explicit_details_escaped": true,
+          "invalid_inputs_refused_without_output": 8,
+          "source_unchanged": true
+        },
+        "strict_schema_refusals": 16,
+        "system": "Windows",
+        "wheel": {
+          "bytes": 191053,
+          "filename": "consequa_x-2.0.0-py3-none-any.whl",
+          "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+        },
+        "workflow": {
+          "custom_verifier": true,
+          "missing_verification_reported": true,
+          "observed_statuses": [
+            "satisfied",
+            "unknown",
+            "violated"
+          ],
+          "trace_roundtrips": 4,
+          "unknown_origin_preserved": true,
+          "verifier_target_matching": true
+        }
+      }
+    },
+    "windows312.json": {
+      "git_blob": "35c83148be70f740cf0a984bee0a7c153dc52fc6",
+      "bytes": 2207,
+      "sha256": "d3505ee9db9ecd56e5c64b4ec1fba4bb31dcce412deec9b71ead18e709c77dab",
+      "record": {
+        "api_process_benchmark_imports": 0,
+        "capture": {
+          "attempt_context": true,
+          "capture_tool": true,
+          "exception_messages_dropped": true,
+          "mcp_error_recorded": true,
+          "record_verifier": true,
+          "recorded_modes": [
+            "other_actor",
+            "stale",
+            "timeout_after_commit"
+          ],
+          "recorder_call": true
+        },
+        "checker_sha256": "db3d048f3dd2c6e7e0c0dbc3c5541bfbcbc25a3130cbcb19289719018726f948",
+        "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+        "executable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-2.0.0\\env312\\Scripts\\python.exe",
+        "features_2_0": {
+          "migration_conservative": true,
+          "multi_action_trace": true,
+          "readback_polls": 3,
+          "retry_advice": true,
+          "schema_0_1_refused": true,
+          "store_summary_compare": true
+        },
+        "install": {
+          "matching_wheel_payloads": 48,
+          "module_file": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-2.0.0\\env312\\Lib\\site-packages\\consequa_x\\__init__.py",
+          "runtime_dependencies": 0,
+          "version": "2.0.0"
+        },
+        "isolated_imports": true,
+        "kernel_release": "11",
+        "machine": "AMD64",
+        "passed": true,
+        "platform": "Windows-11-10.0.26300-SP0",
+        "provider_calls": 0,
+        "python": "3.12.10",
+        "reports": {
+          "cli_checks": 12,
+          "default_omits_captured_details": true,
+          "existing_output_preserved": true,
+          "explicit_details_escaped": true,
+          "invalid_inputs_refused_without_output": 8,
+          "source_unchanged": true
+        },
+        "strict_schema_refusals": 16,
+        "system": "Windows",
+        "wheel": {
+          "bytes": 191053,
+          "filename": "consequa_x-2.0.0-py3-none-any.whl",
+          "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+        },
+        "workflow": {
+          "custom_verifier": true,
+          "missing_verification_reported": true,
+          "observed_statuses": [
+            "satisfied",
+            "unknown",
+            "violated"
+          ],
+          "trace_roundtrips": 4,
+          "unknown_origin_preserved": true,
+          "verifier_target_matching": true
+        }
+      }
+    },
+    "linux.json": {
+      "git_blob": "2a3956fb02fb9c059e853e78f1e9f9a461b58e31",
+      "bytes": 2219,
+      "sha256": "7ce03569e891a7cb6d0b6feae2dc6c8ecc5830fff90f5456ae8f29111d02d50e",
+      "record": {
+        "api_process_benchmark_imports": 0,
+        "capture": {
+          "attempt_context": true,
+          "capture_tool": true,
+          "exception_messages_dropped": true,
+          "mcp_error_recorded": true,
+          "record_verifier": true,
+          "recorded_modes": [
+            "other_actor",
+            "stale",
+            "timeout_after_commit"
+          ],
+          "recorder_call": true
+        },
+        "checker_sha256": "db3d048f3dd2c6e7e0c0dbc3c5541bfbcbc25a3130cbcb19289719018726f948",
+        "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+        "executable": "/root/consequa-venv2/bin/python",
+        "features_2_0": {
+          "migration_conservative": true,
+          "multi_action_trace": true,
+          "readback_polls": 3,
+          "retry_advice": true,
+          "schema_0_1_refused": true,
+          "store_summary_compare": true
+        },
+        "install": {
+          "matching_wheel_payloads": 48,
+          "module_file": "/root/consequa-venv2/lib/python3.14/site-packages/consequa_x/__init__.py",
+          "runtime_dependencies": 0,
+          "version": "2.0.0"
+        },
+        "isolated_imports": true,
+        "kernel_release": "6.18.52-0-virt",
+        "linux_distribution": {
+          "BUG_REPORT_URL": "https://gitlab.alpinelinux.org/alpine/aports/-/issues",
+          "HOME_URL": "https://alpinelinux.org/",
+          "ID": "alpine",
+          "NAME": "Alpine Linux",
+          "PRETTY_NAME": "Alpine Linux v3.24",
+          "VERSION_ID": "3.24.2"
+        },
+        "machine": "x86_64",
+        "passed": true,
+        "platform": "Linux-6.18.52-0-virt-x86_64-with-musl1",
+        "provider_calls": 0,
+        "python": "3.14.8",
+        "reports": {
+          "cli_checks": 12,
+          "default_omits_captured_details": true,
+          "existing_output_preserved": true,
+          "explicit_details_escaped": true,
+          "invalid_inputs_refused_without_output": 8,
+          "source_unchanged": true
+        },
+        "strict_schema_refusals": 16,
+        "system": "Linux",
+        "wheel": {
+          "bytes": 191053,
+          "filename": "consequa_x-2.0.0-py3-none-any.whl",
+          "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+        },
+        "workflow": {
+          "custom_verifier": true,
+          "missing_verification_reported": true,
+          "observed_statuses": [
+            "satisfied",
+            "unknown",
+            "violated"
+          ],
+          "trace_roundtrips": 4,
+          "unknown_origin_preserved": true,
+          "verifier_target_matching": true
+        }
+      }
+    },
+    "sdist312.json": {
+      "git_blob": "42eb51a01666f274be1be0b82c7457cd6ad151e7",
+      "bytes": 1832,
+      "sha256": "ebeb844a1ca7358722892f870c02310183f2b058516ea29284044ee071a67566",
+      "record": {
+        "checks": {
+          "agent_loop_example_from_sdist": {
+            "other_actor": {
+              "alignment": "unassessable",
+              "assessment": "failure",
+              "origin": "other_actor",
+              "response": "timeout",
+              "state": "satisfied"
+            },
+            "stale_readback": {
+              "alignment": "unassessable",
+              "assessment": "success",
+              "origin": "unknown",
+              "response": "success",
+              "state": "unknown"
+            },
+            "timeout_after_commit": {
+              "alignment": "contradicted",
+              "assessment": "failure",
+              "origin": "confirmed",
+              "response": "timeout",
+              "state": "satisfied"
+            }
+          },
+          "cli_version": "2.0.0",
+          "consequa_x_version": "2.0.0",
+          "demo_scenarios_generated": 12,
+          "demo_summary_actions": 12,
+          "migrated_1_2_0_fixture_reproduces_1_x_explanation": true,
+          "project_urls": [
+            "Homepage, https://consequa-x.onrender.com",
+            "Documentation, https://consequa-x.onrender.com/docs.html",
+            "Changelog, https://consequa-x.onrender.com/changelog.html",
+            "Repository, https://github.com/Devrajsinh-Jhala/consequa-x",
+            "Issues, https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+            "Security, https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+          ],
+          "report_from_episode_01_sha256": "3c8f09d0365ad9c03b6ecafee164037ad23b73ecac2a3e00cb79c2f32d0f7190"
+        },
+        "input_artifact": {
+          "bytes": 607605,
+          "path": "consequa_x-2.0.0.tar.gz",
+          "sha256": "70868f903271f2ae9f9dc7f73fd2bb993e406934b115db89018aa76cdb0c9c45"
+        },
+        "module_file_in_site_packages": true,
+        "passed": true,
+        "python": "3.12.10",
+        "scope": "Smoke install of the source distribution: demo, report, summarize, the SQLite agent-loop example, and migration of a trace written by 1.2.0; not the full installed-artifact checker."
+      }
+    }
+  },
+  "pypi": {
+    "url": "https://pypi.org/pypi/consequa-x/2.0.0/json",
+    "version": "2.0.0",
+    "requires_python": ">=3.11",
+    "requires_dist": [
+      "pytest>=8; extra == \"dev\"",
+      "build>=1.2; extra == \"dev\"",
+      "ruff>=0.8; extra == \"dev\"",
+      "jsonschema>=4.23; extra == \"dev\""
+    ],
+    "license_expression": "MIT",
+    "files": [
+      {
+        "filename": "consequa_x-2.0.0-py3-none-any.whl",
+        "bytes": 191053,
+        "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c",
+        "upload_time_utc": "2026-10-19T09:46:36.419747Z",
+        "yanked": false
+      },
+      {
+        "filename": "consequa_x-2.0.0.tar.gz",
+        "bytes": 607605,
+        "sha256": "70868f903271f2ae9f9dc7f73fd2bb993e406934b115db89018aa76cdb0c9c45",
+        "upload_time_utc": "2026-10-19T09:46:38.716873Z",
+        "yanked": false
+      }
+    ],
+    "hashes_sizes_match_retained_publication": true
+  },
+  "github": {
+    "repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+    "visibility": "public",
+    "private": false,
+    "actions": {
+      "enabled": false,
+      "sha_pinning_required": false
+    }
+  },
+  "static_research_review": {
+    "role": "Additional AI-assisted read-only subagent source/diff review, not an experiment or independent human validation.",
+    "byte_identical_estimator_paths": [
+      "src/consequa_x/benchmark/decision_contrastive.py",
+      "src/consequa_x/benchmark/decision_shapley.py",
+      "src/consequa_x/benchmark/decision_coalition.py",
+      "src/consequa_x/benchmark/intervals.py",
+      "src/consequa_x/benchmark/interval_comparison.py"
+    ],
+    "attribution_diff": "Only ConsequaError import and InsufficientEvidenceError inheritance. leave_one_out, Wilson calculations, outcomes and targets unchanged.",
+    "changed_transport_paths": [
+      "src/consequa_x/benchmark/decision_replay.py",
+      "src/consequa_x/benchmark/evaluation.py",
+      "src/consequa_x/benchmark/interaction_sampling.py",
+      "src/consequa_x/benchmark/payments.py",
+      "src/consequa_x/benchmark/policy_experiment.py",
+      "src/consequa_x/benchmark/policy_runner.py",
+      "src/consequa_x/benchmark/runner.py",
+      "src/consequa_x/benchmark/targets.py",
+      "src/consequa_x/policies.py"
+    ],
+    "finding": "Changes in these paths adapt construction/access to keyword-only multi-action records, frozen JSON payloads, and required action_id on responses. No estimator formula, RNG/permutation, stochastic fault, commit or retry law change found in static diff. This does not prove end-to-end equivalence because validation, explanation, accepted inputs and serialization changed.",
+    "frozen_collector_warning": "All three current study runner source files were ported and differ from their frozen protocol bytes. Use the isolated frozen source for historical audit. Never change historical source hashes to current sources."
+  },
+  "migration_feasibility": {
+    "status": "Feasible prospective offline post-hoc conformance check, not yet executed by this review.",
+    "proposed_scope": "Exactly503 previously completed factual traces in their frozen504-slot schedule, retain the one original failed slot separately; fresh source/plan/output hashes, zero model calls, no raw-file overwrite or rejected-input substitution.",
+    "public_calls": [
+      "report = MigrationReport()",
+      "migrated = migrate_trace(old_json_text, report=report)",
+      "action = migrated.single_action",
+      "fresh = verify(action, stored_observation)",
+      "current_trace = dataclasses.replace(migrated, verifications=fresh_receipts_in_recorded_order)",
+      "current = explain(current_trace).for_action(action.action_id)"
+    ],
+    "canonical_mapping": {
+      "state": "{'satisfied': True, 'violated': False}.get(fresh.status.value)",
+      "origin": "fresh.origin.value",
+      "assessment_alignment": "current.assessment_alignment",
+      "action_linked": "consequa_x.benchmark.targets.action_linked_consequence(action, fresh), a declared research helper whose logic is unchanged; bool(fresh.target_effect_ids) is not the same mapping.",
+      "diagnostics": "current.codes and structured diagnoses in a separate field, not required to match legacy string tuples byte for byte."
+    },
+    "migration_rederivation_guard": [
+      "status",
+      "origin",
+      "effect_ids",
+      "attributable_effect_ids"
+    ],
+    "guard_note": "The four fields are compared, not entire receipt bytes. Old recorded receipt status/origin/effect lists remain preserved by construction; target_effect_ids/findings are added only when a matching current candidate exists for a single referenced observation. Structural migration equality alone cannot establish current verifier conformance.",
+    "loss_cases": [
+      "0.1 recorded no time origin: migration declares relative_ms and cannot recover epoch time.",
+      "0.1 has a single action/assessment: migration cannot recover absent actions or unrecorded claims.",
+      "Unsupported predicate or missing custom verifier mapping leaves target_effect_ids=None and assessment alignment unassessable.",
+      "Multiple receipt evidence witnesses or an unreproduced four-field receipt leave target matching absent; preserve these failures/losses.",
+      "Unknown or malformed readback must remain unknown; strict legacy-field/identity failures are explicit failures, never repaired by consulting evaluator truth.",
+      "Target-specific action-linked outcome is not simply bool(target_effect_ids): exact count, violated state, exclusively external origin, missing provenance and zero-count contracts differ.",
+      "Current explanation adds UNASSESSABLE_ASSESSMENT for known refund outcomes with unassessable reports where legacy code omitted that diagnosis; latest assessment/receipt per action drives summary.",
+      "A current same-input re-verification can differ from the preserved old receipt; report mismatch rather than forcing migration to change the old conclusion."
+    ],
+    "exposure_limitation": "Inputs and expected old outputs were already seen during development. Complete-corpus exposed-data conformance is software migration/integration evidence, not held-out empirical validation, new model performance, or proof of all2.0 features."
+  },
+  "paper_strategy": "Present the current2.0 protocol/API and explicitly label existing empirical results as frozen1.1.0 reference-implementation experiments. Add a separately prospective, post-hoc offline migration/re-verification conformance section if executed. Keep all historical data/protocols/sources/versions and1.1.1/1.2 review receipts intact. Do not relabel old numbers as2.0 studies. Multi-action/polling/retry/async/store/report features need their own conformance/performance evidence; release checks alone are engineering evidence.",
+  "prior_support_doc_edit_state": "Five support docs already received1.2 updates before new steering. They were left as-is after stop instruction. Root was told they require current2.0 availability text and that source-audit added1.2 row had a separating blank line to repair.",
+  "top_level_exports_since_1_2": {
+    "retained": [
+      "Action",
+      "AgentAssessment",
+      "AssessmentStatus",
+      "Attempt",
+      "ConsequenceGraph",
+      "Event",
+      "EventType",
+      "Evidence",
+      "Observation",
+      "OriginStatus",
+      "OutcomeContract",
+      "RecordVerifier",
+      "RefundVerifier",
+      "ResponseStatus",
+      "ToolResponse",
+      "Trace",
+      "TraceRecorder",
+      "VerificationResult",
+      "VerificationStatus",
+      "Verifier",
+      "build_graph",
+      "capture_tool",
+      "explain",
+      "render_report",
+      "verify"
+    ],
+    "added": [
+      "ActionCapture",
+      "ActionChange",
+      "ActionExplanation",
+      "CORE_DIAGNOSES",
+      "Comparison",
+      "ConsequaError",
+      "ConsequaTypeError",
+      "ContractError",
+      "Diagnosis",
+      "Finding",
+      "FrozenDict",
+      "FrozenList",
+      "MigrationReport",
+      "ReceiptError",
+      "RecorderError",
+      "RetryAdvice",
+      "RetryDecision",
+      "SchemaVersionError",
+      "Summary",
+      "TimeBase",
+      "TraceExplanation",
+      "TraceStore",
+      "ValidationError",
+      "apoll_readback",
+      "averify",
+      "compare",
+      "migrate_trace",
+      "poll_readback",
+      "retry_advice",
+      "summarize",
+      "thaw"
+    ],
+    "removed": [
+      "ConsequenceExplanation",
+      "EffectEstimate",
+      "Intervention",
+      "Policy",
+      "PolicyDecision",
+      "PolicyError",
+      "PolicyReply",
+      "PolicyRequest",
+      "RecordTargetMatcher",
+      "ScriptedRefundPolicy",
+      "TargetMatcher",
+      "leave_one_out",
+      "recency_attribution"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "auditor_source_sha256": "897e31a21b14c9145a8641030b980ca4ef2d99de2f0612e8f72ffc2aa3c2362e",
+  "complete": true,
+  "files": {
+    "auditor-source.py": "897e31a21b14c9145a8641030b980ca4ef2d99de2f0612e8f72ffc2aa3c2362e",
+    "decision-index-investigation.json": "1ead0350d08368c213c7a73e00c4234326615ca6330c44bf68cdd9fe798d1902",
+    "diagnostic-examples/00896-upstream_car.json.gz": "e54166f4868d8502711b45bc3de5087843814b03bcb03148bfcdeb09130ba76e",
+    "diagnostic-examples/00900-upstream_car.json.gz": "50c5bac29abe95c5c79b2c47e2880e892d867d426324db2a3f445598b46d3f0b",
+    "final-audit.json": "fa4e6c08d26db580d001a4b8d7b8fae9ffbd1ac99f072418e66c1e424bc537e8",
+    "final-audit.md": "416532f47b60c2b1f668fcd0e23fcef97f75c33991b029c4e3da362441ebeebe",
+    "final-findings-context.json": "846e41ec91ad3abbd81f240ab496025c406960005765309d2c8451555a093012",
+    "final-findings-context.md": "a2b937728a642a872a247bc965941c35cf21b1eda8f221b55c56952ab7d5c62a",
+    "protocol-deviation.json": "b9fce0448f371e8f8c7abf4eff9973ab97fb0d6d6dcf031ca8f90735aedb8e66",
+    "protocol-deviation.md": "e82a237188791840b448095dd568314a836b3f40f0ebe94910b6547ae40feaf0",
+    "provisional-0516.json": "f12363a15c265145b7743812d92953b0376603f556abc5bb7d9b74bd0da4cfc6",
+    "provisional-0516.md": "409f44d0cf20ff247e613edd82addb7048774008789e68631ab86bf8ea30ce55"
+  },
+  "final_audit_sha256": "fa4e6c08d26db580d001a4b8d7b8fae9ffbd1ac99f072418e66c1e424bc537e8",
+  "schema": "upstream-car-independent-audit-receipt-v1",
+  "source_snapshot": "940ebfcc0059c992977dd8e9f112361ff5b31edd"
+}

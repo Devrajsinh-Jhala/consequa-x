@@ -17,6 +17,7 @@ from .errors import SchemaVersionError
 from .explanation import explain
 from .migrate import MigrationReport, migrate_trace
 from .compare import compare
+from .composite import COMPOSITE_PREDICATES, CompositeVerifier, contract_parts
 from .models import Observation, Trace, _decode_record, _unique_object, to_dict
 from .record_verifier import RecordVerifier
 from .verification import RefundVerifier, verify
@@ -281,33 +282,31 @@ def _new_file(path, label):
 
 
 def _verify_command(args):
-    """Verify a captured readback with a built-in verifier and save the extended trace."""
+    """Verify captured readback with built-in verifiers and save the extended trace."""
     source = Path(args.trace)
-    if Path(args.output).resolve() in (source.resolve(), Path(args.readback).resolve()):
+    inputs = {source.resolve(), *(Path(name).resolve() for name in args.readback)}
+    if Path(args.output).resolve() in inputs:
         raise ValueError("Verification output must differ from its inputs")
     trace = Trace.from_json(source.read_text(encoding="utf-8"))
     action = trace.get_action(args.action) if args.action else trace.single_action
-    observation = _decode_record(Observation, json.loads(
-        Path(args.readback).read_text(encoding="utf-8"), object_pairs_hook=_unique_object),
-        "readback")
-    predicate = action.contract.predicate
-    if predicate == "refund_processed":
-        verifier = RefundVerifier()
-    elif predicate == "record_present":
-        if not args.scope_field:
-            raise ValueError("record_present needs --scope-field for each field the readback "
-                             "scope declares")
-        verifier = RecordVerifier(scope_fields=tuple(args.scope_field))
-    else:
-        raise ValueError(f"No built-in verifier for predicate {predicate!r}; verify in Python "
-                         "with your application's Verifier")
-    receipt = verify(action, observation, verifier=verifier)
+    observations = tuple(_decode_record(Observation, json.loads(
+        Path(name).read_text(encoding="utf-8"), object_pairs_hook=_unique_object),
+        f"readback {name}") for name in args.readback)
+    scope_fields, part_sources = _part_options(args)
+    verifier = _built_in_verifier(action.contract, scope_fields, part_sources)
+    receipt = verify(action, observations if len(observations) > 1 else observations[0],
+                     verifier=verifier)
     known = {item.observation_id: item for item in trace.observations}
-    if observation.observation_id in known and known[observation.observation_id] != observation:
-        raise ValueError("A different observation with this observation_id is already recorded")
-    extended = replace(trace, observations=trace.observations + (
-        () if observation.observation_id in known else (observation,)),
-        verifications=trace.verifications + (receipt,))
+    added = []
+    for observation in observations:
+        if observation.observation_id in known:
+            if known[observation.observation_id] != observation:
+                raise ValueError("A different observation with this observation_id is already "
+                                 "recorded")
+        else:
+            added.append(observation)
+    extended = replace(trace, observations=trace.observations + tuple(added),
+                       verifications=trace.verifications + (receipt,))
     output = _new_file(args.output, "Verification")
     with output.open("x", encoding="utf-8", newline="\n") as stream:
         stream.write(extended.to_json(indent=2) + "\n")
@@ -315,6 +314,79 @@ def _verify_command(args):
     print(f"{action.action_id}: state {receipt.status.value}, origin {receipt.origin.value}, "
           f"alignment {judged.assessment_alignment}; {', '.join(judged.codes)}")
     print(f"Saved trace with the new receipt to {output.resolve()}")
+    return 0
+
+
+def _part_options(args):
+    """Split --scope-field [PART=]FIELD and --part-source PART=SOURCE options."""
+    scope_fields: dict[str | None, list[str]] = {}
+    for item in args.scope_field or ():
+        part, _, field = item.rpartition("=")
+        scope_fields.setdefault(part or None, []).append(field)
+    part_sources: dict[str, list[str]] = {}
+    for item in args.part_source or ():
+        part, separator, name = item.partition("=")
+        if not separator or not part or not name:
+            raise ValueError("--part-source takes PART=SOURCE")
+        part_sources.setdefault(part, []).append(name)
+    return scope_fields, part_sources
+
+
+def _built_in_verifier(contract, scope_fields, part_sources, *, part=None):
+    predicate = contract.predicate
+    if predicate == "refund_processed":
+        return RefundVerifier()
+    if predicate == "record_present":
+        fields = scope_fields.get(part) or scope_fields.get(None)
+        if not fields:
+            raise ValueError("record_present needs --scope-field for each field the readback "
+                             "scope declares (PART=FIELD for one part of a composite)")
+        return RecordVerifier(scope_fields=tuple(fields))
+    if predicate in COMPOSITE_PREDICATES:
+        parts = contract_parts(contract)
+        return CompositeVerifier(
+            {item.contract_id: _built_in_verifier(item, scope_fields, part_sources,
+                                                  part=item.contract_id) for item in parts},
+            sources={item.contract_id: tuple(part_sources[item.contract_id])
+                     for item in parts if item.contract_id in part_sources})
+    raise ValueError(f"No built-in verifier for predicate {predicate!r}; verify in Python "
+                     "with your application's Verifier")
+
+
+def _otel_export(args):
+    """Write a trace as an OTLP/JSON document."""
+    from .otel import to_otlp
+
+    source = Path(args.trace)
+    if Path(args.output).resolve() == source.resolve():
+        raise ValueError("Export output must differ from the source trace")
+    trace = Trace.from_json(source.read_text(encoding="utf-8"))
+    document = to_otlp(trace, service_name=args.service_name,
+                       include_payloads=args.include_payloads,
+                       origin_unix_ms=args.origin_unix_ms)
+    output = _new_file(args.output, "Export")
+    with output.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(json.dumps(document, indent=2) + "\n")
+    count = len(document["resourceSpans"][0]["scopeSpans"][0]["spans"])
+    print(f"Wrote {count} spans to {output.resolve()}"
+          + (" (includes payloads; may contain sensitive data)" if args.include_payloads else ""))
+    return 0
+
+
+def _otel_import(args):
+    """Restore traces from an OTLP/JSON export made with --include-payloads."""
+    from .otel import from_otlp
+
+    traces = from_otlp(Path(args.spans).read_text(encoding="utf-8"))
+    folder = Path(args.output_dir)
+    folder.mkdir(parents=True, exist_ok=True)
+    for trace in traces:
+        name = "".join(char if char.isalnum() or char in "-_." else "_"
+                       for char in trace.trace_id) or "trace"
+        output = _new_file(str(folder / f"{name}.json"), "Import")
+        with output.open("x", encoding="utf-8", newline="\n") as stream:
+            stream.write(trace.to_json(indent=2) + "\n")
+        print(f"Restored {trace.trace_id} to {output.resolve()}")
     return 0
 
 
@@ -1309,14 +1381,34 @@ def main(argv=None):
                         help="With --include-details, replace the values of this JSON key "
                              "everywhere (repeatable)")
     report.set_defaults(handler=_report)
-    check = commands.add_parser("verify", help="Verify a readback file with a built-in verifier")
+    check = commands.add_parser("verify", help="Verify readback files with built-in verifiers")
     check.add_argument("trace", help="Existing schema-1.0 trace JSON")
-    check.add_argument("--readback", required=True, help="Observation JSON captured read-only")
+    check.add_argument("--readback", required=True, action="append",
+                       help="Observation JSON captured read-only (repeatable, one per source)")
     check.add_argument("--action", help="Action ID (optional when the trace has one action)")
     check.add_argument("--scope-field", action="append",
-                       help="record_present scope field (repeatable)")
+                       help="record_present scope field, or PART=FIELD for one part of an "
+                            "all_of/any_of contract (repeatable)")
+    check.add_argument("--part-source", action="append",
+                       help="PART=SOURCE: the readback source one composite part reads "
+                            "(repeatable)")
     check.add_argument("--output", required=True, help="New trace file with the receipt added")
     check.set_defaults(handler=_verify_command)
+    export = commands.add_parser("otel-export", help="Write a trace as OpenTelemetry OTLP/JSON spans")
+    export.add_argument("trace", help="Existing schema-1.0 trace JSON")
+    export.add_argument("--output", required=True, help="New OTLP/JSON file")
+    export.add_argument("--service-name", default="consequa-x")
+    export.add_argument("--include-payloads", action="store_true",
+                        help="Also export arguments, results and the complete trace "
+                             "(may contain sensitive data)")
+    export.add_argument("--origin-unix-ms", type=int,
+                        help="Wall-clock time of a relative_ms trace's zero")
+    export.set_defaults(handler=_otel_export)
+    restore = commands.add_parser("otel-import",
+                                  help="Restore traces from an export made with --include-payloads")
+    restore.add_argument("spans", help="OTLP/JSON document")
+    restore.add_argument("--output-dir", required=True, help="Folder for the restored traces")
+    restore.set_defaults(handler=_otel_import)
     difference = commands.add_parser("compare", help="Compare two traces action by action")
     difference.add_argument("left")
     difference.add_argument("right")

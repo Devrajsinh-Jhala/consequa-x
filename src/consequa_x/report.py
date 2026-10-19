@@ -10,10 +10,11 @@ from __future__ import annotations
 from html import escape
 import json
 
+from .composite import ALL_OF, COMPOSITE_PREDICATES, PART_FINDINGS, contract_parts
 from .errors import ConsequaTypeError, ValidationError
 from .explanation import CORE_DIAGNOSES, explain
 from .graph import ConsequenceGraph, GraphNode, build_graph
-from .models import EventType, Trace, to_dict
+from .models import EventType, OriginStatus, Trace, VerificationStatus, to_dict
 
 
 _CSS = """
@@ -80,7 +81,7 @@ a{color:inherit;text-decoration:none}details:not([open]){display:none}}
 # Finding codes of the built-in verifiers. Other verifier findings are counted, not shown,
 # because their codes are application-defined strings.
 _BUILT_IN_FINDINGS = {"EXCESS_EFFECTS", "DUPLICATE_EFFECT", "PARAMETER_MISMATCH",
-                      "PARTIAL_EFFECT", "REVERSED_EFFECT", "REMOVED_EFFECT"}
+                      "PARTIAL_EFFECT", "REVERSED_EFFECT", "REMOVED_EFFECT", *PART_FINDINGS}
 _NODE_LABELS = {item.value: item.value.replace("_", " ") for item in EventType}
 _NODE_LABELS.update({
     "postcondition": "outcome contract",
@@ -117,6 +118,45 @@ def _text(value: object) -> str:
 def _status(value: str) -> str:
     # Callers pass only values of validated, closed schema enums.
     return f'<span class="pill status-{_text(value)}">{_text(value)}</span>'
+
+
+def _composition(contract) -> str:
+    """Describe an all_of / any_of contract's structure; part payloads stay omitted."""
+    if contract.predicate not in COMPOSITE_PREDICATES:
+        return ''
+    parts = contract_parts(contract)
+    rule = "All" if contract.predicate == ALL_OF else "Any one"
+    rows = [f'<dt>Composition</dt><dd>{rule} of {len(parts)} parts</dd>']
+    for index, part in enumerate(parts, 1):
+        nested = " (itself composite)" if part.predicate in COMPOSITE_PREDICATES else ""
+        rows.append(f'<dt>Part {index}</dt><dd>deadline {part.deadline_ms} ms, horizon '
+                    f'{part.horizon_ms} ms{nested}</dd>')
+    return ''.join(rows)
+
+
+def _part_results(snapshot: Trace, aliases: dict[str, str]) -> str:
+    """Each composite receipt's part verdicts, as its evidence records them."""
+    rows = []
+    for index, verification in enumerate(snapshot.verifications, 1):
+        contract = snapshot.get_action(verification.action_id).contract
+        if contract.predicate not in COMPOSITE_PREDICATES:
+            continue
+        numbers = {part.contract_id: number
+                   for number, part in enumerate(contract_parts(contract), 1)}
+        for evidence in verification.evidence:
+            details = evidence.details
+            number = numbers.get(details.get("part_id"))
+            status, origin = details.get("status"), details.get("origin")
+            # Part verdicts are the verifier's claims; render only closed enum values.
+            if (number is None or status not in {item.value for item in VerificationStatus}
+                    or origin not in {item.value for item in OriginStatus}):
+                continue
+            rows.append((f"Verification {index}", f"Part {number}", _status(status),
+                         _status(origin), aliases[f"observation:{evidence.observation_id}"]))
+    if not rows:
+        return ''
+    return _table("Part results recorded by composite verifications",
+                  ("Verification", "Part", "State", "Origin", "Evidence"), rows)
 
 
 def _table(caption: str, headings: tuple[str, ...], rows: list[tuple[str, ...]]) -> str:
@@ -335,7 +375,7 @@ def render_report(trace: Trace, *, include_details: bool = False,
             f'<dt>Deadline</dt><dd>{contract.deadline_ms} ms</dd>'
             f'<dt>Stability window</dt><dd>{contract.stability_ms} ms</dd>'
             f'<dt>Observation horizon</dt><dd>{contract.horizon_ms} ms</dd>'
-            f'<dt>Exact count</dt><dd>{exact}</dd></dl>')
+            f'<dt>Exact count</dt><dd>{exact}</dd>{_composition(contract)}</dl>')
     count = len(snapshot.actions)
     subtitle = ("One captured action." if count == 1 else f"{count} captured actions.")
     sections = [
@@ -395,6 +435,7 @@ def render_report(trace: Trace, *, include_details: bool = False,
              ", ".join(aliases[f"observation:{item.observation_id}"] for item in verification.evidence))
             for index, verification in enumerate(snapshot.verifications, 1)
         ]),
+        _part_results(snapshot, aliases),
         '</section><section id="graph"><h2>Captured evidence graph</h2>'
         '<p class="muted">Local aliases preserve links without exposing captured identifiers. '
         'Successive witnesses remain separate. Provider metadata is a qualified provenance link, '

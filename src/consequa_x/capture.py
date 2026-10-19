@@ -34,7 +34,7 @@ from .models import (
     Trace,
     VerificationResult,
 )
-from .verification import Verifier, averify as _averify, verify as _verify
+from .verification import Readback, Verifier, averify as _averify, verify as _verify
 
 
 _CONTEXT_TYPES = {
@@ -240,24 +240,26 @@ class ActionCapture:
         recorder._assessment_ids.add(assessment_id)
         return record
 
-    def verify(self, observation: Observation, *,
+    def verify(self, observation: Readback, *,
                verifier: Verifier | None = None) -> VerificationResult:
-        """Verify a readback for this action and keep the receipt.
+        """Verify readback for this action and keep the observations and receipt.
 
-        Earlier receipts are retained; a later readback can resolve an earlier
-        ``unknown`` without rewriting it.
+        ``observation`` may be several observations for a verifier that reads
+        more than one, such as ``CompositeVerifier``. Earlier receipts are
+        retained; a later readback can resolve an earlier ``unknown`` without
+        rewriting it.
         """
         recorder = self._recorder
-        recorded = recorder.observe(observation)
+        recorded = recorder._observe_all(observation)
         receipt = _verify(self.action, recorded, verifier=verifier)
         recorder._verifications.append(receipt)
         return receipt
 
-    async def averify(self, observation: Observation, *,
+    async def averify(self, observation: Readback, *,
                       verifier: Verifier | None = None) -> VerificationResult:
         """``verify`` with a verifier whose ``verify`` method may be a coroutine."""
         recorder = self._recorder
-        recorded = recorder.observe(observation)
+        recorded = recorder._observe_all(observation)
         receipt = await _averify(self.action, recorded, verifier=verifier)
         recorder._verifications.append(receipt)
         return receipt
@@ -464,7 +466,7 @@ class TraceRecorder:
         """``ActionCapture.acall`` for the only registered action."""
         return await self._sole().acall(tool, *args, **kwargs)
 
-    async def averify(self, observation: Observation, *,
+    async def averify(self, observation: Readback, *,
                       verifier: Verifier | None = None) -> VerificationResult:
         """``ActionCapture.averify`` for the only registered action."""
         return await self._sole().averify(observation, verifier=verifier)
@@ -476,7 +478,7 @@ class TraceRecorder:
         return self._sole().assessment(status, at_ms=at_ms, rationale=rationale,
                                        evidence=evidence, assessment_id=assessment_id)
 
-    def verify(self, observation: Observation, *,
+    def verify(self, observation: Readback, *,
                verifier: Verifier | None = None) -> VerificationResult:
         """``ActionCapture.verify`` for the only registered action."""
         return self._sole().verify(observation, verifier=verifier)
@@ -492,6 +494,17 @@ class TraceRecorder:
                 raise RecorderError("a different observation with this observation_id is recorded")
         self._observations.append(observation)
         return observation
+
+    def _observe_all(self, observation: Readback) -> Observation | tuple[Observation, ...]:
+        if isinstance(observation, (tuple, list)):
+            if not observation or not all(isinstance(item, Observation) for item in observation):
+                raise ConsequaTypeError("verify requires an Observation or a nonempty "
+                                        "sequence of Observations")
+            identifiers = [item.observation_id for item in observation]
+            if len(set(identifiers)) != len(identifiers):
+                raise RecorderError("several readbacks must have distinct observation_id values")
+            return tuple(self.observe(item) for item in observation)
+        return self.observe(observation)
 
     def trace(self) -> Trace:
         """Return the validated trace captured so far."""

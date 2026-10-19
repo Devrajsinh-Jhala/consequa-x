@@ -18,7 +18,7 @@ from typing import Any, Awaitable, Callable
 from .capture import ActionCapture, TraceRecorder
 from .errors import ConsequaTypeError, RecorderError
 from .models import Observation, VerificationResult, VerificationStatus
-from .verification import Verifier
+from .verification import Readback, Verifier
 
 
 def _start(capture, read, until_ms, interval_ms):
@@ -36,21 +36,25 @@ def _start(capture, read, until_ms, interval_ms):
     return capture
 
 
-def _observation(value: Any) -> Observation:
-    if not isinstance(value, Observation):
-        raise ConsequaTypeError("read must return an Observation")
-    return value
+def _observation(value: Any) -> Readback:
+    if isinstance(value, Observation) or (
+            isinstance(value, (tuple, list)) and value
+            and all(isinstance(item, Observation) for item in value)):
+        return value
+    raise ConsequaTypeError("read must return an Observation (or a nonempty sequence of them)")
 
 
 def poll_readback(capture: ActionCapture | TraceRecorder,
-                  read: Callable[[int], Observation], *,
+                  read: Callable[[int], Readback], *,
                   until_ms: int, interval_ms: int, verifier: Verifier | None = None,
                   sleep: Callable[[float], None] = time.sleep) -> VerificationResult:
     """Verify fresh readback until the outcome is known or ``until_ms`` passes.
 
     ``read(n)`` performs the ``n``-th read (starting at 1) through an
     independent, read-only path and returns its ``Observation``; give each read
-    its own ``observation_id``. Times use the recorder's clock and time base.
+    its own ``observation_id``. For a verifier that reads several sources, such
+    as ``CompositeVerifier``, ``read`` returns a tuple with one observation per
+    source. Times use the recorder's clock and time base.
     The first read happens once the clock reaches the contract horizon (or
     immediately, if it already has). Reads repeat every ``interval_ms`` while the
     receipt is ``unknown`` and the clock is before ``until_ms``. ``sleep`` takes
@@ -74,7 +78,7 @@ def poll_readback(capture: ActionCapture | TraceRecorder,
 
 
 async def apoll_readback(capture: ActionCapture | TraceRecorder,
-                         read: Callable[[int], Observation | Awaitable[Observation]], *,
+                         read: Callable[[int], Readback | Awaitable[Readback]], *,
                          until_ms: int, interval_ms: int, verifier: Verifier | None = None,
                          sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
                          ) -> VerificationResult:

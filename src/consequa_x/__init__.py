@@ -8,6 +8,7 @@ __version__ = "2.0.0"
 
 from .capture import ActionCapture, Attempt, TraceRecorder, capture_tool
 from .compare import ActionChange, Comparison, compare
+from .composite import CompositeVerifier, all_of, any_of, contract_parts
 from .errors import (
     ConsequaError, ConsequaTypeError, ContractError, ReceiptError, RecorderError,
     SchemaVersionError, ValidationError,
@@ -37,8 +38,8 @@ __all__ = [
     # Capture
     "ActionCapture", "Attempt", "TraceRecorder", "capture_tool",
     # Verification
-    "RecordVerifier", "RefundVerifier", "Verifier", "apoll_readback", "averify",
-    "poll_readback", "verify",
+    "CompositeVerifier", "RecordVerifier", "RefundVerifier", "Verifier", "all_of", "any_of",
+    "apoll_readback", "averify", "contract_parts", "poll_readback", "verify",
     # Acting on evidence
     "RetryAdvice", "RetryDecision", "retry_advice",
     # Explanation and presentation

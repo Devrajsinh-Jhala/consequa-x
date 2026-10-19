@@ -3,7 +3,7 @@
 import inspect
 from typing import Protocol
 
-from .errors import ConsequaTypeError, ContractError, ReceiptError
+from .errors import ConsequaTypeError, ContractError, ReceiptError, ValidationError
 from .models import (
     Action,
     Evidence,
@@ -24,6 +24,15 @@ class Verifier(Protocol):
     """
 
     def verify(self, action: Action, observation: Observation) -> VerificationResult: ...
+
+
+Readback = Observation | tuple[Observation, ...] | list[Observation]
+"""One captured observation, or several for a verifier that reads more than one.
+
+A verifier that accepts several readbacks provides
+``verify_readbacks(action, observations)`` (and may provide an asynchronous
+``averify_readbacks``); :class:`~consequa_x.composite.CompositeVerifier` does.
+"""
 
 
 class RefundVerifier:
@@ -243,61 +252,87 @@ def _peak_count(records: list[dict], deadline_ms: int, horizon_ms: int) -> int:
 
 
 def verify(
-    action: Action, observation: Observation, *, verifier: Verifier | None = None,
+    action: Action, observation: Readback, *, verifier: Verifier | None = None,
 ) -> VerificationResult:
-    """Verify a captured observation with a built-in or application verifier.
+    """Verify captured readback with a built-in or application verifier.
 
     Without ``verifier``, only ``refund_processed`` is supported. A custom
     verifier is trusted application code: this function cannot establish that
     it is read-only or that its source, predicate, and origin claims are true.
-    Every returned evidence item must bind to the supplied observation, and a
-    receipt cannot precede that observation or refer to a different contract.
+    Every returned evidence item must bind to a supplied observation, and a
+    receipt cannot precede the supplied readback or refer to a different
+    action or contract. ``observation`` may be a sequence of observations for a
+    verifier with ``verify_readbacks``, such as ``CompositeVerifier``.
     This does not change the trace schema or execute the registered action.
     """
-    verify_method = _verify_method(action, observation, verifier)
-    result = verify_method(action, observation)
+    observations = _readbacks(action, observation)
+    result = _call(action, observations, verifier, asynchronous=False)
     if inspect.isawaitable(result):
         if hasattr(result, "close"):
             result.close()
         raise ConsequaTypeError("This verifier is asynchronous; use averify")
-    return _checked_receipt(action, observation, result)
+    return _checked_receipt(action, observations, result)
 
 
 async def averify(
-    action: Action, observation: Observation, *, verifier: Verifier | None = None,
+    action: Action, observation: Readback, *, verifier: Verifier | None = None,
 ) -> VerificationResult:
     """``verify`` for a verifier whose ``verify`` method may be a coroutine.
 
     The receipt is checked exactly as ``verify`` checks it.
     """
-    verify_method = _verify_method(action, observation, verifier)
-    result = verify_method(action, observation)
+    observations = _readbacks(action, observation)
+    result = _call(action, observations, verifier, asynchronous=True)
     if inspect.isawaitable(result):
         result = await result
-    return _checked_receipt(action, observation, result)
+    return _checked_receipt(action, observations, result)
 
 
-def _verify_method(action, observation, verifier):
-    if not isinstance(action, Action) or not isinstance(observation, Observation):
+def _readbacks(action, observation) -> tuple[Observation, ...]:
+    if not isinstance(action, Action):
         raise ConsequaTypeError("verify requires an Action and an Observation")
+    if isinstance(observation, Observation):
+        return (observation,)
+    if isinstance(observation, (tuple, list)) and observation and all(
+            isinstance(item, Observation) for item in observation):
+        identifiers = [item.observation_id for item in observation]
+        if len(set(identifiers)) != len(identifiers):
+            raise ValidationError("several readbacks must have distinct observation_id values")
+        return tuple(observation)
+    raise ConsequaTypeError("verify requires an Action and an Observation "
+                            "(or a nonempty sequence of Observations)")
+
+
+def _call(action, observations, verifier, *, asynchronous):
     adapter = RefundVerifier() if verifier is None else verifier
+    if asynchronous and callable(getattr(adapter, "averify_readbacks", None)):
+        return adapter.averify_readbacks(action, observations)
+    several = getattr(adapter, "verify_readbacks", None)
+    if callable(several):
+        return several(action, observations)
     verify_method = getattr(adapter, "verify", None)
     if not callable(verify_method):
         raise ConsequaTypeError("A verifier must provide a callable verify method")
-    return verify_method
+    if len(observations) != 1:
+        raise ConsequaTypeError("This verifier reads one readback; pass a single Observation "
+                                "or use a verifier with verify_readbacks, such as "
+                                "CompositeVerifier")
+    return verify_method(action, observations[0])
 
 
-def _checked_receipt(action, observation, result) -> VerificationResult:
+def _checked_receipt(action, observations, result) -> VerificationResult:
     if not isinstance(result, VerificationResult):
         raise ConsequaTypeError("A verifier must return a VerificationResult")
     if result.action_id != action.action_id:
         raise ReceiptError("Verifier receipt action_id must match the verified action")
     if result.contract_id != action.contract.contract_id:
         raise ReceiptError("Verifier receipt contract_id must match the action contract")
-    if result.observed_at_ms < observation.observed_at_ms:
+    if result.observed_at_ms < max(item.observed_at_ms for item in observations):
         raise ReceiptError("Verifier receipt cannot precede its evidence observation")
+    supplied = {item.observation_id: item for item in observations}
     for evidence in result.evidence:
-        if evidence.observation_id != observation.observation_id:
+        observation = supplied.get(evidence.observation_id)
+        if observation is None:
             raise ReceiptError("Verifier evidence must refer to the supplied observation_id")
         if evidence.source != observation.source:
             raise ReceiptError("Verifier evidence source must match the supplied observation")

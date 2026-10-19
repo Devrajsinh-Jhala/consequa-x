@@ -6,7 +6,10 @@ Additive: the roadmap features left out of 2.0.0 (verifier composition,
 framework integrations and OpenTelemetry). Schema `1.0` and the 2.0 API are
 unchanged, and the core still has no required runtime dependency. Checked
 before publication; see the
-[release record](output/release-2.1.0-2026-10-19/README.md).
+[release record](output/release-2.1.0-2026-10-19/README.md). Installed checks
+passed on Windows Python 3.11.9 and 3.12.10 and on one Alpine Linux 3.24.2 QEMU
+guest with Python 3.14.8; the integrations passed against the installed wheel
+with each SDK present. macOS has never been tested.
 
 - Verifier composition. `all_of(contract_id, *parts)` and `any_of(...)` build
   one outcome contract from part contracts, each with its own predicate,
@@ -50,6 +53,8 @@ before publication; see the
   `PostToolUseFailure`). Tested offline with openai-agents 0.24.0,
   langchain-core 1.6.12, claude-agent-sdk 0.2.168 and opentelemetry 1.45.1; no
   live model was called.
+- Report tables scroll inside their frame on narrow screens; their cells no
+  longer collapse to one character per line (present since 2.0).
 
 ## 2.0.0 - 19 October 2026 (breaking)
 

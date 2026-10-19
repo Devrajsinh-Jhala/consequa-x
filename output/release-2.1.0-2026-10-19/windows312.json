@@ -1,0 +1,81 @@
+{
+  "api_process_benchmark_imports": 0,
+  "capture": {
+    "attempt_context": true,
+    "capture_tool": true,
+    "exception_messages_dropped": true,
+    "mcp_error_recorded": true,
+    "record_verifier": true,
+    "recorded_modes": [
+      "other_actor",
+      "stale",
+      "timeout_after_commit"
+    ],
+    "recorder_call": true
+  },
+  "checker_sha256": "6b852f75fcd2b6067b6a3bc986a032595bcd2683214b74be3b54e0fd0ecbd22a",
+  "cli_import_scope": "CLI imports packaged research modules but does not execute scenarios/replay",
+  "executable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-2.1.0\\env312\\Scripts\\python.exe",
+  "features_2_0": {
+    "migration_conservative": true,
+    "multi_action_trace": true,
+    "readback_polls": 3,
+    "retry_advice": true,
+    "schema_0_1_refused": true,
+    "store_summary_compare": true
+  },
+  "features_2_1": {
+    "composite_contracts": true,
+    "composite_report": true,
+    "integration_imports": {
+      "claude_agent_sdk": "extra not installed; import names the extra",
+      "langchain": "extra not installed; import names the extra",
+      "openai_agents": "extra not installed; import names the extra"
+    },
+    "otel_round_trip": true,
+    "otel_structural_export": true,
+    "otel_tool_spans": true,
+    "several_readbacks": true,
+    "tool_call_capture": true
+  },
+  "install": {
+    "matching_wheel_payloads": 54,
+    "module_file": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\release-2.1.0\\env312\\Lib\\site-packages\\consequa_x\\__init__.py",
+    "runtime_dependencies": 0,
+    "version": "2.1.0"
+  },
+  "isolated_imports": true,
+  "kernel_release": "11",
+  "machine": "AMD64",
+  "passed": true,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "provider_calls": 0,
+  "python": "3.12.10",
+  "reports": {
+    "cli_checks": 12,
+    "default_omits_captured_details": true,
+    "existing_output_preserved": true,
+    "explicit_details_escaped": true,
+    "invalid_inputs_refused_without_output": 8,
+    "source_unchanged": true
+  },
+  "strict_schema_refusals": 16,
+  "system": "Windows",
+  "wheel": {
+    "bytes": 215066,
+    "filename": "consequa_x-2.1.0-py3-none-any.whl",
+    "sha256": "6cdbe68bf0e4c722f1220987ee7fd9a1d167fdadec48a97f236ec7a1570e3670"
+  },
+  "workflow": {
+    "custom_verifier": true,
+    "missing_verification_reported": true,
+    "observed_statuses": [
+      "satisfied",
+      "unknown",
+      "violated"
+    ],
+    "trace_roundtrips": 4,
+    "unknown_origin_preserved": true,
+    "verifier_target_matching": true
+  }
+}

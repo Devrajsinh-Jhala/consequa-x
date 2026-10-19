@@ -1,0 +1,59 @@
+{
+  "artifacts": [
+    {
+      "bytes": 215066,
+      "path": "consequa_x-2.1.0-py3-none-any.whl",
+      "sha256": "6cdbe68bf0e4c722f1220987ee7fd9a1d167fdadec48a97f236ec7a1570e3670"
+    },
+    {
+      "bytes": 647396,
+      "path": "consequa_x-2.1.0.tar.gz",
+      "sha256": "fcb98e019c3c40ebcd2c6500732ca770b53a7380cf04786655e482219b4032e7"
+    }
+  ],
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "installed_environments": {
+    "extras312.json": "Windows Python 3.12.10 venv with openai-agents, langchain-core, claude-agent-sdk and opentelemetry; integration, OpenTelemetry and composite tests run against the installed wheel",
+    "linux.json": "Alpine Linux 3.24.2, Python 3.14.8, local QEMU TCG guest; fresh venv",
+    "sdist312.json": "Fresh Windows Python 3.12.10 venv; sdist built and installed; demo, summarize, SQLite example, 1.2.0-trace migration, OpenTelemetry export/import and a composite verify",
+    "windows311.json": "Official Windows embedded Python 3.11.9, wheel unpacked into an isolated site-packages",
+    "windows312.json": "Fresh Windows Python 3.12.10 venv, wheel installed with --no-deps --no-index"
+  },
+  "limits": [
+    "macOS has never been tested.",
+    "Linux coverage is one emulated Alpine guest, not every distribution or a native host.",
+    "Windows checks ran on one Windows 11 host.",
+    "Framework integrations were tested offline against one version of each SDK; no live model, MCP server, collector or tracing backend was used.",
+    "The framework SDKs were installed only in the Windows extras environment; the Linux guest checked the core package and the integrations' missing-extra import errors."
+  ],
+  "local_checks": {
+    "artifact_inventory": true,
+    "framework_extras_installed_tests": true,
+    "lint": true,
+    "linux_wheel_install": true,
+    "public_docs_support": false,
+    "python311_conformance": true,
+    "release_helper_tests": true,
+    "report_browser_qa": true,
+    "report_security": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "pending": {
+    "public_docs_support": "The 2.1.0 site and docs pages are on release-2.1 and state 2.1.0 as published; they deploy only after PyPI publication. Private vulnerability reporting is enabled."
+  },
+  "public_repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+  "public_site": "https://consequa-x.onrender.com",
+  "recorded_at_utc": "2026-10-19T11:19:07.005703+00:00",
+  "release_kind": "Additive feature release (trace schema 1.0 unchanged)",
+  "source_revision": "a19e6c89e07e2123bd5256eb786bbfb7ccbe0448",
+  "source_tests": {
+    "failures": 0,
+    "receipt": "source-tests.log",
+    "summary": "1921 passed, 26 skipped, 241 subtests passed in 582.45s (0:09:42)"
+  },
+  "version": "2.1.0"
+}

@@ -18,7 +18,16 @@ written for 2.0 work unchanged.
 
 The integrations were tested offline against openai-agents 0.24.0,
 langchain-core 1.6.12, claude-agent-sdk 0.2.168 and opentelemetry 1.45.1,
-without a live model or tracing backend.
+without a live model or tracing backend. Report tables now scroll on narrow
+screens instead of squeezing their cells.
+
+The source suite passed 1,921 tests plus 241 subtests. Installed checks of the
+same wheel passed on Windows with embedded Python 3.11.9 and Python 3.12.10, and
+on Alpine Linux 3.24.2 with Python 3.14.8 in a local QEMU guest. The integration,
+OpenTelemetry and composite tests passed against the installed wheel with each
+SDK present. The source distribution installed on Windows Python 3.12.10 and
+ran the OpenTelemetry commands and a composite verify. The Linux result covers
+one emulated guest; macOS has not been tested.
 
 ## 2.0.0 — 19 October 2026
 

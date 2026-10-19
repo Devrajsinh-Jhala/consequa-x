@@ -1,0 +1,44 @@
+revision a19e6c89e07e2123bd5256eb786bbfb7ccbe0448
+................................................................................................. [  4%]
+........................................................................ [  8%]
+........................................................................ [ 12%]
+........................................................................ [ 16%]
+........................................................................ [ 19%]
+........................................................................ [ 23%]
+........................................................................ [ 27%]
+........................................................................ [ 30%]
+................................ssss.................................... [ 34%]
+........................................................................ [ 38%]
+................................................................s....... [ 41%]
+........................................................................ [ 45%]
+........................................ [ 47%]
+........................................................................ [ 51%]
+................................................s................................................................... [ 57%]
+........................................................................ [ 61%]
+........................................................................ [ 64%]
+........................................................................ [ 68%]
+........................................................................ [ 72%]
+........................................................................ [ 75%]
+....................................................s................... [ 79%]
+........................................................................ [ 83%]
+.............................................. [ 85%]
+........................................................................ [ 89%]
+........................................................................ [ 93%]
+.............................................................sss........ [ 96%]
+..................sssssssssssssss.....s.........................                                             [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_integrations.py:100: could not import 'agents': No module named 'agents'
+SKIPPED [1] tests\test_integrations.py:160: could not import 'agents': No module named 'agents'
+SKIPPED [1] tests\test_integrations.py:183: could not import 'langchain_core': No module named 'langchain_core'
+SKIPPED [1] tests\test_integrations.py:300: could not import 'claude_agent_sdk': No module named 'claude_agent_sdk'
+SKIPPED [1] tests\test_matched_figure_builder.py:185: could not import 'matplotlib': No module named 'matplotlib'
+SKIPPED [1] tests\test_otel.py:211: could not import 'opentelemetry.sdk.trace': No module named 'opentelemetry'
+SKIPPED [1] tests\test_render_site_export.py:123: Host does not permit creating a symbolic link
+SKIPPED [3] tests\test_tau_benchmark_validation.py:149: Explicit reviewed upstream checkout required
+SKIPPED [10] tests\test_upstream_car_study.py:142: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [2] tests\test_upstream_car_study.py:166: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [1] tests\test_upstream_car_study.py:180: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [2] tests\test_upstream_car_study.py:196: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [1] tests\test_upstream_car_study.py:252: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+1921 passed, 26 skipped, 241 subtests passed in 582.45s (0:09:42)
+exit=0

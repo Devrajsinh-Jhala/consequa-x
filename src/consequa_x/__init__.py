@@ -4,6 +4,10 @@ __version__ = "1.2.0"
 
 from .attribution import EffectEstimate, Intervention, leave_one_out, recency_attribution
 from .capture import Attempt, TraceRecorder, capture_tool
+from .errors import (
+    ConsequaError, ConsequaTypeError, ContractError, ReceiptError, RecorderError,
+    SchemaVersionError, ValidationError,
+)
 from .explanation import ConsequenceExplanation, TargetMatcher, explain
 from .graph import ConsequenceGraph, build_graph
 from .models import (
@@ -24,5 +28,7 @@ __all__ = [
     "Policy", "PolicyDecision", "PolicyError", "PolicyReply", "PolicyRequest", "ScriptedRefundPolicy",
     "ResponseStatus", "ToolResponse", "TraceRecorder", "VerificationResult", "VerificationStatus", "Verifier",
     "Attempt", "build_graph", "capture_tool", "explain",
+    "ConsequaError", "ConsequaTypeError", "ContractError", "ReceiptError", "RecorderError",
+    "SchemaVersionError", "ValidationError",
     "leave_one_out", "recency_attribution", "render_report", "verify",
 ]

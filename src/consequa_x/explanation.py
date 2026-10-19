@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from typing import Iterable, Protocol
 
+from .errors import ConsequaTypeError, ContractError, ReceiptError, ValidationError
 from .attribution import EffectEstimate, recency_attribution
 from .graph import ConsequenceGraph, build_graph
 from .models import (
@@ -67,14 +68,14 @@ def explain(
     their evidence is never interpreted as refund amounts or currencies.
     """
     if not isinstance(trace, Trace):
-        raise TypeError("explain requires a Trace")
+        raise ConsequaTypeError("explain requires a Trace")
     matching_method = None
     if target_matcher is not None:
         matching_method = getattr(target_matcher, "matching_effect_ids", None)
         if not callable(matching_method):
-            raise TypeError("A target matcher must provide a callable matching_effect_ids method")
+            raise ConsequaTypeError("A target matcher must provide a callable matching_effect_ids method")
     if not trace.verifications:
-        raise ValueError("An explanation requires an independent verification record")
+        raise ValidationError("An explanation requires an independent verification record")
     verified = trace.verifications[-1]
     assessment = trace.assessment
     estimates = tuple(estimates)
@@ -90,7 +91,7 @@ def explain(
                 or any(not isinstance(item, str) or not item.strip() for item in matching_ids)
                 or len(set(matching_ids)) != len(matching_ids)
                 or not set(matching_ids).issubset(verified.attributable_effect_ids)):
-            raise ValueError("Target matcher must return unique attributable effect IDs as a tuple")
+            raise ReceiptError("Target matcher must return unique attributable effect IDs as a tuple")
     if verified.status is VerificationStatus.UNKNOWN:
         diagnoses.append("UNKNOWN_OUTCOME")
         if assessment.status is not AssessmentStatus.UNKNOWN:
@@ -180,14 +181,14 @@ def _refund_target(trace: Trace, verified: VerificationResult) -> tuple[list[dic
             or not isinstance(expected["currency"], str) or not expected["currency"].strip()
             or type(expected["amount_minor"]) is not int or expected["amount_minor"] <= 0
             or trace.action.contract.deadline_ms < trace.action.registered_at_ms):
-        raise ValueError("Known refund explanations require a valid refund contract payload")
+        raise ContractError("Known refund explanations require a valid refund contract payload")
     details = verified.evidence[-1].details
     records = details.get("records", [])
     if type(records) is not list or any(type(record) is not dict for record in records):
-        raise ValueError("Refund evidence records must be an array of objects")
+        raise ReceiptError("Refund evidence records must be an array of objects")
     for field in ("matching_count", "peak_matching_count", "eligible_count", "relevant_count"):
         if field in details and (type(details[field]) is not int or details[field] < 0):
-            raise ValueError(f"Refund evidence {field} must be a nonnegative integer")
+            raise ReceiptError(f"Refund evidence {field} must be a nonnegative integer")
     linked = [record for record in records
               if record.get("effect_id") in verified.attributable_effect_ids]
     for record in linked:
@@ -204,7 +205,7 @@ def _refund_target(trace: Trace, verified: VerificationResult) -> tuple[list[dic
                     <= verified.evidence[-1].as_of_ms))
                 or (record["status"] == "reversed" and "reversed_at_ms" not in record)
                 or (record["status"] == "processed" and "reversed_at_ms" in record)):
-            raise ValueError("Linked refund evidence has an invalid payload or timestamp")
+            raise ReceiptError("Linked refund evidence has an invalid payload or timestamp")
     matching = tuple(record["effect_id"] for record in linked
                      if record["payment_id"] == expected["payment_id"]
                      and record["amount_minor"] == expected["amount_minor"]

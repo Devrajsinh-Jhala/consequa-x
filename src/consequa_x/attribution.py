@@ -28,6 +28,8 @@ from math import isclose, isfinite, sqrt
 from statistics import NormalDist
 from typing import Any, Iterable, Literal, Protocol, runtime_checkable
 
+from .errors import ConsequaError
+
 
 ReplayTarget = Literal["action", "consequence", "action_linked_consequence"]
 REPLAY_TARGETS = ("action", "consequence", "action_linked_consequence")
@@ -230,7 +232,7 @@ class EffectEstimate:
         return to_dict(self)
 
 
-class InsufficientEvidenceError(ValueError):
+class InsufficientEvidenceError(ConsequaError, ValueError):
     """A complete-pair estimate was refused because outcomes are missing."""
 
     def __init__(

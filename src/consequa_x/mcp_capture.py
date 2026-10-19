@@ -15,6 +15,7 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
+from .errors import ConsequaTypeError, ValidationError
 from .capture import TraceRecorder
 from .models import ResponseStatus
 
@@ -33,12 +34,12 @@ async def call_mcp_tool(recorder: TraceRecorder, session: Any, name: str,
     any tool response, none of this establishes whether the effect happened.
     """
     if not isinstance(recorder, TraceRecorder):
-        raise TypeError("call_mcp_tool requires a TraceRecorder")
+        raise ConsequaTypeError("call_mcp_tool requires a TraceRecorder")
     call_tool = getattr(session, "call_tool", None)
     if not callable(call_tool):
-        raise TypeError("session must provide an awaitable call_tool(name, arguments)")
+        raise ConsequaTypeError("session must provide an awaitable call_tool(name, arguments)")
     if not isinstance(name, str) or not name.strip():
-        raise ValueError("name must be a nonempty tool name")
+        raise ValidationError("name must be a nonempty tool name")
     with recorder.attempt(attempt_id=attempt_id, data={"tool": name, "transport": "mcp"},
                           classify=classify) as attempt:
         result = await call_tool(name, dict(arguments or {}))

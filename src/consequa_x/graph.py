@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from typing import Any, Iterable
 from urllib.parse import quote
 
+from .errors import ValidationError
 from .attribution import EffectEstimate
 from .models import EventType, Observation, Trace, to_dict
 
@@ -53,14 +54,14 @@ def build_graph(trace: Trace, estimates: Iterable[EffectEstimate] = ()) -> Conse
 
     def evidence_node(identifier, kind, time_ms, data):
         if identifier in event_ids:
-            raise ValueError(f"Trace event identity conflicts with evidence node: {identifier!r}")
+            raise ValidationError(f"Trace event identity conflicts with evidence node: {identifier!r}")
         if identifier in nodes:
-            raise ValueError(f"Duplicate evidence node identity: {identifier!r}")
+            raise ValidationError(f"Duplicate evidence node identity: {identifier!r}")
         node(identifier, kind, time_ms, data)
 
     def edge(source, target, kind, basis, data=None):
         if source not in nodes or target not in nodes:
-            raise ValueError(f"Graph link has an absent endpoint: {source!r} -> {target!r}")
+            raise ValidationError(f"Graph link has an absent endpoint: {source!r} -> {target!r}")
         # State and action-linked estimates can point to the same contract.
         # Their distinct estimands must survive edge deduplication.
         estimate_target = data.get("target") if kind == "ESTIMATED_INFLUENCE" and data else None
@@ -178,7 +179,7 @@ def build_graph(trace: Trace, estimates: Iterable[EffectEstimate] = ()) -> Conse
 
     for estimate in estimates:
         if estimate.event_id not in event_ids:
-            raise ValueError("Attribution candidate must identify a captured trace event")
+            raise ValidationError("Attribution candidate must identify a captured trace event")
         decisions = [event.id for event in trace.events if event.type is EventType.AGENT_DECISION]
         intent = next((event for event in trace.events
                        if event.type is EventType.ACTION_INTENT

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from .errors import ConsequaTypeError, ContractError, ReceiptError, ValidationError
 from .models import (
     Action,
     Evidence,
@@ -30,7 +31,7 @@ def _identifier(value: object) -> bool:
 
 def _field_name(value: object, label: str) -> str:
     if not _identifier(value):
-        raise ValueError(f"{label} must be a nonempty field name")
+        raise ValidationError(f"{label} must be a nonempty field name")
     return value
 
 
@@ -69,7 +70,7 @@ class RecordVerifier:
                  attempt_field: str = "attempt_id") -> None:
         scope_fields = tuple(scope_fields)
         if not scope_fields or len(set(scope_fields)) != len(scope_fields):
-            raise ValueError("scope_fields must name at least one distinct field")
+            raise ValidationError("scope_fields must name at least one distinct field")
         self.scope_fields = tuple(_field_name(name, "scope field") for name in scope_fields)
         self.effect_id_field = _field_name(effect_id_field, "effect_id_field")
         self.committed_field = _field_name(committed_field, "committed_field")
@@ -80,9 +81,9 @@ class RecordVerifier:
         self._metadata = {self.effect_id_field, self.committed_field, self.removed_field,
                           self.action_field, self.actor_field, self.attempt_field}
         if len(self._metadata) != 6:
-            raise ValueError("record metadata field names must be distinct")
+            raise ValidationError("record metadata field names must be distinct")
         if self._metadata & set(self.scope_fields):
-            raise ValueError("scope fields cannot also be record metadata fields")
+            raise ValidationError("scope fields cannot also be record metadata fields")
 
     def target_matcher(self) -> RecordTargetMatcher:
         """A matcher with the same field configuration, for ``explain``."""
@@ -97,17 +98,17 @@ class RecordVerifier:
     def check_contract(self, action: Action) -> dict[str, Any]:
         contract = action.contract
         if contract.predicate != RECORD_PRESENT:
-            raise ValueError(f"Unsupported predicate: {contract.predicate!r}")
+            raise ContractError(f"Unsupported predicate: {contract.predicate!r}")
         expected = contract.expected
         if not expected:
-            raise ValueError("record_present expects at least one field value")
+            raise ContractError("record_present expects at least one field value")
         if self._metadata & expected.keys():
-            raise ValueError("expected values cannot name record metadata fields")
+            raise ContractError("expected values cannot name record metadata fields")
         missing = [name for name in self.scope_fields if name not in expected]
         if missing:
-            raise ValueError(f"scope fields must have expected values: {missing}")
+            raise ContractError(f"scope fields must have expected values: {missing}")
         if contract.deadline_ms < action.registered_at_ms:
-            raise ValueError("Contract deadline precedes action registration")
+            raise ContractError("Contract deadline precedes action registration")
         return expected
 
     def _removed_at(self, record: dict, horizon_ms: int) -> int:
@@ -230,7 +231,7 @@ class RecordTargetMatcher:
 
     def __init__(self, verifier: RecordVerifier) -> None:
         if not isinstance(verifier, RecordVerifier):
-            raise TypeError("RecordTargetMatcher requires the RecordVerifier it matches")
+            raise ConsequaTypeError("RecordTargetMatcher requires the RecordVerifier it matches")
         self.verifier = verifier
 
     def matching_effect_ids(self, action: Action,
@@ -242,7 +243,7 @@ class RecordTargetMatcher:
         details = verification.evidence[-1].details
         records = details.get("records")
         if type(records) is not list or any(type(record) is not dict for record in records):
-            raise ValueError("Record evidence must be an array of objects")
+            raise ReceiptError("Record evidence must be an array of objects")
         contract = action.contract
         attributable = set(verification.attributable_effect_ids)
         matches = []
@@ -252,7 +253,7 @@ class RecordTargetMatcher:
                 continue
             committed = record.get(verifier.committed_field)
             if type(committed) is not int:
-                raise ValueError("Linked record evidence has an invalid commit time")
+                raise ReceiptError("Linked record evidence has an invalid commit time")
             if (all(name in record and record[name] == value for name, value in expected.items())
                     and action.registered_at_ms <= committed <= contract.deadline_ms
                     and verifier._removed_at(record, contract.horizon_ms) > contract.horizon_ms):

@@ -10,6 +10,7 @@ from __future__ import annotations
 from html import escape
 import json
 
+from .errors import ConsequaTypeError, ValidationError
 from .graph import ConsequenceGraph, GraphNode, build_graph
 from .models import EventType, Trace, to_dict
 
@@ -233,20 +234,20 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
     presentation does not replace the original trace or its verification data.
     """
     if not isinstance(trace, Trace):
-        raise TypeError("render_report requires a Trace")
+        raise ConsequaTypeError("render_report requires a Trace")
     if type(include_details) is not bool:
-        raise TypeError("include_details must be a boolean")
+        raise ConsequaTypeError("include_details must be a boolean")
     try:
         # Revalidate a detached snapshot: nested JSON containers remain mutable
         # even though public record dataclasses are frozen.
         snapshot = Trace.from_dict(to_dict(trace))
     except (TypeError, ValueError, RecursionError):
-        raise ValueError("Cannot render an invalid trace") from None
+        raise ValidationError("Cannot render an invalid trace") from None
     try:
         graph = build_graph(snapshot)
     except (TypeError, ValueError):
         # Graph identity errors can include captured IDs; never repeat them.
-        raise ValueError("Cannot render a trace with conflicting evidence graph identities") from None
+        raise ValidationError("Cannot render a trace with conflicting evidence graph identities") from None
     aliases = _aliases(snapshot, graph)
     # The portable schema does not require records to be chronologically sorted.
     # Break equal-time ties by capture order without rewriting the evidence.

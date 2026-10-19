@@ -1,5 +1,18 @@
 # Changes
 
+## Unreleased (2.0.0, breaking)
+
+Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
+
+- Typed exceptions: every intentional error derives from `ConsequaError` and
+  still from `ValueError` or `TypeError`. `ValidationError` (invalid records,
+  traces and settings; malformed JSON is now one too), `SchemaVersionError`,
+  `ConsequaTypeError`, `ContractError` (a verifier cannot evaluate the
+  contract), `ReceiptError` (a verifier or matcher result crosses its identity
+  boundary, or recorded evidence cannot support the interpretation) and
+  `RecorderError`. `InsufficientEvidenceError` and `PolicyError` join the
+  hierarchy.
+
 ## 1.2.0 - 19 October 2026
 
 Additive only: the 1.x API and trace schema `0.1` are unchanged.

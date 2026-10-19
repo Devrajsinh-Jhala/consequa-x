@@ -12,10 +12,11 @@ import json
 import math
 from typing import Any, Literal, Protocol, runtime_checkable
 
+from .errors import ConsequaError
 from .models import AssessmentStatus, ResponseStatus, ToolResponse, to_dict
 
 
-class PolicyError(ValueError):
+class PolicyError(ConsequaError, ValueError):
     """A policy request, decision, or provider response could not be used safely."""
 
 

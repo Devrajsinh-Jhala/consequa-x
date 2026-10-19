@@ -2,6 +2,7 @@
 
 from typing import Protocol
 
+from .errors import ConsequaTypeError, ContractError, ReceiptError
 from .models import (
     Action,
     Evidence,
@@ -38,18 +39,18 @@ class RefundVerifier:
     def verify(self, action: Action, observation: Observation) -> VerificationResult:
         contract = action.contract
         if contract.predicate != "refund_processed":
-            raise ValueError(f"Unsupported predicate: {contract.predicate!r}")
+            raise ContractError(f"Unsupported predicate: {contract.predicate!r}")
         expected = contract.expected
         if set(expected) != {"payment_id", "amount_minor", "currency"}:
-            raise ValueError("refund_processed expects payment_id, amount_minor, and currency")
+            raise ContractError("refund_processed expects payment_id, amount_minor, and currency")
         if not _identifier(expected["payment_id"]):
-            raise ValueError("Expected payment_id must be a nonempty string")
+            raise ContractError("Expected payment_id must be a nonempty string")
         if type(expected["amount_minor"]) is not int or expected["amount_minor"] <= 0:
-            raise ValueError("Expected amount_minor must be a positive integer")
+            raise ContractError("Expected amount_minor must be a positive integer")
         if not _identifier(expected["currency"]):
-            raise ValueError("Expected currency must be a nonempty string")
+            raise ContractError("Expected currency must be a nonempty string")
         if contract.deadline_ms < action.registered_at_ms:
-            raise ValueError("Contract deadline precedes action registration")
+            raise ContractError("Contract deadline precedes action registration")
 
         details = {
             "scope": dict(observation.scope),
@@ -207,23 +208,23 @@ def verify(
     This does not change the trace schema or execute the registered action.
     """
     if not isinstance(action, Action) or not isinstance(observation, Observation):
-        raise TypeError("verify requires an Action and an Observation")
+        raise ConsequaTypeError("verify requires an Action and an Observation")
     adapter = RefundVerifier() if verifier is None else verifier
     verify_method = getattr(adapter, "verify", None)
     if not callable(verify_method):
-        raise TypeError("A verifier must provide a callable verify method")
+        raise ConsequaTypeError("A verifier must provide a callable verify method")
     result = verify_method(action, observation)
     if not isinstance(result, VerificationResult):
-        raise TypeError("A verifier must return a VerificationResult")
+        raise ConsequaTypeError("A verifier must return a VerificationResult")
     if result.contract_id != action.contract.contract_id:
-        raise ValueError("Verifier receipt contract_id must match the action contract")
+        raise ReceiptError("Verifier receipt contract_id must match the action contract")
     if result.observed_at_ms < observation.observed_at_ms:
-        raise ValueError("Verifier receipt cannot precede its evidence observation")
+        raise ReceiptError("Verifier receipt cannot precede its evidence observation")
     for evidence in result.evidence:
         if evidence.observation_id != observation.observation_id:
-            raise ValueError("Verifier evidence must refer to the supplied observation_id")
+            raise ReceiptError("Verifier evidence must refer to the supplied observation_id")
         if evidence.source != observation.source:
-            raise ValueError("Verifier evidence source must match the supplied observation")
+            raise ReceiptError("Verifier evidence source must match the supplied observation")
         if evidence.as_of_ms != observation.as_of_ms:
-            raise ValueError("Verifier evidence watermark must match the supplied observation")
+            raise ReceiptError("Verifier evidence watermark must match the supplied observation")
     return result

@@ -18,6 +18,7 @@ import inspect
 import time
 from typing import Any, Callable, Iterator
 
+from .errors import ConsequaTypeError, RecorderError
 from .models import _json_copy
 from .models import (
     Action,
@@ -46,7 +47,7 @@ _RESERVED_DISPATCH_KEYS = {"action_id", "attempt_id"}
 
 def _identifier(value: Any, label: str) -> str:
     if not isinstance(value, str) or not value.strip():
-        raise ValueError(f"{label} must be a nonempty string")
+        raise RecorderError(f"{label} must be a nonempty string")
     return value
 
 
@@ -102,7 +103,7 @@ class TraceRecorder:
         self.trace_id = _identifier(trace_id, "trace_id")
         self.actor = _identifier(actor, "actor")
         if clock is not None and not callable(clock):
-            raise TypeError("clock must be callable and return integer milliseconds")
+            raise ConsequaTypeError("clock must be callable and return integer milliseconds")
         start = time.monotonic_ns()
         self._clock = clock or (lambda: (time.monotonic_ns() - start) // 1_000_000)
         self._events: list[Event] = []
@@ -138,7 +139,7 @@ class TraceRecorder:
     def _time(self, at_ms: int | None) -> int:
         value = self._clock() if at_ms is None else at_ms
         if type(value) is not int or value < 0:
-            raise ValueError("times must be nonnegative integer milliseconds")
+            raise RecorderError("times must be nonnegative integer milliseconds")
         return value
 
     def _new_event_id(self, prefix: str, event_id: str | None) -> str:
@@ -150,7 +151,7 @@ class TraceRecorder:
                     break
         _identifier(event_id, "event_id")
         if event_id in self._event_ids:
-            raise ValueError(f"event_id is already recorded: {event_id!r}")
+            raise RecorderError(f"event_id is already recorded: {event_id!r}")
         return event_id
 
     def _add_event(self, event: Event) -> str:
@@ -160,7 +161,7 @@ class TraceRecorder:
 
     def _require_action(self) -> Action:
         if self._action is None:
-            raise ValueError("register the action and its outcome contract first")
+            raise RecorderError("register the action and its outcome contract first")
         return self._action
 
     def context(self, kind: str | EventType, data: dict[str, Any] | None = None, *,
@@ -168,7 +169,7 @@ class TraceRecorder:
         """Record context the agent saw: user input, instruction, retrieval or memory."""
         event_type = EventType(kind)
         if event_type not in _CONTEXT_TYPES:
-            raise ValueError("context kind must be user_input, system_instruction, "
+            raise RecorderError("context kind must be user_input, system_instruction, "
                              "retrieval or memory_read")
         identifier = self._new_event_id("context", event_id)
         return self._add_event(Event(identifier, self.trace_id, event_type, self._time(at_ms),
@@ -180,7 +181,7 @@ class TraceRecorder:
         inputs = tuple(inputs)
         unknown = [item for item in inputs if item not in self._event_ids]
         if unknown:
-            raise ValueError(f"decision inputs refer to unrecorded events: {unknown}")
+            raise RecorderError(f"decision inputs refer to unrecorded events: {unknown}")
         identifier = self._new_event_id("decision", event_id)
         self._last_decision_id = self._add_event(Event(
             identifier, self.trace_id, EventType.AGENT_DECISION, self._time(at_ms),
@@ -196,7 +197,7 @@ class TraceRecorder:
         The intent event depends on the most recent recorded decision, if any.
         """
         if self._action is not None:
-            raise ValueError("a recorder captures exactly one registered action")
+            raise RecorderError("a recorder captures exactly one registered action")
         registered = self._time(at_ms)
         action = Action(action_id, self.trace_id, self.actor, name, arguments, registered,
                         contract, idempotency_key)
@@ -215,12 +216,12 @@ class TraceRecorder:
         action = self._require_action()
         extra = dict(data or {})
         if _RESERVED_DISPATCH_KEYS & extra.keys():
-            raise ValueError("dispatch data cannot override action_id or attempt_id")
+            raise RecorderError("dispatch data cannot override action_id or attempt_id")
         if attempt_id is None:
             attempt_id = f"{action.action_id}:attempt-{len(self._dispatch_event_ids) + 1}"
         _identifier(attempt_id, "attempt_id")
         if attempt_id in self._dispatch_event_ids:
-            raise ValueError(f"attempt is already dispatched: {attempt_id!r}")
+            raise RecorderError(f"attempt is already dispatched: {attempt_id!r}")
         event_id = self._add_event(Event(
             self._new_event_id("dispatch", None), self.trace_id, EventType.ACTION_DISPATCH,
             self._time(at_ms), self.actor, (self._intent_id,),
@@ -234,7 +235,7 @@ class TraceRecorder:
                  result: dict[str, Any] | None = None) -> ToolResponse:
         """Record what the tool returned for an attempt: success, error or timeout."""
         if attempt_id not in self._dispatch_event_ids:
-            raise ValueError(f"response refers to an undispatched attempt: {attempt_id!r}")
+            raise RecorderError(f"response refers to an undispatched attempt: {attempt_id!r}")
         record = ToolResponse(attempt_id, ResponseStatus(status), self._time(at_ms),
                               provider_request_id if provider_request_id is not None else attempt_id,
                               dict(result or {}))
@@ -282,7 +283,7 @@ class TraceRecorder:
         type name. Use ``attempt`` for custom status, identity or payloads.
         """
         if inspect.iscoroutinefunction(tool):
-            raise TypeError("asynchronous tools are not supported yet; use attempt() around "
+            raise ConsequaTypeError("asynchronous tools are not supported yet; use attempt() around "
                             "the awaited call")
         name = getattr(tool, "__name__", type(tool).__name__)
         with self.attempt(data={"tool": name}) as handle:
@@ -300,11 +301,11 @@ class TraceRecorder:
         """
         self._require_action()
         if self._assessment is not None:
-            raise ValueError("the agent's assessment is already recorded")
+            raise RecorderError("the agent's assessment is already recorded")
         evidence = tuple(self._response_event_ids if evidence is None else evidence)
         unknown = [item for item in evidence if item not in self._event_ids]
         if unknown:
-            raise ValueError(f"assessment evidence refers to unrecorded events: {unknown}")
+            raise RecorderError(f"assessment evidence refers to unrecorded events: {unknown}")
         record = AgentAssessment(AssessmentStatus(status), self._time(at_ms), evidence, rationale)
         self._add_event(Event(
             self._new_event_id("assessment", None), self.trace_id, EventType.AGENT_ASSESSMENT,
@@ -316,12 +317,12 @@ class TraceRecorder:
     def observe(self, observation: Observation) -> Observation:
         """Retain an independently captured readback observation."""
         if not isinstance(observation, Observation):
-            raise TypeError("observe requires an Observation")
+            raise ConsequaTypeError("observe requires an Observation")
         for existing in self._observations:
             if existing.observation_id == observation.observation_id:
                 if existing == observation:
                     return existing
-                raise ValueError("a different observation with this observation_id is recorded")
+                raise RecorderError("a different observation with this observation_id is recorded")
         self._observations.append(observation)
         return observation
 
@@ -342,7 +343,7 @@ class TraceRecorder:
         """Return the validated trace captured so far."""
         action = self._require_action()
         if self._assessment is None:
-            raise ValueError("record the agent's assessment first; use 'unknown' if it "
+            raise RecorderError("record the agent's assessment first; use 'unknown' if it "
                              "reported nothing")
         return Trace(self.trace_id, action, tuple(self._events), tuple(self._responses),
                      self._assessment, tuple(self._observations), tuple(self._verifications))
@@ -357,11 +358,11 @@ def capture_tool(recorder: TraceRecorder, *,
     re-raises its exception after the response is recorded.
     """
     if not isinstance(recorder, TraceRecorder):
-        raise TypeError("capture_tool requires a TraceRecorder")
+        raise ConsequaTypeError("capture_tool requires a TraceRecorder")
 
     def decorate(tool: Callable[..., Any]) -> Callable[..., Any]:
         if inspect.iscoroutinefunction(tool):
-            raise TypeError("asynchronous tools are not supported yet")
+            raise ConsequaTypeError("asynchronous tools are not supported yet")
         name = getattr(tool, "__name__", type(tool).__name__)
 
         @functools.wraps(tool)

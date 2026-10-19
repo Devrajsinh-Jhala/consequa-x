@@ -15,14 +15,15 @@ import json
 import types
 from typing import Any, get_args, get_origin, get_type_hints
 
+from .errors import ConsequaTypeError, SchemaVersionError
 from .models import SCHEMA_VERSION, Trace, to_dict
 
 
 def _check_version(version: str) -> None:
     if type(version) is not str:
-        raise TypeError("schema version must be a string")
+        raise ConsequaTypeError("schema version must be a string")
     if version != SCHEMA_VERSION:
-        raise ValueError(f"unsupported schema_version: {version!r}")
+        raise SchemaVersionError(f"unsupported schema_version: {version!r}")
 
 
 def generate_trace_schema(version: str = SCHEMA_VERSION) -> dict[str, Any]:
@@ -82,7 +83,7 @@ def generate_trace_schema(version: str = SCHEMA_VERSION) -> dict[str, Any]:
             return {"type": "integer", "minimum": 0}
         if annotation is bool:
             return {"type": "boolean"}
-        raise TypeError(f"unsupported schema field type: {annotation!r}")
+        raise ConsequaTypeError(f"unsupported schema field type: {annotation!r}")
 
     def record_schema(record_type: type) -> None:
         name = record_type.__name__

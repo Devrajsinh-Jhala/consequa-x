@@ -21,11 +21,12 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "build>=1.2", "ruff>=0.8", "jsonschema>=4.23"]
-otel = ["opentelemetry-api>=1.45"]
-openai-agents = ["openai-agents>=0.24"]
-langchain = ["langchain-core>=1.6"]
+# Alphabetical, the order setuptools writes them into the sdist's requires.txt.
 claude-agent-sdk = ["claude-agent-sdk>=0.2.168"]
+dev = ["pytest>=8", "build>=1.2", "ruff>=0.8", "jsonschema>=4.23"]
+langchain = ["langchain-core>=1.6"]
+openai-agents = ["openai-agents>=0.24"]
+otel = ["opentelemetry-api>=1.45"]
 
 [project.urls]
 Homepage = "https://consequa-x.onrender.com"

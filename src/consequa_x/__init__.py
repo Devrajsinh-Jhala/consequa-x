@@ -20,12 +20,12 @@ from .models import (
     FrozenList, Observation, OriginStatus, OutcomeContract, ResponseStatus, TimeBase,
     ToolResponse, Trace, VerificationResult, VerificationStatus, thaw,
 )
-from .readback import poll_readback
+from .readback import apoll_readback, poll_readback
 from .record_verifier import RecordVerifier
 from .report import render_report
 from .store import TraceStore
 from .summary import Summary, summarize
-from .verification import RefundVerifier, Verifier, verify
+from .verification import RefundVerifier, Verifier, averify, verify
 
 __all__ = [
     # Records and statuses
@@ -36,7 +36,8 @@ __all__ = [
     # Capture
     "ActionCapture", "Attempt", "TraceRecorder", "capture_tool",
     # Verification
-    "RecordVerifier", "RefundVerifier", "Verifier", "poll_readback", "verify",
+    "RecordVerifier", "RefundVerifier", "Verifier", "apoll_readback", "averify",
+    "poll_readback", "verify",
     # Acting on evidence
     "RetryAdvice", "RetryDecision", "retry_advice",
     # Explanation and presentation

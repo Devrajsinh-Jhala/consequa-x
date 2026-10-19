@@ -34,7 +34,7 @@ from .models import (
     Trace,
     VerificationResult,
 )
-from .verification import Verifier, verify as _verify
+from .verification import Verifier, averify as _averify, verify as _verify
 
 
 _CONTEXT_TYPES = {
@@ -187,11 +187,22 @@ class ActionCapture:
         type name. Use ``attempt`` for custom status, identity or payloads.
         """
         if inspect.iscoroutinefunction(tool):
-            raise ConsequaTypeError("asynchronous tools are not supported here; use attempt() "
-                                    "around the awaited call")
+            raise ConsequaTypeError("asynchronous tools need acall()")
         name = getattr(tool, "__name__", type(tool).__name__)
         with self.attempt(data={"tool": name}) as handle:
             value = tool(*args, **kwargs)
+            handle.result = _result_payload(value)
+        return value
+
+    async def acall(self, tool: Callable[..., Any], /, *args: Any, **kwargs: Any) -> Any:
+        """Await ``tool(*args, **kwargs)`` as one recorded attempt and return its result."""
+        if not callable(tool):
+            raise ConsequaTypeError("acall requires a callable tool")
+        name = getattr(tool, "__name__", type(tool).__name__)
+        with self.attempt(data={"tool": name}) as handle:
+            value = tool(*args, **kwargs)
+            if inspect.isawaitable(value):
+                value = await value
             handle.result = _result_payload(value)
         return value
 
@@ -239,6 +250,15 @@ class ActionCapture:
         recorder = self._recorder
         recorded = recorder.observe(observation)
         receipt = _verify(self.action, recorded, verifier=verifier)
+        recorder._verifications.append(receipt)
+        return receipt
+
+    async def averify(self, observation: Observation, *,
+                      verifier: Verifier | None = None) -> VerificationResult:
+        """``verify`` with a verifier whose ``verify`` method may be a coroutine."""
+        recorder = self._recorder
+        recorded = recorder.observe(observation)
+        receipt = await _averify(self.action, recorded, verifier=verifier)
         recorder._verifications.append(receipt)
         return receipt
 
@@ -440,6 +460,15 @@ class TraceRecorder:
         """``ActionCapture.call`` for the only registered action."""
         return self._sole().call(tool, *args, **kwargs)
 
+    async def acall(self, tool: Callable[..., Any], /, *args: Any, **kwargs: Any) -> Any:
+        """``ActionCapture.acall`` for the only registered action."""
+        return await self._sole().acall(tool, *args, **kwargs)
+
+    async def averify(self, observation: Observation, *,
+                      verifier: Verifier | None = None) -> VerificationResult:
+        """``ActionCapture.averify`` for the only registered action."""
+        return await self._sole().averify(observation, verifier=verifier)
+
     def assessment(self, status: str | AssessmentStatus, *, at_ms: int | None = None,
                    rationale: str = "", evidence: tuple[str, ...] | None = None,
                    assessment_id: str | None = None) -> AgentAssessment:
@@ -484,19 +513,27 @@ def _target(recorder: TraceRecorder | ActionCapture, label: str) -> TraceRecorde
 def capture_tool(recorder: TraceRecorder | ActionCapture, *,
                  classify: Callable[[Exception], str | ResponseStatus] | None = None,
                  ) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
-    """Decorate a synchronous tool so every call is one recorded attempt.
+    """Decorate a tool so every call is one recorded attempt.
 
     Pass an ``ActionCapture`` to record attempts for that action, or the
-    recorder while it has exactly one registered action. The wrapped function
-    behaves as before: it returns the tool's result or re-raises its exception
-    after the response is recorded.
+    recorder while it has exactly one registered action. Synchronous and
+    ``async def`` tools are both supported. The wrapped function behaves as
+    before: it returns the tool's result or re-raises its exception after the
+    response is recorded.
     """
     target = _target(recorder, "capture_tool")
 
     def decorate(tool: Callable[..., Any]) -> Callable[..., Any]:
-        if inspect.iscoroutinefunction(tool):
-            raise ConsequaTypeError("asynchronous tools are not supported yet")
         name = getattr(tool, "__name__", type(tool).__name__)
+        if inspect.iscoroutinefunction(tool):
+            @functools.wraps(tool)
+            async def awaited(*args: Any, **kwargs: Any) -> Any:
+                with target.attempt(data={"tool": name}, classify=classify) as handle:
+                    value = await tool(*args, **kwargs)
+                    handle.result = _result_payload(value)
+                return value
+
+            return awaited
 
         @functools.wraps(tool)
         def wrapped(*args: Any, **kwargs: Any) -> Any:

@@ -1,5 +1,6 @@
 """Read-only verification; a tool acknowledgement is never verification evidence."""
 
+import inspect
 from typing import Protocol
 
 from .errors import ConsequaTypeError, ContractError, ReceiptError
@@ -253,13 +254,40 @@ def verify(
     receipt cannot precede that observation or refer to a different contract.
     This does not change the trace schema or execute the registered action.
     """
+    verify_method = _verify_method(action, observation, verifier)
+    result = verify_method(action, observation)
+    if inspect.isawaitable(result):
+        if hasattr(result, "close"):
+            result.close()
+        raise ConsequaTypeError("This verifier is asynchronous; use averify")
+    return _checked_receipt(action, observation, result)
+
+
+async def averify(
+    action: Action, observation: Observation, *, verifier: Verifier | None = None,
+) -> VerificationResult:
+    """``verify`` for a verifier whose ``verify`` method may be a coroutine.
+
+    The receipt is checked exactly as ``verify`` checks it.
+    """
+    verify_method = _verify_method(action, observation, verifier)
+    result = verify_method(action, observation)
+    if inspect.isawaitable(result):
+        result = await result
+    return _checked_receipt(action, observation, result)
+
+
+def _verify_method(action, observation, verifier):
     if not isinstance(action, Action) or not isinstance(observation, Observation):
         raise ConsequaTypeError("verify requires an Action and an Observation")
     adapter = RefundVerifier() if verifier is None else verifier
     verify_method = getattr(adapter, "verify", None)
     if not callable(verify_method):
         raise ConsequaTypeError("A verifier must provide a callable verify method")
-    result = verify_method(action, observation)
+    return verify_method
+
+
+def _checked_receipt(action, observation, result) -> VerificationResult:
     if not isinstance(result, VerificationResult):
         raise ConsequaTypeError("A verifier must return a VerificationResult")
     if result.action_id != action.action_id:

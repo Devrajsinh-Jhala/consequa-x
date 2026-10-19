@@ -1,5 +1,6 @@
 """TraceRecorder arranges application-supplied records into an ordinary trace."""
 
+import inspect
 import time
 
 import pytest
@@ -248,9 +249,8 @@ def test_capture_tool_decorates_synchronous_tools_only():
     async def remote(order_id):
         return order_id
 
-    with pytest.raises(TypeError, match="asynchronous"):
-        capture_tool(rec)(remote)
-    with pytest.raises(TypeError, match="asynchronous"):
+    assert inspect.iscoroutinefunction(capture_tool(rec)(remote))  # wrapped as async
+    with pytest.raises(TypeError, match="acall"):
         rec.call(remote, "o-17")
     with pytest.raises(TypeError, match="TraceRecorder"):
         capture_tool(object())

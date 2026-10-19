@@ -80,6 +80,11 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   contract horizon, then reads back and verifies repeatedly (every observation
   and receipt is recorded) until the outcome is `satisfied` or `violated` or the
   time limit passes; an unresolved `unknown` is returned as is.
+- Async agents: `capture_tool` wraps `async def` tools, `ActionCapture.acall`
+  (and `TraceRecorder.acall`) awaits a tool as one recorded attempt,
+  `averify`/`ActionCapture.averify` accept verifiers whose `verify` is a
+  coroutine (receipts are checked exactly as `verify` checks them), and
+  `apoll_readback` polls with awaited reads and `asyncio.sleep`.
 - `retry_advice(receipt or trace)` turns verified evidence into
   `DO_NOT_RETRY` (the outcome already holds, whoever produced it), `WAIT`
   (missing or unknown readback), `ESCALATE` (relevant effects that do not

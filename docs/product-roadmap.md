@@ -88,20 +88,20 @@ Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move 
 
 | ID | Feature |
 | --- | --- |
-| B4 | Verifier composition (all-of / any-of) and several readbacks per verification |
-| B5 | Readback scheduler: re-check until the watermark covers the contract horizon |
-| B6 | Retry guard: check readback before retrying a timed-out action. Moves from explanation to control; wording must stay careful. |
-| B7 | Async recorder, verifiers and wrapper |
-| B8 | `consequa-x summarize`: divergence and unknown counts across many traces |
+| B4 | Verifier composition (all-of / any-of) and several readbacks per verification. Deferred past 2.0.0: an outcome with several required effects can be several actions with their own contracts; an all-of/any-of contract format needs its own design. |
+| B5 | Readback scheduler: re-check until the watermark covers the contract horizon (done on `release-2.0`) |
+| B6 | Retry guard: check readback before retrying a timed-out action. Moves from explanation to control; wording must stay careful. (done on `release-2.0`) |
+| B7 | Async recorder, verifiers and wrapper (done on `release-2.0`) |
+| B8 | `consequa-x summarize`: divergence and unknown counts across many traces (done on `release-2.0`) |
 | C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras |
 | C5 | OpenTelemetry export/import using the GenAI conventions |
-| D1 | Reports for several actions (needs A1) |
+| D1 | Reports for several actions (needs A1) (done on `release-2.0`) |
 | D2 | Compare two traces |
-| D3 | Markdown and JSON summary output |
+| D3 | Markdown and JSON summary output (done on `release-2.0`) |
 | D4 | `consequa-x verify` from a JSON/YAML contract and a readback file |
-| D5 | `consequa-x validate` and `migrate` |
+| D5 | `consequa-x validate` and `migrate` (done on `release-2.0`) |
 | D6 | Configurable report redaction rules |
-| D7 | JSONL trace store |
+| D7 | JSONL trace store (done on `release-2.0`) |
 
 Not planned: a hosted service or live monitoring product, a TypeScript port,
 or new research interfaces in the core package.

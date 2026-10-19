@@ -1,0 +1,40 @@
+{
+  "distribution": "consequa-x",
+  "gate_exceptions": {
+    "pending": [
+      "public_docs_support"
+    ]
+  },
+  "maintainer_instruction": "Okay then continue developing and releasing them (the five roadmap features left out of 2.0.0; 19 October 2026)",
+  "project_urls": {
+    "Changelog": "https://consequa-x.onrender.com/changelog.html",
+    "Documentation": "https://consequa-x.onrender.com/docs.html",
+    "Homepage": "https://consequa-x.onrender.com",
+    "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+    "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+    "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+  },
+  "published": true,
+  "published_files": [
+    {
+      "filename": "consequa_x-2.1.0-py3-none-any.whl",
+      "sha256": "6cdbe68bf0e4c722f1220987ee7fd9a1d167fdadec48a97f236ec7a1570e3670",
+      "size": 215066,
+      "upload_time_utc": "2026-10-19T11:21:23.747841Z"
+    },
+    {
+      "filename": "consequa_x-2.1.0.tar.gz",
+      "sha256": "fcb98e019c3c40ebcd2c6500732ca770b53a7380cf04786655e482219b4032e7",
+      "size": 647396,
+      "upload_time_utc": "2026-10-19T11:21:25.715778Z"
+    }
+  ],
+  "registry": "https://pypi.org/project/consequa-x/2.1.0/",
+  "registry_hashes_and_sizes_match_review": true,
+  "registry_install": "Fresh Windows Python 3.12.10 venv, pip install --no-cache-dir from PyPI (first attempt); the wheel download that followed hit an index node that did not yet list 2.1.0 and passed on retry",
+  "registry_install_receipt": "registry312.json",
+  "source_revision": "a19e6c89e07e2123bd5256eb786bbfb7ccbe0448",
+  "uploader": "twine via the maintainer's local keyring credential; GitHub Actions not used",
+  "verified_at_utc": "2026-10-19T11:24:18.283515+00:00",
+  "version": "2.1.0"
+}

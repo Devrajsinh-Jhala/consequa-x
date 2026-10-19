@@ -4,11 +4,11 @@
 
 Additive: the roadmap features left out of 2.0.0 (verifier composition,
 framework integrations and OpenTelemetry). Schema `1.0` and the 2.0 API are
-unchanged, and the core still has no required runtime dependency. Checked
-before publication; see the
+unchanged, and the core still has no required runtime dependency. Published
+to PyPI with registry hashes verified; see the
 [release record](output/release-2.1.0-2026-10-19/README.md). Installed checks
-passed on Windows Python 3.11.9 and 3.12.10 and on one Alpine Linux 3.24.2 QEMU
-guest with Python 3.14.8; the integrations passed against the installed wheel
+passed on Windows Python 3.11.9 and 3.12.10, on one Alpine Linux 3.24.2 QEMU
+guest with Python 3.14.8 and from a fresh PyPI install; the integrations passed against the installed wheel
 with each SDK present. macOS has never been tested.
 
 - Verifier composition. `all_of(contract_id, *parts)` and `any_of(...)` build

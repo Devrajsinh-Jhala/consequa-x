@@ -7,8 +7,9 @@ integrations, and OpenTelemetry export and import. Trace schema `1.0` and the
 2.0 API are unchanged. See the [changelog](../../CHANGELOG.md). Built from
 source revision `a19e6c89e07e2123bd5256eb786bbfb7ccbe0448`.
 
-**Not yet published.** This record holds the pre-publication checks.
-`publication.json` will be added after upload and registry verification.
+Published to PyPI on 19 October 2026 (11:21 UTC) on the maintainer's
+instruction, with the public docs/support gate recorded as pending until the 2.1
+site deploys.
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -58,12 +59,18 @@ source revision `a19e6c89e07e2123bd5256eb786bbfb7ccbe0448`.
   on phones, a defect present since 2.0. It was fixed in `a19e6c8` and every
   check above ran on the rebuilt artifacts; the first build's receipts were
   set aside.
+- After upload: PyPI serves both files with the reviewed sizes and hashes, and a
+  fresh no-cache install from PyPI on Windows Python 3.12.10 passed the
+  installed-wheel checker, including the 2.1 feature checks
+  ([registry312.json](registry312.json), [publication.json](publication.json),
+  [upload log](publication-upload.log)). The wheel download that followed the
+  install first reached an index node that did not list 2.1.0 yet; the retry
+  passed.
 
 ## Pending and limits
 
-- Public docs/support gate: pending. The 2.1.0 site states 2.1.0 as published
-  and deploys only after publication. Private vulnerability reporting is
-  enabled.
+- Public docs/support gate: pending at upload; see `site-publication.json` once
+  the 2.1 site is live. Private vulnerability reporting is enabled.
 - macOS has never been tested. Linux coverage is one emulated Alpine guest; the
   framework SDKs were installed only in the Windows extras environment.
 - The integrations were tested against one version of each SDK, offline: no

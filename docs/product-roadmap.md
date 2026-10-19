@@ -113,7 +113,9 @@ or new research interfaces in the core package.
 during the 2.0 build, contrary to the maintainer's instruction to include every
 feature in the breaking release; the maintainer then asked for them to be built
 and released. They are additive, so they ship as 2.1.0 without another breaking
-change. With them, every feature in this roadmap is released.
+change. Released as 2.1.0 on 19 October 2026; see the
+[release record](../output/release-2.1.0-2026-10-19/README.md). With them, every
+feature in this roadmap is released.
 
 | ID | Feature | Status |
 | --- | --- | --- |

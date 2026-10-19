@@ -235,14 +235,27 @@ def _timeline(trace: Trace, numbers: dict[str, int]) -> str:
     ) + '</ol>'
 
 
-def render_report(trace: Trace, *, include_details: bool = False) -> str:
+def _redacted(value, names: frozenset[str]):
+    if isinstance(value, dict):
+        return {key: "[redacted]" if key.lower() in names else _redacted(item, names)
+                for key, item in value.items()}
+    if isinstance(value, list):
+        return [_redacted(item, names) for item in value]
+    return value
+
+
+def render_report(trace: Trace, *, include_details: bool = False,
+                  redact: tuple[str, ...] = ()) -> str:
     """Return a self-contained HTML report without executing application logic.
 
     The default includes closed schema enums, numeric times/counts and local
     aliases. It omits all arbitrary captured strings, identifiers and payloads
     from the entire file. ``include_details=True`` explicitly appends the whole
     captured trace as escaped, inert JSON; that file may contain sensitive data.
-    This is field omission, not a general redaction or anonymization guarantee.
+    ``redact`` names JSON keys (case-insensitive) whose values are replaced with
+    ``"[redacted]"`` wherever they occur in that included trace, for example
+    ``("card_number", "email")``. This is field omission by name, not a general
+    redaction or anonymization guarantee: values under other keys are kept.
 
     All verification records are displayed as captured. Assessment alignment and
     diagnoses are derived from the recorded receipts exactly as ``explain`` derives
@@ -254,6 +267,10 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         raise ConsequaTypeError("render_report requires a Trace")
     if type(include_details) is not bool:
         raise ConsequaTypeError("include_details must be a boolean")
+    if isinstance(redact, str) or not all(isinstance(item, str) and item.strip()
+                                          for item in redact):
+        raise ConsequaTypeError("redact must be a sequence of nonempty key names")
+    names = frozenset(item.strip().lower() for item in redact)
     try:
         # Revalidate a detached snapshot: nested JSON containers remain mutable
         # even though public record dataclasses are frozen.
@@ -401,11 +418,14 @@ def render_report(trace: Trace, *, include_details: bool = False) -> str:
         '</section>',
     ]
     if include_details:
-        captured_json = json.dumps(snapshot.to_dict(), indent=2, ensure_ascii=True, allow_nan=False)
+        captured_json = json.dumps(_redacted(snapshot.to_dict(), names), indent=2,
+                                   ensure_ascii=True, allow_nan=False)
         sections.extend([
             '<section id="captured-details"><h2>Explicitly included captured details</h2>'
             '<p>This complete trace may contain secrets, identifiers, payloads, source names and '
-            'rationales. Collapsing this panel does not remove its contents from the file.</p>'
+            'rationales. Collapsing this panel does not remove its contents from the file.</p>',
+            (f'<p>Values of these keys are redacted: {_text(", ".join(sorted(names)))}. Other '
+             'keys keep their values.</p>' if names else ''),
             '<details><summary>Show original trace as inert JSON</summary><pre>',
             _text(captured_json), '</pre></details></section>',
         ])

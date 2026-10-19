@@ -1,6 +1,7 @@
 """Trace explanation, offline replay, and bounded policy evaluations."""
 
 import argparse
+from dataclasses import replace
 from hashlib import sha256
 import json
 import math
@@ -15,7 +16,10 @@ from .benchmark.runner import (
 from .errors import SchemaVersionError
 from .explanation import explain
 from .migrate import MigrationReport, migrate_trace
-from .models import Trace, to_dict
+from .compare import compare
+from .models import Observation, Trace, _decode_record, _unique_object, to_dict
+from .record_verifier import RecordVerifier
+from .verification import RefundVerifier, verify
 from .store import TraceStore
 from .summary import summarize
 from .report import render_report
@@ -180,7 +184,8 @@ def _report(args):
         raise ValueError(str(error)) from None
     except (ValueError, TypeError, RecursionError):
         raise ValueError("Cannot report an invalid schema-1.0 trace") from None
-    document = render_report(trace, include_details=args.include_details)
+    document = render_report(trace, include_details=args.include_details,
+                             redact=tuple(args.redact or ()))
     output.parent.mkdir(parents=True, exist_ok=True)
     # Exclusive creation also protects against another process creating the file
     # between the preservation check and this write.
@@ -265,6 +270,60 @@ def _summarize(args):
     else:
         print(text)
     return 2 if invalid else 0
+
+
+def _new_file(path, label):
+    output = Path(path)
+    if output.exists() or output.is_symlink():
+        raise ValueError(f"{label} output must be a new file to preserve existing evidence")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    return output
+
+
+def _verify_command(args):
+    """Verify a captured readback with a built-in verifier and save the extended trace."""
+    source = Path(args.trace)
+    if Path(args.output).resolve() in (source.resolve(), Path(args.readback).resolve()):
+        raise ValueError("Verification output must differ from its inputs")
+    trace = Trace.from_json(source.read_text(encoding="utf-8"))
+    action = trace.get_action(args.action) if args.action else trace.single_action
+    observation = _decode_record(Observation, json.loads(
+        Path(args.readback).read_text(encoding="utf-8"), object_pairs_hook=_unique_object),
+        "readback")
+    predicate = action.contract.predicate
+    if predicate == "refund_processed":
+        verifier = RefundVerifier()
+    elif predicate == "record_present":
+        if not args.scope_field:
+            raise ValueError("record_present needs --scope-field for each field the readback "
+                             "scope declares")
+        verifier = RecordVerifier(scope_fields=tuple(args.scope_field))
+    else:
+        raise ValueError(f"No built-in verifier for predicate {predicate!r}; verify in Python "
+                         "with your application's Verifier")
+    receipt = verify(action, observation, verifier=verifier)
+    known = {item.observation_id: item for item in trace.observations}
+    if observation.observation_id in known and known[observation.observation_id] != observation:
+        raise ValueError("A different observation with this observation_id is already recorded")
+    extended = replace(trace, observations=trace.observations + (
+        () if observation.observation_id in known else (observation,)),
+        verifications=trace.verifications + (receipt,))
+    output = _new_file(args.output, "Verification")
+    with output.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(extended.to_json(indent=2) + "\n")
+    judged = explain(extended).for_action(action.action_id)
+    print(f"{action.action_id}: state {receipt.status.value}, origin {receipt.origin.value}, "
+          f"alignment {judged.assessment_alignment}; {', '.join(judged.codes)}")
+    print(f"Saved trace with the new receipt to {output.resolve()}")
+    return 0
+
+
+def _compare_command(args):
+    left, right = (Trace.from_json(Path(name).read_text(encoding="utf-8"))
+                   for name in (args.left, args.right))
+    result = compare(left, right)
+    print(result.to_json() if args.format == "json" else result.to_text())
+    return 0 if result.same or not args.fail_on_difference else 1
 
 
 def _validate(args):
@@ -1246,7 +1305,25 @@ def main(argv=None):
     report.add_argument("--output", required=True, help="New HTML file; existing files are preserved")
     report.add_argument("--include-details", action="store_true",
                         help="Include potentially sensitive captured values as inert escaped text")
+    report.add_argument("--redact", action="append", metavar="KEY",
+                        help="With --include-details, replace the values of this JSON key "
+                             "everywhere (repeatable)")
     report.set_defaults(handler=_report)
+    check = commands.add_parser("verify", help="Verify a readback file with a built-in verifier")
+    check.add_argument("trace", help="Existing schema-1.0 trace JSON")
+    check.add_argument("--readback", required=True, help="Observation JSON captured read-only")
+    check.add_argument("--action", help="Action ID (optional when the trace has one action)")
+    check.add_argument("--scope-field", action="append",
+                       help="record_present scope field (repeatable)")
+    check.add_argument("--output", required=True, help="New trace file with the receipt added")
+    check.set_defaults(handler=_verify_command)
+    difference = commands.add_parser("compare", help="Compare two traces action by action")
+    difference.add_argument("left")
+    difference.add_argument("right")
+    difference.add_argument("--format", choices=("text", "json"), default="text")
+    difference.add_argument("--fail-on-difference", action="store_true",
+                            help="Exit 1 when the traces differ")
+    difference.set_defaults(handler=_compare_command)
     validate = commands.add_parser("validate", help="Check that trace files are valid schema 1.0")
     validate.add_argument("traces", nargs="+")
     validate.set_defaults(handler=_validate)

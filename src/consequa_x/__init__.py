@@ -7,6 +7,7 @@ Research interfaces (replay attribution, policy adapters) are in
 __version__ = "1.2.0"
 
 from .capture import ActionCapture, Attempt, TraceRecorder, capture_tool
+from .compare import ActionChange, Comparison, compare
 from .errors import (
     ConsequaError, ConsequaTypeError, ContractError, ReceiptError, RecorderError,
     SchemaVersionError, ValidationError,
@@ -44,7 +45,7 @@ __all__ = [
     "ActionExplanation", "CORE_DIAGNOSES", "ConsequenceGraph", "Diagnosis", "TraceExplanation",
     "build_graph", "explain", "render_report",
     # Collections of traces
-    "Summary", "TraceStore", "summarize",
+    "ActionChange", "Comparison", "Summary", "TraceStore", "compare", "summarize",
     # Migration
     "MigrationReport", "migrate_trace",
     # Errors

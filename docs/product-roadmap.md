@@ -96,11 +96,11 @@ Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move 
 | C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras |
 | C5 | OpenTelemetry export/import using the GenAI conventions |
 | D1 | Reports for several actions (needs A1) (done on `release-2.0`) |
-| D2 | Compare two traces |
+| D2 | Compare two traces (done on `release-2.0`) |
 | D3 | Markdown and JSON summary output (done on `release-2.0`) |
-| D4 | `consequa-x verify` from a JSON/YAML contract and a readback file |
+| D4 | `consequa-x verify` from a JSON/YAML contract and a readback file (done on `release-2.0`) |
 | D5 | `consequa-x validate` and `migrate` (done on `release-2.0`) |
-| D6 | Configurable report redaction rules |
+| D6 | Configurable report redaction rules (done on `release-2.0`) |
 | D7 | JSONL trace store (done on `release-2.0`) |
 
 Not planned: a hosted service or live monitoring product, a TypeScript port,

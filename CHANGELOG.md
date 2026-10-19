@@ -91,6 +91,17 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   satisfy the contract) or `RETRY_PERMITTED` (a complete readback shows no
   relevant effect; retry with an idempotency key, since an in-flight attempt can
   still commit), each with a reason.
+- `compare(left, right)` and `consequa-x compare A B [--fail-on-difference]`
+  compare two traces action by action: contract, tool responses, latest
+  assessment, verified state and origin, alignment and diagnosis codes, plus
+  actions present in only one trace.
+- `consequa-x verify TRACE --readback OBS.json [--scope-field F] --output NEW`
+  verifies a captured readback file with the built-in refund or record
+  verifier and saves the trace with the new receipt, without Python code.
+- `render_report(..., include_details=True, redact=("card_number", ...))` and
+  `consequa-x report --include-details --redact KEY` replace the values of the
+  named JSON keys everywhere in the included trace. Values under other keys are
+  kept; this is omission by name, not anonymization.
 - `TraceStore(path)`: an append-only JSON Lines file of validated traces with
   unique trace IDs; reading reports the line number of an invalid entry.
 - Research interfaces (`EffectEstimate`, `Intervention`, `leave_one_out`,

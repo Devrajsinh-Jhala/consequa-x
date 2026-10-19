@@ -1,10 +1,10 @@
 # Five-minute offline quickstart
 
-Use Python 3.11 or 3.12. No model, API key, provider account or runtime dependency
-is required. Version 2.1.0 is public on PyPI. Traces use schema 1.0.
+Use Python 3.11 or newer. No model, API key, provider account or runtime dependency
+is required. Version 2.1.1 is public on PyPI. Traces use schema 1.0.
 
 ```console
-python -m pip install consequa-x==2.1.0
+python -m pip install consequa-x==2.1.1
 consequa-x --version
 ```
 

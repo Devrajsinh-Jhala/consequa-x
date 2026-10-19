@@ -10,7 +10,8 @@ for ``TimeoutError``); an error the tool handled itself
 ``ToolMessage`` with error status, which is what LangChain returns for a tool
 call. LangGraph agents run tools the same way.
 
-Tested with ``langchain-core`` 1.6.12. Install with
+Tested with ``langchain-core`` 1.6.12, offline and once with a live local model.
+Install with
 ``pip install "consequa-x[langchain]"``.
 """
 

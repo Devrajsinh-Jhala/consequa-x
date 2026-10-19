@@ -23,7 +23,7 @@ to a pull request. Report vulnerabilities privately as described in
 
 ## Set up a development environment
 
-Fork and clone the repository, then create a branch for your change. Use Python 3.11 or 3.12:
+Fork and clone the repository, then create a branch for your change. Use Python 3.11 or newer:
 
 ```sh
 python -m venv .venv

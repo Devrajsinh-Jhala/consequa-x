@@ -217,8 +217,8 @@ and the [paper notes](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/p
 ## Platforms
 
 The package is pure Python. Released wheels have been install-tested on Windows
-with Python 3.11 and 3.12 and on one Alpine Linux virtual machine with Python
-3.14. macOS has not been tested yet. See the
+with Python 3.11, 3.12, 3.13, 3.14 and 3.15, and on one Alpine Linux virtual
+machine with Python 3.14. macOS has not been tested yet. See the
 [release notes](https://consequa-x.onrender.com/changelog.html) for exact
 environments.
 

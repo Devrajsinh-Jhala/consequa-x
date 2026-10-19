@@ -11,7 +11,7 @@ reported error names a timeout, otherwise ``error``). The hooks only observe:
 they return an empty result and never block or change a tool call.
 
 Tested with ``claude-agent-sdk`` 0.2.168 through its hook callback protocol,
-not with a live model session. Install with
+and once in a live session with Claude Haiku. Install with
 ``pip install "consequa-x[claude-agent-sdk]"``.
 """
 

@@ -1,5 +1,20 @@
 # Changes
 
+## 2.1.1 - 19 October 2026
+
+A maintenance release; the API and trace schema are unchanged.
+
+- The project's name is written ConseqaX: README, documentation, report title
+  and footer, the trace schema's title and command-line text. The package,
+  command and import names stay `consequa-x` and `consequa_x`.
+- Python 3.13, 3.14 and 3.15 are tested and declared (PyPI classifiers and
+  documentation), alongside 3.11 and 3.12.
+- Each framework integration was also run with a real model in a real agent
+  loop (`scripts/check_live_integrations.py`); the recorded attempts matched
+  the tool calls that ran.
+- New example `examples/two_part_outcome.py`: an `all_of` contract over a refund
+  and a ticket closure, read back from two SQLite files.
+
 ## 2.1.0 - 19 October 2026
 
 Additive: the roadmap features left out of 2.0.0 (verifier composition,

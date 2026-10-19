@@ -13,7 +13,8 @@ the SDK cancels the call at the tool's ``timeout``, the attempt is recorded as
 ``timeout``; any other cancellation is recorded as ``error``. A timeout says
 nothing about whether the effect happened: verify readback afterwards.
 
-Tested with ``openai-agents`` 0.24.0. Install with
+Tested with ``openai-agents`` 0.24.0, offline and once with a live local model.
+Install with
 ``pip install "consequa-x[openai-agents]"``.
 """
 

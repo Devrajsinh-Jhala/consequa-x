@@ -121,7 +121,14 @@ refund happened; readback does.
 Tested with openai-agents 0.24.0, langchain-core 1.6.12 and claude-agent-sdk
 0.2.168. The tests drive each SDK offline: the Agents SDK's `ScriptedModel` in a
 real `Runner` loop, real LangChain tools with callbacks, and the Claude Agent
-SDK's hook protocol through a scripted transport. No live model was called.
+SDK's hook protocol through a scripted transport. Each integration was also run
+once with a real model in a real agent loop
+([`scripts/check_live_integrations.py`](../scripts/check_live_integrations.py)):
+the OpenAI Agents SDK and LangChain with a local 4B Qwen model served by Ollama,
+the Claude Agent SDK with Claude Haiku. In each run the refund tool timed out
+after committing, the recorded attempts matched the calls that ran, and readback
+showed the refund the agent had reported as failed. One run per framework shows
+the wiring works; it does not cover every model or SDK release.
 
 ## Doing it by hand
 

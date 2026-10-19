@@ -1,5 +1,16 @@
 # Release notes
 
+## 2.1.1 — 19 October 2026
+
+- The project is now written ConseqaX. You still install it with
+  pip install consequa-x and import consequa_x.
+- Tested on Python 3.13, 3.14 and 3.15 as well as 3.11 and 3.12.
+- Each framework integration was run once with a real model: the OpenAI Agents
+  SDK and LangChain with a local model through Ollama, the Claude Agent SDK
+  with Claude Haiku. The recorded tool calls matched what actually ran.
+- A new example, two_part_outcome.py, checks a refund and a ticket closure
+  as one outcome.
+
 ## 2.1.0 — 19 October 2026
 
 An additive release with the features 2.0.0 left out. Saved traces and code

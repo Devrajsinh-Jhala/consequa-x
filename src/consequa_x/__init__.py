@@ -4,7 +4,7 @@ Research interfaces (replay attribution, policy adapters) are in
 ``consequa_x.research``.
 """
 
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 
 from .capture import ActionCapture, Attempt, TraceRecorder, capture_tool
 from .compare import ActionChange, Comparison, compare

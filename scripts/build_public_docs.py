@@ -16,7 +16,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_REPOSITORY = "https://github.com/Devrajsinh-Jhala/consequa-x"
 SITE = "https://consequa-x.onrender.com"
-RELEASE = "2.1.0"
+RELEASE = "2.1.1"
 EXAMPLES = ("agent_loop_sqlite.py", "artifact_delivery.py", "report_quickstart.py")
 
 
@@ -141,10 +141,10 @@ with Path("report.html").open("x", encoding="utf-8") as destination:
     return f'''<div class="docs-layout section-shell">
   <aside class="docs-sidebar" aria-label="On this page"><span class="eyebrow">THE FIELD GUIDE</span><nav><a href="#quickstart">Five-minute quickstart</a><a href="#read-the-evidence">Read the evidence</a><a href="#reports">Offline reports</a><a href="#privacy">Disclosure &amp; sharing</a><a href="#python-api">Python API</a><a href="#integration">Connect your application</a><a href="#boundaries">Trust boundaries</a><a href="#help">Get help</a></nav><a class="sidebar-download" href="quickstart.zip" download>Download the examples <span aria-hidden="true">↓</span><small>Three Python files · synthetic data · MIT</small></a></aside>
   <main class="docs-content" id="main">
-    <div class="docs-hero"><span class="eyebrow">DOCUMENTATION / VERSION 2.1</span><h1>From a trace<br>to a <em>clear account.</em></h1><p class="docs-lead">Create your first offline report, read what the evidence supports, and capture your own agent’s tool calls.</p><div class="docs-prerequisites"><span>Python 3.11 or 3.12</span><span>No API key</span><span>No required runtime dependencies</span></div></div>
+    <div class="docs-hero"><span class="eyebrow">DOCUMENTATION / VERSION 2.1</span><h1>From a trace<br>to a <em>clear account.</em></h1><p class="docs-lead">Create your first offline report, read what the evidence supports, and capture your own agent’s tool calls.</p><div class="docs-prerequisites"><span>Python 3.11 or newer</span><span>No API key</span><span>No required runtime dependencies</span></div></div>
     <div class="docs-callout release-callout">{release_status}</div>
     <section id="quickstart"><span class="eyebrow">01 / YOUR FIRST FIVE MINUTES</span><h2>Make the evidence visible.</h2><p>This example performs no delivery or payment. It reads synthetic artifact-store fixtures using the public package APIs.</p>
-      <div class="guide-step"><span class="guide-step-number" aria-hidden="true">1</span><div><h3>Install the package.</h3><p>Use a Python 3.11 or 3.12 environment.</p>{installation}</div></div>
+      <div class="guide-step"><span class="guide-step-number" aria-hidden="true">1</span><div><h3>Install the package.</h3><p>Use Python 3.11 or newer.</p>{installation}</div></div>
       <div class="guide-step"><span class="guide-step-number" aria-hidden="true">2</span><div><h3>Get the two example files.</h3><p><a href="quickstart.zip" download>Download the quickstart archive</a> and extract it. Keep <code>artifact_delivery.py</code> and <code>report_quickstart.py</code> in the same folder. The archive includes its README and MIT license.</p><p class="small-text">Prefer reading first? <a href="examples/artifact_delivery.py">View the artifact adapter</a> or <a href="examples/report_quickstart.py">view the report example</a>.</p></div></div>
       <div class="guide-step"><span class="guide-step-number" aria-hidden="true">3</span><div><h3>Generate three captured examples.</h3><p>Open a terminal in the extracted folder, then use a new output directory:</p>{run_example}<p>Open <code>my-first-capture/verified.html</code> in your browser. Compare <code>unknown.html</code> and <code>other-actor.html</code>. Each report has a separate original JSON trace.</p></div></div>
       <div class="guide-step"><span class="guide-step-number" aria-hidden="true">4</span><div><h3>Render a saved trace again.</h3>{render}<p>The destination must be new. If the console command is not on your PATH, replace <code>consequa-x</code> with <code>python -m consequa_x</code>.</p></div></div>

@@ -95,7 +95,7 @@ def test_offline_artifact_example_round_trips_and_qualifies_a_target_match():
     assert restored.verifications[0].target_effect_ids == ("artifact-revision-7",)
     explanation = explain(restored)
     assert explanation.single_action.assessment_alignment == "contradicted"
-    assert explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
+    assert explanation.single_action.diagnosis == "ASSESSMENT_DIVERGENCE / ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
     assert set(explanation.single_action.codes) == {
         "ASSESSMENT_DIVERGENCE", "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
     }

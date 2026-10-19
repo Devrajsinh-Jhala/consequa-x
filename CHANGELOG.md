@@ -1,5 +1,16 @@
 # Changes
 
+## 2.1.2 - unreleased
+
+A maintenance release; the API, exported records and trace schema are
+unchanged.
+
+- `ActionExplanation.diagnosis`, the one-line display label, is always the
+  diagnosis codes joined with ` / `. A timeout after commit no longer shows the
+  1.x label `BELIEF / RESPONSE DIVERGENCE`: `consequa-x demo` and its README now
+  print `ASSESSMENT_DIVERGENCE / ACKNOWLEDGEMENT_EFFECT_DIVERGENCE`, the codes
+  that explanations and reports already carried.
+
 ## 2.1.1 - 19 October 2026
 
 A maintenance release; the API and trace schema are unchanged. Published to

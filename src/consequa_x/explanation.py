@@ -81,11 +81,8 @@ class ActionExplanation:
 
     @property
     def diagnosis(self) -> str:
-        """A one-line label for display; not part of the exported record."""
-        codes = self.codes
-        if "ASSESSMENT_DIVERGENCE" in codes and "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in codes:
-            return "BELIEF / RESPONSE DIVERGENCE"
-        return " / ".join(codes)
+        """The diagnosis codes joined into one line for display; not part of the exported record."""
+        return " / ".join(self.codes)
 
     def to_dict(self) -> dict:
         return to_dict(self)

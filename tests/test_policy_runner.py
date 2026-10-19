@@ -167,7 +167,7 @@ def test_captured_policy_assessment_is_not_replaced_by_later_verification():
     episode = run_policy_scenario(ScenarioConfig(), SpyPolicy(assessment=AssessmentStatus.FAILURE))
     assert episode.trace.latest_assessment().status is AssessmentStatus.FAILURE
     assert episode.trace.verifications[-1].status is VerificationStatus.SATISFIED
-    assert episode.explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.explanation.single_action.diagnosis == "ASSESSMENT_DIVERGENCE / ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
     assert episode.trace.latest_assessment().evidence_event_ids == ("response_1",)
     assessment_event = [event for event in episode.trace.events
                         if event.type is EventType.AGENT_ASSESSMENT][-1]

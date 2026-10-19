@@ -385,8 +385,8 @@ def render_report(trace: Trace, *, include_details: bool = False,
         'script-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; img-src &#39;none&#39;; '
         'connect-src &#39;none&#39;; font-src &#39;none&#39;; object-src &#39;none&#39;; '
         'base-uri &#39;none&#39;; form-action &#39;none&#39;">',
-        '<title>Consequa-X | Captured evidence report</title><style>', _CSS, '</style></head><body>',
-        '<header><div class="eyebrow">Consequa-X / Offline report</div>',
+        '<title>ConseqaX | Captured evidence report</title><style>', _CSS, '</style></head><body>',
+        '<header><div class="eyebrow">ConseqaX / Offline report</div>',
         '<h1>Follow the evidence.</h1><p class="subtitle">', subtitle, ' Separate response, '
         'assessment, observed state and origin.</p><nav aria-label="Report sections">'
         '<a href="#summary">Summary</a><a href="#timeline">Timeline</a>'
@@ -471,7 +471,7 @@ def render_report(trace: Trace, *, include_details: bool = False,
             '<details><summary>Show original trace as inert JSON</summary><pre>',
             _text(captured_json), '</pre></details></section>',
         ])
-    sections.append(f'</main><footer>Consequa-X · Trace schema {_text(snapshot.schema_version)} · '
+    sections.append(f'</main><footer>ConseqaX · Trace schema {_text(snapshot.schema_version)} · '
                     f'Times in {_text(snapshot.time_base.value)} · Self-contained offline '
                     'presentation · Keep the original trace separately as evidence.</footer></body></html>')
     return ''.join(sections)

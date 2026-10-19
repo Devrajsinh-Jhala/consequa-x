@@ -1,4 +1,4 @@
-"""Publish only the reviewed stable Consequa-X wheel and source distribution."""
+"""Publish only the reviewed stable ConseqaX wheel and source distribution."""
 
 import argparse
 from hashlib import sha256
@@ -34,7 +34,7 @@ def checked_files(receipt_path):
     version = record["version"]
     if (record["distribution"] != "consequa-x" or type(version) is not str
             or re.fullmatch(r"\d+\.\d+\.\d+", version) is None):
-        raise ValueError("Receipt must identify a stable Consequa-X release")
+        raise ValueError("Receipt must identify a stable ConseqaX release")
     if re.fullmatch(r"[a-f0-9]{40}", record["source_revision"]) is None:
         raise ValueError("Receipt requires a full frozen Git source revision")
     checks = record["local_checks"]

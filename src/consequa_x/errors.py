@@ -1,4 +1,4 @@
-"""Typed exceptions raised by Consequa-X.
+"""Typed exceptions raised by ConseqaX.
 
 Every error the package raises on purpose derives from ``ConsequaError``. Each
 class also derives from ``ValueError`` or ``TypeError``, so callers written for
@@ -7,7 +7,7 @@ the untyped 1.x errors keep working while new callers can be precise.
 
 
 class ConsequaError(Exception):
-    """Base class for every error Consequa-X raises on purpose."""
+    """Base class for every error ConseqaX raises on purpose."""
 
 
 class ConsequaTypeError(ConsequaError, TypeError):

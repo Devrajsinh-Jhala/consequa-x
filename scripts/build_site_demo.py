@@ -1,4 +1,4 @@
-"""Generate the homepage demo data from real Consequa-X package runs.
+"""Generate the homepage demo data from real ConseqaX package runs.
 
 The homepage inspector and live terminal must not carry hand-written outcomes.
 This script runs the package CLI in a new temporary directory, records each

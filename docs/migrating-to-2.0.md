@@ -1,4 +1,4 @@
-# Migrating to Consequa-X 2.0
+# Migrating to ConseqaX 2.0
 
 2.0 makes the breaking changes planned in the [2.0 design](design-2.0.md) once.
 Evidence discipline is unchanged: tool response, the agent's report, verified

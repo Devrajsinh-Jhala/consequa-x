@@ -1,6 +1,6 @@
 # Offline visual reports
 
-Consequa-X renders a dependency-free HTML report for a captured, validated
+ConseqaX renders a dependency-free HTML report for a captured, validated
 trace:
 
 ```console

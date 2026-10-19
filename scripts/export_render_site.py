@@ -53,7 +53,7 @@ ALLOWLIST = (
 TEXT_SUFFIXES = {".html", ".css", ".js", ".svg", ".txt", ".xml", ".py", ".md", ".yaml"}
 ZIP_METADATA = {"timestamp": list(ZIP_DATE), "mode": "100644", "create_system": "unix",
                 "compression": "deflate-9", "member_order": "lexicographic"}
-REPORT_HTML_SHA256 = "3126d8872ca367ba6a2d8f902bdecf994bc484587ed7c5bdffad3b68f7fae013"
+REPORT_HTML_SHA256 = "9a34912b6ca79770d2107eba99ceab1a0ac174015c788b2c6603eda31bf07bf7"
 
 
 def require(condition, message):

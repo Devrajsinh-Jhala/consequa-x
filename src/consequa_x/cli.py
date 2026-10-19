@@ -66,7 +66,7 @@ def _demo(args):
     _write_json(output / "trace-schema.json", get_trace_schema())
     _write_json(output / "manifest.json", {"package_version": __version__, "artifacts": manifest})
     summary = (
-        "# Consequa-X: first offline demo\n\n"
+        "# ConseqaX: first offline demo\n\n"
         "This demo uses transparent programmatic policies and local simulated money. "
         "The refund target is INR 5,000 (500,000 paise), exactly once, by the declared deadline.\n\n"
         "| Scenario | Agent reported | Verified outcome | Effect origin | Matching effects |\n"

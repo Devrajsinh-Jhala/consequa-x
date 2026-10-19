@@ -1,7 +1,7 @@
 # Product roadmap
 
 Agreed 18 October 2026, after publishing 1.1.1. This page tracks package
-features for users of Consequa-X; the research agenda stays in the
+features for users of ConseqaX; the research agenda stays in the
 [research roadmap](research-roadmap.md). Update the status column as work lands.
 
 ## Decision

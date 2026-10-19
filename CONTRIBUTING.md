@@ -1,4 +1,4 @@
-# Contributing to Consequa-X
+# Contributing to ConseqaX
 
 Thanks for helping. This public repository holds the Python package, its tests
 and documentation, the website, and the research records behind the paper. The

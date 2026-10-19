@@ -1,6 +1,6 @@
 """Research interfaces: replay-based attribution and policy adapters.
 
-These support the studies behind Consequa-X (paired interventions, decision
+These support the studies behind ConseqaX (paired interventions, decision
 replay, calibration). Applications that capture, verify and explain their own
 agents do not need them, so they are imported from here rather than from the
 top-level ``consequa_x`` namespace. The benchmark simulators live in

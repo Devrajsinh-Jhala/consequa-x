@@ -138,7 +138,7 @@ def generate_trace_schema(version: str = SCHEMA_VERSION) -> dict[str, Any]:
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": f"urn:consequa-x:trace:{version}",
-        "title": f"Consequa-X Trace v{version}",
+        "title": f"ConseqaX Trace v{version}",
         "description": "Public evidence-aware trace. Evaluator-only simulator truth is excluded.",
         "$ref": "#/$defs/Trace",
         "$defs": definitions,

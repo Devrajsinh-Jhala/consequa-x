@@ -1,1 +1,1 @@
-"""Controlled fixtures for Consequa-X research experiments."""
+"""Controlled fixtures for ConseqaX research experiments."""

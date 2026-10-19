@@ -1,4 +1,4 @@
-# Consequa-X
+# ConseqaX
 
 **Evidence-aware explanation of consequential agent actions.**
 
@@ -7,7 +7,7 @@ database write), the tool's response is only part of the story. A timeout can
 hide a refund that went through. A "success" can hide one that never landed.
 Another actor can produce the very outcome the agent was asked for.
 
-Consequa-X keeps four things apart: the **tool response**, what the **agent
+ConseqaX keeps four things apart: the **tool response**, what the **agent
 reported**, the outcome established by an **independent read-only readback**, and
 **who produced the effect**. Missing, stale or incomplete evidence stays
 `unknown` instead of being guessed.
@@ -131,7 +131,7 @@ receipt = verify(action, observation, verifier=MyVerifier())
 ```
 
 Your application owns source trust, scope, completeness, timing and provenance;
-Consequa-X checks that receipts bind to the supplied action, contract and
+ConseqaX checks that receipts bind to the supplied action, contract and
 observation, and keeps the evidence structured. The
 [artifact-delivery example](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/artifact_delivery.py)
 implements a verifier with public APIs only, and the

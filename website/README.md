@@ -1,4 +1,4 @@
-# Consequa-X public website
+# ConseqaX public website
 
 `dist/` contains a buildless landing page and public documentation. Serve it as
 static files; no package installation or frontend build is required. Authored
@@ -192,7 +192,7 @@ when copying assets.
 
 `assets/sample-report.zip` contains exactly `my-report.html`, the unmodified
 self-contained package report with SHA-256
-`3126d8872ca367ba6a2d8f902bdecf994bc484587ed7c5bdffad3b68f7fae013`.
+`9a34912b6ca79770d2107eba99ceab1a0ac174015c788b2c6603eda31bf07bf7`.
 Use this ZIP for the offline download: the public Site host can append a browser
 challenge script to served HTML, including the browser preview of the report.
 The ZIP preserves the original package bytes when extracted. It uses fixed ZIP

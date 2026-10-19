@@ -1,6 +1,6 @@
 # Integrating an application
 
-Consequa-X explains captured application actions without using the refund
+ConseqaX explains captured application actions without using the refund
 simulator, calling a model, or executing a write. Register each action's target
 before running it, keep its responses and the agent's reported assessments, then
 obtain a separate readback observation. A response is evidence about the request;

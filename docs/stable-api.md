@@ -38,7 +38,7 @@ Everything exported from `consequa_x` is stable through 2.x:
   (`ToolCallCapture`, `ToolCall`, `PendingCall`, `classify_exception`, and the
   `openai_agents`, `langchain` and `claude_agent_sdk` modules). The integration
   modules follow their frameworks' public APIs; a framework release that changes
-  those APIs may need a Consequa-X update, and each module states the version it
+  those APIs may need a ConseqaX update, and each module states the version it
   was tested with. The OpenTelemetry GenAI conventions are in development
   upstream, so exported `gen_ai.*` attribute names follow them as they change;
   `consequa_x.*` attributes are stable through 2.x.

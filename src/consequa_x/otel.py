@@ -1,9 +1,9 @@
 """Export traces to OpenTelemetry and bring tool spans back in.
 
-Consequa-X traces can travel through an OpenTelemetry pipeline next to the
+ConseqaX traces can travel through an OpenTelemetry pipeline next to the
 rest of an agent's telemetry. Each tool attempt becomes an ``execute_tool``
 span named as the OpenTelemetry GenAI semantic conventions describe (those
-conventions are still in *development* status upstream); Consequa-X's own
+conventions are still in *development* status upstream); ConseqaX's own
 findings use ``consequa_x.*`` attributes.
 
 - :func:`to_otlp` returns an OTLP/JSON document (``resourceSpans``), the body
@@ -469,7 +469,7 @@ def from_otlp(data: Any) -> tuple[Trace, ...]:
             raise ValidationError(f"{TRACE_ATTRIBUTE} must be the trace's JSON text")
         traces.append(Trace.from_json(value))
     if not traces:
-        raise ValidationError("No span carries a complete Consequa-X trace; export with "
+        raise ValidationError("No span carries a complete ConseqaX trace; export with "
                               "include_payloads=True, or read tool spans with "
                               "record_tool_spans")
     return tuple(traces)

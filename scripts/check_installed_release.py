@@ -322,7 +322,7 @@ def check_capture_workflow() -> dict:
 
 
 def legacy_trace(trace) -> dict:
-    """The schema 0.1 form of a single-action trace, as Consequa-X 1.x wrote it."""
+    """The schema 0.1 form of a single-action trace, as ConseqaX 1.x wrote it."""
     data = trace.to_dict()
     (action,) = data["actions"]
     (assessment,) = data["assessments"]

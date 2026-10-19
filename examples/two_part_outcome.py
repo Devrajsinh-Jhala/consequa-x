@@ -3,7 +3,7 @@
 Standard library only, offline and deterministic. A scripted support agent calls
 one ``resolve_case`` tool that should refund the order in the payments ledger
 and close the customer's ticket in the CRM. Its outcome contract is
-``all_of(refund, ticket)``: both parts must hold. Consequa-X reads each part
+``all_of(refund, ticket)``: both parts must hold. ConseqaX reads each part
 back from its own system through a separate read-only connection and verifies
 them together with ``CompositeVerifier``.
 
@@ -16,7 +16,7 @@ Two modes:
   covers the horizon: the ticket part is violated, so the whole outcome is.
 - ``both_done``: both effects are written and the outcome is satisfied.
 
-Run from this folder with Consequa-X 2.1 or newer installed::
+Run from this folder with ConseqaX 2.1 or newer installed::
 
     python two_part_outcome.py --mode ticket_left_open --output two-part-run
 

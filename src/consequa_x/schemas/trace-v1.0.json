@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:consequa-x:trace:1.0",
-  "title": "Consequa-X Trace v1.0",
+  "title": "ConseqaX Trace v1.0",
   "description": "Public evidence-aware trace. Evaluator-only simulator truth is excluded.",
   "$ref": "#/$defs/Trace",
   "$defs": {

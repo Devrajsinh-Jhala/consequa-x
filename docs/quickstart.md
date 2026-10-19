@@ -89,7 +89,7 @@ The schema validates structure and identity linkage. Source authentication,
 transaction guarantees and the truth of adapter-provided metadata remain your
 application's responsibility. Unknown evidence must stay unknown.
 
-Traces use schema 1.0. Convert traces saved by Consequa-X 1.x with
+Traces use schema 1.0. Convert traces saved by ConseqaX 1.x with
 consequa-x migrate OLD.json --output NEW.json. Research replay
 interfaces have separate assumptions; no baseline superiority or live-model
 accuracy improvement is claimed. Platform validation is listed in release notes

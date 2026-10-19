@@ -1,4 +1,4 @@
-# Consequa-X 2.0 design
+# ConseqaX 2.0 design
 
 Status: released as 2.0.0 on 19 October 2026 (steps 1 to 6 below, except
 verifier composition). Verifier composition and step 7 were released in 2.1.0. Decided 19 October 2026, after

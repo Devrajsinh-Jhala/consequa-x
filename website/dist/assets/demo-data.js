@@ -38,7 +38,7 @@ window.CONSEQUA_DEMO = {
  ],
  "report": {
   "path": "assets/sample-report.html",
-  "sha256": "3126d8872ca367ba6a2d8f902bdecf994bc484587ed7c5bdffad3b68f7fae013",
+  "sha256": "9a34912b6ca79770d2107eba99ceab1a0ac174015c788b2c6603eda31bf07bf7",
   "trace": "my-demo/traces/episode_01.json"
  },
  "scenarios": [

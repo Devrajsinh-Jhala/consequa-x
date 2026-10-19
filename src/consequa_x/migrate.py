@@ -1,4 +1,4 @@
-"""Convert schema 0.1 traces (Consequa-X 1.x) to schema 1.0.
+"""Convert schema 0.1 traces (ConseqaX 1.x) to schema 1.0.
 
 The conversion is structural and conservative:
 

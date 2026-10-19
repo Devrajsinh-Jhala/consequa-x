@@ -1,6 +1,6 @@
 # OpenTelemetry export and import
 
-`consequa_x.otel` (added in 2.1) moves Consequa-X traces through an
+`consequa_x.otel` (added in 2.1) moves ConseqaX traces through an
 OpenTelemetry pipeline, next to the rest of an agent's telemetry, and reads
 tool spans from other instrumentation back into a recorder. The OTLP/JSON
 functions need no dependency; `emit` needs `opentelemetry-api`
@@ -9,7 +9,7 @@ functions need no dependency; `emit` needs `opentelemetry-api`
 Tool spans follow the OpenTelemetry GenAI semantic conventions for
 `execute_tool` spans. Those conventions are still in *development* status
 upstream, so attribute names may change in later OpenTelemetry releases. Every
-Consequa-X finding uses its own `consequa_x.*` attributes.
+ConseqaX finding uses its own `consequa_x.*` attributes.
 
 ## What an export contains
 
@@ -77,7 +77,7 @@ command line:
 consequa-x otel-import spans.json --output-dir restored
 ```
 
-Spans written by other instrumentation hold no Consequa-X trace, but their tool
+Spans written by other instrumentation hold no ConseqaX trace, but their tool
 spans can still start one. `record_tool_spans` reads `execute_tool` spans into
 a `TraceRecorder` (which must use the default `unix_ms` time base). You decide
 which calls are consequential and what their outcome contract is:

@@ -269,7 +269,7 @@ preselected complete traces. The
 [derived findings](output/interaction-sampling-findings-2026-10-15/FINDINGS.md)
 retain coverage, width, detection and refusal denominators. The defined
 framework and protocol/software paper scope is complete on 16 October 2026:
-the [illustrated eight-page IEEE PDF](output/pdf/Consequa-X_IEEE_Paper.pdf) compiled and all
+the [illustrated eight-page IEEE PDF](output/pdf/ConseqaX_IEEE_Paper.pdf) compiled and all
 rendered pages passed visual review. The [QA receipt](output/pdf/qa.json) binds
 it to the frozen [editable source](paper/consequa-x-ieee.tex) and four vector
 figures. Actual venue selection, final human

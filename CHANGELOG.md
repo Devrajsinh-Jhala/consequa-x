@@ -1,8 +1,10 @@
 # Changes
 
-## Unreleased (2.0.0, breaking)
+## 2.0.0 - 19 October 2026 (breaking)
 
-Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
+See [the 2.0 design](docs/design-2.0.md) and the
+[migration guide](docs/migrating-to-2.0.md). Deferred to 2.1: verifier
+composition, optional framework integrations and OpenTelemetry export.
 
 - Typed exceptions: every intentional error derives from `ConsequaError` and
   still from `ValueError` or `TypeError`. `ValidationError` (invalid records,

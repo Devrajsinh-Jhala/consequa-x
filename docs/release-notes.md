@@ -1,5 +1,22 @@
 # Release notes
 
+## 2.0.0 — 19 October 2026
+
+A breaking release. Saved 1.x traces convert with `consequa-x migrate`; the
+migration guide maps every changed API.
+
+- Trace schema 1.0: several actions per trace, each with its own contract;
+  zero or more agent assessments per action; a declared time base; keyword-only,
+  read-only records; typed errors.
+- Verifiers record which effects match the target and any domain findings;
+  explain() reads those receipts with no domain logic and returns structured
+  diagnoses per action.
+- Capture several actions with one recorder, including async tools and
+  verifiers. poll_readback re-reads a lagging source until the outcome is known,
+  and retry_advice says whether a retry would duplicate an effect.
+- New commands: summarize, compare, verify, validate and migrate. Reports show
+  every action with its alignment and diagnoses, and can redact named keys.
+
 ## 1.2.0 — 19 October 2026
 
 - TraceRecorder records an action as it happens, from the outcome contract to

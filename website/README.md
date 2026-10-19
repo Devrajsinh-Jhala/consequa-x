@@ -93,10 +93,11 @@ All captured strings are inserted as text nodes; no data enters an HTML parser.
 ## Release status
 
 The homepage installation command, release badge and quickstart target
-`consequa-x==1.2.0`. Merge them to the deployed branch only after that version is
-verified on PyPI. The workflow cards show the 1.2 capture API with values from
-`examples/agent_loop_sqlite.py`; the site does not change the Python package or
-its offline report renderer. Do not describe unverified platform support or present
+`consequa-x==2.0.0`. Deploy them only after that version is verified on PyPI.
+The workflow cards show the 2.0 capture API with values from
+`examples/agent_loop_sqlite.py`. After a change to the report renderer, run
+`scripts/refresh_sample_report.py` and then `scripts/build_site_demo.py`; the
+site never changes the Python package. Do not describe unverified platform support or present
 recorded output as a live application execution.
 
 `scripts/build_public_docs.py` regenerates the four public documentation pages

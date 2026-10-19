@@ -321,6 +321,113 @@ def check_capture_workflow() -> dict:
             "mcp_error_recorded": True, "exception_messages_dropped": True}
 
 
+def legacy_trace(trace) -> dict:
+    """The schema 0.1 form of a single-action trace, as Consequa-X 1.x wrote it."""
+    data = trace.to_dict()
+    (action,) = data["actions"]
+    (assessment,) = data["assessments"]
+    return {
+        "schema_version": "0.1", "trace_id": data["trace_id"],
+        "action": {**action, "trace_id": data["trace_id"]},
+        "events": [{**event, "trace_id": data["trace_id"]} for event in data["events"]],
+        "responses": [{key: value for key, value in item.items() if key != "action_id"}
+                      for item in data["responses"]],
+        "assessment": {key: value for key, value in assessment.items()
+                       if key not in ("assessment_id", "action_id")},
+        "observations": data["observations"],
+        "verifications": [{key: value for key, value in item.items()
+                           if key not in ("action_id", "target_effect_ids", "findings")}
+                          for item in data["verifications"]],
+    }
+
+
+def check_2_0_features(directory: Path) -> dict:
+    """Several actions, migration, collections, polling and retry advice, installed."""
+    from consequa_x import (
+        MigrationReport, Observation, OutcomeContract, RecordVerifier, RetryAdvice,
+        SchemaVersionError, Trace, TraceRecorder, TraceStore, compare, explain, migrate_trace,
+        poll_readback, retry_advice, summarize,
+    )
+
+    verifier = RecordVerifier(scope_fields=("order_id",))
+    now = [0]
+    rec = TraceRecorder(PRIVATE_MARKER + "-multi", actor=PRIVATE_MARKER + "-agent",
+                        clock=lambda: now[0])
+    captures = [rec.register(f"{PRIVATE_MARKER}-{name}", name, {"order_id": name},
+                             contract=OutcomeContract(
+                                 contract_id=f"{PRIVATE_MARKER}-{name}-contract",
+                                 predicate="record_present", expected={"order_id": name},
+                                 deadline_ms=50, stability_ms=10))
+                for name in ("refund", "email")]
+    now[0] = 5
+    rows = []
+    try:
+        with captures[0].attempt() as attempt:
+            rows.append({"effect_id": "effect-1", "order_id": "refund", "committed_at_ms": 20,
+                         "action_id": captures[0].action_id, "actor": captures[0].action.actor,
+                         "attempt_id": attempt.attempt_id})
+            now[0] = 30
+            raise TimeoutError(UNSAFE_TEXT)
+    except TimeoutError:
+        pass
+    captures[0].assessment("failure")
+    captures[1].call(lambda: {"queued": True})
+    captures[1].assessment("success")
+
+    def sleep(seconds):
+        now[0] += round(seconds * 1000)
+
+    def read(name, lag):
+        def reader(number):
+            return Observation(observation_id=f"{PRIVATE_MARKER}-{name}-read-{number}",
+                               source="replica", observed_at_ms=now[0],
+                               as_of_ms=max(0, now[0] - lag), scope={"order_id": name},
+                               records=tuple(row for row in rows if row["order_id"] == name))
+        return reader
+
+    first = poll_readback(captures[0], read("refund", 15), until_ms=500, interval_ms=10,
+                          verifier=verifier, sleep=sleep)
+    second = captures[1].verify(read("email", 0)(1), verifier=verifier)
+    trace = rec.trace()
+    require(len(trace.actions) == 2 and len(trace.verifications_for(captures[0].action_id)) == 3,
+            "Several actions or repeated readbacks were not recorded separately")
+    explained = explain(trace)
+    refund = explained.for_action(captures[0].action_id)
+    email = explained.for_action(captures[1].action_id)
+    require(first.status.value == "satisfied" and refund.assessment_alignment == "contradicted"
+            and "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in refund.codes,
+            "Timeout after commit was not explained for the first action")
+    require(second.status.value == "violated" and email.assessment_alignment == "contradicted",
+            "A missing effect for the second action was not explained")
+    require(retry_advice(first).advice is RetryAdvice.DO_NOT_RETRY
+            and retry_advice(second).advice is RetryAdvice.RETRY_PERMITTED,
+            "Retry advice does not follow the verified outcomes")
+    single = artifact_trace()
+    try:
+        Trace.from_dict(legacy_trace(single))
+    except SchemaVersionError:
+        pass
+    else:
+        raise ValueError("A schema 0.1 trace was accepted without migration")
+    report = MigrationReport()
+    migrated = migrate_trace(legacy_trace(single), report=report)
+    require(migrated.single_action == single.single_action
+            and migrated.verifications[0].target_effect_ids is None
+            and report["not_reproduced"] == 1,
+            "Migration changed the action or claimed target matches it could not reproduce")
+    store = TraceStore(directory / "traces.jsonl")
+    store.append(trace)
+    store.append(migrated)
+    summary = summarize(store)
+    require(summary.traces == 2 and summary.actions == 3 and len(store) == 2,
+            "Trace store or summary lost actions")
+    require(compare(trace, trace).same and not compare(trace, migrated).same,
+            "Trace comparison does not distinguish traces")
+    return {"multi_action_trace": True, "readback_polls": 3, "retry_advice": True,
+            "schema_0_1_refused": True, "migration_conservative": True,
+            "store_summary_compare": True}
+
+
 def invalid_trace_inputs() -> dict[str, str]:
     """Exercise structural, numeric and cross-record strict decoding gates."""
     good = artifact_trace().to_dict()
@@ -433,6 +540,7 @@ def main(argv=None) -> int:
     refusals = check_schema_refusals()
     with tempfile.TemporaryDirectory(prefix="consequa-installed-") as temporary:
         reports = check_reports(Path(temporary))
+        features = check_2_0_features(Path(temporary))
     require(not any(name.startswith("consequa_x.benchmark") for name in sys.modules),
             "Installed application integration unexpectedly imported benchmark code")
     receipt = {"passed": True, "python": platform.python_version(),
@@ -441,6 +549,7 @@ def main(argv=None) -> int:
                "executable": sys.executable, "isolated_imports": True,
                "wheel": {key: value for key, value in wheel.items() if key != "payload_sha256"},
                "install": install, "workflow": workflow, "capture": capture,
+               "features_2_0": features,
                "strict_schema_refusals": refusals,
                "reports": reports, "provider_calls": 0, "api_process_benchmark_imports": 0,
                "cli_import_scope": ("CLI imports packaged research modules but does not "

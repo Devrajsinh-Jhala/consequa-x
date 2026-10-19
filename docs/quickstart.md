@@ -1,10 +1,10 @@
 # Five-minute offline quickstart
 
 Use Python 3.11 or 3.12. No model, API key, provider account or runtime dependency
-is required. Version 2.0.0 is public on PyPI. Traces use schema 1.0.
+is required. Version 2.1.0 is public on PyPI. Traces use schema 1.0.
 
 ```console
-python -m pip install consequa-x==2.0.0
+python -m pip install consequa-x==2.1.0
 consequa-x --version
 ```
 
@@ -75,6 +75,15 @@ watermark and origin metadata, or let poll_readback re-read a lagging source. Us
 the built-in RecordVerifier for records such as rows, orders or tickets, or
 implement a read-only Verifier for another domain that also records which effects
 match the target. The artifact_delivery.py example implements one by hand.
+An outcome with several required effects, such as a refund and a closed ticket,
+is one all_of contract checked by CompositeVerifier, with one readback per
+source.
+
+Agents built with the OpenAI Agents SDK, LangChain or the Claude Agent SDK can
+record their tool calls through optional integrations, installed as extras
+such as consequa-x[langchain]; the framework integration guide shows each one.
+consequa-x otel-export writes a trace as OpenTelemetry spans, and
+consequa_x.otel can start a trace from the tool spans of other instrumentation.
 
 The schema validates structure and identity linkage. Source authentication,
 transaction guarantees and the truth of adapter-provided metadata remain your

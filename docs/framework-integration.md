@@ -1,7 +1,9 @@
 # Capturing agents built with a framework
 
-Consequa-X has no framework dependency. In every framework the same records come
-from the same places:
+The core package has no framework dependency. Version 2.1 adds optional,
+tested integrations for the OpenAI Agents SDK, LangChain and the Claude Agent
+SDK (below), and [OpenTelemetry export and import](opentelemetry.md). In every
+framework the same records come from the same places:
 
 | Record | Where it comes from | Recorder call |
 | --- | --- | --- |
@@ -37,13 +39,99 @@ Rules that hold in every framework:
 - Before retrying a timed-out action, ask `retry_advice(receipt)`: a retry after
   a hidden success duplicates the effect.
 
-The snippets below are sketches of where the calls go. Check your framework
-version's documentation for exact signatures. `rec`, `contract`, `verifier`,
-`issue_refund_api` and `read_refunds` stand for your own objects; see
-[the SQLite agent-loop example](../examples/agent_loop_sqlite.py) for a complete,
-runnable version.
+## Ready-made integrations
 
-## A plain tool-calling loop
+Each integration is an optional extra and records through one shared
+`ToolCallCapture`. Your application decides which calls are consequential:
+`contract_for(call)` returns the call's outcome contract, or `None` to leave it
+unrecorded. `call` is a `ToolCall` with the tool name, parsed arguments, the
+framework's call ID and `started_at_ms` in the recorder's clock:
+
+```python
+from consequa_x import OutcomeContract, TraceRecorder
+from consequa_x.integrations import ToolCallCapture
+
+
+def contract_for(call):
+    if call.tool_name != "issue_refund":
+        return None
+    return OutcomeContract(contract_id=f"refund-{call.call_id}", predicate="record_present",
+                           expected={"order_id": call.arguments["order_id"]},
+                           deadline_ms=call.started_at_ms + 30_000, stability_ms=5_000)
+
+
+rec = TraceRecorder(run_id, actor="support-agent")
+calls = ToolCallCapture(rec, contract_for=contract_for)
+```
+
+Each recorded call becomes an action named by the framework's call ID (or
+`<tool>-<n>`), with one attempt per call. Pass `action_id_for=` to group a
+retry with the call it retries: a call whose action ID is already registered
+becomes another attempt of that action. After the run, `calls.captures` lists
+the recorded actions; record the agent's claim and verify readback through
+them as usual.
+
+| Framework | Install | Hook it up |
+| --- | --- | --- |
+| OpenAI Agents SDK | `pip install "consequa-x[openai-agents]"` | `@consequential_tool(calls=calls)` in place of `@function_tool` |
+| LangChain (and LangGraph) | `pip install "consequa-x[langchain]"` | `config={"callbacks": [ConsequaCallbackHandler(calls)]}` |
+| Claude Agent SDK | `pip install "consequa-x[claude-agent-sdk]"` | `ClaudeAgentOptions(hooks=consequa_hooks(calls))` |
+
+```python
+# OpenAI Agents SDK
+from consequa_x.integrations.openai_agents import consequential_tool
+
+@consequential_tool(calls=calls, timeout=10)      # other options go to function_tool
+async def issue_refund(order_id: str) -> str:
+    ...
+
+# LangChain
+from consequa_x.integrations.langchain import ConsequaCallbackHandler
+
+agent.invoke({"messages": [...]}, config={"callbacks": [ConsequaCallbackHandler(calls)]})
+
+# Claude Agent SDK
+from claude_agent_sdk import ClaudeAgentOptions
+from consequa_x.integrations.claude_agent_sdk import consequa_hooks
+
+options = ClaudeAgentOptions(hooks=consequa_hooks(calls, matcher="mcp__billing__.*"))
+```
+
+What each one records as the tool response:
+
+- **OpenAI Agents SDK.** The tool behaves as a `function_tool` for the model. An
+  exception is recorded as `error` (`timeout` for `TimeoutError`) and then turned
+  into the usual model-visible message by `failure_error_function` (the SDK's
+  default unless you pass another; with `None` it propagates). When the SDK
+  cancels the call at the tool's `timeout`, the attempt is recorded as `timeout`.
+- **LangChain.** An exception the tool raises is recorded as `error` (`timeout`
+  for `TimeoutError`). An error the tool handles itself (`handle_tool_error`) is
+  recorded as `error` when the run returns a `ToolMessage` with error status,
+  which LangChain does for tool calls. The handler raises recording failures
+  instead of logging them, so a trace never silently misses a call.
+- **Claude Agent SDK.** `PreToolUse` records the dispatch, `PostToolUse` a
+  success and `PostToolUseFailure` a failure: `timeout` when the reported error
+  names a timeout, otherwise `error` (pass `classify=` to decide yourself). The
+  hooks only observe; they never block or change a tool call. Merge them with
+  any hooks you already use.
+
+None of this establishes an outcome. A timeout says nothing about whether the
+refund happened; readback does.
+
+Tested with openai-agents 0.24.0, langchain-core 1.6.12 and claude-agent-sdk
+0.2.168. The tests drive each SDK offline: the Agents SDK's `ScriptedModel` in a
+real `Runner` loop, real LangChain tools with callbacks, and the Claude Agent
+SDK's hook protocol through a scripted transport. No live model was called.
+
+## Doing it by hand
+
+The snippets below show where the calls go without an integration. Check your
+framework version's documentation for exact signatures. `rec`, `contract`,
+`verifier`, `issue_refund_api` and `read_refunds` stand for your own objects;
+see [the SQLite agent-loop example](../examples/agent_loop_sqlite.py) for a
+complete, runnable version.
+
+### A plain tool-calling loop
 
 ```python
 rec = TraceRecorder(run_id, actor="support-agent")
@@ -60,7 +148,7 @@ if retry_advice(receipt).advice is RetryAdvice.RETRY_PERMITTED:
     ...                                         # retry with an idempotency key
 ```
 
-## Wrapping a framework's tool function
+### Wrapping a framework's tool function
 
 Most frameworks register an ordinary Python function as a tool. Record inside
 that function, so the framework's retries and error handling are captured as
@@ -90,10 +178,9 @@ async def issue_refund(args):
 `await` when you need the attempt ID inside the call. Async verifiers go through
 `refund.averify(...)`, and `apoll_readback` polls with `asyncio.sleep`.
 
-Framework callbacks and hooks (LangChain callback handlers, OpenAI Agents SDK
-run hooks, Claude Agent SDK pre/post tool-use hooks) also see tool starts and
-ends. Wrapping the tool function is preferred because it records exceptions
-and timeouts exactly where they happen.
+Wrapping the tool function yourself records exceptions and timeouts exactly
+where they happen; the integrations above do the same through each framework's
+own extension point.
 
 ## MCP clients
 

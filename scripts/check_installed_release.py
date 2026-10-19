@@ -428,6 +428,112 @@ def check_2_0_features(directory: Path) -> dict:
             "store_summary_compare": True}
 
 
+def check_2_1_features() -> dict:
+    """Composite contracts, several readbacks, OpenTelemetry and tool-call capture, installed."""
+    from dataclasses import replace
+    import importlib
+
+    from consequa_x import (
+        CompositeVerifier, Observation, OutcomeContract, RecordVerifier, Trace, TraceRecorder,
+        all_of, any_of, explain, render_report, verify,
+    )
+    from consequa_x.integrations import ToolCallCapture
+    from consequa_x.otel import from_otlp, record_tool_spans, to_otlp
+
+    def part(name, deadline):
+        return OutcomeContract(contract_id=f"{PRIVATE_MARKER}-{name}", predicate="record_present",
+                               expected={"order_id": f"{PRIVATE_MARKER}-{name}"},
+                               deadline_ms=deadline, stability_ms=10)
+
+    refund, ticket = part("refund", 50), part("ticket", 60)
+    names = {"refund": refund.contract_id, "ticket": ticket.contract_id}
+    verifier = CompositeVerifier(
+        {names["refund"]: RecordVerifier(scope_fields=("order_id",)),
+         names["ticket"]: RecordVerifier(scope_fields=("order_id",))},
+        sources={names["refund"]: "payments-replica", names["ticket"]: "crm-replica"})
+    now = [0]
+    rec = TraceRecorder(PRIVATE_MARKER + "-composite", actor=PRIVATE_MARKER + "-agent",
+                        clock=lambda: now[0], time_base="unix_ms")
+    capture = rec.register(PRIVATE_MARKER + "-resolve", "resolve", {"note": UNSAFE_TEXT},
+                           contract=all_of(PRIVATE_MARKER + "-resolve-contract", refund, ticket))
+    now[0] = 5
+    capture.call(lambda: {"accepted": True})
+    capture.assessment("success")
+
+    def readback(name, source, records, watermark=100):
+        return Observation(observation_id=f"{PRIVATE_MARKER}-{name}-{watermark}", source=source,
+                           observed_at_ms=watermark, as_of_ms=watermark,
+                           scope={"order_id": f"{PRIVATE_MARKER}-{name}"}, records=records)
+
+    def row(name):
+        return {"effect_id": f"{PRIVATE_MARKER}-{name}-effect", "order_id": f"{PRIVATE_MARKER}-{name}",
+                "committed_at_ms": 20, "action_id": capture.action_id, "actor": capture.action.actor}
+
+    pending = capture.verify((readback("refund", "payments-replica", (row("refund"),)),
+                              readback("ticket", "crm-replica", (row("ticket"),), 65)),
+                             verifier=verifier)
+    done = capture.verify((readback("refund", "payments-replica", (row("refund"),), 110),
+                           readback("ticket", "crm-replica", (row("ticket"),), 110)),
+                          verifier=verifier)
+    require(pending.status.value == "unknown" and done.status.value == "satisfied"
+            and done.target_effect_ids == (f"{PRIVATE_MARKER}-refund-effect",
+                                           f"{PRIVATE_MARKER}-ticket-effect"),
+            "Composite verification did not keep a lagging part unknown, then settle")
+    missing = verify(capture.action, readback("refund", "payments-replica", ()),
+                     verifier=verifier)
+    require(missing.status.value == "violated"
+            and {item.code for item in missing.findings} == {"PART_VIOLATED", "PART_UNKNOWN"},
+            "A violated part with a missing readback was not reported as such")
+    either = any_of(PRIVATE_MARKER + "-either", refund, ticket)
+    require(verify(replace(capture.action, contract=either),
+                   readback("ticket", "crm-replica", (row("ticket"),), 110),
+                   verifier=verifier).status.value == "satisfied",
+            "any_of was not satisfied by one satisfied part")
+    trace = rec.trace()
+    require(Trace.from_json(trace.to_json()) == trace and len(trace.observations) == 4,
+            "A composite trace did not round-trip with every readback")
+    judged = explain(trace).single_action
+    require(judged.assessment_alignment == "consistent", "Composite alignment was not judged")
+    report = render_report(trace)
+    require("All of 2 parts" in report and PRIVATE_MARKER not in report
+            and UNSAFE_TEXT not in report, "Composite report leaked or lost its structure")
+
+    structural = to_otlp(trace)
+    text = json.dumps(structural)
+    require(UNSAFE_TEXT not in text and '"consequa_x.trace"' not in text
+            and "execute_tool resolve" in text, "Default OpenTelemetry export carried payloads")
+    require(from_otlp(to_otlp(trace, include_payloads=True)) == (trace,),
+            "OpenTelemetry payload export did not restore the trace")
+    imported = TraceRecorder(PRIVATE_MARKER + "-spans", actor=PRIVATE_MARKER + "-agent")
+    captures = record_tool_spans(structural, imported, contract_for=lambda span: OutcomeContract(
+        contract_id=PRIVATE_MARKER + "-imported", predicate="record_present",
+        expected={"order_id": "x"}, deadline_ms=span.started_at_ms + 1000))
+    require(len(captures) == 1 and imported.trace().responses[0].status.value == "success",
+            "execute_tool spans were not recorded as an action")
+
+    calls = ToolCallCapture(TraceRecorder(PRIVATE_MARKER + "-calls", actor="agent"),
+                            contract_for=lambda call: refund if call.tool_name == "refund" else None)
+    require(calls.start("lookup", {}, framework="check") is None, "A skipped call was recorded")
+    started = calls.start("refund", '{"order_id": "x"}', framework="check", call_id="c-1")
+    calls.finish(started, "timeout", exception="TimeoutError")
+    require(calls.recorder.trace().responses[0].status.value == "timeout",
+            "ToolCallCapture did not record the response")
+    guards = {}
+    for module, extra in (("openai_agents", "openai-agents"), ("langchain", "langchain"),
+                          ("claude_agent_sdk", "claude-agent-sdk")):
+        try:
+            importlib.import_module(f"consequa_x.integrations.{module}")
+        except ImportError as error:
+            require(f"consequa-x[{extra}]" in str(error), f"{module} import hint is missing")
+            guards[module] = "extra not installed; import names the extra"
+        else:
+            guards[module] = "importable"
+    return {"composite_contracts": True, "several_readbacks": True,
+            "composite_report": True, "otel_structural_export": True,
+            "otel_round_trip": True, "otel_tool_spans": True, "tool_call_capture": True,
+            "integration_imports": guards}
+
+
 def invalid_trace_inputs() -> dict[str, str]:
     """Exercise structural, numeric and cross-record strict decoding gates."""
     good = artifact_trace().to_dict()
@@ -541,6 +647,7 @@ def main(argv=None) -> int:
     with tempfile.TemporaryDirectory(prefix="consequa-installed-") as temporary:
         reports = check_reports(Path(temporary))
         features = check_2_0_features(Path(temporary))
+    features_2_1 = check_2_1_features()
     require(not any(name.startswith("consequa_x.benchmark") for name in sys.modules),
             "Installed application integration unexpectedly imported benchmark code")
     receipt = {"passed": True, "python": platform.python_version(),
@@ -549,7 +656,7 @@ def main(argv=None) -> int:
                "executable": sys.executable, "isolated_imports": True,
                "wheel": {key: value for key, value in wheel.items() if key != "payload_sha256"},
                "install": install, "workflow": workflow, "capture": capture,
-               "features_2_0": features,
+               "features_2_0": features, "features_2_1": features_2_1,
                "strict_schema_refusals": refusals,
                "reports": reports, "provider_calls": 0, "api_process_benchmark_imports": 0,
                "cli_import_scope": ("CLI imports packaged research modules but does not "

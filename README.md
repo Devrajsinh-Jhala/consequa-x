@@ -26,7 +26,9 @@ python -m pip install consequa-x
 consequa-x --version
 ```
 
-Use `python -m consequa_x` wherever a command below uses `consequa-x`.
+Use `python -m consequa_x` wherever a command below uses `consequa-x`. Optional
+extras add framework integrations and OpenTelemetry: `consequa-x[openai-agents]`,
+`consequa-x[langchain]`, `consequa-x[claude-agent-sdk]` and `consequa-x[otel]`.
 
 ## See it in a minute
 
@@ -138,6 +140,37 @@ describes the boundary in detail. The
 [stable API](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/stable-api.md)
 page lists what version 2 guarantees.
 
+An outcome with several required effects (a refund *and* a closed ticket, or a
+refund *or* store credit) is one contract: `all_of(...)` or `any_of(...)` over
+part contracts, checked by `CompositeVerifier` with one readback per source.
+Unknown parts keep the whole outcome unknown unless another part already
+settles it.
+
+## Agent frameworks and OpenTelemetry
+
+Optional integrations record an agent framework's tool calls through the same
+recorder. Your `contract_for(call)` decides which calls are consequential:
+
+```python
+from consequa_x.integrations import ToolCallCapture
+calls = ToolCallCapture(rec, contract_for=contract_for)
+
+# OpenAI Agents SDK: use in place of @function_tool
+from consequa_x.integrations.openai_agents import consequential_tool
+# LangChain: config={"callbacks": [ConsequaCallbackHandler(calls)]}
+from consequa_x.integrations.langchain import ConsequaCallbackHandler
+# Claude Agent SDK: ClaudeAgentOptions(hooks=consequa_hooks(calls))
+from consequa_x.integrations.claude_agent_sdk import consequa_hooks
+```
+
+`consequa_x.otel` writes traces as OTLP/JSON with `execute_tool` spans named as
+the OpenTelemetry GenAI conventions describe, emits them through
+`opentelemetry-api`, and turns tool spans from other instrumentation into
+recorded actions. See the
+[framework guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/framework-integration.md)
+and the
+[OpenTelemetry guide](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/opentelemetry.md).
+
 ## Upgrading from 1.x
 
 Version 2.0 changes the trace schema to `1.0` (several actions per trace, a
@@ -156,7 +189,8 @@ lists every change and its replacement.
 | `consequa-x report TRACE --output FILE` | Render a self-contained HTML report; `--include-details` embeds the full capture, `--redact KEY` blanks named keys in it |
 | `consequa-x summarize PATH... [--format markdown]` | Count outcomes, alignment and divergences across trace files, folders and `.jsonl` stores |
 | `consequa-x compare A B` | Compare two traces action by action |
-| `consequa-x verify TRACE --readback OBS --output NEW` | Verify a captured readback file with a built-in verifier |
+| `consequa-x verify TRACE --readback OBS --output NEW` | Verify captured readback with built-in verifiers; repeat `--readback` for an `all_of`/`any_of` contract |
+| `consequa-x otel-export TRACE --output FILE` / `consequa-x otel-import FILE --output-dir DIR` | Write a trace as OpenTelemetry OTLP/JSON spans; restore traces exported with `--include-payloads` |
 | `consequa-x validate TRACE...` / `consequa-x migrate OLD --output NEW` | Check traces; convert schema `0.1` traces |
 | `consequa-x experiment …` and research commands | Paired replay, decision attribution and calibration studies (see Research) |
 

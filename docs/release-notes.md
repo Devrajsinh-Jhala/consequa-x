@@ -1,5 +1,25 @@
 # Release notes
 
+## 2.1.0 — 19 October 2026
+
+An additive release with the features 2.0.0 left out. Saved traces and code
+written for 2.0 work unchanged.
+
+- Outcomes with several parts: all_of and any_of contracts, checked part by
+  part by CompositeVerifier against one readback per source. Unknown parts keep
+  the outcome unknown unless another part already settles it.
+- Optional integrations record tool calls from the OpenAI Agents SDK,
+  LangChain and the Claude Agent SDK, for the calls your application marks as
+  consequential.
+- OpenTelemetry: export traces as OTLP/JSON or through opentelemetry-api, and
+  start a trace from the execute_tool spans of other instrumentation.
+- consequa-x verify accepts one readback per source; new otel-export and
+  otel-import commands.
+
+The integrations were tested offline against openai-agents 0.24.0,
+langchain-core 1.6.12, claude-agent-sdk 0.2.168 and opentelemetry 1.45.1,
+without a live model or tracing backend.
+
 ## 2.0.0 — 19 October 2026
 
 A breaking release. Saved 1.x traces convert with `consequa-x migrate`; the

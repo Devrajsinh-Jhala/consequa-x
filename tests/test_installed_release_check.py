@@ -104,3 +104,10 @@ def test_standalone_2_0_feature_check(checker, tmp_path):
     assert all(value is True or value == 3 for value in features.values())
     legacy = checker["legacy_trace"](checker["artifact_trace"]())
     assert legacy["schema_version"] == "0.1" and "action" in legacy and "assessment" in legacy
+
+
+def test_standalone_2_1_feature_check(checker):
+    features = checker["check_2_1_features"]()
+    guards = features.pop("integration_imports")
+    assert all(value is True for value in features.values())
+    assert set(guards) == {"openai_agents", "langchain", "claude_agent_sdk"}

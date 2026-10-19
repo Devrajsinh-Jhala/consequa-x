@@ -17,7 +17,10 @@ Everything exported from `consequa_x` is stable through 2.x:
 - **Capture:** `TraceRecorder`, `ActionCapture`, `Attempt`, `capture_tool`, and
   `consequa_x.mcp_capture.call_mcp_tool`.
 - **Verification:** `Verifier`, `verify`, `averify`, `RefundVerifier`,
-  `RecordVerifier`, `poll_readback`, `apoll_readback`.
+  `RecordVerifier`, `poll_readback`, `apoll_readback`, and (since 2.1)
+  `CompositeVerifier`, `all_of`, `any_of` and `contract_parts`. `verify`,
+  `averify`, `ActionCapture.verify` and `poll_readback` accept several readbacks
+  for a verifier that provides `verify_readbacks`.
 - **Explanation and presentation:** `explain`, `TraceExplanation`,
   `ActionExplanation`, `Diagnosis`, `CORE_DIAGNOSES`, `build_graph`,
   `ConsequenceGraph`, `render_report`.
@@ -30,6 +33,15 @@ Everything exported from `consequa_x` is stable through 2.x:
   `RecorderError`.
 - `consequa_x.schema.get_trace_schema`, `generate_trace_schema` and
   `validate_trace`.
+- Since 2.1: `consequa_x.otel` (`to_otlp`, `from_otlp`, `record_tool_spans`,
+  `emit`, `trace_spans`, `SpanRecord`, `ToolSpan`) and `consequa_x.integrations`
+  (`ToolCallCapture`, `ToolCall`, `PendingCall`, `classify_exception`, and the
+  `openai_agents`, `langchain` and `claude_agent_sdk` modules). The integration
+  modules follow their frameworks' public APIs; a framework release that changes
+  those APIs may need a Consequa-X update, and each module states the version it
+  was tested with. The OpenTelemetry GenAI conventions are in development
+  upstream, so exported `gen_ai.*` attribute names follow them as they change;
+  `consequa_x.*` attributes are stable through 2.x.
 
 All records are frozen, keyword-only dataclasses with deeply read-only payloads.
 

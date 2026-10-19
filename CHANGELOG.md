@@ -1,5 +1,56 @@
 # Changes
 
+## 2.1.0 - 19 October 2026
+
+Additive: the roadmap features left out of 2.0.0 (verifier composition,
+framework integrations and OpenTelemetry). Schema `1.0` and the 2.0 API are
+unchanged, and the core still has no required runtime dependency. Checked
+before publication; see the
+[release record](output/release-2.1.0-2026-10-19/README.md).
+
+- Verifier composition. `all_of(contract_id, *parts)` and `any_of(...)` build
+  one outcome contract from part contracts, each with its own predicate,
+  expected values and timing; `contract_parts` decodes and checks them.
+  `CompositeVerifier({part_id: verifier}, sources={part_id: source})` checks
+  each part against the readback from its source and combines the receipts
+  with three-valued logic: `all_of` is violated when any part is violated and
+  satisfied when all are; `any_of` is satisfied when any part is and violated
+  when all are; otherwise the outcome stays `unknown`. A part without readback
+  is `unknown`. The receipt keeps each part's evidence (tagged with its part
+  ID, status, origin and reason), the union of the parts' effects and
+  findings, and adds `PART_VIOLATED`, `PART_UNKNOWN` and `PART_OTHER_ACTOR`.
+  Target matching is conservative, so an agent's report is judged only when
+  the deciding parts did target matching. Parts can nest.
+- Several readbacks per verification: `verify`, `averify`,
+  `ActionCapture.verify`/`averify` and `poll_readback` (whose `read` may return
+  one observation per source) accept a sequence of observations for a verifier
+  that provides `verify_readbacks`. Receipts are still checked against every
+  supplied observation.
+- Reports describe an `all_of`/`any_of` contract's structure (part count,
+  each part's deadline and horizon) and list each recorded part result, without
+  showing part payloads.
+- `consequa-x verify` takes `--readback` once per source, plus
+  `--part-source PART=SOURCE` and `--scope-field PART=FIELD` for composite
+  contracts.
+- OpenTelemetry (`consequa_x.otel`): `to_otlp` writes an OTLP/JSON document
+  with a span per action, an `execute_tool` span per attempt named as the GenAI
+  semantic conventions describe, and a span per verification, with
+  `consequa_x.*` attributes for state, origin, alignment and diagnosis codes.
+  Payloads are opt-in (`include_payloads=True`, which also embeds the complete
+  trace for `from_otlp`). `emit` creates the spans through `opentelemetry-api`
+  (extra `otel`). `record_tool_spans` turns `execute_tool` spans from any
+  GenAI instrumentation into recorded actions for the contracts the
+  application supplies. New commands: `otel-export` and `otel-import`.
+- Framework integrations (`consequa_x.integrations`): `ToolCallCapture` and
+  `ToolCall` record framework tool calls for the calls `contract_for` makes
+  consequential, grouping retries through `action_id_for`. Optional extras:
+  `openai-agents` (`consequential_tool`, in place of `function_tool`),
+  `langchain` (`ConsequaCallbackHandler`) and `claude-agent-sdk`
+  (`consequa_hooks` for `PreToolUse`, `PostToolUse` and
+  `PostToolUseFailure`). Tested offline with openai-agents 0.24.0,
+  langchain-core 1.6.12, claude-agent-sdk 0.2.168 and opentelemetry 1.45.1; no
+  live model was called.
+
 ## 2.0.0 - 19 October 2026 (breaking)
 
 See [the 2.0 design](docs/design-2.0.md) and the

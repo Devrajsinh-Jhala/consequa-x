@@ -89,13 +89,13 @@ Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move 
 
 | ID | Feature |
 | --- | --- |
-| B4 | Verifier composition (all-of / any-of) and several readbacks per verification. Deferred past 2.0.0: an outcome with several required effects can be several actions with their own contracts; an all-of/any-of contract format needs its own design. |
+| B4 | Verifier composition (all-of / any-of) and several readbacks per verification (released in 2.1.0: `all_of`, `any_of`, `CompositeVerifier`) |
 | B5 | Readback scheduler: re-check until the watermark covers the contract horizon (released in 2.0.0) |
 | B6 | Retry guard: check readback before retrying a timed-out action. Moves from explanation to control; wording must stay careful. (released in 2.0.0) |
 | B7 | Async recorder, verifiers and wrapper (released in 2.0.0) |
 | B8 | `consequa-x summarize`: divergence and unknown counts across many traces (released in 2.0.0) |
-| C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras. Deferred to 2.1: they need the SDKs installed and tested; the framework guide shows where the calls go. |
-| C5 | OpenTelemetry export/import using the GenAI conventions. Deferred to 2.1. |
+| C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras (released in 2.1.0: `consequa_x.integrations`) |
+| C5 | OpenTelemetry export/import using the GenAI conventions (released in 2.1.0: `consequa_x.otel`) |
 | D1 | Reports for several actions (needs A1) (released in 2.0.0) |
 | D2 | Compare two traces (released in 2.0.0) |
 | D3 | Markdown and JSON summary output (released in 2.0.0) |
@@ -106,3 +106,19 @@ Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move 
 
 Not planned: a hosted service or live monitoring product, a TypeScript port,
 or new research interfaces in the core package.
+
+## 2.1: the rest of the planned features (additive)
+
+2.0.0 shipped without B4, C1–C3 and C5. That deferral was a judgment call
+during the 2.0 build, contrary to the maintainer's instruction to include every
+feature in the breaking release; the maintainer then asked for them to be built
+and released. They are additive, so they ship as 2.1.0 without another breaking
+change. With them, every feature in this roadmap is released.
+
+| ID | Feature | Status |
+| --- | --- | --- |
+| B4 | `all_of` / `any_of` contracts, `CompositeVerifier`, several readbacks per verification (`verify`, the recorder, `poll_readback`, `consequa-x verify`) | released in 2.1.0 |
+| C1 | OpenAI Agents SDK: `consequential_tool` (extra `openai-agents`) | released in 2.1.0 |
+| C2 | LangChain: `ConsequaCallbackHandler` (extra `langchain`) | released in 2.1.0 |
+| C3 | Claude Agent SDK: `consequa_hooks` (extra `claude-agent-sdk`) | released in 2.1.0 |
+| C5 | OpenTelemetry: `to_otlp`, `emit`, `from_otlp`, `record_tool_spans`, `otel-export` / `otel-import` (extra `otel` for `emit`) | released in 2.1.0 |

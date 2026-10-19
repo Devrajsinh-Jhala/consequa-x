@@ -88,6 +88,55 @@ unassessable.
 `explain` never re-reads evidence details: domain interpretation happens once,
 when the verifier runs, and the receipt is the verifier's claim.
 
+## Outcomes with several parts
+
+Some actions have more than one required effect: a refund is issued *and* the
+ticket is closed, or a customer is compensated by a card refund *or* store
+credit. Since 2.1, `all_of` and `any_of` build one outcome contract from part
+contracts, each with its own predicate, expected values, deadline, stability
+window and count, and `CompositeVerifier` checks each part with its own
+verifier against the readback from that part's source:
+
+```python
+from consequa_x import (
+    CompositeVerifier, OutcomeContract, RecordVerifier, RefundVerifier, all_of,
+)
+
+refund = OutcomeContract(contract_id="refund", predicate="refund_processed",
+                         expected={"payment_id": "p-1", "amount_minor": 5000, "currency": "INR"},
+                         deadline_ms=deadline, stability_ms=5_000)
+ticket = OutcomeContract(contract_id="ticket", predicate="record_present",
+                         expected={"ticket_id": "t-9", "state": "closed"},
+                         deadline_ms=deadline, stability_ms=5_000)
+capture = rec.register("resolve-1", "resolve_case", args, contract=all_of("resolve", refund, ticket))
+...
+verifier = CompositeVerifier(
+    {"refund": RefundVerifier(), "ticket": RecordVerifier(scope_fields=("ticket_id",))},
+    sources={"refund": "payments-db", "ticket": "crm"})
+receipt = capture.verify((payments_readback, crm_readback), verifier=verifier)
+```
+
+The parts combine with three-valued logic, so unknown evidence stays unknown:
+`all_of` is violated when any part is violated, satisfied when every part is
+satisfied, and unknown otherwise; `any_of` is satisfied when any part is
+satisfied, violated when every part is violated, and unknown otherwise. A part
+whose source supplied no readback is unknown. The combined deadline and horizon
+are the latest of the parts'.
+
+The combined receipt keeps each part's evidence, tagged with the part's
+contract ID, status, origin and reason, and the union of the parts' effects
+and findings. It adds `PART_VIOLATED`, `PART_UNKNOWN` (when the outcome is not
+satisfied) and `PART_OTHER_ACTOR` findings. Target matching is conservative: an
+`all_of` outcome counts as produced by this action only when every part's
+matching effects are this action's, and an `any_of` outcome when a satisfied
+alternative's are. Parts can nest, with a nested `CompositeVerifier`.
+
+Effect identifiers name one effect across the whole trace, as they do in the
+evidence graph, so parts that read different sources should use distinct
+identifiers. `poll_readback` takes a `read` function that returns one
+observation per source, and `consequa-x verify` takes `--readback` once per
+source with `--part-source PART=SOURCE` and `--scope-field PART=FIELD`.
+
 ## Offline artifact example
 
 [examples/artifact_delivery.py](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/examples/artifact_delivery.py)

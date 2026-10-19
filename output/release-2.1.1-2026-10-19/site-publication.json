@@ -1,0 +1,39 @@
+{
+  "deployed_from": {
+    "blobs_identical_to_mirrored_revision": 25,
+    "commit": "ebe3390",
+    "mirrors": "website/dist of Devrajsinh-Jhala/consequa-x main at a4a0c19",
+    "repository": "https://github.com/Devrajsinh-Jhala/consequa-x-site"
+  },
+  "github_releases": {
+    "assets": "the published wheel and sdist (hashes checked against each record), checks.json and publication.json",
+    "created": [
+      "v1.1.0",
+      "v1.1.1",
+      "v1.2.0",
+      "v2.0.0",
+      "v2.1.0",
+      "v2.1.1"
+    ],
+    "latest": "v2.1.1",
+    "tags": "each on the source revision recorded in that version's checks.json (v1.1.0 already existed there)"
+  },
+  "live_checks": {
+    "allowlisted_files_served_byte_identical": 25,
+    "docs": "Version 2.1 hero and the 2.1.1 available callout",
+    "first_comparison": "Run while 2 files were still propagating; the repeat found all 25 identical",
+    "homepage": "ConseqaX title and wordmark, no previous spelling, consequa-x==2.1.1; no script errors",
+    "method": "byte comparison over HTTPS and headless Chrome DOM checks",
+    "page_horizontal_overflow": "none at 1440 and 390 px"
+  },
+  "main_branch": {
+    "frozen_study_running": false,
+    "merged": true,
+    "method": "fast-forward push",
+    "revision": "a4a0c19"
+  },
+  "public_docs_support": "Met after publication: the 2.1.1 docs, changelog, support and security pages are live and private vulnerability reporting is enabled. checks.json keeps the gate as it stood at upload.",
+  "site": "https://consequa-x.onrender.com",
+  "verified_at_utc": "2026-10-19T15:20:32.232933+00:00",
+  "version": "2.1.1"
+}

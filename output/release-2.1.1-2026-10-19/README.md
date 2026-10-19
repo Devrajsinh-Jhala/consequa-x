@@ -63,8 +63,11 @@ installed-wheel checker ([registry312.json](registry312.json),
 
 ## Pending and limits
 
-- Public docs/support gate: pending at upload; see `site-publication.json` once
-  the 2.1.1 site is live. Private vulnerability reporting is enabled.
+- Public docs/support gate: pending at upload, met after publication. The 2.1.1
+  site went live from the `consequa-x-site` mirror (`ebe3390`, byte-identical to
+  this repository's `main` at `a4a0c19`), and private vulnerability reporting is
+  enabled. GitHub releases now exist for every version from 1.1.0 to 2.1.1,
+  with 2.1.1 marked latest ([site-publication.json](site-publication.json)).
 - macOS has never been tested. Linux coverage is one emulated Alpine guest.
 - One live run per framework, with one model each, shows the wiring works; it
   does not cover every model or SDK release. No MCP server, OpenTelemetry

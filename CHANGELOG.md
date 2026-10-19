@@ -76,6 +76,16 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   listed. Folders (non-trace JSON is skipped and counted) and `.jsonl` stores
   are accepted; invalid inputs are listed by path and error type only and make
   the command exit 2.
+- `poll_readback(capture, read, until_ms=, interval_ms=)` waits until the
+  contract horizon, then reads back and verifies repeatedly (every observation
+  and receipt is recorded) until the outcome is `satisfied` or `violated` or the
+  time limit passes; an unresolved `unknown` is returned as is.
+- `retry_advice(receipt or trace)` turns verified evidence into
+  `DO_NOT_RETRY` (the outcome already holds, whoever produced it), `WAIT`
+  (missing or unknown readback), `ESCALATE` (relevant effects that do not
+  satisfy the contract) or `RETRY_PERMITTED` (a complete readback shows no
+  relevant effect; retry with an idempotency key, since an in-flight attempt can
+  still commit), each with a reason.
 - `TraceStore(path)`: an append-only JSON Lines file of validated traces with
   unique trace IDs; reading reports the line number of an invalid entry.
 - Research interfaces (`EffectEstimate`, `Intervention`, `leave_one_out`,

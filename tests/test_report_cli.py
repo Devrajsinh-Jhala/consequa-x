@@ -96,5 +96,5 @@ def test_invalid_report_captured_values_do_not_leak_to_error_logs(tmp_path, caps
     assert cli.main(["report", str(source), "--output", str(output)]) == 2
     captured = capsys.readouterr()
     assert "SECRET_CAPTURED_VALUE" not in captured.err + captured.out
-    assert "invalid schema-0.1 trace" in captured.err
+    assert "invalid schema-1.0 trace" in captured.err
     assert not output.exists()

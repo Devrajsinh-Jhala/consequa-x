@@ -62,6 +62,16 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
 - Offline reports show each action's assessment alignment and diagnosis
   codes, computed from the recorded receipts. Codes from custom verifiers are
   counted rather than printed.
+- Migration: `migrate_trace()` and `consequa-x migrate OLD --output NEW`
+  convert schema `0.1` traces. Target matches and findings are added only when
+  the 2.0 verifier (the refund verifier by default; pass others with
+  `verifiers=`) reproduces the recorded receipt exactly; no recorded conclusion
+  is changed. `consequa-x validate` checks trace files. Migrated traces of the
+  1.x demo reproduce their 1.x explanations; fixtures written by the released
+  1.2.0 package are in `tests/fixtures/v0.1`.
+- Research interfaces (`EffectEstimate`, `Intervention`, `leave_one_out`,
+  `recency_attribution`, the policy types) are imported from
+  `consequa_x.research` instead of the top-level namespace.
 - Research code (benchmark, replay, policies, studies and their audit
   scripts) produces and reads schema `1.0` traces. Retained 1.x study outputs
   under `output/` are unchanged.

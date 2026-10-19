@@ -1,0 +1,234 @@
+{
+  "trace_id": "agent-loop-timeout_after_commit",
+  "action": {
+    "action_id": "refund-o-17",
+    "trace_id": "agent-loop-timeout_after_commit",
+    "actor": "support-agent",
+    "name": "issue_refund",
+    "arguments": {
+      "order_id": "o-17",
+      "amount_minor": 5000,
+      "currency": "INR"
+    },
+    "registered_at_ms": 3,
+    "contract": {
+      "contract_id": "refund-o-17",
+      "predicate": "record_present",
+      "expected": {
+        "order_id": "o-17",
+        "amount_minor": 5000,
+        "currency": "INR"
+      },
+      "deadline_ms": 200,
+      "exact_count": 1,
+      "stability_ms": 50
+    },
+    "idempotency_key": null
+  },
+  "events": [
+    {
+      "id": "context-1",
+      "trace_id": "agent-loop-timeout_after_commit",
+      "type": "user_input",
+      "time_ms": 0,
+      "actor": null,
+      "parent_ids": [],
+      "data": {
+        "text": "Order o-17 arrived damaged. Please refund the INR 50 I paid."
+      }
+    },
+    {
+      "id": "decision-1",
+      "trace_id": "agent-loop-timeout_after_commit",
+      "type": "agent_decision",
+      "time_ms": 2,
+      "actor": "support-agent",
+      "parent_ids": [
+        "context-1"
+      ],
+      "data": {
+        "tool": "issue_refund",
+        "reason": "damaged on arrival"
+      }
+    },
+    {
+      "id": "intent-1",
+      "trace_id": "agent-loop-timeout_after_commit",
+      "type": "action_intent",
+      "time_ms": 3,
+      "actor": "support-agent",
+      "parent_ids": [
+        "decision-1"
+      ],
+      "data": {
+        "action_id": "refund-o-17",
+        "arguments": {
+          "order_id": "o-17",
+          "amount_minor": 5000,
+          "currency": "INR"
+        }
+      }
+    },
+    {
+      "id": "dispatch-1",
+      "trace_id": "agent-loop-timeout_after_commit",
+      "type": "action_dispatch",
+      "time_ms": 5,
+      "actor": "support-agent",
+      "parent_ids": [
+        "intent-1"
+      ],
+      "data": {
+        "tool": "issue_refund",
+        "action_id": "refund-o-17",
+        "attempt_id": "refund-o-17:attempt-1"
+      }
+    },
+    {
+      "id": "response-1",
+      "trace_id": "agent-loop-timeout_after_commit",
+      "type": "tool_response",
+      "time_ms": 40,
+      "actor": null,
+      "parent_ids": [
+        "dispatch-1"
+      ],
+      "data": {
+        "attempt_id": "refund-o-17:attempt-1",
+        "status": "timeout",
+        "time_ms": 40,
+        "provider_request_id": "refund-o-17:attempt-1",
+        "result": {
+          "exception": "TimeoutError"
+        }
+      }
+    },
+    {
+      "id": "assessment-1",
+      "trace_id": "agent-loop-timeout_after_commit",
+      "type": "agent_assessment",
+      "time_ms": 41,
+      "actor": "support-agent",
+      "parent_ids": [
+        "response-1"
+      ],
+      "data": {
+        "status": "failure",
+        "time_ms": 41,
+        "evidence_event_ids": [
+          "response-1"
+        ],
+        "rationale": "The refund tool timed out."
+      }
+    }
+  ],
+  "responses": [
+    {
+      "attempt_id": "refund-o-17:attempt-1",
+      "status": "timeout",
+      "time_ms": 40,
+      "provider_request_id": "refund-o-17:attempt-1",
+      "result": {
+        "exception": "TimeoutError"
+      }
+    }
+  ],
+  "assessment": {
+    "status": "failure",
+    "time_ms": 41,
+    "evidence_event_ids": [
+      "response-1"
+    ],
+    "rationale": "The refund tool timed out."
+  },
+  "observations": [
+    {
+      "observation_id": "readback-1",
+      "source": "refunds.sqlite (read-only)",
+      "observed_at_ms": 300,
+      "as_of_ms": 300,
+      "scope": {
+        "order_id": "o-17"
+      },
+      "records": [
+        {
+          "effect_id": "rf-1",
+          "order_id": "o-17",
+          "amount_minor": 5000,
+          "currency": "INR",
+          "committed_at_ms": 12,
+          "action_id": "refund-o-17",
+          "attempt_id": "refund-o-17:attempt-1",
+          "actor": "support-agent"
+        }
+      ],
+      "complete": true,
+      "available": true
+    }
+  ],
+  "verifications": [
+    {
+      "contract_id": "refund-o-17",
+      "status": "satisfied",
+      "observed_at_ms": 300,
+      "evidence": [
+        {
+          "observation_id": "readback-1",
+          "source": "refunds.sqlite (read-only)",
+          "as_of_ms": 300,
+          "details": {
+            "predicate": "record_present",
+            "fields": {
+              "scope_fields": [
+                "order_id"
+              ],
+              "effect_id": "effect_id",
+              "committed": "committed_at_ms",
+              "removed": "removed_at_ms",
+              "action": "action_id",
+              "actor": "actor",
+              "attempt": "attempt_id"
+            },
+            "scope": {
+              "order_id": "o-17"
+            },
+            "watermark_ms": 300,
+            "horizon_ms": 250,
+            "complete": true,
+            "available": true,
+            "expected": {
+              "order_id": "o-17",
+              "amount_minor": 5000,
+              "currency": "INR"
+            },
+            "records": [
+              {
+                "effect_id": "rf-1",
+                "order_id": "o-17",
+                "amount_minor": 5000,
+                "currency": "INR",
+                "committed_at_ms": 12,
+                "action_id": "refund-o-17",
+                "attempt_id": "refund-o-17:attempt-1",
+                "actor": "support-agent"
+              }
+            ],
+            "matching_count": 1,
+            "eligible_count": 1,
+            "peak_matching_count": 1,
+            "relevant_count": 1
+          }
+        }
+      ],
+      "origin": "confirmed",
+      "effect_ids": [
+        "rf-1"
+      ],
+      "attributable_effect_ids": [
+        "rf-1"
+      ],
+      "reason": "Record predicate is satisfied through the declared horizon"
+    }
+  ],
+  "schema_version": "0.1"
+}

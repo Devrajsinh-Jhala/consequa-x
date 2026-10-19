@@ -80,7 +80,7 @@ installed-artifact checks, then publication on approval.
 | A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. | done |
 | A5 | Schema `1.0` with absolute timestamps and a time base, plus `consequa-x migrate` | Real systems log wall-clock time. | done |
 | A6 | Several agent assessments per action | Agents can report before and after a retry. | done |
-| A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. | planned (reduced to `consequa_x.research` imports; research is ported) |
+| A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. | done (as `consequa_x.research`; research is ported) |
 | A8 | Typed exceptions | Precise error handling for callers. | done |
 | A9 | Deeply immutable captured payloads | Evidence cannot be mutated after capture. | done |
 

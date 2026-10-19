@@ -30,7 +30,8 @@ from zipfile import ZipFile
 TOP_LEVEL = frozenset({"README.md", "CONTRIBUTING.md", "CHANGELOG.md", "LICENSE",
                        "SECURITY.md", "requirements-dev.lock"})
 RECURSIVE = frozenset({("docs", "*.md"), ("docs/studies", "*.json"),
-                       ("tests", "*.py"), ("examples", "*.py"), ("scripts", "*.py")})
+                       ("tests", "*.py"), ("tests/fixtures", "*.json"), ("tests/fixtures", "*.md"),
+                       ("examples", "*.py"), ("scripts", "*.py")})
 EGG_NAMES = frozenset({"PKG-INFO", "SOURCES.txt", "dependency_links.txt", "entry_points.txt",
                        "requires.txt", "top_level.txt"})
 DIST_NAMES = frozenset({"METADATA", "WHEEL", "entry_points.txt", "top_level.txt", "RECORD",

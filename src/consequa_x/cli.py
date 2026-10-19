@@ -12,7 +12,9 @@ from .attribution import InsufficientEvidenceError, Intervention, leave_one_out
 from .benchmark.runner import (
     RefundContext, RefundReplayRunner, ScenarioConfig, demo_scenarios, run_scenario,
 )
+from .errors import SchemaVersionError
 from .explanation import explain
+from .migrate import MigrationReport, migrate_trace
 from .models import Trace, to_dict
 from .report import render_report
 from .schema import get_trace_schema
@@ -172,8 +174,10 @@ def _report(args):
         raise ValueError("Report output must be a new file to preserve existing evidence")
     try:
         trace = Trace.from_json(source.read_text(encoding="utf-8"))
+    except SchemaVersionError as error:
+        raise ValueError(str(error)) from None
     except (ValueError, TypeError, RecursionError):
-        raise ValueError("Cannot report an invalid schema-0.1 trace") from None
+        raise ValueError("Cannot report an invalid schema-1.0 trace") from None
     document = render_report(trace, include_details=args.include_details)
     output.parent.mkdir(parents=True, exist_ok=True)
     # Exclusive creation also protects against another process creating the file
@@ -183,6 +187,39 @@ def _report(args):
     print(f"Saved offline report to {output.resolve()}")
     if args.include_details:
         print("Captured details are included. Review the report before sharing.")
+    return 0
+
+
+def _validate(args):
+    failures = 0
+    for name in args.traces:
+        try:
+            trace = Trace.from_json(Path(name).read_text(encoding="utf-8"))
+        except (ValueError, TypeError, RecursionError, OSError) as error:
+            failures += 1
+            print(f"invalid: {name}: {error}")
+            continue
+        print(f"valid: {name} (schema {trace.schema_version}, {len(trace.actions)} "
+              f"action{'s' if len(trace.actions) != 1 else ''}, {trace.time_base.value})")
+    return 2 if failures else 0
+
+
+def _migrate(args):
+    source, output = Path(args.trace), Path(args.output)
+    if output.resolve() == source.resolve():
+        raise ValueError("Migration output must differ from the source trace")
+    if output.exists() or output.is_symlink():
+        raise ValueError("Migration output must be a new file to preserve existing evidence")
+    report = MigrationReport()
+    trace = migrate_trace(source.read_text(encoding="utf-8"), report=report)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(trace.to_json(indent=2) + "\n")
+    print(f"Saved schema {trace.schema_version} trace to {output.resolve()}")
+    if report:
+        print(f"Verifier reproduced {report['reproduced']} of {report['verifications']} "
+              "recorded receipts; their target matches and findings were added. Times are "
+              f"{report['time_base']}.")
     return 0
 
 
@@ -1128,11 +1165,18 @@ def main(argv=None):
     command.add_argument("--output")
     command.set_defaults(handler=_explain)
     report = commands.add_parser("report", help="Create a self-contained offline HTML evidence report")
-    report.add_argument("trace", help="Existing schema-0.1 trace JSON")
+    report.add_argument("trace", help="Existing schema-1.0 trace JSON")
     report.add_argument("--output", required=True, help="New HTML file; existing files are preserved")
     report.add_argument("--include-details", action="store_true",
                         help="Include potentially sensitive captured values as inert escaped text")
     report.set_defaults(handler=_report)
+    validate = commands.add_parser("validate", help="Check that trace files are valid schema 1.0")
+    validate.add_argument("traces", nargs="+")
+    validate.set_defaults(handler=_validate)
+    migrate = commands.add_parser("migrate", help="Convert a schema 0.1 trace to schema 1.0")
+    migrate.add_argument("trace", help="Existing schema-0.1 (or 1.0) trace JSON")
+    migrate.add_argument("--output", required=True, help="New JSON file; existing files are preserved")
+    migrate.set_defaults(handler=_migrate)
     evaluation = commands.add_parser("model-eval", help="Evaluate a bounded scripted or local model policy")
     _add_policy_arguments(evaluation, samples=2, max_calls=100)
     evaluation.add_argument("--cases")

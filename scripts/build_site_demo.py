@@ -5,8 +5,10 @@ This script runs the package CLI in a new temporary directory, records each
 command's exact standard output (printed paths are shown relative to that
 directory), confirms that the rendered report is byte-identical to the published
 sample report, and extracts four real demo traces with fresh ``explain`` results
-and evidence-graph subsets. It writes one generated JavaScript data file. It
-never edits page markup, deploys anything or calls a model.
+and evidence-graph subsets. A fifth trace, a two-part outcome, comes from running
+``examples/two_part_outcome.py`` in the same directory. It writes one generated
+JavaScript data file. It never edits page markup, deploys anything or calls a
+model.
 """
 
 import argparse
@@ -18,7 +20,7 @@ import subprocess
 import sys
 import tempfile
 
-from consequa_x import Trace, __version__, build_graph, explain
+from consequa_x import Trace, __version__, build_graph, contract_parts, explain
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +41,10 @@ SCENARIOS = (
     ("episode_09", "Another actor"),
     ("episode_06", "Later readback"),
 )
+TWO_PART = ("ticket_left_open", "Two-part outcome", "two-part-run")
+EXAMPLE = ROOT / "examples/two_part_outcome.py"
+ACTION_LABELS = {"refund": ("Agent decides to refund", "Refund dispatched"),
+                 "resolve_case": ("Agent decides to resolve the case", "Case resolution dispatched")}
 CONTEXT_LABELS = {"user_input": "user input", "memory_read": "memory read",
                   "retrieval": "retrieval", "system_instruction": "system instruction"}
 GRAPH_LANES = {"action_dispatch": 0, "tool_response": 0, "agent_assessment": 0,
@@ -69,6 +75,23 @@ def money(expected):
     return f"{expected['currency']} {amount // 100:,}" + (f".{amount % 100:02d}" if amount % 100 else "")
 
 
+def describe(expected):
+    """A short reading of a part's expected record, for refunds and ticket states."""
+    if "amount_minor" in expected:
+        return f"refund of {money(expected)}"
+    if "ticket_id" in expected and "state" in expected:
+        return f"ticket {expected['ticket_id']} {expected['state']}"
+    return "record present"
+
+
+def is_composite(contract):
+    return contract.predicate in ("all_of", "any_of")
+
+
+def short_source(source):
+    return source.split(" (", 1)[0]
+
+
 def plural(count, word):
     return f"{count} {word}" + ("" if count == 1 else "s")
 
@@ -90,21 +113,28 @@ def timeline(trace):
             "detail": ", ".join(plural(count, label) if count > 1 else label
                                 for label, count in kinds.items()),
         })
-    count = "At least one" if contract.exact_count is None else f"Exactly {contract.exact_count}"
     horizon = (f"; persists to {contract.horizon_ms} ms" if contract.stability_ms else "")
+    if is_composite(contract):
+        parts = contract_parts(contract)
+        rule = "All" if contract.predicate == "all_of" else "Any one"
+        detail = (f"{rule} of {len(parts)} parts by {contract.deadline_ms} ms{horizon}: "
+                  + "; ".join(describe(part.expected) for part in parts))
+    else:
+        count = "At least one" if contract.exact_count is None else f"Exactly {contract.exact_count}"
+        detail = f"{count} refund of {money(contract.expected)} by {contract.deadline_ms} ms{horizon}"
     entries.append({"t": action.registered_at_ms, "kind": "contract",
-                    "label": "Outcome contract registered",
-                    "detail": f"{count} refund of {money(contract.expected)} by "
-                              f"{contract.deadline_ms} ms{horizon}"})
+                    "label": "Outcome contract registered", "detail": detail})
+    decided, dispatched = ACTION_LABELS.get(action.name, ("Agent decides to act",
+                                                          "Action dispatched"))
     attempts = 0
     for event in trace.events:
         kind = event.type.value
         if kind == "agent_decision":
             entries.append({"t": event.time_ms, "kind": "decision",
-                            "label": "Agent decides to refund", "detail": "Policy decision"})
+                            "label": decided, "detail": "Policy decision"})
         elif kind == "action_dispatch":
             attempts += 1
-            entries.append({"t": event.time_ms, "kind": "dispatch", "label": "Refund dispatched",
+            entries.append({"t": event.time_ms, "kind": "dispatch", "label": dispatched,
                             "detail": f"Attempt {attempts}"})
         elif kind == "tool_response":
             status = event.data.get("status", "recorded")
@@ -118,8 +148,9 @@ def timeline(trace):
     for index, observation in enumerate(trace.observations, 1):
         coverage = ("complete" if observation.complete else "incomplete") + (
             "" if observation.available else ", unavailable")
+        source = f" ({short_source(observation.source)})" if is_composite(contract) else ""
         entries.append({"t": observation.observed_at_ms, "kind": "readback",
-                        "label": f"Independent readback {index}",
+                        "label": f"Independent readback {index}{source}",
                         "detail": f"Watermark {observation.as_of_ms} ms; {coverage}; "
                                   f"{plural(len(observation.records), 'effect record')}"})
     for index, verification in enumerate(trace.verifications, 1):
@@ -134,6 +165,17 @@ def timeline(trace):
 
 def ribbon(trace):
     action, contract = trace.single_action, trace.single_action.contract
+    horizons, labels, counts = {}, {}, {}
+    if is_composite(contract):
+        # Each readback is judged against the horizon of the part that read it.
+        parts = {part.contract_id: part for part in contract_parts(contract)}
+        for verification in trace.verifications:
+            for evidence in verification.evidence:
+                horizons[evidence.observation_id] = parts[evidence.details["part_id"]].horizon_ms
+        for observation in trace.observations:
+            name = short_source(observation.source).upper()
+            counts[name] = counts.get(name, 0) + 1
+            labels[observation.observation_id] = f"{name} {counts[name]}"
     observations = []
     for observation in trace.observations:
         effects = []
@@ -144,14 +186,23 @@ def ribbon(trace):
                 "actor": "agent" if actor == action.actor else ("other" if actor else "unknown"),
                 "linked": record.get("action_id") == action.action_id,
             })
-        observations.append({
+        entry = {
             "observed_ms": observation.observed_at_ms, "watermark_ms": observation.as_of_ms,
             "complete": observation.complete, "available": observation.available,
-            "covers_horizon": observation.as_of_ms >= contract.horizon_ms, "effects": effects,
-        })
-    return {"registered_ms": action.registered_at_ms, "deadline_ms": contract.deadline_ms,
-            "stability_ms": contract.stability_ms, "horizon_ms": contract.horizon_ms,
-            "exact_count": contract.exact_count, "observations": observations}
+            "covers_horizon": observation.as_of_ms >= horizons.get(observation.observation_id,
+                                                                   contract.horizon_ms),
+            "effects": effects,
+        }
+        if observation.observation_id in labels:
+            entry["label"] = labels[observation.observation_id]
+        observations.append(entry)
+    result = {"registered_ms": action.registered_at_ms, "deadline_ms": contract.deadline_ms,
+              "stability_ms": contract.stability_ms, "horizon_ms": contract.horizon_ms,
+              "exact_count": contract.exact_count, "observations": observations}
+    if is_composite(contract):
+        rule = "all of" if contract.predicate == "all_of" else "any one of"
+        result["composition"] = f"{rule} {len(contract_parts(contract))} parts"
+    return result
 
 
 def graph_subset(trace):
@@ -214,12 +265,31 @@ def scenario(demo, cases, stem, label):
     if result.to_dict() != exported:
         raise ValueError(f"Fresh explain() differs from the CLI export for {stem}")
     name, printed = cases[int(stem.split("_")[1])]
-    action = result.single_action
-    if printed != action.diagnosis:
+    if printed != result.single_action.diagnosis:
         raise ValueError(f"Printed demo diagnosis differs from explain() for {stem}")
+    return scenario_record(trace, result, stem, label, name, f"my-demo/traces/{stem}.json")
+
+
+def two_part_scenario(workdir):
+    """Run the two-part example in the work directory and read the trace it wrote."""
+    mode, label, folder = TWO_PART
+    subprocess.run([sys.executable, "-B", str(EXAMPLE), "--mode", mode, "--output", folder],
+                   cwd=workdir, capture_output=True, text=True, check=True,
+                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    run = Path(workdir) / folder
+    trace = Trace.from_json((run / "trace.json").read_text(encoding="utf-8"))
+    result = explain(trace)
+    exported = json.loads((run / "explanation.json").read_text(encoding="utf-8"))
+    if result.to_dict() != exported:
+        raise ValueError("Fresh explain() differs from the two-part example's export")
+    return scenario_record(trace, result, "two_part", label, mode, f"{folder}/trace.json")
+
+
+def scenario_record(trace, result, identifier, label, name, file):
+    action = result.single_action
     latest = trace.verifications[-1]
     return {
-        "id": stem, "label": label, "scenario": name, "file": f"traces/{stem}.json",
+        "id": identifier, "label": label, "scenario": name, "file": file,
         "response": [item.status.value for item in trace.responses],
         "assessment": trace.latest_assessment().status.value,
         "timeline": timeline(trace), "ribbon": ribbon(trace), "graph": graph_subset(trace),
@@ -245,7 +315,8 @@ def build():
             "install": INSTALL, "terminal": terminal,
             "report": {"path": "assets/sample-report.html", "sha256": sha256(report).hexdigest(),
                        "trace": REPORT_TRACE},
-            "scenarios": [scenario(demo, cases, stem, label) for stem, label in SCENARIOS],
+            "scenarios": [*(scenario(demo, cases, stem, label) for stem, label in SCENARIOS),
+                          two_part_scenario(workdir)],
         }
     return ("// Generated by scripts/build_site_demo.py from real consequa-x "
             f"{__version__} runs. Do not edit by hand.\n"

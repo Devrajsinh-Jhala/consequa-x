@@ -1,9 +1,10 @@
 # Research and release roadmap
 
-Package features for users (the additive 1.2 launch release and later 2.0
-candidates) are tracked in the [product roadmap](product-roadmap.md). Version
-1.1.1, a documentation and metadata release, is public; the source repository
-is public as of 18 October 2026.
+Package features for users are tracked in the [product roadmap](product-roadmap.md).
+Version 1.2.0 is public. Since 19 October 2026 the breaking 2.0 (schema `1.0`,
+several actions per trace, verifier-owned diagnoses) is being built on the
+`release-2.0` branch, and the paper will be reshaped around 2.0; research code is
+ported to the new data model. See [design-2.0.md](design-2.0.md).
 
 Current update, 18 October 2026: stable 1.1.0 is public. The
 [matched factual study](../paper/matched-study-findings-2026-10-18.md) closed

@@ -6,31 +6,28 @@ features for users of Consequa-X; the research agenda stays in the
 
 ## Decision
 
-1. **1.2 before the launch video: additive only.** Nothing in the 1.x API or
-   trace schema `0.1` changes, so the paper's description of the version-1 core
-   and schema `0.1`, the retained research evidence and the website demo all stay
-   valid. 1.2 makes first use easy: capture as an agent acts, check any
-   record-shaped outcome without custom code, and show it on a real agent loop.
-2. **2.0 after launch feedback and after the paper is settled.** Breaking changes
-   are bets about how people use the package; make them once, with a migration
-   guide and a `migrate` command for schema `0.1` traces. The paper must name
-   the version it describes before 2.0 lands.
+1. **1.2 before the launch video: additive only.** Released 19 October 2026.
+2. **2.0 now, and the package leads the paper.** Revised 19 October 2026 by the
+   maintainer: the breaking 2.0 is built next, and the paper will be reshaped
+   around it instead of 2.0 waiting for the paper. Research code (benchmark,
+   replay, attribution, policies) is ported to the 2.0 data model, not split
+   into a separate package. The design is in [design-2.0.md](design-2.0.md).
 
-Doing everything as a breaking 2.0 before launch was considered and rejected:
-it is months of work, it would contradict the paper mid-review, and it would
-fix design choices before any user feedback.
+The earlier plan (2.0 only after launch feedback and the paper) is superseded.
+Breaking changes are still made once, with a `migrate` command for every
+schema `0.1` trace.
 
 ## How work proceeds
 
-- Features are built one at a time on the `release-1.2` branch. Each feature is
-  one reviewed commit with its own tests and docs, pushed to GitHub when done.
-- `main` stayed at the released 1.1.1 state until 1.2 was complete; then
-  the version was bumped, release checks ran and `release-1.2` was merged.
+- 2.0 is built on the `release-2.0` branch in the order given in the design.
+  Each step is reviewed commits with the full suite passing, pushed when done.
+- `main` stays at the released 1.2.0 state until 2.0 is complete. Merging
+  `release-2.0` into `main` waits until no frozen study is running there,
+  because study runners hash `src/consequa_x/**/*.py`.
 - Nothing is published to PyPI without the maintainer's explicit approval.
-- Paper and study work (`paper/`, `output/`) continues independently on `main`.
-  1.2 does not change any runtime behavior those materials describe.
+- Retained study receipts under `output/` keep their recorded 1.x revisions.
 
-Status: `planned`, `in progress`, `done` (on `release-1.2`), `released`.
+Status: `planned`, `in progress`, `done` (on its release branch), `released`.
 
 ## 1.2: launch features (additive)
 
@@ -73,21 +70,21 @@ one Linux and macOS run (GitHub Actions is free for this public repository but
 currently disabled; enabling it is the maintainer's decision), version 1.2.0,
 installed-artifact checks, then publication on approval.
 
-## 2.0: candidates after launch (breaking)
+## 2.0: breaking changes
 
-| ID | Change | Why |
-| --- | --- | --- |
-| A1 | Several actions, contracts and verifications per trace | Real agent runs take several consequential actions; today a trace holds one. |
-| A2 | Keyword-only record constructors | Seven positional arguments are easy to misorder. |
-| A3 | Refund logic as a domain plugin; diagnoses from verifier-supplied facts | `explain()` has refund-only branches. |
-| A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. |
-| A5 | Schema `1.0` with absolute timestamps and a time base, plus `consequa-x migrate` | Real systems log wall-clock time. |
-| A6 | Several agent assessments per action | Agents can report before and after a retry. |
-| A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. |
-| A8 | Typed exceptions | Precise error handling for callers. |
-| A9 | Deeply immutable captured payloads | Evidence cannot be mutated after capture. |
+| ID | Change | Why | Status |
+| --- | --- | --- | --- |
+| A1 | Several actions, contracts and verifications per trace | Real agent runs take several consequential actions; today a trace holds one. | planned |
+| A2 | Keyword-only record constructors | Seven positional arguments are easy to misorder. | planned |
+| A3 | Refund logic as a domain plugin; diagnoses from verifier-supplied facts | `explain()` has refund-only branches. | planned |
+| A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. | planned |
+| A5 | Schema `1.0` with absolute timestamps and a time base, plus `consequa-x migrate` | Real systems log wall-clock time. | planned |
+| A6 | Several agent assessments per action | Agents can report before and after a retry. | planned |
+| A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. | planned (reduced to `consequa_x.research` imports; research is ported) |
+| A8 | Typed exceptions | Precise error handling for callers. | planned |
+| A9 | Deeply immutable captured payloads | Evidence cannot be mutated after capture. | planned |
 
-Other candidates, additive or 2.0-dependent:
+Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move to 2.1):
 
 | ID | Feature |
 | --- | --- |

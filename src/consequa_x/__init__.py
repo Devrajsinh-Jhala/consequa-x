@@ -21,6 +21,8 @@ from .models import (
 )
 from .record_verifier import RecordVerifier
 from .report import render_report
+from .store import TraceStore
+from .summary import Summary, summarize
 from .verification import RefundVerifier, Verifier, verify
 
 __all__ = [
@@ -36,6 +38,8 @@ __all__ = [
     # Explanation and presentation
     "ActionExplanation", "CORE_DIAGNOSES", "ConsequenceGraph", "Diagnosis", "TraceExplanation",
     "build_graph", "explain", "render_report",
+    # Collections of traces
+    "Summary", "TraceStore", "summarize",
     # Migration
     "MigrationReport", "migrate_trace",
     # Errors

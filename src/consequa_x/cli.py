@@ -16,6 +16,8 @@ from .errors import SchemaVersionError
 from .explanation import explain
 from .migrate import MigrationReport, migrate_trace
 from .models import Trace, to_dict
+from .store import TraceStore
+from .summary import summarize
 from .report import render_report
 from .schema import get_trace_schema
 
@@ -188,6 +190,81 @@ def _report(args):
     if args.include_details:
         print("Captured details are included. Review the report before sharing.")
     return 0
+
+
+def _trace_inputs(paths):
+    """Yield (path, trace or error) for trace files, folders and JSON Lines stores.
+
+    Explicit files are always read as traces. In folders, JSON files that are not
+    traces (explanations, manifests) are skipped and counted, so a demo or study
+    folder can be summarized directly; *.jsonl files are read as TraceStore files.
+    """
+    skipped = 0
+    for name in paths:
+        path = Path(name)
+        explicit = not path.is_dir()
+        files = [path] if explicit else sorted(
+            item for item in path.rglob("*") if item.suffix in (".json", ".jsonl"))
+        for file in files:
+            if file.suffix == ".jsonl":
+                try:
+                    for trace in TraceStore(file):
+                        yield str(file), trace
+                except (ValueError, TypeError, OSError) as error:
+                    yield str(file), error
+                continue
+            try:
+                text = file.read_text(encoding="utf-8")
+                if not explicit:
+                    head = json.loads(text)
+                    if not _looks_like_trace(head):
+                        skipped += 1
+                        continue
+                yield str(file), Trace.from_json(text)
+            except (ValueError, TypeError, RecursionError, OSError) as error:
+                yield str(file), error
+    yield None, skipped
+
+
+def _looks_like_trace(value) -> bool:
+    """A schema 1.0 or 0.1 trace, not an explanation or a manifest."""
+    return (isinstance(value, dict) and {"trace_id", "schema_version"} <= value.keys()
+            and ("actions" in value or "action" in value) and "graph" not in value)
+
+
+def _summarize(args):
+    traces, invalid, skipped = [], [], 0
+    for label, item in _trace_inputs(args.paths):
+        if label is None:
+            skipped = item
+        elif isinstance(item, Trace):
+            traces.append(item)
+        else:
+            invalid.append((label, type(item).__name__))
+    summary = summarize(traces)
+    if args.format == "json":
+        document = summary.to_dict()
+        document.update(invalid=[{"path": path, "error": kind} for path, kind in invalid],
+                        skipped_non_trace_files=skipped)
+        text = json.dumps(document, indent=2)
+    else:
+        text = summary.to_markdown() if args.format == "markdown" else summary.to_text()
+        if invalid:
+            text += f"\n\nInvalid inputs ({len(invalid)}; run consequa-x validate for details):\n"
+            text += "\n".join(f"- {path}: {kind}" for path, kind in invalid)
+        if skipped:
+            text += f"\n\nSkipped {skipped} JSON files that are not traces."
+    if args.output:
+        output = Path(args.output)
+        if output.exists() or output.is_symlink():
+            raise ValueError("Summary output must be a new file")
+        output.parent.mkdir(parents=True, exist_ok=True)
+        with output.open("x", encoding="utf-8", newline="\n") as stream:
+            stream.write(text + "\n")
+        print(f"Saved summary of {summary.traces} traces to {output.resolve()}")
+    else:
+        print(text)
+    return 2 if invalid else 0
 
 
 def _validate(args):
@@ -1177,6 +1254,11 @@ def main(argv=None):
     migrate.add_argument("trace", help="Existing schema-0.1 (or 1.0) trace JSON")
     migrate.add_argument("--output", required=True, help="New JSON file; existing files are preserved")
     migrate.set_defaults(handler=_migrate)
+    summary = commands.add_parser("summarize", help="Count outcomes and divergences across traces")
+    summary.add_argument("paths", nargs="+", help="Trace files, folders or .jsonl trace stores")
+    summary.add_argument("--format", choices=("text", "markdown", "json"), default="text")
+    summary.add_argument("--output", help="New file; prints to the console when omitted")
+    summary.set_defaults(handler=_summarize)
     evaluation = commands.add_parser("model-eval", help="Evaluate a bounded scripted or local model policy")
     _add_policy_arguments(evaluation, samples=2, max_calls=100)
     evaluation.add_argument("--cases")

@@ -69,6 +69,15 @@ Built on the `release-2.0` branch; see [the 2.0 design](docs/design-2.0.md).
   is changed. `consequa-x validate` checks trace files. Migrated traces of the
   1.x demo reproduce their 1.x explanations; fixtures written by the released
   1.2.0 package are in `tests/fixtures/v0.1`.
+- `summarize(traces)` and `consequa-x summarize PATH... [--format text|markdown|json]`
+  count verified state, origin, alignment, tool responses and diagnoses over
+  every action, with stated denominators; `unknown` and `unverified` stay
+  separate from failures, and actions with divergences or violations are
+  listed. Folders (non-trace JSON is skipped and counted) and `.jsonl` stores
+  are accepted; invalid inputs are listed by path and error type only and make
+  the command exit 2.
+- `TraceStore(path)`: an append-only JSON Lines file of validated traces with
+  unique trace IDs; reading reports the line number of an invalid entry.
 - Research interfaces (`EffectEstimate`, `Intervention`, `leave_one_out`,
   `recency_attribution`, the policy types) are imported from
   `consequa_x.research` instead of the top-level namespace.

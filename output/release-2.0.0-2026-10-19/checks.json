@@ -1,0 +1,59 @@
+{
+  "artifacts": [
+    {
+      "bytes": 191053,
+      "path": "consequa_x-2.0.0-py3-none-any.whl",
+      "sha256": "b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c"
+    },
+    {
+      "bytes": 607605,
+      "path": "consequa_x-2.0.0.tar.gz",
+      "sha256": "70868f903271f2ae9f9dc7f73fd2bb993e406934b115db89018aa76cdb0c9c45"
+    }
+  ],
+  "distribution": "consequa-x",
+  "github_actions_used": false,
+  "installed_environments": {
+    "linux.json": "Alpine Linux 3.24.2, Python 3.14.8, local QEMU TCG guest; fresh venv",
+    "sdist312.json": "Fresh Windows Python 3.12.10 venv; sdist built and installed; demo, summarize, SQLite example and 1.2.0-trace migration",
+    "windows311.json": "Official Windows embedded Python 3.11.9, wheel unpacked into an isolated site-packages",
+    "windows312.json": "Fresh Windows Python 3.12.10 venv, wheel installed with --no-deps --no-index"
+  },
+  "limits": [
+    "macOS has never been tested.",
+    "Linux coverage is one emulated Alpine guest, not every distribution or a native host.",
+    "Windows checks ran on one Windows 11 host.",
+    "MCP capture was checked with a stand-in session, not a live MCP server.",
+    "Framework integrations (C1-C3), OpenTelemetry export (C5) and verifier composition (B4) are not part of 2.0.0."
+  ],
+  "local_checks": {
+    "artifact_inventory": true,
+    "lint": true,
+    "linux_wheel_install": true,
+    "public_docs_support": false,
+    "python311_conformance": true,
+    "release_helper_tests": true,
+    "report_browser_qa": true,
+    "report_security": true,
+    "sdist_install_smoke": true,
+    "source_tests": true,
+    "strict_metadata": true,
+    "wheel_install_smoke": true
+  },
+  "pending": {
+    "public_docs_support": "The 2.0.0 site and docs pages are on release-2.0 and state 2.0.0 as published; they deploy only after PyPI publication. Private vulnerability reporting is enabled."
+  },
+  "public_repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+  "public_site": "https://consequa-x.onrender.com",
+  "recorded_at_utc": "2026-10-19T09:44:27.900551+00:00",
+  "release_kind": "Breaking feature release (trace schema 1.0)",
+  "source_revision": "87463bf290ff1a1da9b270a7b11f48c512549172",
+  "source_tests": {
+    "failures": 0,
+    "passed": 1888,
+    "receipt": "source-tests.log",
+    "skipped": 21,
+    "subtests": 241
+  },
+  "version": "2.0.0"
+}

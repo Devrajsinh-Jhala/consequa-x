@@ -1,0 +1,29 @@
+{
+  "default_reports_omit_captured_values": true,
+  "diagnosis_codes_inside_cards": true,
+  "document_horizontal_overflow": false,
+  "external_references": 0,
+  "found_and_fixed": "A long diagnosis code overflowed its card at desktop width in the first build; fixed in 87463bf and the artifacts rebuilt before every check recorded here",
+  "github_actions_used": false,
+  "passed": true,
+  "redacted_values_absent": true,
+  "reports": "Rendered by the installed 2.0.0 wheel: a two-action trace (default and --include-details with redact=('order_id',)) and the SQLite example trace",
+  "review_date": "2026-10-19",
+  "review_method": "AI-assisted headless Chrome DOM checks and rendered screenshot review",
+  "screenshots": [
+    {
+      "path": "report-multi-desktop.png",
+      "sha256": "3bdfd803bb131bb9f734894404938243d19d2893a15fd4e4bb53c29ae4826663"
+    },
+    {
+      "path": "homepage-cards-mobile.png",
+      "sha256": "7d0052f65a2902c0214125e5970cfcc90fd247f3f0fb8f9ab233fcb630c11862"
+    }
+  ],
+  "scripts": 0,
+  "site_review": "Homepage and docs: v2.0 badge, consequa-x==2.0.0, no code-card or page overflow, no script errors",
+  "viewports": [
+    "1440x900 desktop",
+    "390x844 mobile"
+  ]
+}

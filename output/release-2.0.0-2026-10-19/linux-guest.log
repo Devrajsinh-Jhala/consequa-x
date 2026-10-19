@@ -1,0 +1,36 @@
+cd /root/release-check2; sha256sum consequa_x-2.0.0-py3-none-any.wh
+l check_installed_release.py agent_loop_sqlite.py linux-receipt.json; cat check.
+exit; cat agent.exit; cat agent.log; cat cli.log; printf '\n__CQ_DONE__%s\n' "$?
+"
+b9d7a1c6676fc8de84df437acd48feef7a6a77e78fd625cac235cd647844793c  consequa_x-2.0.0-py3-none-any.whl
+db3d048f3dd2c6e7e0c0dbc3c5541bfbcbc25a3130cbcb19289719018726f948  check_installed_release.py
+3191a484ccad8d0ef7d368975c8d675de54f26c280c103f26a992aabb1a87588  agent_loop_sqlite.py
+7ce03569e891a7cb6d0b6feae2dc6c8ecc5830fff90f5456ae8f29111d02d50e  linux-receipt.json
+0
+0
+  tool response: timeout
+ agent reported: failure
+          state: satisfied
+         origin: confirmed
+      alignment: contradicted
+      diagnoses: ASSESSMENT_DIVERGENCE, ACKNOWLEDGEMENT_EFFECT_DIVERGENCE
+Open /root/release-check2/agent-timeout_after_commit/report.html in your browser.
+  tool response: timeout
+ agent reported: failure
+          state: satisfied
+         origin: other_actor
+      alignment: unassessable
+      diagnoses: UNASSESSABLE_ASSESSMENT, EXTERNAL_ACTOR_EFFECT
+Open /root/release-check2/agent-other_actor/report.html in your browser.
+  tool response: success
+ agent reported: success
+          state: unknown
+         origin: unknown
+      alignment: unassessable
+      diagnoses: UNKNOWN_OUTCOME, UNVERIFIED_ASSESSMENT
+Open /root/release-check2/agent-stale_readback/report.html in your browser.
+2.0.0
+0
+3.53.4 3.14.8
+
+__CQ_DONE__0

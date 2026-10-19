@@ -5,6 +5,10 @@
 See [the 2.0 design](docs/design-2.0.md) and the
 [migration guide](docs/migrating-to-2.0.md). Deferred to 2.1: verifier
 composition, optional framework integrations and OpenTelemetry export.
+Checked before publication; see the
+[release record](output/release-2.0.0-2026-10-19/README.md). Installed checks
+passed on Windows Python 3.11.9 and 3.12.10 and on one Alpine Linux 3.24.2 QEMU
+guest with Python 3.14.8. macOS has never been tested.
 
 - Typed exceptions: every intentional error derives from `ConsequaError` and
   still from `ValueError` or `TypeError`. `ValidationError` (invalid records,

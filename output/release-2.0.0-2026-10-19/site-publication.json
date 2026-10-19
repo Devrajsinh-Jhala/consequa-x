@@ -1,0 +1,27 @@
+{
+  "deployed_from": {
+    "blobs_identical_to_mirrored_revision": 25,
+    "commit": "2719334",
+    "mirrors": "website/dist of Devrajsinh-Jhala/consequa-x main at b1e5bfc",
+    "repository": "https://github.com/Devrajsinh-Jhala/consequa-x-site"
+  },
+  "live_checks": {
+    "allowlisted_files_served_byte_identical": 25,
+    "docs": "Version 2.0 hero and 2.0.0 available callout",
+    "homepage": "v2.0 badge, consequa-x==2.0.0 install command; no script errors",
+    "method": "curl byte comparison and headless Chrome DOM checks",
+    "page_horizontal_overflow": "none at 1440 and 390 px",
+    "workflow_code_cards_overflow": "none at 1440 and 390 px"
+  },
+  "main_branch": {
+    "frozen_study_running": false,
+    "merged": true,
+    "method": "fast-forward push",
+    "revision": "b1e5bfc"
+  },
+  "maintainer_instruction": "Publish 2.0.0 to PyPI with the recorded checks, then merge release-2.0 into main and deploy the 2.0 site. (19 October 2026)",
+  "public_docs_support": "Met after publication: the 2.0.0 docs, changelog, support and security pages are live and private vulnerability reporting is enabled. checks.json keeps the gate as it stood at upload. Render still deploys from the consequa-x-site mirror.",
+  "site": "https://consequa-x.onrender.com",
+  "verified_at_utc": "2026-10-19T09:53:36.302910+00:00",
+  "version": "2.0.0"
+}

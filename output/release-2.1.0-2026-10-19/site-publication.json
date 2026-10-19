@@ -1,0 +1,29 @@
+{
+  "deployed_from": {
+    "blobs_identical_to_mirrored_revision": 25,
+    "commit": "f006f56",
+    "mirrors": "website/dist of Devrajsinh-Jhala/consequa-x main at b57f9a3",
+    "repository": "https://github.com/Devrajsinh-Jhala/consequa-x-site"
+  },
+  "live_checks": {
+    "allowlisted_files_served_byte_identical": 25,
+    "docs": "Version 2.1 hero and the 2.1.0 available callout",
+    "first_comparison": "Run seconds after the deploy went live, while 6 files were still propagating; the repeat comparison found all 25 identical",
+    "framework_section_code_overflow": "none at 1440 and 390 px",
+    "homepage": "v2.1 badge, consequa-x==2.1.0 install command; no script errors",
+    "method": "byte comparison over HTTPS and headless Chrome DOM checks",
+    "page_horizontal_overflow": "none at 1440 and 390 px"
+  },
+  "main_branch": {
+    "frozen_study_note": "The migration conformance run claimed at 10:19 UTC imports from the detached checkout at f64bf49 and had finished; main's changes do not touch it",
+    "frozen_study_running": false,
+    "merged": true,
+    "method": "main (two research commits freezing the 2.0 migration conformance protocol) merged into release-2.1, full suite passed on the merge (1,947 passed, 27 skipped), then pushed to main as a fast-forward",
+    "revision": "b57f9a3"
+  },
+  "maintainer_instruction": "Okay then continue developing and releasing them (19 October 2026)",
+  "public_docs_support": "Met after publication: the 2.1.0 docs, changelog, support and security pages are live and private vulnerability reporting is enabled. checks.json keeps the gate as it stood at upload. Render still deploys from the consequa-x-site mirror.",
+  "site": "https://consequa-x.onrender.com",
+  "verified_at_utc": "2026-10-19T11:36:42.549912+00:00",
+  "version": "2.1.0"
+}

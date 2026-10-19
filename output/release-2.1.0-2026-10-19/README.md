@@ -69,8 +69,11 @@ site deploys.
 
 ## Pending and limits
 
-- Public docs/support gate: pending at upload; see `site-publication.json` once
-  the 2.1 site is live. Private vulnerability reporting is enabled.
+- Public docs/support gate: pending at upload, met after publication. The 2.1
+  site went live from the `consequa-x-site` mirror (`f006f56`, byte-identical to
+  this repository's `main` at `b57f9a3`), and private vulnerability reporting is
+  enabled ([site-publication.json](site-publication.json)). Render still deploys
+  from that mirror.
 - macOS has never been tested. Linux coverage is one emulated Alpine guest; the
   framework SDKs were installed only in the Windows extras environment.
 - The integrations were tested against one version of each SDK, offline: no

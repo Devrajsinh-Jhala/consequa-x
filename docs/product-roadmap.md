@@ -7,7 +7,8 @@ features for users of Consequa-X; the research agenda stays in the
 ## Decision
 
 1. **1.2 before the launch video: additive only.** Released 19 October 2026.
-2. **2.0 now, and the package leads the paper.** Revised 19 October 2026 by the
+2. **2.0 now, and the package leads the paper.** Released 19 October 2026.
+   Revised 19 October 2026 by the
    maintainer: the breaking 2.0 is built next, and the paper will be reshaped
    around it instead of 2.0 waiting for the paper. Research code (benchmark,
    replay, attribution, policies) is ported to the 2.0 data model, not split
@@ -21,9 +22,9 @@ schema `0.1` trace.
 
 - 2.0 is built on the `release-2.0` branch in the order given in the design.
   Each step is reviewed commits with the full suite passing, pushed when done.
-- `main` stays at the released 1.2.0 state until 2.0 is complete. Merging
-  `release-2.0` into `main` waits until no frozen study is running there,
-  because study runners hash `src/consequa_x/**/*.py`.
+- `release-2.0` was merged into `main` after 2.0.0 was published, at a time
+  when no frozen study was running there (study runners hash
+  `src/consequa_x/**/*.py`).
 - Nothing is published to PyPI without the maintainer's explicit approval.
 - Retained study receipts under `output/` keep their recorded 1.x revisions.
 
@@ -74,34 +75,34 @@ installed-artifact checks, then publication on approval.
 
 | ID | Change | Why | Status |
 | --- | --- | --- | --- |
-| A1 | Several actions, contracts and verifications per trace | Real agent runs take several consequential actions; today a trace holds one. | done |
-| A2 | Keyword-only record constructors | Seven positional arguments are easy to misorder. | done |
-| A3 | Refund logic as a domain plugin; diagnoses from verifier-supplied facts | `explain()` has refund-only branches. | done |
-| A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. | done |
-| A5 | Schema `1.0` with absolute timestamps and a time base, plus `consequa-x migrate` | Real systems log wall-clock time. | done |
-| A6 | Several agent assessments per action | Agents can report before and after a retry. | done |
-| A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. | done (as `consequa_x.research`; research is ported) |
-| A8 | Typed exceptions | Precise error handling for callers. | done |
-| A9 | Deeply immutable captured payloads | Evidence cannot be mutated after capture. | done |
+| A1 | Several actions, contracts and verifications per trace | Real agent runs take several consequential actions; today a trace holds one. | released in 2.0.0 |
+| A2 | Keyword-only record constructors | Seven positional arguments are easy to misorder. | released in 2.0.0 |
+| A3 | Refund logic as a domain plugin; diagnoses from verifier-supplied facts | `explain()` has refund-only branches. | released in 2.0.0 |
+| A4 | Structured diagnoses (code, evidence references) | Replace the joined diagnosis string. | released in 2.0.0 |
+| A5 | Schema `1.0` with absolute timestamps and a time base, plus `consequa-x migrate` | Real systems log wall-clock time. | released in 2.0.0 |
+| A6 | Several agent assessments per action | Agents can report before and after a retry. | released in 2.0.0 |
+| A7 | Research interfaces moved to a separate package or extra | Keep the user-facing core small. | released in 2.0.0 (as `consequa_x.research`; research is ported) |
+| A8 | Typed exceptions | Precise error handling for callers. | released in 2.0.0 |
+| A9 | Deeply immutable captured payloads | Evidence cannot be mutated after capture. | released in 2.0.0 |
 
 Also planned for 2.0, in the order given in the design (C1–C3 and C5 may move to 2.1):
 
 | ID | Feature |
 | --- | --- |
 | B4 | Verifier composition (all-of / any-of) and several readbacks per verification. Deferred past 2.0.0: an outcome with several required effects can be several actions with their own contracts; an all-of/any-of contract format needs its own design. |
-| B5 | Readback scheduler: re-check until the watermark covers the contract horizon (done on `release-2.0`) |
-| B6 | Retry guard: check readback before retrying a timed-out action. Moves from explanation to control; wording must stay careful. (done on `release-2.0`) |
-| B7 | Async recorder, verifiers and wrapper (done on `release-2.0`) |
-| B8 | `consequa-x summarize`: divergence and unknown counts across many traces (done on `release-2.0`) |
+| B5 | Readback scheduler: re-check until the watermark covers the contract horizon (released in 2.0.0) |
+| B6 | Retry guard: check readback before retrying a timed-out action. Moves from explanation to control; wording must stay careful. (released in 2.0.0) |
+| B7 | Async recorder, verifiers and wrapper (released in 2.0.0) |
+| B8 | `consequa-x summarize`: divergence and unknown counts across many traces (released in 2.0.0) |
 | C1–C3 | Optional OpenAI Agents SDK, LangChain and Claude Agent SDK integrations as extras. Deferred to 2.1: they need the SDKs installed and tested; the framework guide shows where the calls go. |
 | C5 | OpenTelemetry export/import using the GenAI conventions. Deferred to 2.1. |
-| D1 | Reports for several actions (needs A1) (done on `release-2.0`) |
-| D2 | Compare two traces (done on `release-2.0`) |
-| D3 | Markdown and JSON summary output (done on `release-2.0`) |
-| D4 | `consequa-x verify` from a JSON/YAML contract and a readback file (done on `release-2.0`) |
-| D5 | `consequa-x validate` and `migrate` (done on `release-2.0`) |
-| D6 | Configurable report redaction rules (done on `release-2.0`) |
-| D7 | JSONL trace store (done on `release-2.0`) |
+| D1 | Reports for several actions (needs A1) (released in 2.0.0) |
+| D2 | Compare two traces (released in 2.0.0) |
+| D3 | Markdown and JSON summary output (released in 2.0.0) |
+| D4 | `consequa-x verify` from a JSON/YAML contract and a readback file (released in 2.0.0) |
+| D5 | `consequa-x validate` and `migrate` (released in 2.0.0) |
+| D6 | Configurable report redaction rules (released in 2.0.0) |
+| D7 | JSONL trace store (released in 2.0.0) |
 
 Not planned: a hosted service or live monitoring product, a TypeScript port,
 or new research interfaces in the core package.

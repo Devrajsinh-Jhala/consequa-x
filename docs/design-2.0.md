@@ -1,6 +1,6 @@
 # Consequa-X 2.0 design
 
-Status: built on the `release-2.0` branch (steps 1 to 6 below are done; verifier
+Status: released as 2.0.0 on 19 October 2026 (steps 1 to 6 below; verifier
 composition and step 7 are deferred to 2.1). Decided 19 October 2026, after
 publishing 1.2.0. The package leads: the paper will be reshaped
 around 2.0 rather than 2.0 waiting for the paper. Research code (benchmark,

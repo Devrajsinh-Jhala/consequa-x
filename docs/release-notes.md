@@ -17,8 +17,10 @@ migration guide maps every changed API.
 - New commands: summarize, compare, verify, validate and migrate. Reports show
   every action with its alignment and diagnoses, and can redact named keys.
 
-The source suite passed 1,888 tests plus 241 subtests. Installed checks of the
-same wheel passed on Windows with embedded Python 3.11.9 and Python 3.12.10, and
+Both files are published on PyPI with their registry hashes and sizes verified,
+and a fresh install from PyPI passed the installed checks. The source suite
+passed 1,888 tests plus 241 subtests. Installed checks of the same wheel passed
+on Windows with embedded Python 3.11.9 and Python 3.12.10, and
 on Alpine Linux 3.24.2 with Python 3.14.8 in a local QEMU guest, where the
 SQLite example also ran in all three modes. The source distribution installed on
 Windows Python 3.12.10 and migrated a trace written by 1.2.0, reproducing its

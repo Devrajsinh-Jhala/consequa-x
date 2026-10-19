@@ -8,9 +8,9 @@ capture, collection and command-line tools. See the
 [migration guide](../../docs/migrating-to-2.0.md). Built from source revision
 `87463bf290ff1a1da9b270a7b11f48c512549172`.
 
-**Not yet published.** This record holds the pre-publication checks. Publication
-needs the maintainer's approval; `publication.json` will be added after upload
-and registry verification.
+Published to PyPI on 19 October 2026 (09:46 UTC) on the maintainer's
+instruction, with the public docs/support gate recorded as pending until the 2.0
+site deploys.
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -44,11 +44,17 @@ and registry verification.
   [report](report-multi-desktop.png), [homepage cards](homepage-cards-mobile.png)).
   The first build had a long diagnosis code overflowing its card; it was fixed
   and every check above ran on the rebuilt artifacts.
+- After upload: PyPI serves both files with the reviewed sizes and hashes, and a
+  fresh no-cache install from PyPI on Windows Python 3.12.10 passed the
+  installed-wheel checker, including the 2.0 feature checks
+  ([registry312.json](registry312.json), [publication.json](publication.json),
+  [upload log](publication-upload.log)). The first install attempt ran before
+  PyPI's index served 2.0.0 to pip; the retry twenty seconds later passed.
 
 ## Pending and limits
 
-- Public docs/support gate: pending. The 2.0.0 site states 2.0.0 as published and
-  deploys only after publication. Private vulnerability reporting is enabled.
+- Public docs/support gate: pending at upload; see `site-publication.json` once
+  the 2.0 site is live. Private vulnerability reporting is enabled.
 - macOS has never been tested. Linux coverage is one emulated Alpine guest.
 - MCP capture was checked with a stand-in session, not a live MCP server.
 - Not in 2.0.0: verifier composition, optional framework integrations and

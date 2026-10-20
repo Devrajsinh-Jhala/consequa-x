@@ -1,0 +1,40 @@
+{
+  "distribution": "consequa-x",
+  "gate_exceptions": {
+    "pending": [
+      "public_docs_support"
+    ]
+  },
+  "maintainer_instruction": "Yes: push the fixes, deploy the site fixes now, then run the 2.1.2 release checks, publish 2.1.2 to PyPI and update the site's demo data; 20 October 2026",
+  "project_urls": {
+    "Changelog": "https://consequa-x.onrender.com/changelog.html",
+    "Documentation": "https://consequa-x.onrender.com/docs.html",
+    "Homepage": "https://consequa-x.onrender.com",
+    "Issues": "https://github.com/Devrajsinh-Jhala/consequa-x/issues",
+    "Repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+    "Security": "https://github.com/Devrajsinh-Jhala/consequa-x/security/policy"
+  },
+  "published": true,
+  "published_files": [
+    {
+      "filename": "consequa_x-2.1.2-py3-none-any.whl",
+      "sha256": "877143419920a556cd2498925fbd31d7204b5dcac9605de526235380b9b70ba0",
+      "size": 215119,
+      "upload_time_utc": "2026-10-20T04:22:57.583027Z"
+    },
+    {
+      "filename": "consequa_x-2.1.2.tar.gz",
+      "sha256": "993553008642e7d61d0d023b092fd979e1d42d706ec67db3ce89256222e6085c",
+      "size": 731211,
+      "upload_time_utc": "2026-10-20T04:22:59.755922Z"
+    }
+  ],
+  "registry": "https://pypi.org/project/consequa-x/2.1.2/",
+  "registry_hashes_and_sizes_match_review": true,
+  "registry_install": "Fresh Windows Python 3.12.10 venv, pip install --no-cache-dir from PyPI, second attempt (the first ran before the index listed 2.1.2)",
+  "registry_install_receipt": "registry312.json",
+  "source_revision": "064127ff120abae543abfe69f77e44b03f3b928e",
+  "uploader": "twine via the maintainer's local keyring credential; GitHub Actions not used",
+  "verified_at_utc": "2026-10-20T04:26:13.993096+00:00",
+  "version": "2.1.2"
+}

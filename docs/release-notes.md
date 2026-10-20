@@ -9,6 +9,12 @@
 - Nothing else changed: saved traces, explanations and code written for 2.1
   work as before.
 
+Both files are published on PyPI with their registry hashes and sizes verified,
+and a fresh install from PyPI passed the installed checks. Installed checks of
+the same wheel passed on Windows with Python 3.11.9, 3.12.10, 3.13.16, 3.14.8
+and 3.15.0, and on Alpine Linux 3.24.2 with Python 3.14.8 in a local QEMU guest.
+The Linux result covers one emulated guest; macOS has not been tested.
+
 ## 2.1.1 — 19 October 2026
 
 - The project is now written ConseqaX. You still install it with

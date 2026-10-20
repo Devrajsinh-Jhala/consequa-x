@@ -9,8 +9,12 @@ DIVERGENCE`. Found by an outside audit of the homepage terminal. See the
 [changelog](../../CHANGELOG.md). Built from source revision
 `064127ff120abae543abfe69f77e44b03f3b928e`.
 
-**Not yet published.** This record holds the pre-publication checks.
-`publication.json` will be added after upload and registry verification.
+Published to PyPI on 20 October 2026 (04:23 UTC) on the maintainer's
+instruction. PyPI serves both files with the reviewed sizes and hashes, and a
+fresh no-cache install from PyPI on Windows Python 3.12.10 passed the
+installed-wheel checker; its first attempt ran before PyPI's index listed 2.1.2
+and the second passed ([registry312.json](registry312.json),
+[publication.json](publication.json), [upload log](publication-upload.log)).
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -58,9 +62,8 @@ DIVERGENCE`. Found by an outside audit of the homepage terminal. See the
 
 ## Pending and limits
 
-- Public docs/support gate: pending. The 2.1.2 site and docs pages state 2.1.2
-  as published and deploy only after publication. Private vulnerability
-  reporting is enabled.
+- Public docs/support gate: pending at upload; see `site-publication.json` once
+  the 2.1.2 site is live. Private vulnerability reporting is enabled.
 - The full source suite ran on Python 3.12 only; Python 3.11 and 3.13 to 3.15
   ran the installed-wheel checker.
 - The first Linux guest boot stopped with a kernel panic (its IO-APIC timer

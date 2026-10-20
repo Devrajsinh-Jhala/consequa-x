@@ -16,7 +16,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_REPOSITORY = "https://github.com/Devrajsinh-Jhala/consequa-x"
 SITE = "https://consequa-x.onrender.com"
-RELEASE = "2.1.1"
+RELEASE = "2.1.2"
 EXAMPLES = ("agent_loop_sqlite.py", "artifact_delivery.py", "report_quickstart.py")
 
 

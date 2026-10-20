@@ -1,5 +1,14 @@
 # Release notes
 
+## 2.1.2 — 20 October 2026
+
+- The demo's timeout-after-commit case now prints its diagnosis codes,
+  ASSESSMENT_DIVERGENCE and ACKNOWLEDGEMENT_EFFECT_DIVERGENCE, instead of an
+  old label from version 1. Reports and saved explanations already showed these
+  codes.
+- Nothing else changed: saved traces, explanations and code written for 2.1
+  work as before.
+
 ## 2.1.1 — 19 October 2026
 
 - The project is now written ConseqaX. You still install it with

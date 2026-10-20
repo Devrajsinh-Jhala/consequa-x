@@ -1,6 +1,6 @@
 # Changes
 
-## 2.1.2 - unreleased
+## 2.1.2 - 20 October 2026
 
 A maintenance release; the API, exported records and trace schema are
 unchanged.

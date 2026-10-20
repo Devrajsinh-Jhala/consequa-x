@@ -1,5 +1,7 @@
 # ConseqaX
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/devrajsinh-jhala-consequa-x-1udq46?v=fb28a1cde277fa07a59ba0d1ab217927)](https://m8ven.ai/mcp/devrajsinh-jhala-consequa-x-1udq46?s=readme)
+
 **Evidence-aware explanation of consequential agent actions.**
 
 When an agent calls a tool that changes something (a refund, a delivery, a

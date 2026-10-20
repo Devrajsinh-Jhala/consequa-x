@@ -1,0 +1,55 @@
+cd /root/release-check; sha256sum consequa_x-2.1.2-py3-none-any.whl
+ check_installed_release.py agent_loop_sqlite.py two_part_outcome.py linux-recei
+pt.json; cat check.exit; cat agent.exit; cat agent.log; cat cli.log; printf '\n_
+_CQ_DONE__%s\n' "$?"
+877143419920a556cd2498925fbd31d7204b5dcac9605de526235380b9b70ba0  consequa_x-2.1.2-py3-none-any.whl
+a89fe72e628ff75298c3a010fb6259352086017592c085abaa88db9f41ad13ea  check_installed_release.py
+ce0b0494490f0dd0d41195310c8ae1c4872f1f8460c05ab7329466e47e11c395  agent_loop_sqlite.py
+029d977c32f8219a5617db5914eb0ea2a4f0733e49d415c78696f7cc3a1fb6fd  two_part_outcome.py
+f1dba8b70d96da5ccfbd45337175de5ddeba952ee2a00f81e4c2d53eb7e76f2a  linux-receipt.json
+0
+0
+  tool response: timeout
+ agent reported: failure
+          state: satisfied
+         origin: confirmed
+      alignment: contradicted
+      diagnoses: ASSESSMENT_DIVERGENCE, ACKNOWLEDGEMENT_EFFECT_DIVERGENCE
+Open /root/release-check/agent-timeout_after_commit/report.html in your browser.
+  tool response: timeout
+ agent reported: failure
+          state: satisfied
+         origin: other_actor
+      alignment: unassessable
+      diagnoses: UNASSESSABLE_ASSESSMENT, EXTERNAL_ACTOR_EFFECT
+Open /root/release-check/agent-other_actor/report.html in your browser.
+  tool response: success
+ agent reported: success
+          state: unknown
+         origin: unknown
+      alignment: unassessable
+      diagnoses: UNKNOWN_OUTCOME, UNVERIFIED_ASSESSMENT
+Open /root/release-check/agent-stale_readback/report.html in your browser.
+  tool response: success
+ agent reported: success
+ first readback: unknown
+          state: violated
+         origin: confirmed
+      alignment: contradicted
+      diagnoses: ASSESSMENT_DIVERGENCE, RESPONSE_EFFECT_DIVERGENCE, CONSEQUENCE_VIOLATION, PART_VIOLATED
+       verifier: All 2 parts are required: refund-o-17 satisfied; close-t-9 violated
+Open /root/release-check/two-part-ticket_left_open/report.html in your browser.
+  tool response: success
+ agent reported: success
+ first readback: unknown
+          state: satisfied
+         origin: confirmed
+      alignment: consistent
+      diagnoses: CONSISTENT_OUTCOME
+       verifier: All 2 parts are required: refund-o-17 satisfied; close-t-9 satisfied
+Open /root/release-check/two-part-both_done/report.html in your browser.
+2.1.2
+0
+3.53.4 3.14.8
+
+__CQ_DONE__0

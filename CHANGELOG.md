@@ -1,9 +1,12 @@
 # Changes
 
-## 2.1.2 - unreleased
+## 2.1.2 - 20 October 2026
 
 A maintenance release; the API, exported records and trace schema are
-unchanged.
+unchanged. Published to PyPI with registry hashes verified; see the
+[release record](output/release-2.1.2-2026-10-20/README.md). Installed checks
+passed on Windows Python 3.11 to 3.15, on one Alpine Linux QEMU guest with
+Python 3.14 and from a fresh PyPI install. macOS has never been tested.
 
 - `ActionExplanation.diagnosis`, the one-line display label, is always the
   diagnosis codes joined with ` / `. A timeout after commit no longer shows the

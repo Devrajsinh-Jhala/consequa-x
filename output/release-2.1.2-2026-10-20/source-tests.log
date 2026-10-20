@@ -1,0 +1,46 @@
+................................................................................................. [  4%]
+........................................................................ [  7%]
+........................................................................ [ 11%]
+........................................................................ [ 14%]
+........................................................................ [ 18%]
+........................................................................ [ 21%]
+........................................................................ [ 24%]
+........................................................................ [ 28%]
+........................................................................ [ 31%]
+........................ssss............................................ [ 35%]
+........................................................................ [ 38%]
+........................................................s............... [ 41%]
+........................................................................ [ 45%]
+........................................ [ 47%]
+........................................................................ [ 50%]
+........................................s........................................................................... [ 56%]
+........................................................................ [ 59%]
+........................................................................ [ 62%]
+........................................................................ [ 66%]
+........................................................................ [ 69%]
+........................................................................ [ 73%]
+............................................s........................... [ 76%]
+........................................................................ [ 79%]
+.............................................. [ 82%]
+........................................................................ [ 85%]
+........................................................................ [ 88%]
+...................................................................sss.. [ 92%]
+.............................sssssssssssssss.....s...................... [ 95%]
+....................................................................s......................                  [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_integrations.py:100: could not import 'agents': No module named 'agents'
+SKIPPED [1] tests\test_integrations.py:160: could not import 'agents': No module named 'agents'
+SKIPPED [1] tests\test_integrations.py:183: could not import 'langchain_core': No module named 'langchain_core'
+SKIPPED [1] tests\test_integrations.py:300: could not import 'claude_agent_sdk': No module named 'claude_agent_sdk'
+SKIPPED [1] tests\test_matched_figure_builder.py:185: could not import 'matplotlib': No module named 'matplotlib'
+SKIPPED [1] tests\test_otel.py:211: could not import 'opentelemetry.sdk.trace': No module named 'opentelemetry'
+SKIPPED [1] tests\test_render_site_export.py:123: Host does not permit creating a symbolic link
+SKIPPED [3] tests\test_tau_benchmark_validation.py:149: Explicit reviewed upstream checkout required
+SKIPPED [10] tests\test_upstream_car_study.py:142: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [2] tests\test_upstream_car_study.py:166: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [1] tests\test_upstream_car_study.py:180: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [2] tests\test_upstream_car_study.py:196: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [1] tests\test_upstream_car_study.py:252: Set CONSEQUAX_CAR_SOURCE to the reviewed pinned CAR checkout for integration
+SKIPPED [1] tests\test_v2_migration_conformance.py:309: Set CONSEQUA_V2_LEGACY_ROOT for the disclosed frozen-1.1 fixture check
+2091 passed, 27 skipped, 241 subtests passed in 465.18s (0:07:45)
+exit=0

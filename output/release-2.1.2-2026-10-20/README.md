@@ -62,8 +62,11 @@ and the second passed ([registry312.json](registry312.json),
 
 ## Pending and limits
 
-- Public docs/support gate: pending at upload; see `site-publication.json` once
-  the 2.1.2 site is live. Private vulnerability reporting is enabled.
+- Public docs/support gate: pending at upload, met after publication. The 2.1.2
+  site went live from the `consequa-x-site` mirror (`3bfb5ae`, byte-identical to
+  this repository's `main` at `a49fdbe`), and private vulnerability reporting is
+  enabled. The GitHub release v2.1.2 is marked latest
+  ([site-publication.json](site-publication.json)).
 - The full source suite ran on Python 3.12 only; Python 3.11 and 3.13 to 3.15
   ran the installed-wheel checker.
 - The first Linux guest boot stopped with a kernel panic (its IO-APIC timer

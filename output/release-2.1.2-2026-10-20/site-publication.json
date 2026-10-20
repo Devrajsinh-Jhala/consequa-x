@@ -1,0 +1,32 @@
+{
+ "version": "2.1.2",
+ "site": "https://consequa-x.onrender.com",
+ "deployed_from": {
+  "repository": "https://github.com/Devrajsinh-Jhala/consequa-x-site",
+  "commit": "3bfb5ae",
+  "mirrors": "website/dist of Devrajsinh-Jhala/consequa-x main at a49fdbe",
+  "blobs_identical_to_mirrored_revision": 25
+ },
+ "earlier_same_day_deploy": {
+  "commit": "9a7d6f6",
+  "mirrors": "website/dist/app.js and index.html of consequa-x at d2a1588 (2.1.1 demo data)",
+  "what": "Homepage demo fixes from an outside audit: section buttons while paused or typing, first-load state, a double start, the resume status, the Contract section, inspector resize redraws, fallback version and report hash"
+ },
+ "live_checks": {
+  "method": "byte comparison over HTTPS and a scripted headless Chrome run",
+  "allowlisted_files_served_byte_identical": 25,
+  "demo_browser_checks": "22 passed, 0 failed on the live homepage",
+  "homepage": "consequa-x==2.1.2, Version 2.1.2 is on PyPI, demo data from 2.1.2 whose terminal prints ASSESSMENT_DIVERGENCE / ACKNOWLEDGEMENT_EFFECT_DIVERGENCE; no 'BELIEF' text",
+  "docs": "Version 2.1.2 is available",
+  "pypi_latest": "2.1.2"
+ },
+ "github_release": {
+  "tag": "v2.1.2",
+  "target": "064127ff120abae543abfe69f77e44b03f3b928e",
+  "latest": true,
+  "assets": "the published wheel and sdist (hashes checked against checks.json), checks.json and publication.json",
+  "url": "https://github.com/Devrajsinh-Jhala/consequa-x/releases/tag/v2.1.2"
+ },
+ "public_docs_support": "Met after publication: the 2.1.2 docs, changelog, support and security pages are live and private vulnerability reporting is enabled. checks.json keeps the gate as it stood at upload.",
+ "verified_at_utc": "2026-10-20T04:29:57.302039+00:00"
+}

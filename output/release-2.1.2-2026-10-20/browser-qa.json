@@ -1,0 +1,123 @@
+{
+  "failures": [],
+  "github_actions_used": false,
+  "measurements": {
+    "1440-composite": {
+      "brand": true,
+      "codesFit": true,
+      "composition": true,
+      "external": 0,
+      "leak": false,
+      "minHeader": 85.015625,
+      "parts": true,
+      "redacted": false,
+      "scripts": 0,
+      "sw": 1440,
+      "w": 1440
+    },
+    "1440-composite-details": {
+      "brand": true,
+      "codesFit": true,
+      "composition": true,
+      "external": 0,
+      "leak": false,
+      "minHeader": 85.015625,
+      "parts": true,
+      "redacted": true,
+      "scripts": 0,
+      "sw": 1440,
+      "w": 1440
+    },
+    "1440-docs": {
+      "callout": "Version 2.1.2 is available.",
+      "errors": [],
+      "label": "DOCUMENTATION / VERSION 2.1",
+      "sw": 1440,
+      "w": 1440
+    },
+    "1440-home": {
+      "badge": "v2.1",
+      "brand": true,
+      "codeOverflow": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "errors": [],
+      "install": "python -m pip install consequa-x==2.1.2",
+      "sw": 1440,
+      "w": 1440
+    },
+    "390-composite": {
+      "brand": true,
+      "codesFit": true,
+      "composition": true,
+      "external": 0,
+      "leak": false,
+      "minHeader": 51.984375,
+      "parts": true,
+      "redacted": false,
+      "scripts": 0,
+      "sw": 390,
+      "w": 390
+    },
+    "390-composite-details": {
+      "brand": true,
+      "codesFit": true,
+      "composition": true,
+      "external": 0,
+      "leak": false,
+      "minHeader": 51.984375,
+      "parts": true,
+      "redacted": true,
+      "scripts": 0,
+      "sw": 390,
+      "w": 390
+    },
+    "390-docs": {
+      "callout": "Version 2.1.2 is available.",
+      "errors": [],
+      "label": "DOCUMENTATION / VERSION 2.1",
+      "sw": 390,
+      "w": 390
+    },
+    "390-home": {
+      "badge": "v2.1",
+      "brand": true,
+      "codeOverflow": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "errors": [],
+      "install": "python -m pip install consequa-x==2.1.2",
+      "sw": 390,
+      "w": 390
+    },
+    "document.querySelector('#evidence').scrollIntoView({block:'s": {
+      "interrupted": false
+    }
+  },
+  "passed": true,
+  "reports": "Rendered by the installed 2.1.2 wheel: a composite all_of trace with two readbacks per verification (default, and --include-details with redact of payment_id, ticket_id and rationale)",
+  "review_date": "2026-10-20",
+  "review_method": "AI-assisted headless Chrome DOM checks and rendered screenshot review",
+  "screenshots": [
+    {
+      "path": "report-composite-desktop.png",
+      "sha256": "01e19d2915178019fd2854c68be60884a450da9647a8026fc6c2b2e76a7391c9"
+    },
+    {
+      "path": "homepage-stack-mobile.png",
+      "sha256": "2ded495c943e47fa5a62b8ff44b2a5f1efff76a22cd2369252f7b68602edd21d"
+    }
+  ],
+  "site_review": "Homepage: v2.1 badge, consequa-x==2.1.2, the framework section without code overflow; docs page: version 2.1 and the published callout",
+  "table_headers_min_width_px": 40,
+  "viewports": [
+    "1440x900 desktop",
+    "390x844 mobile"
+  ]
+}

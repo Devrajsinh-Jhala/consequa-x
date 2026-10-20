@@ -1,0 +1,116 @@
+{
+  "claude_model_alias": "haiku",
+  "local_model": "qwen3:4b-instruct-2507-q4_K_M",
+  "passed": true,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.10",
+  "runs": [
+    {
+      "agent_reported": "failure",
+      "alignment": "contradicted",
+      "diagnoses": [
+        "ASSESSMENT_DIVERGENCE",
+        "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+      ],
+      "final_answer_tail": "I'm unable to process the refund at this time due to an error. Please try again later or contact support for assistance. \n\nOUTCOME: failure",
+      "framework": "openai-agents",
+      "origin": "confirmed",
+      "passed": true,
+      "recorded_actions": [
+        "refund-o-17"
+      ],
+      "recorded_attempts": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ],
+      "recording_matches_reality": true,
+      "refund_rows": 1,
+      "retry_advice": "do_not_retry",
+      "run_error": null,
+      "seconds": 78.2,
+      "state": "satisfied",
+      "tool_calls_that_ran": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ]
+    },
+    {
+      "agent_reported": "failure",
+      "alignment": "contradicted",
+      "diagnoses": [
+        "ASSESSMENT_DIVERGENCE",
+        "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+      ],
+      "final_answer_tail": "OUTCOME: failure",
+      "framework": "langchain",
+      "origin": "confirmed",
+      "passed": true,
+      "recorded_actions": [
+        "refund-o-17"
+      ],
+      "recorded_attempts": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ],
+      "recording_matches_reality": true,
+      "refund_rows": 1,
+      "retry_advice": "do_not_retry",
+      "run_error": null,
+      "seconds": 43.2,
+      "state": "satisfied",
+      "tool_calls_that_ran": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ]
+    },
+    {
+      "agent_reported": "failure",
+      "alignment": "contradicted",
+      "diagnoses": [
+        "ASSESSMENT_DIVERGENCE",
+        "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
+      ],
+      "final_answer_tail": " after the refund is confirmed):**\n\"Sorry your order arrived damaged. We've refunded the INR 50 you paid for order o-17. It should appear on your original payment method within the usual processing time.\"\n\nUntil the refund is verified, don't tell the customer it has been processed.\n\nOUTCOME: failure",
+      "framework": "claude-agent-sdk",
+      "origin": "confirmed",
+      "passed": true,
+      "recorded_actions": [
+        "refund-o-17"
+      ],
+      "recorded_attempts": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ],
+      "recording_matches_reality": true,
+      "refund_rows": 1,
+      "retry_advice": "do_not_retry",
+      "run_error": null,
+      "seconds": 16.3,
+      "state": "satisfied",
+      "tool_calls_that_ran": [
+        {
+          "order_id": "o-17",
+          "status": "timeout"
+        }
+      ]
+    }
+  ],
+  "versions": {
+    "claude-agent-sdk": "0.2.168",
+    "consequa-x": "2.1.2",
+    "langchain-core": "1.6.12",
+    "langchain-openai": "1.7.2",
+    "openai": "3.35.1",
+    "openai-agents": "0.24.0"
+  }
+}

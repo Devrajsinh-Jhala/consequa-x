@@ -1,0 +1,38 @@
+{
+  "checker_sha256": "f6280ab4412a4abb7765304b3d0eac268140780ad2ca093bb50de7ea04f5b526",
+  "executable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\venv-extras\\Scripts\\python.exe",
+  "framework_versions": {
+    "claude-agent-sdk": "0.2.168",
+    "langchain-core": "1.6.12",
+    "openai-agents": "0.24.0",
+    "opentelemetry-api": "1.45.1",
+    "opentelemetry-sdk": "1.45.1",
+    "pytest": "9.1.1"
+  },
+  "install": {
+    "method": "pip install --no-deps --no-index into the extras venv",
+    "module_file": "C:\\Users\\DELL\\AppData\\Local\\Temp\\claude\\C--Users-DELL-OneDrive-Desktop-ConseqaX\\b820f9b5-4ebe-4c93-a866-4070fd2cfca3\\scratchpad\\venv-extras\\Lib\\site-packages\\consequa_x\\__init__.py",
+    "version": "2.1.2"
+  },
+  "isolated_imports": true,
+  "passed": true,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "provider_calls": 0,
+  "python": "3.12.10",
+  "scope": "Each SDK is driven offline: the Agents SDK's ScriptedModel in a real Runner loop, real LangChain tools with callbacks, and the Claude Agent SDK's hook protocol through a scripted transport; OpenTelemetry spans through the SDK's in-memory exporter. No live model, collector or tracing backend.",
+  "tests": {
+    "files": [
+      "test_integrations.py",
+      "test_otel.py",
+      "test_composite.py"
+    ],
+    "run_from": "a fresh temporary folder outside the checkout",
+    "skipped": 0,
+    "summary": "37 passed in 13.44s"
+  },
+  "wheel": {
+    "bytes": 215119,
+    "filename": "consequa_x-2.1.2-py3-none-any.whl",
+    "sha256": "877143419920a556cd2498925fbd31d7204b5dcac9605de526235380b9b70ba0"
+  }
+}

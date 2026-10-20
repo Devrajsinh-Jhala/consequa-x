@@ -469,4 +469,3 @@ class Controller:
             report["retry_advice"] = copy.deepcopy(self._advice)
             report["provisional_verifications"] = copy.deepcopy(self._provisional_verifications)
         return report
-

@@ -187,13 +187,21 @@ def run_claude_agent_sdk(ledger: Ledger, calls: ToolCallCapture, workdir: Path) 
         query, tool,
     )
 
+    from mcp.types import ToolAnnotations
+
     from consequa_x.integrations.claude_agent_sdk import consequa_hooks
 
-    @tool("issue_refund", "Refund a paid order in full.", {"order_id": str})
+    # The refund is not caught here: its first call must time out through the SDK,
+    # because that timeout is what the check records.
+    @tool("issue_refund", "Refund a paid order in full.", {"order_id": str},
+          annotations=ToolAnnotations(readOnlyHint=False, destructiveHint=True,
+                                      idempotentHint=False, openWorldHint=False))
     async def issue_refund(args):
         return {"content": [{"type": "text", "text": ledger.refund(args["order_id"])}]}
 
-    @tool("lookup_order", "Look up an order's delivery and payment status.", {"order_id": str})
+    @tool("lookup_order", "Look up an order's delivery and payment status.", {"order_id": str},
+          annotations=ToolAnnotations(readOnlyHint=True, destructiveHint=False,
+                                      idempotentHint=True, openWorldHint=False))
     async def lookup_order(args):
         return {"content": [{"type": "text", "text": LOOKUP}]}
 

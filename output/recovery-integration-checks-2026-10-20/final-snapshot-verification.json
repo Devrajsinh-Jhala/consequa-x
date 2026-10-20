@@ -1,0 +1,21 @@
+{
+  "schema": "conseqa-final-snapshot-verification-v1",
+  "head_commit": "7976a99ac2ea5cc37fc5b9dd55dd3dde5f68d032",
+  "source_commit": "106da77c6367012b14cae16fec6f3cfa7d137f09",
+  "checks": {
+    "bundle_manifest_bindings": 45,
+    "bundle_exact_inventory_verified": true,
+    "source_bindings_immutable_git_and_snapshot_and_working_tree": 6,
+    "evidence_bindings_working_tree_snapshot_and_head": 18,
+    "markdown_documents_checked": 7,
+    "relative_file_link_occurrences": 235,
+    "relative_file_link_unique_targets": 115,
+    "external_link_occurrences_not_fetched": 74,
+    "unused_human_packet_links": [],
+    "current_human_study_or_recruitment_requirement_found": false,
+    "human_scope_language_review": "Reviewed matching passages across the seven current Markdown documents: participant/annotation work is excluded or withdrawn; remaining human references describe historical or evidentiary limitations. No unused packet link or current recruitment requirement was found."
+  },
+  "errors": [],
+  "passed": true,
+  "scope": "Read-only byte/size/Git binding and relative local-link checks; no scientific collection, model execution, or external-link validation. Human-study language reviewed separately."
+}

@@ -1,0 +1,59 @@
+{
+  "checks": [
+    {
+      "evidence": "Root tool execution recorded before source/protocol freeze; unchanged files at d805b3e3560c05ee0a7efd02a80fc18503c6ee05.",
+      "passed": 84,
+      "scope": "New availability runner and separately implemented auditor, synthetic fixtures",
+      "seconds": 26.15
+    },
+    {
+      "log": "final-postprocessing-tests.log",
+      "passed": 80,
+      "scope": "Publication guards, matched-pair comparisons and portable A auditor fixtures",
+      "seconds": 14.77
+    },
+    {
+      "log": "availability-exporter-tests.log",
+      "passed": 20,
+      "scope": "Availability exporter fixtures, final layout source",
+      "seconds": 1.4
+    },
+    {
+      "log": "snapshot-integrity-tests.log",
+      "passed": 75,
+      "scope": "All 69 staged/committed evidence manifests plus integrity fixtures at collection time",
+      "seconds": 434.27
+    },
+    {
+      "passed": true,
+      "receipt": "final-snapshot-verification-v2.json",
+      "scope": "Corrected final PDF bundle exact inventory/source/evidence bindings; earlier local-link check retained separately."
+    },
+    {
+      "passed": true,
+      "receipt": "../pdf/recovery-study-2026-10-20/quality/automated-pdf-qa.json",
+      "scope": "Ten PDF pages, 12 embedded fonts, compilation and visual inspection"
+    }
+  ],
+  "complete": true,
+  "earlier_snapshot_and_local_link_check": "final-snapshot-verification.json",
+  "full_product_suite_claimed": false,
+  "github_actions_used": false,
+  "historical_publication_test_log_superseded_by_final_80_test_batch": "publication-tests.log",
+  "paper_snapshot_commit": "7976a99ac2ea5cc37fc5b9dd55dd3dde5f68d032",
+  "post_pdf_packaging_format_correction": {
+    "cause": "Reference-only manifest copies were discovered as standalone evidence inventories.",
+    "correction_receipt": "../pdf/recovery-study-2026-10-20/quality/reference-copy-packaging-correction.json",
+    "fix": "Renamed the copies to manifest.source.json, recording all unchanged hashes. PDF and original experiment bytes unchanged.",
+    "initial_failed_reference_copy_cases": 8,
+    "initial_passed": 2,
+    "log": "final-format-check.log",
+    "recheck_deselected": 75,
+    "recheck_passed": 2,
+    "recheck_seconds": 0.42
+  },
+  "recorded_utc": "2026-10-20T18:44:21.493231+00:00",
+  "research_and_manuscript_source_commit": "106da77c6367012b14cae16fec6f3cfa7d137f09",
+  "schema": "conseqa-recovery-research-validation-v1",
+  "scientific_scope": "Internal deterministic software experiments; no participant annotations, external replication or autonomous benchmark reward claimed."
+}

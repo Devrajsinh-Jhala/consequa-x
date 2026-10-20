@@ -2,75 +2,93 @@
   "files": {
     "output/recovery-artifact-finalization-2026-10-20/finalization-record.json": {
       "bytes": 3934,
-      "sha256": "26fabbec4c16af115ad367086efd247e0660af801f0290fe57fa4265a84440a0"
+      "sha256": "26fabbec4c16af115ad367086efd247e0660af801f0290fe57fa4265a84440a0",
+      "snapshot_relative_path": "evidence/output/recovery-artifact-finalization-2026-10-20/finalization-record.json"
     },
     "output/recovery-artifact-finalization-2026-10-20/manifest.json": {
       "bytes": 589,
-      "sha256": "bf48969bd6e01d1f197b80542dcab9cedd245baca5026fc9eb53c2d708310457"
+      "sha256": "bf48969bd6e01d1f197b80542dcab9cedd245baca5026fc9eb53c2d708310457",
+      "snapshot_relative_path": "evidence/output/recovery-artifact-finalization-2026-10-20/manifest.source.json"
     },
     "output/recovery-availability-audit-2026-10-20/audit-receipt.json": {
       "bytes": 1914,
-      "sha256": "1dc10b83f885a66d21c927c18185433ebcc60c83f88a4db268fc13d6ab6a2dba"
+      "sha256": "1dc10b83f885a66d21c927c18185433ebcc60c83f88a4db268fc13d6ab6a2dba",
+      "snapshot_relative_path": "evidence/output/recovery-availability-audit-2026-10-20/audit-receipt.json"
     },
     "output/recovery-availability-audit-2026-10-20/manifest.json": {
       "bytes": 979,
-      "sha256": "f542c363e72db0ae9ebfac3776ed2dece5f936589de2904606f479a7c573837d"
+      "sha256": "f542c363e72db0ae9ebfac3776ed2dece5f936589de2904606f479a7c573837d",
+      "snapshot_relative_path": "evidence/output/recovery-availability-audit-2026-10-20/manifest.source.json"
     },
     "output/recovery-availability-figures-2026-10-20-v2/manifest.json": {
       "bytes": 2651,
-      "sha256": "a4c217208e79d7c5ce665958a4874b1ce1b5e7ebc6fe13c5ee9d3424a4f96bc9"
+      "sha256": "a4c217208e79d7c5ce665958a4874b1ce1b5e7ebc6fe13c5ee9d3424a4f96bc9",
+      "snapshot_relative_path": "evidence/output/recovery-availability-figures-2026-10-20-v2/manifest.source.json"
     },
     "output/recovery-availability-protocol-2026-10-20/protocol.json": {
       "bytes": 834101,
-      "sha256": "e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584"
+      "sha256": "e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584",
+      "snapshot_relative_path": "evidence/output/recovery-availability-protocol-2026-10-20/protocol.json"
     },
     "output/recovery-availability-protocol-2026-10-20/run-claim.json": {
       "bytes": 1105,
-      "sha256": "6504e7c5e80a5213da6bfe3199ffd2dd9946d232af0efe6c1c56c6751c8a7a68"
+      "sha256": "6504e7c5e80a5213da6bfe3199ffd2dd9946d232af0efe6c1c56c6751c8a7a68",
+      "snapshot_relative_path": "evidence/output/recovery-availability-protocol-2026-10-20/run-claim.json"
     },
     "output/recovery-availability-study-2026-10-20/completion-receipt.json": {
       "bytes": 525,
-      "sha256": "8613f960fab576207ae722928c389d8fb54dd2437e2a6432f77fced9728fbdd2"
+      "sha256": "8613f960fab576207ae722928c389d8fb54dd2437e2a6432f77fced9728fbdd2",
+      "snapshot_relative_path": "evidence/output/recovery-availability-study-2026-10-20/completion-receipt.json"
     },
     "output/recovery-availability-study-2026-10-20/manifest.json": {
       "bytes": 203100,
-      "sha256": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e"
+      "sha256": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e",
+      "snapshot_relative_path": "evidence/output/recovery-availability-study-2026-10-20/manifest.source.json"
     },
     "output/recovery-controller-audit-2026-10-20/audit-receipt.json": {
       "bytes": 1944,
-      "sha256": "107b03a6c0d73df859fdc5d9c5c7587e6d4b5d47a46c7bf35b273bd6a0ddf0b6"
+      "sha256": "107b03a6c0d73df859fdc5d9c5c7587e6d4b5d47a46c7bf35b273bd6a0ddf0b6",
+      "snapshot_relative_path": "evidence/output/recovery-controller-audit-2026-10-20/audit-receipt.json"
     },
     "output/recovery-controller-protocol-2026-10-20/protocol.json": {
       "bytes": 3318334,
-      "sha256": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa"
+      "sha256": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa",
+      "snapshot_relative_path": "evidence/output/recovery-controller-protocol-2026-10-20/protocol.json"
     },
     "output/recovery-controller-protocol-2026-10-20/run-claim.json": {
       "bytes": 709,
-      "sha256": "a21fae4be7918a91153e76cc49975c645a5758ceaf9fa892466e92acdd599153"
+      "sha256": "a21fae4be7918a91153e76cc49975c645a5758ceaf9fa892466e92acdd599153",
+      "snapshot_relative_path": "evidence/output/recovery-controller-protocol-2026-10-20/run-claim.json"
     },
     "output/recovery-controller-study-2026-10-20/completion-receipt.json": {
       "bytes": 875,
-      "sha256": "823aa6e113af39164226777ab2cc152fa267edb0c8dd936649a47242f84dc018"
+      "sha256": "823aa6e113af39164226777ab2cc152fa267edb0c8dd936649a47242f84dc018",
+      "snapshot_relative_path": "evidence/output/recovery-controller-study-2026-10-20/completion-receipt.json"
     },
     "output/recovery-controller-study-2026-10-20/manifest.json": {
       "bytes": 3241412,
-      "sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921"
+      "sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921",
+      "snapshot_relative_path": "evidence/output/recovery-controller-study-2026-10-20/manifest.source.json"
     },
     "output/recovery-paired-analysis-2026-10-20-v2/manifest.json": {
       "bytes": 1343,
-      "sha256": "bad5d69f92b542ef233424886b8c12113f7c0bb67760fa5956aaeed46c4e4537"
+      "sha256": "bad5d69f92b542ef233424886b8c12113f7c0bb67760fa5956aaeed46c4e4537",
+      "snapshot_relative_path": "evidence/output/recovery-paired-analysis-2026-10-20-v2/manifest.source.json"
     },
     "output/recovery-portable-audit-2026-10-20/manifest.json": {
       "bytes": 780,
-      "sha256": "e1c71dc73f326db1c1c69ec2d170c75891ebf258ebedcd983ad0d74c993a26e6"
+      "sha256": "e1c71dc73f326db1c1c69ec2d170c75891ebf258ebedcd983ad0d74c993a26e6",
+      "snapshot_relative_path": "evidence/output/recovery-portable-audit-2026-10-20/manifest.source.json"
     },
     "output/recovery-portable-audit-2026-10-20/portable-audit-receipt.json": {
       "bytes": 3783,
-      "sha256": "24e2fe8454d6eac0f888a34f6d3ee32a8de80b389825c76883575cc9c6a14c15"
+      "sha256": "24e2fe8454d6eac0f888a34f6d3ee32a8de80b389825c76883575cc9c6a14c15",
+      "snapshot_relative_path": "evidence/output/recovery-portable-audit-2026-10-20/portable-audit-receipt.json"
     },
     "output/recovery-publication-figures-2026-10-20-v3/manifest.json": {
       "bytes": 3134,
-      "sha256": "52b4ebde0386b63de4c56afaabfa8fd8b00566fc90acb6780d046d505c30ef52"
+      "sha256": "52b4ebde0386b63de4c56afaabfa8fd8b00566fc90acb6780d046d505c30ef52",
+      "snapshot_relative_path": "evidence/output/recovery-publication-figures-2026-10-20-v3/manifest.source.json"
     }
   },
   "scope": "Manifest/receipt references; complete raw data remains at the recorded repository paths.",

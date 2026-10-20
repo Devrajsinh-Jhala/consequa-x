@@ -1,0 +1,56 @@
+{
+  "initial_repository_format_check": {
+    "deselected": 75,
+    "failed": 8,
+    "passed": 2
+  },
+  "pdf_or_original_experiment_bytes_changed": false,
+  "prior_bundle_manifest_preserved_as": "quality/manifest-before-reference-renames.source.json",
+  "prior_bundle_manifest_sha256": "979e2b1b84e9f1daf6ecc4d64d88defb54730ae4652bec8a734dd825b3700a15",
+  "reason": "Reference-only manifest copies must use .source.json names; canonical manifest.json names are reserved for complete self-contained evidence folders.",
+  "recorded_utc": "2026-10-20T18:45:08.929635+00:00",
+  "reference_copy_renames": [
+    {
+      "from": "evidence/output/recovery-artifact-finalization-2026-10-20/manifest.json",
+      "sha256_unchanged": "bf48969bd6e01d1f197b80542dcab9cedd245baca5026fc9eb53c2d708310457",
+      "to": "evidence/output/recovery-artifact-finalization-2026-10-20/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-availability-audit-2026-10-20/manifest.json",
+      "sha256_unchanged": "f542c363e72db0ae9ebfac3776ed2dece5f936589de2904606f479a7c573837d",
+      "to": "evidence/output/recovery-availability-audit-2026-10-20/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-availability-figures-2026-10-20-v2/manifest.json",
+      "sha256_unchanged": "a4c217208e79d7c5ce665958a4874b1ce1b5e7ebc6fe13c5ee9d3424a4f96bc9",
+      "to": "evidence/output/recovery-availability-figures-2026-10-20-v2/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-availability-study-2026-10-20/manifest.json",
+      "sha256_unchanged": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e",
+      "to": "evidence/output/recovery-availability-study-2026-10-20/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-controller-study-2026-10-20/manifest.json",
+      "sha256_unchanged": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921",
+      "to": "evidence/output/recovery-controller-study-2026-10-20/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-paired-analysis-2026-10-20-v2/manifest.json",
+      "sha256_unchanged": "bad5d69f92b542ef233424886b8c12113f7c0bb67760fa5956aaeed46c4e4537",
+      "to": "evidence/output/recovery-paired-analysis-2026-10-20-v2/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-portable-audit-2026-10-20/manifest.json",
+      "sha256_unchanged": "e1c71dc73f326db1c1c69ec2d170c75891ebf258ebedcd983ad0d74c993a26e6",
+      "to": "evidence/output/recovery-portable-audit-2026-10-20/manifest.source.json"
+    },
+    {
+      "from": "evidence/output/recovery-publication-figures-2026-10-20-v3/manifest.json",
+      "sha256_unchanged": "52b4ebde0386b63de4c56afaabfa8fd8b00566fc90acb6780d046d505c30ef52",
+      "to": "evidence/output/recovery-publication-figures-2026-10-20-v3/manifest.source.json"
+    }
+  ],
+  "research_source_commit": "106da77c6367012b14cae16fec6f3cfa7d137f09",
+  "schema": "conseqa-reference-copy-packaging-correction-v1"
+}

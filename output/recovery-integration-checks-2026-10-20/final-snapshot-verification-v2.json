@@ -1,0 +1,19 @@
+{
+  "schema": "conseqa-final-snapshot-verification-v2",
+  "head_commit": "7976a99ac2ea5cc37fc5b9dd55dd3dde5f68d032",
+  "source_commit": "106da77c6367012b14cae16fec6f3cfa7d137f09",
+  "checks": {
+    "outer_bundle_bindings_working_and_staged_index": 47,
+    "outer_exact_inventory_files_including_manifest": 48,
+    "immutable_source_bindings": 6,
+    "evidence_bindings_via_declared_snapshot_path": 18,
+    "renamed_reference_manifest_copies": 8,
+    "original_outer_manifest_preserved_byte_for_byte": true,
+    "unchanged_pdf_sha256": "3fda62c4a5706691fdbfb0892f7985bebcbb8dffd19eba4035fea83182ffe264",
+    "integration_bindings_working_and_staged_index": 8,
+    "integration_exact_inventory_files_including_manifest": 9
+  },
+  "errors": [],
+  "passed": true,
+  "scope": "Read-only final packaging checks against working tree and staged index; immutable source Git blobs and original reference artifact bytes; no scientific collection, model calls, or mutations."
+}

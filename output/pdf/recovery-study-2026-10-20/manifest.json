@@ -6,22 +6,22 @@
       "sha256": "3fda62c4a5706691fdbfb0892f7985bebcbb8dffd19eba4035fea83182ffe264"
     },
     "README.md": {
-      "bytes": 1363,
-      "sha256": "98a08b612155bb6d7ba92ff0ddb26791b0c716527efe5c7b1a5638c0f92d46fd"
+      "bytes": 1882,
+      "sha256": "dcb96eb16746879a18ffa4714969d93b53bae0ea0ec06f152efa9b42c05f4547"
     },
     "build-receipt.json": {
       "bytes": 807,
       "sha256": "d22341d04880acf145070cac2f733285fdff218b913cbbeacacf73185aa8acff"
     },
     "evidence-bindings.json": {
-      "bytes": 3496,
-      "sha256": "2d742590269d2831806996b0bf51f3b13d9ab403ef5f6abd57da9a9dd80872ba"
+      "bytes": 5490,
+      "sha256": "8dda2026714aacd310461fbb3d9c5340d2645a0886f9942b2ce4657b4c09c85b"
     },
     "evidence/output/recovery-artifact-finalization-2026-10-20/finalization-record.json": {
       "bytes": 3934,
       "sha256": "26fabbec4c16af115ad367086efd247e0660af801f0290fe57fa4265a84440a0"
     },
-    "evidence/output/recovery-artifact-finalization-2026-10-20/manifest.json": {
+    "evidence/output/recovery-artifact-finalization-2026-10-20/manifest.source.json": {
       "bytes": 589,
       "sha256": "bf48969bd6e01d1f197b80542dcab9cedd245baca5026fc9eb53c2d708310457"
     },
@@ -29,11 +29,11 @@
       "bytes": 1914,
       "sha256": "1dc10b83f885a66d21c927c18185433ebcc60c83f88a4db268fc13d6ab6a2dba"
     },
-    "evidence/output/recovery-availability-audit-2026-10-20/manifest.json": {
+    "evidence/output/recovery-availability-audit-2026-10-20/manifest.source.json": {
       "bytes": 979,
       "sha256": "f542c363e72db0ae9ebfac3776ed2dece5f936589de2904606f479a7c573837d"
     },
-    "evidence/output/recovery-availability-figures-2026-10-20-v2/manifest.json": {
+    "evidence/output/recovery-availability-figures-2026-10-20-v2/manifest.source.json": {
       "bytes": 2651,
       "sha256": "a4c217208e79d7c5ce665958a4874b1ce1b5e7ebc6fe13c5ee9d3424a4f96bc9"
     },
@@ -49,7 +49,7 @@
       "bytes": 525,
       "sha256": "8613f960fab576207ae722928c389d8fb54dd2437e2a6432f77fced9728fbdd2"
     },
-    "evidence/output/recovery-availability-study-2026-10-20/manifest.json": {
+    "evidence/output/recovery-availability-study-2026-10-20/manifest.source.json": {
       "bytes": 203100,
       "sha256": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e"
     },
@@ -69,15 +69,15 @@
       "bytes": 875,
       "sha256": "823aa6e113af39164226777ab2cc152fa267edb0c8dd936649a47242f84dc018"
     },
-    "evidence/output/recovery-controller-study-2026-10-20/manifest.json": {
+    "evidence/output/recovery-controller-study-2026-10-20/manifest.source.json": {
       "bytes": 3241412,
       "sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921"
     },
-    "evidence/output/recovery-paired-analysis-2026-10-20-v2/manifest.json": {
+    "evidence/output/recovery-paired-analysis-2026-10-20-v2/manifest.source.json": {
       "bytes": 1343,
       "sha256": "bad5d69f92b542ef233424886b8c12113f7c0bb67760fa5956aaeed46c4e4537"
     },
-    "evidence/output/recovery-portable-audit-2026-10-20/manifest.json": {
+    "evidence/output/recovery-portable-audit-2026-10-20/manifest.source.json": {
       "bytes": 780,
       "sha256": "e1c71dc73f326db1c1c69ec2d170c75891ebf258ebedcd983ad0d74c993a26e6"
     },
@@ -85,7 +85,7 @@
       "bytes": 3783,
       "sha256": "24e2fe8454d6eac0f888a34f6d3ee32a8de80b389825c76883575cc9c6a14c15"
     },
-    "evidence/output/recovery-publication-figures-2026-10-20-v3/manifest.json": {
+    "evidence/output/recovery-publication-figures-2026-10-20-v3/manifest.source.json": {
       "bytes": 3134,
       "sha256": "52b4ebde0386b63de4c56afaabfa8fd8b00566fc90acb6780d046d505c30ef52"
     },
@@ -104,6 +104,10 @@
     "quality/extracted-text.txt": {
       "bytes": 48876,
       "sha256": "9ccea94de1f4d6d196aaa2454a833e056c2917ecd1dfee00b446f8119565dcc9"
+    },
+    "quality/manifest-before-reference-renames.source.json": {
+      "bytes": 7800,
+      "sha256": "979e2b1b84e9f1daf6ecc4d64d88defb54730ae4652bec8a734dd825b3700a15"
     },
     "quality/package-paper.source.py": {
       "bytes": 7339,
@@ -149,6 +153,10 @@
       "bytes": 390084,
       "sha256": "225056b4550024b1098380d9addc658ede8caf4abf783a6a780d35b2d7ebd4a4"
     },
+    "quality/reference-copy-packaging-correction.json": {
+      "bytes": 3016,
+      "sha256": "aa4630aa3cace453ad9de353ec9625107259544b6c0e6857b29691680cfd58d5"
+    },
     "quality/visual-review.json": {
       "bytes": 1841,
       "sha256": "469bf1aa1ce6286d71ac8a183eda49203244c8fc9688079983d5f33f18c49712"
@@ -182,6 +190,7 @@
       "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
     }
   },
+  "reference_copy_packaging_revision": 2,
   "schema": "conseqa-focused-paper-snapshot-v1",
   "source_commit": "106da77c6367012b14cae16fec6f3cfa7d137f09"
 }

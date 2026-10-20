@@ -1,0 +1,41 @@
+{
+  "schema": "conseqax-native-transport-preflight-v1",
+  "development_attempt_ceiling": 12,
+  "generation_attempted": 0,
+  "generation_completed": 0,
+  "unused_attempt_allowance": 12,
+  "official_task_episodes_attempted": 0,
+  "tool_executions": 0,
+  "paid_calls": 0,
+  "model_downloads_requested": 0,
+  "autonomous_pilot_may_start": false,
+  "candidate_dispositions": [
+    {
+      "candidate": "LiteLLM ollama_chat with original installed Qwen tag",
+      "status": "failed_offline_history_gate",
+      "evidence": "offline-transform.json",
+      "reason": "Installed transformer drops prior assistant tool_calls and tool-result association ID."
+    },
+    {
+      "candidate": "LiteLLM openai with original installed Qwen tag at local /v1",
+      "status": "history_preserved_in_no_dispatch_wire_context_uncontrolled",
+      "evidence": "wire-capture.json",
+      "reason": "Complete history/schema reaches HTTP send boundary, but extra_body options.num_ctx is not a documented context setting. Overall wire guard retained a failed disposition."
+    },
+    {
+      "candidate": "LiteLLM openai with isolated local ctx16k profile",
+      "status": "profile_configured_generation_withheld",
+      "evidence": "context-tag-config.json",
+      "reason": "Conservative available-memory gate failed; exact Qwen3 prompt tokens and dialogue context headroom remain unverified."
+    }
+  ],
+  "remaining_gates": [
+    "Sufficient measured memory headroom for the isolated context profile",
+    "Exact prompt and accumulated-dialogue fit with refusal of silent truncation",
+    "Generation-capable network guard that distinguishes internal event-loop wakeups",
+    "Model-emitted structured native tool call and follow-up after tool result",
+    "Task-independent native policy and dynamic-user smoke before any official pilot"
+  ],
+  "benchmark_performance_claim": null,
+  "notes": "No failed generation was replaced because no generation was attempted. Retained construction/configuration failures are not benchmark results."
+}

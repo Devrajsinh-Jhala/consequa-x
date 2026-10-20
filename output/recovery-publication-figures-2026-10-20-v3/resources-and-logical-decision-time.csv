@@ -1,0 +1,21 @@
+group,method,family_id,case_id,endpoint,planned,completed,failed,numerator,observed_denominator,unavailable,mean_exact,mean,unit,interpretation
+methods,response_retry,,,reads,3072,3072,0,0,3072,0,0/1,0.0,count,charged controller resource count
+methods,response_retry,,,dispatches,3072,3072,0,4352,3072,0,17/12,1.4166666666666667,count,charged controller resource count
+methods,response_retry,,,waits,3072,3072,0,0,3072,0,0/1,0.0,count,charged controller resource count
+methods,response_retry,,,decision_time_ms,3072,3072,0,30464,3072,0,119/12,9.916666666666666,logical_simulated_ms,logical decision time; not wall latency
+methods,readback_state,,,reads,3072,3072,0,7680,3072,0,5/2,2.5,count,charged controller resource count
+methods,readback_state,,,dispatches,3072,3072,0,3840,3072,0,5/4,1.25,count,charged controller resource count
+methods,readback_state,,,waits,3072,3072,0,7680,3072,0,5/2,2.5,count,charged controller resource count
+methods,readback_state,,,decision_time_ms,3072,3072,0,675840,3072,0,220/1,220.0,logical_simulated_ms,logical decision time; not wall latency
+methods,reference,,,reads,3072,3072,0,7680,3072,0,5/2,2.5,count,charged controller resource count
+methods,reference,,,dispatches,3072,3072,0,3840,3072,0,5/4,1.25,count,charged controller resource count
+methods,reference,,,waits,3072,3072,0,7680,3072,0,5/2,2.5,count,charged controller resource count
+methods,reference,,,decision_time_ms,3072,3072,0,675840,3072,0,220/1,220.0,logical_simulated_ms,logical decision time; not wall latency
+methods,consequax_one_read,,,reads,3072,3072,0,3840,3072,0,5/4,1.25,count,charged controller resource count
+methods,consequax_one_read,,,dispatches,3072,3072,0,3840,3072,0,5/4,1.25,count,charged controller resource count
+methods,consequax_one_read,,,waits,3072,3072,0,3840,3072,0,5/4,1.25,count,charged controller resource count
+methods,consequax_one_read,,,decision_time_ms,3072,3072,0,614400,3072,0,200/1,200.0,logical_simulated_ms,logical decision time; not wall latency
+methods,consequax_poll,,,reads,3072,3072,0,7680,3072,0,5/2,2.5,count,charged controller resource count
+methods,consequax_poll,,,dispatches,3072,3072,0,3840,3072,0,5/4,1.25,count,charged controller resource count
+methods,consequax_poll,,,waits,3072,3072,0,7680,3072,0,5/2,2.5,count,charged controller resource count
+methods,consequax_poll,,,decision_time_ms,3072,3072,0,675840,3072,0,220/1,220.0,logical_simulated_ms,logical decision time; not wall latency

@@ -1,0 +1,5 @@
+Collecting websockets>=13.0 (from -r output/native-agent-preflight-2026-10-20/requirements-eager-voice.txt (line 1))
+  Downloading websockets-17.3-cp312-cp312-win_amd64.whl.metadata (6.5 kB)
+Downloading websockets-17.3-cp312-cp312-win_amd64.whl (219 kB)
+Installing collected packages: websockets
+Successfully installed websockets-17.3

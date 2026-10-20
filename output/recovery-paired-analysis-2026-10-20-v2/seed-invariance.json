@@ -1,0 +1,1110 @@
+{
+  "endpoints": [
+    "operational_safe_recovery",
+    "original_completion",
+    "recovery_completion",
+    "safe_recovery",
+    "duplicate_event",
+    "unwanted_event",
+    "state_false_success",
+    "action_linked_false_success",
+    "state_wrong_definite",
+    "action_linked_wrong_definite",
+    "state_definite",
+    "state_abstention",
+    "action_linked_definite",
+    "action_linked_abstention",
+    "dispatches",
+    "reads",
+    "waits",
+    "decision_time_ms",
+    "own_effect_count",
+    "duplicate_count",
+    "unwanted_effect_count"
+  ],
+  "groups": [
+    {
+      "case_id": "new-01-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-01-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-02-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-03-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-04-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-05-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-06-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-07-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-08-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-09-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-10-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-11-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-1",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_one_read",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "consequax_poll",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "readback_state",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "reference",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    },
+    {
+      "case_id": "new-12-2",
+      "distinct_recorded_metric_vectors": 1,
+      "method": "response_retry",
+      "planned_seeds": 128,
+      "statuses": [
+        "completed"
+      ]
+    }
+  ],
+  "groups_with_metric_variation": 0,
+  "schema": "recovery-case-method-seed-invariance-v1",
+  "scope": "All recorded endpoint/resource metrics; exogenous event timestamps may still vary. No task-population inference."
+}

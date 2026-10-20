@@ -1,0 +1,36 @@
+2026-10-20 18:29:16.834 | WARNING  | tau2.utils.utils:<module>:15 - No .env file found
+2026-10-20 18:29:16.834 | INFO     | tau2.utils.utils:<module>:23 - Using data directory from environment: C:\Users\DELL\OneDrive\Desktop\ConseqaX\tmp\tau2-bench-audit\data
+2026-10-20 18:29:26.850 | INFO     | tau2.utils.llm_utils:<module>:102 - LiteLLM: Cache is disabled
+2026-10-20 18:29:27.349 | DEBUG    | tau2.registry:<module>:281 - Registering default components...
+2026-10-20 18:29:27.398 | DEBUG    | tau2.registry:<module>:292 - Voice dependencies not installed, skipping voice user registration
+2026-10-20 18:29:27.399 | DEBUG    | tau2.registry:<module>:350 - Default components registered successfully. Registry info: {
+  "domains": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ],
+  "agents": [
+    "llm_agent",
+    "llm_agent_gt",
+    "llm_agent_solo",
+    "discrete_time_audio_native_agent"
+  ],
+  "users": [
+    "user_simulator",
+    "dummy_user"
+  ],
+  "task_sets": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom_full",
+    "telecom_small",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ]
+}
+{"prior_assistant_tool_call_preserved": false, "prior_tool_result_id_preserved": false, "tools_schema_preserved": true, "explicit_context_preserved": true, "native_policy_size": {"system_prompt_utf8_bytes": 8033, "native_tool_count": 14, "tool_schemas_utf8_bytes": 10505, "serialized_complete_input_utf8_bytes": 18872, "serialized_complete_input_sha256": "6e715c933a51877549718a7ea5c33d14e481da0ecc19e35659ecbd0e71fd5c3f", "exact_prompt_tokens": null, "tokenizer_status": "No verified exact installed Qwen3 offline tokenizer; no generation/tokenization endpoint called. Serialized bytes are not token counts.", "context_fit_verified": false, "dialogue_headroom_verified": false}, "network_attempts": [], "tracked_source_clean_after": true}

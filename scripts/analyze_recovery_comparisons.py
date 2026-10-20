@@ -41,7 +41,7 @@ def action_sequence(trial):
     return result
 
 
-def compare_pair(left, right):
+def compare_pair(left, right, *, include_polling_targets=False):
     if left["status"] != "completed" or right["status"] != "completed":
         return {"comparable": False, "mismatches": [], "claims": {}}
     fields = {
@@ -54,6 +54,24 @@ def compare_pair(left, right):
         "action_sequence": (action_sequence(left), action_sequence(right)),
         "full_ledger_truth": (left["truth"], right["truth"]),
     }
+    if include_polling_targets:
+        fields.update(
+            {
+                "dispatch_sequence": (
+                    [row for row in action_sequence(left) if row["kind"] == "dispatch"],
+                    [row for row in action_sequence(right) if row["kind"] == "dispatch"],
+                ),
+                "effect_history": (left["truth"]["records"], right["truth"]["records"]),
+                "endpoint_vector_excluding_reads_waits_time": tuple(
+                    {
+                        key: value
+                        for key, value in trial["metrics"].items()
+                        if key not in {"reads", "waits", "decision_time_ms"}
+                    }
+                    for trial in (left, right)
+                ),
+            }
+        )
     return {
         "comparable": True,
         "mismatches": [name for name, (a, b) in fields.items() if a != b],
@@ -111,15 +129,16 @@ def analyze(study, audit, output):
             previous = capabilities.setdefault(slot["case_id"], flag)
             guard.require(previous is flag, "public capability changes across paired cells")
     comparisons = []
-    for left_method, right_method in (
-        ("reference", "consequax_poll"),
-        ("readback_state", "consequax_poll"),
+    for left_method, right_method, polling_targets in (
+        ("reference", "consequax_poll", False),
+        ("readback_state", "consequax_poll", False),
+        ("consequax_poll", "consequax_one_read", True),
     ):
         pairs, mismatch_counts = [], {}
         identities = sorted({(case, seed) for case, seed, _ in trials})
         for case, seed in identities:
             left, right = trials[(case, seed, left_method)], trials[(case, seed, right_method)]
-            outcome = compare_pair(left, right)
+            outcome = compare_pair(left, right, include_polling_targets=polling_targets)
             for name in outcome["mismatches"]:
                 mismatch_counts[name] = mismatch_counts.get(name, 0) + 1
             pairs.append(
@@ -168,6 +187,37 @@ def analyze(study, audit, output):
                 }
             )
     output.mkdir(parents=True, exist_ok=False)
+    invariance = []
+    for case, method in sorted({(case, method) for case, _, method in trials}):
+        members = [
+            row
+            for (case_id, _, method_id), row in trials.items()
+            if case_id == case and method_id == method
+        ]
+        vectors = {
+            tuple(row["metrics"].get(endpoint) for endpoint in guard.ENDPOINTS) for row in members
+        }
+        invariance.append(
+            {
+                "case_id": case,
+                "method": method,
+                "planned_seeds": len(members),
+                "distinct_recorded_metric_vectors": len(vectors),
+                "statuses": sorted({row["status"] for row in members}),
+            }
+        )
+    guard.write_json(
+        output / "seed-invariance.json",
+        {
+            "schema": "recovery-case-method-seed-invariance-v1",
+            "endpoints": list(guard.ENDPOINTS),
+            "groups": invariance,
+            "groups_with_metric_variation": sum(
+                row["distinct_recorded_metric_vectors"] > 1 for row in invariance
+            ),
+            "scope": "All recorded endpoint/resource metrics; exogenous event timestamps may still vary. No task-population inference.",
+        },
+    )
     guard.write_json(
         output / "comparisons.json",
         {"schema": "recovery-paired-conformance-v1", "comparisons": comparisons},

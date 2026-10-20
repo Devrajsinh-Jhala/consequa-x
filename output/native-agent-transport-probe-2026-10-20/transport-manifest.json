@@ -1,0 +1,22 @@
+{
+  "schema": "conseqax-native-transport-preflight-manifest-v1",
+  "upstream_commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a",
+  "scope": "engineering preflight; no generation or task performance results",
+  "files": {
+    "configure-context-tag.py": "29fa44d3bddb62d5c3e7cedc099f28d2e01e66a6582770ff49c19686d2747f15",
+    "context-tag-config.json": "da80c708ca1f9bfe6f646ee86ee1a04f47b4888d3b59fe549efe8887d1d03130",
+    "context-tag-config.log": "34ac3ebb6a51972a1c5a62176f0f9534e7db32c354668a605b12c64454bfe42a",
+    "context-tag-started.json": "2f8d01665d1d18a8d5498da5b82f09cab7feb6a5e985464cbd27b196111b3bdf",
+    "generation-disposition.json": "ece97445c0e06a0f62370c01056c83bea29b9eb08afb4485153ec338af58883c",
+    "metadata-journal.jsonl": "b66486022f8c44b7e44a274ddfe74442b9bdd5e8595bd734984f697b1f603690",
+    "metadata.json": "f18c553a0e3a98df3d78dbedc455f9a3acd5cdcbc4be3811841d36d19b771dcd",
+    "offline-transform.json": "278ed7d403cbbcff694743840932655245e21ed7437faf642ed6a68fae0bdfe0",
+    "offline-transform.log": "347949cd99f39737fcf0c36c82257e61633bd7eb27b6ca519b154e6a8d7e02c3",
+    "probe-offline-transform.py": "9eb372c113b58bfe5905502862d207c659579c19565c88e2a7c598f31b731b24",
+    "probe-wire-no-dispatch.py": "994111d8b8eef1ed75f8dc9899d8718c565c6df54e6df8784335a74c7d298c25",
+    "README.md": "d58d02bd828fffb1b8f6b40680669d811180f4b3990c6f7670b4031bf3411ddb",
+    "verification.json": "2e1adab291c31185dca9cfbe508051ef141a8f77508845ea2e71330d6643d23b",
+    "wire-capture.json": "dd7e248de9d955ec5c6a4895b7cdb7433f2959715499a9c2a04ffc28a88525bb",
+    "wire-capture.log": "db806d57a23f4fce4f5aaa2778135717337cc82c700ad60ff467b1f80b76805c"
+  }
+}

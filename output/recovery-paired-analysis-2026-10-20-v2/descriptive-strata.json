@@ -1,0 +1,3405 @@
+{
+  "groups": [
+    {
+      "completed": 1792,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "consequax_one_read",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.7142857142857143,
+          "observed": 1792,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1792,
+          "sum": 358400,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 1.1428571428571428,
+          "observed": 1792,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.8571428571428571,
+          "observed": 1792,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 1.1428571428571428,
+          "observed": 1792,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1792,
+      "stratum": "false"
+    },
+    {
+      "completed": 1792,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "consequax_poll",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.7142857142857143,
+          "observed": 1792,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 211.42857142857142,
+          "observed": 1792,
+          "sum": 378880,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.2857142857142856,
+          "observed": 1792,
+          "sum": 4096,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.8571428571428571,
+          "observed": 1792,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.2857142857142856,
+          "observed": 1792,
+          "sum": 4096,
+          "unavailable": 0
+        }
+      },
+      "planned": 1792,
+      "stratum": "false"
+    },
+    {
+      "completed": 1792,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "readback_state",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.42857142857142855,
+          "observed": 1792,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 211.42857142857142,
+          "observed": 1792,
+          "sum": 378880,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.2857142857142856,
+          "observed": 1792,
+          "sum": 4096,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.8571428571428571,
+          "observed": 1792,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.2857142857142856,
+          "observed": 1792,
+          "sum": 4096,
+          "unavailable": 0
+        }
+      },
+      "planned": 1792,
+      "stratum": "false"
+    },
+    {
+      "completed": 1792,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "reference",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.7142857142857143,
+          "observed": 1792,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 211.42857142857142,
+          "observed": 1792,
+          "sum": 378880,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1792,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.2857142857142856,
+          "observed": 1792,
+          "sum": 4096,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.8571428571428571,
+          "observed": 1792,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.2857142857142856,
+          "observed": 1792,
+          "sum": 4096,
+          "unavailable": 0
+        }
+      },
+      "planned": 1792,
+      "stratum": "false"
+    },
+    {
+      "completed": 1792,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "response_retry",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.42857142857142855,
+          "observed": 1792,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 8.285714285714286,
+          "observed": 1792,
+          "sum": 14848,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.4285714285714286,
+          "observed": 1792,
+          "sum": 2560,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.42857142857142855,
+          "observed": 1792,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.4285714285714286,
+          "observed": 1792,
+          "sum": 2560,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.42857142857142855,
+          "observed": 1792,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.5714285714285714,
+          "observed": 1792,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.42857142857142855,
+          "observed": 1792,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.2857142857142857,
+          "observed": 1792,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.14285714285714285,
+          "observed": 1792,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 0.0,
+          "observed": 1792,
+          "sum": 0,
+          "unavailable": 0
+        }
+      },
+      "planned": 1792,
+      "stratum": "false"
+    },
+    {
+      "completed": 1280,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "consequax_one_read",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1280,
+          "sum": 256000,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.6,
+          "observed": 1280,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.8,
+          "observed": 1280,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 1.4,
+          "observed": 1280,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 1.4,
+          "observed": 1280,
+          "sum": 1792,
+          "unavailable": 0
+        }
+      },
+      "planned": 1280,
+      "stratum": "true"
+    },
+    {
+      "completed": 1280,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "consequax_poll",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 232.0,
+          "observed": 1280,
+          "sum": 296960,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.6,
+          "observed": 1280,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.8,
+          "observed": 1280,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.8,
+          "observed": 1280,
+          "sum": 3584,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.8,
+          "observed": 1280,
+          "sum": 3584,
+          "unavailable": 0
+        }
+      },
+      "planned": 1280,
+      "stratum": "true"
+    },
+    {
+      "completed": 1280,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "readback_state",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.8,
+          "observed": 1280,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.2,
+          "observed": 1280,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 232.0,
+          "observed": 1280,
+          "sum": 296960,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.6,
+          "observed": 1280,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.8,
+          "observed": 1280,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.8,
+          "observed": 1280,
+          "sum": 3584,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.8,
+          "observed": 1280,
+          "sum": 3584,
+          "unavailable": 0
+        }
+      },
+      "planned": 1280,
+      "stratum": "true"
+    },
+    {
+      "completed": 1280,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "reference",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 232.0,
+          "observed": 1280,
+          "sum": 296960,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.6,
+          "observed": 1280,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.8,
+          "observed": 1280,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.8,
+          "observed": 1280,
+          "sum": 3584,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.8,
+          "observed": 1280,
+          "sum": 3584,
+          "unavailable": 0
+        }
+      },
+      "planned": 1280,
+      "stratum": "true"
+    },
+    {
+      "completed": 1280,
+      "dimension": "native_idempotency",
+      "failed": 0,
+      "method": "response_retry",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.2,
+          "observed": 1280,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.2,
+          "observed": 1280,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 12.2,
+          "observed": 1280,
+          "sum": 15616,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.4,
+          "observed": 1280,
+          "sum": 1792,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.4,
+          "observed": 1280,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.6,
+          "observed": 1280,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.2,
+          "observed": 1280,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.2,
+          "observed": 1280,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 0.0,
+          "observed": 1280,
+          "sum": 0,
+          "unavailable": 0
+        }
+      },
+      "planned": 1280,
+      "stratum": "true"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "consequax_one_read",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "delivery_registration"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "consequax_poll",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 260.0,
+          "observed": 1024,
+          "sum": 266240,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 3.5,
+          "observed": 1024,
+          "sum": 3584,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 3.5,
+          "observed": 1024,
+          "sum": 3584,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "delivery_registration"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "readback_state",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 260.0,
+          "observed": 1024,
+          "sum": 266240,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 3.5,
+          "observed": 1024,
+          "sum": 3584,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 3.5,
+          "observed": 1024,
+          "sum": 3584,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "delivery_registration"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "reference",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 260.0,
+          "observed": 1024,
+          "sum": 266240,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 3.5,
+          "observed": 1024,
+          "sum": 3584,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 3.5,
+          "observed": 1024,
+          "sum": 3584,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "delivery_registration"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "response_retry",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 7.5,
+          "observed": 1024,
+          "sum": 7680,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.5,
+          "observed": 1024,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "delivery_registration"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "consequax_one_read",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.5,
+          "observed": 1024,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "inventory_reservation"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "consequax_poll",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.5,
+          "observed": 1024,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "inventory_reservation"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "readback_state",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.5,
+          "observed": 1024,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "inventory_reservation"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "reference",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.5,
+          "observed": 1024,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "inventory_reservation"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "response_retry",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 16.0,
+          "observed": 1024,
+          "sum": 16384,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.5,
+          "observed": 1024,
+          "sum": 1536,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "inventory_reservation"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "consequax_one_read",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "support_transition"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "consequax_poll",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "support_transition"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "readback_state",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "support_transition"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "reference",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 200.0,
+          "observed": 1024,
+          "sum": 204800,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 1.0,
+          "observed": 1024,
+          "sum": 1024,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 2.0,
+          "observed": 1024,
+          "sum": 2048,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "support_transition"
+    },
+    {
+      "completed": 1024,
+      "dimension": "domain",
+      "failed": 0,
+      "method": "response_retry",
+      "metrics": {
+        "action_linked_abstention": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "action_linked_definite": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "action_linked_false_success": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "action_linked_wrong_definite": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "decision_time_ms": {
+          "mean": 6.25,
+          "observed": 1024,
+          "sum": 6400,
+          "unavailable": 0
+        },
+        "dispatches": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "duplicate_count": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "duplicate_event": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "operational_safe_recovery": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "original_completion": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "own_effect_count": {
+          "mean": 1.25,
+          "observed": 1024,
+          "sum": 1280,
+          "unavailable": 0
+        },
+        "reads": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        },
+        "recovery_completion": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "safe_recovery": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_abstention": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "state_definite": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "state_false_success": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "state_wrong_definite": {
+          "mean": 0.75,
+          "observed": 1024,
+          "sum": 768,
+          "unavailable": 0
+        },
+        "unwanted_effect_count": {
+          "mean": 0.5,
+          "observed": 1024,
+          "sum": 512,
+          "unavailable": 0
+        },
+        "unwanted_event": {
+          "mean": 0.25,
+          "observed": 1024,
+          "sum": 256,
+          "unavailable": 0
+        },
+        "waits": {
+          "mean": 0.0,
+          "observed": 1024,
+          "sum": 0,
+          "unavailable": 0
+        }
+      },
+      "planned": 1024,
+      "stratum": "support_transition"
+    }
+  ],
+  "schema": "recovery-descriptive-strata-v1"
+}

@@ -1,0 +1,63 @@
+2026-10-20 18:25:22.140 | WARNING  | tau2.utils.utils:<module>:15 - No .env file found
+2026-10-20 18:25:22.140 | INFO     | tau2.utils.utils:<module>:23 - Using data directory from environment: C:\Users\DELL\OneDrive\Desktop\ConseqaX\tmp\tau2-bench-audit\data
+2026-10-20 18:25:30.549 | INFO     | tau2.utils.llm_utils:<module>:102 - LiteLLM: Cache is disabled
+2026-10-20 18:25:31.010 | DEBUG    | tau2.registry:<module>:281 - Registering default components...
+2026-10-20 18:25:31.066 | DEBUG    | tau2.registry:<module>:292 - Voice dependencies not installed, skipping voice user registration
+2026-10-20 18:25:31.066 | DEBUG    | tau2.registry:<module>:350 - Default components registered successfully. Registry info: {
+  "domains": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ],
+  "agents": [
+    "llm_agent",
+    "llm_agent_gt",
+    "llm_agent_solo",
+    "discrete_time_audio_native_agent"
+  ],
+  "users": [
+    "user_simulator",
+    "dummy_user"
+  ],
+  "task_sets": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom_full",
+    "telecom_small",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ]
+}
+{"passed_as_wire_capture": false, "actual_generation_attempts": 0, "source_unchanged": true, "network_attempts": [{"event": "socket.connect"}]}
+[{"id": "ollama-chat-native", "status": "captured_without_dispatch", "captured_requests": 1}, {"id": "openai-compatible-local", "status": "captured_without_dispatch", "captured_requests": 1}]
+Exception ignored in atexit callback: <function register_async_client_cleanup.<locals>.cleanup_wrapper at 0x000002905E8AF9C0>
+Traceback (most recent call last):
+  File "D:\ConsequaX-Research\native-agent-pilot-venv\Lib\site-packages\litellm\llms\custom_httpx\async_client_cleanup.py", line 88, in cleanup_wrapper
+    loop = asyncio.new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\events.py", line 823, in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\events.py", line 720, in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\windows_events.py", line 316, in __init__
+    super().__init__(proactor)
+  File "C:\Users\DELL\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\proactor_events.py", line 640, in __init__
+    self._make_self_pipe()
+  File "C:\Users\DELL\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\proactor_events.py", line 787, in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socket.py", line 623, in _fallback_socketpair
+    csock.connect((addr, port))
+  File "D:\ConsequaX-Research\paper-writing\output\native-agent-transport-probe-2026-10-20\probe-wire-no-dispatch.py", line 88, in <lambda>
+    socket.socket.connect = lambda *a, **k: blocked_socket("socket.connect")
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ConsequaX-Research\paper-writing\output\native-agent-transport-probe-2026-10-20\probe-wire-no-dispatch.py", line 64, in blocked_socket
+    raise StoppedBeforeDispatch("All socket traffic is blocked in wire-only inspection")
+StoppedBeforeDispatch: All socket traffic is blocked in wire-only inspection

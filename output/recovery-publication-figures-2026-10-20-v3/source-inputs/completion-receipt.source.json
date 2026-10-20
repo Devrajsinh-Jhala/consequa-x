@@ -1,0 +1,19 @@
+{
+  "complete": true,
+  "completed_trials": 15360,
+  "completed_utc": "2026-10-20T12:56:54.601865+00:00",
+  "completion_mode": "postcollection_artifact_finalization",
+  "external_application_calls": 0,
+  "failed_trials": 0,
+  "final_recheck_utc": "2026-10-20T12:56:54.601865+00:00",
+  "manifest_sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921",
+  "new_model_calls": 0,
+  "no_retries_or_replacements": true,
+  "original_runner_completion_receipt_present": false,
+  "planned_trials": 15360,
+  "postcollection_finalization_record_sha256": "26fabbec4c16af115ad367086efd247e0660af801f0290fe57fa4265a84440a0",
+  "protocol_sha256": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa",
+  "schema": "conseqa-recovery-controller-study-v1",
+  "source_and_runtime_final_recheck": true,
+  "world_execution_performed_during_finalization": false
+}

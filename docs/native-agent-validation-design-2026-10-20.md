@@ -1,11 +1,14 @@
 # Prospective native autonomous validation — 20 October 2026
 
 Status: feasibility assessment and proposed protocol, not executed agent results.
-No model generation, model download, paid call, service/configuration change,
-source-package edit, staging, commit, or publication was performed. This assessment
+No model generation, model download, paid call, global service change,
+original-model configuration change, upstream source-package edit, staging,
+commit, or publication was performed. A separate reversible local context-profile
+tag was created from the already installed weights, as recorded below. This assessment
 did not inspect `heldout_cases.json` or partial recovery-study outputs. It used
 public benchmark source, the existing state-transfer protocol/runner, dependency
-metadata, and a network-blocked native import probe.
+metadata, authorized dependency installation in a new isolated environment, and
+network-blocked native import probes.
 
 ## Recommendation
 
@@ -26,7 +29,7 @@ versioned evaluator-configuration adaptation, or later upstream support. Until
 that exists and is validated, report retail DB/communication diagnostics as
 components only. Do not call them a full retail evaluation.
 
-There is no demonstrated tool-call compatibility, memory fit, latency, task
+There is no demonstrated model-emitted tool-call compatibility, memory fit, latency, task
 success, judge validity, effect size, or acceptance probability yet. With 16 GB
 RAM and about 4 GB free, serial execution of the one installed model is the only
 proposed mode; even that needs a measured resource preflight.
@@ -40,8 +43,8 @@ The repository is branded tau3-bench but its distribution remains `tau2` 1.0.1.
 Its [project metadata](https://github.com/sierra-research/tau2-bench/blob/96a3ef92329baf908ffe9dfe188cea34e8701d2a/pyproject.toml#L5-L35)
 requires Python `>=3.12,<3.14` and LiteLLM `>=1.80.15,<1.82.7`.
 
-The existing [state-transfer design](D:/ConsequaX-Research/paper-writing/docs/tau-benchmark-validation.md)
-and [runner](D:/ConsequaX-Research/paper-writing/scripts/run_tau_benchmark_validation.py:1)
+The existing [state-transfer design](tau-benchmark-validation.md)
+and [runner](../scripts/run_tau_benchmark_validation.py)
 explicitly measure model-free state transfer. Their 164 tasks / 656 controlled
 replays are not autonomous trajectories or independently sampled agents.
 `payload_contract` takes only the intended tool payload and public preflight
@@ -89,38 +92,132 @@ airline bases. [Simulation execution, 58–85](https://github.com/sierra-researc
 calls that unchanged evaluation path. Retain every component result, original
 task `reward_basis`, termination reason, and strict-replay disposition.
 
-## Missing environment and exact next checks
+## Dependency preflight and remaining execution checks
 
 The DB-only target `D:/ConsequaX-Research/tau-native-dependencies` is insufficient
 for native autonomous imports. A bytecode-disabled, dotenv-disabled import with
 sockets blocked stopped at `llm_utils.py:14`, `ModuleNotFoundError: litellm`.
-It made no generation request. The available base Python is 3.12.10, whereas the
-prior state-transfer freeze recorded 3.12.14; do not silently reuse that runtime
-identity. Combined base/target metadata also lacks declared `psutil` and the
+It made no generation request. The system executable actually probed was
+`C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe`, version
+3.12.10. This is distinct from the bundled runtime at
+`C:/Users/DELL/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe`,
+which is 3.12.14, as is the existing recovery-study environment. The prior
+state-transfer freeze also recorded 3.12.14. Do not conflate these interpreter
+identities. Combined system-3.12.10/DB-target metadata lacked declared `psutil` and the
 usual LiteLLM OpenAI/tiktoken dependencies. The DB target alone lacks many more
 declared runner dependencies. Inventory is not an installed working environment.
 
-Next implementation work, in order:
+The subsequent authorized dependency preflight created
+`D:/ConsequaX-Research/native-agent-pilot-venv` from bundled Python **3.12.14**.
+All 19 declared upstream base requirements installed, with LiteLLM fixed to
+**1.82.6** inside its declared range; 79 distributions including pip are recorded.
+The base dependency consistency check passed. Exact versions, package-download hashes,
+runtime provenance, logs and the import probe are in the
+[preflight record](../output/native-agent-preflight-2026-10-20/README.md).
 
-1. Create a dedicated native-agent research environment using Python 3.12 or
-   3.13. Resolve and pin every declared base dependency and transitive package,
-   particularly the permitted LiteLLM range, without changing ConsequaX or the
-   sealed DB-only target. Record interpreter path/hash and complete lock.
-2. Repeat the no-network import check with normal `tau2` initializers. The
+**The native runner did not import with base dependencies alone.** The
+normal initializer path stops at `simulation.py:62` → OpenAI audio initializer →
+`openai/provider.py:12`, which imports missing `websockets`. Upstream declares
+`websockets>=13.0` only in the `voice` extra (pyproject line 47), not the base text
+requirements. Under a subsequent narrow authorization, **websockets 17.3** was
+added; no other extra was requested. The final environment contains 80
+distributions including pip. The consistency check and normal native imports
+then **passed**, including CLI, builder, simulation, assistant, user, and required
+evaluators, without namespace bypasses. Both the retained base-only failure and
+successful final probe recorded zero socket/DNS attempts, zero source-write
+attempts, zero imported subprocess attempts, and unchanged pinned source. This
+was an upstream eager-import packaging issue, not a model failure. The Python
+audit guard is not an OS-level firewall for arbitrary native-code networking.
+No tasks were requested or evaluated. Dependency/native-import preparation is
+complete; model transport, tool calling, and autonomous execution remain untested.
+
+## Task-independent transport preflight: retained failures and resource gate
+
+The subsequent [transport record](../output/native-agent-transport-probe-2026-10-20/README.md)
+contains **zero generation attempts**. Its 12-request development budget was
+not consumed. No official task IDs, scenarios, reference actions, or expected
+databases were read for this transport check; the full public airline policy
+and native tool schemas were inspected without executing a tool.
+
+The original `ollama_chat/<installed-tag>` candidate failed an offline history
+gate. In installed LiteLLM 1.82.6, `OllamaChatConfig.transform_request` converts
+prior assistant tool calls into `new_tools` but does not attach them to the
+new outgoing assistant message. A direct invocation of that unchanged
+transformer, with messages produced by native `to_litellm_messages`, retained
+the tool schema and explicit context setting but lost the prior assistant
+`tool_calls` and the tool result's ID. This is a reproducible transport defect,
+not evidence that Qwen itself cannot call tools. No package source was patched.
+
+The separate `openai/<installed-tag>` candidate, pointed explicitly at
+`http://127.0.0.1:11434/v1`, preserved prior native tool calls, arguments, IDs,
+tool results, and schemas in an intercepted HTTP request. Dispatch was refused
+before network I/O and no synthetic provider response was returned. The first
+full native-generation wire inspection is retained with a failed guard
+disposition: it also encountered a blocked socket connection; its Ollama
+capture was only the preliminary `/api/show` request, not a chat request.
+The separate direct-transform record resolves the chat-body question without
+networking. The exit log also retains a refused asyncio cleanup socketpair
+connection. These failed preflight dispositions were not replaced with success.
+
+Sending `options.num_ctx` in an OpenAI-compatible request does not establish
+that the server applies it. Ollama's [official compatibility documentation](https://docs.ollama.com/api/openai-compatibility#setting-the-local-context-size)
+states that this API has no request-level context-size control and recommends
+a separate model profile. Under a narrow authorization, the previously absent
+tag `conseqax-native-probe-20261020:ctx16k` was therefore created via the official
+local API, with `from` equal to the installed Qwen tag and `num_ctx=16384`.
+Its digest is `7f091551b95c30f4ff31a067faa273f56a3563b556cfd3d9f80d47c9b5d20ffc`.
+The original model digest and complete `/api/show` response stayed unchanged;
+the generated profiles point to the same weight blob and have identical
+architecture metadata. The new tag was not loaded by creation. There were no
+weight downloads, aliases for a hosted model, or global service changes.
+
+The conservative pre-load memory gate then failed: available physical memory
+was **4,024,180,736 bytes**, while the declared check required
+**5,986,954,731 bytes**: 2,497,293,803 bytes of model size, 2,415,919,104 bytes
+of estimated fp16 KV cache for 16,384 tokens, and 1 GiB of scratch/OS headroom.
+The estimate uses the installed model's 36 layers, eight KV heads and 128
+dimensions per head. It is a conservative development gate, not a measured
+allocation, proof of OOM, or assertion about an uninspected cache configuration.
+No generation or model loading was attempted after that refusal.
+
+The unchanged native airline system prompt is 8,033 UTF-8 bytes, and its 14
+native tool schemas are 10,505 bytes. A task-independent synthetic opening
+plus both yields 18,872 serialized bytes. **Bytes are not tokens**: no verified
+exact Qwen3 tokenizer or measured prompt-token count was available, so complete
+prompt fit and accumulated-dialogue headroom remain unverified. A lower context
+profile was not substituted based on an estimate.
+
+The real autonomous pilot **cannot start from these results**. Remaining gates
+are sufficient measured memory headroom; exact prompt-size/context checks that
+refuse truncation; model-emitted native tool calls and follow-up; then native
+assistant/user smoke under the complete policy. The separate tag and both
+original failed candidates remain recorded. This is engineering preflight,
+not external task validation or an agent-performance result.
+
+Remaining implementation work, in order:
+
+1. Base dependencies and the minimal eager voice import dependency are prepared
+   as recorded above. Retain the final exact lock; do not add the whole voice
+   stack or change the sealed DB-only target as a shortcut.
+2. The no-network import check with normal `tau2` initializers passed. Repeat
+   only if source or dependencies change. The
    existing namespace bypass is evidence only for DB-component integration.
    Native runner imports pull voice-related facades even in text mode
    (`tau2/__init__.py:13`; `registry.py:7–9`; audio agent lines 80–82; OpenAI
    audio initializer lines 5–32). Install only demonstrated import dependencies
    in the isolated environment; do not assume installing the base list fixes
    every eager-import problem. No audio provider needs to execute.
-3. Check the installed Ollama version, exact model digest, quantization,
-   advertised capabilities, context configuration, and free RAM using metadata
-   requests only. Record these afresh. Do not pull or substitute a model.
-4. After a new execution authorization, use at most 12 **development-only**
-   local requests to exercise native prompt+schema generation, a native read
+3. The installed metadata and separate 16k profile have been recorded. Obtain
+   sufficient memory headroom and verify full native input and dialogue fit
+   before loading the research tag. Do not pull or substitute weights or
+   silently lower/truncate context. The original tag remains unchanged.
+4. The current task-independent allowance is at most 12 **development-only**
+   local generation attempts, all unused. After the gates above pass, exercise
+   native prompt+schema generation, a native read
    tool call, follow-up after a ToolMessage, ordinary user dialogue, stop
    behavior, and the JSON judge format on disclosed toy assertions. Use prior
-   adapter-development tasks retail:0 / airline:19,20 only for end-to-end smoke;
+   adapter-development tasks retail:0 / airline:19,20 only for a later,
+   separately scoped end-to-end smoke;
    these are excluded from the proposed pilot. Allow at most 36 additional
    attempted requests across those three smoke episodes, for 48 development
    requests total; never consume evaluation IDs while tuning. Stop on malformed
@@ -132,8 +229,8 @@ describes `ollama_chat`, `api_base`, and native tools, but also warns that unkno
 tool support may fall back to JSON-mode emulation. The
 [Ollama tool-calling documentation](https://docs.ollama.com/capabilities/tool-calling)
 defines structured calls and follow-up tool messages. These primary docs were
-checked on 20 October 2026; they do not establish behavior for the as-yet
-uninstalled permitted LiteLLM version and exact local quantization. Disable or
+checked on 20 October 2026; they do not establish generation/tool-call behavior
+for the installed LiteLLM 1.82.6 and exact local quantization. Disable or
 refuse emulated tool calls for a claim of native tool calling. Do not rewrite
 the upstream instruction to accommodate a model until a separately versioned
 prompt-adapted condition is declared.
@@ -154,8 +251,15 @@ evaluation generation.
 
 Stage B reuses six Stage A airline IDs if both stages run. Do not sum them into
 24 independent tasks: their union has 18. These are exploratory, deliberately
-stratified subsets with prior public/model-free exposure, not a hidden holdout or
-a representative corpus success estimate. Twelve unique tasks meet the minimum
+stratified subsets, not a representative corpus success estimate. **All 50
+official airline and 114 official retail task definitions were used in the
+earlier model-free state-transfer experiment and exposed to adapter authors.**
+The prospective pilot adds a new autonomous agent-execution condition on that
+previously exposed corpus. It is neither an author-unseen task holdout nor an
+independent selection from a fresh corpus. “Metadata-only selection” means that
+no autonomous model outcomes determined selection; it does not mean there was
+no prior task exposure. Gold/reference actions and expected databases must
+never enter assistant messages or contract compilation. Twelve unique tasks meet the minimum
 independent-ID target; repetitions, seeds, arms, and call attempts do not increase
 that number. Shared domain/task families may still create dependence.
 

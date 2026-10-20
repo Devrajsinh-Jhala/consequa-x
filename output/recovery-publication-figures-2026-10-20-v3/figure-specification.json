@@ -1,0 +1,82 @@
+{
+  "annotation_revision": "Explicit seed-invariance disclosure added after complete casewise audit; displayed values and selections unchanged.",
+  "colors": {
+    "abstain": "#999999",
+    "correct": "#0072B2",
+    "dispatches": "#E69F00",
+    "duplicate": "#D55E00",
+    "incorrect": "#D55E00",
+    "original": "#E69F00",
+    "reads": "#0072B2",
+    "recovery": "#009E73",
+    "safe": "#0072B2",
+    "unwanted": "#CC79A7"
+  },
+  "contrasts": [
+    [
+      "consequax_poll",
+      "response_retry"
+    ],
+    [
+      "consequax_poll",
+      "readback_state"
+    ],
+    [
+      "consequax_poll",
+      "reference"
+    ],
+    [
+      "consequax_poll",
+      "consequax_one_read"
+    ]
+  ],
+  "denominators": {
+    "equal_family_primary_difference": "unweighted arithmetic mean of all 12 family differences",
+    "family_primary_difference": "paired case-seed differences within each family",
+    "operational_safe_recovery": "all planned slots; operational failure is false",
+    "resource_means": "observed slots only; counts, not wall latency",
+    "semantic_rates": "observed slots; unavailable slots explicitly shown",
+    "state_claim_yields": "all planned slots; failures remain unavailable, not abstentions"
+  },
+  "family_order": "ascending literal family_id; every planned family",
+  "heatmap_colormap": "RdBu",
+  "heatmap_figure_inches": [
+    9.5,
+    8.3
+  ],
+  "heatmap_limits": [
+    -1,
+    1
+  ],
+  "heatmap_midpoint": 0,
+  "layout_revision": 2,
+  "layout_revision_reason": "Postcollection visual QA: separate fraction lines and heatmap footer from tick labels; endpoints, methods, families, values and scales unchanged.",
+  "method_order": [
+    "response_retry",
+    "readback_state",
+    "reference",
+    "consequax_one_read",
+    "consequax_poll"
+  ],
+  "minimum_font_points": 10.5,
+  "png_dpi": 300,
+  "population_inference": false,
+  "primary": "operational_safe_recovery",
+  "rate_ticks": [
+    0,
+    0.5,
+    1
+  ],
+  "resource_ticks": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "summary_figure_inches": [
+    9.5,
+    11.2
+  ],
+  "uncertainty_intervals": false
+}

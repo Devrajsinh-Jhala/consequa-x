@@ -1,0 +1,19 @@
+{
+  "schema": "conseqax-transport-record-verification-v1",
+  "checks": {
+    "all_json_parses": true,
+    "zero_generation_in_every_record": true,
+    "openai_prior_tool_call_preserved": true,
+    "openai_tool_result_association_preserved": true,
+    "openai_native_tool_schema_preserved": true,
+    "ollama_transform_loss_explicit": true,
+    "context_tag_verified": true,
+    "memory_gate_refused": true,
+    "context_fit_not_fabricated": true,
+    "failed_wire_guard_retained": true,
+    "offline_probe_has_no_network_or_task_reads": true,
+    "pilot_not_started": true,
+    "upstream_source_clean": true
+  },
+  "passed": true
+}

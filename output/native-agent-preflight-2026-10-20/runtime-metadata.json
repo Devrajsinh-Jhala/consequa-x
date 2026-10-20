@@ -1,0 +1,14 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+  "base_executable": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "source": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tau2-bench-audit",
+  "upstream_commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a",
+  "distribution": "tau2",
+  "distribution_version": "1.0.1",
+  "requires_python": ">=3.12,<3.14",
+  "liteLLM_selection": "1.82.6: exact pin within declared >=1.80.15,<1.82.7; installation must resolve successfully",
+  "python_executable_sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92",
+  "base_executable_sha256": "b07b03b9ba866a341a3c13ee69710fbc8d43d4ce2523dee13f6df5c25378d15b",
+  "websockets_selection": "17.3: explicit minimally authorized eager voice dependency; satisfies >=13.0"
+}

@@ -1,9 +1,40 @@
 # Manuscript claims and evidence
 
-This ledger is a review aid for [manuscript.md](manuscript.md), drafted
-13 October 2026, updated 19 October 2026. A completed implementation or integration check is not evidence
-of held-out empirical superiority. Retained studies keep their frozen revisions
-and methods even when the current framework changes.
+This ledger is a review aid for the current [focused manuscript](conseqax-research.md)
+and the [historical extended manuscript](manuscript.md), drafted 13 October 2026
+and updated 20 October 2026. A completed implementation or integration check is
+not evidence of held-out empirical superiority. Retained studies keep their
+frozen revisions and methods even when the current framework changes.
+
+## Current objective evaluation — 20 October 2026
+
+The following entries supersede current-version and unfinished-study statements
+in the dated historical ledger below. This paper evaluates software/systems
+behavior using SQLite state and effect-ledger truth, separately implemented
+reference rules, automated artifact audits, and controlled comparisons. It makes
+no interpretability, preference, or rationale-quality claim. Historical rationale
+annotations, including the unblinded T15 claim, are excluded from the current
+paper and are not empirically validated here. No participant study or annotation
+requirement is part of the current evaluation; the unused optional follow-up
+was withdrawn as recorded in the [review addendum](recovery-review-response-2026-10-20.md).
+
+| Claim or result | Evidence | Status and scope |
+| --- | --- | --- |
+| Study A retains every scheduled world, with limited effective diversity | [Protocol](../output/recovery-controller-protocol-2026-10-20/protocol.json), [summary](../output/recovery-controller-study-2026-10-20/summary.json), [audited findings](recovery-study-findings-2026-10-20.md) | 15,360/15,360 complete, zero failed; 3,072 per policy. Source `22e88498cff0e2afd1549803fb4d9645902e74b9`, protocol SHA-256 `b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa`, package 2.1.1. All recorded endpoint/resource metrics are invariant over seeds in each of 120 case-policy groups. The evidence is 24 authored cases in 12 purposive families, not 15,360 independent tasks or task-population inference. |
+| Readback policies improve the declared response baseline but match the strong reference | [Paired contrasts](../output/recovery-publication-figures-2026-10-20-v3/paired-contrasts.csv), [all-family differences](../output/recovery-publication-figures-2026-10-20-v3/family-safe-recovery-contrasts.csv) | Operational safe recovery is 1,792/3,072 for every readback policy versus 1,024/3,072 for response retry. The equal-family primary difference is +0.25: three +1 families and nine zero. All reference-polling final reports, actions, endpoint vectors, and retained truth agree. This is shared-policy implementation conformance, not strong-reference superiority. State-only and provenance-aware policies have identical actions; provenance changes reporting here. |
+| Study A shows no incremental polling benefit and retains residual harm | [Exact metrics](../output/recovery-publication-figures-2026-10-20-v3/summary-metrics.csv), [resource counts](../output/recovery-publication-figures-2026-10-20-v3/resources-and-logical-decision-time.csv), [findings](recovery-study-findings-2026-10-20.md) | Polling and one-final-read have identical final claims and physical outcomes; reads are 7,680 versus 3,840 and mean simulated decision time 220 versus 200 ms, not production latency. The schedules omit evidence that becomes admissible only at a later poll. Every readback policy still has 256 worlds with overlapping own duplicate and wrong-payload events; detection does not repair them. Original D/H truth, later R/S recovery, and hindsight report correctness remain distinct. |
+| Retained Study A semantics pass host and portable audits, with a packaging deviation | [Original-host receipt](../output/recovery-controller-audit-2026-10-20/audit-receipt.json), [portable receipt](../output/recovery-portable-audit-2026-10-20/portable-audit-receipt.json), [finalization record](../output/recovery-artifact-finalization-2026-10-20/finalization-record.json) | Both audits queried all 15,360 SQLite snapshots and recomputed the summary. The original terminal manifest/receipt was absent; the original exit status and cause are unknown. A separate finalizer preserved existing bytes and created packaging only, with no worlds rerun. Finalization-record SHA-256 is `26fabbec4c16af115ad367086efd247e0660af801f0290fe57fa4265a84440a0`. Separate audit code is not external replication; source trust and absence of off-record activity are not proved. Study readback uses the same SQLite ledger/connection as the simulated world, distinct from the acknowledgement signal; only postcollection snapshot auditing is read-only. |
+| Study B availability grid completed and passed its saved-artifact audit | [Registered protocol](../output/recovery-availability-protocol-2026-10-20/protocol.json), [raw summary](../output/recovery-availability-study-2026-10-20/summary.json), [terminal receipt](../output/recovery-availability-study-2026-10-20/completion-receipt.json), [audit receipt](../output/recovery-availability-audit-2026-10-20/audit-receipt.json), [coverage analysis](../output/recovery-availability-audit-2026-10-20/coverage-analysis.json) | Protocol SHA-256 `e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584`, registered at `b937920469285cdd971783fa6cb33216a7e4da13`, source `d805b3e3560c05ee0a7efd02a80fc18503c6ee05`, package 2.1.1. All 960 worlds completed normally, zero failed: 64 controlled profiles × three domains × five policies. The auditor verified 1,925 artifacts and queried all 960 SQLite snapshots, including recorded-host byte checks; this does not attest the original execution or prove first-run exclusivity. This follow-up was designed after Study A, not held out or externally sampled. |
+| Study B changes evidence coverage and cost, not physical recovery | [Coverage analysis and all cells](../output/recovery-availability-audit-2026-10-20/coverage-analysis.json), [design](../docs/recovery-availability-sweep.md) | Each policy has 192/192 safe recoveries, one own effect per world, zero duplicate/unwanted events, and identical physical effect histories in all 192 five-arm cells. One final read yields correct state/linkage in 3/192, unknown in 189, using 192 reads and mean logical time 150 ms. Polling/reference yield 81/192 correct state/linkage, 111 unknown, 741 reads, mean 224.375 ms. State-only has the same state yield, reads, actions, and time but abstains on all 192 linked reports. Response retry yields 192/192 correct state/linkage from ACK, zero horizon-qualified reads, and mean 2 ms; the uniform-safe design cannot estimate its false-success risk. The polling state-yield gain over one final read is 78/192 = 26/64 profiles = 0.40625, shared by the reference and state-only rule; there is no primary recovery gain. Reference-polling reports, dispatches, and all metrics agree. The observed 1/64 versus 27/64 profile yields agree with prospective diagnostics, not an audit pass condition. Logical time is not production latency; no population confidence interval, p-value, or autonomous-task generalization is claimed. |
+| Published software and measured research have different versions | [2.1.2 release record](../output/release-2.1.2-2026-10-20/README.md), [publication receipt](../output/release-2.1.2-2026-10-20/publication.json) | Product 2.1.2 is published; the controlled research retains its exact 2.1.1 pin. Selected record-verification paths and application controller logic are measured, not the complete release feature surface, public blocking polling helper, deployed services, or SDK/telemetry effectiveness. Earlier 1.1.0 and 2.0 experiments retain their original versions. |
+
+## Historical ledger through 19 October 2026
+
+The entries below retain their original numerical descriptions and historical
+version labels. In particular, “current 2.1.1” and “no 2.1.1 research collection”
+describe the 19 October checkpoint, superseded by the dated update above. Their
+rationale annotations remain historical records rather than current-paper
+evidence or a plan for additional annotation.
 
 | Claim or result | Evidence | Status and scope |
 | --- | --- | --- |
@@ -112,23 +143,28 @@ with exact point parity and 384 unavailable for both engines. All factual/call
 totals agree, and no non-budget discrepancy was found. The separately disclosed
 64-group collector limitation restricts native refused-attempt interpretation;
 it does not change eligible estimates or fresh-call accounting.
-The software's 1.1.1 metadata release, additive 1.2.0 and breaking 2.0.0 leave
-every historical source/version pin above unchanged, as does current 2.1.1. The
+The software's later releases leave every historical source/version pin above
+unchanged. The
 separate sealed 2.0 migration study reports 503/503 canonical agreement, including
 unknown evidence, over 503 retained traces / 504 original slots and 275 exact
 diagnosis-code changes. It supplies post-hoc compatibility evidence only; the
-independent artifact audit completed 71,383 checks with zero errors, and current
-2.1.1 feature validation is unmeasured.
+independent artifact audit completed 71,383 checks with zero errors. The current
+controlled 2.1.1 study has the narrower scope recorded in the 20 October update;
+it does not supply full-release feature validation.
 
-## Submission requirements still open
+## Limits, extensions, and submission preparation
 
-The working protocol/software manuscript retains bounded claims; a
-confirmatory superiority paper is a separate research objective. The completed
-local judge, model-free state transfer and audited native CAR comparison
-narrow specific gaps. Independent human checking, autonomous benchmark reward,
-controller comparisons, a precision/sample-size justification, held-out task
-and fault-composition populations, replay fidelity and joint-fault scope remain
-open. Generic IEEE
-conference formatting is selected, with no specific venue yet. Before submission,
-confirm author/contributor credit, any affiliation, conflict/funding disclosures,
-venue-specific requirements, and a reviewer-access or immutable-archive plan.
+The focused paper reports a conditional software/systems evaluation; a general
+superiority claim would require broader evidence. Objective extensions include
+actual autonomous-agent benchmark decisions with native reward and matched
+classical controls, independent adapter-predicate and provider-service ground
+truth, held-out task/fault populations, and a sampling/precision design suited
+to any population claim. Replay fidelity and joint-fault scope remain bounded
+by their historical experiments. These limits are disclosed rather than
+converted into a mandatory participant study.
+
+Generic IEEE formatting is selected, with no specific venue yet. An immutable
+archive, author/contact and contributor metadata, conflict/funding disclosures,
+and actual venue requirements remain submission preparation. Methodological
+novelty and transfer beyond the controlled substrate remain substantive review
+questions. No acceptance or submission is claimed. GitHub Actions remains disabled.

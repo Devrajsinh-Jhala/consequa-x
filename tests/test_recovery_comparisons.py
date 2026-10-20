@@ -113,12 +113,63 @@ def test_equal_aggregate_means_do_not_establish_per_pair_parity():
 
 
 @pytest.mark.parametrize("left_failed,right_failed", [(True, False), (False, True), (True, True)])
+@pytest.mark.parametrize("include_polling_targets", [False, True])
 def test_failed_pairs_are_incomparable_without_accessing_missing_semantic_fields(
-        left_failed, right_failed):
+        left_failed, right_failed, include_polling_targets):
     left = failed_trial() if left_failed else completed_trial()
     right = failed_trial() if right_failed else completed_trial()
-    assert comparisons.compare_pair(left, right) == {
+    assert comparisons.compare_pair(left, right, include_polling_targets=include_polling_targets) == {
         "comparable": False, "mismatches": [], "claims": {}}
+
+
+def test_polling_targets_preserve_full_cost_differences_but_allow_equal_physical_outcomes():
+    left = completed_trial()
+    left["metrics"].update(waits=1, decision_time_ms=12)
+    left["truth"]["readback_log"] = [{"at_ms": 10}]
+    right = deepcopy(left)
+    right["metrics"].update(reads=2, waits=2, decision_time_ms=22)
+    right["trajectory"][-1:-1] = [
+        {"kind": "wait", "at_ms": 18}, {"kind": "read", "at_ms": 20},
+        {"kind": "readback", "at_ms": 20},
+    ]
+    right["trajectory"][-1]["at_ms"] = 22
+    right["truth"]["readback_log"].append({"at_ms": 20})
+    result = comparisons.compare_pair(left, right, include_polling_targets=True)
+    assert result["comparable"]
+    # The original comparison still exposes all observed resource/history differences.
+    assert set(result["mismatches"]) == {"endpoint_vector", "action_sequence", "full_ledger_truth"}
+    assert result["claims"] == {
+        "final_state_claim": {"left": True, "right": True},
+        "final_action_linked_claim": {"left": True, "right": True},
+    }
+
+
+@pytest.mark.parametrize("identity", ["action_id", "attempt_id", "idempotency_key", "actor"])
+def test_polling_dispatch_target_never_discards_a_changed_operation_identity(identity):
+    left = completed_trial()
+    right = deepcopy(left)
+    right["trajectory"][0]["decision"][identity] = "different-operation"
+    result = comparisons.compare_pair(left, right, include_polling_targets=True)
+    assert set(result["mismatches"]) == {"action_sequence", "dispatch_sequence"}
+
+
+@pytest.mark.parametrize("change,expected", [
+    ("effect", {"full_ledger_truth", "effect_history"}),
+    ("operational", {"endpoint_vector", "endpoint_vector_excluding_reads_waits_time"}),
+    ("semantic", {"endpoint_vector", "endpoint_vector_excluding_reads_waits_time"}),
+])
+def test_polling_reduced_targets_retain_physical_history_and_non_resource_endpoints(change, expected):
+    left = completed_trial()
+    left["truth"]["records"] = [{"effect_id": "original-effect", "committed_at_ms": 4}]
+    right = deepcopy(left)
+    if change == "effect":
+        right["truth"]["records"][0]["committed_at_ms"] = 5
+    elif change == "operational":
+        right["metrics"]["operational_safe_recovery"] = False
+    else:
+        right["metrics"]["safe_recovery"] = False
+    result = comparisons.compare_pair(left, right, include_polling_targets=True)
+    assert set(result["mismatches"]) == expected
 
 
 def test_aggregate_retains_failures_only_as_operational_false():

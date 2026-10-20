@@ -2,7 +2,8 @@
 
 This postcollection source does not import the framework, application world,
 runner, or auditor. It never opens a trial/database or executes a study. All
-display choices below are fixed before the script is first given measured data.
+endpoint/family/contrast selections were fixed before measured data were read.
+Layout-only revisions after visual inspection are versioned explicitly.
 """
 
 from __future__ import annotations
@@ -76,6 +77,9 @@ COLORS = {
     "dispatches": "#E69F00",
 }
 SPEC = {
+    "annotation_revision": "Explicit seed-invariance disclosure added after complete casewise audit; displayed values and selections unchanged.",
+    "layout_revision": 2,
+    "layout_revision_reason": "Postcollection visual QA: separate fraction lines and heatmap footer from tick labels; endpoints, methods, families, values and scales unchanged.",
     "method_order": list(METHODS),
     "family_order": "ascending literal family_id; every planned family",
     "contrasts": [list(pair) for pair in CONTRASTS],
@@ -790,7 +794,7 @@ def render_figures(bundle, output):
     fig.text(
         0.03,
         0.944,
-        "Audited full-ledger outcomes and report correctness · exact counts · all five frozen methods",
+        "24 authored cases x 128 seeds per method; no within-case recorded-metric variation",
         fontsize=10.5,
     )
     y = np.arange(len(METHODS))
@@ -801,14 +805,14 @@ def render_figures(bundle, output):
 
     def grouped(ax, series, title, *, resource=False, show_names=True):
         n = len(series)
-        offsets = (np.arange(n) - (n - 1) / 2) * 0.205
+        offsets = (np.arange(n) - (n - 1) / 2) * 0.32
         for offset, (legend, color, provider) in zip(offsets, series):
             values, texts = [], []
             for method in METHODS:
                 value, text = provider(groups[(method,)])
                 values.append(value if value is not None else 0)
                 texts.append(text)
-            ax.barh(y + offset, values, height=0.175, color=color, label=legend)
+            ax.barh(y + offset, values, height=0.245, color=color, label=legend)
             for yi, text in zip(y + offset, texts):
                 ax.text(
                     4.13 if resource else 1.035, yi, text, va="center", ha="left", fontsize=10.5
@@ -937,7 +941,7 @@ def render_figures(bundle, output):
     for family in families:
         matrix.append([float(lookup[identity][family]) for identity in CONTRASTS])
     fig, ax = plt.subplots(figsize=SPEC["heatmap_figure_inches"])
-    fig.subplots_adjust(left=0.42, right=0.88, bottom=0.20, top=0.84)
+    fig.subplots_adjust(left=0.42, right=0.88, bottom=0.28, top=0.84)
     im = ax.imshow(
         matrix,
         cmap=SPEC["heatmap_colormap"],
@@ -983,7 +987,7 @@ def render_figures(bundle, output):
     fig.text(
         0.03,
         0.14,
-        "All 12 family IDs are sorted literally; domain labels come only from the frozen schedule.",
+        "Two authored cases per family x 128 seeds; recorded metrics did not vary across seeds within a case.",
         fontsize=10.5,
     )
     fig.text(

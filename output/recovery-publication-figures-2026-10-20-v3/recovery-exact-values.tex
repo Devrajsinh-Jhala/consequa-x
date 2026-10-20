@@ -1,0 +1,23 @@
+% Generated only after completion and independent audit. No inference intervals.
+% Operational denominator: planned. Semantic denominator: observed.
+% Every fraction below is its original numerator/denominator, not a rounded percentage.
+\begin{tabular}{lrrrr}
+Method & Operational safe & Fixed SLA & Recovery & Failed \\
+\hline
+Response retry & 1024/3072 & 1280/3072 & 1024/3072 & 0/3072 \\
+Readback state & 1792/3072 & 1792/3072 & 1792/3072 & 0/3072 \\
+Independent ref. & 1792/3072 & 1792/3072 & 1792/3072 & 0/3072 \\
+ConseqaX one read & 1792/3072 & 1792/3072 & 1792/3072 & 0/3072 \\
+ConseqaX poll & 1792/3072 & 1792/3072 & 1792/3072 & 0/3072 \\
+\end{tabular}
+
+% Yields use all planned slots; failures are unavailable, not abstentions.
+\begin{tabular}{lrrrr}
+Method & Correct definite & Incorrect definite & Abstain & False success \\
+\hline
+Response retry & 768/3072 & 1024/3072 & 1280/3072 & 768/3072 \\
+Readback state & 2304/3072 & 0/3072 & 768/3072 & 0/3072 \\
+Independent ref. & 2304/3072 & 0/3072 & 768/3072 & 0/3072 \\
+ConseqaX one read & 2304/3072 & 0/3072 & 768/3072 & 0/3072 \\
+ConseqaX poll & 2304/3072 & 0/3072 & 768/3072 & 0/3072 \\
+\end{tabular}

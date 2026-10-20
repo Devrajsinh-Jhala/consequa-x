@@ -1,9 +1,14 @@
 # Primary-source check for the working manuscript
 
-Initial check: 13 October 2026; dated follow-ups below include 18 October 2026.
+Initial check: 13 October 2026; dated follow-ups below include 20 October 2026.
 This is a focused review of the closest overlaps, not a
 systematic literature search or independent reproduction. Links identify exact
 paper versions. Reported findings remain the authors' claims unless reproduced.
+
+The 18–19 October execution/release rows below are historical checkpoints.
+Their “current 2.1.1” and unmeasured-feature descriptions are superseded by the
+dated 20 October update at the end of this file, without changing their retained
+source pins, exact counts, or original study artifacts.
 
 | Source | Checked material | Consequence for our paper |
 | --- | --- | --- |
@@ -121,3 +126,32 @@ availability text must distinguish accessible committed records from ongoing
 uncommitted output and any future immutable archive. No source/test/protocol
 hash is silently updated to accommodate a later package version or style edit.
 GitHub Actions remains disabled.
+
+## Current controlled evaluation and version boundary — 20 October 2026
+
+This update concerns the [focused paper](conseqax-research.md), not a new
+literature search or reproduction of another paper. Its objective endpoints
+use SQLite/effect-ledger truth, separately implemented reference rules, and
+automated artifact audits. Interpretability, preference, and rationale quality
+are outside scope. Historical unblinded rationale annotations, including T15,
+are excluded from the current paper and are not empirically validated here.
+There is no participant-study or annotation requirement; the [review addendum](recovery-review-response-2026-10-20.md)
+records withdrawal of the unused optional follow-up before any annotations.
+
+| Record | Checked material and result | Interpretation boundary |
+| --- | --- | --- |
+| [Study A prospective protocol](../output/recovery-controller-protocol-2026-10-20/protocol.json), source `22e88498cff0e2afd1549803fb4d9645902e74b9`, package 2.1.1 | Protocol SHA-256 `b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa`; [summary](../output/recovery-controller-study-2026-10-20/summary.json) and [findings](recovery-study-findings-2026-10-20.md) retain all 15,360 complete worlds, zero failed, 3,072 per policy. All recorded endpoint/resource metrics are constant across the 128 seeds in each of 120 case-policy groups. | Effective diversity remains 24 authored cases in 12 purposive families. Deterministic policies and a common local substrate do not establish autonomous-agent, task-population, or independently operated service performance. Readback is an application method on the same SQLite ledger/connection after world advancement, separate from the acknowledgement signal rather than an independent source/connection/trust domain. |
+| [Study A paired comparisons](../output/recovery-publication-figures-2026-10-20-v3/paired-contrasts.csv) and [all 12 family contrasts](../output/recovery-publication-figures-2026-10-20-v3/family-safe-recovery-contrasts.csv) | Readback safe recovery is 1,792/3,072 for every policy versus response retry's 1,024/3,072; equal-family difference +0.25 consists of three +1 and nine zero families. Reference-polling reports, actions, endpoints, and retained truth agree in all 3,072 pairs. Polling and one-final-read have identical final reports and physical outcomes, but consume 7,680 versus 3,840 reads with 220 versus 200 ms mean logical decision time. | Strong-reference parity is observed conformance under shared controller logic, not superiority. Study A contains no case where evidence becomes newly admissible only at a later scheduled poll, so its incremental polling result is negative. Logical time is not production latency. Same-connection readback, admitted source semantics, original D/H truth, later R/S recovery, harms, and report correctness retain separate interpretations. |
+| [Original-host semantic audit](../output/recovery-controller-audit-2026-10-20/audit-receipt.json), [portable artifact audit](../output/recovery-portable-audit-2026-10-20/portable-audit-receipt.json), and [packaging deviation](../output/recovery-artifact-finalization-2026-10-20/finalization-record.json) | Both audits passed, queried all 15,360 retained SQLite snapshots read-only, and recomputed the summary. Finalization-record SHA-256 `26fabbec4c16af115ad367086efd247e0660af801f0290fe57fa4265a84440a0` records preservation of every existing artifact byte and creation only of the absent terminal manifest/receipt, without rerunning worlds or regenerating the summary. | The original runner's exit status and termination cause remain unknown; completion time denotes packaging. Separate auditor code was authored within the same AI-assisted workflow, not external replication. Portable rechecking omits original live-host checks and does not prove authenticity, first-run exclusivity, or absence of earlier tampering/off-record activity. |
+| [Study B registered availability protocol](../output/recovery-availability-protocol-2026-10-20/protocol.json), source `d805b3e3560c05ee0a7efd02a80fc18503c6ee05`, package 2.1.1 | SHA-256 `e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584`; registered at commit `b937920469285cdd971783fa6cb33216a7e4da13` before execution. All 960 worlds completed normally with zero failed, 192 per policy; the [terminal receipt](../output/recovery-availability-study-2026-10-20/completion-receipt.json) is retained. The [audit](../output/recovery-availability-audit-2026-10-20/audit-receipt.json) passed with all 1,925 artifacts and 960 SQLite snapshots checked, including recorded-host byte verification. | The 64 controlled availability/lag/completeness profiles repeat across three domains; these are not independently sampled tasks. This follow-up was motivated after Study A's negative result. The audit verifies retained consistency, not original-runtime attestation, source authentication, or independent external replication. |
+| [Study B full-grid coverage analysis](../output/recovery-availability-audit-2026-10-20/coverage-analysis.json) and [raw summary](../output/recovery-availability-study-2026-10-20/summary.json) | Every policy has 192/192 safe recoveries, one effect per world, no duplicate/unwanted events; physical effect histories agree in all 192 five-arm cells. One-final-read state/linkage correct yield is 3/192 with 189 unknown, 192 reads, mean logical time 150 ms. Polling/reference yield is 81/192 with 111 unknown, 741 reads, mean 224.375 ms. State-only has the same state yield/resources/actions but all 192 linkage claims unknown. Response reports 192/192 correct state/linkage from ACK, zero reads, mean 2 ms, without horizon-qualified evidence. | The polling state-yield gain over one final read is 78/192 = 26/64 profiles = 0.40625, shared by the reference and state-only rule. No physical recovery gain or strong-reference superiority follows. Reference-polling reports, dispatches, and metrics agree. Counts agree with the prospective 1/64 versus 27/64 diagnostic, whose agreement was not an audit pass condition. The uniformly safe design cannot estimate response false-success risk; logical time is not production latency. No confidence interval, p-value, or autonomous-task generalization is inferred from this finite grid. |
+| [Published 2.1.2 release](../output/release-2.1.2-2026-10-20/README.md) and [publication receipt](../output/release-2.1.2-2026-10-20/publication.json) | Retained release records bind publication on 20 October 2026 to build `064127ff120abae543abfe69f77e44b03f3b928e`. The current paper's controlled experiments retain their exact 2.1.1 runtime pin; historical 1.1.0 and 2.0 experiments are unchanged. | Engineering installation/integration checks do not expand the scientific evaluation to every release feature, the public blocking polling helper, live provider semantics, or deployed SDK/telemetry services. No blanket cross-version performance equivalence is asserted. |
+
+Broader objective validation remains an extension: actual autonomous-agent
+decisions with native benchmark reward and matched classical controls,
+independently established adapter predicates, provider finality/idempotency and
+service ground truth, and a defensible population-sampling design. More local
+seeds cannot supply those claims. Methodological novelty, immutable archival
+access, author/contact metadata, and the selected venue's requirements remain
+open questions or submission preparation, not a requirement to run a participant
+study. GitHub Actions remains disabled.

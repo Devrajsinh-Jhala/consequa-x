@@ -1,5 +1,26 @@
 # Paper figures
 
+## Current focused paper: Studies A and B
+
+The current [focused manuscript](../conseqax-research.tex) uses three vector
+figures. Its corresponding PNG and SVG assets are byte-identical copies of the
+sealed publication exports. These figures report exact finite-suite outcomes;
+they add no model calls or measured worlds.
+
+| Asset stem | Source and interpretation |
+| --- | --- |
+| `recovery-method-overview` | [Study A exports](../../output/recovery-publication-figures-2026-10-20-v3/manifest.json): all five policies, recovery, harms, state reporting, and read/dispatch costs. The seeds add no recorded-metric diversity within cases. |
+| `recovery-family-primary-contrasts` | Same Study A export: all 12 purposive families on a fixed scale, including zero differences against the equally informed reference. |
+| `recovery-availability-grid` | [Study B exports](../../output/recovery-availability-figures-2026-10-20-v2/manifest.json): all 64 controlled lag/availability/completeness profiles, correct definite state reports and read costs. Three domains repeat each mechanism; all physical outcomes agree across policies. |
+
+Study A layout version 3 and Study B layout version 2 supply the current assets.
+Earlier layout drafts remain local; presentation revisions do not replace raw
+data, omit factor conditions, or alter endpoint definitions. The generic IEEE
+paper's captions distinguish conformance, reporting coverage, and physical
+recovery. No task-population intervals are shown.
+
+## Historical extended manuscript
+
 The IEEE manuscript embeds vector PDFs at the full text width.
 SVG files preserve editable text; PNGs support Markdown and preview
 (220 dpi for the original figures, 160 dpi for the new validation figures).

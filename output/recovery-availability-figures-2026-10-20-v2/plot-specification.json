@@ -1,0 +1,44 @@
+{
+  "annotation_font_points": 11,
+  "cell_counts": "Observed correct definite global-state reports: polling | one-final-read, each /3 planned domains",
+  "cell_reads": "Mean charged reads among observed completed slots: polling | one-final-read",
+  "color": "polling minus one-final-read correct definite counts; fixed limits [-3,3]",
+  "facets": "incomplete_until_ms ascending; rows lag_ms; columns unavailable_until_ms",
+  "factor_order": {
+    "incomplete_until_ms": [
+      0,
+      170,
+      210,
+      250
+    ],
+    "lag_ms": [
+      0,
+      40,
+      80,
+      95
+    ],
+    "unavailable_until_ms": [
+      0,
+      170,
+      210,
+      250
+    ]
+  },
+  "figure_inches": [
+    7.1,
+    7.35
+  ],
+  "layout_revision": 2,
+  "method_order": [
+    "response_retry",
+    "readback_state",
+    "reference",
+    "consequax_one_read",
+    "consequax_poll"
+  ],
+  "minimum_font_points": 10.5,
+  "png_dpi": 300,
+  "population_inference": false,
+  "selection": "Every one of the 64 prospective controlled profiles; no outcome-dependent selection",
+  "uncertainty_intervals": false
+}

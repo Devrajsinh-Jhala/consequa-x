@@ -1,0 +1,31 @@
+{
+  "schema": "consequax-native-agent-dependency-preflight-v1",
+  "completed_utc": "2026-10-20T04:30:37.253418+00:00",
+  "scope": "Dependency installation and normal guarded native imports only; no model generation or tasks",
+  "status": "passed",
+  "upstream_commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a",
+  "python": "3.12.14",
+  "litellm": "1.82.6",
+  "websockets": "17.3",
+  "installed_distribution_count_including_pip": 80,
+  "files_sha256": {
+    "constraints.txt": "d3bc46e6bcedbafb7dbcef18224a25fa12068981807ac098bdd0ced7fd849618",
+    "dependency-check.log": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "dependency-versions.json": "4f14c35d465a6f9c1819ea965550d268a9b5eb95f36429fc04e7f75e84d64fc2",
+    "install-report-websockets.json": "960d5717a115cf23e9ede08b150d026e73c98f4d586b7becc94996e2f0766170",
+    "install-report.json": "50e6524bc0fc88904c62987bcbbb96e9a3bc213bea0511ec5ef78af9aadf8b1b",
+    "install-websockets.log": "a66a35d8fd81253f441452c8e24850db36d07728d1c45bd45b5848800ff47cb5",
+    "install.log": "58303713aa28357c1a659443c2e1c56530c215c8ef3999b83c8089271c9a504d",
+    "native-import-result.base-only.json": "fe77b16d80a83640eacdce791e7cd26ea98fabd5299d66a55d07bb79e1847b5d",
+    "native-import-result.json": "b684593e43c3dc9255b27fca548048c2269a7ae884ad9b9c2d18f681eeee4c65",
+    "native-import.base-only.log": "b3095f798afe5b7dc9e244da12f1ab1efc076f31d4c47f7cd2804ca69ef540fb",
+    "native-import.log": "45488c5ff266eccddc3cf12d77547edd22feaa4ec13e436da5e3f5fd78ba218d",
+    "package-inspect.json": "48120a26a2adee1e9b911d92462a87782207839c108ddbb0e4ec48939d8e808c",
+    "probe-native-import.py": "d9ba9802e40af70c21616cce42039e7ecd2dcf4c3a12db275df12ea4b4e0decf",
+    "README.md": "c173155f9b347c62200036dbca45645f3121730cf17169fef9deffb3c3457ef9",
+    "requirements-declared.txt": "39a4980f8649de8ee59e31b2cd9b7d10099f7c2549ff25cb1d9cd664f6e658a3",
+    "requirements-eager-voice.txt": "d108e6ee816a376cd813e1c36d7735021c9bfb93c52e5c3dedee8a94fd1df871",
+    "requirements-resolved.txt": "d2e27cd2aaf9df28904c43d600720079e99f0b31832e8f46786c238af9d652b3",
+    "runtime-metadata.json": "ce9e5e019fdf1a92ce9d207557a460505237a49c3bd871f18c429973beac1712"
+  }
+}

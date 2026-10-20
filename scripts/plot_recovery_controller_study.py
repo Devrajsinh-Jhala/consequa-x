@@ -27,8 +27,8 @@ NAMES = {
     "response_retry": "Response retry",
     "readback_state": "Readback state",
     "reference": "Independent ref.",
-    "consequax_one_read": "ConsequaX one read",
-    "consequax_poll": "ConsequaX poll",
+    "consequax_one_read": "ConseqaX one read",
+    "consequax_poll": "ConseqaX poll",
 }
 SHORT = {
     "response_retry": "retry",
@@ -977,7 +977,7 @@ def render_figures(bundle, output):
     fig.text(
         0.03,
         0.935,
-        "ConsequaX poll minus comparator · fixed scale [−1, +1] · positive favors polling",
+        "ConseqaX poll minus comparator · fixed scale [−1, +1] · positive favors polling",
         fontsize=10.5,
     )
     fig.text(

@@ -1,0 +1,1224 @@
+{
+  "schema_version": "1.0",
+  "suite_id": "prospective-nonpayment-recovery-v1",
+  "authorship": "AI-assisted: separately delegated scenario author, blind to controller implementation and prior study outputs; not independent human authorship.",
+  "created_date": "2026-10-19",
+  "inference_unit": "scenario family; two parameterized variants per family are not independent observations",
+  "case_count": 24,
+  "family_count": 12,
+  "cases": [
+    {
+      "case_id": "new-01-1",
+      "family_id": "field_kit_staging",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-01-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "north-depot",
+          "sku": "maintenance-kit",
+          "quantity": 3,
+          "reservation_ref": "field-batch"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "warehouse": "north-depot",
+        "sku": "maintenance-kit",
+        "quantity": 3,
+        "reservation_ref": "field-batch"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "north-depot",
+        "sku": "maintenance-kit",
+        "reservation_ref": "field-batch"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 8,
+            "response_delay_ms": 18
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-01-2",
+      "family_id": "field_kit_staging",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-01-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "north-depot",
+          "sku": "maintenance-kit",
+          "quantity": 5,
+          "reservation_ref": "field-batch-secondary"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "warehouse": "north-depot",
+        "sku": "maintenance-kit",
+        "quantity": 5,
+        "reservation_ref": "field-batch-secondary"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "north-depot",
+        "sku": "maintenance-kit",
+        "reservation_ref": "field-batch-secondary"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 15,
+            "response_delay_ms": 18
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-02-1",
+      "family_id": "weather_supply_hold",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-02-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "coastal-depot",
+          "sku": "weather-cover",
+          "quantity": 4,
+          "reservation_ref": "storm-prep"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "warehouse": "coastal-depot",
+        "sku": "weather-cover",
+        "quantity": 4,
+        "reservation_ref": "storm-prep"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "coastal-depot",
+        "sku": "weather-cover",
+        "reservation_ref": "storm-prep"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 205,
+            "response_delay_ms": 9
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-02-2",
+      "family_id": "weather_supply_hold",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-02-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "coastal-depot",
+          "sku": "weather-cover",
+          "quantity": 6,
+          "reservation_ref": "storm-prep-secondary"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "warehouse": "coastal-depot",
+        "sku": "weather-cover",
+        "quantity": 6,
+        "reservation_ref": "storm-prep-secondary"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "coastal-depot",
+        "sku": "weather-cover",
+        "reservation_ref": "storm-prep-secondary"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 212,
+            "response_delay_ms": 9
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-03-1",
+      "family_id": "exhibition_material_allocation",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-03-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "venue-store",
+          "sku": "display-bracket",
+          "quantity": 6,
+          "reservation_ref": "gallery-assembly"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "warehouse": "venue-store",
+        "sku": "display-bracket",
+        "quantity": 6,
+        "reservation_ref": "gallery-assembly"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "venue-store",
+        "sku": "display-bracket",
+        "reservation_ref": "gallery-assembly"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": null
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 85,
+              "lag_ms": 30
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-03-2",
+      "family_id": "exhibition_material_allocation",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-03-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "venue-store",
+          "sku": "display-bracket",
+          "quantity": 8,
+          "reservation_ref": "gallery-assembly-secondary"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "warehouse": "venue-store",
+        "sku": "display-bracket",
+        "quantity": 8,
+        "reservation_ref": "gallery-assembly-secondary"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "venue-store",
+        "sku": "display-bracket",
+        "reservation_ref": "gallery-assembly-secondary"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": null
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 85,
+              "lag_ms": 30
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-04-1",
+      "family_id": "mobile_lab_consumables",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-04-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "lab-store",
+          "sku": "sealed-sample-tube",
+          "quantity": 5,
+          "reservation_ref": "mobile-lab"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "warehouse": "lab-store",
+        "sku": "sealed-sample-tube",
+        "quantity": 5,
+        "reservation_ref": "mobile-lab"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "lab-store",
+        "sku": "sealed-sample-tube",
+        "reservation_ref": "mobile-lab"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "error",
+            "commit_delay_ms": null,
+            "terminal_not_committed": true
+          },
+          {
+            "status": "success",
+            "commit_delay_ms": 12
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-04-2",
+      "family_id": "mobile_lab_consumables",
+      "domain": "inventory_reservation",
+      "operation_id": "operation-04-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "warehouse": "lab-store",
+          "sku": "sealed-sample-tube",
+          "quantity": 7,
+          "reservation_ref": "mobile-lab-secondary"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "warehouse": "lab-store",
+        "sku": "sealed-sample-tube",
+        "quantity": 7,
+        "reservation_ref": "mobile-lab-secondary"
+      },
+      "scope_fields": [
+        "warehouse",
+        "sku",
+        "reservation_ref"
+      ],
+      "scope": {
+        "warehouse": "lab-store",
+        "sku": "sealed-sample-tube",
+        "reservation_ref": "mobile-lab-secondary"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "error",
+            "commit_delay_ms": null,
+            "terminal_not_committed": true
+          },
+          {
+            "status": "success",
+            "commit_delay_ms": 19
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-05-1",
+      "family_id": "accessibility_case_closure",
+      "domain": "support_transition",
+      "operation_id": "operation-05-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "accessibility-review",
+          "status": "resolved",
+          "queue": "accessibility"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "ticket_id": "accessibility-review",
+        "status": "resolved",
+        "queue": "accessibility"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "accessibility-review"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "error",
+            "commit_delay_ms": null,
+            "terminal_not_committed": true
+          }
+        ],
+        "external_events": [
+          {
+            "at_ms": 27,
+            "jitter_ms": 19,
+            "actor": "accessibility-specialist"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-05-2",
+      "family_id": "accessibility_case_closure",
+      "domain": "support_transition",
+      "operation_id": "operation-05-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "accessibility-review-secondary",
+          "status": "resolved",
+          "queue": "accessibility"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "ticket_id": "accessibility-review-secondary",
+        "status": "resolved",
+        "queue": "accessibility"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "accessibility-review-secondary"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "error",
+            "commit_delay_ms": null,
+            "terminal_not_committed": true
+          }
+        ],
+        "external_events": [
+          {
+            "at_ms": 40,
+            "jitter_ms": 27,
+            "actor": "accessibility-specialist"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-06-1",
+      "family_id": "translation_review_routing",
+      "domain": "support_transition",
+      "operation_id": "operation-06-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "localization-review",
+          "status": "triaged",
+          "queue": "language-quality"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "ticket_id": "localization-review",
+        "status": "triaged",
+        "queue": "language-quality"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "localization-review"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 16,
+            "provenance": [
+              "actor"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-06-2",
+      "family_id": "translation_review_routing",
+      "domain": "support_transition",
+      "operation_id": "operation-06-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "localization-review-secondary",
+          "status": "triaged",
+          "queue": "language-quality"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "ticket_id": "localization-review-secondary",
+        "status": "triaged",
+        "queue": "language-quality"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "localization-review-secondary"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 23,
+            "provenance": []
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 190,
+              "complete": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-07-1",
+      "family_id": "campus_incident_escalation",
+      "domain": "support_transition",
+      "operation_id": "operation-07-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "campus-network-case",
+          "status": "escalated",
+          "queue": "network-response"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "ticket_id": "campus-network-case",
+        "status": "escalated",
+        "queue": "network-response"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "campus-network-case"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": 18,
+            "remove_after_ms": 118
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-07-2",
+      "family_id": "campus_incident_escalation",
+      "domain": "support_transition",
+      "operation_id": "operation-07-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "campus-network-case-secondary",
+          "status": "escalated",
+          "queue": "network-response"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "ticket_id": "campus-network-case-secondary",
+        "status": "escalated",
+        "queue": "network-response"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "campus-network-case-secondary"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": 25,
+            "remove_after_ms": 139
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-08-1",
+      "family_id": "archive_rights_review",
+      "domain": "support_transition",
+      "operation_id": "operation-08-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "archive-license-case",
+          "status": "resolved",
+          "queue": "rights-clearance"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "ticket_id": "archive-license-case",
+        "status": "resolved",
+        "queue": "rights-clearance"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "archive-license-case"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": 11,
+            "value_overrides": {
+              "status": "waiting_for_documents"
+            },
+            "copies": 2,
+            "copy_spacing_ms": 4
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 115,
+              "omit_provenance": [
+                "action_id",
+                "attempt_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-08-2",
+      "family_id": "archive_rights_review",
+      "domain": "support_transition",
+      "operation_id": "operation-08-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "ticket_id": "archive-license-case-secondary",
+          "status": "resolved",
+          "queue": "rights-clearance"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "ticket_id": "archive-license-case-secondary",
+        "status": "resolved",
+        "queue": "rights-clearance"
+      },
+      "scope_fields": [
+        "ticket_id"
+      ],
+      "scope": {
+        "ticket_id": "archive-license-case-secondary"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": 18,
+            "value_overrides": {
+              "queue": "general-intake"
+            },
+            "copies": 2,
+            "copy_spacing_ms": 4
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 115,
+              "omit_provenance": [
+                "action_id",
+                "attempt_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-09-1",
+      "family_id": "release_catalog_registration",
+      "domain": "delivery_registration",
+      "operation_id": "operation-09-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "release-catalog",
+          "delivery_channel": "staging-registry",
+          "checksum": "sha256:catalog-v7"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "artifact_id": "release-catalog",
+        "delivery_channel": "staging-registry",
+        "checksum": "sha256:catalog-v7"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "release-catalog",
+        "delivery_channel": "staging-registry"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 21
+          }
+        ],
+        "readback": {
+          "lag_ms": 95
+        }
+      }
+    },
+    {
+      "case_id": "new-09-2",
+      "family_id": "release_catalog_registration",
+      "domain": "delivery_registration",
+      "operation_id": "operation-09-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "release-catalog-secondary",
+          "delivery_channel": "staging-registry",
+          "checksum": "sha256:catalog-v7-revised"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "artifact_id": "release-catalog-secondary",
+        "delivery_channel": "staging-registry",
+        "checksum": "sha256:catalog-v7-revised"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "release-catalog-secondary",
+        "delivery_channel": "staging-registry"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 28
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 260,
+              "lag_ms": 115
+            },
+            {
+              "start_ms": 260,
+              "until_ms": 320,
+              "available": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-10-1",
+      "family_id": "museum_export_manifest",
+      "domain": "delivery_registration",
+      "operation_id": "operation-10-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "museum-export",
+          "delivery_channel": "preservation-vault",
+          "checksum": "sha256:museum-set-4"
+        },
+        "exact_count": 2
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "artifact_id": "museum-export",
+        "delivery_channel": "preservation-vault",
+        "checksum": "sha256:museum-set-4"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "museum-export",
+        "delivery_channel": "preservation-vault"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": 24,
+            "copies": 2,
+            "copy_spacing_ms": 3
+          }
+        ],
+        "readback": {
+          "record_limit": 1
+        }
+      }
+    },
+    {
+      "case_id": "new-10-2",
+      "family_id": "museum_export_manifest",
+      "domain": "delivery_registration",
+      "operation_id": "operation-10-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "museum-export-secondary",
+          "delivery_channel": "preservation-vault",
+          "checksum": "sha256:museum-set-4-revised"
+        },
+        "exact_count": 2
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "artifact_id": "museum-export-secondary",
+        "delivery_channel": "preservation-vault",
+        "checksum": "sha256:museum-set-4-revised"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "museum-export-secondary",
+        "delivery_channel": "preservation-vault"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "success",
+            "commit_delay_ms": 31,
+            "copies": 2,
+            "copy_spacing_ms": 3,
+            "provenance": [
+              "actor",
+              "action_id"
+            ]
+          }
+        ],
+        "readback": {
+          "active_only": true,
+          "record_limit": 1
+        }
+      }
+    },
+    {
+      "case_id": "new-11-1",
+      "family_id": "environmental_dataset_release",
+      "domain": "delivery_registration",
+      "operation_id": "operation-11-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "watershed-survey",
+          "delivery_channel": "research-catalog",
+          "checksum": "sha256:survey-r6"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "artifact_id": "watershed-survey",
+        "delivery_channel": "research-catalog",
+        "checksum": "sha256:survey-r6"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "watershed-survey",
+        "delivery_channel": "research-catalog"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 225
+          }
+        ],
+        "external_events": [
+          {
+            "at_ms": 29,
+            "jitter_ms": 25,
+            "actor": "dataset-curator"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-11-2",
+      "family_id": "environmental_dataset_release",
+      "domain": "delivery_registration",
+      "operation_id": "operation-11-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "watershed-survey-secondary",
+          "delivery_channel": "research-catalog",
+          "checksum": "sha256:survey-r6-revised"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "artifact_id": "watershed-survey-secondary",
+        "delivery_channel": "research-catalog",
+        "checksum": "sha256:survey-r6-revised"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "watershed-survey-secondary",
+        "delivery_channel": "research-catalog"
+      },
+      "native_idempotency": false,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "timeout",
+            "commit_delay_ms": 232
+          }
+        ],
+        "external_events": [
+          {
+            "at_ms": 42,
+            "jitter_ms": 33,
+            "actor": "dataset-curator"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "new-12-1",
+      "family_id": "course_packet_delivery_receipt",
+      "domain": "delivery_registration",
+      "operation_id": "operation-12-1",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "course-packet",
+          "delivery_channel": "accessible-learning-store",
+          "checksum": "sha256:packet-a3"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 100,
+      "stability_ms": 70,
+      "recovery_deadline_ms": 280,
+      "safety_horizon_ms": 430,
+      "payload": {
+        "artifact_id": "course-packet",
+        "delivery_channel": "accessible-learning-store",
+        "checksum": "sha256:packet-a3"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "course-packet",
+        "delivery_channel": "accessible-learning-store"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "error",
+            "commit_delay_ms": null,
+            "terminal_not_committed": true
+          },
+          {
+            "status": "success",
+            "commit_delay_ms": 14
+          }
+        ],
+        "readback": {
+          "windows": [
+            {
+              "start_ms": 0,
+              "until_ms": 410,
+              "available": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "new-12-2",
+      "family_id": "course_packet_delivery_receipt",
+      "domain": "delivery_registration",
+      "operation_id": "operation-12-2",
+      "actor": "recovery-study-agent",
+      "initial_at_ms": 0,
+      "target": {
+        "predicate": "record_present",
+        "expected": {
+          "artifact_id": "course-packet-secondary",
+          "delivery_channel": "accessible-learning-store",
+          "checksum": "sha256:packet-a3-revised"
+        },
+        "exact_count": 1
+      },
+      "deadline_ms": 140,
+      "stability_ms": 90,
+      "recovery_deadline_ms": 350,
+      "safety_horizon_ms": 550,
+      "payload": {
+        "artifact_id": "course-packet-secondary",
+        "delivery_channel": "accessible-learning-store",
+        "checksum": "sha256:packet-a3-revised"
+      },
+      "scope_fields": [
+        "artifact_id",
+        "delivery_channel"
+      ],
+      "scope": {
+        "artifact_id": "course-packet-secondary",
+        "delivery_channel": "accessible-learning-store"
+      },
+      "native_idempotency": true,
+      "_world": {
+        "dispatch_plans": [
+          {
+            "status": "error",
+            "commit_delay_ms": null,
+            "terminal_not_committed": true
+          },
+          {
+            "status": "success",
+            "commit_delay_ms": 21
+          }
+        ],
+        "readback": {
+          "available": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+# Research questions that could make the next ConseqaX paper stronger
+
+Status: prospective research agenda and claim boundaries, 19 October 2026. This document is based on the current manuscript and public package contract, not on the new held-out cases or future results. It records no measured finding and no human annotation. The companion [design review](recovery-study-design-review.md) specifies recovery safety, matching, endpoints, and first-run integrity.
+
+## The substantive question
+
+Does an explicit distinction among observed state, source-supported origin, and unresolved request execution improve decisions and evidence-supported communication in a closed-loop application, at matched provider capabilities and resource opportunities?
+
+That question is more useful than asking whether the framework produces more structured records or whether a deliberately weak response parser makes mistakes. A strong paper should say exactly which policy decisions change, when they are justified, what harms or missed recoveries follow, and whether ordinary idempotent retries plus authoritative status/readback already achieve the same result.
+
+The candidate contribution is an executable application protocol and an auditable test of its decision boundaries. It is not a new idea that acknowledgements can be lost, a new provenance model, a new Shapley estimator, or a claim that negative readback establishes arbitrary future finality. Same-information reference parity remains a valuable result: it tests that the implementation respects the contract while preventing a manufactured superiority claim.
+
+## A small formal boundary worth including
+
+**Proposition: indistinguishable unresolved attempts force a conditional retry tradeoff.** Consider a logical operation whose initial request timed out. Assume:
+
+1. The provider does not enforce deduplication for the stable operation identity, and there is no terminal attempt-resolution, completed-cancellation guarantee, enforceable finite in-flight bound, or other mechanism preventing an old request from committing later.
+2. There is a recovery deadline R, a safety-observation cutoff S > R, and a last useful retry time L < R. A retry by L creates a requested durable effect by R; a retry after L cannot meet R in the constructed instance.
+3. There are two possible provider worlds with the same admissible observations for every allowed read/status query through L. In world W0 the old request never commits. In world W1 it commits after R but no later than S. Future queued events and world identity are hidden from the policy.
+4. No alternative operation achieves recovery without this effect, and an extra effect counts as harmful even if later compensated.
+
+A deterministic policy must take the same retry decision by L in these two worlds because its available history is identical. If it retries, W1 has both the retry's effect and the late original effect by S. If it does not retry, W0 misses recovery by R. Thus no such policy can guarantee both recovery in W0 and no duplicate in W1.
+
+For a randomized policy, couple its internal randomness across the two worlds and let p be the probability of a useful retry by L under their shared admissible history. Duplicate probability in W1 is at least p, and missed-recovery probability in W0 is at least 1-p. Their sum is at least one, so at least one is at least one half for this constructed pair. These are conditional risks in an adversarial pair; they are not event prevalences or measured probabilities in the study.
+
+The construction applies to any record-creating domain with these semantics, including inventory allocations, ticket creation, or artifact publication. It does not depend on refund terminology, the package, or an LLM. It is a simple indistinguishability argument expressing a known distributed-systems limitation, not a novelty or priority claim. Idempotency, a trustworthy terminal-no-effect status, completed cancellation, or an enforceable bound can break the assumptions. The study should expose those capabilities to every controller and measure their conditional value rather than crediting the framework with supplying them.
+
+There are additional limits. Source completeness and the observation cutoff must be explicit; finite measurements do not prove safety beyond S. A current state witness cannot establish historical persistence without history. A provenance link cannot prove counterfactual necessity. Terminal resolution of this operation does not prevent another actor from later creating an extra effect. Those are distinct problems with distinct assumptions.
+
+## Priority questions and falsifiers
+
+| Question | Prospective comparison and result needed | What would falsify the proposed benefit? |
+| --- | --- | --- |
+| **Q1. Does evidence-aware recovery improve safe recovery?** | Compare `consequax_poll` with `response_retry` on family-averaged recovery by the predeclared recovery deadline, with unwanted effects audited through the later safety horizon. Preserve original SLA success separately. Report costs and unresolved requests. | Equal or worse safe recovery at comparable spend; harmful effects despite the declared safety gate; or a benefit disappearing when both policies use the same correct idempotency semantics. |
+| **Q2. What remains beyond classical systems practice?** | Use stable same-key/payload retries, authoritative status/readback, and the same terminal-resolution guarantees in a strong independent reference. Examine every reference/CX discrepancy. | Exact parity rules out an empirical advantage over the reference on this suite. It supports conformance and may still support engineering usefulness, provided that usefulness is measured separately. |
+| **Q3. Does origin information improve actions or only explanations?** | Compare state-only with the provenance-aware reference/CX policy at the same read opportunities and provider guarantees. Distinguish global task satisfaction, operation-linked completion, and safe decisions. | Origin labels improve claim wording but do not change recovery/harm; or origin-driven retries duplicate an already satisfied global task. Report either result honestly rather than combining the targets. |
+| **Q4. Does polling buy usable evidence within a budget?** | Compare one-read and polling policies using equal read ceilings/opportunities. Report complete/unknown decisions, reads spent, time to supported conclusion, and missed deadlines. | Additional reads yield no supported decisions, source lag exceeds the budget, or extra waiting reduces completion more than it improves the declared tradeoff. A smaller unknown count alone is insufficient if claims become unsupported. |
+| **Q5. Can the policy abstain where the evidence is intrinsically insufficient?** | Include observationally equivalent unresolved prefixes, missing provenance, incomplete history, wrong scope, and late-commit cases. Score unsupported claims and missed recoveries separately. | A confident decision depends on hidden case labels, a missing field is treated as a negative guarantee, or a correct guess receives credit as evidence-supported. Universal abstention also fails a useful-output claim. |
+| **Q6. Does the contract transfer across task mechanisms?** | Hold out new family definitions and fault compositions from controller development. Use inventory, tickets, and artifacts with independently checked predicates and exact family-level reporting. | Success depends on family-specific branches, deadline reinterpretation, verifier self-scoring, or prompt/identifier leakage. More seeds or paraphrases cannot answer this question by themselves. |
+| **Q7. Can independent people reproduce the claim boundary?** | Later recruited humans judge raw admissible evidence and assertions with controller identities hidden, then separately audit a full ledger against the declared contract. | Low or category-dependent agreement; systematic disputes about predicate meaning; or claims supported only by future evidence. AI labels and agreement with the implementing author's evaluator do not answer the human question. |
+
+Q1 through Q5 fit the present closed-loop state-machine study. Q6 receives limited challenge-suite evidence because the tasks remain purposively AI-authored and share one substrate. Q7 requires real independent participants and remains open until their work is complete. None of these questions needs a causal attribution estimator for this first recovery study.
+
+## Minimal result package that would change the paper
+
+Predeclare one efficacy contrast: equal-family safe recovery for `consequax_poll` minus `response_retry`. The mandatory companion is harmful/unwanted effects through the declared safety horizon. Provide the full five-arm paired table, including `consequax_one_read`, state-only, and the independent provenance reference. Original fixed-SLA completion and later recovery must have separate columns. A later successful effect must not erase a missed original deadline.
+
+For every family show safe recovery, harmful effects, unknown audits, pending attempts, escalations, supported state/origin/retry claims, abstentions, dispatches, independent reads, provider-resolution calls, and logical time. Report all scheduled cells and failures. The shared event schedule is paired; live observation contents may differ after controller actions diverge. Costs must reflect actual consumption under the equal ceilings, including unsuccessful requests, compulsory reads, and refusals.
+
+Use exact finite-suite estimates and paired family differences as the primary analysis. Twelve purposefully authored families do not justify a population p-value or confidence interval. If there are prospectively sampled stochastic seeds, seed Monte Carlo uncertainty can describe that fixed corpus under the declared seed law; it does not turn seed repeats into independently sampled task families. Exact parity and zero observed errors are finite observations, not proofs of population equivalence or safety.
+
+Freeze the provider law, source and clock assumptions, full case/controller schedule, code and package artifacts, endpoint arithmetic, and all analysis before the first measured execution. Preserve source/protocol SHA-256 hashes and every first-run artifact. All failures and malformed cases stay in the all-slot operational denominator, with separate semantic missingness. Corrections after exposure are versioned follow-ups; no replacement run becomes the original result.
+
+A paper change becomes substantive when it can state a concrete tradeoff, for example that a stated evidence policy changed recovery and unsupported-claim yield under particular provider guarantees at a measured read/wait cost. If every strong arm agrees, the result is an implementation/protocol study with a negative superiority finding. That is preferable to attributing ordinary idempotency or privileged finality to a new framework.
+
+## Human annotation packet to prepare now
+
+The packet can be prepared without inventing annotators, labels, agreement scores, or participation. Recruit people later and record independence from implementation, expertise, conflicts, training, and the final annotated denominator. Two independent initial annotators and a third adjudicator are a reasonable design; they do not yet exist as completed study roles.
+
+Before measured outcomes are viewed, freeze the sampling rule. For a small deterministic suite, double-annotate every case/controller final packet. If repeated-seed collection makes that infeasible, choose a fixed neutral seed index per case in advance and apply it to every controller; do not select only disagreements, errors, or dramatic late commits. Include failed/unstarted cells as explicit missing-output packets, rather than silently losing their denominator. A separately frozen rule can add a decision packet at the first ambiguous response for each selected trajectory.
+
+The support packet contains neutral identifiers, request and immutable contracts, source/clock definitions, public provider guarantees, raw evidence available by the claim/action time, and the exact claim or proposed retry. It hides method names, case/fault labels, future observations, framework conclusions, evaluator gold, and other raters' labels. Ask for state support, origin support, safe-retry support, abstain/unsupported distinctions, and cited witness IDs. Do not ask a rater to infer hidden internal reasoning.
+
+Only after those labels are locked should a separate truth audit expose the full provider event ledger to check timing, persistence, duplicate effects, terminal statuses, and the evaluator. This ordering preserves the difference between an unsupported correct guess and an evidence-supported claim. Save initial labels and disagreements, report raw agreement and category confusion tables, use Cohen's kappa only when defined, and retain both pre- and post-adjudication scores. Rater items remain nested within case trajectories and families; they are not independent tasks or participants. Human agreement is evidence about reproducibility of the rubric, not authentication of a provider.
+
+## The next external evaluation should be genuinely external
+
+After the closed-loop study, prioritize one independently selected maintained task environment or provider sandbox with a real frozen agent policy and native task evaluation. Preserve its native reward while adding an independently checked side-effect ledger and a fault wrapper whose changes are documented. Evaluate the classical same-key recovery policy and the evidence-aware policy under identical tool, user, budget, and provider-capability conditions. Include agent-origin claims and unsupported assertions, not just final reward. Do not call replay of reference actions an autonomous benchmark result.
+
+Have an external evaluator choose or seal families/tasks and audit the adapter predicates before the measured run. Recruit actual humans to check a prospectively selected evidence/claim sample. Use a provider sandbox rather than production writes for delayed-acknowledgement injection, and treat its cancellation/idempotency semantics as external assumptions to verify. Broader inference will require a declared task-sampling design and an attainable family-level precision target. More internal cases, more repeated seeds, or another AI artifact audit do not substitute for that step.
+
+## Claims to preserve and claims to leave open
+
+Preserve the useful protocol claims: observation-specific evidence binding, separate state/origin verdicts, immutable temporal targets, explicit unknowns, recorded refusal, and inspectable source/budget boundaries. Assess the new closed-loop behavior exactly as frozen. Keep the historical CAR, factual-auditor, migration, and tool-state-transfer results attached to their own source versions and targets.
+
+Leave general autonomous-agent improvement, production safety, source authentication, independent human validation, broad task-population generalization, and a new causal method open unless their own studies supply evidence. The strongest next paper will explain a meaningful conditional decision boundary, show the cost of respecting it, and remain clear about what the application or provider must guarantee.

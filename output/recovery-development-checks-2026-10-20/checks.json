@@ -1,0 +1,29 @@
+{
+  "bindings": {
+    "docs/recovery-controller-design.md": "d61ca150d5fbe78f26c33d7b97292c2f07d5b41075f8c88b24edc1ba6075a511",
+    "docs/recovery-study-design-review.md": "8132fa5a58efa5d9dd46b4f61a96168a5d89963b650fdce26671fcb7b62de298",
+    "docs/recovery-world-design.md": "1728dab6a0717098203a26914f3f7d3ca214c03244ff0b47efe6eb49ca95662d",
+    "docs/stronger-paper-research-questions.md": "05e02ff22f94bd99f377d80a185ab3473fbb32b20718ffd4e99ee23dbd0ab7f4",
+    "research/recovery_study/__init__.py": "26b69632399dbca479de94373a7254c523560ef82aae371bf0df45429eaad52c",
+    "research/recovery_study/controllers.py": "1547c7374d393c714c1f44ccd9fb0003c571d895023bfa9569472adf7dcc1b0f",
+    "research/recovery_study/heldout_cases.json": "1f3494910484f5d37a28948d8cf5b8cd6a9f335b92afec96397eb0bfd09cb664",
+    "research/recovery_study/world.py": "afffecdc639a9d9b1d3104154c791365bccd9b33c04870525c03d34571cc1331",
+    "scripts/audit_recovery_controller_study.py": "6a5a02d654a9d56d50ac10920b47b5543addb116eae123d119c8bcaf70ecaf91",
+    "scripts/build_recovery_human_review.py": "8ea54c566c2188fea1bd8cfc5a93c1360b153b5ab3d1106063ec636dfdb68215",
+    "scripts/run_recovery_controller_study.py": "4fe216a492b8a382863f82226846675f9d834063facaf1162b33a2d6e8a1879f",
+    "tests/test_recovery_controller_audit.py": "3ccdb88696c0288d93fd7211c567d7d1cc504c8d1eccf4d0507af42271607452",
+    "tests/test_recovery_controllers.py": "99458b34b901330f86ff4c9a3474450b218ef771e74c9891454759fa5a52f189",
+    "tests/test_recovery_human_review.py": "7b8ac52243cce0b00d1e81279667d09f953abadaad7d8dd666e0d6a5729e0611",
+    "tests/test_recovery_study_runner.py": "5a950d1e02562c30cc22693c5b7baf702d424dfd717240f0c950e5e49f243150",
+    "tests/test_recovery_world.py": "77d347e07eb8ced87fd0a02b60c7e83cb4f9633a3c44b482d3d27f8b51072ef3"
+  },
+  "checked_utc": "2026-10-20T04:04:00.233347+00:00",
+  "log_bindings": {
+    "pytest.log": "0a0257dc31e18529b49c0273965d991421253826f48e89dddcd76e7cafeff962",
+    "ruff.log": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  "pytest_failed": 0,
+  "pytest_passed": 193,
+  "ruff_passed": true,
+  "scope": "Synthetic development fixtures only. No held-out episodes, measured outputs, human labels or model/service calls. Case/world author hashes unchanged. Prefreeze reviews fixed semantic alias collisions, canonical first-run claims, executing-root binding and all-slot primary outcomes."
+}

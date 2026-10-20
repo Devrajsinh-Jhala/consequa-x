@@ -76,6 +76,16 @@ def test_demo_terminal_records_the_report_that_the_site_serves():
     assert not any(re.search(r"[A-Za-z]:[\\/]|/tmp/|consequa-site-demo-", line) for line in printed)
 
 
+def test_homepage_fallback_text_matches_the_recorded_run():
+    # Script replaces these on load; crawlers, slow loads and no-JS visitors see the markup.
+    data = committed_data()
+    page = (ROOT / "website/dist/index.html").read_text(encoding="utf-8")
+    versions = re.findall(r"<span data-version>([^<]*)</span>", page)
+    hashes = re.findall(r"<code data-report-hash>([^<]*)</code>", page)
+    assert versions and set(versions) == {data["package_version"]}
+    assert hashes == [data["report"]["sha256"][:12] + "…"]
+
+
 def test_public_pages_reference_only_allowlisted_assets():
     public = {name: exporter.checked_file(ROOT, name) for name in exporter.ALLOWLIST}
     exporter.validate_types(public)

@@ -54,6 +54,17 @@ def test_demo_exports_portable_traces_and_separates_evaluator_truth(tmp_path, ca
         assert case["explanation"] in manifest_paths
 
 
+def test_demo_prints_each_scenarios_diagnosis_codes(tmp_path, capsys):
+    output = tmp_path / "demo"
+    assert cli.main(["demo", "--output", str(output)]) == 0
+    printed = capsys.readouterr().out
+    for case in read_json(output / "evaluator_truth" / "cases.json"):
+        codes = explain(Trace.from_json((output / case["trace"]).read_text(encoding="utf-8"))).single_action.codes
+        assert f"  {case['scenario']}: {' / '.join(codes)}\n" in printed
+    assert "timeout_after_commit: ASSESSMENT_DIVERGENCE / ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in printed
+    assert "BELIEF" not in printed + (output / "README.md").read_text(encoding="utf-8")
+
+
 def test_explain_reads_only_the_supplied_trace(tmp_path, capsys, monkeypatch):
     trace = run_scenario(seed=11).trace
     path = tmp_path / "trace.json"

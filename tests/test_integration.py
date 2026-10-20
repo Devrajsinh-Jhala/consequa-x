@@ -83,7 +83,7 @@ def test_lost_response_does_not_hide_committed_effect_or_rewrite_agent_assessmen
     assert result.status is VerificationStatus.SATISFIED
     assert result.origin is OriginStatus.CONFIRMED
     assert result.effect_ids == result.attributable_effect_ids
-    assert episode.explanation.single_action.diagnosis == "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.explanation.single_action.diagnosis == "ASSESSMENT_DIVERGENCE / ACKNOWLEDGEMENT_EFFECT_DIVERGENCE"
     assert episode.explanation.single_action.assessment_alignment == "contradicted"
     assert set(episode.explanation.single_action.codes) == {
         "ASSESSMENT_DIVERGENCE", "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE",
@@ -118,7 +118,7 @@ def test_external_actor_state_satisfaction_does_not_claim_agent_effect_origin():
     assert "EXTERNAL_ACTOR_EFFECT" in episode.explanation.single_action.codes
     assert episode.explanation.single_action.assessment_alignment == "unassessable"
     assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" not in episode.explanation.single_action.codes
-    assert episode.explanation.single_action.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.explanation.single_action.diagnosis == " / ".join(episode.explanation.single_action.codes)
 
 
 def test_missing_origin_does_not_prevent_state_verification_or_infer_provenance():
@@ -139,7 +139,7 @@ def test_cautious_timeout_assessment_is_not_called_an_incorrect_belief():
     assert episode.explanation.single_action.assessment_alignment == "unassessable"
     assert "ACKNOWLEDGEMENT_EFFECT_DIVERGENCE" in episode.explanation.single_action.codes
     assert "ASSESSMENT_DIVERGENCE" not in episode.explanation.single_action.codes
-    assert episode.explanation.single_action.diagnosis != "BELIEF / RESPONSE DIVERGENCE"
+    assert episode.explanation.single_action.diagnosis == " / ".join(episode.explanation.single_action.codes)
 
 
 def test_delayed_readback_remains_unknown_until_horizon_is_covered():

@@ -1,0 +1,30 @@
+{
+  "audit_manifest_sha256": "f542c363e72db0ae9ebfac3776ed2dece5f936589de2904606f479a7c573837d",
+  "audit_receipt_sha256": "1dc10b83f885a66d21c927c18185433ebcc60c83f88a4db268fc13d6ab6a2dba",
+  "complete": true,
+  "files": {
+    "README.md": "40c5d1ac66485f883e6ddbb3c7b3fa325c156bfe56c71ba41567b679bd887047",
+    "availability-results.json": "334bc60b01926366298ece47aaabd2357466154b4cdf4b5f1ce130fb26e4bc33",
+    "case-method-results.csv": "a91c80dcd41cbe99c4cba4c1aefa9ce1b29b2b35ce4c83469eae013070ab0c95",
+    "plot-specification.json": "d22cb29d804c00593e1e9c6541aae0c1e4d72863664aaddbff24ccaa03c5d971",
+    "profile-method-results.csv": "43a5c23d1fa0343b64a879a38beb99af6449f4f96b04daacc151eac35ae61306",
+    "recovery-availability-grid.pdf": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8",
+    "recovery-availability-grid.png": "4880e73de4d72acfdeb6fd8072d6b4855d4e674b5ab5a4902ba6a61fd50e16dd",
+    "recovery-availability-grid.svg": "9e023f05ab5717f7e1c439a5084ddb1dea0df73e4ada5f889107990feb08172c",
+    "source-inputs/audit-code.source.py": "1e95636d27c883bb1125091d0a97845afa3991be122ef2dc6475bce3ecfb0d85",
+    "source-inputs/audit-manifest.source.json": "f542c363e72db0ae9ebfac3776ed2dece5f936589de2904606f479a7c573837d",
+    "source-inputs/audit-receipt.source.json": "1dc10b83f885a66d21c927c18185433ebcc60c83f88a4db268fc13d6ab6a2dba",
+    "source-inputs/cases.source.json": "39d7bbdb9eab6cd4fad2c31ae84ea678adec6d036f0855ef919e3a25fee79285",
+    "source-inputs/collection-summary.source.json": "17c1630ebbb86b0c896a39cf7508fa6e441ab5122837b55e8b6e92c0c9697a64",
+    "source-inputs/completion-receipt.source.json": "8613f960fab576207ae722928c389d8fb54dd2437e2a6432f77fced9728fbdd2",
+    "source-inputs/coverage-analysis.source.json": "22a233f7ca4a7d916dc292701ad72b915c8025ea07b1b335a4ff6eb6b4d2eea1",
+    "source-inputs/plotting-code.source.py": "26304efd5f1571fb17cdd7d4b762fad186669f31daf0f3b2b6c5d26e3696b026",
+    "source-inputs/protocol.source.json": "e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584",
+    "source-inputs/recomputed-summary.source.json": "448a477195270324a8ea2a415be458ce171b86b2f70ac0fede493f7a55de7d84",
+    "source-inputs/started.source.json": "6504e7c5e80a5213da6bfe3199ffd2dd9946d232af0efe6c1c56c6751c8a7a68",
+    "source-inputs/study-manifest.source.json": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e"
+  },
+  "protocol_sha256": "e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584",
+  "schema": "conseqa-availability-publication-exports-v1",
+  "study_manifest_sha256": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e"
+}

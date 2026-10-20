@@ -1,0 +1,52 @@
+{
+  "all_figures_precede_references": true,
+  "all_ten_pages_inspected": true,
+  "clipping_or_overlaps_found": false,
+  "page_bindings": {
+    "verified-page-01.png": {
+      "bytes": 414375,
+      "sha256": "0ffcc1c9cbf20c9940ac8c078a250c16bf028f9b34539b26c5a0a3a2ce46ecf4"
+    },
+    "verified-page-02.png": {
+      "bytes": 424473,
+      "sha256": "8393355f8c52e01f268dcacfcb8a4c9af75735f451867629587b28a2efd61b03"
+    },
+    "verified-page-03.png": {
+      "bytes": 407347,
+      "sha256": "3725ccdd9f6f3f75c5e97cb71c8bc783b1a6e6a202a5c90c8e2f4bf58e366d14"
+    },
+    "verified-page-04.png": {
+      "bytes": 350500,
+      "sha256": "c7a53f9a5ce6c9ff21cc7e014148a15260f3e2aec110cc453dfdab33c3ff6393"
+    },
+    "verified-page-05.png": {
+      "bytes": 432178,
+      "sha256": "1b2385197e0d3d9a5c05a4a3c19380efd24324c27c7cc053de4afca560384e21"
+    },
+    "verified-page-06.png": {
+      "bytes": 190856,
+      "sha256": "73b20eeb83447f8996b306dbcc259ac5849567cefc3cccbbcb00784515436802"
+    },
+    "verified-page-07.png": {
+      "bytes": 305629,
+      "sha256": "908bb30bbb38e76cdbead705290ac6e12a8391cbecbc01a8d9392d3e33277258"
+    },
+    "verified-page-08.png": {
+      "bytes": 245262,
+      "sha256": "8093d45c4947d7e0edc7b9fa39651e10eff9bc258890902ddddfadb6dba45209"
+    },
+    "verified-page-09.png": {
+      "bytes": 152947,
+      "sha256": "a4698b8887861bf7b5568bf09debd8e4fa084c60b18e5dfbf4e61fba1b94fbe4"
+    },
+    "verified-page-10.png": {
+      "bytes": 390084,
+      "sha256": "225056b4550024b1098380d9addc658ede8caf4abf783a6a780d35b2d7ebd4a4"
+    }
+  },
+  "pages_1_to_5": "lead integrator",
+  "pages_6_to_10": "separate AI visual reviewer",
+  "passed": true,
+  "review_kind": "AI-assisted rendered-page inspection",
+  "scope": "Visual quality check, not independent human validation or external scientific replication."
+}

@@ -1,0 +1,30 @@
+{
+  "artifacts_hashed": 1925,
+  "audit_python_executable": "D:\\ConsequaX-Research\\recovery-2.1.1-venv\\Scripts\\python.exe",
+  "audit_python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "audit_script_sha256": "1e95636d27c883bb1125091d0a97845afa3991be122ef2dc6475bce3ecfb0d85",
+  "canonical_claim_scope": "mapped protocol-local byte copy plus declared original path; original file checked only in host mode",
+  "completed_trials": 960,
+  "engine_commit": "22e88498cff0e2afd1549803fb4d9645902e74b9",
+  "failed_trials": 0,
+  "limitations": [
+    "Same project AI-assisted authors; no independent human or external replication.",
+    "Portable checks verify retained bytes and Git content, not actual original runtime execution or canonical-claim exclusivity.",
+    "Source admission/provider laws and uniform-safe scenario design remain assumptions.",
+    "Coverage discrepancies are retained diagnostics, not reasons to exclude worlds or force hypotheses.",
+    "Complete controlled finite grid; no bootstrap, population confidence interval, p-value, or autonomous-agent generalization."
+  ],
+  "manifest_sha256": "c2c658afe798efa7da835e1efca3a3aa8d605bcb853fd230f5d607a1d3c3db2e",
+  "passed": true,
+  "planned_trials": 960,
+  "protocol_commit": "b937920469285cdd971783fa6cb33216a7e4da13",
+  "protocol_committed_at_unix": 1792503014,
+  "protocol_sha256": "e874c6781aa0dbc8ef682ea0a8d37c25d73cc861dada05fd0379116d4a7f6584",
+  "recorded_host_byte_checks_performed": true,
+  "runtime_files_bound_to_git": 53,
+  "schema": "conseqa-availability-postcollection-audit-v1",
+  "semantic_auditor_sha256": "6a5a02d654a9d56d50ac10920b47b5543addb116eae123d119c8bcaf70ecaf91",
+  "source_commit": "d805b3e3560c05ee0a7efd02a80fc18503c6ee05",
+  "sqlite_snapshots_queried": 960,
+  "verification_scope": "retained artifacts plus immutable Git blobs; original host declarations are not attested"
+}

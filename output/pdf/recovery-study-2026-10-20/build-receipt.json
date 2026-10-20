@@ -1,0 +1,25 @@
+{
+  "all_fonts_embedded": true,
+  "automated_and_all_page_visual_checks_passed": true,
+  "command": [
+    "tectonic",
+    "paper/conseqax-research.tex",
+    "--outdir",
+    "tmp/pdfs/recovery-study-2026-10-20",
+    "--keep-logs"
+  ],
+  "compile_exit_code": 0,
+  "compiler": {
+    "bytes": 51538432,
+    "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tectonic\\tectonic.exe",
+    "sha256": "99ffcfdbf1ebf8bdda9e791942e3d06aedb12463fddc33f07de6f5211c8bf08d"
+  },
+  "complete": true,
+  "fonts": 12,
+  "measured_worlds_or_model_calls_added_by_packaging": 0,
+  "packaged_utc": "2026-10-20T18:41:06.072314+00:00",
+  "pages": 10,
+  "schema": "conseqa-focused-paper-build-v1",
+  "source_commit": "106da77c6367012b14cae16fec6f3cfa7d137f09",
+  "venue_specific_submission_compliance_not_asserted": true
+}

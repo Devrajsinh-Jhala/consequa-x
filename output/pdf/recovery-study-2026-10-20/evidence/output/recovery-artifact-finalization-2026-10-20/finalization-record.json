@@ -1,0 +1,64 @@
+{
+  "claim_binding": {
+    "canonical_claim_path": "D:\\ConsequaX-Research\\paper-frozen-recovery-2026-10-20\\output\\.recovery-run-claims\\b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa.json",
+    "canonical_claim_sha256": "a21fae4be7918a91153e76cc49975c645a5758ceaf9fa892466e92acdd599153"
+  },
+  "collector_processes_observed_before_packaging": 0,
+  "completed_trials": 15360,
+  "deviation": "All scheduled raw trials, database snapshots, journal rows, and summary were retained, but the original runner emitted no terminal manifest/receipt. This separate operation creates only those missing packaging files; it does not resume or rerun measured worlds. This is a disclosed packaging deviation from the no-resume prospective protocol, not uninterrupted or fully protocol-conformant runner completion.",
+  "existing_artifacts_regenerated": false,
+  "failed_trials": 0,
+  "finalized_utc": "2026-10-20T12:56:54.601865+00:00",
+  "finalizer_runtime": {
+    "argv": [
+      "scripts/finalize_recovery_artifacts.py",
+      "--study-dir",
+      "output/recovery-controller-study-2026-10-20",
+      "--frozen-root",
+      "D:/ConsequaX-Research/paper-frozen-recovery-2026-10-20",
+      "--output",
+      "output/recovery-artifact-finalization-2026-10-20"
+    ],
+    "finalization_output": "D:\\ConsequaX-Research\\paper-writing\\output\\recovery-artifact-finalization-2026-10-20",
+    "frozen_root": "D:\\ConsequaX-Research\\paper-frozen-recovery-2026-10-20",
+    "python_executable": "D:\\ConsequaX-Research\\recovery-2.1.1-venv\\Scripts\\python.exe",
+    "python_executable_sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "study_root": "D:\\ConsequaX-Research\\paper-writing\\output\\recovery-controller-study-2026-10-20"
+  },
+  "finalizer_sha256": "00bdd2110a5e6fc8a5a533f26f877ea03360369613ff7483a043463f26381b89",
+  "limitations": [
+    "Hashes here start at the postcollection inventory, not a cryptographic attestation of original execution or no earlier tampering.",
+    "No original exit status or precise termination cause is available; filesystem times are advisory.",
+    "Canonical claims and saved logs cannot prove absence of off-record runs, deleted records, or external activity.",
+    "The true recheck is this postcollection host recheck; no original process-completion attestation is invented."
+  ],
+  "new_external_application_calls": 0,
+  "new_model_calls": 0,
+  "new_study_manifest_sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921",
+  "original_bytes_unchanged_during_checks": true,
+  "original_inventory_sha256": "8218d82afa3e8fb91c07ab4e7219b9913c67853c3364bed5d48183b4dc8c9a94",
+  "original_runner_completion_receipt_present": false,
+  "original_runner_exit_status_available": false,
+  "planned_trials": 15360,
+  "protocol_binding": {
+    "collection_started_utc": "2026-10-20T04:05:59.720458+00:00",
+    "protocol_commit": "3d3dd4ca663d3e16c7cb1ead4c59c724af9bedd7",
+    "protocol_committed_at_unix": 1792469137,
+    "protocol_git_path": "output/recovery-controller-protocol-2026-10-20/protocol.json"
+  },
+  "protocol_sha256": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa",
+  "recheck_utc": "2026-10-20T12:56:54.601865+00:00",
+  "required_followup": "The unchanged frozen independent semantic auditor must pass before results are reported.",
+  "retained_files": 30724,
+  "schema": "recovery-postcollection-artifact-finalization-v1",
+  "source_binding": {
+    "framework_version": "2.1.1",
+    "installed_package_files_verified": 53,
+    "source_commit": "22e88498cff0e2afd1549803fb4d9645902e74b9",
+    "source_files_verified": 69
+  },
+  "source_commit": "22e88498cff0e2afd1549803fb4d9645902e74b9",
+  "termination_cause": "unknown; terminal packaging absent when session work resumed",
+  "world_execution_performed": false
+}

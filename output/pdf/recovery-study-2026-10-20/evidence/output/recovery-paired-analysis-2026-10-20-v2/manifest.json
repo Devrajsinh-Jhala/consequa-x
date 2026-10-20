@@ -1,0 +1,19 @@
+{
+  "audit_receipt_sha256": "107b03a6c0d73df859fdc5d9c5c7587e6d4b5d47a46c7bf35b273bd6a0ddf0b6",
+  "complete": true,
+  "files": {
+    "README.md": "a2a857613be150b0e9c2e75c58f0d8454da4d82500096ba3f2227126e85025d7",
+    "analysis-code.source.py": "9e16ac9ca110721ea9085e49cc4f884ffad8b59c26257803060c75742628588c",
+    "audit-receipt.source.json": "107b03a6c0d73df859fdc5d9c5c7587e6d4b5d47a46c7bf35b273bd6a0ddf0b6",
+    "comparisons.json": "392b4b6481bb7c8c38b403ea132a6feb56951979a4c01b2e4b8d0de26147f51b",
+    "descriptive-strata.csv": "8be0c8e2a591bdfe3b5e6703e0c1a8454593c9885dfd961e02dd76f1f7b1b0c5",
+    "descriptive-strata.json": "b31a758f190b0964d211d8494fd0a651698ea2523254025ede2f928d5d395809",
+    "protocol.source.json": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa",
+    "publication-guard.source.py": "d8fdbe7f8604803acbf2ae5ee456abb4c7c1f72b41be71a3d898b63edc5ed5c6",
+    "seed-invariance.json": "b845958effedb552cc01ba8fbc0d1cf2ff1fc2ffdf7be11b96e1c5f0a5b7f0a7",
+    "study-manifest.source.json": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921"
+  },
+  "protocol_sha256": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa",
+  "schema": "recovery-paired-descriptive-exports-v1",
+  "study_manifest_sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921"
+}

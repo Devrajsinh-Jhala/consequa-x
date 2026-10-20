@@ -1,0 +1,30 @@
+{
+  "artifacts_hashed": 30724,
+  "audit_script_sha256": "6a5a02d654a9d56d50ac10920b47b5543addb116eae123d119c8bcaf70ecaf91",
+  "canonical_claim_path": "D:\\ConsequaX-Research\\paper-frozen-recovery-2026-10-20\\output\\.recovery-run-claims\\b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa.json",
+  "canonical_claim_sha256": "a21fae4be7918a91153e76cc49975c645a5758ceaf9fa892466e92acdd599153",
+  "collection_started_utc": "2026-10-20T04:05:59.720458+00:00",
+  "completed_trials": 15360,
+  "failed_slots_without_databases": [],
+  "failed_trials": 0,
+  "framework_version": "2.1.1",
+  "installed_package_files_verified": 53,
+  "limitations": [
+    "Auditor author also authored controllers; audit-test author also authored world. This is independent code from world/evaluator/runner, not independent-human or external replication.",
+    "Source admission and provider guarantees are application assumptions; logs and persisted schedule consistency cannot establish authentication or rule out off-record external calls.",
+    "Finite safety cutoff does not establish absence of arbitrarily late effects.",
+    "Missing failed-slot snapshots remain failures and cannot receive a lifecycle audit.",
+    "Recorded elapsed wall times are checked for shape only, not independently remeasured."
+  ],
+  "manifest_sha256": "a1bdee3d54892403ded85db87e92febb16906398ea46bb38b972293db89d1921",
+  "passed": true,
+  "planned_trials": 15360,
+  "protocol_commit": "3d3dd4ca663d3e16c7cb1ead4c59c724af9bedd7",
+  "protocol_committed_at_unix": 1792469137,
+  "protocol_git_path": "output/recovery-controller-protocol-2026-10-20/protocol.json",
+  "protocol_sha256": "b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa",
+  "schema": "recovery-controller-postcollection-audit-v1",
+  "source_commit": "22e88498cff0e2afd1549803fb4d9645902e74b9",
+  "source_files_verified": 69,
+  "sqlite_snapshots_queried": 15360
+}

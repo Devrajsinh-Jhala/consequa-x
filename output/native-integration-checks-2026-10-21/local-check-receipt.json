@@ -1,0 +1,30 @@
+{
+  "recorded_utc": "2026-10-21T05:45:59.837669+00:00",
+  "test_result": "152 passed",
+  "elapsed_seconds_reported": 28.34,
+  "test_log_sha256": "5334085301b9c57905cec9fdf2ccc5400fd99c04341abfb06ff2acaeb0933a85",
+  "interpreter": "D:/ConsequaX-Research/native-agent-pilot-venv/Scripts/python.exe",
+  "test_runner": "pytest supplied from primary test environment via PYTHONPATH",
+  "source_files": {
+    "research/native_agent/__init__.py": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c",
+    "research/native_agent/controller.py": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6",
+    "research/native_agent/transport.py": "cbf6c3ca16911e4fa91d0efa6334b7bd19199622f9322b273379c3ce66f64d87",
+    "research/native_agent/harness.py": "85461b666da069872d1f631880517a947796f4eb2859652c012cc92fa7e6aa14",
+    "research/native_agent/audit.py": "2ae8c2e5b97d973de1b1000518454a7a9b85b88f7d0f489c75e6cd5be0eab1af",
+    "research/native_agent/protocol.py": "ee522512acaa7c07dad76f2f254d6f160c53024307f05a1ec02dc4686b6a9a9a",
+    "scripts/run_native_external_benchmark.py": "85d3ad26eda50fdf7fb7d98ddaf833d17df3353a85bc54122953fae379c99800",
+    "scripts/audit_native_external_benchmark.py": "dbfa83fec688493b5ab7e54b92e39597678d927a9a7f249396902c95e1b83601"
+  },
+  "test_files": {
+    "tests/test_native_audit.py": "8244e8708b959a921c7da5400d7b691f1f114c75c11e6ca1b0c85f2d2e0b589a",
+    "tests/test_native_controller.py": "60573258f87438d9bdd90baab39906ed2db45271114e7a3abaf866b430fe24e4",
+    "tests/test_native_external_audit_runner.py": "6dac54f6858033218b0a47154f4e2c388af256278f7de40d0a2ed326b841e0a9",
+    "tests/test_native_harness.py": "eb5872b4d8d99ed25002f0543c6307961dccd33a7086de7c15f4c4892a2ae637",
+    "tests/test_native_protocol.py": "ea5a7195ceb158b7189a58272d73432fc08a23c93aa45bab2a81676611770be3",
+    "tests/test_native_runner.py": "b5de73afc4bd9e1798d4a067aea6c2a71503820a386da5de168f80b1d906618c",
+    "tests/test_native_transport.py": "731589d3adc0b35328c52aad482e0e94040af549a6b13e9af5526db06dce1672"
+  },
+  "test_scope": "Source/transport guard/metadata/protocol/supervision/offline audit fixtures and synthetic native integration. Not a live benchmark result.",
+  "github_actions_triggered": 0,
+  "official_model_episodes": 0
+}

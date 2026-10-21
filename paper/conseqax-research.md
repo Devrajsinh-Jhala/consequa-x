@@ -81,7 +81,7 @@ unnecessary reads, or parity under shared provider guarantees can limit the prop
 benefit.
 
 The contribution is a specified application protocol, a bounded recovery policy,
-and a paired closed-loop evaluation of these questions. Independent reference
+and a paired closed-loop evaluation of these questions. Separately implemented reference
 parity would support observed conformance, without demonstrating superiority.
 Because state-only and provenance-aware variants share action transitions,
 their comparison isolates reporting rather than a provenance-caused recovery

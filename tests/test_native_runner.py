@@ -40,9 +40,10 @@ def test_development_budget_preserves_manual_reservation_and_shared_ceiling(args
 
 
 def test_development_budget_exclusive_lock_and_categories(args):
+    assert r.DEVELOPMENT_CEILINGS == {"task_independent_transport": 12, "excluded_native": 64}
     first = r.reserve_development(args, "excluded_native", 18)
     assert read(first)["reserved_maximum_requests"] == 18
-    r.reserve_development(args, "excluded_native", 18)
+    r.reserve_development(args, "excluded_native", 46)
     with pytest.raises(ValueError, match="allowance exhausted"):
         r.reserve_development(args, "excluded_native", 1)
     r.reserve_development(args, "task_independent_transport", 2)
@@ -72,7 +73,7 @@ def test_development_settlement_releases_only_complete_accounted_attempts(args):
 
 
 def test_missing_or_partial_accounting_never_releases_budget(args):
-    reservation = r.reserve_development(args, "excluded_native", 36)
+    reservation = r.reserve_development(args, "excluded_native", 64)
     assert not r.settle_development(reservation, args.output)
     with pytest.raises(ValueError, match="allowance exhausted"):
         r.reserve_development(args, "excluded_native", 1)
@@ -241,3 +242,67 @@ def test_bound_readiness_directory_detects_added_and_changed_files(tmp_path):
     (root / "extra.json").write_text("{}")
     with pytest.raises(ValueError, match="inventory"):
         r.verify_evidence(record)
+
+
+@pytest.fixture
+def readiness_inputs(args, tmp_path):
+    identity = {"source_files": r.actual_source_files(), "version": {"version": "fixture"},
+        "tag": {"digest": "model-tag"}, "server_executable_sha256": "server-binary",
+        "model_blob_sha256": "model-blob", "runner_configuration": {"kv_cache_k": "q8_0",
+            "context_tokens_per_slot": 16384, "cache_capacity_slots": 2},
+        "runner_binding": {"executable": "runner.exe", "executable_sha256": "runner-binary",
+            "model_blob": "model.gguf", "model_blob_sha256": "model-blob", "pid": 10, "port": 50000},
+        "launch_receipt_sha256": "launch-one", "server_create_time": 10, "runner_create_time": 11}
+    checks = [{"passed": True, "same_rendered_bytes": True, "same_token_ids": True}] * 2
+    transport = tmp_path / "transport"
+    transport.mkdir()
+    args.transport_result = str(transport / "transport-smoke-result.json")
+    r.write_new(args.transport_result, {"passed": True, "generation_attempts": 2, "official_tasks_read": 0,
+        "source_files": r.actual_source_files(), "context_checks": checks, "identity": identity})
+    for index in (0, 1):
+        r.write_new(transport / f"response-{index}.json", {"choices": [{"message": {"content": "fixture"}}]})
+    for label, arm, task_id in (("native", "native", "19"), ("guarded", "G", "20")):
+        slot = tmp_path / label
+        episode = slot / "episode"
+        episode.mkdir(parents=True)
+        setattr(args, label + "_episode", str(slot))
+        r.write_new(slot / "parent-receipt.json", {"exit_code": 0, "hard_timeout": False, "supervisor_error": None})
+        r.write_new(episode / "execution-receipt.json", {"status": "native_returned", "capture_errors": [],
+            "arm": arm, "task_id": task_id, "model_requests": {"attempted": 2}})
+        r.write_new(episode / "worker-identity.json", identity)
+        r.write_new(episode / "native-simulation.json", {"reward_info": {"reward": 0}})
+        r.write_new(episode / "configuration.json", {"required_reward_basis": ["DB", "COMMUNICATE"]})
+        r.write_new(episode / "context-checks.json", {"checks": checks})
+        (episode / "controller-events.jsonl").write_text(json.dumps({"event": "receipt",
+            "receipt": {"framework_version": "2.1.1"}}) + "\n", encoding="utf-8")
+    return args
+
+
+def test_development_readiness_accepts_recorded_process_restart(readiness_inputs):
+    args = readiness_inputs
+    for label in ("native", "guarded"):
+        path = Path(getattr(args, label + "_episode")) / "episode/worker-identity.json"
+        identity = read(path)
+        identity.update(launch_receipt_sha256="new-launch", server_create_time=20, runner_create_time=21)
+        identity["runner_binding"].update(pid=22, port=50001)
+        path.write_text(json.dumps(identity), encoding="utf-8")
+    _, evidence = r.inspect_readiness_inputs(args)
+    assert set(evidence) == {"transport", "native", "guarded"}
+    for label in ("native", "guarded"):
+        assert "episode/worker-identity.json" in evidence[label]["files"]
+
+
+@pytest.mark.parametrize("key", ["version", "tag", "server_executable_sha256", "model_blob_sha256",
+    "runner_configuration", "executable", "executable_sha256", "model_blob", "runner_model_blob_sha256"])
+def test_development_readiness_refuses_static_runtime_drift(readiness_inputs, key):
+    path = Path(readiness_inputs.guarded_episode) / "episode/worker-identity.json"
+    identity = read(path)
+    if key == "runner_model_blob_sha256":
+        identity["runner_binding"]["model_blob_sha256"] = "different"
+    elif key in ("executable", "executable_sha256", "model_blob"):
+        identity["runner_binding"][key] = "different"
+    else:
+        identity[key] = "different"
+    path.write_text(json.dumps(identity), encoding="utf-8")
+    with pytest.raises(ValueError, match="identities/configurations differ"):
+        r.inspect_readiness_inputs(readiness_inputs)

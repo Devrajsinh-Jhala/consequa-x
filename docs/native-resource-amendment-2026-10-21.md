@@ -85,3 +85,36 @@ The tested execution source must be recommitted before prospective freezing.
 Cached-token accounting is specified in the
 [separate source-backed note](native-token-accounting-2026-10-21.md). Complete
 render/token equality stays required; cached tokens are not added twice.
+
+## Session restart and final integration allowance
+
+The first unmodified native development episode on excluded ID19 completed
+14 model requests and five native tool calls. Independent offline replay,
+initial/final DB comparison and unchanged ALL regrading passed. Its native
+reward was zero: the DB target failed; its empty communication requirement
+passed vacuously. This is a completed integration check, not an official pilot
+score or a task-success-based readiness selection.
+
+When work resumed later on21October, the research server and runner had stopped.
+The measured native episode and all old identities remain unchanged. Development
+readiness now requires identical static model/tag/binary/cache/context settings
+across smoke checks, while retaining each process's distinct PID, port,
+creation time and launch receipt. Those ephemeral values need not be equal
+across separate development sessions. The official protocol still pins the
+actual live server/runner lease and stops after a lease/integrity change.
+
+Before any official generation, the shared excluded-task development allowance
+was increased from36 to64 completion invocations to permit fresh exact-source
+integration checks after the restart and accounting fixes. The first14 calls
+remain consumed. IDs19/20, required native grading and no task-reward-one rule
+remain unchanged. The separate task-independent allowance stays12 requests;
+eight were conservatively reserved before this amendment. No official48-slot
+request, step, context or time ceiling is enlarged by this development change.
+
+An offline dependency check also found that LiteLLM1.82.6 can internally retry
+certain error messages despite an explicit zero retry argument. The final
+collector must independently authorize only one generation HTTP dispatch per
+recorded native completion and refuse a rewritten or repeated request before
+transmission. This repair precedes official collection. It does not change the
+already audited first native run: its14 completion invocations and14 generation
+HTTP records agree, without failures or extra attempts.

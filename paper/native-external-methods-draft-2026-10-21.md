@@ -39,7 +39,11 @@ IDs; subsequent dialogue and observations may diverge between conditions.
 C and G implement the same application predicate and guard rules, providing
 a strong classical comparison. C emits a compact report whereas G emits a
 full receipt, so their model-visible context and token costs are not identical.
-C/G contrasts cannot isolate verifier arithmetic from report representation.
+Both call the same public-field arithmetic helper; G dispatches it as a custom
+package verifier. C/G therefore tests package integration and representation,
+not independent verifier arithmetic or the built-in temporal RecordVerifier.
+Shared predicate errors can survive; task-reward differences can reflect the
+different report representation and context or framework/guard interactions.
 The guard blocks an already dispatched identical payload and a changed payload
 on a resource whose previous result remains unresolved. All conditions share
 the proposed ceilings of 80 native steps, 48 combined assistant/user completion
@@ -96,13 +100,13 @@ and benchmark biases. No human participation is required or claimed.
 
 ## Editorial checks for the existing manuscript
 
-- `conseqax-research.tex:56` says **independent observation**. Replace it with
-  **separately captured observation**, matching the current Markdown source.
+- Resolved: `conseqax-research.tex:56` now says **separately captured
+  observation**, matching the current Markdown source.
   Study A uses the same SQLite connection and ledger (`.tex:92`); readback is
   separate from the acknowledgement signal, not an independent source or
   trust domain.
-- `.tex:38` says **Independent reference parity**. **Separately implemented
-  reference parity** is more precise because the controller author and
+- Resolved: both manuscript sources now say **Separately implemented
+  reference parity**, because the controller author and
   application transitions are shared, as already disclosed in `.tex:119`.
 - Once validated native results are integrated, distinguish the existing
   **24 authored cases/12 purposive families** from the new **12 external task

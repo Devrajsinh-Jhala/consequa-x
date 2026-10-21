@@ -43,6 +43,14 @@ can differ and must be charged. No superiority over the classical arithmetic
 is presumed. B/R/G provide the requested receipt/guard ablation, while C/G
 exposes whether the framework differs from a capable conventional controller.
 
+Specifically, C and the R/G custom verifier call the exact same `field_status`
+helper. C bypasses the package; R/G construct typed actions/observations and
+dispatch that application predicate through `cx.verify`. This comparison does
+not independently cross-check predicate arithmetic or evaluate the package's
+built-in temporal RecordVerifier. Shared predicate errors can survive in both
+arms. Task-reward differences can reflect representation, context, framework
+dispatch or guard interactions, rather than a different field algorithm.
+
 The complete unchanged native policy and tool set remain available in every
 arm. The common additional recovery instruction is constant in source and is
 appended after the native system prompt; it does not replace policy. Native

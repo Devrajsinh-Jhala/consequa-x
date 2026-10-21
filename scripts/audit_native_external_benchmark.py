@@ -208,6 +208,15 @@ def verify_completed_accounting(episode, diagnostics, execution):
     require(all(row.get("passed") is True for row in contexts)
             and len(contexts) == model["http_generation_dispatch_records"] == model["attempted"],
             "Completed generation/context dispatch accounting differs")
+    network = load_json(Path(episode) / "network-guard.json")["events"]
+    sends = [row for row in network if row.get("kind") == "http" and row.get("generation_request") is True]
+    starts_model = [row for row in read_journal(Path(episode) / "model-calls.jsonl")["rows"]
+                    if row.get("kind") == "request_start"]
+    for context, send, invocation in zip(contexts, sends, starts_model):
+        digest = hashlib.sha256(json.dumps(context["request"], sort_keys=True, allow_nan=False).encode()).hexdigest()
+        require(context.get("request_sha256") == send.get("parsed_body_sha256") == digest,
+                "Actual generation body/context receipt binding differs")
+        verify_model_wire(invocation["request"], context["request"])
     terminal = read_journal(Path(episode) / "tool-dispatch.jsonl")["rows"]
     starts = read_journal(Path(episode) / "tool-dispatch-starts.jsonl")["rows"]
     require(len(starts) == len(terminal) == execution["actual_tool_dispatches"]
@@ -217,6 +226,26 @@ def verify_completed_accounting(episode, diagnostics, execution):
         require(start["call_index"] == end["call_index"] == index and all(
             start[key] == end[key] for key in ("phase", "request", "before")),
             "Tool start/terminal journal differs")
+
+
+def verify_model_wire(native_request, actual_wire):
+    """Check native inputs against the actual parsed HTTP body, without collector imports."""
+    def messages(value):
+        return [{key: item for key, item in message.items()
+                 if not (key == "content" and item is None and message.get("tool_calls"))}
+                for message in value]
+    def equal(left, right):
+        return json.dumps(left, sort_keys=True, allow_nan=False) == json.dumps(right, sort_keys=True, allow_nan=False)
+    require(not set(actual_wire) - {"model", "messages", "tools", "tool_choice", "max_tokens", "temperature", "seed"},
+            "Actual HTTP body contains unbound generation fields")
+    require(equal(messages(native_request["messages"]), messages(actual_wire["messages"])),
+            "Native model messages differ from actual HTTP history")
+    require(equal(native_request.get("tools"), actual_wire.get("tools")),
+            "Native tool schemas differ from actual HTTP schemas")
+    require(native_request["model"].removeprefix("openai/") == actual_wire["model"],
+            "Native/HTTP model names differ")
+    for key in ("max_tokens", "temperature", "seed", "tool_choice"):
+        require(equal(native_request.get(key), actual_wire.get(key)), "Native/HTTP generation parameter differs: " + key)
 
 
 def summarize(rows):

@@ -27,7 +27,7 @@ from research.native_agent.protocol import (  # noqa: E402
 )
 
 INTEGRITY_EXIT = 78
-DEVELOPMENT_CEILINGS = {"task_independent_transport": 12, "excluded_native": 36}
+DEVELOPMENT_CEILINGS = {"task_independent_transport": 12, "excluded_native": 64}
 
 
 def utc():
@@ -512,9 +512,14 @@ def inspect_readiness_inputs(args):
                 or identity.get("source_files") != source or simulation.get("reward_info") is None
                 or configuration.get("required_reward_basis") != ["DB", "COMMUNICATE"]):
             raise ValueError("Native readiness requires retained exact-source native grading, regardless of task reward")
-        for key in ("version", "tag", "launch_receipt_sha256", "server_executable_sha256",
-                    "model_blob_sha256", "runner_configuration", "runner_binding", "server_create_time", "runner_create_time"):
-            if identity.get(key) != transport["identity"].get(key):
+        # Development may span process restarts; each complete lease remains
+        # recorded in its bound smoke evidence. Official runtime_gate still
+        # requires the exact live lease captured by the prospective freeze.
+        for key in ("version", "tag", "server_executable_sha256", "model_blob_sha256", "runner_configuration"):
+            if identity[key] != transport["identity"][key]:
+                raise ValueError("Readiness smoke runtime identities/configurations differ")
+        for key in ("executable", "executable_sha256", "model_blob", "model_blob_sha256"):
+            if identity["runner_binding"][key] != transport["identity"]["runner_binding"][key]:
                 raise ValueError("Readiness smoke runtime identities/configurations differ")
         attempted = execution["model_requests"]["attempted"]
         checks = load_json(episode / "context-checks.json")["checks"]

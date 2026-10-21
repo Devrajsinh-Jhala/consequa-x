@@ -51,7 +51,8 @@ def test_jsonl_reader_refuses_reordered_metadata_and_nonfinite_values(tmp_path):
 
 def test_partial_model_costs_preserve_pending_failed_and_unknown_usage(tmp_path):
     write_journal(tmp_path / "model-calls.jsonl", [
-        {"kind": "request_start", "call_index": 0},
+        {"kind": "request_start", "call_index": 0, "request": {
+            "model": "openai/fixture", "messages": [{"role": "user", "content": "fixture"}]}},
         {"kind": "request_return", "call_index": 0,
          "response": {"usage": {"prompt_tokens": 10, "completion_tokens": 3}}},
         {"kind": "request_start", "call_index": 1},
@@ -143,17 +144,29 @@ def test_completed_accounting_requires_exact_context_and_transport_attempt_denom
     for name in ("controller-events", "tool-dispatch", "tool-dispatch-starts"):
         write_journal(tmp_path / (name + ".jsonl"), [])
     write_journal(tmp_path / "model-calls.jsonl", [
-        {"kind": "request_start", "call_index": 0},
+        {"kind": "request_start", "call_index": 0, "request": {
+            "model": "openai/fixture", "messages": [{"role": "user", "content": "fixture"}]}},
         {"kind": "request_return", "call_index": 0,
          "response": {"usage": {"prompt_tokens": 7, "completion_tokens": 2}}}])
+    wire = {"model": "fixture", "messages": [{"role": "user", "content": "fixture"}]}
+    digest = runner.hashlib.sha256(json.dumps(wire, sort_keys=True).encode()).hexdigest()
     (tmp_path / "network-guard.json").write_text(json.dumps({"events": [
-        {"kind": "http", "generation_request": True}]}), encoding="utf-8")
-    (tmp_path / "context-checks.json").write_text('{"checks":[{"passed":true}]}', encoding="utf-8")
+        {"kind": "http", "generation_request": True, "parsed_body_sha256": digest}]}), encoding="utf-8")
+    (tmp_path / "context-checks.json").write_text(json.dumps({"checks": [
+        {"passed": True, "request": wire, "request_sha256": digest}]}), encoding="utf-8")
     execution = {"model_requests": {"attempted": 1, "completed": 1, "failed": 0,
         "prompt_tokens": 7, "completion_tokens": 2}, "actual_tool_dispatches": 0,
         "completed_tool_dispatches": 0, "inflight_tool_dispatches": []}
     diagnostics = runner.journal_diagnostics(tmp_path, {})
     runner.verify_completed_accounting(tmp_path, diagnostics, execution)
+    network_path = tmp_path / "network-guard.json"
+    original = network_path.read_text(encoding="utf-8")
+    network = json.loads(original)
+    network["events"][0]["parsed_body_sha256"] = "0" * 64
+    network_path.write_text(json.dumps(network), encoding="utf-8")
+    with pytest.raises(ValueError, match="body/context receipt binding"):
+        runner.verify_completed_accounting(tmp_path, diagnostics, execution)
+    network_path.write_text(original, encoding="utf-8")
     (tmp_path / "context-checks.json").write_text('{"checks":[]}', encoding="utf-8")
     with pytest.raises(ValueError, match="context dispatch"):
         runner.verify_completed_accounting(tmp_path, diagnostics, execution)
@@ -162,3 +175,38 @@ def test_completed_accounting_requires_exact_context_and_transport_attempt_denom
 def test_completed_accounting_rejects_unavailable_journals_instead_of_zero_cost(tmp_path):
     with pytest.raises(ValueError, match="unavailable/malformed"):
         runner.verify_completed_accounting(tmp_path, runner.journal_diagnostics(tmp_path, {}), {})
+
+
+def test_native_wire_link_accepts_only_documented_null_tool_content_normalization():
+    native = {"model": "openai/fixture", "messages": [{"role": "assistant", "content": None,
+        "tool_calls": [{"id": "call0", "type": "function", "function": {
+            "name": "get_user_details", "arguments": '{"user_id":"fixture"}'}}]}],
+        "tools": [{"type": "function", "function": {"name": "get_user_details", "parameters": {
+            "type": "object", "properties": {"user_id": {"type": "string"}}}}}],
+        "max_tokens": 512, "temperature": 0, "seed": 1701, "tool_choice": "auto"}
+    wire = deepcopy(native)
+    wire["model"] = "fixture"
+    del wire["messages"][0]["content"]
+    runner.verify_model_wire(native, wire)
+    for key, replacement in (("model", "other"), ("tools", []), ("seed", 42),
+                             ("max_tokens", 256), ("temperature", 1), ("tool_choice", "none")):
+        altered = deepcopy(wire)
+        altered[key] = replacement
+        with pytest.raises(ValueError, match="differ"):
+            runner.verify_model_wire(native, altered)
+    altered = deepcopy(wire)
+    altered["messages"][0]["tool_calls"][0]["function"]["arguments"] = '{"user_id":"changed"}'
+    with pytest.raises(ValueError, match="history"):
+        runner.verify_model_wire(native, altered)
+    altered = deepcopy(wire)
+    altered["messages"][0]["content"] = "rewritten"
+    with pytest.raises(ValueError, match="history"):
+        runner.verify_model_wire(native, altered)
+    altered = deepcopy(wire)
+    altered["temperature"] = False
+    with pytest.raises(ValueError, match="parameter differs"):
+        runner.verify_model_wire(native, altered)
+    altered = deepcopy(wire)
+    altered["stop"] = ["rewritten"]
+    with pytest.raises(ValueError, match="unbound"):
+        runner.verify_model_wire(native, altered)

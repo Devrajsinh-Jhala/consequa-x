@@ -1,0 +1,33 @@
+{
+  "actual_model_calls_in_tests": 0,
+  "diff_check": "passed",
+  "elapsed_seconds_reported": 43.95,
+  "github_actions_enabled": false,
+  "interpreter": "D:/ConsequaX-Research/native-agent-pilot-venv/Scripts/python.exe",
+  "official_episodes": 0,
+  "recorded_utc": "2026-10-21T11:32:13.413241+00:00",
+  "ruff": "passed",
+  "scope": "Offline fixtures, real installed SDK synthetic error paths, source/protocol and saved-artifact accounting; not benchmark performance.",
+  "source_files": {
+    "research/native_agent/__init__.py": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c",
+    "research/native_agent/audit.py": "2ae8c2e5b97d973de1b1000518454a7a9b85b88f7d0f489c75e6cd5be0eab1af",
+    "research/native_agent/controller.py": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6",
+    "research/native_agent/harness.py": "4d4e36c729f963649ffc5e3e5bab2b1422a7df1687595266fee2eeebaa8aaec7",
+    "research/native_agent/protocol.py": "ee522512acaa7c07dad76f2f254d6f160c53024307f05a1ec02dc4686b6a9a9a",
+    "research/native_agent/transport.py": "03cd8d4a22c07e311b96a5cfe777e980c476fc073c9db32c5925a4616d1814d6",
+    "scripts/audit_native_external_benchmark.py": "4e324b45c93c1264fdc54726cff92ba31acb8945e2508df148adfee6955df193",
+    "scripts/run_native_external_benchmark.py": "1a09cf6e21b9e618337da299e8d696935b778e55873970dc0866c0d4f6f8b90f"
+  },
+  "test_files": {
+    "tests/test_native_audit.py": "8244e8708b959a921c7da5400d7b691f1f114c75c11e6ca1b0c85f2d2e0b589a",
+    "tests/test_native_controller.py": "60573258f87438d9bdd90baab39906ed2db45271114e7a3abaf866b430fe24e4",
+    "tests/test_native_external_audit_runner.py": "a8c6ba2ecc02769c9e6bce4f2ba527be7274de514e0d294d7c9053253dff85c0",
+    "tests/test_native_harness.py": "ba61799db70174f6853cc5be1a98903a823ed71f7d2bf4229ae6c6c91b04ce5e",
+    "tests/test_native_protocol.py": "ea5a7195ceb158b7189a58272d73432fc08a23c93aa45bab2a81676611770be3",
+    "tests/test_native_runner.py": "603823bc751787f0caae40879871b1d9866ffa4404d40ce056efd75d780b910a",
+    "tests/test_native_transport.py": "dcafba38eb19d37ef3cf202ae3a64ce060e620a64e3731bedcfeb982e9aa3469"
+  },
+  "test_log_sha256": "bd5dd42681046f232574de52c92a88a7698307d441554706a5d34158493dec03",
+  "test_result": "180 passed",
+  "test_runner": "pytest supplied read-only from primary test environment via PYTHONPATH"
+}

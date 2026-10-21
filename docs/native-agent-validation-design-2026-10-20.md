@@ -1,5 +1,18 @@
 # Prospective native autonomous validation — 20 October 2026
 
+> **Metadata erratum and supersession — 21 October 2026.** This feasibility
+> note incorrectly reported seven airline tasks with nonempty `communicate_info`.
+> Rechecking the pinned runtime file (159,049 bytes; SHA-256
+> `34dfcf0622792d0d0fa32aa491d21582e1b5d3ec1948e7743bae881885f878ea`)
+> finds six nonempty tasks (IDs `3,7,11,14,18,23`) and 44 empty tasks.
+> Excluded development IDs `19` and `20` both have empty requirements, leaving
+> six eligible nonempty and 42 eligible empty tasks. The twelve previously
+> listed selected IDs remain unchanged; their nonempty stratum is exhaustive.
+> The original dated proposal below is retained. Its three-arm/36-trajectory
+> design, intent epochs, prose-accuracy endpoint and later human-review proposal
+> are superseded by the [current four-arm/48-slot automated workflow](native-external-benchmark.md):
+> no intent reset, no prose-accuracy endpoint and no human review.
+
 Status: feasibility assessment and proposed protocol, not executed agent results.
 No model generation, model download, paid call, global service change,
 original-model configuration change, upstream source-package edit, staging,

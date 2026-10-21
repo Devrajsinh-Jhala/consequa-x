@@ -1,6 +1,9 @@
 """No generation, paid APIs, official task cases, or model loading in these tests."""
 import asyncio
+from copy import deepcopy
+import hashlib
 import json
+import os
 from pathlib import Path
 import socket
 import struct
@@ -15,6 +18,22 @@ from research.native_agent.transport import (
     MODEL_BLOB_SHA256, configure_local_environment, context_gate, local_model_kwargs,
     native_wire_equivalent, ollama_messages_for_render, ollama_tools_for_render, read_gguf_metadata,
 )
+
+
+def test_generation_body_semantic_binding_survives_json_ordering_and_detects_changed_values():
+    payload = {"model": LOCAL_MODEL, "messages": [{"role": "user", "content": "fixture"}],
+               "max_tokens": 128}
+    guard = LocalOnlyGuard(allow_generation=True)
+    first = json.dumps(payload).encode()
+    second = json.dumps(dict(reversed(list(payload.items()))), separators=(",", ":")).encode()
+    for body in (first, second):
+        guard.check_http("POST", guard.api_base + "/chat/completions", body)
+    assert guard.events[0]["body_sha256"] != guard.events[1]["body_sha256"]
+    expected = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+    assert {row["parsed_body_sha256"] for row in guard.events} == {expected}
+    payload["messages"][0]["content"] = "changed fixture"
+    guard.check_http("POST", guard.api_base + "/chat/completions", json.dumps(payload).encode())
+    assert guard.events[-1]["parsed_body_sha256"] != expected
 
 
 def test_provider_schema_normalization_is_offline_and_retains_constraints():
@@ -271,6 +290,186 @@ def test_wire_equivalence_preserves_everything_except_documented_null_content():
     observed[1] = {**observed[1], "tool_call_id": "different"}
     assert not native_wire_equivalent(observed, native)
     assert not native_wire_equivalent(native[::-1], native)
+
+
+def native_scope_fixture():
+    request = {"model": "openai/" + LOCAL_MODEL, "messages": [
+        {"role": "system", "content": "Complete native policy"},
+        {"role": "assistant", "content": None, "tool_calls": [
+            {"id": "fixed", "type": "function", "function": {"name": "read", "arguments": "{}"}}]},
+        {"role": "tool", "content": "Complete actual response", "tool_call_id": "fixed"}],
+        "tools": [{"type": "function", "function": {"name": "read", "parameters": {
+            "type": "object", "properties": {}, "required": []}}}],
+        "tool_choice": "auto", "max_tokens": 512, "temperature": 0, "seed": 1701,
+        "num_retries": 0, "api_key": "not-retained", "timeout": 600}
+    payload = {key: deepcopy(value) for key, value in request.items()
+               if key not in {"num_retries", "api_key", "timeout"}}
+    payload["model"] = LOCAL_MODEL
+    return request, payload
+
+
+def test_native_scope_refuses_unscoped_and_second_generation_before_context_preview():
+    request, payload = native_scope_fixture()
+    guard = LocalOnlyGuard(allow_generation=True, allow_render_only=True)
+    guard.require_native_invocation = True
+    previews = []
+    guard.before_generation = lambda body: previews.append(deepcopy(body))
+    endpoint = guard.api_base + "/chat/completions"
+    with pytest.raises(TransportRefusal, match="outside a recorded"):
+        guard.check_http("POST", endpoint, json.dumps(payload).encode())
+    assert not previews
+    with guard.native_invocation(request):
+        guard.check_http("POST", endpoint, json.dumps({**payload, "_debug_render_only": True}).encode())
+        guard.check_http("POST", endpoint, json.dumps(payload).encode())
+        with pytest.raises(TransportRefusal, match="second generation"):
+            guard.check_http("POST", endpoint, json.dumps(payload).encode())
+    assert len(previews) == 1
+    assert sum(row.get("generation_request", False) for row in guard.events) == 1
+    assert getattr(guard._thread, "native_invocation", None) is None
+
+
+@pytest.mark.parametrize("changed", ["model", "history", "role", "arguments", "call_id", "schema",
+    "max_tokens", "temperature", "seed", "tool_choice", "extra"])
+def test_native_scope_refuses_changed_input_before_preview(changed):
+    request, payload = native_scope_fixture()
+    guard = LocalOnlyGuard(allow_generation=True)
+    guard.before_generation = lambda body: pytest.fail("Changed native input reached context preview")
+    if changed == "model":
+        payload["model"] = "different"
+    elif changed == "history":
+        payload["messages"][0]["content"] = "Truncated policy"
+    elif changed == "role":
+        payload["messages"][0]["role"] = "user"
+    elif changed == "arguments":
+        payload["messages"][1]["tool_calls"][0]["function"]["arguments"] = '{"changed": true}'
+    elif changed == "call_id":
+        payload["messages"][2]["tool_call_id"] = "changed"
+    elif changed == "schema":
+        payload["tools"][0]["function"]["parameters"]["required"] = ["changed"]
+    elif changed == "extra":
+        payload["stop"] = ["truncation"]
+    else:
+        payload[changed] = "changed"
+    with guard.native_invocation(request), pytest.raises(TransportRefusal):
+        guard.check_http("POST", guard.api_base + "/chat/completions", json.dumps(payload).encode())
+    assert not any(row.get("generation_request") for row in guard.events)
+
+
+def test_native_scope_snapshots_inputs_null_equivalence_cleanup_and_new_invocation():
+    request, payload = native_scope_fixture()
+    guard = LocalOnlyGuard(allow_generation=True)
+    guard.require_native_invocation = True
+    endpoint = guard.api_base + "/chat/completions"
+    with guard.native_invocation(request):
+        assert "api_key" not in guard._thread.native_invocation["request"]
+        request["messages"][0]["content"] = "Provider mutated input"
+        payload["messages"][1].pop("content")
+        guard.check_http("POST", endpoint, json.dumps(payload).encode())
+        with pytest.raises(TransportRefusal, match="Nested"):
+            with guard.native_invocation(request):
+                pytest.fail("Nested scope entered")
+    request, payload = native_scope_fixture()
+    with pytest.raises(ValueError, match="Synthetic failed request"), guard.native_invocation(request):
+        guard.check_http("POST", endpoint, json.dumps(payload).encode())
+        raise ValueError("Synthetic failed request")
+    with guard.native_invocation(request):
+        guard.check_http("POST", endpoint, json.dumps(payload).encode())
+    assert sum(row.get("generation_request", False) for row in guard.events) == 3
+    assert guard._thread.native_invocation is None
+
+
+def test_failed_context_does_not_mark_generation_as_dispatched():
+    request, payload = native_scope_fixture()
+    guard = LocalOnlyGuard(allow_generation=True)
+
+    def refuse(payload):
+        raise ContextRefusal("Synthetic full-context refusal")
+
+    guard.before_generation = refuse
+    with guard.native_invocation(request):
+        with pytest.raises(ContextRefusal):
+            guard.check_http("POST", guard.api_base + "/chat/completions", json.dumps(payload).encode())
+        assert guard._thread.native_invocation["dispatched"] is False
+    assert not any(row.get("generation_request") for row in guard.events)
+
+
+@pytest.mark.skipif(not os.environ.get("CONSEQAX_NATIVE_PYTHON"), reason="Requires the pinned native Python environment")
+def test_installed_provider_hidden_retries_are_refused_offline(tmp_path):
+    """Exercise the real installed SDKs with synthetic responses and no sockets."""
+    script = r'''
+import sys, json
+from copy import deepcopy
+sys.path.insert(0, sys.argv[1])
+from research.native_agent.transport import LocalOnlyGuard, configure_local_environment, local_model_kwargs, LITELLM_MODEL, TransportRefusal
+from research.native_agent.harness import record_completions
+configure_local_environment(sys.argv[2])
+class OfflineGuard(LocalOnlyGuard):
+    def address(self, address, kind="network"):
+        if getattr(self._thread, "socketpair", 0):
+            return super().address(address, kind)
+        self.refuse(kind, "All real connections forbidden during offline retry test")
+class Journal:
+    def __init__(self): self.rows = []
+    def append(self, row): self.rows.append(deepcopy(row))
+with OfflineGuard(allow_generation=True, api_base="http://127.0.0.1:11436/v1") as guard:
+    import httpx
+    mode, sends, previews = [None], [], []
+    def fake_send(client, request, *args, **kwargs):
+        assert str(request.url) == "http://127.0.0.1:11436/v1/chat/completions"
+        sends.append(mode[0])
+        if mode[0] == "timeout":
+            raise httpx.ReadTimeout("Synthetic timeout", request=request)
+        if mode[0] == "connection":
+            raise httpx.ConnectError("Synthetic connection failure", request=request)
+        messages = {"ordinary_500": "Synthetic server failure",
+            "alternating": "Conversation roles must alternate user/assistant",
+            "last_role": "Last message must have role `user`",
+            "tool_index": "unknown field: parameter index is not a valid field"}
+        return httpx.Response(500, json={"error": {"message": messages[mode[0]], "type": "server_error"}}, request=request)
+    httpx.Client.send = fake_send
+    guard.attach_httpx()
+    import litellm
+    import openai
+    from importlib.metadata import version
+    assert version("litellm") == "1.82.6"
+    assert version("openai") == "3.35.1"
+    litellm.cache = None
+    assert litellm.num_retries is None and litellm.model_fallbacks is None
+    openai._base_client.SyncAPIClient._sleep_for_retry = lambda *a, **k: (_ for _ in ()).throw(AssertionError("SDK retry sleep reached"))
+    guard.require_native_invocation = True
+    guard.before_generation = lambda payload: previews.append(deepcopy(payload))
+    journal = Journal()
+    state = record_completions(litellm, journal, 6, invoke_scope=guard.native_invocation)
+    results = []
+    for case in ("ordinary_500", "timeout", "connection", "alternating", "last_role", "tool_index"):
+        mode[0] = case
+        before = len(sends)
+        try:
+            litellm.completion(model=LITELLM_MODEL, messages=[{"role": "user", "content": "Synthetic fixture"}],
+                **local_model_kwargs(api_base="http://127.0.0.1:11436/v1", timeout=0.1))
+        except BaseException as error:
+            assert (isinstance(error, TransportRefusal)) == (case in {"alternating", "last_role", "tool_index"})
+            assert not isinstance(error, AssertionError)
+        else:
+            raise AssertionError("Synthetic failed request returned a completion")
+        assert len(sends) - before == 1
+        assert guard._thread.native_invocation is None
+        results.append({"case": case, "fake_http_sends": len(sends) - before})
+    assert state["attempted"] == state["failed"] == state["provider_invoked"] == 6
+    assert state["completed"] == state["provider_returned"] == 0
+    assert len(previews) == 6
+    assert len([row for row in journal.rows if row["kind"] == "request_error"]) == 6
+    assert len([row for row in guard.events if row.get("generation_request")]) == 6
+    assert len([row for row in guard.events if row.get("kind") == "native_invocation" and not row["allowed"]]) == 3
+    print(json.dumps({"cases": results, "actual_network_connections": 0, "actual_model_calls": 0}))
+'''
+    result = subprocess.run([os.environ["CONSEQAX_NATIVE_PYTHON"], "-B", "-c", script,
+        str(Path(__file__).resolve().parents[1]), str(tmp_path / "absent-data")],
+        capture_output=True, text=True, timeout=60, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    report = json.loads(result.stdout.splitlines()[-1])
+    assert len(report["cases"]) == 6 and all(row["fake_http_sends"] == 1 for row in report["cases"])
+    assert report["actual_network_connections"] == report["actual_model_calls"] == 0
 
 
 def test_sanitizes_environment_without_recording_values(monkeypatch, tmp_path):

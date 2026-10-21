@@ -1,5 +1,6 @@
 """Synthetic execution-capture checks; no native tasks, model or network calls."""
 from copy import deepcopy
+from contextlib import contextmanager
 import json
 import sys
 from types import SimpleNamespace
@@ -234,6 +235,34 @@ def test_completion_critical_baseexception_is_recorded_and_not_retried():
     assert journal.rows[-1]["error_type"] == "HardRefusal"
 
 
+def test_completion_scope_receives_copied_public_input_and_exits_on_provider_failure():
+    events = []
+
+    @contextmanager
+    def scope(request):
+        assert "api_key" not in request
+        events.append(("enter", deepcopy(request)))
+        try:
+            yield
+        finally:
+            events.append(("exit", None))
+
+    def fail(**kwargs):
+        assert events[0][0] == "enter"
+        kwargs["messages"][0]["content"] = "provider mutation"
+        raise RuntimeError("Synthetic provider failure")
+
+    journal = MemoryJournal()
+    module = SimpleNamespace(completion=fail)
+    state = h.record_completions(module, journal, 1, invoke_scope=scope)
+    with pytest.raises(RuntimeError):
+        module.completion(num_retries=0, api_key="redacted", messages=[{"role": "user", "content": "requested"}])
+    assert [event[0] for event in events] == ["enter", "exit"]
+    assert events[0][1]["messages"][0]["content"] == "requested"
+    assert state["attempted"] == state["failed"] == state["provider_invoked"] == 1
+    assert [row["kind"] for row in journal.rows] == ["request_start", "request_error"]
+
+
 def test_completion_distinguishes_missing_usage_from_known_zero():
     module = SimpleNamespace(completion=lambda **kwargs: FixtureResponse({"choices": []}))
     state = h.record_completions(module, MemoryJournal(), 1)
@@ -281,6 +310,7 @@ def test_episode_guard_failure_is_recorded_before_any_native_import(tmp_path, mo
 def fake_native(tmp_path, monkeypatch):
     """Native-shaped public interfaces, with no real corpus, provider or HTTP."""
     from types import ModuleType
+    from research.native_agent.transport import LocalOnlyGuard
 
     captured = {}
     environment = FixtureEnvironment()
@@ -309,6 +339,7 @@ def fake_native(tmp_path, monkeypatch):
 
     def simulate(supplied, **kwargs):
         assert supplied is orchestrator
+        assert guard.require_native_invocation is True
         supplied.initialize()
         return SimpleNamespace(model_dump=lambda **kwargs: {"fixture": "native returned"})
 
@@ -337,7 +368,8 @@ def fake_native(tmp_path, monkeypatch):
     (corpus / "tasks.json").write_text('[{"id":"synthetic"}]', encoding="utf-8")
     monkeypatch.setattr(sys.modules["tau2"], "__file__",
                         str(tmp_path / "native" / "src" / "tau2" / "__init__.py"), raising=False)
-    guard = SimpleNamespace(active=True, api_base="http://127.0.0.1:11436/v1", events=[])
+    guard = LocalOnlyGuard(api_base="http://127.0.0.1:11436/v1")
+    guard.active = True  # Synthetic public interfaces never invoke a network operation.
     gate = SimpleNamespace(guard=guard, receipts=[])
     guard.before_generation = gate
     return SimpleNamespace(native_root=tmp_path / "native", captured=captured, guard=guard, gate=gate,
@@ -355,6 +387,7 @@ def test_episode_binds_isolated_listener_and_restores_completion(tmp_path, fake_
         assert fixture.captured["config"][who]["api_base"] == "http://127.0.0.1:11436/v1"
         assert fixture.captured["config"][who]["num_retries"] == 0
     assert fixture.llm_utils.completion is fixture.original_completion
+    assert fixture.guard.require_native_invocation is False
     final = json.loads((output / "final-state.json").read_text())
     assert final["hashes"] == {"agent_db_hash": "agent-0", "user_db_hash": "user-0"}
     assert (output / "native-simulation.json").exists()
@@ -378,6 +411,7 @@ def test_episode_partial_failure_closes_journals_and_does_not_invent_native_run(
     assert (output / "partial-native-messages.json").exists()
     assert not (output / "native-simulation.json").exists()
     assert fixture.llm_utils.completion is fixture.original_completion
+    assert fixture.guard.require_native_invocation is False
     for path in output.glob("*.jsonl"):
         # Windows refuses a rename while the writer remains open.
         path.rename(path.with_suffix(".closed"))
@@ -396,6 +430,7 @@ def test_episode_startup_refuses_wrong_native_or_reward_basis(tmp_path, fake_nat
     receipt = json.loads((output / "execution-receipt.json").read_text())
     assert receipt["stage"] == "startup" and receipt["native_reward_not_fabricated"] is True
     assert not fixture.captured
+    assert fixture.guard.require_native_invocation is False
     assert fixture.llm_utils.completion is fixture.original_completion
     assert not (output / "native-simulation.json").exists()
 

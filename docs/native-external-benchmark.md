@@ -30,8 +30,10 @@ normalization is disclosed and checked against its actual prompt rendering.
    actual structured tool call and a tool-result follow-up. Progressive context
    receipts and failures survive; the shared development allowance is persistent.
 3. Run `development` on excluded task 19 with `--arm native`, then excluded
-   task 20 with `--arm G`. The shared native development ceiling is 36 completion
-   invocations, initially at most 18 per trajectory. All retries and pre-provider
+   task 20 with `--arm G`. The shared native development ceiling is 64 completion
+   invocations, initially at most 18 per trajectory. The initial 36-request
+   allowance was amended before official collection after the local server
+   stopped between sessions; the first 14 completed calls still count. All retries and pre-provider
    failures consume or remain explicitly accounted within that allowance. A
    native smoke must return native grading; reward one is not a readiness rule.
    The guarded smoke must exercise an actual package receipt.
@@ -65,7 +67,7 @@ Its `--help` lists required environment paths. The independent auditor is
 [audit_native_external_benchmark.py](../scripts/audit_native_external_benchmark.py).
 Scientific figure generation consumes only a passed, fully inventoried audit.
 
-The 152 local tests check source, protocol, guard, supervision, arithmetic,
+The latest 180 local tests check source, protocol, guard, supervision, arithmetic,
 retention and synthetic native integration. They do not supply a live benchmark
 result, external service validation or human validation. Original development
 failures must remain available alongside any later successful readiness check.

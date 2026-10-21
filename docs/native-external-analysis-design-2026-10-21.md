@@ -26,11 +26,13 @@ Before any evaluation generation, freeze four conditions, B/R/C/G, on the same
 12 distinct tasks**, not 48 independent tasks. B is a raw-public-readback
 controller with the common recovery instruction and no derived field verdict.
 R adds public-field contract reporting to the same read schedule. C and G receive the
-same allowed native pre/post reads and deterministic dispatch guard; C uses
-separately implemented standard-library field arithmetic and G uses ConseqaX.
+same allowed native pre/post reads and deterministic dispatch guard. C calls
+the shared standard-library field predicate directly; R/G call that same
+predicate through a ConseqaX custom verifier. This tests receipt integration
+and representation, rather than independently implemented verification logic.
 Exact prompts, ceilings, ordering, arguments and compiler behavior belong in
-the committed execution protocol. C/G equality is conformance or practical
-equivalence, not independent proof that the framework is superior. R/G need
+the committed execution protocol. C/G equality is observed conformance,
+not evidence from an equivalence design or proof of framework superiority. R/G need
 not realize identical dialogues or observations after different actions.
 
 The assistant and dynamic user remain native autonomous model roles. Preserve

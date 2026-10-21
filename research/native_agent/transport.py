@@ -7,6 +7,7 @@ No function in this module loads a model or dispatches a generation request.
 from __future__ import annotations
 
 from contextlib import contextmanager
+from copy import deepcopy
 import hashlib
 import json
 import math
@@ -80,6 +81,7 @@ class LocalOnlyGuard:
         self.allow_render_only = allow_render_only
         self.tokenizer_runner = None
         self.before_generation = None
+        self.require_native_invocation = False
         self.events: list[dict] = []
         self.active = False
         self._thread = threading.local()
@@ -88,6 +90,55 @@ class LocalOnlyGuard:
     def refuse(self, kind: str, detail: str):
         self.events.append({"kind": kind, "allowed": False, "detail": detail})
         raise TransportRefusal(f"{kind}: {detail}")
+
+    @contextmanager
+    def native_invocation(self, native_request: dict):
+        """Bind one native completion to at most one unchanged generation send.
+
+        The scope captures inputs before LiteLLM can mutate them. Process-local
+        transport development may omit a scope; native episodes require one.
+        Render/tokenizer requests do not consume the generation allowance.
+        """
+        if getattr(self._thread, "native_invocation", None) is not None:
+            self.refuse("native_invocation", "Nested native completion scope refused")
+        expected = deepcopy({key: value for key, value in native_request.items()
+                             if key.lower() not in {"api_key", "authorization"}})
+        if expected.get("model") != LITELLM_MODEL or not isinstance(expected.get("messages"), list):
+            self.refuse("native_invocation", "Native completion model/messages are not the frozen input shape")
+        self._thread.native_invocation = {"request": expected, "dispatched": False}
+        try:
+            yield
+        finally:
+            self._thread.native_invocation = None
+
+    def _check_native_generation(self, payload):
+        scope = getattr(self._thread, "native_invocation", None)
+        if scope is None:
+            if self.require_native_invocation:
+                self.refuse("native_invocation", "Generation outside a recorded native completion refused")
+            return None
+        if scope["dispatched"]:
+            self.refuse("native_invocation", "A second generation attempt within one native completion refused")
+        expected = scope["request"]
+        fields = {"max_tokens", "temperature", "seed", "tools", "tool_choice"}
+        if set(payload) - (fields | {"model", "messages"}):
+            self.refuse("native_invocation", "Generation added unbound request fields")
+        if (payload.get("model") != expected["model"].removeprefix("openai/")
+                or not isinstance(payload.get("messages"), list)):
+            self.refuse("native_invocation", "Generation changed native model/messages")
+        try:
+            same_messages = native_wire_equivalent(payload["messages"], expected["messages"])
+        except (TypeError, AttributeError):
+            same_messages = False
+        if not same_messages:
+            self.refuse("native_invocation", "Generation changed native message history or tool-call association")
+        for field in fields:
+            actual, native = payload.get(field), expected.get(field)
+            if (type(actual) is not type(native)
+                    or json.dumps(actual, sort_keys=True, allow_nan=False)
+                    != json.dumps(native, sort_keys=True, allow_nan=False)):
+                self.refuse("native_invocation", "Generation changed native request field: " + field)
+        return scope
 
     def address(self, address, kind="network"):
         if not isinstance(address, tuple) or len(address) < 2:
@@ -186,10 +237,16 @@ class LocalOnlyGuard:
                 self.refuse("http", "Streaming is outside the frozen transport")
             if payload.get("n", 1) != 1:
                 self.refuse("http", "Multiple provider completions refused")
-            if self.before_generation is not None and payload.get("_debug_render_only") is not True:
-                self.before_generation(payload)
+            if payload.get("_debug_render_only") is not True:
+                scope = self._check_native_generation(payload)
+                if self.before_generation is not None:
+                    self.before_generation(payload)
+                if scope is not None:
+                    scope["dispatched"] = True
         self.events.append({"kind": "http", "allowed": True, "method": method,
                             "path": parsed.path, "body_sha256": hashlib.sha256(body).hexdigest(),
+                            "parsed_body_sha256": hashlib.sha256(
+                                json.dumps(payload, sort_keys=True, allow_nan=False).encode()).hexdigest(),
                             "generation_request": (parsed.path == "/v1/chat/completions"
                                                    and payload.get("_debug_render_only") is not True)})
 

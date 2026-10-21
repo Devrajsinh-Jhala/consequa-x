@@ -6,6 +6,7 @@ it never supplies privileged state to an agent or user.
 """
 from __future__ import annotations
 
+from contextlib import nullcontext
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -108,7 +109,7 @@ class RequestBudgetExceeded(RuntimeError):
     pass
 
 
-def record_completions(module, journal, maximum):
+def record_completions(module, journal, maximum, *, invoke_scope=None):
     """Count actual completion invocations, including errors; no corrective retry."""
     if type(maximum) is not int or maximum < 1:
         raise ValueError("Completion budget must be a positive integer")
@@ -133,9 +134,10 @@ def record_completions(module, journal, maximum):
                 raise RuntimeError("Native completion arguments must be explicit keywords")
             if type(kwargs.get("num_retries")) is not int or kwargs["num_retries"] != 0:
                 raise RuntimeError("Native completion retries must be explicitly zero")
-            invoked = True
-            state["provider_invoked"] += 1
-            response = original(**kwargs)
+            with invoke_scope(public) if invoke_scope is not None else nullcontext():
+                invoked = True
+                state["provider_invoked"] += 1
+                response = original(**kwargs)
             state["provider_returned"] += 1
             payload = jsonable(response.to_dict())
             if not isinstance(payload, dict):
@@ -181,6 +183,8 @@ def run_episode(*, native_root, output, task_id, arm, episode_id, seed, guard,
     started = time.monotonic()
     journals, state, orchestrator, llm_utils, original_completion = {}, None, None, None, None
     original_context_sink = getattr(context_gate, "on_receipt", None)
+    original_scope_requirement = getattr(guard, "require_native_invocation", None)
+    scope_requirement_changed = False
     phase = {"call_index": 0, "completed": 0, "inflight": []}
     status, error, stage, capture_errors = "failed", None, "startup", []
 
@@ -195,8 +199,11 @@ def run_episode(*, native_root, output, task_id, arm, episode_id, seed, guard,
         # gate alone does not establish that actual HTTP sends use that gate.
         if (not getattr(guard, "active", False) or context_gate is None
                 or getattr(guard, "before_generation", None) is not context_gate
-                or getattr(context_gate, "guard", None) is not guard):
+                or getattr(context_gate, "guard", None) is not guard
+                or not callable(getattr(guard, "native_invocation", None))):
             raise RuntimeError("Active local-only guard and installed exact context gate required")
+        guard.require_native_invocation = True
+        scope_requirement_changed = True
         from research.native_agent.transport import LITELLM_MODEL, local_model_kwargs
 
         # Bind the native provider to the listener actually allowed by this
@@ -227,7 +234,8 @@ def run_episode(*, native_root, output, task_id, arm, episode_id, seed, guard,
         from research.native_agent.controller import make_agent_factory
 
         original_completion = llm_utils.completion
-        state = record_completions(llm_utils, journals["model-calls"], max_requests)
+        state = record_completions(llm_utils, journals["model-calls"], max_requests,
+                                   invoke_scope=guard.native_invocation)
         # Process-local configuration only: do not use cached model outputs.
         llm_utils.litellm.cache = None
         tasks = json.loads((Path(native_root) / "data/tau2/domains/airline/tasks.json").read_text(encoding="utf-8"))
@@ -302,6 +310,8 @@ def run_episode(*, native_root, output, task_id, arm, episode_id, seed, guard,
             capture("partial-native-messages.json", lambda: {
                 "messages": [message.model_dump(mode="json") for message in orchestrator.get_messages()]})
     finally:
+        if scope_requirement_changed:
+            guard.require_native_invocation = original_scope_requirement
         if context_gate is not None:
             context_gate.on_receipt = original_context_sink
         if llm_utils is not None and original_completion is not None:

@@ -155,3 +155,24 @@ seeds cannot supply those claims. Methodological novelty, immutable archival
 access, author/contact metadata, and the selected venue's requirements remain
 open questions or submission preparation, not a requirement to run a participant
 study. GitHub Actions remains disabled.
+
+### Primary-source recheck — 21 October 2026
+
+The official arXiv version histories and versioned full texts were rechecked
+for [Verified Tool Calls v1](https://arxiv.org/abs/2608.02645v1),
+[Callability Is Not Operability v2](https://arxiv.org/abs/2608.23628v2),
+[agent-tool anomalies v1](https://arxiv.org/abs/2609.15397v1), and
+[LIMBO v1](https://arxiv.org/abs/2609.29095v1). Current titles/authors are correct.
+Submission/version dates are 31 July, 30 August, 14 September and 24 September
+2026 respectively. The July date for the first paper follows its submission
+history despite the August identifier. These are preprints, not asserted
+peer-reviewed results. The manuscript's narrow response/state, observation,
+interface-ambiguity and late-commit boundary summaries follow their full texts;
+this is source inspection rather than independent reproduction.
+
+The pinned maintained benchmark's README uses tau3 branding; its pyproject
+identifies Python package tau2 1.0.1. Native reward implementation confirms
+required DB/communication multiplication and vacuous empty communication
+criteria. The prospective metadata erratum and shared native C/G predicate
+arithmetic are disclosed in the current methods documents. No new native
+pilot score is added by this bibliographic check.

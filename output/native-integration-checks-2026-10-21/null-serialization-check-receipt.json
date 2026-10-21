@@ -1,0 +1,41 @@
+{
+  "actual_model_calls_in_tests": 0,
+  "diff_check": "passed",
+  "elapsed_seconds_reported": 40.2,
+  "github_actions_enabled": false,
+  "historical_wire_verification": {
+    "actual_model_generations": 0,
+    "actual_network_connections": 0,
+    "fake_sends": 14,
+    "path": "output/native-integration-checks-2026-10-21/offline-historical-wire/result.json",
+    "scoped_requests": 14,
+    "sha256": "3faee3b2e44a9ebb99adb54222d1ea9ad1b23894f0ea9780e946a3b66987be61"
+  },
+  "interpreter": "D:/ConsequaX-Research/native-agent-pilot-venv/Scripts/python.exe",
+  "official_episodes": 0,
+  "recorded_utc": "2026-10-21T11:40:30.248003+00:00",
+  "ruff": "passed",
+  "scope": "Offline fixtures, real installed SDK synthetic error paths, source/protocol and saved-artifact accounting; not benchmark performance.",
+  "source_files": {
+    "research/native_agent/__init__.py": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c",
+    "research/native_agent/audit.py": "2ae8c2e5b97d973de1b1000518454a7a9b85b88f7d0f489c75e6cd5be0eab1af",
+    "research/native_agent/controller.py": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6",
+    "research/native_agent/harness.py": "4d4e36c729f963649ffc5e3e5bab2b1422a7df1687595266fee2eeebaa8aaec7",
+    "research/native_agent/protocol.py": "ee522512acaa7c07dad76f2f254d6f160c53024307f05a1ec02dc4686b6a9a9a",
+    "research/native_agent/transport.py": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf",
+    "scripts/audit_native_external_benchmark.py": "d4272ec472a636f350cbd4e3b7231706416c143b630b34ceb05cc9db3650fa92",
+    "scripts/run_native_external_benchmark.py": "1a09cf6e21b9e618337da299e8d696935b778e55873970dc0866c0d4f6f8b90f"
+  },
+  "test_files": {
+    "tests/test_native_audit.py": "8244e8708b959a921c7da5400d7b691f1f114c75c11e6ca1b0c85f2d2e0b589a",
+    "tests/test_native_controller.py": "60573258f87438d9bdd90baab39906ed2db45271114e7a3abaf866b430fe24e4",
+    "tests/test_native_external_audit_runner.py": "76050d34b39017dd6650a9ea3d256049aaaf06e56efff80bb88bf259ee6c0c67",
+    "tests/test_native_harness.py": "ba61799db70174f6853cc5be1a98903a823ed71f7d2bf4229ae6c6c91b04ce5e",
+    "tests/test_native_protocol.py": "ea5a7195ceb158b7189a58272d73432fc08a23c93aa45bab2a81676611770be3",
+    "tests/test_native_runner.py": "603823bc751787f0caae40879871b1d9866ffa4404d40ce056efd75d780b910a",
+    "tests/test_native_transport.py": "a44d9b9d664d9a973294db34265ae9346570df89fda3ed527f91d411b3a2799e"
+  },
+  "test_log_sha256": "7f80d85a12d050c308e069d666d7fac5f25aee191649374a94d1e47bbcdec914",
+  "test_result": "190 passed",
+  "test_runner": "pytest supplied read-only from primary test environment via PYTHONPATH"
+}

@@ -232,7 +232,9 @@ def verify_model_wire(native_request, actual_wire):
     """Check native inputs against the actual parsed HTTP body, without collector imports."""
     def messages(value):
         return [{key: item for key, item in message.items()
-                 if not (key == "content" and item is None and message.get("tool_calls"))}
+                 if not ((key == "content" and item is None and message.get("role") == "assistant"
+                          and message.get("tool_calls"))
+                         or (key == "tool_calls" and item is None and message.get("role") == "assistant"))}
                 for message in value]
     def equal(left, right):
         return json.dumps(left, sort_keys=True, allow_nan=False) == json.dumps(right, sort_keys=True, allow_nan=False)

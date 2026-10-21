@@ -1,0 +1,169 @@
+{
+  "actual_model_generations": 0,
+  "actual_network_connections": 0,
+  "cases": [
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "6e977a7dc3de69ae38bf593cd79d949167dab4f7bfe4727fe1bd35c3157d4687",
+      "input_unchanged": true,
+      "native_call_index": 0,
+      "reconstructed_wire_body_sha256": "6e977a7dc3de69ae38bf593cd79d949167dab4f7bfe4727fe1bd35c3157d4687",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "6852314824b53bb8127f4fefa3ec795d4e5c00a623bc9c294128a93c1c730704",
+      "input_unchanged": true,
+      "native_call_index": 1,
+      "reconstructed_wire_body_sha256": "6852314824b53bb8127f4fefa3ec795d4e5c00a623bc9c294128a93c1c730704",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "7998e0dc8bc44db27d25a46b8aa42bb60120680565ae33660a0165e1fc59dffd",
+      "input_unchanged": true,
+      "native_call_index": 2,
+      "reconstructed_wire_body_sha256": "7998e0dc8bc44db27d25a46b8aa42bb60120680565ae33660a0165e1fc59dffd",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "60ebe49d2af065fca9efc3260423e963fcdf3c570b0c36ac708134e0d4fa5174",
+      "input_unchanged": true,
+      "native_call_index": 3,
+      "reconstructed_wire_body_sha256": "60ebe49d2af065fca9efc3260423e963fcdf3c570b0c36ac708134e0d4fa5174",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "f0387ee77cd8a0e53dfa799d48c03d00ec3ceee6cb595a6bae5ae5dd799d3d63",
+      "input_unchanged": true,
+      "native_call_index": 4,
+      "reconstructed_wire_body_sha256": "f0387ee77cd8a0e53dfa799d48c03d00ec3ceee6cb595a6bae5ae5dd799d3d63",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "df577ea4bd3520c5043c3a4f811e83be66c90c2df0ddfc5f5393645a8f1a664b",
+      "input_unchanged": true,
+      "native_call_index": 5,
+      "reconstructed_wire_body_sha256": "df577ea4bd3520c5043c3a4f811e83be66c90c2df0ddfc5f5393645a8f1a664b",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "baab08993fdfeef4e8bbd5d27a64a5e0fc0b781f3fbe196eeb3f5808088d9f81",
+      "input_unchanged": true,
+      "native_call_index": 6,
+      "reconstructed_wire_body_sha256": "baab08993fdfeef4e8bbd5d27a64a5e0fc0b781f3fbe196eeb3f5808088d9f81",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "489c1fdbc2471c25aee7709f83e706082702cddc0dae6de6fb23e8d4eaa4e24f",
+      "input_unchanged": true,
+      "native_call_index": 7,
+      "reconstructed_wire_body_sha256": "489c1fdbc2471c25aee7709f83e706082702cddc0dae6de6fb23e8d4eaa4e24f",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "a79f68300f0b6772157db3520ceed4f4a161e8a126f119654695f6c0aed52304",
+      "input_unchanged": true,
+      "native_call_index": 8,
+      "reconstructed_wire_body_sha256": "a79f68300f0b6772157db3520ceed4f4a161e8a126f119654695f6c0aed52304",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "c87c23633f191c76f8420fbd6d70c4bf1bbd3cc641420ae2b1529b96cec57269",
+      "input_unchanged": true,
+      "native_call_index": 9,
+      "reconstructed_wire_body_sha256": "c87c23633f191c76f8420fbd6d70c4bf1bbd3cc641420ae2b1529b96cec57269",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "2c6a3500d5c26feb038e0b64015db61f4985710aacd2124bc0f3f60e24505cc0",
+      "input_unchanged": true,
+      "native_call_index": 10,
+      "reconstructed_wire_body_sha256": "2c6a3500d5c26feb038e0b64015db61f4985710aacd2124bc0f3f60e24505cc0",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "7a19a842a7cf46fb51c7995febb2ffdf4ea075dc57f9ca4f71f7bfc80cdea34d",
+      "input_unchanged": true,
+      "native_call_index": 11,
+      "reconstructed_wire_body_sha256": "7a19a842a7cf46fb51c7995febb2ffdf4ea075dc57f9ca4f71f7bfc80cdea34d",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "3b6e2e1f9140db3475c35974a151eef38290c5c9dfef8d5faa18c56748a60a00",
+      "input_unchanged": true,
+      "native_call_index": 12,
+      "reconstructed_wire_body_sha256": "3b6e2e1f9140db3475c35974a151eef38290c5c9dfef8d5faa18c56748a60a00",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    },
+    {
+      "fake_http_sends": 1,
+      "historical_wire_body_sha256": "66a82f66126490cad194ec813051ebba123dfb09dee824f36c8a44af98bf5bf4",
+      "input_unchanged": true,
+      "native_call_index": 13,
+      "reconstructed_wire_body_sha256": "66a82f66126490cad194ec813051ebba123dfb09dee824f36c8a44af98bf5bf4",
+      "same_native_messages_under_documented_null_equivalence": true,
+      "same_wire_body": true
+    }
+  ],
+  "finished_utc": "2026-10-21T11:38:05.166094+00:00",
+  "historical_inputs": {
+    "output\\native-development-2026-10-21\\native-19-000\\episode\\context-events.jsonl": {
+      "bytes": 1138836,
+      "sha256": "25852adc1cbf20027d1e4717a0779a51ffddd6ce19dc9ade6b5cc541e1890344"
+    },
+    "output\\native-development-2026-10-21\\native-19-000\\episode\\model-calls.jsonl": {
+      "bytes": 275774,
+      "sha256": "4f0b212995e6b0bc3de2d31731275a85e8b7d2b1b58072fd2e1106d17cfd91b6"
+    }
+  },
+  "historical_inputs_unchanged": true,
+  "implementation_sources": {
+    "research/native_agent/harness.py": {
+      "bytes": 18470,
+      "sha256": "4d4e36c729f963649ffc5e3e5bab2b1422a7df1687595266fee2eeebaa8aaec7"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    }
+  },
+  "native_completion_invocations": 14,
+  "official_evaluation_episodes": 0,
+  "passed": true,
+  "schema": "conseqax-offline-historical-native-wire-replay-v1",
+  "scope": "Excluded historical development requests; synthetic replies only",
+  "source": {
+    "path": "output\\native-integration-checks-2026-10-21\\offline-historical-wire\\verify_historical_wire.py",
+    "sha256": "549c43deed63e6a36d4db11802b3f2b42a0c76403fc7d972512dbd6b0afd5bc3"
+  },
+  "synthetic_http_sends": 14,
+  "versions": {
+    "httpx": "0.28.1",
+    "litellm": "1.82.6",
+    "openai": "3.35.1"
+  }
+}

@@ -67,7 +67,7 @@ Its `--help` lists required environment paths. The independent auditor is
 [audit_native_external_benchmark.py](../scripts/audit_native_external_benchmark.py).
 Scientific figure generation consumes only a passed, fully inventoried audit.
 
-The latest 180 local tests check source, protocol, guard, supervision, arithmetic,
+The latest 190 local tests check source, protocol, guard, supervision, arithmetic,
 retention and synthetic native integration. They do not supply a live benchmark
 result, external service validation or human validation. Original development
 failures must remain available alongside any later successful readiness check.

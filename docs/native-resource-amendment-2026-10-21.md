@@ -118,3 +118,15 @@ recorded native completion and refuse a rewritten or repeated request before
 transmission. This repair precedes official collection. It does not change the
 already audited first native run: its14 completion invocations and14 generation
 HTTP records agree, without failures or extra attempts.
+
+The fresh strict-source smoke `native-19-001` retained one returned user-model
+completion and one assistant completion refused before transmission. The
+provider omits `tool_calls: null` on ordinary assistant-history turns. The new
+exact-history guard initially treated this absence as a changed request.
+An offline comparison of all14 retained request/wire pairs from the first
+native development run confirmed the same null omission. The next source
+permits only absent/null `tool_calls` on assistant messages, in addition to the
+already documented absent/null content on actual tool-call turns. Non-null
+calls, arguments, IDs, roles, text and ordering remain bound. The refused
+attempt and its two completion invocations remain in development accounting;
+it does not count as a passed integration check or an official task result.

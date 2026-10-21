@@ -307,17 +307,27 @@ def local_model_kwargs(*, max_tokens=512, seed=1701, timeout=180, api_base=LOCAL
 
 
 def native_wire_equivalent(observed: list[dict], native: list[dict]) -> bool:
-    """OpenAI's client may omit content:null on prior assistant tool-call turns.
+    """Accept only two observed assistant absent/null serialization changes.
 
-    Permit only that documented absent/null equivalence. All roles, contents,
-    tool arguments/IDs, association and message order must otherwise match.
+    LiteLLM/OpenAI may omit tool_calls:null on an ordinary assistant message,
+    or content:null on an assistant message with actual tool calls. Nonempty
+    tool calls, empty lists, other roles, contents, arguments/IDs, associations
+    and message order must otherwise match. Canonical JSON compares exact JSON
+    types too, so Python's False == 0 does not make changed values equivalent.
     """
     def normalize(messages):
+        if not isinstance(messages, list) or any(not isinstance(message, dict) for message in messages):
+            raise TypeError("Message history must be a list of objects")
         return [{key: value for key, value in message.items()
-                 if not (key == "content" and value is None and message.get("tool_calls"))}
+                 if not (message.get("role") == "assistant" and value is None
+                         and (key == "tool_calls" or (key == "content" and message.get("tool_calls"))))}
                 for message in messages]
 
-    return normalize(observed) == normalize(native)
+    try:
+        return (json.dumps(normalize(observed), sort_keys=True, allow_nan=False)
+                == json.dumps(normalize(native), sort_keys=True, allow_nan=False))
+    except (TypeError, ValueError):
+        return False
 
 
 def read_gguf_metadata(path: Path | str) -> dict:

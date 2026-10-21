@@ -281,7 +281,7 @@ def test_private_runner_exception_does_not_permit_completion_or_other_ports():
         guard.address(("127.0.0.1", 34568))
 
 
-def test_wire_equivalence_preserves_everything_except_documented_null_content():
+def test_wire_equivalence_preserves_everything_except_documented_assistant_nulls():
     native = [{"role": "assistant", "content": None,
                "tool_calls": [{"id": "fixture", "function": {"name": "read", "arguments": "{}"}}]},
               {"role": "tool", "content": "fixture", "tool_call_id": "fixture"}]
@@ -290,6 +290,37 @@ def test_wire_equivalence_preserves_everything_except_documented_null_content():
     observed[1] = {**observed[1], "tool_call_id": "different"}
     assert not native_wire_equivalent(observed, native)
     assert not native_wire_equivalent(native[::-1], native)
+
+
+def test_wire_equivalence_permits_only_absent_null_assistant_tool_calls():
+    native = [{"role": "assistant", "content": "How can I help?", "tool_calls": None},
+              {"role": "user", "content": "Synthetic request"}]
+    observed = deepcopy(native)
+    observed[0].pop("tool_calls")
+    assert native_wire_equivalent(observed, native)
+    assert native_wire_equivalent(native, observed)
+    for value in ([], [{"id": "actual-call"}], False, 0):
+        changed = deepcopy(native)
+        changed[0]["tool_calls"] = value
+        assert not native_wire_equivalent(observed, changed)
+    for role in ("system", "user", "tool"):
+        native[0]["role"] = observed[0]["role"] = role
+        assert not native_wire_equivalent(observed, native)
+    assert not native_wire_equivalent([{"role": "assistant"}], [{"role": "assistant", "content": None}])
+
+
+@pytest.mark.parametrize("left,right", [(False, 0), (True, 1), (1, 1.0), ([False], [0]),
+    ({"value": False}, {"value": 0})])
+def test_wire_equivalence_compares_exact_json_types(left, right):
+    assert not native_wire_equivalent([{"role": "assistant", "content": left}],
+                                      [{"role": "assistant", "content": right}])
+    assert native_wire_equivalent([{"role": "assistant", "content": left}],
+                                  [{"content": left, "role": "assistant"}])
+
+
+@pytest.mark.parametrize("invalid", [None, {}, [None], [{"role": "assistant", "content": float("nan")}]])
+def test_wire_equivalence_refuses_non_json_or_invalid_message_shape(invalid):
+    assert not native_wire_equivalent(invalid, invalid)
 
 
 def native_scope_fixture():
@@ -395,12 +426,12 @@ def test_failed_context_does_not_mark_generation_as_dispatched():
 
 @pytest.mark.skipif(not os.environ.get("CONSEQAX_NATIVE_PYTHON"), reason="Requires the pinned native Python environment")
 def test_installed_provider_hidden_retries_are_refused_offline(tmp_path):
-    """Exercise the real installed SDKs with synthetic responses and no sockets."""
+    """Exercise real SDK errors and assistant nulls with synthetic HTTP only."""
     script = r'''
 import sys, json
 from copy import deepcopy
 sys.path.insert(0, sys.argv[1])
-from research.native_agent.transport import LocalOnlyGuard, configure_local_environment, local_model_kwargs, LITELLM_MODEL, TransportRefusal
+from research.native_agent.transport import LocalOnlyGuard, configure_local_environment, local_model_kwargs, LITELLM_MODEL, LOCAL_MODEL, TransportRefusal, native_wire_equivalent
 from research.native_agent.harness import record_completions
 configure_local_environment(sys.argv[2])
 class OfflineGuard(LocalOnlyGuard):
@@ -413,10 +444,16 @@ class Journal:
     def append(self, row): self.rows.append(deepcopy(row))
 with OfflineGuard(allow_generation=True, api_base="http://127.0.0.1:11436/v1") as guard:
     import httpx
-    mode, sends, previews = [None], [], []
+    mode, sends, previews, successful_wires = [None], [], [], []
     def fake_send(client, request, *args, **kwargs):
         assert str(request.url) == "http://127.0.0.1:11436/v1/chat/completions"
         sends.append(mode[0])
+        if mode[0] == "success_null_history":
+            successful_wires.append(json.loads(request.read()))
+            return httpx.Response(200, json={"id": "synthetic", "object": "chat.completion", "created": 0,
+                "model": LOCAL_MODEL, "choices": [{"index": 0, "message": {"role": "assistant",
+                    "content": "Synthetic successful reply"}, "finish_reason": "stop"}],
+                "usage": {"prompt_tokens": 10, "completion_tokens": 3, "total_tokens": 13}}, request=request)
         if mode[0] == "timeout":
             raise httpx.ReadTimeout("Synthetic timeout", request=request)
         if mode[0] == "connection":
@@ -439,7 +476,7 @@ with OfflineGuard(allow_generation=True, api_base="http://127.0.0.1:11436/v1") a
     guard.require_native_invocation = True
     guard.before_generation = lambda payload: previews.append(deepcopy(payload))
     journal = Journal()
-    state = record_completions(litellm, journal, 6, invoke_scope=guard.native_invocation)
+    state = record_completions(litellm, journal, 7, invoke_scope=guard.native_invocation)
     results = []
     for case in ("ordinary_500", "timeout", "connection", "alternating", "last_role", "tool_index"):
         mode[0] = case
@@ -455,13 +492,26 @@ with OfflineGuard(allow_generation=True, api_base="http://127.0.0.1:11436/v1") a
         assert len(sends) - before == 1
         assert guard._thread.native_invocation is None
         results.append({"case": case, "fake_http_sends": len(sends) - before})
-    assert state["attempted"] == state["failed"] == state["provider_invoked"] == 6
-    assert state["completed"] == state["provider_returned"] == 0
-    assert len(previews) == 6
+    mode[0] = "success_null_history"
+    history = [{"role": "system", "content": "Complete synthetic policy"},
+        {"role": "assistant", "content": "How can I help?", "tool_calls": None},
+        {"role": "user", "content": "Synthetic request"}]
+    original_history = deepcopy(history)
+    response = litellm.completion(model=LITELLM_MODEL, messages=history,
+        **local_model_kwargs(api_base="http://127.0.0.1:11436/v1", timeout=0.1))
+    assert response.choices[0].message.content == "Synthetic successful reply"
+    assert history == original_history and len(successful_wires) == 1
+    assert "tool_calls" not in successful_wires[0]["messages"][1]
+    assert native_wire_equivalent(successful_wires[0]["messages"], original_history)
+    assert state["attempted"] == state["provider_invoked"] == 7 and state["failed"] == 6
+    assert state["completed"] == state["provider_returned"] == 1
+    assert state["prompt_tokens"] == 10 and state["completion_tokens"] == 3
+    assert guard._thread.native_invocation is None and len(previews) == 7
     assert len([row for row in journal.rows if row["kind"] == "request_error"]) == 6
-    assert len([row for row in guard.events if row.get("generation_request")]) == 6
+    assert len([row for row in guard.events if row.get("generation_request")]) == 7
     assert len([row for row in guard.events if row.get("kind") == "native_invocation" and not row["allowed"]]) == 3
-    print(json.dumps({"cases": results, "actual_network_connections": 0, "actual_model_calls": 0}))
+    print(json.dumps({"cases": results, "successful_null_history_sends": len(successful_wires),
+        "history_unchanged": history == original_history, "actual_network_connections": 0, "actual_model_calls": 0}))
 '''
     result = subprocess.run([os.environ["CONSEQAX_NATIVE_PYTHON"], "-B", "-c", script,
         str(Path(__file__).resolve().parents[1]), str(tmp_path / "absent-data")],
@@ -469,6 +519,7 @@ with OfflineGuard(allow_generation=True, api_base="http://127.0.0.1:11436/v1") a
     assert result.returncode == 0, result.stdout + result.stderr
     report = json.loads(result.stdout.splitlines()[-1])
     assert len(report["cases"]) == 6 and all(row["fake_http_sends"] == 1 for row in report["cases"])
+    assert report["successful_null_history_sends"] == 1 and report["history_unchanged"] is True
     assert report["actual_network_connections"] == report["actual_model_calls"] == 0
 
 

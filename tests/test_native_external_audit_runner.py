@@ -210,3 +210,10 @@ def test_native_wire_link_accepts_only_documented_null_tool_content_normalizatio
     altered["stop"] = ["rewritten"]
     with pytest.raises(ValueError, match="unbound"):
         runner.verify_model_wire(native, altered)
+    native["messages"].append({"role": "assistant", "content": "ordinary", "tool_calls": None})
+    wire["messages"].append({"role": "assistant", "content": "ordinary"})
+    runner.verify_model_wire(native, wire)
+    altered = deepcopy(wire)
+    altered["messages"][1]["tool_calls"] = []
+    with pytest.raises(ValueError, match="history"):
+        runner.verify_model_wire(native, altered)

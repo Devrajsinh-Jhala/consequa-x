@@ -149,3 +149,31 @@ calls plus the two-invocation serialization failure, a full 18-call fresh native
 reservation and a 30-call guarded reservation fit exactly. Any released unused
 allowance still requires complete terminal accounting. No guarded task result
 has been seen when making this declaration, and no official ceiling changes.
+
+## Full-history CPU timeout amendment before official collection
+
+The fresh exact-source unmodified check `native-19-002` returned native grading
+after 12 model completions and five actual tools, with no request errors.
+Its native reward remains zero. The first guarded check `guarded-20-000`
+retained seven invocations, six completions and one 600-second timeout. All
+seven complete-history context gates passed. The timed-out prompt contained
+6,871 tokens, including 1,116 uncached tokens; the runner logged 481.92 seconds
+for its next 1,024-token prompt batch. No package receipt had been emitted.
+This is a retained execution failure with unavailable native task reward,
+not a failed semantic grade or evidence against the field predicate.
+
+Before any official generation or protocol freeze, the next candidate uses
+a **1,200-second request timeout** and a **7,200-second trajectory deadline**.
+The eventual official protocol must apply these exact limits to every arm and
+both model roles. Model bytes, context, precision, prompt/history preservation,
+seed, output cap, request count, task selection and controller stay unchanged.
+The already completed unmodified integration check used the stricter earlier
+time limits; it is retained as development evidence, rather than represented
+as a matched official result under the new limits.
+
+The final guarded development attempt is `guarded-20-001`, reserving the
+remaining **29** combined completions within the unchanged shared ceiling of
+64: 14 earlier calls + 2 serialization-failure invocations + 12 fresh native
+calls + 7 guarded-timeout invocations = 35 consumed. There is no task-reward-one
+readiness rule and no change to policy based on task reward. A new timeout or
+integration failure stays failed; no official trajectory has been replaced.

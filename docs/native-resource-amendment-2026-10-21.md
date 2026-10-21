@@ -59,3 +59,29 @@ declared integration checks may an official prospective protocol be frozen.
 Smoke integration success means a real native trajectory and native grading
 returned with consistent saved artifacts; it does not require native task
 reward one and does not permit task-success-based configuration selection.
+
+## Subsequent development observations
+
+Under the verified two-slot profile, transport attempt `001` also reached its
+600-second client timeout before returning a completion. Its full gate receipt
+was retained successfully. A separate budgeted attempt `002` reused 4,096 cached
+prefix tokens from that same task-independent prompt and returned 47 generated
+tokens. Provider usage reported the complete 4,563-token prompt, with the cached
+subset separately disclosed. It is not appropriate to present this warm-prefix
+latency as a cold-request cost.
+
+Attempt `002` failed the declared structured-call check: the assistant declined
+the request because the authored fixture explicitly described a synthetic
+transport task, outside the native airline policy. This was a returned model
+refusal, not prompt truncation or a native benchmark task failure. No tool was
+executed, and the result stays failed. The next separately reserved development
+fixture asks an ordinary airline account lookup using an invented user ID,
+keeps the complete policy and all14schemas, and uses the native `tool_choice:
+auto` setting. Its tool result is an explicitly artificial transport fixture,
+not a saved native environment result or evaluation score. This development
+fixture correction precedes all native development and official episodes.
+The tested execution source must be recommitted before prospective freezing.
+
+Cached-token accounting is specified in the
+[separate source-backed note](native-token-accounting-2026-10-21.md). Complete
+render/token equality stays required; cached tokens are not added twice.

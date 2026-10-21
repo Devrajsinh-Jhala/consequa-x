@@ -355,9 +355,8 @@ def transport_smoke(args):
         payload = load_json(args.wire)["observed"]["body"]
         payload.update(seed=1701, temperature=0, max_tokens=128, stream=False)
         payload["messages"][1]["content"] = (
-            "Transport compatibility fixture: call get_reservation_details with reservation_id "
-            "NATIVE_TRANSPORT_FIXTURE. This is a synthetic tool transport check.")
-        payload["tool_choice"] = {"type": "function", "function": {"name": "get_reservation_details"}}
+            "Please look up my airline account details. My user ID is NATIVE_TRANSPORT_FIXTURE.")
+        payload["tool_choice"] = "auto"
         responses = []
         with httpx.Client(trust_env=False, timeout=args.request_timeout) as client:
             for index in range(2):
@@ -372,13 +371,13 @@ def transport_smoke(args):
                 if index == 0:
                     message = body["choices"][0]["message"]
                     calls = message.get("tool_calls", [])
-                    if (len(calls) != 1 or calls[0]["function"]["name"] != "get_reservation_details"
+                    if (len(calls) != 1 or calls[0]["function"]["name"] != "get_user_details"
                             or json.loads(calls[0]["function"]["arguments"]) !=
-                                {"reservation_id": "NATIVE_TRANSPORT_FIXTURE"}):
+                                {"user_id": "NATIVE_TRANSPORT_FIXTURE"}):
                         raise ValueError("Synthetic structured native-tool proposal did not match requested fixture")
                     payload["messages"].extend([message, {"role": "tool", "tool_call_id": calls[0]["id"],
-                        "content": '{"reservation_id":"NATIVE_TRANSPORT_FIXTURE","status":"active","flights":[]}'},
-                        {"role": "user", "content": "State the reservation ID and status returned by the tool."}])
+                        "content": '{"user_id":"NATIVE_TRANSPORT_FIXTURE","membership":"silver","reservations":[]}'},
+                        {"role": "user", "content": "What membership level does my account show?"}])
                     payload["tool_choice"] = "none"
         result.update(passed=bool(responses[1]["choices"][0]["message"].get("content")))
     except BaseException as exc:

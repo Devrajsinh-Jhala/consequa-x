@@ -49,11 +49,15 @@ trajectories; the rotating arm order does not eliminate cache or host-load
 effects. Wall times are descriptive resource observations, not isolated causal
 measurements of SDK overhead. Provider prompt totals include cached tokens,
 which are reported as a subset rather than added to the total again.
+Temperature zero and a fixed seed are configuration controls, not proof of
+bitwise repeatability; the retained native development runs used 14 and 12
+completions respectively. One official seed/run per condition does not estimate
+within-condition execution variance.
 The guard blocks an already dispatched identical payload and a changed payload
 on a resource whose previous result remains unresolved. All conditions share
 the proposed ceilings of 80 native steps, 48 combined assistant/user completion
-invocations, 512 generated tokens per request, a 600-second request timeout,
-and a parent-enforced 3,600-second trajectory limit, with no corrective retries.
+invocations, 512 generated tokens per request, a 1,200-second request timeout,
+and a parent-enforced 7,200-second trajectory limit, with no corrective retries.
 Freeze the final values and source/protocol identifiers before describing
 these as measured conditions.
 

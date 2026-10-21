@@ -1,0 +1,121 @@
+{
+  "actual_generation_dispatches": 12,
+  "allowed_message_equivalences": [
+    "Assistant tool_calls:null may be absent; an empty list or nonempty tool call is never removed.",
+    "Assistant content:null may be absent only when that message has nonempty tool_calls."
+  ],
+  "exactly_one_generation_per_completed_invocation": true,
+  "native_invocations": 12,
+  "passed": true,
+  "rows": [
+    {
+      "actual_http_parsed_body_sha256": "6e977a7dc3de69ae38bf593cd79d949167dab4f7bfe4727fe1bd35c3157d4687",
+      "actual_http_raw_body_sha256": "dc804ca76fa7503b5a070a9dd5b8b2b89f49fdb071e9f16aead730511381ff92",
+      "call_index": 0,
+      "context_event_index": 0,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "ddb067a1f890cd01995b8d5bff4292c6b0d73e4189f582af848835162419493b",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "6852314824b53bb8127f4fefa3ec795d4e5c00a623bc9c294128a93c1c730704",
+      "actual_http_raw_body_sha256": "d46ed9ed1962570737689bd03d9e7f8577e014860993bb3c97241f2bdf49fe8b",
+      "call_index": 1,
+      "context_event_index": 1,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "b933d90a569caa7f881d066fa249c1be67ab1d37c1515db9f2ddf92192e7e077",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "8c3ca8193c4621a42c1e097703cf2304b3d46cfee967ca605cf3a6e35e414af7",
+      "actual_http_raw_body_sha256": "49936ceba62fb35b2daac725865b1598609415c6ca26f062d96a853199163936",
+      "call_index": 2,
+      "context_event_index": 2,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "0b6a5630ba21d1d00376bb0857977a3043e0cf28b727bac08292ae2e96c766b9",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "f47861d9ef658fdad69d5ea75aa69e0eeb0704e85588e7a28600fbf9faa40658",
+      "actual_http_raw_body_sha256": "782ce86323bc34bfbe068319e91d10686a642982d33d372bb0a317139fc43d6b",
+      "call_index": 3,
+      "context_event_index": 3,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "25f87d753bdf9be2e694ecf06aeb7109617bd2f2737e7acb81f4393abd7d5ec8",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "2c232f6a2bc4d7c588f7d324f4f48591ab17078551dad3576585d4673556bae1",
+      "actual_http_raw_body_sha256": "d756cf0168d5df864b7775935ae13d0a40ddf841121788858f98a188e26f240d",
+      "call_index": 4,
+      "context_event_index": 4,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "6b54e7fb2d899b7c4796d5c308e62f07e7e83844251daecb17ee269fc1610aee",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "cf1116f20fd967efba0043214a96ac08830ef358a1e5e8968a0490c05dc07573",
+      "actual_http_raw_body_sha256": "e78234e9648da66ad023bed40de1fd7005c8fff78e0c79c03f598e6067dd9c44",
+      "call_index": 5,
+      "context_event_index": 5,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "6106414a4743ece074a72d43b9f8c328d667de7eaddc7d8844601a9ed124351f",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "baab08993fdfeef4e8bbd5d27a64a5e0fc0b781f3fbe196eeb3f5808088d9f81",
+      "actual_http_raw_body_sha256": "31168bf6d0b76343ca8e8e77497371649d8ffac081dadd42852845a78254ef5e",
+      "call_index": 6,
+      "context_event_index": 6,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "4c68afb7b277a2ce18807233c8c3fa39596a04251b4d5a6f29ca8d93606d937d",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "2e2730db0b1cc3a025c7e3e786258e2bae8d35d68c97435306e686d77e39c423",
+      "actual_http_raw_body_sha256": "8f6e986095cb8c05601c25a0471a4251ba1e15bbd6a6b2720927c319bf70bf43",
+      "call_index": 7,
+      "context_event_index": 7,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "609f68730758ef59d97e91e07063fed349555356c749a5f7da99998869ad8e08",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "0a3f5dc8d1848e4c6fea844e687b3a9f79bf44b8152bd4c8279e4656ce3406f9",
+      "actual_http_raw_body_sha256": "f4bebac1f543397c6f32080db5ac623224696e0754c8f6793c177eb2a7b60371",
+      "call_index": 8,
+      "context_event_index": 8,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "774559ab3a1b104f67b11a17afc9310c17d93ee5f4daae2923b39eb88d0c0dd6",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "7ef57cc64fbc957c26699cd33407f0510d9ef5ddc63d01544e1bb575d4e6a33a",
+      "actual_http_raw_body_sha256": "1de7f10de3c64003c6a8f7319246b70995c7a4563d46e7df097bc083b577e0e8",
+      "call_index": 9,
+      "context_event_index": 9,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "b17764ef41cdf7dbad79d8a38109e059a9a16d199602cc26b2890d8f70da62bc",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "991931f48cf698b4fa22f875b294f172701703342563dc1dd644f0205b4c4c31",
+      "actual_http_raw_body_sha256": "b5bff1157bda81cfed9892a1e2d685ea5b04fde440c1a75b5fe4b3f7bd23bc68",
+      "call_index": 10,
+      "context_event_index": 10,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "b34da6ba7f7d02d3ce3e5c6eaf19b2c8015530b691a2aa88937aed72e5883920",
+      "strict_native_input_match": true
+    },
+    {
+      "actual_http_parsed_body_sha256": "82a383a1bf0af739de94076e6185bf580c72c4f4168bd10b7755709fccba3bc9",
+      "actual_http_raw_body_sha256": "d1b82c90247c942ab5fa37e457f1b43652899348f558d99e0cf1bceac9ea0f2a",
+      "call_index": 11,
+      "context_event_index": 11,
+      "generation_dispatches": 1,
+      "preview_http_parsed_body_sha256": "6c783b7d641a4270169584f61f407d18e5cf6b00ebede04da0ad0b080523e77b",
+      "strict_native_input_match": true
+    }
+  ],
+  "scope": "Actual parsed HTTP payload digests, context receipts, chronological native starts/returns, and pinned live single-dispatch guard"
+}

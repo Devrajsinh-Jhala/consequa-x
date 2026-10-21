@@ -1,0 +1,138 @@
+{
+  "mode": "prepare_only",
+  "source_commit": "8bd1cd88ab3644a9c6417e29308ab4b502b40484",
+  "no_commands_executed": true,
+  "no_files_written": true,
+  "wait_for_terminal_receipts": [
+    "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\native-19-002\\parent-receipt.json",
+    "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001\\parent-receipt.json"
+  ],
+  "stages": [
+    {
+      "stage": "verify_frozen_source_and_smokes",
+      "required_source_commit": "8bd1cd88ab3644a9c6417e29308ab4b502b40484"
+    },
+    {
+      "stage": "readiness",
+      "command": [
+        "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21\\scripts\\run_native_external_benchmark.py",
+        "readiness",
+        "--native-root",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tau2-bench-audit",
+        "--models",
+        "C:\\Users\\DELL\\.ollama\\models",
+        "--wheel",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+        "--server-launch",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\isolated-q8-server-launch.json",
+        "--output",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\readiness",
+        "--transport-result",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\transport-smoke-005\\transport-smoke-result.json",
+        "--native-episode",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\native-19-002",
+        "--guarded-episode",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001"
+      ]
+    },
+    {
+      "stage": "freeze",
+      "command": [
+        "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21\\scripts\\run_native_external_benchmark.py",
+        "freeze",
+        "--native-root",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tau2-bench-audit",
+        "--models",
+        "C:\\Users\\DELL\\.ollama\\models",
+        "--wheel",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+        "--server-launch",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\isolated-q8-server-launch.json",
+        "--output",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\protocol",
+        "--readiness",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\readiness\\readiness.json",
+        "--request-timeout",
+        "1200",
+        "--timeout",
+        "7200"
+      ]
+    },
+    {
+      "stage": "commit_protocol_only",
+      "paths": [
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\protocol\\protocol.json",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\protocol\\protocol-receipt.json"
+      ]
+    },
+    {
+      "stage": "verify_actions_disabled_and_fast_forward_publish",
+      "branch": "codex/native-external-2026-10-21",
+      "main": "main",
+      "push": [
+        "git",
+        "push",
+        "--atomic",
+        "origin",
+        "<40-character-published-protocol-commit>:refs/heads/codex/native-external-2026-10-21",
+        "<40-character-published-protocol-commit>:refs/heads/main"
+      ]
+    },
+    {
+      "stage": "verify_remote_protocol_publication",
+      "require_both_remote_refs": "<40-character-published-protocol-commit>"
+    },
+    {
+      "stage": "collect_once",
+      "command": [
+        "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21\\scripts\\run_native_external_benchmark.py",
+        "collect",
+        "--native-root",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tau2-bench-audit",
+        "--models",
+        "C:\\Users\\DELL\\.ollama\\models",
+        "--wheel",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+        "--server-launch",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\isolated-q8-server-launch.json",
+        "--output",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\collection",
+        "--protocol",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\protocol\\protocol.json",
+        "--protocol-commit",
+        "<40-character-published-protocol-commit>"
+      ]
+    },
+    {
+      "stage": "independent_audit_even_after_collection_failure_if_manifest_exists",
+      "command": [
+        "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21\\scripts\\audit_native_external_benchmark.py",
+        "--collection",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\collection",
+        "--protocol",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\protocol\\protocol.json",
+        "--protocol-commit",
+        "<40-character-published-protocol-commit>",
+        "--native-root",
+        "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tau2-bench-audit",
+        "--wheel",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+        "--source-root",
+        "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21",
+        "--output",
+        "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21\\audit"
+      ]
+    }
+  ],
+  "auxiliary_output": "D:\\ConsequaX-Research\\paper-writing\\output\\native-finish-pipeline-2026-10-21",
+  "study_output": "D:\\ConsequaX-Research\\paper-writing\\output\\native-official-pipeline-2026-10-21",
+  "retry_resume_or_replacement": false
+}

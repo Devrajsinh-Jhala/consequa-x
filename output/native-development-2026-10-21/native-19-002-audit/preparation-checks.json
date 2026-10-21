@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "actual_tool_call_preserved": true,
+    "call_id_preserved": true,
+    "content_preserved": true,
+    "empty_call_list_preserved": true,
+    "json_boolean_and_integer_distinct": true,
+    "ordinary_assistant_null_tool_calls_equivalent": true,
+    "tool_call_null_content_equivalent": true,
+    "user_null_tool_calls_preserved": true
+  },
+  "passed": true,
+  "scope": "Preparation-only synthetic checks; no raw episode read, no grading, no network or generation",
+  "source_sha256": "97020aedf59965bcc1d14b2a799908be3981d19868554099e230985f01b96959"
+}

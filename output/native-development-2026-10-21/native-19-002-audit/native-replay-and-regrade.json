@@ -1,0 +1,164 @@
+{
+  "limitations": [
+    "Offline same-project automated audit, not independent human validation.",
+    "Message count/usage does not independently authenticate attempted model generations; use bound transport records.",
+    "Current field match, full native end state and this-action origin are distinct claims."
+  ],
+  "message_costs": {
+    "assistant": {
+      "messages": 9,
+      "native_cost": 0.0,
+      "scope": "message metadata; deterministic wrapper messages are not model requests",
+      "sum_observed_cost": 0.0,
+      "unavailable_cost_messages": 0,
+      "usage": {
+        "completion_tokens": {
+          "observed_messages": 8,
+          "sum_observed": 904,
+          "unavailable_messages": 1
+        },
+        "prompt_tokens": {
+          "observed_messages": 8,
+          "sum_observed": 49215,
+          "unavailable_messages": 1
+        },
+        "total_tokens": {
+          "observed_messages": 0,
+          "sum_observed": 0,
+          "unavailable_messages": 9
+        }
+      }
+    },
+    "user": {
+      "messages": 4,
+      "native_cost": 0.0,
+      "scope": "message metadata; deterministic wrapper messages are not model requests",
+      "sum_observed_cost": 0.0,
+      "unavailable_cost_messages": 0,
+      "usage": {
+        "completion_tokens": {
+          "observed_messages": 4,
+          "sum_observed": 324,
+          "unavailable_messages": 0
+        },
+        "prompt_tokens": {
+          "observed_messages": 4,
+          "sum_observed": 4205,
+          "unavailable_messages": 0
+        },
+        "total_tokens": {
+          "observed_messages": 0,
+          "sum_observed": 0,
+          "unavailable_messages": 4
+        }
+      }
+    }
+  },
+  "native_bound_files": 272,
+  "native_source_commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a",
+  "network_attempts": 0,
+  "new_model_calls": 0,
+  "normal_termination": true,
+  "passed": true,
+  "pending_native_calls": 0,
+  "replay": {
+    "calls": [
+      {
+        "call_index": 0,
+        "db_changed": false,
+        "id": "YChSNkfaUg9wFPwRT9dt33wkXf3Kl9Bd",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "get_user_details"
+      },
+      {
+        "call_index": 1,
+        "db_changed": false,
+        "id": "UotY5RXrCrWVtfmFqrzQC3AgNFmVcGt3",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "get_reservation_details"
+      },
+      {
+        "call_index": 2,
+        "db_changed": false,
+        "id": "g3QTRdbP04xqSkGyYKgfKmNagVXzW66V",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "search_direct_flight"
+      },
+      {
+        "call_index": 3,
+        "db_changed": false,
+        "id": "53FUHfQR8zn4cW7sTvJrz6ghmVowEdG3",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "search_direct_flight"
+      },
+      {
+        "call_index": 4,
+        "db_changed": true,
+        "id": "oPjuELkI68AkFyWLmFp2a67N4dfChEfN",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "update_reservation_flights"
+      }
+    ],
+    "counts": {
+      "calls": 5,
+      "db_changed_calls": 1,
+      "returned": 5
+    },
+    "final_hashes": {
+      "agent_db_hash": "0d805ebd13fbe5ba9bb3182d4a1dcd523a1f8cd4179c1bd9abc16999c448c282",
+      "user_db_hash": null
+    }
+  },
+  "required_task_basis": [
+    "DB",
+    "COMMUNICATE"
+  ],
+  "reward": {
+    "action_checks": [
+      {
+        "action": {
+          "action_id": "19_0",
+          "arguments": {
+            "reservation_id": "Z7GOZK"
+          },
+          "compare_args": null,
+          "info": null,
+          "name": "cancel_reservation",
+          "requestor": "assistant"
+        },
+        "action_match": false,
+        "action_reward": 0.0,
+        "tool_type": "write"
+      }
+    ],
+    "communicate_checks": null,
+    "db_check": {
+      "db_match": false,
+      "db_reward": 0.0
+    },
+    "env_assertions": [],
+    "info": {
+      "action": null,
+      "communicate": {
+        "note": "No communicate_info to evaluate"
+      },
+      "env": null,
+      "nl": null
+    },
+    "nl_assertions": null,
+    "reward": 0.0,
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "reward_breakdown": {
+      "COMMUNICATE": 1.0,
+      "DB": 0.0
+    }
+  }
+}

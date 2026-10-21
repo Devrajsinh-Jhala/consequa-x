@@ -1,0 +1,195 @@
+[32m2026-10-21 17:56:13.395[0m | [33m[1mWARNING [0m | [36mtau2.utils.utils[0m:[36m<module>[0m:[36m15[0m - [33m[1mNo .env file found[0m
+[32m2026-10-21 17:56:13.403[0m | [1mINFO    [0m | [36mtau2.utils.utils[0m:[36m<module>[0m:[36m23[0m - [1mUsing data directory from environment: C:\Users\DELL\OneDrive\Desktop\ConseqaX\tmp\tau2-bench-audit\data[0m
+[32m2026-10-21 17:56:23.867[0m | [1mINFO    [0m | [36mtau2.utils.llm_utils[0m:[36m<module>[0m:[36m102[0m - [1mLiteLLM: Cache is disabled[0m
+[32m2026-10-21 17:56:24.548[0m | [34m[1mDEBUG   [0m | [36mtau2.registry[0m:[36m<module>[0m:[36m281[0m - [34m[1mRegistering default components...[0m
+[32m2026-10-21 17:56:24.622[0m | [34m[1mDEBUG   [0m | [36mtau2.registry[0m:[36m<module>[0m:[36m292[0m - [34m[1mVoice dependencies not installed, skipping voice user registration[0m
+[32m2026-10-21 17:56:24.622[0m | [34m[1mDEBUG   [0m | [36mtau2.registry[0m:[36m<module>[0m:[36m350[0m - [34m[1mDefault components registered successfully. Registry info: {
+  "domains": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ],
+  "agents": [
+    "llm_agent",
+    "llm_agent_gt",
+    "llm_agent_solo",
+    "discrete_time_audio_native_agent"
+  ],
+  "users": [
+    "user_simulator",
+    "dummy_user"
+  ],
+  "task_sets": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom_full",
+    "telecom_small",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ]
+}[0m
+[32m2026-10-21 17:56:25.434[0m | [1mINFO    [0m | [36mtau2.orchestrator.orchestrator[0m:[36m_validate_mode_compatibility[0m:[36m477[0m - [1mOrchestrator initialized in HALF_DUPLEX mode (turn-based) with agent=MatchedNativeAgent, user=UserSimulator[0m
+[32m2026-10-21 17:56:25.434[0m | [34m[1mDEBUG   [0m | [36mtau2.runner.build[0m:[36mbuild_text_orchestrator[0m:[36m430[0m - [34m[1mBuilt text orchestrator: domain=airline, agent=conseqax_research_G_3eb8938876e23e4f, user=user_simulator, task=20[0m
+[32m2026-10-21 17:56:25.434[0m | [33m[1mWARNING [0m | [36mtau2.agent.base.llm_config[0m:[36mset_seed[0m:[36m47[0m - [33m[1mSeed is already set to 1701, resetting it to 1701[0m
+[32m2026-10-21 17:56:25.434[0m | [33m[1mWARNING [0m | [36mtau2.agent.base.llm_config[0m:[36mset_seed[0m:[36m47[0m - [33m[1mSeed is already set to 1701, resetting it to 1701[0m
+[32m2026-10-21 17:56:26.989[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 0. Sending message from Role.AGENT to Role.USER[0m
+[32m2026-10-21 17:56:26.989[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 0.
+From role: Role.AGENT
+To role: Role.USER
+Message: AssistantMessage
+content: Hi! How can I help you today?
+is_final_chunk: True[0m
+[32m2026-10-21 17:56:26.989[0m | [34m[1mDEBUG   [0m | [36mtau2.user.user_simulator[0m:[36m_generate_next_message[0m:[36m222[0m - [34m[1mUser responds to message: AssistantMessage
+content: Hi! How can I help you today?
+is_final_chunk: True[0m
+[32m2026-10-21 17:56:43.005[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 17:56:43.005[0m | [34m[1mDEBUG   [0m | [36mtau2.user.user_simulator[0m:[36m_generate_next_message[0m:[36m244[0m - [34m[1mResponse: Hello! I'm looking to book a one-way flight from New York to Seattle on May 20. I'd like to know the available options, but I have a few preferences. Could you help me with that?[0m
+[32m2026-10-21 17:56:43.005[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 1. Sending message from Role.USER to Role.AGENT[0m
+[32m2026-10-21 17:56:43.005[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 1.
+From role: Role.USER
+To role: Role.AGENT
+Message: UserMessage
+content: Hello! I'm looking to book a one-way flight from New York to Seattle on May 20. I'd like to know the available options, but I have a few preferences. Could you help me with that?
+is_final_chunk: True[0m
+[32m2026-10-21 17:57:32.852[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 17:57:32.855[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 2. Sending message from Role.AGENT to Role.ENV[0m
+[32m2026-10-21 17:57:32.855[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 2.
+From role: Role.AGENT
+To role: Role.ENV
+Message: AssistantMessage
+ToolCalls:
+ToolCall (from assistant)
+id: 1q7fHeWlTaSXP4NBgrjRQRinINIYqMHV
+name: list_all_airports
+arguments:
+{}
+is_final_chunk: True[0m
+[32m2026-10-21 17:57:33.106[0m | [34m[1mDEBUG   [0m | [36mtau2.environment.environment[0m:[36mget_response[0m:[36m482[0m - [34m[1mResponse: [AirportCode(iata='SFO', city='San Francisco'), AirportCode(iata='JFK', city='New York'), AirportCode(iata='LAX', city='Los Angeles'), AirportCode(iata='ORD', city='Chicago'), AirportCode(iata='DFW', city='Dallas'), AirportCode(iata='DEN', city='Denver'), AirportCode(iata='SEA', city='Seattle'), AirportCode(iata='ATL', city='Atlanta'), AirportCode(iata='MIA', city='Miami'), AirportCode(iata='BOS', city='Boston'), AirportCode(iata='PHX', city='Phoenix'), AirportCode(iata='IAH', city='Houston'), AirportCode(iata='LAS', city='Las Vegas'), AirportCode(iata='MCO', city='Orlando'), AirportCode(iata='EWR', city='Newark'), AirportCode(iata='CLT', city='Charlotte'), AirportCode(iata='MSP', city='Minneapolis'), AirportCode(iata='DTW', city='Detroit'), AirportCode(iata='PHL', city='Philadelphia'), AirportCode(iata='LGA', city='LaGuardia')][0m
+[32m2026-10-21 17:57:33.106[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 3. Sending message from Role.ENV to Role.AGENT[0m
+[32m2026-10-21 17:57:33.106[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 3.
+From role: Role.ENV
+To role: Role.AGENT
+Message: ToolMessage (responding to assistant)
+timestamp: 2026-10-21T17:57:33.106459
+content: [{"iata": "SFO", "city": "San Francisco"}, {"iata": "JFK", "city": "New York"}, {"iata": "LAX", "city": "Los Angeles"}, {"iata": "ORD", "city": "Chicago"}, {"iata": "DFW", "city": "Dallas"}, {"iata": "DEN", "city": "Denver"}, {"iata": "SEA", "city": "Seattle"}, {"iata": "ATL", "city": "Atlanta"}, {"iata": "MIA", "city": "Miami"}, {"iata": "BOS", "city": "Boston"}, {"iata": "PHX", "city": "Phoenix"}, {"iata": "IAH", "city": "Houston"}, {"iata": "LAS", "city": "Las Vegas"}, {"iata": "MCO", "city": "Orlando"}, {"iata": "EWR", "city": "Newark"}, {"iata": "CLT", "city": "Charlotte"}, {"iata": "MSP", "city": "Minneapolis"}, {"iata": "DTW", "city": "Detroit"}, {"iata": "PHL", "city": "Philadelphia"}, {"iata": "LGA", "city": "LaGuardia"}][0m
+[32m2026-10-21 17:59:21.841[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 17:59:21.844[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 4. Sending message from Role.AGENT to Role.ENV[0m
+[32m2026-10-21 17:59:21.844[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 4.
+From role: Role.AGENT
+To role: Role.ENV
+Message: AssistantMessage
+ToolCalls:
+ToolCall (from assistant)
+id: AFq4F4uoUFMIKsqEGP6zvg7cjvHOSNQ7
+name: search_direct_flight
+arguments:
+{
+  "origin": "JFK",
+  "destination": "SEA",
+  "date": "2024-05-20"
+}
+is_final_chunk: True[0m
+[32m2026-10-21 17:59:22.109[0m | [34m[1mDEBUG   [0m | [36mtau2.environment.environment[0m:[36mget_response[0m:[36m482[0m - [34m[1mResponse: [DirectFlight(flight_number='HAT069', origin='JFK', destination='SEA', status='available', scheduled_departure_time_est='06:00:00', scheduled_arrival_time_est='12:00:00', date=None, available_seats={'basic_economy': 17, 'economy': 12, 'business': 3}, prices={'basic_economy': 51, 'economy': 121, 'business': 239}), DirectFlight(flight_number='HAT083', origin='JFK', destination='SEA', status='available', scheduled_departure_time_est='01:00:00', scheduled_arrival_time_est='07:00:00', date=None, available_seats={'basic_economy': 16, 'economy': 7, 'business': 3}, prices={'basic_economy': 87, 'economy': 100, 'business': 276})][0m
+[32m2026-10-21 17:59:22.109[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 5. Sending message from Role.ENV to Role.AGENT[0m
+[32m2026-10-21 17:59:22.109[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 5.
+From role: Role.ENV
+To role: Role.AGENT
+Message: ToolMessage (responding to assistant)
+timestamp: 2026-10-21T17:59:22.109174
+content: [{"flight_number": "HAT069", "origin": "JFK", "destination": "SEA", "status": "available", "scheduled_departure_time_est": "06:00:00", "scheduled_arrival_time_est": "12:00:00", "date": null, "available_seats": {"basic_economy": 17, "economy": 12, "business": 3}, "prices": {"basic_economy": 51, "economy": 121, "business": 239}}, {"flight_number": "HAT083", "origin": "JFK", "destination": "SEA", "status": "available", "scheduled_departure_time_est": "01:00:00", "scheduled_arrival_time_est": "07:00:00", "date": null, "available_seats": {"basic_economy": 16, "economy": 7, "business": 3}, "prices": {"basic_economy": 87, "economy": 100, "business": 276}}][0m
+[32m2026-10-21 18:02:55.715[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 18:02:55.717[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 6. Sending message from Role.AGENT to Role.USER[0m
+[32m2026-10-21 18:02:55.717[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 6.
+From role: Role.AGENT
+To role: Role.USER
+Message: AssistantMessage
+content: Here are the available direct flight options from New York (JFK) to Seattle (SEA) on May 20, 2024:
+
+1. **Flight HAT069**
+   - Departure: 06:00 AM
+   - Arrival: 12:00 PM
+   - Available Seats:
+     - Basic Economy: 17 seats at $51
+     - Economy: 12 seats at $121
+     - Business: 3 seats at $239
+
+2. **Flight HAT083**
+   - Departure: 01:00 AM
+   - Arrival: 07:00 AM
+   - Available Seats:
+     - Basic Economy: 16 seats at $87
+     - Economy: 7 seats at $100
+     - Business: 3 seats at $276
+
+Would you like to proceed with booking one of these flights? If so, please let me know your preferred flight, cabin class, and passenger details (first name, last name, date of birth).
+is_final_chunk: True[0m
+[32m2026-10-21 18:02:55.717[0m | [34m[1mDEBUG   [0m | [36mtau2.user.user_simulator[0m:[36m_generate_next_message[0m:[36m222[0m - [34m[1mUser responds to message: AssistantMessage
+content: Here are the available direct flight options from New York (JFK) to Seattle (SEA) on May 20, 2024:
+
+1. **Flight HAT069**
+   - Departure: 06:00 AM
+   - Arrival: 12:00 PM
+   - Available Seats:
+     - Basic Economy: 17 seats at $51
+     - Economy: 12 seats at $121
+     - Business: 3 seats at $239
+
+2. **Flight HAT083**
+   - Departure: 01:00 AM
+   - Arrival: 07:00 AM
+   - Available Seats:
+     - Basic Economy: 16 seats at $87
+     - Economy: 7 seats at $100
+     - Business: 3 seats at $276
+
+Would you like to proceed with booking one of these flights? If so, please let me know your preferred flight, cabin class, and passenger details (first name, last name, date of birth).
+is_final_chunk: True[0m
+[32m2026-10-21 18:03:35.302[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 18:03:35.303[0m | [34m[1mDEBUG   [0m | [36mtau2.user.user_simulator[0m:[36m_generate_next_message[0m:[36m244[0m - [34m[1mResponse: I'd like to book a flight from New York to Seattle on May 20. I prefer direct flights, and I'd like to fly in economy. I don't want to fly before 11 AM EST, so I'm looking for a departure time at or after 11 AM. 
+
+Flight HAT069 departs at 06:00 AM, which is before 11 AM, so it doesn't meet my time preference. Flight HAT083 departs at 01:00 AM, which is also too early. 
+
+I don't see any direct flights departing at or after 11 AM. Would you be able to check for one-stop flights or any other options that meet my time and class preferences?[0m
+[32m2026-10-21 18:03:35.303[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 7. Sending message from Role.USER to Role.AGENT[0m
+[32m2026-10-21 18:03:35.303[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 7.
+From role: Role.USER
+To role: Role.AGENT
+Message: UserMessage
+content: I'd like to book a flight from New York to Seattle on May 20. I prefer direct flights, and I'd like to fly in economy. I don't want to fly before 11 AM EST, so I'm looking for a departure time at or after 11 AM. 
+
+Flight HAT069 departs at 06:00 AM, which is before 11 AM, so it doesn't meet my time preference. Flight HAT083 departs at 01:00 AM, which is also too early. 
+
+I don't see any direct flights departing at or after 11 AM. Would you be able to check for one-stop flights or any other options that meet my time and class preferences?
+is_final_chunk: True[0m
+[32m2026-10-21 18:05:05.411[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 18:05:05.413[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 8. Sending message from Role.AGENT to Role.ENV[0m
+[32m2026-10-21 18:05:05.414[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 8.
+From role: Role.AGENT
+To role: Role.ENV
+Message: AssistantMessage
+ToolCalls:
+ToolCall (from assistant)
+id: gENQe5p77wVz60xMNg7gt23Tz4ZZHsLG
+name: search_onestop_flight
+arguments:
+{
+  "origin": "JFK",
+  "destination": "SEA",
+  "date": "2024-05-20"
+}
+is_final_chunk: True[0m
+[32m2026-10-21 18:05:05.654[0m | [34m[1mDEBUG   [0m | [36mtau2.environment.environment[0m:[36mget_response[0m:[36m482[0m - [34m[1mResponse: [[DirectFlight(flight_number='HAT057', origin='JFK', destination='ATL', status='available', scheduled_departure_time_est='07:00:00', scheduled_arrival_time_est='09:30:00', date='2024-05-20', available_seats={'basic_economy': 7, 'economy': 3, 'business': 9}, prices={'basic_economy': 76, 'economy': 141, 'business': 477}), DirectFlight(flight_number='HAT039', origin='ATL', destination='SEA', status='available', scheduled_departure_time_est='22:00:00', scheduled_arrival_time_est='03:00:00+1', date='2024-05-20', available_seats={'basic_economy': 18, 'economy': 10, 'business': 2}, prices={'basic_economy': 52, 'economy': 103, 'business': 283})], [DirectFlight(flight_number='HAT136', origin='JFK', destination='ATL', status='available', scheduled_departure_time_est='19:00:00', scheduled_arrival_time_est='21:30:00', date='2024-05-20', available_seats={'basic_economy': 15, 'economy': 14, 'business': 2}, prices={'basic_economy': 52, 'economy': 152, 'business': 277}), DirectFlight(flight_number='HAT039', origin='ATL', destination='SEA', status='available', scheduled_departure_time_est='22:00:00', scheduled_arrival_time_est='03:00:00+1', date='2024-05-20', available_seats={'basic_economy': 18, 'economy': 10, 'business': 2}, prices={'basic_economy': 52, 'economy': 103, 'business': 283})], [DirectFlight(flight_number='HAT218', origin='JFK', destination='ATL', status='available', scheduled_departure_time_est='18:00:00', scheduled_arrival_time_est='20:30:00', date='2024-05-20', available_seats={'basic_economy': 12, 'economy': 1, 'business': 4}, prices={'basic_economy': 76, 'economy': 158, 'business': 342}), DirectFlight(flight_number='HAT039', origin='ATL', destination='SEA', status='available', scheduled_departure_time_est='22:00:00', scheduled_arrival_time_est='03:00:00+1', date='2024-05-20', available_seats={'basic_economy': 18, 'economy': 10, 'business': 2}, prices={'basic_economy': 52, 'economy': 103, 'business': 283})], [DirectFlight(flight_number='HAT268', origin='JFK', destination='ATL', status='available', scheduled_departure_time_est='07:00:00', scheduled_arrival_time_est='09:30:00', date='2024-05-20', available_seats={'basic_economy': 17, 'economy': 19, 'business': 12}, prices={'basic_economy': 91, 'economy': 101, 'business': 453}), DirectFlight(flight_number='HAT039', origin='ATL', destination='SEA', status='available', scheduled_departure_time_est='22:00:00', scheduled_arrival_time_est='03:00:00+1', date='2024-05-20', available_seats={'basic_economy': 18, 'economy': 10, 'business': 2}, prices={'basic_economy': 52, 'economy': 103, 'business': 283})]][0m
+[32m2026-10-21 18:05:05.654[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 9. Sending message from Role.ENV to Role.AGENT[0m
+[32m2026-10-21 18:05:05.654[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 9.
+From role: Role.ENV
+To role: Role.AGENT
+Message: ToolMessage (responding to assistant)
+timestamp: 2026-10-21T18:05:05.654816
+content: [[{"flight_number": "HAT057", "origin": "JFK", "destination": "ATL", "status": "available", "scheduled_departure_time_est": "07:00:00", "scheduled_arrival_time_est": "09:30:00", "date": "2024-05-20", "available_seats": {"basic_economy": 7, "economy": 3, "business": 9}, "prices": {"basic_economy": 76, "economy": 141, "business": 477}}, {"flight_number": "HAT039", "origin": "ATL", "destination": "SEA", "status": "available", "scheduled_departure_time_est": "22:00:00", "scheduled_arrival_time_est": "03:00:00+1", "date": "2024-05-20", "available_seats": {"basic_economy": 18, "economy": 10, "business": 2}, "prices": {"basic_economy": 52, "economy": 103, "business": 283}}], [{"flight_number": "HAT136", "origin": "JFK", "destination": "ATL", "status": "available", "scheduled_departure_time_est": "19:00:00", "scheduled_arrival_time_est": "21:30:00", "date": "2024-05-20", "available_seats": {"basic_economy": 15, "economy": 14, "business": 2}, "prices": {"basic_economy": 52, "economy": 152, "business": 277}}, {"flight_number": "HAT039", "origin": "ATL", "destination": "SEA", "status": "available", "scheduled_departure_time_est": "22:00:00", "scheduled_arrival_time_est": "03:00:00+1", "date": "2024-05-20", "available_seats": {"basic_economy": 18, "economy": 10, "business": 2}, "prices": {"basic_economy": 52, "economy": 103, "business": 283}}], [{"flight_number": "HAT218", "origin": "JFK", "destination": "ATL", "status": "available", "scheduled_departure_time_est": "18:00:00", "scheduled_arrival_time_est": "20:30:00", "date": "2024-05-20", "available_seats": {"basic_economy": 12, "economy": 1, "business": 4}, "prices": {"basic_economy": 76, "economy": 158, "business": 342}}, {"flight_number": "HAT039", "origin": "ATL", "destination": "SEA", "status": "available", "scheduled_departure_time_est": "22:00:00", "scheduled_arrival_time_est": "03:00:00+1", "date": "2024-05-20", "available_seats": {"basic_economy": 18, "economy": 10, "business": 2}, "prices": {"basic_economy": 52, "economy": 103, "business": 283}}], [{"flight_number": "HAT268", "origin": "JFK", "destination": "ATL", "status": "available", "scheduled_departure_time_est": "07:00:00", "scheduled_arrival_time_est": "09:30:00", "date": "2024-05-20", "available_seats": {"basic_economy": 17, "economy": 19, "business": 12}, "prices": {"basic_economy": 91, "economy": 101, "business": 453}}, {"flight_number": "HAT039", "origin": "ATL", "destination": "SEA", "status": "available", "scheduled_departure_time_est": "22:00:00", "scheduled_arrival_time_est": "03:00:00+1", "date": "2024-05-20", "available_seats": {"basic_economy": 18, "economy": 10, "business": 2}, "prices": {"basic_economy": 52, "economy": 103, "business": 283}}]][0m
+[32m2026-10-21 18:15:06.162[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mgenerate[0m:[36m458[0m - [31m[1mlitellm.Timeout: APITimeoutError - Request timed out. Error_str: Request timed out.[0m
+[32m2026-10-21 18:15:06.162[0m | [33m[1mWARNING [0m | [36mtau2.orchestrator.orchestrator[0m:[36mrun[0m:[36m287[0m - [33m[1mSimulation loop exited with an exception — running emergency cleanup[0m

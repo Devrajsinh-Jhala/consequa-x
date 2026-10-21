@@ -32,13 +32,19 @@ normalization is disclosed and checked against its actual prompt rendering.
 3. Run `development` on excluded task 19 with `--arm native`, then excluded
    task 20 with `--arm G`. The shared native development ceiling is 64 completion
    invocations: the fresh unmodified check reserves at most 18, and the first
-   guarded check at most 30. Unused native reservations are released only from
+   guarded checks use only the remaining shared allowance. After the first
+   guarded timeout consumed seven calls, the final guarded attempt reserves
+   at most 29. Unused native reservations are released only from
    complete retained accounting. The initial 36-request
    allowance was amended before official collection after the local server
    stopped between sessions; the first 14 completed calls still count. All retries and pre-provider
    failures consume or remain explicitly accounted within that allowance. A
    native smoke must return native grading; reward one is not a readiness rule.
    The guarded smoke must exercise an actual package receipt.
+   The final candidate's request/trajectory limits are 1,200/7,200 seconds,
+   prospectively amended after the retained CPU timeout. The earlier native
+   smoke used the stricter 600/3,600-second limits. Official collection uses
+   the new uniform limits for every arm and both model roles.
 4. Run `readiness` with `--transport-result`, `--native-episode`, and
    `--guarded-episode`. The receipt binds exact source bytes, full evidence
    inventories, installed runtime and the live runner lease. A boolean written
@@ -73,3 +79,11 @@ The latest 190 local tests check source, protocol, guard, supervision, arithmeti
 retention and synthetic native integration. They do not supply a live benchmark
 result, external service validation or human validation. Original development
 failures must remain available alongside any later successful readiness check.
+
+The auxiliary [one-shot pipeline](../scripts/finish_native_external_pipeline.py)
+has 18 offline tests. Its default mode prints a plan without subprocesses or
+writes. Explicit execution waits for final native and guarded checks, freezes
+from the detached source, publishes only the two protocol files before any
+official generation, and collects once before running the offline auditor.
+It refuses divergent Git refs, enabled Actions, existing output/claims and
+failed prerequisite smokes. No automatic development retry is performed.

@@ -1,0 +1,880 @@
+{
+  "dependencies": [
+    {
+      "distribution_record_hashes": {
+        "METADATA": "66320967996f85fa211f1216a7bf5f921d13b41b0de5db97f389daddbc54eaf4",
+        "RECORD": "aae6a1dae514b9d76b56e593de12cd3a3db1ddc66b622f08682f89c938887404"
+      },
+      "name": "addict",
+      "version": "2.4.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "e68d1bf48aec9dcc2767343dedec25e12860085cba180e10bc3d3bdd031602ba",
+        "RECORD": "070db8fb424fe179cb1c2c417ab0c748cfdab6bff173dc7b491822c11bc2eb01"
+      },
+      "name": "aiohappyeyeballs",
+      "version": "2.7.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "50b29a2268649f7ce5b22c0a41b60896d246fee58e2a74b468f66848e469834c",
+        "RECORD": "08c9e73d53677b88f6e0d2236387f7d2a52229bccde6ad0f1b88576be32a3b40"
+      },
+      "name": "aiohttp",
+      "version": "3.14.5"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "09247ef1da8bc696728d47130e702e4307f6f7d101d6c485bff9f3a71ce7008d",
+        "RECORD": "609e54b94afb3ddb6c260ee79899e98aab339b7d1c39c42a9deae2ec2d5278cc"
+      },
+      "name": "aiosignal",
+      "version": "1.4.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "8c24d70c5d9153d22123353a906042fd7603df2d15c2196290b0f8a962558c46",
+        "RECORD": "4c32bb7e383a555fec6162c7c7f905d366f688e6e228295c32b822c3d669d769"
+      },
+      "name": "annotated-doc",
+      "version": "0.0.5"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "614985b278f601b8ef863f82783b991cc3ada4b89f592eb71c7c48c5f2ef2298",
+        "RECORD": "3999aa3e7cd1afa1ae67b55bf5b04bbc3ca55fdd6c7dcfe571b1aad05da849af"
+      },
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "043aecb571af7189e8a6c528f5d8e32545f1b2cdfaaf761d51e6d5b67ea3ca81",
+        "RECORD": "335fdf50255512ac058cbf13ebc9d66aecd2667ba9629de9e11bef95910eb3f9"
+      },
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "4cd40e690f23bf37cbcad34efd6758e062df1df07c86833f7e3ce95bf1fa38cc",
+        "RECORD": "4208eb11c81019fa747017a7751a6f589246758b623f2030841c2c522688c49b"
+      },
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "47f9b429e60907624852c48c036afb9a7c41d23fe49e3f45709c582bb4087989",
+        "RECORD": "d0db3d2770831f3331faa19ef31eddefbd8bde3f55a4bbc2d8c929687faeebd4"
+      },
+      "name": "cachebox",
+      "version": "5.2.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "a5c0be3a42daeef0edfaf58e6ea5b7550f3e4e8eb35420f72e902df9bcf00f5c",
+        "RECORD": "fa087a7401cda70de0979be4b4684722da4662932bdb40eab2fe71bee2d8da19"
+      },
+      "name": "certifi",
+      "version": "2026.10.19"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "89ce6362bb7be88558f4be99a98f5d1b4da93d19cd0323e5ee0bac05cf883dfb",
+        "RECORD": "1c83835d7741cba1ae79966db8a2537fdc6abede80632e66093305cec8dedc22"
+      },
+      "name": "charset-normalizer",
+      "version": "3.5.2"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "e87bce0bd194de70dfb8e708e0a6b0483009f25611804eaf87bfeb63e6c20501",
+        "RECORD": "4a523c0c5110a56f01ccedcea0dd40973a227083ead89333427baf414cb21c95"
+      },
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "7baed29eb50c3b29bdb33ff84e3177bf1bc05784f7685ecdcaa4471c7dd810cc",
+        "RECORD": "2de1747809a165c7c54a2fd115a569a061e6eedf56d5c6db3fe0dc8a2985562f"
+      },
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "a627708bd8393b8a978ca3a24ec89e0133ebb421e75dab3ff6ab44ae25f750b2",
+        "RECORD": "c795ef56e263a9027cd2fdb5296f1b3714edb372d086ea4e8f739ef100bec94d",
+        "direct_url.json": "c3daa933f840b4fc487a6da0c7a7879257122b5d85aa283317210a9a79541798"
+      },
+      "name": "consequa-x",
+      "version": "2.1.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "6a05109b8b53bc235bac4bf535a49c6214b0ed25a7afb5554ee8bd53baafdd81",
+        "RECORD": "b67be9a5a11ba5bfa79d37de592ad739e897bf8b20b59509d3472166ca0a6890"
+      },
+      "name": "deepdiff",
+      "version": "9.1.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "cbc42027997fd4b194ae5fd064a4d1e57b92976941d0c26d369561a7c016a333",
+        "RECORD": "829f0f7b7168bfcac6497bc6546c6460ff0f9b6d951cab8bd97befa4a2b97fc5"
+      },
+      "name": "docstring_parser",
+      "version": "0.18.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "181a96602fcf3ee3b5628a1cf59367605a1e54a1b751685cd6690015dfcfd792",
+        "RECORD": "a9dfb309a826a28f665a84732250bfb91f4aef74f6efa8af6d0a24e04c936b6e"
+      },
+      "name": "fastapi",
+      "version": "0.150.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "bb27f5891154881aef7f1a192f91d49f7d466be564fe0b2865b5e759342fb0b4",
+        "RECORD": "85ef1dcef78abda272063a82de2484145f332da68a68ff4678abea34986e75fd"
+      },
+      "name": "fastuuid",
+      "version": "0.14.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "d99c0f72a7ab84c924b734018a28a5001505fe0f96280c4462b864313edddb50",
+        "RECORD": "17c9a631f3ac638fdf2454c3c8406585eb936446d227890148ddf717de20e192"
+      },
+      "name": "filelock",
+      "version": "4.2.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "946c22dc9f7e2c76f2d698f00a4306dbe49a820e2b3f1a0e22fe5286cbec35f1",
+        "RECORD": "9d21086cbad4fa4663bf55b513c533c804a45f577adb9733d91d9f39d110b1bc"
+      },
+      "name": "frozenlist",
+      "version": "1.8.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "68f5a262767510638e9b1933b1493f2baadc9616fe1e696f62aedd59c8c0a37c",
+        "RECORD": "bb5b9da352a9f77e761fec5d02f2feec1d2ae55c5b8737d3250bbc201957ffe3"
+      },
+      "name": "fsspec",
+      "version": "2026.9.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "28f326098ac09fcba79b8f180f96087c841fe2456215cb7b872a9c7d5cd19d64",
+        "RECORD": "3a11572d1a11c198b9ab7cc31a1fb685997c7596b566e5074983161f0f0cfec9"
+      },
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "05975b1239f188bb418539f178ef68a693ea6824f20c30583a02eea94faf650a",
+        "RECORD": "e84fa7d80c7e6d6d253249c8651637bfcfc27e64ed16152c11e110f38152a0eb"
+      },
+      "name": "hf-xet",
+      "version": "1.7.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "fe2d4fda6199128978779e0cf27f3c045c531863fcdd987eacc74f3a18d41c21",
+        "RECORD": "491f4b59545289189a7adb8ad6e318069ac16e2d254dd8b66b0a6ebd5f2a262a"
+      },
+      "name": "httpcore",
+      "version": "1.0.9"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "823448057a5ff0fb8648f04f95183e2fefc67b35b3c7df6a8084c978c17a24c5",
+        "RECORD": "e1e08290f3d70ab90e459afa9441742277277d1d4132b26cc6eee07f2e975e1e"
+      },
+      "name": "httpcore2",
+      "version": "2.15.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "febb9b0f8f3e80d57c8199c304f35c4336e8581d1d18d7983c92766b82793b25",
+        "RECORD": "645d6678e8fa5f91d4df17c54b3ad731af78b5a9f829a68ee4e7faac99c31139"
+      },
+      "name": "httpx",
+      "version": "0.28.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "60f0e796561828482476cd15b7c3a1a38e991affe28e75ef1f20bc4e6a0d59d0",
+        "RECORD": "2ae6a7708374e51a1df2b30756e3586e8a23e6533aeb9af454d15012adbd753a"
+      },
+      "name": "httpx2",
+      "version": "2.15.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "fec7fc2879fa91b7cbf7a21b1434087215d62869b2bc69fb59654c328d9a3d14",
+        "RECORD": "b48ff1d96869552e842f07b5a1a43b52465de02243b45882667958370bcfaea8"
+      },
+      "name": "huggingface_hub",
+      "version": "2.2.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "dbd8c14c1e4ca1e0c9824a6dbc7cbbf78884f38eb52d91148cd3025f671e4b85",
+        "RECORD": "e59b19fb86f86172f60d390f9b446114e744016932ddf6028dc2c51ddb9ae674"
+      },
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "1a90ba399de022d3528ad996c7a8593422207ccb13d27f062ad005f509e11500",
+        "RECORD": "e4507d01c38f91f090e4cd6739457b9c0240497a8b5102857cd44fbfcbe53a26"
+      },
+      "name": "importlib_metadata",
+      "version": "9.0.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "68c5548fb67c4132a13898d9b31ec50c6bea2abdd915d921f214355c3a6499c8",
+        "RECORD": "0c53d32a3ab7315c84d8278414af16134b29f7ec30fe3d41d90331430a31e525"
+      },
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "738fc5b25c7cbaf81392886a95661322888c5691205b57a0975a1da1f62e3ea7",
+        "RECORD": "306ce4956c39f4198013dcd2138f4f658fa92f4897b13fc58af9e837ed04522e"
+      },
+      "name": "jiter",
+      "version": "0.17.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "05b189866ca98a96da3934bf6b83687ced3ff85325273b77e16b705f6d8b26d2",
+        "RECORD": "b62b59ffa70c51d98a858ceb82398861f98a96d91907be84cc006a9e78bb5d08"
+      },
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "35abd41757f32b4ea24756920ded47b70173d77cbc052a5a6d3ab583b2e8d89d",
+        "RECORD": "3ef7039c92772d51f01308c51abdb1455c6627ca4a97cbe7d3c13432de0e9571"
+      },
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "9cb150e2f85d5e2274ac230d2dfb4b4d3d9de93b55b828a9039cb736c5291470",
+        "RECORD": "5d3ab31ebd2d52066909fb5b9dcc96cb8b5bb2aa754b2baeefefed8daa828ad0"
+      },
+      "name": "litellm",
+      "version": "1.82.6"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "3a371f8b089014fdaee055edc440d448242847926ad67613621af402f9975fd9",
+        "RECORD": "c5cd7ef01c019d4ad4d4a70f2b3ab43e127dde2e5344eb4bc51d4ff09c2e952c"
+      },
+      "name": "loguru",
+      "version": "0.7.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "72c36ff516755443b1ecb61e17b2567a990230b49a504b0eb0c42d5f82448a9c",
+        "RECORD": "e6f9b4ce7cca8d6b9f8ef183976434f4c81ae85603a81aebc74415cb7777ebe0"
+      },
+      "name": "markdown-it-py",
+      "version": "4.2.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "66767d76388ece15d49d50dafb655891ef5d868715e7128e7f7d737a70b353c4",
+        "RECORD": "14e1b21744eec089aeef3d7f92cfafe3fa5a3745f27c448703e1f16cb01185a4"
+      },
+      "name": "MarkupSafe",
+      "version": "3.0.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "b53b29d48f499367053fda3c81e7ce27d2558380ebbf83e66023b02eb7ddd25d",
+        "RECORD": "30ed86327ce3c11338d0d614f4113a45c6599e9ae3d429ba5aec0623af3310d1"
+      },
+      "name": "mdurl",
+      "version": "0.1.2"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "fe2db435bc86c7e62a42cc1f5b0c0650ba4fd1b05a420413f14085f8a3730e62",
+        "RECORD": "f6f496fb710b73fb2f4777248e47f4b600db69d7f0b8df0dbe5f18ea2296d39a"
+      },
+      "name": "multidict",
+      "version": "7.1.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "e2b909d6a37d76c2bc130f528d7fed0c517322bce16dc7846b6a6df30e200403",
+        "RECORD": "ba3ba3a7aa891117366364d81b72b60b62014e616a1f365c687f883b8e037273"
+      },
+      "name": "numpy",
+      "version": "2.5.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "3344e66fc23364164ff5bdfa8ca31cff90518ad437318eee2e0331f2a029603f",
+        "RECORD": "11f490787cd0a4121909229df88b778c64125266960346a104c3c56fba013126"
+      },
+      "name": "openai",
+      "version": "3.35.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "5bc71e90cb421be92a43bf5ad5b0f25dccfa2a24ddceaa2877779879962a4c9e",
+        "RECORD": "1c117e2052e8b42a3deb7752324315fa3d0be66ce36446dcbb0e4b8fe56c1ebb"
+      },
+      "name": "opentelemetry-api",
+      "version": "1.45.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "87b74bf17b6396725bf314cc67568085c52caf32e4292bcecd8cfe585408c3eb",
+        "RECORD": "13f3f01b26991f0a1cdf27f70e11d15d53c2c3cd696ee1e6ef0aaa49814c5d31"
+      },
+      "name": "orderly-set",
+      "version": "5.5.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+        "RECORD": "8c69191044e577ab83c6b2990bc6fd7cfb441e6027ef5bb9e1c49c1dce2cedce"
+      },
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "9eb4d20fc21b7851d6f782bd5186ded152fce80a48ac93120bf88e03c89ebc39",
+        "RECORD": "3041767ddd06d6fc6dd6920be788de6d8b0368dfa0467d9fd0a7cf69b3c23b84"
+      },
+      "name": "pandas",
+      "version": "3.0.6"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "4fa7318cf30f979db7cec45c12cbbc2b4f88a15f12eefbf59a6291d0a03af926",
+        "RECORD": "a28d2b83911de147fc0a6f5ef5e0e180e6062bb03d69d9e50a7e40f941feed10"
+      },
+      "name": "pip",
+      "version": "25.0.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "6ed3bac0ad43050ceaf8bd09878ba3d673c94c4da0d4498f903f86c36cc6fb57",
+        "RECORD": "b5bde56d8bc169208db432522a8cf8e595c8f3aaf880e9841dd4fa2554289bdc"
+      },
+      "name": "propcache",
+      "version": "0.5.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "525f8ba78523cf7bc3759d62a105e7c57fd679ea702402b9449fb0746aa0217f",
+        "RECORD": "fcc85ae3e1bfd692fb2692122ece1edbc6e6cd0c2bf2f8539e6c6242d7960d68"
+      },
+      "name": "psutil",
+      "version": "7.2.2"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "4d4c8e8d5e6a27d5208f0d7949f25628e6747133034969d4d1399b1ad5394036",
+        "RECORD": "1e2148094b1e90b9133d043fe757553f5caa65383dd4d095e12d6e95673f47d8"
+      },
+      "name": "pydantic",
+      "version": "2.14.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "ae6817764b603fa2300cd31b9566ecc33476df46163c4150fffc353121a166f2",
+        "RECORD": "b78c856c6021dba2003f762d95981a8310fae8f1a99a8b9f9df14f96f23cd3a8"
+      },
+      "name": "pydantic_core",
+      "version": "2.50.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+        "RECORD": "b3f2e6ac6f39b66797213de884ed13325af48ca9aecc7f9cd9696230b81c6627"
+      },
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "a9d436da322be808332f98d88325998e87cb693a678a9969feb4cfad729a6e93",
+        "RECORD": "3a5a516e7d1224330a241cfe307142e35faa14b3738c62cac931c71b4ba8dd9d"
+      },
+      "name": "python-dateutil",
+      "version": "2.9.0.post0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "87cfee6042412d48df1100ea7822684988c3f2b79de7a250f4717f4df3026d6f",
+        "RECORD": "75fe7d8d452797f11ea8b33e4bd1b384f0e8f4f6221d5904009d93f10984fd62"
+      },
+      "name": "python-dotenv",
+      "version": "1.2.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "03c3b415ed38d09faedc49360e930769b40c58f68585e6de00e2e4916a858d34",
+        "RECORD": "c55b91c92f924915927c027b1ffc40d102325d0ad29b4c89f0534ac977024f56"
+      },
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "c93b00e6ab1524fd60848376604c189a114374776475c25a31d57be47b29de6a",
+        "RECORD": "e478b36e3ce8788da1a3470a1ce2a260efc50cf21bbabbc398f0ff8368a84553"
+      },
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "33859377dbf8dd38ee3de73fd97faebf4a63d50576e3cc1a9dfe44df08b0936a",
+        "RECORD": "d50437a52084f9de48cea6b189d49761f2be416a1a7d0bbe4eaad947e9dcf4ce"
+      },
+      "name": "regex",
+      "version": "2026.9.29"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "8c384ba3e979480faae2859d3c5e6c1276dd2c3616e322e124d52c8cfc556f27",
+        "RECORD": "7bba0196a873a09fd85f983bc50ee47c430a4edd6e7ba3cbc8a0cce21c3cd215"
+      },
+      "name": "requests",
+      "version": "2.34.2"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "fad34fc603fac4481bf81f8dd629492fc302c0ec31909c86644751512afb2e3b",
+        "RECORD": "e6d36e5b6dda9b2da692a29eec258c92a92aa12e37f6db92d12a5a91d77940f4"
+      },
+      "name": "rich",
+      "version": "15.0.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "5d72dca2e387c8d2b4180b68ee87c15b64751e059100a6db58891ec9995445c3",
+        "RECORD": "4c3634cedbcc8abdec13d7d0b372009af953351d5a52f603b6ce3a99cb96a30c"
+      },
+      "name": "rpds-py",
+      "version": "2026.9.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "183d80220a37493262795739dd357cc5bb3f49bd390cc9198d5180e5451a07fa",
+        "RECORD": "f03dcc965e66344413e6f9b77babdd57d8a61b8fce9c6c729f87203e30618e2d"
+      },
+      "name": "shellingham",
+      "version": "1.5.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "562042078c2752549f6d8a7c86dbc5dd708088a7be6d80672ec7b07100b72468",
+        "RECORD": "bca2421b394ae3f68e3d1e382607bf181b14f891ad1626aeedb9fc98f9525f4e"
+      },
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "e87e83bd780638c08d4ae02ba8c36a89c6b55e2ea910d441aa20ad0b30e51fb6",
+        "RECORD": "72b4ca07dc9af2f0f1c02f284c23e96c67a5520f88df4c9091841c557c82db5a"
+      },
+      "name": "sniffio",
+      "version": "1.3.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "f05a43e2910b63d149f0810e218987d38c7336c1dac930ebeff427ef2798692c",
+        "RECORD": "fdd3a0447586af346dd9f14042725ffe3ae2e78d2065ba9530a1b7e9ec52cfc1"
+      },
+      "name": "starlette",
+      "version": "1.9.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "6b6b69e70e0799157366bb5bac28f976e942bbc3828f29c8253b41ea3d38d1f9",
+        "RECORD": "adfebb5130425c39b04b4b261db13f76e3619f1a227edb95ccfdf09c4900dbd3"
+      },
+      "name": "tabulate",
+      "version": "0.10.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "1d30f0b4cd3cf1ad585400f9ea9c424e64c630ea63e57209a1f16fce72e68eb7",
+        "RECORD": "fb653d16f3ade2ef28d92b229a1d4af740e74f6dedc9c59f360647f5322a90ed"
+      },
+      "name": "tenacity",
+      "version": "9.2.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "30086725221223f7a19463e71c0e9f79fe7aba9125b36632c00bf50a23fa968a",
+        "RECORD": "ff38043126e39b3f3c1cf25e88d289e7f9e3e505764b0d9096436db11ec97e48"
+      },
+      "name": "tiktoken",
+      "version": "0.14.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "87032ea29ec14be956ce0f15d164a8f436d6f1adbe19b261d6c179d9184f5cba",
+        "RECORD": "0a0555ed16f9fddf263358910aeb329c3f2d297629b847ebf8f253b8688545df"
+      },
+      "name": "tokenizers",
+      "version": "0.23.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "9ff624b29bc48a177f4172c8659e74595485cf7ad9fe4ee340ff8e535594a566",
+        "RECORD": "5b3be995309149b911f98bd106ae79115ff66778cbce32e02d7a8b677d430f75"
+      },
+      "name": "toml",
+      "version": "0.10.2"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "a5da70b966afea3a759716041bad7187f2ece02c22348cf9e7c0a512bbf15f57",
+        "RECORD": "ecc850a32c854c3e8a4225f341a17f32a82100211c891d726c838de408ed6bf0"
+      },
+      "name": "tqdm",
+      "version": "4.70.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "1fd496f290853214e630d96f7163d2dd916f84ebe634b58aa827d6853e8f8610",
+        "RECORD": "984be88e3409e00b8b711b1c6747decfcad72c453c69ad33d31ea6a6726b5b5e"
+      },
+      "name": "truststore",
+      "version": "0.10.5"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "fc2cbb86c4fd175326b63427e9a3fa13e79364d7333a945414d9c6ac80c0f0e4",
+        "RECORD": "f2d4499c55b360a586485afc27bb75d00b96bc8784ca7ed0a559e3735ad6a4c9"
+      },
+      "name": "typer",
+      "version": "0.27.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "bad3d9e6342ef6750cf5128ec942327b8bebdce0b6e4d6f67cb15b27ae5118da",
+        "RECORD": "06f60204c0b7d67df21f09681e2db4781ef463cad5fb7dfc7a749b232a0ec8ae"
+      },
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "b05084ca1d50879865178d9fff9fabeab61bdfb1f361bfbde95421ffc8f9be46",
+        "RECORD": "a346a921aa5be35b34ced3258614183d152887b954caaae5de2a94be72d5f2ec"
+      },
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "e0780e8b6dc8882ce87e871a9d4589d59cb05a0c2d64f58b1ba62cde1ee91f6a",
+        "RECORD": "32949026dd1854aa3657d3ca1f33cd6f9a87cfacf06744fd36065b52f70f215e"
+      },
+      "name": "tzdata",
+      "version": "2026.5"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "10898c620e8007c030e07fa5622b68358a43010025dfbd78a1cb797699de2bb4",
+        "RECORD": "d1095c0d4222e159c7ceb2f8767d012e68bc1c4c0025518760aeec47e91326e2"
+      },
+      "name": "urllib3",
+      "version": "2.8.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "9399e5ddda3d26e842d6fb5420c38b0857aac568d53badbdc224b3a21339efa8",
+        "RECORD": "73f4f19db753ff6a7174a87fe839858d8cf8e14d40f816b76f3c5c4d748c9ad8"
+      },
+      "name": "uvicorn",
+      "version": "0.54.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "009da5d5f96cd7290c0095c4f87e6cdf18e1ea0da5f3b34d8d5cdfac44ffaf72",
+        "RECORD": "37d291c1c40ba2f340844278daf6e23f58f7f2c35c5688cb1792b6b5d00de5d6"
+      },
+      "name": "websockets",
+      "version": "17.3"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "7783ade002f8b2e6cbb04d97213fad766d2b84e17e5868fbf7c8c5b25b2e1509",
+        "RECORD": "1168c90a6deb48fe321fe40b7190727a387d017047caca916ac89b6343c30aa1"
+      },
+      "name": "win32_setctime",
+      "version": "1.2.0"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "fd6baa258a11c4d7e7008272a69180d4d34aa04a6a5afda36ac5e55aa0aa4f41",
+        "RECORD": "1e255e22532cc1d31ef563f292cfa01356fd3b74f9f6c631f9d1d82147b39ef2"
+      },
+      "name": "yarl",
+      "version": "1.25.1"
+    },
+    {
+      "distribution_record_hashes": {
+        "METADATA": "3080f93de17d4bd784cd33afc0933db91c28cbec1cb444e1ffdfec5c7e0f5d90",
+        "RECORD": "b2e87d90d74054a407b22cdc66b88688f6981f2660df7875db54c04ecafa568b"
+      },
+      "name": "zipp",
+      "version": "4.1.1"
+    }
+  ],
+  "dependency_coverage": "Version and installed metadata/RECORD bindings; not all dependency payload files rehashed",
+  "executable": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+  "executable_sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92",
+  "framework_payload": {
+    "consequa_x/__init__.py": {
+      "bytes": 2515,
+      "sha256": "478c57d8f957fa4b83430fb2f7f65a485ea78ea5b21cdfd14c53ce0cf2020ff8"
+    },
+    "consequa_x/__main__.py": {
+      "bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    "consequa_x/adapters/__init__.py": {
+      "bytes": 135,
+      "sha256": "4f5894f1a872af11e46660789f1f8709821324748cb6751ded0453fab7badeda"
+    },
+    "consequa_x/adapters/ollama.py": {
+      "bytes": 18220,
+      "sha256": "e7d752bc2b3751ea279e5b512997c0de9ad9d53858cbe2ac9aa75ac3224da01e"
+    },
+    "consequa_x/attribution.py": {
+      "bytes": 17742,
+      "sha256": "5aa352becbb75d1aec15aa5b77465227811505d846d56d8b4c742443557bf717"
+    },
+    "consequa_x/benchmark/__init__.py": {
+      "bytes": 61,
+      "sha256": "5a978fbc5abf98e04b92aed5c32ab7916f83cd09a551c791ea55d14bdb2fca1b"
+    },
+    "consequa_x/benchmark/assessment_metrics.py": {
+      "bytes": 2445,
+      "sha256": "6c6f5cb9386ada10a8f0ce0b2c9d6cc002f4905552b8eacc54c9c8e2f2283c63"
+    },
+    "consequa_x/benchmark/calibration.py": {
+      "bytes": 41933,
+      "sha256": "98ae708804af391050b3ea3431a114f0076e13a79134a301880f21b11fd7aebb"
+    },
+    "consequa_x/benchmark/calibration_export.py": {
+      "bytes": 7524,
+      "sha256": "b75f54f89f15eaf7206130efd924b7fd3fcd7e4919eb8eb7f9fddb102c8991e9"
+    },
+    "consequa_x/benchmark/calibration_mechanisms.py": {
+      "bytes": 13106,
+      "sha256": "84debd9ad20b88398760ee7aa95be4afc38e4ccc835da4a52358a48e00205cb2"
+    },
+    "consequa_x/benchmark/decision_coalition.py": {
+      "bytes": 12052,
+      "sha256": "e226ac3b3ea6c8a12ccf87f796f0846048cdfe8e5a5907fa14dfe1d3a95e862f"
+    },
+    "consequa_x/benchmark/decision_contrastive.py": {
+      "bytes": 22451,
+      "sha256": "3a4b664de7c1fe056bd69ced02765258882e8f7037af0404df82b4104f1c155a"
+    },
+    "consequa_x/benchmark/decision_replay.py": {
+      "bytes": 15503,
+      "sha256": "9c67172eaf907d7bfdeff9ae87dacda2dbd2e6fa6ae5c0c2b07aa3b15512f870"
+    },
+    "consequa_x/benchmark/decision_shapley.py": {
+      "bytes": 32581,
+      "sha256": "944d99da393ed5c7e6a7674c88942773498ce4a42279dc43fb80bd7d75e6fccf"
+    },
+    "consequa_x/benchmark/evaluation.py": {
+      "bytes": 8541,
+      "sha256": "5782108d6f1728b5940c8842f3caa8a6bcae8279bfa710333d3de0856f6a9403"
+    },
+    "consequa_x/benchmark/interaction_export.py": {
+      "bytes": 14789,
+      "sha256": "ce8fc7958157d148de7f3ee9ff28e231c8c89b9f4e104c84c4fe92c0fb38d384"
+    },
+    "consequa_x/benchmark/interaction_mechanisms.py": {
+      "bytes": 9911,
+      "sha256": "e529d64e292138e4eeefc2b463fdeb2c8718d4f6766ee2daa75ebadb2589cf35"
+    },
+    "consequa_x/benchmark/interaction_sampling.py": {
+      "bytes": 36001,
+      "sha256": "b5cec9b36a4b1b2181d55533fa593cb1df059ad6403b7b03b3b29cb5a520df03"
+    },
+    "consequa_x/benchmark/interval_comparison.py": {
+      "bytes": 17077,
+      "sha256": "d981faabded0aeff7bb5582db62f98864022222482fa6554764b0ae667a58103"
+    },
+    "consequa_x/benchmark/intervals.py": {
+      "bytes": 7292,
+      "sha256": "13cfd6863e9224c0e609753435bf190f5695b98201d7ce8a8bd36917dfb3e85e"
+    },
+    "consequa_x/benchmark/payments.py": {
+      "bytes": 17277,
+      "sha256": "92a654a88bc73055a7927c1e4f22089cdc1dc8dc0b32b6dd0b4fb0cdb7ad8ec2"
+    },
+    "consequa_x/benchmark/policy_experiment.py": {
+      "bytes": 13235,
+      "sha256": "14a7f51fde3508eaf8f56034246548c612b8d0e92dade3615d256f9406d18544"
+    },
+    "consequa_x/benchmark/policy_runner.py": {
+      "bytes": 11257,
+      "sha256": "91192e53f75ec29e69635035b9c64131ae4dfe18df4e695f48dae37378b1a799"
+    },
+    "consequa_x/benchmark/runner.py": {
+      "bytes": 12825,
+      "sha256": "323ebe964800db7261a2a7c0ec1880e6965dc177b9b8b182ec0dd9c21d440c52"
+    },
+    "consequa_x/benchmark/study.py": {
+      "bytes": 8973,
+      "sha256": "c7b0b9e0b8398b1353497ee0e154c3b9fc73ab84624974c009be8b040ee6946b"
+    },
+    "consequa_x/benchmark/targets.py": {
+      "bytes": 7106,
+      "sha256": "16273ea10b7ac59102ac5abd78dc90511734657d5826f5dc2b1013a33f7ed2d3"
+    },
+    "consequa_x/benchmark/templates.py": {
+      "bytes": 4990,
+      "sha256": "2e61a0247f24ad067678649b1cc937f053b2daa0faf6363171bce8a04740e5c7"
+    },
+    "consequa_x/capture.py": {
+      "bytes": 27165,
+      "sha256": "32bcd35281d8b3a95713145f66137c529dd00ac261c85494a23723df16737615"
+    },
+    "consequa_x/cli.py": {
+      "bytes": 90649,
+      "sha256": "4e899adbf9640b3adc13180c4e2aae03f012e55949b6286a1c5a0ee6e4e5f7e2"
+    },
+    "consequa_x/compare.py": {
+      "bytes": 4299,
+      "sha256": "7f1ed3ff57a81e13c51e391727baf706c1e6fae8e77e5f8092e7b76824dd08db"
+    },
+    "consequa_x/composite.py": {
+      "bytes": 16232,
+      "sha256": "7007999a5fd8dfd679150e205d7d7ebcd79251c667791d5f944a6cbbe4192f92"
+    },
+    "consequa_x/errors.py": {
+      "bytes": 1199,
+      "sha256": "4fb793eb0e51591c90fb18bee569fafc5a2f470d7e2bf6b6fb83c2f61064aeaf"
+    },
+    "consequa_x/explanation.py": {
+      "bytes": 9905,
+      "sha256": "233ac34a13690bf2f8cbd2415e4482423c3327a24806d8ad91f76264c1200ab2"
+    },
+    "consequa_x/graph.py": {
+      "bytes": 10387,
+      "sha256": "6b746976d24c8bdef99602cbac11cffbc1b60b3f19e2713c1201041a994e220c"
+    },
+    "consequa_x/guard.py": {
+      "bytes": 3679,
+      "sha256": "a0d1e4a240e674089a0f2d80e652f87a3ab0166ee82310c024af8952e186c639"
+    },
+    "consequa_x/integrations/__init__.py": {
+      "bytes": 7443,
+      "sha256": "272bd9acf9d784d52ad43f8a9ee4f8649655b38c4f43548c9bef649282569a39"
+    },
+    "consequa_x/integrations/claude_agent_sdk.py": {
+      "bytes": 4012,
+      "sha256": "b584d329ba2baefb18e64e4ecfd7386e74e716a1881a40d3fd309fb26ae23858"
+    },
+    "consequa_x/integrations/langchain.py": {
+      "bytes": 3461,
+      "sha256": "ec65feaab965fc23d4f2416f76001efbcf3d9e812191e860e9cd5a003ce8f362"
+    },
+    "consequa_x/integrations/openai_agents.py": {
+      "bytes": 4423,
+      "sha256": "6d83f8f802ad03a4ec0e5402b782ae5c5cb7e5eb7ec1fefd006bac1a655e4078"
+    },
+    "consequa_x/mcp_capture.py": {
+      "bytes": 2681,
+      "sha256": "26d77d0c468abfbfa1a6242ef3dd5d2e2366c6ab8c653976d38f1ac9bc21bbb1"
+    },
+    "consequa_x/migrate.py": {
+      "bytes": 8518,
+      "sha256": "fa003e7f466417819a0290ac1830d98638ffb2e106ca1b5720adaa1d75feff97"
+    },
+    "consequa_x/models.py": {
+      "bytes": 29609,
+      "sha256": "953ddf8375dc74bf8f66c29d0a01a5840a094eecc24aab73dd72e6314012185d"
+    },
+    "consequa_x/otel.py": {
+      "bytes": 30080,
+      "sha256": "54047e1357fc4305da9179905d03b05a13f468323d8a50c3c340035fc714296c"
+    },
+    "consequa_x/policies.py": {
+      "bytes": 10732,
+      "sha256": "ff6031e4c3dd29eb17419fa921341e839a51995f02517b4c583d41bb5c2398f1"
+    },
+    "consequa_x/py.typed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "consequa_x/readback.py": {
+      "bytes": 4776,
+      "sha256": "aaf0004a6d4478e55af97ee8bcec5fff74324a3f258687a4a228724502950098"
+    },
+    "consequa_x/record_verifier.py": {
+      "bytes": 14288,
+      "sha256": "4d9a4971c2a97a0ba2065edefe44724820620715474463dd5b4d027e9fc28b05"
+    },
+    "consequa_x/report.py": {
+      "bytes": 28964,
+      "sha256": "03f53c55ff901f9f1c2f887eb0064ecf491d2248b20e79dd5118e00dbb03613b"
+    },
+    "consequa_x/research.py": {
+      "bytes": 938,
+      "sha256": "ee183e4bc4b27719f12f15be0bb989dcf6907a267cb05044f225396511ee951d"
+    },
+    "consequa_x/schema.py": {
+      "bytes": 7113,
+      "sha256": "3c42d0e4abcfa162f969fd6718ca8b9a149024031fa3a865b144ce894ebae372"
+    },
+    "consequa_x/schemas/trace-v1.0.json": {
+      "bytes": 13861,
+      "sha256": "e506df633c71ef52d9d98fa4d6ab0f9b5c0b499c6fc7c328130a44cbc8f18101"
+    },
+    "consequa_x/store.py": {
+      "bytes": 2289,
+      "sha256": "2d569b0f1b0ea04dd375846e2178e3f037c9cab9429e7f3a04415532aae8622d"
+    },
+    "consequa_x/summary.py": {
+      "bytes": 6162,
+      "sha256": "e5ac2548f01dbf339f171313964aaff9a6a46bf2caa38c9782f8678edb9c9890"
+    },
+    "consequa_x/verification.py": {
+      "bytes": 17618,
+      "sha256": "e8d2618f80b5f4da577ace852b8db2036e2ffff5597d72378f534a80b4d63f6e"
+    }
+  },
+  "framework_root": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\consequa_x",
+  "framework_version": "2.1.1",
+  "framework_wheel": "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+  "framework_wheel_sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+}

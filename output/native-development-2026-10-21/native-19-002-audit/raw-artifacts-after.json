@@ -1,0 +1,85 @@
+{
+  "files": {
+    "episode/configuration.json": {
+      "bytes": 1856,
+      "sha256": "ee19785d05b69c043e19ea13e5e3b1f3e338ac7f0eb1d75c76059cb29a8dfe2a"
+    },
+    "episode/context-checks.json": {
+      "bytes": 1621373,
+      "sha256": "a1260487405179098a96806dc348cf4cb760eda50a8139a39e3b690eba21825c"
+    },
+    "episode/context-events.jsonl": {
+      "bytes": 975152,
+      "sha256": "79aaa53931cdf21a95c2297614549acabfed48cca258bcf62718adae16a3af9e"
+    },
+    "episode/controller-events.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "episode/episode-start.json": {
+      "bytes": 203,
+      "sha256": "fc00b8790f6630336b1966e5e0037f90d4b2de529ef0d7999837eb62d55480a0"
+    },
+    "episode/execution-receipt.json": {
+      "bytes": 637,
+      "sha256": "20d186407f3c6e7c31d22bb07a38517da802762f9eb4c7629e2ee829526e9450"
+    },
+    "episode/final-db.evaluator-only.json": {
+      "bytes": 5692018,
+      "sha256": "05a11c5820878525f4943aa9e0f66cc6f92350a654aa386932f3433aa83e557d"
+    },
+    "episode/final-state.json": {
+      "bytes": 204,
+      "sha256": "21454697fd9bb0539c1c1b141bc82f82612c67ae2197e9533dde401610d70ba5"
+    },
+    "episode/initial-db.evaluator-only.json": {
+      "bytes": 5692103,
+      "sha256": "016ec1635fcc0e32ed2460f2535c03888180a9aa90ffbb72b0a6ec822a886c30"
+    },
+    "episode/model-calls.jsonl": {
+      "bytes": 236808,
+      "sha256": "6c86cfe6ff2659504a1cb9fef545d75fc82f5ba8853c15dff4141439158435cc"
+    },
+    "episode/native-simulation.json": {
+      "bytes": 48696,
+      "sha256": "0a253c1a7416df20d206460a84d959a72a073374aeaf2bb93dd41f38871aae9e"
+    },
+    "episode/network-guard.json": {
+      "bytes": 23843,
+      "sha256": "cc90c68a3bcae8aa977a9364ed128a6da4f7ba825e18d4238193f6e531076c21"
+    },
+    "episode/startup-receipt.json": {
+      "bytes": 169,
+      "sha256": "82b764b3ec24058f374222f43668968a67ab2b08bca61b038a3ce1db6bffca9a"
+    },
+    "episode/tool-dispatch-starts.jsonl": {
+      "bytes": 2202,
+      "sha256": "31904dc160968f3c119ddf210ec25f07d543d8cea19a59c63cbb32816cfce763"
+    },
+    "episode/tool-dispatch.jsonl": {
+      "bytes": 8477,
+      "sha256": "0d6fb806d54dff3235414fd797d986decb308b1ed363523d058a0d30c77a2e8d"
+    },
+    "episode/worker-identity.json": {
+      "bytes": 4539,
+      "sha256": "aec18ce1dd0389752ffa343df9543c290b336f3d9bb27110101e7d1cd50af38f"
+    },
+    "parent-receipt.json": {
+      "bytes": 282,
+      "sha256": "5c6521e2b59b1c0e2fc6bdabf72a485f24abccdbd646380927aba2c761843fb1"
+    },
+    "parent-start.json": {
+      "bytes": 1315,
+      "sha256": "70b0f87e60302ae65bd16af0369d73395ca8c3ef07b18f2aa026bed25859a311"
+    },
+    "stderr.log": {
+      "bytes": 36828,
+      "sha256": "cfaef6741f6081ed8de8eaee6c085f6258693d493e1df9e680781875a5256f0b"
+    },
+    "stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "root": "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\native-19-002"
+}

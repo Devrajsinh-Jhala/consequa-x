@@ -95,6 +95,14 @@ issues before any official collection. Exact-source native and guarded
 readiness checks remain in progress; there is no official pilot result yet.
 GitHub Actions stays disabled, with no human review or paid inference.
 
+The fresh final-source native check returned 12 completions and five tools.
+Its [audit](../output/native-development-2026-10-21/native-19-002-audit/audit-result.json)
+also passed, including exact native-request/HTTP/context linkage; native reward
+remains zero. The first guarded check timed out without native grading, and
+its failure is retained. A final guarded check uses the prospectively amended
+uniform CPU time limits. The auxiliary pipeline has 18 offline tests and
+publishes a frozen protocol before it can collect any official trajectories.
+
 ## Product version and evidence boundaries
 
 The published product is **2.1.2**, with a retained

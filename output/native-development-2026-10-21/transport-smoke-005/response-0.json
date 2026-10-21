@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "",
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"user_id\":\"NATIVE_TRANSPORT_FIXTURE\"}",
+              "name": "get_user_details"
+            },
+            "id": "ashgzKs89aQeFp39FXt4UCPaOY4ZBr36",
+            "index": 0,
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1792583635,
+  "id": "chatcmpl-907",
+  "model": "conseqax-native-probe-20261020:ctx16k",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_ollama",
+  "usage": {
+    "completion_tokens": 27,
+    "prompt_tokens": 4556,
+    "prompt_tokens_details": {
+      "cached_tokens": 4555
+    },
+    "total_tokens": 4583
+  }
+}

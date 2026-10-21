@@ -41,7 +41,7 @@ their separate prompt prefixes across alternating turns. This is an inference
 cache condition, not reused completion outputs, concurrent trajectories or a
 change to the model policy. No cache-speed benefit is presumed before it is
 measured. The cold-load conservative gate is 2,497,293,803 weight bytes plus
-2 × 1,283,457,024 KV bytes plus 1,073,741,824 reserve bytes:
+2 Ã— 1,283,457,024 KV bytes plus 1,073,741,824 reserve bytes:
 **6,137,949,675 bytes available**. If that gate fails, retain the refusal;
 do not silently reduce context, precision or the required reserve.
 
@@ -139,3 +139,13 @@ CPU and system available memory without changing inference or closing other
 applications. Prompt caches persist across serial trajectories. Rotating arm
 order does not remove shared-host load and cache effects; wall times must be
 reported descriptively rather than as isolated causal SDK overhead.
+
+Before the first guarded development episode, its reservation is set to at
+most 30 combined assistant/user completions, with the same 600-second request
+and 3,600-second trajectory limits. The fresh unmodified check remains at 18.
+This permits a complete wrapped conversation without imposing the earlier
+18-call development cap on it. The shared 64 ceiling stays fixed: the old 14
+calls plus the two-invocation serialization failure, a full 18-call fresh native
+reservation and a 30-call guarded reservation fit exactly. Any released unused
+allowance still requires complete terminal accounting. No guarded task result
+has been seen when making this declaration, and no official ceiling changes.

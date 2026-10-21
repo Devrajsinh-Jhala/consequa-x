@@ -31,7 +31,9 @@ normalization is disclosed and checked against its actual prompt rendering.
    receipts and failures survive; the shared development allowance is persistent.
 3. Run `development` on excluded task 19 with `--arm native`, then excluded
    task 20 with `--arm G`. The shared native development ceiling is 64 completion
-   invocations, initially at most 18 per trajectory. The initial 36-request
+   invocations: the fresh unmodified check reserves at most 18, and the first
+   guarded check at most 30. Unused native reservations are released only from
+   complete retained accounting. The initial 36-request
    allowance was amended before official collection after the local server
    stopped between sessions; the first 14 completed calls still count. All retries and pre-provider
    failures consume or remain explicitly accounted within that allowance. A

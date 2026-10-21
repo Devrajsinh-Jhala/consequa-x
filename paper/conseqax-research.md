@@ -602,14 +602,16 @@ The model journal retained **53,420 prompt tokens and 1,228 completion tokens**
 across both model roles. Prompt totals already include cached tokens. The maximum
 complete prompt was 7,536 tokens; required context including the output allowance
 and margin was 8,112 of 16,384 tokens. Execution took 1,806.5 seconds on this CPU
-host. These observations characterize one development execution, not framework
+host, under the earlier 600-second request and 3,600-second trajectory limits.
+These observations characterize one development execution, not framework
 overhead, a comparative success rate, or a task-population estimate. Bound execution
 source is `8bd1cd88ab3644a9c6417e29308ab4b502b40484`; the separate audit and its
 complete manifest are retained.
 
 Development failures are retained as well. An [earlier guarded execution](../output/native-development-2026-10-21/guarded-20-000/parent-receipt.json)
 ended at a 600-second request timeout, after seven invocations and six returned
-completions, without a returned native simulation or grade. Its task reward is
+completions, without a returned native simulation or grade. It emitted zero package
+receipts and zero guard blocks, so it did not validate the receipt path. Its task reward is
 unavailable, rather than an invented semantic zero. Before any official collection,
 the [candidate condition was amended uniformly](../docs/native-resource-amendment-2026-10-21.md#full-history-cpu-timeout-amendment-before-official-collection)
 to 1,200 seconds per request and 7,200 seconds per trajectory. The final guarded
@@ -718,7 +720,7 @@ safety. Advantages over response or state ablations must identify the omitted ev
 and the precise claim or decision it changes. If provenance changes only reporting, that
 is the measured boundary; a causal action benefit cannot be inferred.
 
-The task set is small, purposive, AI-authored, and implemented on one local
+The controlled recovery corpus is small, purposive, AI-authored, and implemented on one local
 substrate. Three record domains broaden application vocabulary and predicate
 use without establishing transfer to independent services. Repeated timing
 seeds cannot repair this external-validity gap. Deterministic policies exercise

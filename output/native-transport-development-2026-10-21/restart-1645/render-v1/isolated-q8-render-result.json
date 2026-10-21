@@ -1,0 +1,128 @@
+{
+  "started_utc": "2026-10-21T11:20:14.764398+00:00",
+  "executable": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+  "scope": "pre-generation isolated parallel2 q8_0 server renderer/tokenizer validation",
+  "actual_generation_attempts": 0,
+  "official_tasks_read": 0,
+  "native_wire_sources": {},
+  "checks": [],
+  "memory_gate": {
+    "available_bytes": 3855400960,
+    "weights_bytes": 2497293803,
+    "q8_0_kv_bytes": 2566914048,
+    "parallel_slots": 2,
+    "context_tokens_per_slot": 16384,
+    "reserve_bytes": 1073741824,
+    "required_bytes": 6137949675,
+    "passed": false,
+    "q8_0_formula": "2 * f16KV * (34/32) / 2; block scale overhead included"
+  },
+  "transport_source_sha256": "cbf6c3ca16911e4fa91d0efa6334b7bd19199622f9322b273379c3ce66f64d87",
+  "version": {
+    "version": "0.40.6"
+  },
+  "tags": {
+    "models": [
+      {
+        "name": "conseqax-native-probe-20261020:ctx16k",
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "modified_at": "2026-10-20T18:28:05.5894601+05:30",
+        "size": 2497293447,
+        "digest": "7f091551b95c30f4ff31a067faa273f56a3563b556cfd3d9f80d47c9b5d20ffc",
+        "details": {
+          "parent_model": "qwen3:4b-instruct-2507-q4_K_M",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "llamacpp"
+        },
+        "capabilities": [
+          "tools",
+          "thinking",
+          "completion"
+        ]
+      },
+      {
+        "name": "qwen3:4b-instruct-2507-q4_K_M",
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "modified_at": "2026-10-10T22:38:23.4813105+05:30",
+        "size": 2497293803,
+        "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "tools",
+          "thinking",
+          "completion"
+        ]
+      }
+    ]
+  },
+  "loaded_before": {
+    "models": []
+  },
+  "error": {
+    "type": "RuntimeError",
+    "message": "Fresh isolated q8_0 conservative memory gate refused loading",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\render-v1\\probe-render-parity-parallel2.py\", line 50, in <module>\n    raise RuntimeError(\"Fresh isolated q8_0 conservative memory gate refused loading\")\nRuntimeError: Fresh isolated q8_0 conservative memory gate refused loading\n"
+  },
+  "passed": false,
+  "network_events": [
+    {
+      "kind": "http",
+      "allowed": true,
+      "method": "GET",
+      "path": "/api/version",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false
+    },
+    {
+      "kind": "socket.getaddrinfo",
+      "allowed": true,
+      "host": "127.0.0.1",
+      "port": 11436,
+      "internal_socketpair": false
+    },
+    {
+      "kind": "socket.connect",
+      "allowed": true,
+      "host": "127.0.0.1",
+      "port": 11436,
+      "internal_socketpair": false
+    },
+    {
+      "kind": "http",
+      "allowed": true,
+      "method": "GET",
+      "path": "/api/tags",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false
+    },
+    {
+      "kind": "http",
+      "allowed": true,
+      "method": "GET",
+      "path": "/api/ps",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false
+    }
+  ],
+  "finished_utc": "2026-10-21T11:20:17.569519+00:00"
+}

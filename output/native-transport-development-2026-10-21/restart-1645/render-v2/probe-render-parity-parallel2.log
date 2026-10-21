@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "error": null,
+  "memory_gate": {
+    "available_bytes": 8589664256,
+    "weights_bytes": 2497293803,
+    "q8_0_kv_bytes": 2566914048,
+    "parallel_slots": 2,
+    "context_tokens_per_slot": 16384,
+    "reserve_bytes": 1073741824,
+    "required_bytes": 6137949675,
+    "passed": true,
+    "q8_0_formula": "2 * f16KV * (34/32) / 2; block scale overhead included"
+  },
+  "generation_attempts": 0,
+  "checks": [
+    {
+      "name": "full_native_opening",
+      "same_rendered_bytes": true,
+      "same_runtime_token_ids": true,
+      "runtime_prompt_tokens": 4547
+    },
+    {
+      "name": "full_native_tool_followup",
+      "same_rendered_bytes": true,
+      "same_runtime_token_ids": true,
+      "runtime_prompt_tokens": 4599
+    },
+    {
+      "name": "wrapped_two_system_opening",
+      "same_rendered_bytes": true,
+      "same_runtime_token_ids": true,
+      "runtime_prompt_tokens": 4646
+    }
+  ]
+}

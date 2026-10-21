@@ -1,0 +1,268 @@
+time=2026-10-21T16:49:33.742+05:30 level=INFO source=routes.go:2439 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: LLAMA_ARG_FIT: LLAMA_ARG_FIT_TARGET: NO_PROXY: OLLAMA_CONTEXT_LENGTH:16384 OLLAMA_CREATE_REMOTE:false OLLAMA_DEBUG:DEBUG OLLAMA_DEBUG_LOG_REQUESTS:false OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:true OLLAMA_GO_TEMPLATE:true OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11436 OLLAMA_IGPU_ENABLE: OLLAMA_KEEP_ALIVE:2562047h47m16.854775807s OLLAMA_KV_CACHE_TYPE:q8_0 OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:1 OLLAMA_MAX_QUEUE:512 OLLAMA_MAX_TRANSFER_STREAMS:4 OLLAMA_MODELS:C:\\Users\\DELL\\.ollama\\models OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:true OLLAMA_NO_CLOUD:true OLLAMA_NUM_PARALLEL:2 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:true ROCR_VISIBLE_DEVICES:]"
+time=2026-10-21T16:49:33.744+05:30 level=INFO source=routes.go:2441 msg="Ollama cloud disabled: true"
+time=2026-10-21T16:49:33.748+05:30 level=DEBUG source=model_recommendations.go:57 msg="starting model recommendations cache" default_recommendations=6 refresh_interval=4h0m0s fetch_timeout=3s
+time=2026-10-21T16:49:33.748+05:30 level=DEBUG source=model_show_cache.go:130 msg="starting model show cache"
+time=2026-10-21T16:49:33.748+05:30 level=INFO source=routes.go:2501 msg="Listening on 127.0.0.1:11436 (version 0.40.6)"
+time=2026-10-21T16:49:33.748+05:30 level=DEBUG source=sched.go:264 msg="starting llm scheduler"
+time=2026-10-21T16:49:33.748+05:30 level=DEBUG source=model_show_cache.go:142 msg="skipping model show cloud cache hydration because cloud is disabled"
+time=2026-10-21T16:49:33.749+05:30 level=DEBUG source=model_recommendations.go:265 msg="loaded model recommendations snapshot" path=C:\Users\DELL\.ollama\cache\model-recommendations.json count=7
+time=2026-10-21T16:49:33.749+05:30 level=DEBUG source=model_recommendations.go:165 msg="skipping model recommendations refresh because cloud is disabled"
+time=2026-10-21T16:49:33.749+05:30 level=INFO source=model_recommendations.go:177 msg="model recommendations cache sleep scheduled" wait=4h27m51.939069331s consecutive_failures=0
+time=2026-10-21T16:49:33.756+05:30 level=INFO source=runner.go:60 msg="discovering available GPUs..."
+time=2026-10-21T16:49:33.961+05:30 level=DEBUG source=rocm_windows.go:76 msg="selected windows ROCm runtime" runtime_source=bundled name=amdhip64_7.dll path=C:\Users\DELL\AppData\Local\Programs\Ollama\lib\ollama\rocm_v7_1\amdhip64_7.dll bundled=C:\Users\DELL\AppData\Local\Programs\Ollama\lib\ollama\rocm_v7_1\amdhip64_7.dll bundled_version=10.0.3665.0 system=C:\WINDOWS\system32\amdhip64_7.dll system_version=""
+time=2026-10-21T16:49:34.789+05:30 level=DEBUG source=llama_server.go:121 msg="llama-server discovery: stopped subprocess after collecting GPU info" exit=1 libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\rocm_v7_1]"
+time=2026-10-21T16:49:35.386+05:30 level=DEBUG source=rocm_windows.go:76 msg="selected windows ROCm runtime" runtime_source=bundled name=amdhip64_7.dll path=C:\Users\DELL\AppData\Local\Programs\Ollama\lib\ollama\rocm_v7_1\amdhip64_7.dll bundled=C:\Users\DELL\AppData\Local\Programs\Ollama\lib\ollama\rocm_v7_1\amdhip64_7.dll bundled_version=10.0.3665.0 system=C:\WINDOWS\system32\amdhip64_7.dll system_version=""
+time=2026-10-21T16:49:35.740+05:30 level=DEBUG source=native_probe.go:259 msg="native GPU discovery failed" error="exit status 1" stderr="ggml_cuda_init: failed to initialize ROCm: no ROCm-capable device is detected\r\nload_backend: loaded ROCm backend from C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\rocm_v7_1\\ggml-hip.dll\r\nError: hipGetDeviceCount failed: 100\n" libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\rocm_v7_1]"
+time=2026-10-21T16:49:35.743+05:30 level=DEBUG source=llama_server.go:52 msg="llama-server device discovery took" duration=1.7912621s libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\rocm_v7_1]"
+time=2026-10-21T16:49:35.743+05:30 level=DEBUG source=runner.go:494 msg="bootstrap discovery took" duration=1.7953381s OLLAMA_LIBRARY_PATH="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\rocm_v7_1]" extra_envs=map[]
+time=2026-10-21T16:49:35.754+05:30 level=DEBUG source=vulkan_windows.go:37 msg="selected windows Vulkan loader" path=C:\WINDOWS\system32\vulkan-1.dll
+time=2026-10-21T16:49:36.343+05:30 level=DEBUG source=llama_server.go:121 msg="llama-server discovery: stopped subprocess after collecting GPU info" exit=1 libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\vulkan]"
+time=2026-10-21T16:49:36.739+05:30 level=DEBUG source=vulkan_windows.go:37 msg="selected windows Vulkan loader" path=C:\WINDOWS\system32\vulkan-1.dll
+time=2026-10-21T16:49:37.349+05:30 level=DEBUG source=vulkan.go:138 msg="windows vulkan device refinement applied" devices=1
+time=2026-10-21T16:49:37.350+05:30 level=DEBUG source=llama_server.go:52 msg="llama-server device discovery took" duration=1.6017007s libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\vulkan]"
+time=2026-10-21T16:49:37.350+05:30 level=DEBUG source=runner.go:494 msg="bootstrap discovery took" duration=1.607506s OLLAMA_LIBRARY_PATH="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\vulkan]" extra_envs=map[]
+time=2026-10-21T16:49:37.562+05:30 level=DEBUG source=llama_server.go:121 msg="llama-server discovery: stopped subprocess after collecting GPU info" exit=1 libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12]"
+time=2026-10-21T16:49:37.986+05:30 level=DEBUG source=native_probe.go:259 msg="native GPU discovery failed" error="exit status 1" stderr="load_backend: failed to load C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12\\ggml-cuda.dll: \r\nError: failed to load nvcuda.dll: The specified module could not be found.\n" libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12]"
+time=2026-10-21T16:49:37.988+05:30 level=DEBUG source=llama_server.go:52 msg="llama-server device discovery took" duration=633.1068ms libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12]"
+time=2026-10-21T16:49:37.988+05:30 level=DEBUG source=runner.go:494 msg="bootstrap discovery took" duration=637.5337ms OLLAMA_LIBRARY_PATH="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v12]" extra_envs=map[]
+time=2026-10-21T16:49:40.410+05:30 level=DEBUG source=llama_server.go:121 msg="llama-server discovery: stopped subprocess after collecting GPU info" exit=1 libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v13]"
+time=2026-10-21T16:49:41.410+05:30 level=DEBUG source=native_probe.go:259 msg="native GPU discovery failed" error="exit status 1" stderr="ggml_cuda_init: failed to initialize CUDA: (null)\r\nload_backend: loaded CUDA backend from C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v13\\ggml-cuda.dll\r\nError: failed to load nvcuda.dll: The specified module could not be found.\n" libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v13]"
+time=2026-10-21T16:49:41.412+05:30 level=DEBUG source=llama_server.go:52 msg="llama-server device discovery took" duration=3.4203922s libDirs="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v13]"
+time=2026-10-21T16:49:41.412+05:30 level=DEBUG source=runner.go:494 msg="bootstrap discovery took" duration=3.4243929s OLLAMA_LIBRARY_PATH="[C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\cuda_v13]" extra_envs=map[]
+time=2026-10-21T16:49:41.412+05:30 level=INFO source=runner.go:405 msg="dropping integrated GPU; to enable, set OLLAMA_IGPU_ENABLE=1" id=0 library=Vulkan compute=0.0 name=Vulkan0 description="Intel(R) UHD Graphics 620" pci_id=""
+time=2026-10-21T16:49:41.412+05:30 level=DEBUG source=runner.go:131 msg="evaluating which, if any, devices to filter out" initial_count=0
+time=2026-10-21T16:49:41.412+05:30 level=DEBUG source=runner.go:42 msg="GPU bootstrap discovery took" duration=7.6645953s
+time=2026-10-21T16:49:41.412+05:30 level=INFO source=types.go:50 msg="inference compute" id=cpu library=cpu compute="" name=cpu description=cpu libdirs=ollama driver="" pci_id="" type="" total="15.8 GiB" available="3.6 GiB"
+time=2026-10-21T16:49:41.412+05:30 level=INFO source=routes.go:2551 msg="vram-based default context" total_vram="0 B" default_num_ctx=4096
+time=2026-10-21T16:59:04.428+05:30 level=DEBUG source=runner.go:272 msg="refreshing free memory"
+time=2026-10-21T16:59:04.430+05:30 level=DEBUG source=runner.go:42 msg="overall device VRAM discovery took" duration=1.1705ms
+time=2026-10-21T16:59:04.430+05:30 level=DEBUG source=sched.go:348 msg="loading first model" model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:04.546+05:30 level=INFO source=sched.go:1189 msg="disabling mmap for llama-server load by default" model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 reason=cpu
+time=2026-10-21T16:59:04.546+05:30 level=INFO source=server.go:107 msg="using llama-server for model" model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:04.576+05:30 level=INFO source=llama_server.go:457 msg="starting llama-server" cmd="C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe --model C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 --port 52837 --host 127.0.0.1 --no-webui --offline -c 32768 -np 2 --log-verbosity 4 --no-log-prefix --no-log-timestamps --load-mode none --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn on -b 1024 -ub 1024 --context-shift --keep 4"
+time=2026-10-21T16:59:04.577+05:30 level=DEBUG source=llama_server.go:458 msg=subprocess PATH="C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\DELL\\.codex\\tmp\\arg0-windows\\codex-arg0CA1rDc;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\MinGW\\bin;C:\\Program Files\\GTK3-Runtime Win64\\bin;C:\\Program Files\\GitHub CLI\\;C:\\Users\\DELL\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin;C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.18.8-hotspot;C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\;C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\DELL\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\DELL\\AppData\\Roaming\\npm;C:\\Users\\DELL\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\DELL\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\DELL\\.deno\\bin;C:\\Users\\DELL\\AppData\\Local\\Microsoft\\WinGet\\Links;C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\DELL\\AppData\\Local\\OpenAI\\Codex\\bin\\874bdd774e432e12;C:\\Users\\DELL\\AppData\\Local\\OpenAI\\Codex\\bin\\6257d9e8f63c0f2b"
+time=2026-10-21T16:59:04.591+05:30 level=INFO source=sched.go:664 msg="system memory" total="15.8 GiB" free="8.0 GiB" free_swap="23.1 GiB"
+time=2026-10-21T16:59:04.591+05:30 level=INFO source=llama_server.go:1083 msg="loading model via llama-server" model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:04.591+05:30 level=INFO source=llama_server.go:1336 msg="waiting for llama-server to start responding"
+time=2026-10-21T16:59:04.592+05:30 level=INFO source=llama_server.go:1391 msg="waiting for llama-server to become available" status="llm server error"
+srv  llama_server: initializing ...
+load_backend: loaded CPU backend from C:\Users\DELL\AppData\Local\Programs\Ollama\lib\ollama\ggml-cpu-haswell.dll
+cmn  common_param: common_params_print_info: build 1 (620d2225c) with Clang 18.1.8 for Windows AMD64
+cmn  common_param: common_params_print_info: verbosity = 4 (adjust with the `-lv N` CLI arg)
+cmn  common_param: device_info:
+cmn  common_param:   - CPU     : Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz (16157 MiB, 8177 MiB free)
+cmn  common_param: system_info: n_threads = 4 (n_threads_batch = 4) / 8 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+srv  init_listene: The UI is disabled
+srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+srv          init: using 7 threads for HTTP server
+srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+srv    load_model: loading model 'C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9'
+srv    load_model: local path 'C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9'
+cmn  common_init_: fitting params to device memory ...
+cmn  common_init_: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+common_params_fit_impl: getting device memory data for initial parameters:
+time=2026-10-21T16:59:04.847+05:30 level=INFO source=llama_server.go:1391 msg="waiting for llama-server to become available" status="llm server loading model"
+common_memory_breakdown_print: | memory breakdown [MiB] | total   free    self   model   context   compute    unaccounted |
+common_memory_breakdown_print: |   - Host               |                 3336 =   692 +    2448 +     196                |
+common_memory_breakdown_print: |   - CPU_REPACK         |                 1683 =  1683 +       0 +       0                |
+common_params_fit_impl: projected to use 3336 MiB of host memory vs. 16157 MiB of total host memory
+common_params_fit_impl: will leave 12820 >= 1024 MiB of system memory, no changes needed
+common_fit_params: successfully fit params to free device memory
+common_fit_params: fitting params to free memory took 0.90 seconds
+llama_model_loader: loaded meta data with 33 key-value pairs and 398 tensors from C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = qwen3
+llama_model_loader: - kv   1:                           general.basename str              = Qwen3
+llama_model_loader: - kv   2:                          general.file_type u32              = 15
+llama_model_loader: - kv   3:                           general.finetune str              = Instruct
+llama_model_loader: - kv   4:                            general.license str              = apache-2.0
+llama_model_loader: - kv   5:                       general.license.link str              = https://huggingface.co/Qwen/Qwen3-4B-...
+llama_model_loader: - kv   6:                               general.name str              = Qwen3 4B Instruct 2507
+llama_model_loader: - kv   7:                    general.parameter_count u64              = 4022468096
+llama_model_loader: - kv   8:               general.quantization_version u32              = 2
+llama_model_loader: - kv   9:                         general.size_label str              = 4B
+llama_model_loader: - kv  10:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  11:                               general.type str              = model
+llama_model_loader: - kv  12:                            general.version str              = 2507
+llama_model_loader: - kv  13:                 qwen3.attention.head_count u32              = 32
+llama_model_loader: - kv  14:              qwen3.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  15:                 qwen3.attention.key_length u32              = 128
+llama_model_loader: - kv  16:     qwen3.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  17:               qwen3.attention.value_length u32              = 128
+llama_model_loader: - kv  18:                          qwen3.block_count u32              = 36
+llama_model_loader: - kv  19:                       qwen3.context_length u32              = 262144
+llama_model_loader: - kv  20:                     qwen3.embedding_length u32              = 2560
+llama_model_loader: - kv  21:                  qwen3.feed_forward_length u32              = 9728
+llama_model_loader: - kv  22:                       qwen3.rope.freq_base f32              = 5000000.000000
+llama_model_loader: - kv  23:                    tokenizer.chat_template str              = {%- if tools %}\n    {{- '<|im_start|>...
+llama_model_loader: - kv  24:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  25:                tokenizer.ggml.bos_token_id u32              = 151643
+llama_model_loader: - kv  26:                tokenizer.ggml.eos_token_id u32              = 151645
+llama_model_loader: - kv  27:                      tokenizer.ggml.merges arr[str,151387]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+llama_model_loader: - kv  28:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  29:            tokenizer.ggml.padding_token_id u32              = 151643
+llama_model_loader: - kv  30:                         tokenizer.ggml.pre str              = qwen2
+llama_model_loader: - kv  31:                  tokenizer.ggml.token_type arr[i32,151936]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  32:                      tokenizer.ggml.tokens arr[str,151936]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - type  f32:  145 tensors
+llama_model_loader: - type q4_K:  216 tensors
+llama_model_loader: - type q6_K:   37 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_K - Medium
+print_info: file size   = 2.32 GiB (4.95 BPW) 
+load: 0 unused tokens
+load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+load: printing all EOG tokens:
+load:   - 128247 ('</s>')
+load:   - 151643 ('<|endoftext|>')
+load:   - 151645 ('<|im_end|>')
+load:   - 151662 ('<|fim_pad|>')
+load:   - 151663 ('<|repo_name|>')
+load:   - 151664 ('<|file_sep|>')
+load: special tokens cache size = 27
+load: token to piece cache size = 0.9311 MB
+print_info: arch                  = qwen3
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 262144
+print_info: n_embd_inp            = 2560
+print_info: n_embd                = 2560
+print_info: n_embd_out            = 2560
+print_info: n_layer               = 36
+print_info: n_layer_all           = 36
+print_info: n_head                = 32
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 128
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: non_causal_type       = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 4
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: f_attn_value_scale    = 0.0000
+print_info: n_ff                  = 9728
+print_info: n_expert              = 0
+print_info: n_expert_used         = 0
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = -1
+print_info: rope type             = 2
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 5000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 262144
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 4B
+print_info: model params          = 4.02 B
+print_info: general.name          = Qwen3 4B Instruct 2507
+print_info: vocab type            = BPE
+print_info: n_vocab               = 151936
+print_info: n_merges              = 151387
+print_info: BOS token             = 151643 '<|endoftext|>'
+print_info: EOS token             = 151645 '<|im_end|>'
+print_info: EOT token             = 151645 '<|im_end|>'
+print_info: PAD token             = 151643 '<|endoftext|>'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 151659 '<|fim_prefix|>'
+print_info: FIM SUF token         = 151661 '<|fim_suffix|>'
+print_info: FIM MID token         = 151660 '<|fim_middle|>'
+print_info: FIM PAD token         = 151662 '<|fim_pad|>'
+print_info: FIM REP token         = 151663 '<|repo_name|>'
+print_info: FIM SEP token         = 151664 '<|file_sep|>'
+print_info: EOG token             = 128247 '</s>'
+print_info: EOG token             = 151643 '<|endoftext|>'
+print_info: EOG token             = 151645 '<|im_end|>'
+print_info: EOG token             = 151662 '<|fim_pad|>'
+print_info: EOG token             = 151663 '<|repo_name|>'
+print_info: EOG token             = 151664 '<|file_sep|>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (load_mode = none)
+load_tensors:          CPU model buffer size =   692.63 MiB
+load_tensors:   CPU_REPACK model buffer size =  1683.28 MiB
+cmn  common_init_: added </s> logit bias = -inf
+cmn  common_init_: added <|endoftext|> logit bias = -inf
+cmn  common_init_: added <|im_end|> logit bias = -inf
+cmn  common_init_: added <|fim_pad|> logit bias = -inf
+cmn  common_init_: added <|repo_name|> logit bias = -inf
+cmn  common_init_: added <|file_sep|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max             = 2
+llama_context: n_ctx                 = 32768
+llama_context: n_ctx_seq             = 16384
+llama_context: n_batch               = 1024
+llama_context: n_ubatch              = 1024
+llama_context: causal_attn           = 1
+llama_context: flash_attn            = enabled
+llama_context: kv_unified            = false
+llama_context: freq_base             = 5000000.0
+llama_context: freq_scale            = 1
+llama_context: n_rs_seq              = 0
+llama_context: n_outputs_max         = 2
+llama_context: n_outputs_max_per_seq = 1
+llama_context: n_ctx_seq (16384) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+llama_context:        CPU  output buffer size =     1.16 MiB
+llama_kv_cache:        CPU KV buffer size =  2448.00 MiB
+llama_kv_cache: size = 2448.00 MiB ( 16384 cells,  36 layers,  2/2 seqs), K (q8_0): 1224.00 MiB, V (q8_0): 1224.00 MiB
+llama_kv_cache: n_rot_k = 128, n_embd_head_k_all = 128
+llama_kv_cache: n_rot_v = 64, n_embd_head_k_all = 128
+sched_reserve: reserving ...
+resolve_fused_ops: resolving fused DeepSeek V4 HC support:
+resolve_fused_ops: fused DeepSeek V4 HC pre enabled
+resolve_fused_ops: fused DeepSeek V4 HC comb enabled
+resolve_fused_ops: fused DeepSeek V4 HC post enabled
+sched_reserve:        CPU compute buffer size =   196.11 MiB
+sched_reserve: graph: nodes = 1773, splits = 1, input objects = 4, input tensors = 11
+sched_reserve: reserve took 35.69 ms, sched copies = 1
+cmn          init: llama threadpool init, n_threads = 4
+cmn  common_init_: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+srv    load_model: initializing, n_slots = 2, n_ctx_slot = 16384, kv_unified = 'false'
+spec common_specu: no implementations specified for speculative decoding
+slot   load_model: id  0 | task -1 | new slot, n_ctx = 16384
+slot   load_model: id  1 | task -1 | new slot, n_ctx = 16384
+srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+srv    load_model: use `--cache-ram 0` to disable the prompt cache
+srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+srv    load_model: context checkpoints enabled, max = 32, min spacing = 8192
+srv          init: idle slots will be saved to prompt cache upon starting a new task
+srv          init: init: chat template, example_format: '<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+'
+srv          init: init: chat template, thinking = 1
+srv          init: preserve_reasoning kwarg: not supported by template
+srv  llama_server: model loaded
+srv  llama_server: listening on http://127.0.0.1:52837
+srv  update_slots: all slots are idle
+time=2026-10-21T16:59:15.201+05:30 level=INFO source=llama_server.go:1403 msg="llama-server started in 10.61 seconds"
+time=2026-10-21T16:59:15.201+05:30 level=INFO source=images.go:422 msg="template selection" model=registry.ollama.ai/library/conseqax-native-probe-20261020:ctx16k selected=gguf_chat_template renderer="" parser="" go_template="[completion tools]" chat_template="[tools thinking completion]" harmony=null renderer_parser=null
+time=2026-10-21T16:59:15.201+05:30 level=INFO source=sched.go:788 msg="loaded runners" count=1
+time=2026-10-21T16:59:15.202+05:30 level=INFO source=llama_server.go:1336 msg="waiting for llama-server to start responding"
+time=2026-10-21T16:59:15.204+05:30 level=INFO source=llama_server.go:1403 msg="llama-server started in 10.61 seconds"
+time=2026-10-21T16:59:15.204+05:30 level=DEBUG source=sched.go:800 msg="finished setting up" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:15.300+05:30 level=DEBUG source=sched.go:808 msg="context for request finished"
+time=2026-10-21T16:59:15.300+05:30 level=DEBUG source=sched.go:443 msg="runner with non-zero duration has gone idle, adding timer" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 duration=2562047h47m16.854775807s
+time=2026-10-21T16:59:15.300+05:30 level=DEBUG source=sched.go:461 msg="after processing request finished event" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 refCount=0
+time=2026-10-21T16:59:15.394+05:30 level=DEBUG source=sched.go:1429 msg="evaluating already loaded" model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:15.502+05:30 level=DEBUG source=sched.go:538 msg="context for request finished" runner.name=registry.ollama.ai/library/conseqax-native-probe-20261020:ctx16k runner.pid=2480 runner.num_ctx=16384 runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:15.502+05:30 level=DEBUG source=sched.go:443 msg="runner with non-zero duration has gone idle, adding timer" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 duration=2562047h47m16.854775807s
+time=2026-10-21T16:59:15.503+05:30 level=DEBUG source=sched.go:461 msg="after processing request finished event" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 refCount=0
+time=2026-10-21T16:59:15.583+05:30 level=DEBUG source=sched.go:1429 msg="evaluating already loaded" model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:15.695+05:30 level=DEBUG source=sched.go:538 msg="context for request finished" runner.name=registry.ollama.ai/library/conseqax-native-probe-20261020:ctx16k runner.pid=2480 runner.num_ctx=16384 runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9
+time=2026-10-21T16:59:15.696+05:30 level=DEBUG source=sched.go:443 msg="runner with non-zero duration has gone idle, adding timer" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 duration=2562047h47m16.854775807s
+time=2026-10-21T16:59:15.696+05:30 level=DEBUG source=sched.go:461 msg="after processing request finished event" runner.size="4.9 GiB" runner.vram="0 B" runner.parallel=2 runner.model=C:\Users\DELL\.ollama\models\blobs\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 refCount=0

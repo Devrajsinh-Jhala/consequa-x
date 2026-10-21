@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "error": {
+    "type": "RuntimeError",
+    "message": "Fresh isolated q8_0 conservative memory gate refused loading",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\render-v1\\probe-render-parity-parallel2.py\", line 50, in <module>\n    raise RuntimeError(\"Fresh isolated q8_0 conservative memory gate refused loading\")\nRuntimeError: Fresh isolated q8_0 conservative memory gate refused loading\n"
+  },
+  "memory_gate": {
+    "available_bytes": 3855400960,
+    "weights_bytes": 2497293803,
+    "q8_0_kv_bytes": 2566914048,
+    "parallel_slots": 2,
+    "context_tokens_per_slot": 16384,
+    "reserve_bytes": 1073741824,
+    "required_bytes": 6137949675,
+    "passed": false,
+    "q8_0_formula": "2 * f16KV * (34/32) / 2; block scale overhead included"
+  },
+  "generation_attempts": 0,
+  "checks": []
+}

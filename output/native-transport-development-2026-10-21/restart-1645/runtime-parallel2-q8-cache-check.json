@@ -1,0 +1,64 @@
+{
+  "schema": "native-parallel2-cache-log-prefix-check-v1",
+  "created_utc": "2026-10-21T11:29:38.026164+00:00",
+  "source_log": "D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\isolated-q8-server.stderr.log",
+  "source_prefix_bytes": 31820,
+  "source_prefix_sha256": "1f8d13f5d95bbc3fdffae671bd8823299601d93d002242226b773f6f56217e43",
+  "scope": "Fresh restart-1645 research server log prefix binding at observation time; no normal user service evidence used.",
+  "actual_generation_requests_by_this_check": 0,
+  "observations": [
+    {
+      "line": 42,
+      "text": "time=2026-10-21T16:59:04.576+05:30 level=INFO source=llama_server.go:457 msg=\"starting llama-server\" cmd=\"C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\Programs\\\\Ollama\\\\lib\\\\ollama\\\\llama-server.exe --model C:\\\\Users\\\\DELL\\\\.ollama\\\\models\\\\blobs\\\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9 --port 52837 --host 127.0.0.1 --no-webui --offline -c 32768 -np 2 --log-verbosity 4 --no-log-prefix --no-log-timestamps --load-mode none --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn on -b 1024 -ub 1024 --context-shift --keep 4\""
+    },
+    {
+      "line": 199,
+      "text": "llama_context: n_seq_max             = 2"
+    },
+    {
+      "line": 200,
+      "text": "llama_context: n_ctx                 = 32768"
+    },
+    {
+      "line": 201,
+      "text": "llama_context: n_ctx_seq             = 16384"
+    },
+    {
+      "line": 205,
+      "text": "llama_context: flash_attn            = enabled"
+    },
+    {
+      "line": 212,
+      "text": "llama_context: n_ctx_seq (16384) < n_ctx_train (262144) -- the full capacity of the model will not be utilized"
+    },
+    {
+      "line": 214,
+      "text": "llama_kv_cache:        CPU KV buffer size =  2448.00 MiB"
+    },
+    {
+      "line": 215,
+      "text": "llama_kv_cache: size = 2448.00 MiB ( 16384 cells,  36 layers,  2/2 seqs), K (q8_0): 1224.00 MiB, V (q8_0): 1224.00 MiB"
+    },
+    {
+      "line": 228,
+      "text": "srv    load_model: initializing, n_slots = 2, n_ctx_slot = 16384, kv_unified = 'false'"
+    },
+    {
+      "line": 230,
+      "text": "slot   load_model: id  0 | task -1 | new slot, n_ctx = 16384"
+    },
+    {
+      "line": 231,
+      "text": "slot   load_model: id  1 | task -1 | new slot, n_ctx = 16384"
+    }
+  ],
+  "checks": {
+    "parallel_2_actual": true,
+    "total_context_32768_actual": true,
+    "per_slot_context_16384_actual": true,
+    "q8_0_keys_and_values_actual": true,
+    "flash_attention_actual_enabled": true,
+    "KV_total_2448MiB_actual": true
+  },
+  "passed": true
+}

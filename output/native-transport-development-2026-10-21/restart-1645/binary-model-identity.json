@@ -1,0 +1,38 @@
+{
+  "schema": "native-restart-file-identity-v1",
+  "started_utc": "2026-10-21T11:20:57.258248+00:00",
+  "actual_generation_requests": 0,
+  "model_load_requests": 0,
+  "files": {
+    "server_executable": {
+      "path": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+      "size": 27944328,
+      "sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+      "expected_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+      "passed": true
+    },
+    "runner_executable": {
+      "path": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+      "size": 22920,
+      "sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+      "expected_sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+      "passed": true
+    },
+    "model_blob": {
+      "path": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "size": 2497280480,
+      "sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "expected_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "passed": true
+    },
+    "research_tag": {
+      "path": "C:\\Users\\DELL\\.ollama\\models\\manifests-v2\\ollama.com\\library\\conseqax-native-probe-20261020\\ctx16k",
+      "size": 1013,
+      "sha256": "7f091551b95c30f4ff31a067faa273f56a3563b556cfd3d9f80d47c9b5d20ffc",
+      "expected_sha256": "7f091551b95c30f4ff31a067faa273f56a3563b556cfd3d9f80d47c9b5d20ffc",
+      "passed": true
+    }
+  },
+  "passed": true,
+  "finished_utc": "2026-10-21T11:21:18.789005+00:00"
+}

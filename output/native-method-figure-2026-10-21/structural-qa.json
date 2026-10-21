@@ -1,0 +1,39 @@
+{
+  "dimensions_points": [
+    518.4,
+    259.2
+  ],
+  "font_check_method": "pypdf FontDescriptor embedded FontFile streams and ToUnicode; pdffonts binary unavailable",
+  "fonts": [
+    {
+      "embedded": true,
+      "embedded_bytes": 12992,
+      "font": "/BPOIEH+DejaVuSans-Bold",
+      "resource": "/F1",
+      "subtype": "/CIDFontType2",
+      "to_unicode": true
+    },
+    {
+      "embedded": true,
+      "embedded_bytes": 15684,
+      "font": "/GMFNEZ+DejaVuSans",
+      "resource": "/F2",
+      "subtype": "/CIDFontType2",
+      "to_unicode": true
+    },
+    {
+      "embedded": true,
+      "embedded_bytes": 4040,
+      "font": "/DQIFZV+DejaVuSans",
+      "resource": "/F3",
+      "subtype": "/CIDFontType2",
+      "to_unicode": true
+    }
+  ],
+  "pages": 1,
+  "passed": true,
+  "pdf_sha256": "1d85f46602e79fd58fa451f665653a9540c69a1c6d2e8da6d00ae7a1628d772e",
+  "raster_image_xobjects": [],
+  "svg_embedded_images": false,
+  "verification_source_sha256": "56380ba1c6879cb52d711f409f7e0e7f4c5e9a6963df6cc789ef86a58f07d5a3"
+}

@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "pytest": "40 passed in 31.13s",
+    "ruff": "All checks passed"
+  },
+  "human_labels": 0,
+  "model_calls": 0,
+  "recorded_utc": "2026-10-21T17:48:38.360386+00:00",
+  "schema": "conseqax-local-paper-exporter-check-v1",
+  "scientific_execution_source_modified": false,
+  "source_and_test_log": {
+    "output/native-integration-checks-2026-10-21/paper-exporter-reviewed-tests.log": {
+      "bytes": 102,
+      "sha256": "796d12f8101eaef5a72b8e44b4599a4e821f54936a1dd2fdb5261c295d2665b7"
+    },
+    "scripts/render_native_paper_results.py": {
+      "bytes": 32967,
+      "sha256": "456bcb8445d03d0023a12bf96dea42df644f038beb4a22defaacc2ad418325da"
+    },
+    "tests/test_render_native_paper_results.py": {
+      "bytes": 16641,
+      "sha256": "f9708e3e0103e3eeff9ce3fa737cd70fec5fd802ebb7ef3adb5c971f6817ff0e"
+    }
+  }
+}

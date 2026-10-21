@@ -118,9 +118,10 @@ AppWorld, ToolSandbox, and $\tau$-bench already evaluate stateful agent
 interaction and world outcomes [12]–[14]. A maintained retail/airline corpus and
 native DB evaluator also support our earlier model-free transfer experiment
 [15], [16]. Replaying reference actions or executing deterministic recovery
-logic does not supply an autonomous benchmark score. The next external test
-must retain native task reward, actual agent decisions, matched classical
-recovery controls, and a separately checked side-effect ledger.
+logic does not supply an autonomous benchmark score. Section 6 separates native
+integration evidence from the planned comparison; broader recovery validation
+still requires native reward, matched strong controls, and independently checked
+effect histories under relevant faults.
 
 The present contribution is therefore conditional: an executable evidence contract and
 an auditable comparison of policy tradeoffs under declared capabilities. Its value must
@@ -571,7 +572,111 @@ Together, the studies show conditional polling utility and its cost, with no
 package superiority over the equally informed reference, no additional
 recovery-action benefit, and no task-population inference.
 
-## 6. Supporting Evidence and Version Boundaries
+## 6. Native Integration and Prospective External Pilot
+
+### 6.1 Retained integration finding
+
+A separate local integration check executes the maintained airline environment
+at revision `96a3ef92329baf908ffe9dfe188cea34e8701d2a`, distributed as `tau2`
+1.0.1 [15], [16]. The native assistant and dynamic user both use local Qwen3 4B
+Instruct inference. This is actual autonomous dialogue, rather than reference-action
+replay, but the development task is excluded from the planned comparison. The
+unwrapped native condition does not import or invoke ConseqaX.
+
+The [final-source check on development task 19](../output/native-development-2026-10-21/native-19-002-audit/audit-result.json)
+returned **12 model completions and five native tool calls**, ending with native
+`user_stop`. An offline auditor verified all eight execution-source files,
+272 bound upstream files, 54 installed framework payload files, and exactly one
+actual HTTP generation dispatch per recorded completion. It linked canonical parsed HTTP
+requests to context checks and strict native inputs; replayed initialization and
+every tool call, including reads; checked initial/final database snapshots; and
+reproduced native ALL grading. The raw inventory was created after collection.
+Offline render/token checks validate saved collector observations rather than rerunning
+the server or tokenizer; discarded JSON key order prevents reconstruction of the
+original wire serialization. The native reward was **0**: DB reward 0, with
+COMMUNICATE 1 because this task has no communication requirement. Vacuous
+communication success is not evidence of substantive explanation quality.
+Artifact consistency does not turn a failed native task into a successful evaluation.
+
+The model journal retained **53,420 prompt tokens and 1,228 completion tokens**
+across both model roles. Prompt totals already include cached tokens. The maximum
+complete prompt was 7,536 tokens; required context including the output allowance
+and margin was 8,112 of 16,384 tokens. Execution took 1,806.5 seconds on this CPU
+host. These observations characterize one development execution, not framework
+overhead, a comparative success rate, or a task-population estimate. Bound execution
+source is `8bd1cd88ab3644a9c6417e29308ab4b502b40484`; the separate audit and its
+complete manifest are retained.
+
+Development failures are retained as well. An [earlier guarded execution](../output/native-development-2026-10-21/guarded-20-000/parent-receipt.json)
+ended at a 600-second request timeout, after seven invocations and six returned
+completions, without a returned native simulation or grade. Its task reward is
+unavailable, rather than an invented semantic zero. Before any official collection,
+the [candidate condition was amended uniformly](../docs/native-resource-amendment-2026-10-21.md#full-history-cpu-timeout-amendment-before-official-collection)
+to 1,200 seconds per request and 7,200 seconds per trajectory. The final guarded
+readiness check remains separate from any official pilot outcome. **No comparative
+pilot score is reported here.**
+
+### 6.2 Matched conditions and audit boundary
+
+The prospective design selects **12 distinct airline task IDs** by a declared
+metadata-based hash rule, excluding development IDs 19 and 20. Six tasks have
+substantive communication criteria and six have empty criteria. Four conditions
+and one declared seed give **48 planned trajectories**, not 48 independent tasks.
+Task and rotating condition order must be published with the execution protocol
+before official generation. The corpus was exposed in the earlier model-free
+transfer study; these are externally authored, previously exposed tasks, not an
+author-unseen holdout.
+
+![Prospective native information boundary and four conditions. Methods only; no benchmark outcomes.](figures/native-four-arm-methods.svg)
+
+All conditions retain the complete native policy, tool schemas, actual environment,
+dynamic user, and required DB plus COMMUNICATE reward. Proposed mutations determine
+a shared public-read schedule; subsequent dialogue and evidence can diverge.
+
+| Condition | Derived public report | Dispatch guard |
+| --- | --- | --- |
+| B | Raw public reads, without a derived verdict or framework import | None |
+| C | Compact current-field report, direct standard-library predicate | Conservative guard |
+| R | ConseqaX 2.1.1 current-field receipt | None |
+| G | ConseqaX 2.1.1 current-field receipt | Same guard as C |
+
+C, R and G use the same `field_status` application predicate. G invokes it through
+a custom package verifier and emits a full receipt, while C emits a compact report.
+C/G therefore tests integration, representation and guard interactions, not independent
+verifier arithmetic or the built-in temporal `RecordVerifier`. Shared predicate errors
+can survive automated agreement. The guard can suppress a legitimate later identical
+request and may never activate in ordinary dialogue; either outcome must be retained.
+
+Planned shared ceilings are 80 native steps, 48 combined assistant/user model
+invocations, 512 generated tokens per request, and the amended request/trajectory
+deadlines above, with no corrective retries. Every generation must pass a complete-history
+render, token-ID/context check and model-identity check without history trimming.
+Local request normalization is restricted to the pinned provider's disclosed schema
+serialization and ordinary assistant null-field omission. A failed gate stops that
+trajectory; no replacement completion is silently substituted.
+
+The primary finite-pilot endpoint is operational full native reward over all 12
+planned slots per condition. Failed or unstarted slots cannot earn operational
+success. Unavailable native reward and components remain unavailable; native
+premature termination retains zero reward with missing component grades. Empty
+communication criteria pass vacuously only when component evaluation is reached.
+A passed artifact audit does not imply that all planned slots ran or any task
+succeeded. All planned dispositions, complete accounting, observed journal prefixes
+and missing usage must remain distinguishable.
+
+A separately implemented auditor imports neither the collection runner, wrapper,
+transport nor framework. It reconstructs all actual calls chronologically and
+regrades saved native trajectories through the unchanged evaluator. Additional
+read replay matters because native strict replay skips nonmutating reads. This
+is automated checking within the same AI-assisted project, not independent
+external replication. Native synchronous execution injects no lost acknowledgement
+or delayed commit. Current public fields do not establish temporal durability,
+settlement, safe retry, or action origin; receipt origin remains unknown. The same
+small model supplies assistant and user, one seed does not estimate execution
+variance, and persistent prompt caches plus shared host load prevent causal
+wall-time attribution to the package.
+
+## 7. Supporting Evidence and Version Boundaries
 
 Earlier experiments corroborate narrower components, rather than multiplying
 the new recovery study's independent task count. The supporting-evidence table separates their units,
@@ -595,7 +700,7 @@ Historical 1.1.0 results and 2.0 migration are not relabeled as 2.1.1 performanc
 Byte-identical numerical modules alone would not establish end-to-end version
 equivalence.
 
-## 7. Discussion and Limitations
+## 8. Discussion and Limitations
 
 An evidence protocol is useful only under meaningful source and operation
 semantics. A watermark covers history through a declared time; finite auditing
@@ -628,16 +733,19 @@ controlled comparisons. These methods do not evaluate interpretability,
 preferences, or rationale quality. The historical T15 unblinded rationale claim
 is excluded from the current paper and is not empirically validated here.
 
-The next external study should seal independently selected tasks in a
-maintained agent environment or provider sandbox, freeze a real agent policy,
-and compare the classical same-key recovery policy under identical capabilities
-and budgets. It must retain native reward plus an independently checked
-side-effect ledger and verify adapter/status/idempotency semantics. A declared
-task-sampling design and family-level precision target are necessary for
-broader inference. More internal cases, AI audits, or reference-action replay
-cannot substitute for this validation.
+The pending native comparison extends execution to an externally authored
+environment but does not inject ambiguous commits. The next fault-focused
+validation should freeze selection and a real agent policy in an external
+benchmark or provider sandbox, preserving strong classical recovery controls
+under identical capabilities and budgets. Native reward must accompany
+independently checked effect histories and validation of adapter/status/idempotency
+semantics. The supplied strong guards and committed-effect grading of LIMBO [6]
+are relevant comparators, rather than novelty claims for this framework. A declared
+sampling design and precision target are necessary for broader inference.
+More internal cases, AI audits, or reference-action replay cannot substitute
+for this validation.
 
-## 8. Conclusion and Artifact Availability
+## 9. Conclusion and Artifact Availability
 
 ConseqaX provides inspectable boundaries between tool responses, verified
 temporal state, operation-linked origin, and explicitly recorded assertions

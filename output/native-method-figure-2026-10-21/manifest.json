@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "figure_scope": "Methods only; no quantitative observations or results",
+  "files": {
+    "fontcheck.txt": {
+      "bytes": 264,
+      "sha256": "971c3f41931d73e8972a233ec3d140e3f6e5d453be8844ff0911440b2ca3909a"
+    },
+    "native-four-arm-methods.pdf": {
+      "bytes": 31621,
+      "sha256": "1d85f46602e79fd58fa451f665653a9540c69a1c6d2e8da6d00ae7a1628d772e"
+    },
+    "native-four-arm-methods.png": {
+      "bytes": 210794,
+      "sha256": "0a954e9e3a5ebc00c953fa2f7cb9873f2d625cdd4f8aa1cf453b867d62090ce0"
+    },
+    "native-four-arm-methods.svg": {
+      "bytes": 17336,
+      "sha256": "c15cb57107e2168e2961ef31c45bc41368f61354823bf5e363d4de54c14cad7c"
+    },
+    "pdfinfo.txt": {
+      "bytes": 662,
+      "sha256": "923444f3df31733bd6f050adc07cb395ddadd1f1023367b0acbf1018fefe5c31"
+    },
+    "plot_native_methods.source.py": {
+      "bytes": 9511,
+      "sha256": "71ad7842741bea5d4c9ea45acbc2367c490bb3d120b48d07c2b4bef85a013972"
+    },
+    "rendered-page.png": {
+      "bytes": 183778,
+      "sha256": "62b3d54aa76329c3de135679b1026bf18b6428d81686c3c0f8a8dae17d57d752"
+    },
+    "source-bindings.json": {
+      "bytes": 1419,
+      "sha256": "5fbd1000688600a4e54aa1e4c1dc14965cfa219409af0397b4462d9ab4bceab8"
+    },
+    "structural-qa.json": {
+      "bytes": 1073,
+      "sha256": "972439cf253ebf410c455dfa97149a057e6e2a111ac1aa7fcf30bfd5e031db28"
+    },
+    "verify_figure.py": {
+      "bytes": 2798,
+      "sha256": "56380ba1c6879cb52d711f409f7e0e7f4c5e9a6963df6cc789ef86a58f07d5a3"
+    },
+    "visual-qa.json": {
+      "bytes": 679,
+      "sha256": "447057368f45ffb6da88bd1e3aab4af17d6307f4b1fe7fe232c29995771d0a70"
+    }
+  },
+  "schema": "conseqax-native-methods-figure-v1"
+}

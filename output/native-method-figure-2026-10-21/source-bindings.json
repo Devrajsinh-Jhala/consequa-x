@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-10-21T17:40:39.297616+00:00",
+  "dimensions_inches": [
+    7.2,
+    3.6
+  ],
+  "figure_scope": "Methods only; no observations, quantitative results or benchmark outcome claims",
+  "font_size_range_pt": [
+    7.5,
+    9
+  ],
+  "frozen_source_commit": "8bd1cd88ab3644a9c6417e29308ab4b502b40484",
+  "frozen_source_root": "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21",
+  "limitations": [
+    "Current public-field predicates only",
+    "C/R/G use the same field_status helper",
+    "C/G use the same guard",
+    "Origin unknown; no temporal durability or deadline claim",
+    "Private user scenario is confined to the native user; evaluator gold is not a policy input"
+  ],
+  "pdf_fonttype": 42,
+  "plot_source_sha256": "71ad7842741bea5d4c9ea45acbc2367c490bb3d120b48d07c2b4bef85a013972",
+  "source_bindings": {
+    "research/native_agent/controller.py": {
+      "git_bytes": 22943,
+      "git_sha256": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6",
+      "runtime_bytes": 22943,
+      "runtime_sha256": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6"
+    },
+    "research/native_agent/harness.py": {
+      "git_bytes": 18470,
+      "git_sha256": "4d4e36c729f963649ffc5e3e5bab2b1422a7df1687595266fee2eeebaa8aaec7",
+      "runtime_bytes": 18470,
+      "runtime_sha256": "4d4e36c729f963649ffc5e3e5bab2b1422a7df1687595266fee2eeebaa8aaec7"
+    }
+  }
+}

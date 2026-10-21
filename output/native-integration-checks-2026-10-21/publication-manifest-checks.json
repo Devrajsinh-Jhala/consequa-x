@@ -1,0 +1,24 @@
+{
+  "recorded_utc": "2026-10-21T11:48:38.621053+00:00",
+  "results": [
+    {
+      "path": "output/pdf/recovery-study-editorial-2026-10-21",
+      "files": 29,
+      "manifest_sha256": "65a15d8961bc01362200cc47cb2f76a73c9a4307ae99ca9983ab5d3412465ba7",
+      "passed": true
+    },
+    {
+      "path": "output/native-integration-checks-2026-10-21/offline-historical-wire",
+      "files": 2,
+      "manifest_sha256": "d94971e40522c3dfcef41a7fb9130042b76bf4ae46f0ef23d6fbd6f1f22278c8",
+      "passed": true
+    },
+    {
+      "path": "output/native-development-2026-10-21/native-19-000-audit",
+      "files": 16,
+      "manifest_sha256": "b2ccec97228dd991332d619d6bc3817e2680689edbb97c68414b1c7cb6401809",
+      "passed": true
+    }
+  ],
+  "new_model_calls": 0
+}

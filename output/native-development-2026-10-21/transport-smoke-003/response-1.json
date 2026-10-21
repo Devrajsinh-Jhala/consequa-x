@@ -1,0 +1,25 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Your account shows a membership level of \"silver\".",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1792562233,
+  "id": "chatcmpl-894",
+  "model": "conseqax-native-probe-20261020:ctx16k",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_ollama",
+  "usage": {
+    "completion_tokens": 11,
+    "prompt_tokens": 4628,
+    "prompt_tokens_details": {
+      "cached_tokens": 4582
+    },
+    "total_tokens": 4639
+  }
+}

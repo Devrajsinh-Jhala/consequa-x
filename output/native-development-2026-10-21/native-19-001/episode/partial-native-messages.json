@@ -1,0 +1,93 @@
+{
+  "messages": [
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "Hi! How can I help you today?",
+      "cost": 0.0,
+      "generation_time_seconds": null,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": null,
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T17:03:06.580865",
+      "tool_calls": null,
+      "turn_idx": 0,
+      "turn_taking_action": null,
+      "usage": null,
+      "utterance_ids": null
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "Hi, I'm Olivia Gonzalez, user ID olivia_gonzalez_2305. I have a trip to Texas scheduled, but I don't remember my reservation ID. I'd like to change my return flight\u2014currently departing at 3 PM on the 28th\u2014to a later flight that same day, or if that's not possible, the earliest flight the next day. I only accept flights from EWR, not JFK. If I can't modify the flight, I'm okay with canceling using my travel insurance since I feel unwell and will book a new flight myself later. Could you help me with that?",
+      "cost": 0.0,
+      "generation_time_seconds": null,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "Hi, I'm Olivia Gonzalez, user ID olivia_gonzalez_2305. I have a trip to Texas scheduled, but I don't remember my reservation ID. I'd like to change my return flight\u2014currently departing at 3 PM on the 28th\u2014to a later flight that same day, or if that's not possible, the earliest flight the next day. I only accept flights from EWR, not JFK. If I can't modify the flight, I'm okay with canceling using my travel insurance since I feel unwell and will book a new flight myself later. Could you help me with that?",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792582436,
+        "id": "chatcmpl-582",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 131,
+          "completion_tokens_details": null,
+          "prompt_tokens": 484,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 615
+        }
+      },
+      "role": "user",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T17:03:56.308711",
+      "tool_calls": null,
+      "turn_idx": 1,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 131,
+        "prompt_tokens": 484
+      },
+      "utterance_ids": null
+    }
+  ]
+}

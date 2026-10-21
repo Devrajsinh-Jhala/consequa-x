@@ -1,0 +1,59 @@
+[32m2026-10-21 17:02:50.023[0m | [33m[1mWARNING [0m | [36mtau2.utils.utils[0m:[36m<module>[0m:[36m15[0m - [33m[1mNo .env file found[0m
+[32m2026-10-21 17:02:50.023[0m | [1mINFO    [0m | [36mtau2.utils.utils[0m:[36m<module>[0m:[36m23[0m - [1mUsing data directory from environment: C:\Users\DELL\OneDrive\Desktop\ConseqaX\tmp\tau2-bench-audit\data[0m
+[32m2026-10-21 17:03:04.362[0m | [1mINFO    [0m | [36mtau2.utils.llm_utils[0m:[36m<module>[0m:[36m102[0m - [1mLiteLLM: Cache is disabled[0m
+[32m2026-10-21 17:03:05.437[0m | [34m[1mDEBUG   [0m | [36mtau2.registry[0m:[36m<module>[0m:[36m281[0m - [34m[1mRegistering default components...[0m
+[32m2026-10-21 17:03:05.521[0m | [34m[1mDEBUG   [0m | [36mtau2.registry[0m:[36m<module>[0m:[36m292[0m - [34m[1mVoice dependencies not installed, skipping voice user registration[0m
+[32m2026-10-21 17:03:05.521[0m | [34m[1mDEBUG   [0m | [36mtau2.registry[0m:[36m<module>[0m:[36m350[0m - [34m[1mDefault components registered successfully. Registry info: {
+  "domains": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ],
+  "agents": [
+    "llm_agent",
+    "llm_agent_gt",
+    "llm_agent_solo",
+    "discrete_time_audio_native_agent"
+  ],
+  "users": [
+    "user_simulator",
+    "dummy_user"
+  ],
+  "task_sets": [
+    "mock",
+    "airline",
+    "retail",
+    "telecom_full",
+    "telecom_small",
+    "telecom",
+    "telecom-workflow",
+    "banking_knowledge"
+  ]
+}[0m
+[32m2026-10-21 17:03:06.556[0m | [1mINFO    [0m | [36mtau2.orchestrator.orchestrator[0m:[36m_validate_mode_compatibility[0m:[36m477[0m - [1mOrchestrator initialized in HALF_DUPLEX mode (turn-based) with agent=LLMAgent, user=UserSimulator[0m
+[32m2026-10-21 17:03:06.556[0m | [34m[1mDEBUG   [0m | [36mtau2.runner.build[0m:[36mbuild_text_orchestrator[0m:[36m430[0m - [34m[1mBuilt text orchestrator: domain=airline, agent=llm_agent, user=user_simulator, task=19[0m
+[32m2026-10-21 17:03:06.559[0m | [33m[1mWARNING [0m | [36mtau2.agent.base.llm_config[0m:[36mset_seed[0m:[36m47[0m - [33m[1mSeed is already set to 1701, resetting it to 1701[0m
+[32m2026-10-21 17:03:06.559[0m | [33m[1mWARNING [0m | [36mtau2.agent.base.llm_config[0m:[36mset_seed[0m:[36m47[0m - [33m[1mSeed is already set to 1701, resetting it to 1701[0m
+[32m2026-10-21 17:03:08.503[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 0. Sending message from Role.AGENT to Role.USER[0m
+[32m2026-10-21 17:03:08.503[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 0.
+From role: Role.AGENT
+To role: Role.USER
+Message: AssistantMessage
+content: Hi! How can I help you today?
+is_final_chunk: True[0m
+[32m2026-10-21 17:03:08.503[0m | [34m[1mDEBUG   [0m | [36mtau2.user.user_simulator[0m:[36m_generate_next_message[0m:[36m222[0m - [34m[1mUser responds to message: AssistantMessage
+content: Hi! How can I help you today?
+is_final_chunk: True[0m
+[32m2026-10-21 17:03:56.308[0m | [31m[1mERROR   [0m | [36mtau2.utils.llm_utils[0m:[36mget_response_cost[0m:[36m129[0m - [31m[1mThis model isn't mapped yet. model=conseqax-native-probe-20261020:ctx16k, custom_llm_provider=openai. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[32m2026-10-21 17:03:56.308[0m | [34m[1mDEBUG   [0m | [36mtau2.user.user_simulator[0m:[36m_generate_next_message[0m:[36m244[0m - [34m[1mResponse: Hi, I'm Olivia Gonzalez, user ID olivia_gonzalez_2305. I have a trip to Texas scheduled, but I don't remember my reservation ID. I'd like to change my return flight—currently departing at 3 PM on the 28th—to a later flight that same day, or if that's not possible, the earliest flight the next day. I only accept flights from EWR, not JFK. If I can't modify the flight, I'm okay with canceling using my travel insurance since I feel unwell and will book a new flight myself later. Could you help me with that?[0m
+[32m2026-10-21 17:03:56.308[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m829[0m - [34m[1mStep 1. Sending message from Role.USER to Role.AGENT[0m
+[32m2026-10-21 17:03:56.308[0m | [34m[1mDEBUG   [0m | [36mtau2.orchestrator.orchestrator[0m:[36mstep[0m:[36m832[0m - [34m[1mStep 1.
+From role: Role.USER
+To role: Role.AGENT
+Message: UserMessage
+content: Hi, I'm Olivia Gonzalez, user ID olivia_gonzalez_2305. I have a trip to Texas scheduled, but I don't remember my reservation ID. I'd like to change my return flight—currently departing at 3 PM on the 28th—to a later flight that same day, or if that's not possible, the earliest flight the next day. I only accept flights from EWR, not JFK. If I can't modify the flight, I'm okay with canceling using my travel insurance since I feel unwell and will book a new flight myself later. Could you help me with that?
+is_final_chunk: True[0m
+[32m2026-10-21 17:03:56.337[0m | [33m[1mWARNING [0m | [36mtau2.orchestrator.orchestrator[0m:[36mrun[0m:[36m287[0m - [33m[1mSimulation loop exited with an exception — running emergency cleanup[0m

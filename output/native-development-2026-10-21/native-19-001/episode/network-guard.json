@@ -1,0 +1,135 @@
+{
+  "events": [
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "parsed_body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "path": "/api/version"
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "parsed_body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "path": "/api/tags"
+    },
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "parsed_body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "path": "/api/ps"
+    },
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "parsed_body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "path": "/api/ps"
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "body_sha256": "35f5ca73d343255b5fbd4b03e82fd7cdc8370960e69f78587fc49e1cab154cac",
+      "generation_request": false,
+      "kind": "http",
+      "method": "POST",
+      "parsed_body_sha256": "ddb067a1f890cd01995b8d5bff4292c6b0d73e4189f582af848835162419493b",
+      "path": "/v1/chat/completions"
+    },
+    {
+      "allowed": true,
+      "body_sha256": "1d76b5d7c4b83c598b47ae3485378fe507854b06ec95caff851bb485f7f500ef",
+      "kind": "http",
+      "method": "POST",
+      "path": "/tokenize",
+      "port": 52837
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 52837
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 52837
+    },
+    {
+      "allowed": true,
+      "body_sha256": "dc804ca76fa7503b5a070a9dd5b8b2b89f49fdb071e9f16aead730511381ff92",
+      "generation_request": true,
+      "kind": "http",
+      "method": "POST",
+      "parsed_body_sha256": "6e977a7dc3de69ae38bf593cd79d949167dab4f7bfe4727fe1bd35c3157d4687",
+      "path": "/v1/chat/completions"
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": true,
+      "kind": "socket.connect",
+      "port": 50556
+    },
+    {
+      "allowed": false,
+      "detail": "Generation changed native message history or tool-call association",
+      "kind": "native_invocation"
+    }
+  ],
+  "scope": "Process-local Python/HTTP defense, not an OS firewall for arbitrary native code"
+}

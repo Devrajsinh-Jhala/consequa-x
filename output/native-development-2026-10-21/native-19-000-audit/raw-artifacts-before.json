@@ -1,0 +1,86 @@
+{
+  "coverage": "Post-collection inventory generated before audit; no prospective original manifest existed",
+  "files": {
+    "episode/configuration.json": {
+      "bytes": 1856,
+      "sha256": "ee19785d05b69c043e19ea13e5e3b1f3e338ac7f0eb1d75c76059cb29a8dfe2a"
+    },
+    "episode/context-checks.json": {
+      "bytes": 1893539,
+      "sha256": "5e3aa016359c39f02d866343c63f5ac86303a12236c6c4cf1591940054a6fb70"
+    },
+    "episode/context-events.jsonl": {
+      "bytes": 1138836,
+      "sha256": "25852adc1cbf20027d1e4717a0779a51ffddd6ce19dc9ade6b5cc541e1890344"
+    },
+    "episode/controller-events.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "episode/episode-start.json": {
+      "bytes": 203,
+      "sha256": "fc00b8790f6630336b1966e5e0037f90d4b2de529ef0d7999837eb62d55480a0"
+    },
+    "episode/execution-receipt.json": {
+      "bytes": 649,
+      "sha256": "6d8a26bc3bbfeadfb06b33626c4e58ed77a20c924ef429d71ca7a26e152dcc15"
+    },
+    "episode/final-db.evaluator-only.json": {
+      "bytes": 5692018,
+      "sha256": "9d7eb291ba0cbac0eed7c99ffc702a953264ecae75687637913b1a4bc85bd98b"
+    },
+    "episode/final-state.json": {
+      "bytes": 204,
+      "sha256": "48f94119906b896359d8eba221fb4e8196fef88aa8b66d2e0b1669dd76588097"
+    },
+    "episode/initial-db.evaluator-only.json": {
+      "bytes": 5692103,
+      "sha256": "016ec1635fcc0e32ed2460f2535c03888180a9aa90ffbb72b0a6ec822a886c30"
+    },
+    "episode/model-calls.jsonl": {
+      "bytes": 275774,
+      "sha256": "4f0b212995e6b0bc3de2d31731275a85e8b7d2b1b58072fd2e1106d17cfd91b6"
+    },
+    "episode/native-simulation.json": {
+      "bytes": 52482,
+      "sha256": "2ccbd2f170ddc101b0a3f837aa154e93d82e1670b33f2d62191014077e5a9687"
+    },
+    "episode/network-guard.json": {
+      "bytes": 23187,
+      "sha256": "e17474d6f4d8ff310612abc0c2b4e345a9cdfed04afd275d4928fc891e23ec7d"
+    },
+    "episode/startup-receipt.json": {
+      "bytes": 169,
+      "sha256": "82b764b3ec24058f374222f43668968a67ab2b08bca61b038a3ce1db6bffca9a"
+    },
+    "episode/tool-dispatch-starts.jsonl": {
+      "bytes": 2202,
+      "sha256": "e01562051f29eb23cc3771de9af2c4020177e6184828403a8f8a680e699eaa5a"
+    },
+    "episode/tool-dispatch.jsonl": {
+      "bytes": 8463,
+      "sha256": "1098cddae63afabd5cb8cf8e2054363a0ddaa73e46fa0d3ba433645d045e2bc4"
+    },
+    "episode/worker-identity.json": {
+      "bytes": 4538,
+      "sha256": "0a854287c607afcfc729b7d4bdc1df67e7ee1e18f200cf1a2684679c4adf526e"
+    },
+    "parent-receipt.json": {
+      "bytes": 283,
+      "sha256": "21f2154f948f5871d195db9a237db8d549b9840c0d4a1680f961d1f9651b9613"
+    },
+    "parent-start.json": {
+      "bytes": 1205,
+      "sha256": "6dae1c9edf25d6524075a4bdb03c7c4ebd0c09b2c9cc2b5cf795869d0a29112b"
+    },
+    "stderr.log": {
+      "bytes": 39175,
+      "sha256": "fb083b850841145fec3cf8302e9dfad1ce98a193e4fb43ee44fd8afbbec781a5"
+    },
+    "stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "root": "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\native-19-000"
+}

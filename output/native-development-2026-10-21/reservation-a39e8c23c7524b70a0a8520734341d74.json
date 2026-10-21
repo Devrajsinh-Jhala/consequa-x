@@ -1,0 +1,46 @@
+{
+  "arm": "native",
+  "category": "task_independent_transport",
+  "consumed_before": 4,
+  "output": "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\transport-smoke-002",
+  "recorded_utc": "2026-10-21T05:49:07.837113+00:00",
+  "reserved_maximum_requests": 2,
+  "schema": "conseqax-native-development-reservation-v1",
+  "shared_category_ceiling": 12,
+  "source_files": {
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/audit.py": {
+      "bytes": 19155,
+      "sha256": "2ae8c2e5b97d973de1b1000518454a7a9b85b88f7d0f489c75e6cd5be0eab1af"
+    },
+    "research/native_agent/controller.py": {
+      "bytes": 22943,
+      "sha256": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6"
+    },
+    "research/native_agent/harness.py": {
+      "bytes": 17847,
+      "sha256": "85461b666da069872d1f631880517a947796f4eb2859652c012cc92fa7e6aa14"
+    },
+    "research/native_agent/protocol.py": {
+      "bytes": 10964,
+      "sha256": "ee522512acaa7c07dad76f2f254d6f160c53024307f05a1ec02dc4686b6a9a9a"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 29829,
+      "sha256": "cbf6c3ca16911e4fa91d0efa6334b7bd19199622f9322b273379c3ce66f64d87"
+    },
+    "scripts/audit_native_external_benchmark.py": {
+      "bytes": 23939,
+      "sha256": "dbfa83fec688493b5ab7e54b92e39597678d927a9a7f249396902c95e1b83601"
+    },
+    "scripts/run_native_external_benchmark.py": {
+      "bytes": 42172,
+      "sha256": "85d3ad26eda50fdf7fb7d98ddaf833d17df3353a85bc54122953fae379c99800"
+    }
+  },
+  "task_id": null,
+  "unfinished_reservation_consumes_full_maximum": true
+}

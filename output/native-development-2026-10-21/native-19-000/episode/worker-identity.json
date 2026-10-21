@@ -1,0 +1,142 @@
+{
+  "launch_receipt_sha256": "0a0f766e7a91638f4d722e9faea3463b15b941d14e8abd44d23f6b30286c0a5f",
+  "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "resident": {
+    "context_length": 16384,
+    "details": {
+      "families": [
+        "qwen3"
+      ],
+      "family": "qwen3",
+      "format": "gguf",
+      "parameter_size": "4.0B",
+      "parent_model": "",
+      "quantization_level": "Q4_K_M"
+    },
+    "digest": "7f091551b95c30f4ff31a067faa273f56a3563b556cfd3d9f80d47c9b5d20ffc",
+    "expires_at": "2319-01-31T11:14:30.160813507+05:30",
+    "model": "conseqax-native-probe-20261020:ctx16k",
+    "name": "conseqax-native-probe-20261020:ctx16k",
+    "runner": "llamacpp",
+    "size": 5265088838,
+    "size_vram": 0
+  },
+  "runner_binding": {
+    "allowed_http": "POST /tokenize",
+    "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+    "executable_sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+    "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "pid": 13568,
+    "port": 59484
+  },
+  "runner_command": [
+    "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+    "--model",
+    "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "--port",
+    "59484",
+    "--host",
+    "127.0.0.1",
+    "--no-webui",
+    "--offline",
+    "-c",
+    "32768",
+    "-np",
+    "2",
+    "--log-verbosity",
+    "4",
+    "--no-log-prefix",
+    "--no-log-timestamps",
+    "--load-mode",
+    "none",
+    "--cache-type-k",
+    "q8_0",
+    "--cache-type-v",
+    "q8_0",
+    "--flash-attn",
+    "on",
+    "-b",
+    "1024",
+    "-ub",
+    "1024",
+    "--context-shift",
+    "--keep",
+    "4"
+  ],
+  "runner_configuration": {
+    "cache_capacity_slots": 2,
+    "context_shift_runtime_capability": true,
+    "context_tokens_per_slot": 16384,
+    "flash_attention": true,
+    "kv_cache_k": "q8_0",
+    "kv_cache_v": "q8_0",
+    "simultaneous_generation_clients": 1
+  },
+  "runner_create_time": 1792560935.334127,
+  "server_create_time": 1792560919.325888,
+  "server_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+  "server_executable_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+  "source_files": {
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/audit.py": {
+      "bytes": 19155,
+      "sha256": "2ae8c2e5b97d973de1b1000518454a7a9b85b88f7d0f489c75e6cd5be0eab1af"
+    },
+    "research/native_agent/controller.py": {
+      "bytes": 22943,
+      "sha256": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6"
+    },
+    "research/native_agent/harness.py": {
+      "bytes": 17847,
+      "sha256": "85461b666da069872d1f631880517a947796f4eb2859652c012cc92fa7e6aa14"
+    },
+    "research/native_agent/protocol.py": {
+      "bytes": 10964,
+      "sha256": "ee522512acaa7c07dad76f2f254d6f160c53024307f05a1ec02dc4686b6a9a9a"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 29829,
+      "sha256": "cbf6c3ca16911e4fa91d0efa6334b7bd19199622f9322b273379c3ce66f64d87"
+    },
+    "scripts/audit_native_external_benchmark.py": {
+      "bytes": 23939,
+      "sha256": "dbfa83fec688493b5ab7e54b92e39597678d927a9a7f249396902c95e1b83601"
+    },
+    "scripts/run_native_external_benchmark.py": {
+      "bytes": 42001,
+      "sha256": "16700c098e01f3e0f9e2eac63e543076b439b8607b10ffa6619b3118558eba5a"
+    }
+  },
+  "tag": {
+    "capabilities": [
+      "tools",
+      "thinking",
+      "completion"
+    ],
+    "details": {
+      "context_length": 262144,
+      "embedding_length": 2560,
+      "families": [
+        "qwen3"
+      ],
+      "family": "qwen3",
+      "format": "gguf",
+      "parameter_size": "4.0B",
+      "parent_model": "qwen3:4b-instruct-2507-q4_K_M",
+      "quantization_level": "Q4_K_M",
+      "runner": "llamacpp"
+    },
+    "digest": "7f091551b95c30f4ff31a067faa273f56a3563b556cfd3d9f80d47c9b5d20ffc",
+    "model": "conseqax-native-probe-20261020:ctx16k",
+    "modified_at": "2026-10-20T18:28:05.5894601+05:30",
+    "name": "conseqax-native-probe-20261020:ctx16k",
+    "size": 2497293447
+  },
+  "version": {
+    "version": "0.40.6"
+  }
+}

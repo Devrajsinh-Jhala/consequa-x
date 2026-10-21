@@ -1,0 +1,142 @@
+{
+  "actual_http_generation_dispatch_records": 14,
+  "actual_tool_dispatches": 5,
+  "context_parity_receipts": 14,
+  "episode_tool_names": [
+    "get_user_details",
+    "get_reservation_details",
+    "search_direct_flight",
+    "search_direct_flight",
+    "update_reservation_flights"
+  ],
+  "execution_wall_seconds": 1829.2179999999998,
+  "finished_utc": "2026-10-21T11:23:08.368068+00:00",
+  "framework_payload_files_verified": 54,
+  "framework_wheel_sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98",
+  "human_labels": 0,
+  "initial_and_final_saved_db_snapshots_verified": true,
+  "initialization_dispatches": 0,
+  "limitations": [
+    "Excluded development task, unwrapped native arm only; not a comparative benchmark result.",
+    "Post-collection raw inventory binds current bytes; no prospective complete raw manifest existed.",
+    "Native COMMUNICATE component is vacuously satisfied because this task has no communication criterion.",
+    "Saved context parsed requests match native inputs and all dispatch counts. Raw HTTP byte digests cannot be reconstructed independently after JSON key ordering was discarded; no claim of raw-byte request reauthentication.",
+    "Runtime token IDs and renderer parity are saved collector observations; this offline audit checks their consistency, not a fresh server rendering or tokenizer execution.",
+    "Native message monetary cost is zero for local inference; hardware/electricity costs are not estimated.",
+    "Framework wheel and all installed package payload files were checked without importing the framework; native arm does not invoke it.",
+    "Automated same-project audit, no human labels."
+  ],
+  "maximum_context_prompt_tokens": 7717,
+  "maximum_context_required_tokens": 8293,
+  "model_completion_invocations": 14,
+  "native_bound_source_and_data_files": 272,
+  "native_message_costs": {
+    "assistant": {
+      "messages": 10,
+      "native_cost": 0.0,
+      "scope": "message metadata; deterministic wrapper messages are not model requests",
+      "sum_observed_cost": 0.0,
+      "unavailable_cost_messages": 0,
+      "usage": {
+        "completion_tokens": {
+          "observed_messages": 9,
+          "sum_observed": 957,
+          "unavailable_messages": 1
+        },
+        "prompt_tokens": {
+          "observed_messages": 9,
+          "sum_observed": 56955,
+          "unavailable_messages": 1
+        },
+        "total_tokens": {
+          "observed_messages": 0,
+          "sum_observed": 0,
+          "unavailable_messages": 10
+        }
+      }
+    },
+    "user": {
+      "messages": 5,
+      "native_cost": 0.0,
+      "scope": "message metadata; deterministic wrapper messages are not model requests",
+      "sum_observed_cost": 0.0,
+      "unavailable_cost_messages": 0,
+      "usage": {
+        "completion_tokens": {
+          "observed_messages": 5,
+          "sum_observed": 299,
+          "unavailable_messages": 0
+        },
+        "prompt_tokens": {
+          "observed_messages": 5,
+          "sum_observed": 5752,
+          "unavailable_messages": 0
+        },
+        "total_tokens": {
+          "observed_messages": 0,
+          "sum_observed": 0,
+          "unavailable_messages": 5
+        }
+      }
+    }
+  },
+  "native_reward": {
+    "action_checks": [
+      {
+        "action": {
+          "action_id": "19_0",
+          "arguments": {
+            "reservation_id": "Z7GOZK"
+          },
+          "compare_args": null,
+          "info": null,
+          "name": "cancel_reservation",
+          "requestor": "assistant"
+        },
+        "action_match": false,
+        "action_reward": 0.0,
+        "tool_type": "write"
+      }
+    ],
+    "communicate_checks": null,
+    "db_check": {
+      "db_match": false,
+      "db_reward": 0.0
+    },
+    "env_assertions": [],
+    "info": {
+      "action": null,
+      "communicate": {
+        "note": "No communicate_info to evaluate"
+      },
+      "env": null,
+      "nl": null
+    },
+    "nl_assertions": null,
+    "reward": 0.0,
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "reward_breakdown": {
+      "COMMUNICATE": 1.0,
+      "DB": 0.0
+    }
+  },
+  "network_attempts": 0,
+  "new_model_calls": 0,
+  "observed_completion_tokens": 1256,
+  "observed_prompt_tokens": 62707,
+  "parent_wall_seconds": 1840.422,
+  "passed": true,
+  "raw_originals_unchanged": true,
+  "required_basis_nonempty_communication": false,
+  "schema": "conseqax-native-development-independent-offline-audit-v1",
+  "scientific_framework_imported": false,
+  "scope": "Excluded development task 19; native unwrapped integration only; not a benchmark score",
+  "source_commit": "4a150b5a0fc2fbadcec93b1cb254330b374a9395",
+  "source_files_verified": 8,
+  "source_import_forbidden_modules_absent": true,
+  "started_utc": "2026-10-21T11:21:20.111204+00:00",
+  "termination_reason": "user_stop"
+}

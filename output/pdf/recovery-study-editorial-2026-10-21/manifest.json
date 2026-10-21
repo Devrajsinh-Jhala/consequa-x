@@ -1,0 +1,123 @@
+{
+  "complete": true,
+  "files": {
+    "ConseqaX_Research_Paper.pdf": {
+      "bytes": 168793,
+      "sha256": "0bef4f85ac688f3fe24c2a08da703460636ca8d33065b5adefa2183ae8e36515"
+    },
+    "README.md": {
+      "bytes": 1031,
+      "sha256": "5b9e9dc6c7624e774ea5dab599281184bcda64f93575b9a2756b5b3ff1f8e7c6"
+    },
+    "build-receipt.json": {
+      "bytes": 1469,
+      "sha256": "fb103c9fe26b635dc4cc4be0812dbb2d22d17e86a8d9af03eec1dba535a16f10"
+    },
+    "quality/automated-pdf-qa.json": {
+      "bytes": 6029,
+      "sha256": "e0bd7d3d15d77313852e61bdbe759f6d72099a721a8be6c7b09b5c4b874fe814"
+    },
+    "quality/compile-console.log": {
+      "bytes": 34688,
+      "sha256": "5ead590c7f9a9a127f5840b309d3071a31723335b807a77fd11d7ca33e724573"
+    },
+    "quality/compile-dependencies.d": {
+      "bytes": 402,
+      "sha256": "71a5327cf1a586a3a46b9f97e0ba53362b513c03de6e1b0db3622429c378d836"
+    },
+    "quality/compile-exit-code.txt": {
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    "quality/conseqax-research.log": {
+      "bytes": 49655,
+      "sha256": "391fc3a4e5671631b3c5ab7eb32e515538f3832b1df9fca4debc37a2a8397165"
+    },
+    "quality/extracted-text.txt": {
+      "bytes": 49035,
+      "sha256": "9fc150462800123bf2dfa22e5c44fa277aee1ed2138fdd7d6eafea9bbe0d5006"
+    },
+    "quality/package-editorial.source.py": {
+      "bytes": 8037,
+      "sha256": "265248198013e7c399ab951926f59f74be7aa79f407cb2e7c88fbd9887f63a79"
+    },
+    "quality/pages/verified-page-01.png": {
+      "bytes": 455709,
+      "sha256": "c3ec6ee4b51f2ee3c51f3a562357020945d7d6b700fe729690eb9f8541b24404"
+    },
+    "quality/pages/verified-page-02.png": {
+      "bytes": 490167,
+      "sha256": "20899ba7679c1ef5665362eb1e8156a21fd0830f2fadf623415de22b454b34aa"
+    },
+    "quality/pages/verified-page-03.png": {
+      "bytes": 466893,
+      "sha256": "c52ebb324c4a1741e46f12ddc0a00a71fe9eab38e0e4ce3edf33989c1b6140a2"
+    },
+    "quality/pages/verified-page-04.png": {
+      "bytes": 407795,
+      "sha256": "fb585afb128b1880f1053841b000721ed247b1d206512a43d28138cc88edff66"
+    },
+    "quality/pages/verified-page-05.png": {
+      "bytes": 519030,
+      "sha256": "ec351641ad9d266adc7cded9ad3ba4f1d9060c8da1637e18e0c92a7b485f2d31"
+    },
+    "quality/pages/verified-page-06.png": {
+      "bytes": 217668,
+      "sha256": "d2470658ab5152cfc8ef10da2bca56fd0932fa99e9084fdb9b809d7068b0dc2d"
+    },
+    "quality/pages/verified-page-07.png": {
+      "bytes": 342357,
+      "sha256": "c5c0d4ca99418f90020497321e8962e49efc6b9ae99ece2af214ae8ac392b4b9"
+    },
+    "quality/pages/verified-page-08.png": {
+      "bytes": 271056,
+      "sha256": "8686a3a4b629afad75c4f096079a5d9cd1a3ef00a15fb07dbb8af4456f25f13e"
+    },
+    "quality/pages/verified-page-09.png": {
+      "bytes": 159172,
+      "sha256": "bba5b5b10c45e101d554e4841ea141c8f807d52bb42a20184ddae6b112dd5757"
+    },
+    "quality/pages/verified-page-10.png": {
+      "bytes": 438414,
+      "sha256": "591462eeac2e07831946971dfefa991e44e611135487a1b48a95032936cfcd64"
+    },
+    "quality/pdfinfo.txt": {
+      "bytes": 461,
+      "sha256": "d1004f9d13262cb1b7321482ce5cae33bb12caefd13d53195e276f1b472df00a"
+    },
+    "quality/visual-review.json": {
+      "bytes": 2630,
+      "sha256": "b5988f804fb0a41197636a8bb358297169da1f4711b5be920d47b403c9efbcad"
+    },
+    "source-bindings.json": {
+      "bytes": 1528,
+      "sha256": "30d90bc08ec6ed3639b3dd936205eb53d7d8af7783ba1bce4eba7227e23c4efa"
+    },
+    "source/paper/conseqax-research.tex": {
+      "bytes": 34097,
+      "sha256": "68c32091f13a2e409cac10ed3c2ce95c390328bbae4b507ea520de78871fe3bc"
+    },
+    "source/paper/figures/recovery-availability-grid.pdf": {
+      "bytes": 26130,
+      "sha256": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8"
+    },
+    "source/paper/figures/recovery-family-primary-contrasts.pdf": {
+      "bytes": 24641,
+      "sha256": "b305b9d32f7d8333c8031e33ebb29764531ea2e5e9a43d449a87b2f6bc66dd80"
+    },
+    "source/paper/figures/recovery-method-overview.pdf": {
+      "bytes": 25901,
+      "sha256": "562ce06657b16bc527fadc48dddcdf28bd970c99c38fe6df5ef399b744683d24"
+    },
+    "source/paper/recovery-availability-results.tex": {
+      "bytes": 4782,
+      "sha256": "3f5d0edaced86131e3ef574754a21918540dba05ac759e737a0b7e037336f63c"
+    },
+    "source/paper/recovery-study-results.tex": {
+      "bytes": 7255,
+      "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
+    }
+  },
+  "schema": "conseqa-editorial-paper-snapshot-v1",
+  "source_commit": "8bd1cd88ab3644a9c6417e29308ab4b502b40484"
+}

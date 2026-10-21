@@ -7,11 +7,15 @@ ambiguous-action recovery. The author is Devrajsinh Jhala, **Independent
 Researcher**. No specific conference or journal has been selected, and a contact
 email has not been supplied.
 
-The [checked 10-page PDF](../output/pdf/recovery-study-2026-10-20/ConseqaX_Research_Paper.pdf)
+The [checked 10-page PDF](../output/pdf/recovery-study-editorial-2026-10-21/ConseqaX_Research_Paper.pdf)
 is accompanied by exact source/figure copies, compile diagnostics, all-page
 previews, and byte-bound evidence references in the same snapshot directory.
 It is a complete generic IEEE draft; venue-specific length, anonymity, contact,
 and submission requirements remain to be applied after a venue is selected.
+This editorial revision corrects source-independence wording and adds explicit
+versioned reference links. It adds no experimental outcomes. The
+[original sealed 20 October build](../output/pdf/recovery-study-2026-10-20/ConseqaX_Research_Paper.pdf)
+is preserved.
 
 ## Current controlled evaluation
 
@@ -73,6 +77,23 @@ participant study. The historical unblinded T15 rationale claim is excluded.
 The [20 October review addendum](recovery-review-response-2026-10-20.md) records the
 scope change and remaining objective validation gaps. No human-review packet is
 part of the current paper.
+
+## Native autonomous external pilot in development
+
+The [automated workflow](../docs/native-external-benchmark.md) implements four
+matched native airline conditions on twelve prespecified task IDs (48 planned
+slots), local inference, required native DB/communication grading, complete
+request/tool capture and offline replay. All 190 benchmark-infrastructure tests
+pass; a further 20 tests cover the auxiliary resource observer.
+
+The first unmodified development episode returned 14 model completions and
+five actual tools. Its [independent saved-artifact audit](../output/native-development-2026-10-21/native-19-000-audit/audit-result.json)
+passed; native task reward was **0**, and its empty communication requirement
+passed vacuously. This establishes integration, not framework benefit. Later
+development checks fix and retain hidden SDK retry and null-serialization
+issues before any official collection. Exact-source native and guarded
+readiness checks remain in progress; there is no official pilot result yet.
+GitHub Actions stays disabled, with no human review or paid inference.
 
 ## Product version and evidence boundaries
 

@@ -76,7 +76,7 @@ transport task, outside the native airline policy. This was a returned model
 refusal, not prompt truncation or a native benchmark task failure. No tool was
 executed, and the result stays failed. The next separately reserved development
 fixture asks an ordinary airline account lookup using an invented user ID,
-keeps the complete policy and all14schemas, and uses the native `tool_choice:
+keeps the complete policy and all 14 schemas, and uses the native `tool_choice:
 auto` setting. Its tool result is an explicitly artificial transport fixture,
 not a saved native environment result or evaluation score. This development
 fixture correction precedes all native development and official episodes.
@@ -88,14 +88,14 @@ render/token equality stays required; cached tokens are not added twice.
 
 ## Session restart and final integration allowance
 
-The first unmodified native development episode on excluded ID19 completed
+The first unmodified native development episode on excluded ID 19 completed
 14 model requests and five native tool calls. Independent offline replay,
 initial/final DB comparison and unchanged ALL regrading passed. Its native
 reward was zero: the DB target failed; its empty communication requirement
 passed vacuously. This is a completed integration check, not an official pilot
 score or a task-success-based readiness selection.
 
-When work resumed later on21October, the research server and runner had stopped.
+When work resumed later on 21 October, the research server and runner had stopped.
 The measured native episode and all old identities remain unchanged. Development
 readiness now requires identical static model/tag/binary/cache/context settings
 across smoke checks, while retaining each process's distinct PID, port,
@@ -104,11 +104,11 @@ across separate development sessions. The official protocol still pins the
 actual live server/runner lease and stops after a lease/integrity change.
 
 Before any official generation, the shared excluded-task development allowance
-was increased from36 to64 completion invocations to permit fresh exact-source
-integration checks after the restart and accounting fixes. The first14 calls
-remain consumed. IDs19/20, required native grading and no task-reward-one rule
+was increased from 36 to 64 completion invocations to permit fresh exact-source
+integration checks after the restart and accounting fixes. The first 14 calls
+remain consumed. IDs 19/20, required native grading and no task-reward-one rule
 remain unchanged. The separate task-independent allowance stays12 requests;
-eight were conservatively reserved before this amendment. No official48-slot
+eight were conservatively reserved before this amendment. No official 48-slot
 request, step, context or time ceiling is enlarged by this development change.
 
 An offline dependency check also found that LiteLLM1.82.6 can internally retry
@@ -116,17 +116,26 @@ certain error messages despite an explicit zero retry argument. The final
 collector must independently authorize only one generation HTTP dispatch per
 recorded native completion and refuse a rewritten or repeated request before
 transmission. This repair precedes official collection. It does not change the
-already audited first native run: its14 completion invocations and14 generation
+already audited first native run: its 14 completion invocations and 14 generation
 HTTP records agree, without failures or extra attempts.
 
 The fresh strict-source smoke `native-19-001` retained one returned user-model
 completion and one assistant completion refused before transmission. The
 provider omits `tool_calls: null` on ordinary assistant-history turns. The new
 exact-history guard initially treated this absence as a changed request.
-An offline comparison of all14 retained request/wire pairs from the first
+An offline comparison of all 14 retained request/wire pairs from the first
 native development run confirmed the same null omission. The next source
 permits only absent/null `tool_calls` on assistant messages, in addition to the
 already documented absent/null content on actual tool-call turns. Non-null
 calls, arguments, IDs, roles, text and ordering remain bound. The refused
 attempt and its two completion invocations remain in development accounting;
 it does not count as a passed integration check or an official task result.
+
+The model runner also maintains a dynamic host-memory prompt cache. Its log
+declares an 8 GiB cache limit in addition to the fixed q8 KV allocation; the cold
+gate is not a guarantee about maximum later process memory. A separately
+recorded read-only resource observer can retain actual research-process RSS,
+CPU and system available memory without changing inference or closing other
+applications. Prompt caches persist across serial trajectories. Rotating arm
+order does not remove shared-host load and cache effects; wall times must be
+reported descriptively rather than as isolated causal SDK overhead.

@@ -1,0 +1,26 @@
+{
+  "actual_tool_dispatches": 0,
+  "arm": "native",
+  "capture_errors": [],
+  "completed_tool_dispatches": 0,
+  "corrective_reruns": 0,
+  "episode_id": "development-19-native",
+  "error_type": "TransportRefusal",
+  "inflight_tool_dispatches": [],
+  "model_requests": {
+    "attempted": 2,
+    "completed": 1,
+    "completion_tokens": 131,
+    "failed": 1,
+    "prompt_tokens": 484,
+    "provider_invoked": 2,
+    "provider_returned": 1,
+    "refused_before_provider": 0,
+    "usage_unavailable": 0
+  },
+  "native_reward_not_fabricated": true,
+  "stage": "execution",
+  "status": "failed",
+  "task_id": "19",
+  "wall_seconds": 70.54600000000005
+}

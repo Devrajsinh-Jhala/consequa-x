@@ -1,0 +1,21 @@
+{
+  "files": {
+    "audit-result.json": "81b1f4ddc20102ffd6117430ed9e2883f6405fc6d9cabfe07cad4fd0232c1d59",
+    "audit_development.py": "d83c9f1bf1345de9305cafa08b825651f00dc180b62cbcfb4c049673332407f9",
+    "native-replay-and-regrade.json": "4ac24496d098190a0a9559de003db5ba40b0eb343bb91c2750dec68c1c0e14d5",
+    "native-source-bindings.json": "d19c3c9f5dc3b1d4a1bcbe150235e96056673bcab2cf2bdabd69a21ba8965a02",
+    "raw-artifacts-after.json": "74051895cc44485349eaa986909d4f4d736e6d88e4f724b9a2c296ba79b6c716",
+    "raw-artifacts-before.json": "ee780afb15b4598ba87122a39053314cc5819990027efd620254f243a6dc76cb",
+    "runtime-binding.json": "ff254d56a4647a7bc36af38f4d9e776f80f7dce64b1654a901114f5d6d475ea4",
+    "source-bindings.json": "a3d2b65d4bb48cf75750e83f40c348df4349629278bf5f3d56556640c3bba7cf",
+    "verified-worker-source/research/native_agent/__init__.py": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c",
+    "verified-worker-source/research/native_agent/audit.py": "2ae8c2e5b97d973de1b1000518454a7a9b85b88f7d0f489c75e6cd5be0eab1af",
+    "verified-worker-source/research/native_agent/controller.py": "c6334bec78662379a064cf0f0a7bd0bb3786b421139ed1f21f0dd7c9f35407d6",
+    "verified-worker-source/research/native_agent/harness.py": "85461b666da069872d1f631880517a947796f4eb2859652c012cc92fa7e6aa14",
+    "verified-worker-source/research/native_agent/protocol.py": "ee522512acaa7c07dad76f2f254d6f160c53024307f05a1ec02dc4686b6a9a9a",
+    "verified-worker-source/research/native_agent/transport.py": "cbf6c3ca16911e4fa91d0efa6334b7bd19199622f9322b273379c3ce66f64d87",
+    "verified-worker-source/scripts/audit_native_external_benchmark.py": "dbfa83fec688493b5ab7e54b92e39597678d927a9a7f249396902c95e1b83601",
+    "verified-worker-source/scripts/run_native_external_benchmark.py": "16700c098e01f3e0f9e2eac63e543076b439b8607b10ffa6619b3118558eba5a"
+  },
+  "schema": "conseqax-native-development-offline-audit-artifacts-v1"
+}

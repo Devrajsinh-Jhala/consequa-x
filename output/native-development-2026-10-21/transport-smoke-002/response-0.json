@@ -1,0 +1,25 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "I cannot assist with that request as it involves a synthetic tool transport check and is outside the scope of the airline agent policy. Please let me know if you have a valid request related to booking, modifying, or canceling flights.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1792562027,
+  "id": "chatcmpl-808",
+  "model": "conseqax-native-probe-20261020:ctx16k",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_ollama",
+  "usage": {
+    "completion_tokens": 47,
+    "prompt_tokens": 4563,
+    "prompt_tokens_details": {
+      "cached_tokens": 4096
+    },
+    "total_tokens": 4610
+  }
+}

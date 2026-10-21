@@ -1,0 +1,127 @@
+{
+  "error": {
+    "message": "timed out",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 103, in handle_request\n    return self._connection.handle_request(request)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 136, in handle_request\n    raise exc\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 106, in handle_request\n    ) = self._receive_response_headers(**kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 177, in _receive_response_headers\n    event = self._receive_event(timeout=timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 217, in _receive_event\n    data = self._network_stream.read(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 126, in read\n    with map_exceptions(exc_map):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ReadTimeout: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\ConsequaX-Research\\paper-writing\\scripts\\run_native_external_benchmark.py\", line 164, in transport_smoke\n    response = client.post(RESEARCH_API_BASE + \"/chat/completions\", json=payload)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_client.py\", line 1144, in post\n    return self.request(\n           ^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_client.py\", line 825, in request\n    return self.send(request, auth=auth, follow_redirects=follow_redirects)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\paper-writing\\research\\native_agent\\transport.py\", line 225, in send\n    return original_send(client, request, *args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_client.py\", line 914, in send\n    response = self._send_handling_auth(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_client.py\", line 942, in _send_handling_auth\n    response = self._send_handling_redirects(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_client.py\", line 979, in _send_handling_redirects\n    response = self._send_single_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_client.py\", line 1014, in _send_single_request\n    response = transport.handle_request(request)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n  File \"D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ReadTimeout: timed out\n",
+    "type": "ReadTimeout"
+  },
+  "finished_utc": "2026-10-21T05:33:34.941549+00:00",
+  "generation_attempts": 1,
+  "network_events": [
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "path": "/api/version"
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "path": "/api/tags"
+    },
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "path": "/api/ps"
+    },
+    {
+      "allowed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generation_request": false,
+      "kind": "http",
+      "method": "GET",
+      "path": "/api/ps"
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "body_sha256": "ae465a7edbb8816f3283210818664d92bf22211535600d48f64abfb3311dcb45",
+      "generation_request": false,
+      "kind": "http",
+      "method": "POST",
+      "path": "/v1/chat/completions"
+    },
+    {
+      "allowed": true,
+      "body_sha256": "3e9de93f25c083c8b5de4979dc11a727fb5b412091ec5f0654941e988ed9ab0d",
+      "kind": "http",
+      "method": "POST",
+      "path": "/tokenize",
+      "port": 60035
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 60035
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 60035
+    },
+    {
+      "allowed": true,
+      "body_sha256": "899815d56ca6b10828871d2dbdcee9c723405ec2142b455701d0abaadc56a6a6",
+      "generation_request": true,
+      "kind": "http",
+      "method": "POST",
+      "path": "/v1/chat/completions"
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.getaddrinfo",
+      "port": 11436
+    },
+    {
+      "allowed": true,
+      "host": "127.0.0.1",
+      "internal_socketpair": false,
+      "kind": "socket.connect",
+      "port": 11436
+    }
+  ],
+  "official_tasks_read": 0,
+  "passed": false,
+  "purpose": "task-independent structured-call and tool-result roundtrip",
+  "started_utc": "2026-10-21T05:30:33.209011+00:00"
+}

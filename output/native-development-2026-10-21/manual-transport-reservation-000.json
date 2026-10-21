@@ -1,0 +1,11 @@
+{
+  "schema": "manual-native-development-reservation-v1",
+  "recorded_utc": "2026-10-21T05:30:32.586037+00:00",
+  "category": "task_independent_transport",
+  "reserved_maximum_requests": 2,
+  "shared_category_ceiling": 12,
+  "prior_actual_generation_attempts": 0,
+  "remaining_maximum_after_reservation": 10,
+  "source_sha256": "60be6de2c13698b7e03ede7cedb93dced9b04695f6b20babf3ae6b6adab011af",
+  "note": "Reserved conservatively before first actual generation; integrate as consumed2 in later ledger; no corrective retries"
+}

@@ -44,6 +44,11 @@ package verifier. C/G therefore tests package integration and representation,
 not independent verifier arithmetic or the built-in temporal RecordVerifier.
 Shared predicate errors can survive; task-reward differences can reflect the
 different report representation and context or framework/guard interactions.
+The CPU host is shared, and prompt caches persist across serial requests and
+trajectories; the rotating arm order does not eliminate cache or host-load
+effects. Wall times are descriptive resource observations, not isolated causal
+measurements of SDK overhead. Provider prompt totals include cached tokens,
+which are reported as a subset rather than added to the total again.
 The guard blocks an already dispatched identical payload and a changed payload
 on a resource whose previous result remains unresolved. All conditions share
 the proposed ceilings of 80 native steps, 48 combined assistant/user completion

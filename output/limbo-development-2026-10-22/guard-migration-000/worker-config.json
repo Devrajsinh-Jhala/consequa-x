@@ -1,0 +1,231 @@
+{
+  "protocol": {
+    "environment": {
+      "base_executable": {
+        "bytes": 107312,
+        "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "sha256": "7c4ee3011932a75b30db176f35fb91b28f0b299e608eaf643fb1bf36ed5ace99"
+      },
+      "coverage": "Interpreter executable bytes and dependency distribution versions; not all dependency payload bytes",
+      "distributions": {
+        "Jinja2": "3.1.6",
+        "consequa-x": "2.1.1",
+        "psutil": "7.2.2",
+        "tokenizers": "0.23.3"
+      },
+      "executable": {
+        "bytes": 277808,
+        "path": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+      },
+      "implementation": "cpython",
+      "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+    },
+    "limits": {
+      "episode_timeout_s": 7200.0,
+      "max_output_tokens": 512,
+      "max_requests": 12,
+      "request_timeout_s": 1200.0,
+      "work": {
+        "execute": 96,
+        "total_wait_seconds": 172800,
+        "verify": 64,
+        "wait": 64
+      }
+    },
+    "native": {
+      "commit": "2db09fba22a0572a70639162a808906409f612a8",
+      "files": {
+        "limbo/__init__.py": {
+          "bytes": 89,
+          "sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+        },
+        "limbo/agent.py": {
+          "bytes": 7859,
+          "sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+        },
+        "limbo/analysis.py": {
+          "bytes": 12999,
+          "sha256": "31261718867753704c565a6db124e834096d0886ff95b176453cefeec97146ea"
+        },
+        "limbo/behavior.py": {
+          "bytes": 3318,
+          "sha256": "46e85534cbaa313bea84bd9ae093463f58700de0a374ba91ed9e92a9bb492a13"
+        },
+        "limbo/cases.py": {
+          "bytes": 4485,
+          "sha256": "c1547c384b58ae6b36efe1aca3e80039a9340c49e5049d7576c13fb765d54211"
+        },
+        "limbo/gateway_proxy.py": {
+          "bytes": 3605,
+          "sha256": "c3ca046de0ef6e4c56a2950a8df02a2b94ac19c699f9ee09bf5f6414973541d1"
+        },
+        "limbo/grader.py": {
+          "bytes": 8805,
+          "sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+        },
+        "limbo/harness.py": {
+          "bytes": 11131,
+          "sha256": "7d863bfc1bc9af8f2075a36adac3840aa86c6153af1cdcb6befdfc5d248f19d6"
+        },
+        "limbo/key_contract_probe.py": {
+          "bytes": 3260,
+          "sha256": "82fc61a09b694c3beb333822f1f134b626969153ea7c3ae29c2b3905ba77d863"
+        },
+        "limbo/llm.py": {
+          "bytes": 15062,
+          "sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+        },
+        "limbo/mcp_proxy.py": {
+          "bytes": 3039,
+          "sha256": "f1dee64be46a17dd8e982dd7d2c0d72b0892cd03dc49cedca06160d14a5d9faa"
+        },
+        "limbo/pipeline.py": {
+          "bytes": 10210,
+          "sha256": "775eb847d4058455ae93caedc65a32c11d5cec9259db0c05a8fdd0ca9da7e217"
+        },
+        "limbo/policies.py": {
+          "bytes": 14938,
+          "sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+        },
+        "limbo/prompts.py": {
+          "bytes": 3944,
+          "sha256": "9761f4c50d2209e9dd1b2346be40f2cefa5d35976f00e98b178ae5c44a2c24cd"
+        },
+        "limbo/real_api.py": {
+          "bytes": 26175,
+          "sha256": "e9ecadcc4fe33cca8d6e04dccc04fcc573495763ccc30f39b24ee4cf11f68369"
+        },
+        "limbo/real_api_analysis.py": {
+          "bytes": 10063,
+          "sha256": "4bf93655408b214d0a6e2c960d8b077106977e1812891844399d943d8a9b45ce"
+        },
+        "limbo/report.py": {
+          "bytes": 81057,
+          "sha256": "aaabda2c661dd24e7e4b97fa0198930487f67b549cb8cc36cf2a3f65db8220ed"
+        },
+        "limbo/runner.py": {
+          "bytes": 6937,
+          "sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+        },
+        "limbo/runtime.py": {
+          "bytes": 18364,
+          "sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+        },
+        "limbo/sandbox_http.py": {
+          "bytes": 6957,
+          "sha256": "72509f445fb38c5d3d2a3ce5538e050d3ec81079c58236b9cbcf4161299b740c"
+        },
+        "limbo/services.py": {
+          "bytes": 40579,
+          "sha256": "68483bbfbfed20b422627850ee6f73edd947c6487810e838da5fab59b4dcb906"
+        },
+        "limbo/tasks.py": {
+          "bytes": 25478,
+          "sha256": "02efac4e4dbc1079d8534a1ea85bbc1bb5c7b676db60a40ffca08ca3b14f03eb"
+        },
+        "limbo/world.py": {
+          "bytes": 6525,
+          "sha256": "d2d9a346d07769ad5157eac67d2f204bea73c1a5cdacf093fe647a001b47e00d"
+        }
+      }
+    },
+    "runtime_binding": {
+      "api_base": "http://127.0.0.1:11436/v1",
+      "context_tokens": 8192,
+      "model": "conseqax-limbo-qwen4b-20261022:ctx8k",
+      "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "model_digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+      "parallel_slots": 1,
+      "runner_create_time": 1792671742.386226,
+      "runner_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+      "runner_executable_sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+      "runner_pid": 7884,
+      "runner_port": 60469,
+      "server_create_time": 1792671725.0504391,
+      "server_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+      "server_executable_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+      "server_pid": 9552
+    },
+    "seed": 1701,
+    "sources": {
+      "research/limbo_agent/audit.py": {
+        "bytes": 30335,
+        "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+      },
+      "research/limbo_agent/boundary.py": {
+        "bytes": 16895,
+        "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+      },
+      "research/limbo_agent/harness.py": {
+        "bytes": 13858,
+        "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+      },
+      "research/limbo_agent/policy.py": {
+        "bytes": 16239,
+        "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+      },
+      "research/limbo_agent/preflight.py": {
+        "bytes": 6899,
+        "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+      },
+      "research/limbo_agent/probe.py": {
+        "bytes": 4230,
+        "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+      },
+      "research/limbo_agent/protocol.py": {
+        "bytes": 13796,
+        "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+      },
+      "research/limbo_agent/transport.py": {
+        "bytes": 23092,
+        "sha256": "874a9cafb885a6a1707cba3b08bccc1998006a8d77d4536d417d7bd61c0008d1"
+      },
+      "research/native_agent/__init__.py": {
+        "bytes": 80,
+        "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+      },
+      "research/native_agent/transport.py": {
+        "bytes": 33759,
+        "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+      },
+      "scripts/audit_limbo_external_benchmark.py": {
+        "bytes": 1296,
+        "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+      },
+      "scripts/run_limbo_external_benchmark.py": {
+        "bytes": 11968,
+        "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+      }
+    },
+    "wheel": {
+      "bytes": 215139,
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+      "sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98"
+    }
+  },
+  "slot": {
+    "arm": "conseqax_guard",
+    "slot": 0,
+    "spec": {
+      "contract": "native",
+      "doc_variant": "neutral",
+      "experiment": "conseqax-limbo-excluded-development",
+      "focal": "insert_many",
+      "harness": "minimal",
+      "human_available": false,
+      "index": 0,
+      "instruction_variant": "default",
+      "max_tool_calls": 16,
+      "mode": "timeout_post",
+      "model": "conseqax-limbo-qwen4b-20261022:ctx8k",
+      "paraphrase": 0,
+      "policy": "conseqax_guard",
+      "reasoning_effort": null,
+      "replicate": 0,
+      "template": "migration_log"
+    },
+    "world_rank": 0
+  }
+}

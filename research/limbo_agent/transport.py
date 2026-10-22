@@ -10,6 +10,7 @@ The network guard is defense in depth for trusted code, not an OS sandbox.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
 import importlib
@@ -31,6 +32,36 @@ from research.native_agent.transport import (
 
 UPSTREAM_LLM_SHA256 = "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
 SCHEMA = "conseqax-limbo-local-transport-v1"
+
+
+def render_limbo_template(metadata, messages, tools):
+    """Predict provider elision of literal default-true schema declarations.
+
+    Native HTTP schemas are never changed. The pinned provider's typed tool
+    representation omits additionalProperties. Omission has the same JSON
+    Schema meaning as literal true; false, numeric values and schema-valued
+    restrictions are refused. Opaque items/$defs remain untouched. Every live
+    request must still match the server's complete prompt bytes and token IDs.
+    """
+    normalized = deepcopy(tools or [])
+
+    def typed(node):
+        if not isinstance(node, dict):
+            return
+        if "additionalProperties" in node:
+            if node["additionalProperties"] is not True:
+                raise ValueError("Provider cannot preserve a non-default additionalProperties constraint")
+            del node["additionalProperties"]
+        properties = node.get("properties")
+        if isinstance(properties, dict):
+            for value in properties.values():
+                typed(value)
+        for branch in node.get("anyOf") or []:
+            typed(branch)
+
+    for tool in normalized:
+        typed(tool.get("function", {}).get("parameters"))
+    return render_gguf_template(metadata, messages, normalized)
 
 
 def sha256(data):
@@ -328,7 +359,7 @@ class AuditedLIMBOClient:
                    "runtime_binding": asdict(b)}
         try:
             self._verify_identity()
-            prompt = render_gguf_template(self.metadata, payload["messages"], payload.get("tools"))
+            prompt = render_limbo_template(self.metadata, payload["messages"], payload.get("tools"))
             receipt["offline_rendered_prompt"] = prompt
             receipt["offline_context"] = context_gate(prompt, self.tokenizer,
                 output_tokens=self.max_output_tokens, context_tokens=b.context_tokens, reserve_tokens=64)

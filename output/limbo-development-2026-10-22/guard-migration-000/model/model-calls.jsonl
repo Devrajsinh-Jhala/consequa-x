@@ -1,0 +1,3 @@
+{"event": "client_ready", "model_generations": 0, "monotonic": 27401.14, "schema": "conseqax-limbo-local-transport-v1", "utc": "2026-10-22T12:44:09.161596+00:00"}
+{"budget_refusal": false, "event": "request_start", "invocation": 1, "monotonic": 27401.156, "permitted_model_invocation": true, "schema": "conseqax-limbo-local-transport-v1", "utc": "2026-10-22T12:44:09.180316+00:00"}
+{"event": "request_error", "invocation": 1, "message": "Unsupported provider-normalized schema node: parameters", "monotonic": 27401.39, "schema": "conseqax-limbo-local-transport-v1", "type": "ContextRefusal", "utc": "2026-10-22T12:44:09.422608+00:00"}

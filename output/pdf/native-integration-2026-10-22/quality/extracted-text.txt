@@ -1,0 +1,1242 @@
+ConseqaX: An Evidence Protocol for Recovering
+Ambiguous Agent Actions
+Devrajsinh Jhala
+Independent Researcher
+Abstract—A timed-out tool call can leave an agent uncertain
+whether an operation failed or will commit later. ConseqaX binds
+temporal contracts, readback witnesses separate from acknowl-
+edgements, and distinct state and action-origin conclusions to an
+application recovery policy. We evaluate five deterministic policies
+under shared provider guarantees. Study A retains all 15,360
+SQLite worlds across 24 authored cases in 12 purposive families;
+its 128 seeds added no recorded-metric variation within a case–
+policy group. Four readback policies achieved safe recovery in
+14 cases, versus eight for response-driven retry. The package
+matched a strong reference with separate evidence arithmetic and
+shared application transitions. Its original-contract state reports
+were wrong in 0/2,304 definite outputs, while harmful effects
+remained possible. Polling doubled reads without improving final
+claims under these schedules. A separately frozen 960-world
+follow-up varies 64 availability profiles across three domains:
+polling resolves 27 profiles versus one for a single final read,
+at 741 versus 192 total reads per policy. The reference shares
+this gain; physical outcomes remain identical. The contribution
+is an inspectable evidence protocol and conditional coverage–cost
+evaluation. A postcollection packaging deviation in Study A is dis-
+closed. These internal experiments do not establish autonomous-
+agent superiority or transfer to independently operated services.
+Index Terms —agent systems, outcome verification, recovery,
+idempotency, evidence provenance, uncertainty
+I. INTRODUCTION
+An agent requests an inventory allocation, ticket, or pub-
+lished artifact. The provider accepts the operation, but the
+acknowledgement times out. An immediate retry may create
+a second record; stopping may leave the task unfinished. A
+separate read can reveal an existing effect, yet even a fresh
+empty snapshot cannot establish that the first request will never
+commit later. A reliable recovery decision depends on the
+operation’s identity, provider guarantees, temporal target, and
+available evidence, rather than the response alone.
+Three distinctions matter. First, a response describes a
+tool interaction, whereas a readback supplies evidence about
+external state. Second, global task satisfaction differs from an
+effect being linked to this agent’s operation. Another actor can
+complete the task; missing actor metadata need not imply an
+external actor. Third, a hindsight-correct assertion can have
+been unsupported when issued. A controller that guesses the
+eventual outcome correctly has not thereby justified a retry or
+a completion claim.
+These are established systems and verification concerns
+[1], [ 2], [ 3], [ 4], [ 5], [ 6]. ConseqaX makes them explicit
+in a reusable evidence protocol [ 7]. Its typed records bind
+contracts, attempts, responses, observations, and verification
+receipts. Admitted readback can support satisfied, violated, or
+unknown state, while origin remains a separate conclusion.
+The protocol does not authenticate a provider or manufacture
+request finality. Applications supply source semantics and the
+policy connecting receipts to actions.
+This paper centers that policy boundary. We com-
+pare response-driven same-key retry, state-only readback,
+a separately implemented provenance-aware reference, a
+package-backed single-final-read ablation, and package-backed
+bounded polling. Controller actions change subsequent SQLite
+effects and observations. The experiment asks whether the
+declared evidence policy changes safe recovery, final-report
+correctness, or definite-report coverage at a measured read/wait
+cost, and when ordinary provider idempotency removes the
+apparent advantage.
+The research questions are falsifiable. Q1: How does polling
+change safe recovery relative to response-driven retry, to-
+gether with own harmful effects and recovery failures? Q2:
+Does the package-backed implementation agree with a same-
+information reference using separate evidence arithmetic? Q3:
+What additional origin-report coverage and correctness appear
+beyond state-only reporting? Q4: Does continued polling
+change final-report correctness and coverage relative to one
+final read at its additional resource cost? Q5: What abstention
+and definite-error tradeoffs remain under incomplete public
+histories? Equal or worse recovery, incorrect conclusions,
+unnecessary reads, or parity under shared provider guarantees
+can limit the proposed benefit.
+The contribution is a specified application protocol, a
+bounded recovery policy, and a paired closed-loop evaluation
+of these questions. Separately implemented reference parity
+would support observed conformance, without demonstrating
+superiority. Because state-only and provenance-aware variants
+share action transitions, their comparison isolates reporting
+rather than a provenance-caused recovery benefit. The 12
+purposive families provide challenge-suite evidence; repeated
+seeds do not establish a population of independently sampled
+tasks. A separately audited native development execution and
+the prospective external comparison are reported in Section VI ,
+without a comparative benchmark claim.
+II. RELATED WORK AND POSITIONING
+Idempotence and eventual consistency are longstanding sys-
+tems concerns [ 1], [ 2]. Verified Tool Calls separates acknowl-
+edgements from independently checked effects and admits
+unknown postconditions [ 3]. Callability Is Not Operability
+
+examines controlled interface ambiguity and terminal agent
+claims [4]. Agent-tool anomaly work distinguishes runtime ob-
+servations from external events [5]. LIMBO grades committed-
+effect histories and studies late commits [ 6]. Consequently,
+response/effect separation, effect ledgers, and the danger of
+ambiguous retries are foundations and comparison require-
+ments here, rather than priority claims.
+PROV-DM represents entities, activities, agents, and respon-
+sibility [ 8]. ConseqaX is neither a new general provenance
+model nor a PROV conformance implementation. Its narrower
+boundary links operation identity, temporal contracts, individ-
+ual observation witnesses, and explicit unknown verdicts. A
+source-supported origin link is not proof that the action was
+counterfactually necessary.
+Causal Agent Replay (CAR) performs same-policy interven-
+tions with contrastive suffix and permutation Shapley attribu-
+tion [9]. Policy-Conditioned Counterfactual Credit studies ver-
+ified outcomes under declared interventions and continuation
+policies [ 10]; CausalLoss-Fin jointly intervenes on decisions
+and infrastructure messages [ 11]. Those questions differ from
+whether a live recovery action is justified by its available
+evidence. Our earlier replay adapter uses existing estimators.
+The present experiment requires neither counterfactual writes
+nor a new attribution method.
+AppWorld, ToolSandbox, and 𝜏-bench already evaluate
+stateful agent interaction and world outcomes [ 12], [ 13], [ 14].
+A maintained retail/airline corpus and native DB evaluator also
+support our earlier model-free transfer experiment [ 15], [ 16].
+Replaying reference actions or executing deterministic recov-
+ery logic does not supply an autonomous benchmark score.
+Section VI separates native integration evidence from the
+planned comparison; broader recovery validation still requires
+native reward, matched strong controls, and independently
+checked effect histories under relevant faults.
+The present contribution is therefore conditional: an ex-
+ecutable evidence contract and an auditable comparison of
+policy tradeoffs under declared capabilities. Its value must
+come from the recovery behavior, final-report correctness, cov-
+erage, and cost actually measured, rather than from attributing
+established distributed-systems guarantees to a framework.
+III. EVIDENCE AND RECOVERY PROTOCOL
+A. Objects and temporal targets
+A logical action has stable identity and payload; each
+dispatch has a distinct attempt identity. Captured records
+include the request, provider response, reported assessment,
+separately captured observation, and resulting verification re-
+ceipt. Reported assessments are outputs, not measurements
+of hidden reasoning. An observation states its source, scope,
+completeness, availability, observation time, watermark, and
+effect history. The application declares which source and clock
+are authoritative.
+Let registration be 𝑡0, the original deadline 𝐷, stability
+duration 𝑊, and original horizon 𝐻 = 𝐷 + 𝑊. The original
+contract remains fixed. A separate recovery deadline 𝑅 ≥ 𝐻
+and safety horizon 𝑆 ≥ 𝑅 define later recovery in this study: its
+matching candidates must commit by 𝑅 and persist through 𝑆,
+and its count is checked throughout [𝑅, 𝑆]. A later completion
+may satisfy recovery while violating the original SLA. Neither
+a new read nor an explanatory receipt moves 𝐷.
+For the exact-count record contract, a candidate matches the
+expected business fields, commits within [𝑡0, 𝐷], and persists
+through 𝐻. The declared count must hold, including the
+maximum simultaneous matching count over [𝐷, 𝐻 ]. Histor-
+ical removals and transient extras therefore matter; a current-
+row snapshot alone is insufficient. Simultaneous commits and
+removals are evaluated together, with boundary conventions
+fixed before collection.
+The verifier concludes satisfied, violated, or unknown. A
+complete admitted observation must cover the registered scope
+and history through 𝐻. Stale watermarks, inadequate scope,
+unavailable reads, or malformed history retain unknown.
+Source identity, completeness, timestamps, and provenance
+are trusted adapter declarations. Schema checks and hashes
+establish structure and retained bytes, not source authenticity
+or transactional guarantees.
+B. State, origin, and support
+Global state satisfaction does not require this agent to have
+produced the effect. Action-linked satisfaction additionally
+requires qualifying target evidence linked to the logical op-
+eration. A known global violation makes this linked contract
+false even if an own matching record exists: a second effect can
+invalidate an exactly-one task. Mere witness presence cannot
+replace the whole contract.
+A matching action identity with absent or matching actor
+metadata can support linkage under the admitted provenance
+law. Explicitly different identities exclude this operation; miss-
+ing or conflicting linkage can remain unknown. Provenance
+does not turn an externally satisfied state into a failure. Each
+observation retains its own witnesses. A later record sharing
+an effect ID cannot inherit an earlier observation’s origin link
+while silently changing payload, actor, or removal history.
+Hindsight correctness and evidence support are distinct
+questions. The present evaluator scores final state and action-
+linkage reports against full-ledger truth, with separate definite-
+report and abstention counts. It does not independently label
+support at issuance or score safe-to-retry assertions. Retained
+public histories permit automated checks against the declared
+admission rules; a hindsight-correct guess alone does not es-
+tablish support. An origin abstention does not erase a definite
+state conclusion. Conditional error among definite assessable
+reports and correct definite yield over all planned worlds
+answer different questions.
+C. Why historical absence cannot resolve a pending attempt
+Conditional retry boundary. Suppose an operation times
+out without atomic deduplication, terminal resolution, com-
+pleted cancellation, or an enforceable in-flight bound. Let
+𝐿 < 𝑅 be the last useful retry time. T wo provider worlds give
+identical admissible histories through 𝐿: the initial attempt
+never commits in one and commits after 𝑅 but by 𝑆 in the
+
+other. A retry by 𝐿 achieves recovery by 𝑅; a later retry
+cannot. An extra effect is harmful even if compensated, and
+no alternative operation achieves the target.
+A deterministic policy takes the same decision in both
+histories. Retrying creates a duplicate in the late-commit
+world; declining misses recovery in the never-commit world.
+For a randomized policy, couple its randomness and let 𝑝
+be its useful-retry probability. Duplicate risk in the second
+world is at least 𝑝 and missed-recovery risk in the first at
+least 1 − 𝑝. Their sum is at least one for this constructed
+pair. This elementary indistinguishability argument states a
+known systems boundary [ 6], rather than a new impossibility
+or a measured prevalence. Provider guarantees can break its
+assumptions.
+D. Application safety gate and bounded reads
+Every policy preserves the operation key and payload.
+When a public native idempotency capability is admitted, the
+provider atomically reserves pending and completed work for
+that key. All readback policies may use the same-key exception
+to retry within the common cap before 𝐷. The response-driven
+arm also benefits from the identical provider semantics; it
+is the ordinary bounded idempotent-retry comparator in that
+stratum.
+Without that capability, the readback policies permit another
+dispatch only when every previous attempt has an admitted
+terminal-no-effect guarantee, fresh complete trusted readback
+establishes no relevant effect through the decision time, budget
+remains, and time is strictly before 𝐷. A newer terminal
+response does not resolve an older ambiguous request. An
+empty watermark proves only past absence; it supplies no
+terminal guarantee. Resolution of the agent’s attempts also
+cannot prevent another actor’s future write. Global race free-
+dom would require additional provider semantics.
+The package’s generic retry advice is recorded, but this
+application gate authorizes dispatches. Provisional predeadline
+verification has its own target ending at the current time;
+it never replaces the fixed 𝐷/𝐻 receipt. Bounded polling
+uses externally scheduled callbacks rather than the public
+blocking polling helper, allowing all arms to share admitted
+opportunities. At exhaustion, insufficient evidence remains an
+abstention. No policy dispatches after 𝐷; recovery at 𝑅 is a
+distinct evaluator outcome, not an extension of the original
+dispatch window.
+IV. FROZEN CLOSED-LOOP STUDY
+A. Corpus, separation, and execution
+The schedule crosses 24 new cases, 128 timing seeds, and
+five policies: 15,360 planned worlds. Cases span 12 purposive
+families in three nonpayment SQLite domains: inventory, tick-
+ets, and artifacts. Related cases share mechanisms; identifiers
+and seeds do not create new families. Separate AI agents
+authored controllers and cases. The controller author never
+inspected the case file, and the lead integrator did not manually
+inspect case values before freeze. This is procedural separation
+within an AI-assisted workflow; the tasks are not externally
+authored or randomly sampled from a task population.
+Each world uses a fresh database. The frozen exogenous
+event schedule, timing seed, provider law, source behavior,
+budgets, and read opportunities are paired across policies.
+Actions create branch-specific effects, so later observation
+contents can legitimately diverge. Matching means equal ca-
+pabilities and opportunities, not forcing one policy to consume
+another’s realized evidence. Readback is a separate application
+method on the same SQLite connection and ledger. It supplies
+a signal separate from the acknowledgement, rather than an
+independent connection, source, or trust domain.
+The public allowlist includes request/contract, identi-
+ties, response history, provider capability and terminal re-
+ceipts, and scoped readback history. Controllers receive no
+case/family/fault labels, hidden future events, evaluator truth,
+or another policy’s reports. They are deterministic application
+state machines. The run requires no LLM, user simulator,
+remote provider, or paid API call and supplies no autonomous-
+agent benchmark reward.
+B. Five policies and the strong comparison
+The single-read arm is not forced to spend its final query
+before 𝐻. It may perform a predeadline gate query when
+terminal guarantees make retry relevant; its first query at
+or after 𝐻 is its only final query. Polling can use later
+opportunities to resolve lag, incompleteness, or unavailability.
+Equal maximum budgets need not yield equal spend; early
+stopping and skipped queries are policy outcomes.
+The reference imports no package verifier. The controller
+author implemented its evidence arithmetic separately, while
+sharing the declared application transition logic with the
+polling comparison. Thus exact agreement is a conformance
+result, not a contest between independently designed recov-
+ery algorithms or external implementations. State-only and
+provenance-aware arms likewise do not test a provenance-
+caused action benefit when transitions coincide. They test
+origin-report coverage and correctness under the admitted
+provenance law.
+C. Endpoints, costs, and finite-suite analysis
+The primary all-slot endpoint is operational safe recovery:
+the global recovery payload/count contract holds by 𝑅 and
+persists through 𝑆, with neither an own duplicate nor an
+own unwanted effect committed through 𝑆. An own duplicate
+means more cumulative own committed effects than the al-
+lowed logical-operation count, including effects later removed.
+An own unwanted effect mismatches the expected business
+fields or commits after 𝑅. These predicates do not certify
+the absence of every harmful external activity; another actor’s
+effects can still violate the global recovery count. Every sched-
+uled cell remains in the operational denominator, and failed or
+unstarted execution cannot earn success. Failed cells’ semantic
+state, origin, and harm outputs remain unavailable rather than
+receiving fabricated violation labels; an incomplete collection
+cannot yield a complete audited result. Own duplicate and
+
+TABLE I
+FROZEN POLICIES, EVIDENCE INTERPRETATION, AND RECOVERY/READ BEHAVIOR. NATIVE IDEMPOTENCY AND TERMINAL-RESOLUTION CAPABILITIES ARE SHARED;
+INDEPENDENT REFERENCE ARITHMETIC DOES NOT IMPLY AN INDEPENDENTLY DESIGNED APPLICATION POLICY.
+Policy Evidence interpretation Recovery and reads
+response_retry ACK/error proxies for state and action
+completion; unresolved timeout unknown.
+Retry ambiguous timeouts with the same key within
+the cap and original deadline.
+readback_state Trusted complete history for global state; abstain
+on provenance when state holds.
+Shared gate and bounded scheduled reads.
+reference Independent standard-library count/time and
+provenance arithmetic.
+Same application state machine and read
+opportunities as polling.
+consequax_one_read Public 2.1.1 verification receipts plus explicit
+linkage uncertainty.
+Gate-relevant predeadline queries; one final
+horizon-eligible query.
+consequax_poll Same public verification and linkage rule. Shared gate with continued scheduled reads until
+known or exhausted.
+unwanted events are mandatory companions, including effects
+subsequently removed. If safety is unauditable, all-slot harm
+lower/upper bounds must expose that uncertainty.
+Retained truth records distinguish original 𝐷/𝐻 satisfaction,
+operation-linked satisfaction, and controller-created effects.
+The summary scores the final state and action-linked reports
+for hindsight correctness, false success, definite coverage, and
+abstention. Conditional error is wrong definite outputs divided
+by definite assessable outputs; correct definite yield uses all
+planned worlds. A zero-claim error rate is undefined. Semantic
+rates and resource means use observed completed cells with
+unavailable counts shown; the primary operational score and
+claim yields retain planned denominators. External completion
+does not establish successful execution by this controller.
+For family 𝑓 and policy 𝑚, let 𝑦 𝑓 𝑚 be mean operational safe
+recovery over every scheduled case/seed cell in that family. The
+predeclared primary contrast is
+Δ = 1
+12
+12∑
+𝑓 =1
+(𝑦 𝑓 ,poll − 𝑦 𝑓 ,response). (1)
+The full 12 paired differences accompany the equal-family
+mean and all-slot cell totals. Secondary views compare polling
+with state-only and one-read; reference agreement is imple-
+mentation checking. Capability, domain, and fault strata are
+descriptive. No population p-values, task-population confi-
+dence intervals, equivalence, or noninferiority claims follow
+from these purposive families. Timing-seed replication charac-
+terizes this fixed suite, not new independent tasks. Any seed-
+law uncertainty must identify its own sampling assumptions
+and cannot supply task-population inference.
+The analysis retains actual dispatches, readbacks, wait de-
+cisions, and logical decision time under shared ceilings, sepa-
+rating evaluator audit work. Accounting includes unsuccessful
+requests and timeout dispatches. Provider terminal guaran-
+tees are response fields; separate resolution, cancellation, and
+refused-request cost endpoints are not implemented. A zero-
+success cost-per-success ratio is undefined. Host runtime is
+separate from simulated logical time; one local collection does
+not establish intrinsic production overhead, wall latency, or
+service charges.
+D. Freeze and first-run integrity
+The pinned 2.1.1 wheel runtime is bound to study source 22
+e88498cff0e2afd1549803fb4d9645902e74b9 and protocol
+commit 3d3dd4ca663d3e16c7cb1ead4c59c724af9bedd
+7. Protocol SHA-256 is b5c6a06bf1d758678e4d9890aa6
+6872d4036634e2a4a4fd89626bd710bbc5aaa . The artifact
+binds corpus, schedule, controllers, provider/evaluator law,
+analysis, Python executable identity, and installed framework
+source/runtime before measured execution. It retains first-run
+cells, failures, stop/abstain decisions, and deviations. Correc-
+tions after exposure require a separate version; deterministic
+re-execution cannot replace the original denominator or create
+new independent trials. Hashes identify bytes rather than
+authenticating the source’s semantic claims.
+A packaging deviation is retained explicitly. All scheduled
+trials, database snapshots, journal rows, and the summary
+were present when the session resumed, but the original
+runner’s terminal manifest and receipt were absent. Its exit
+status and termination cause are unknown. A separate post-
+collection finalizer preserved every existing byte, rechecked
+source/runtime/claims, and created only the missing packaging
+files. It did not resume or rerun worlds or regenerate the
+summary. The completion timestamp denotes packaging time.
+The unchanged frozen auditor subsequently checks all retained
+semantics; neither this audit nor retained claims prove absence
+of off-record execution or earlier tampering.
+V. RECOVERY RESULTS
+A. Retained collection and effective diversity
+All 15,360 scheduled worlds are retained, with 3,072
+completed cells per policy and no execution failures. The
+unchanged auditor verified every SQLite snapshot and re-
+computed the endpoint summary; a portable artifact recheck
+agreed. The packaging deviation in Section IV-D remains part
+of this result. Across all 120 case–policy groups, none of the
+recorded endpoint or resource metrics varied over the 128
+seeds. Some exogenous timestamps varied, but the repetitions
+
+added no endpoint diversity. The substantive challenge set
+therefore remains 24 authored cases in 12 purposive families,
+rather than 15,360 independent tasks.
+B. Recovery, harms, and the strong comparison
+Every readback policy achieved operational safe recovery in
+1,792/3,072 worlds (14/24 cases), compared with 1,024/3,072
+(8/24) for response-driven retry. The predeclared equal-family
+primary difference was +0.25. Figure 2 shows all 12 family
+contrasts: three were +1, and nine were zero. Differences
+against the reference, state-only, and one-final-read policies
+were zero in every family.
+The three positive families have specific explanations. In
+weather-supply and translation-routing cases, response-driven
+timeout retries created an extra non-idempotent effect; the
+readback policies dispatched once. In mobile-lab cases, the
+first response explicitly terminated without an effect; readback
+policies verified fresh absence and retried, while the response
+baseline’s declared error rule stopped. This third gain concerns
+that rule, rather than superior deduplication. The equally
+informed classical reference achieved the same recovery as
+the package.
+Residual harm is material. In the same 256 archive-rights
+worlds, one initial provider dispatch created two wrong-
+payload effects. These are both duplicate and unwanted events,
+not 512 distinct harmed worlds. Detection did not cancel or
+repair the effects. Environmental-release cases supply a dif-
+ferent failure: an external actor satisfies the original contract,
+then a delayed own effect breaks the later exact-count target
+without an own duplicate or unwanted flag. All 256 response
+worlds with original satisfaction but failed recovery belong to
+this family. Equal aggregate original/recovery counts for the
+readback policies conceal a 256-world later-recovery gain and
+a different 256-world later loss. One target cannot substitute
+for the other.
+All 3,072 reference–polling pairs agreed on final
+state/linkage reports, endpoint vectors, controller action
+sequences, and full retained truth. This is observed
+implementation conformance under the shared policy,
+not superiority over the strong reference. State-only and
+polling also had identical actions and physical histories;
+1,024 pairs differed in the action-linked report. Provenance
+expanded reporting here, without a recovery-action benefit.
+C. Reporting and the cost of additional polls
+The response policy made 768 false-success and 256
+false-negative state reports. The readback policies made no
+wrong definite state report, but abstained in 768/3,072 worlds.
+Provenance-aware policies retained 1,024/3,072 linked absten-
+tions; state-only retained 2,048/3,072. Correct negative reports
+contribute to these yields. Zero wrong original-contract reports
+did not imply zero harms or guaranteed safe recovery.
+Polling and one-final-read agreed on both final claims, dis-
+patches, effect histories, and every non-polling-cost endpoint
+in all 3,072 pairs. Polling nevertheless consumed 7,680 reads
+versus 3,840, with mean logical decision time 220 versus
+200 ms. These are simulated decision times, not measured
+production latency. The schedule explains the negative finding:
+no case with insufficient evidence at 𝐻 became admissibly
+known at 𝐻 + 40 or 𝐻 + 80. Transient limitations either
+cleared before the first final read or persisted beyond the
+last opportunity. Thus Study A shows no incremental polling
+utility under its schedules; it does not test the general benefit
+of recoverable lag. The separately frozen follow-up below
+addresses that specific coverage gap.
+D. Study B: controlled evidence availability
+Study A ’s coverage gap motivated a separate follow-up
+after its outcomes were known. We retained the byte-identical
+world, controllers, and evaluator, then froze a new complete
+factorial grid before collecting its own data. Source commit
+d805b3e3560c05ee0a7efd02a80fc18503c6ee05 , protocol
+commit b937920469285cdd971783fa6cb33216a7e4da13 ,
+and protocol SHA-256 e874c6781aa0dbc8ef682ea0a8d37c
+25d73cc861dada05fd0379116d4a7f6584 bind that design.
+This is a disclosed, post hoc motivated sensitivity experiment,
+rather than a new held-out corpus or replacement for Study A.
+The 64 profiles cross readback lag { 0, 40, 80, 95} ms with
+independently varied unavailable-until and incomplete-until
+times { 0, 170, 210, 250} ms. Each profile repeats in the three
+domains at seed zero: 192 cases and 960 scheduled policy
+worlds. Here 𝐷 = 100, 𝐻 = 150, 𝑅 = 250, and 𝑆 = 330 ms;
+reads remain at 50, 150, 190, 230 ms. Every initial dispatch
+acknowledges at 2 ms and creates one correct effect at 10
+ms. All arms share native idempotency. There are no external
+writes, removals, or wrong effects. This intentionally uniform
+physical-success design isolates evidence-window coverage
+and cost. Profiles are controlled mechanisms, and the three
+domains repeat them; neither 192 cases nor 960 worlds repre-
+sent independent task samples.
+All 960 worlds completed without failure. The separately
+implemented auditor verified 1,925 saved artifacts, queried
+all 960 SQLite snapshots, and agreed with the summary.
+Unlike Study A, the original collector produced its terminal
+manifest and receipt normally. All five policies dispatched
+once, achieved original and recovery satisfaction in 192/192
+worlds, and had zero duplicate or unwanted events. Their
+physical effect histories agreed in every five-arm case. Thus
+the primary safe-recovery contrast is zero.
+The one-final-read policy resolved one of 64 profiles per
+domain; polling resolved 27, matching the prospectively speci-
+fied timing calculation. The paired correct-state-yield increase
+is 78/192 = 26/64 = 0.40625, shared by the reference and
+state-only readback. All 192 reference–polling pairs agreed
+on reports, endpoint vectors, dispatch decisions, and physical
+records. State-only differed from polling in 81 linked reports
+while preserving actions and physical outcomes. Polling used
+741 reads versus 192 for one-final-read, or 3.859375 versus
+one per world; mean logical decision time increased by 74.375
+ms. These are charged simulated reads and decision times, not
+production latency.
+
+0% 50% 100%
+Fraction of denominator
+Response retry
+failed 0/3072
+Readback state
+failed 0/3072
+Independent ref.
+failed 0/3072
+ConseqaX one read
+failed 0/3072
+ConseqaX poll
+failed 0/3072
+1024/3072
+1792/3072
+1792/3072
+1792/3072
+1792/3072
+1280/3072
+1792/3072
+1792/3072
+1792/3072
+1792/3072
+1024/3072
+1792/3072
+1792/3072
+1792/3072
+1792/3072
+exact n / N
+A  Recovery outcomes
+Operational safe (planned)
+Original fixed SLA (observed)
+Recovery (observed)
+0% 50% 100%
+Fraction of denominator
+1024/3072
+256/3072
+256/3072
+256/3072
+256/3072
+256/3072
+256/3072
+256/3072
+256/3072
+256/3072
+exact n / N
+B  Safety events (observed)
+Own duplicate event
+Own unwanted event
+0% 50% 100%
+Fraction of denominator
+Response retry
+failed 0/3072
+Readback state
+failed 0/3072
+Independent ref.
+failed 0/3072
+ConseqaX one read
+failed 0/3072
+ConseqaX poll
+failed 0/3072
+768/3072
+2304/3072
+2304/3072
+2304/3072
+2304/3072
+1024/3072
+0/3072
+0/3072
+0/3072
+0/3072
+1280/3072
+768/3072
+768/3072
+768/3072
+768/3072
+exact n / N
+C  Global-state claim yields (planned)
+Correct definite
+Incorrect definite
+Explicit abstention
+0 1 2 3 4
+Mean charged count (observed slots)
+0/3072
+7680/3072
+7680/3072
+3840/3072
+7680/3072
+4352/3072
+3840/3072
+3840/3072
+3840/3072
+3840/3072
+exact sum / N
+D  Mean resources
+Readbacks
+Dispatches
+Finite-suite recovery and global-state reports
+24 authored cases x 128 seeds per method; no within-case recorded-metric variation
+N is the displayed denominator; [U=n] marks unavailable semantic/resource slots (omitted when zero).
+Operational safe uses every planned slot; failed execution counts as false. Original SLA stays fixed.
+Claim yields use planned slots: correct + incorrect + abstention + unavailable = all planned.
+Global-state false-success counts / observed: retry 768/3072; state 0/3072; reference 0/3072;
+    one read 0/3072; poll 0/3072. False success is a subset of incorrect definite claims.
+Resources are charged counts. Logical decision time is exported separately; it is not wall latency.
+Fig. 1. Study A: all five policies, exact denominators, own harmful events, global-state reporting, and read/dispatch costs. All recorded metrics were constant
+across seeds within each of the 24 authored cases. Reference independence concerns evidence arithmetic; application transitions and controller authorship are
+shared. Reporting correctness is distinct from physical recovery and evidence support.
+
+TABLE II
+STUDY A: RECOVERY AND RESOURCES. EACH POLICY HAS 3,072 PLANNED AND COMPLETED WORLDS. ORIGINAL 𝐷/𝐻 SATISFACTION AND RECOVERY 𝑅/𝑆 ARE
+DISTINCT TARGETS. OWN DUPLICATE AND UNWANTED EVENTS CAN OVERLAP. MEANS ARE EXACT CHARGED COUNTS, NOT WALL LATENCY.
+Policy Safe recovery Original 𝐷/𝐻 Recovery 𝑅/𝑆 Own duplicate Own unwanted Mean reads Mean dispatches
+Response retry 1024/3072 1280/3072 1024/3072 1024/3072 256/3072 0 17/12
+Readback state 1792/3072 1792/3072 1792/3072 256/3072 256/3072 5/2 5/4
+Separate reference 1792/3072 1792/3072 1792/3072 256/3072 256/3072 5/2 5/4
+ConseqaX one final read 1792/3072 1792/3072 1792/3072 256/3072 256/3072 5/4 5/4
+ConseqaX polling 1792/3072 1792/3072 1792/3072 256/3072 256/3072 5/2 5/4
+TABLE III
+STUDY A: ORIGINAL-CONTRACT FINAL REPORTS. CONDITIONAL ERROR IS WRONG/DEFINITE; CORRECT YIELD IS CORRECT/PLANNED. BOTH POSITIVE AND NEGATIVE
+CONCLUSIONS COUNT. COMPARISONS USE FULL-LEDGER TRUTH, RATHER THAN CONTEMPORANEOUS SUPPORT OR THE LATER RECOVERY TARGET.
+Policy State error State correct yield Linked error Linked correct yield
+Response retry 1024/1792 768/3072 768/1792 1024/3072
+Readback state 0/2304 2304/3072 0/1024 1024/3072
+Separate reference 0/2304 2304/3072 0/2048 2048/3072
+ConseqaX one final read 0/2304 2304/3072 0/2048 2048/3072
+ConseqaX polling 0/2304 2304/3072 0/2048 2048/3072
+TABLE IV
+STUDY B: EXACT FINITE-GRID REPORTS AND READ COSTS, 192 PLANNED/COMPLETED WORLDS PER POLICY. EVERY DEFINITE REPORT IS HINDSIGHT-CORRECT IN THIS
+UNIFORM-SUCCESS DESIGN. IT CANNOT ESTIMATE THE RESPONSE POLICY’S FALSE-SUCCESS RISK. LINKED ABSTENTION IS DISTINCT FROM STATE ABSTENTION.
+Policy State correct/planned State unknown Linked correct/planned Total reads Mean decision (ms)
+Response retry 192/192 0/192 192/192 0 2
+Readback state 81/192 111/192 0/192 741 224.375
+Separate reference 81/192 111/192 81/192 741 224.375
+ConseqaX one final read 3/192 189/192 3/192 192 150
+ConseqaX polling 81/192 111/192 81/192 741 224.375
+The full factor grid in Fig. 3 shows the boundary: late oppor-
+tunities help only when availability and completeness recover
+and the watermark reaches 𝐻. Lag 95 ms and either window
+persisting through 250 ms remain unresolved. The ACK-driven
+response policy reports all 192 successes correctly in hindsight
+with no read, since all effects are constructed to succeed. Its
+report arrives before the effect and without horizon-covering
+evidence; this experiment supplies no estimate of its risk in
+failing worlds. Together, the studies show conditional polling
+utility and its cost, with no package superiority over the equally
+informed reference, no additional recovery-action benefit, and
+no task-population inference.
+VI. NATIVE INTEGRATION AND PROSPECTIVE EXTERNAL PILOT
+A. Retained integration finding
+A separate local integration check executes the maintained
+airline environment at revision 96a3ef92329baf908ffe9d
+fe188cea34e8701d2a, distributed as tau2 1.0.1 [ 15], [ 16].
+The native assistant and dynamic user both use local Qwen3
+4B Instruct inference. This is actual autonomous dialogue,
+rather than reference-action replay, but the development task is
+excluded from the planned comparison. The unwrapped native
+condition does not import or invoke ConseqaX.
+The final-source check on development task 19 returned 12
+model completions and five native tool calls, ending with na-
+tive user_stop. An offline auditor verified all eight execution-
+source files, 272 bound upstream files, 54 installed frame-
+work payload files, and exactly one actual HTTP generation
+dispatch per recorded completion. It linked canonical parsed
+HTTP requests to context checks and strict native inputs;
+replayed initialization and every tool call, including reads;
+checked initial/final database snapshots; and reproduced native
+ALL grading. The raw inventory was created after collection.
+Offline render/token checks validate saved collector observa-
+tions rather than rerunning the server or tokenizer; discarded
+JSON key order prevents reconstruction of the original wire
+serialization. The native reward was 0: DB reward 0, with
+COMMUNICATE 1 because this task has no communication
+requirement. Vacuous communication success is not evidence
+of substantive explanation quality. Artifact consistency does
+not turn a failed native task into a successful evaluation.
+The model journal retained 53,420 prompt tokens and
+1,228 completion tokens across both model roles. Prompt
+totals already include cached tokens. The maximum complete
+prompt was 7,536 tokens; its required context including the
+output allowance and margin was 8,112 of 16,384 tokens.
+Execution took 1,806.5 seconds on this CPU host, under the
+
+Poll minus
+retry
+Poll minus
+state
+Poll minus
+reference
+Poll minus
+one read
+accessibility_case_closure
+support_transition
+archive_rights_review
+support_transition
+campus_incident_escalation
+support_transition
+course_packet_delivery_receipt
+delivery_registration
+environmental_dataset_release
+delivery_registration
+exhibition_material_allocation
+inventory_reservation
+field_kit_staging
+inventory_reservation
+mobile_lab_consumables
+inventory_reservation
+museum_export_manifest
+delivery_registration
+release_catalog_registration
+delivery_registration
+translation_review_routing
+support_transition
+weather_supply_hold
+inventory_reservation
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++1.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++0.000 +0.000 +0.000 +0.000
++1.000 +0.000 +0.000 +0.000
++1.000 +0.000 +0.000 +0.000
+−1.0
+−0.5
+0.0
+0.5
+1.0
+Paired operational-safe rate difference
+Operational safe recovery across every planned family
+ConseqaX poll minus comparator · fixed scale [−1, +1] · positive favors polling
+T wo authored cases per family x 128 seeds; recorded metrics did not vary across seeds within a case.
+Cells are paired case-seed means. Exact sum-difference / pairs and domains are in the companion CSV.
+Equal-family means (all 12): vs retry +0.2500; vs state +0.0000; vs reference +0.0000; vs one read +0.0000
+Every planned primary pair is retained; operational failures count as false. No population inference.
+Fig. 2. Study A: every planned family’s paired operational-safe difference, on a fixed [ −1, 1] scale. Each family has two related cases and 128 seeds;
+repetitions added no recorded-metric variation. The equal-family difference is +0.25 against response retry and zero against all three readback comparators.
+These purposive families do not support task-population inference.
+earlier 600-second request and 3,600-second trajectory limits.
+These observations characterize one development execution,
+not framework overhead, a comparative success rate, or a task-
+population estimate. The bound execution source is 8bd1cd8
+8ab3644a9c6417e29308ab4b502b40484; the artifact retains
+the separate audit and its complete manifest.
+Development failures are retained as well. An earlier
+guarded execution ended at a 600-second request timeout,
+after seven invocations and six returned completions, without
+a returned native simulation or native grade. It emitted zero
+package receipts and zero guard blocks, so it did not validate
+the receipt path. Its task reward is unavailable, rather than
+an invented semantic zero. Before any official collection,
+the candidate condition was amended uniformly to 1,200
+seconds per request and 7,200 seconds per trajectory. That
+guarded check also timed out: eight of nine model invocations
+returned, five actual read-only tool calls completed, and no
+native simulation or grade was returned. It likewise emitted
+no package receipt or guard block. The failed request’s full
+prompt fit within the context allowance; context fit alone did
+not ensure completion within the wall-time budget. The one-
+shot pipeline refused to proceed before readiness, protocol
+publication or official collection. Table V retains these distinct
+dispositions. No comparative pilot score is reported here.
+A separate failure-integrity audit verified all nine canonical
+request/context links and replayed all five completed reads with
+
+0 170 210 250
+Unavailable until (ms)
+0
+40
+80
+95Readback lag (ms)
+3 | 3
+2 | 1
+3 | 0
+3 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+3 | 0
+3 | 1
+3 | 0
+3 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+Incomplete until 0 ms
+0 170 210 250
+Unavailable until (ms)
+0
+40
+80
+95Readback lag (ms)
+3 | 0
+3 | 1
+3 | 0
+3 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+3 | 0
+3 | 1
+3 | 0
+3 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+Incomplete until 170 ms
+0 170 210 250
+Unavailable until (ms)
+0
+40
+80
+95Readback lag (ms)
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+3 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+Incomplete until 210 ms
+0 170 210 250
+Unavailable until (ms)
+0
+40
+80
+95Readback lag (ms)
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+0 | 0
+4 | 1
+Incomplete until 250 ms
+−3 0 3
+Polling minus one-final-read correct reports (counts out of 3)
+Evidence availability: coverage and read cost
+All 64 controlled profiles, each repeated in three application domains
+Each cell: correct definite reports (top), mean charged reads (bottom).
+Both rows: polling | one-final-read; counts use three planned domains.
+Domains repeat one mechanism; they are not independent task samples.
+Reads use observed slots; u marks unavailable outcomes.
+All five policies and exact endpoint counts remain in the tables.
+Fig. 3. Study B: all 64 controlled availability profiles, repeated across three domains. Actual report coverage and read costs are retained for polling and
+one-final-read. These paired conditions isolate evidence timing; every policy has identical successful physical outcomes, and the classical reference matches
+polling.
+
+TABLE V
+RETAINED EXCLUDED DEVELOPMENT EXECUTIONS, NOT PAIRED COMPARATIVE
+TRIALS. CALLS ARE RETURNED/ATTEMPTED MODEL INVOCATIONS ACROSS BOTH
+ROLES. A DASH DENOTES UNAVAILABLE NATIVE REWARD, RATHER THAN
+SEMANTIC ZERO. ONLY NATIVE 19 RETURNED NATIVE GRADING AND PASSED
+FULL REPLAY/REGRADING AUDIT.
+Check Request limit (s) Calls Tools Reward
+Native 19 600 12/12 5 0
+Guard 20a 600 6/7 3 –
+Guard 20b 1,200 8/9 5 –
+unchanged database snapshots. It passed those partial checks
+while explicitly declining native-reward validation: no native
+simulation exists to regrade. Returned-response usage covers
+eight completions only; the timed-out request’s usage remains
+unknown. Both development inventories were finalized after
+collection, with original bytes preserved.
+B. Matched conditions and audit boundary
+The prospective design selects 12 distinct airline task IDs by
+a declared metadata-based hash rule, excluding development
+IDs 19 and 20. Six tasks have substantive communication
+criteria and six have empty criteria. Four conditions and one
+declared seed give 48 planned trajectories, not 48 independent
+tasks. Task and rotating condition order must be published with
+the execution protocol before official generation. The corpus
+was exposed in the earlier model-free transfer study; these are
+externally authored, previously exposed tasks, not an author-
+unseen holdout.
+All conditions retain the complete native policy, tool
+schemas, actual environment, dynamic user, and required DB
+plus COMMUNICATE reward. Proposed mutations determine
+a shared public-read schedule; subsequent dialogue and evi-
+dence can diverge. Figure 4 identifies the four conditions. C
+and G share both the application predicate and conservative
+guard. G invokes that predicate through a custom ConseqaX
+2.1.1 verifier and emits a full receipt, while C emits a compact
+report. Their comparison tests integration, representation and
+guard interactions, not independent verifier arithmetic or the
+built-in temporal RecordVerifier. Shared predicate errors
+can survive automated agreement. The guard can suppress a
+legitimate later identical request and may never activate in
+ordinary dialogue; either outcome must be retained.
+The planned shared ceilings are 80 native steps, 48 com-
+bined assistant/user model invocations, 512 generated tokens
+per request, and the amended request/trajectory deadlines
+above, with no corrective retries. Every generation must
+pass a complete-history render, token-ID/context check and
+model-identity check without history trimming. Local request
+normalization is restricted to the pinned provider’s disclosed
+schema serialization and ordinary assistant null-field omission.
+A failed gate stops that trajectory; no replacement completion
+is silently substituted.
+The primary finite-pilot endpoint is operational full native
+reward over all 12 planned slots per condition. Failed or
+unstarted slots cannot earn operational success. Unavailable
+native reward and components remain unavailable; native
+premature termination retains its zero reward with missing
+component grades. Empty communication criteria pass vac-
+uously only when component evaluation is reached. A passed
+artifact audit does not imply that all planned slots ran or
+that any task succeeded. The audit must retain every planned
+disposition and distinguish complete accounting from observed
+journal prefixes or missing usage.
+A separately implemented auditor imports neither the col-
+lection runner, wrapper, transport nor framework. It recon-
+structs all actual calls chronologically and regrades saved
+native trajectories through the unchanged evaluator. The addi-
+tional read replay matters because native strict replay skips
+nonmutating reads. This is automated checking within the
+same AI-assisted project, not independent external replication.
+Native synchronous execution injects no lost acknowledgement
+or delayed commit. Current public fields do not establish
+temporal durability, settlement, safe retry, or action origin;
+receipt origin remains unknown. The same small model sup-
+plies assistant and user, one seed does not estimate execution
+variance, and persistent prompt caches plus shared host load
+prevent causal wall-time attribution to the package.
+VII. SUPPORTING EVIDENCE AND VERSION BOUNDARIES
+Earlier experiments corroborate narrower components with-
+out adding independent recovery families. Version 1.1.0 re-
+tained 503/504 factual-audit episodes across three small local
+models, with 72 unknown state reports; an 84-trace same-
+evidence judge made nine wrong among 60 definite state
+reports. Model-free tool transfer retained 656 cells and 900
+operation captures, without autonomous reward. The native
+CAR bridge matched eligible point vectors in 640/1,024 paired
+groups; 384 were unavailable [ 17], [ 18]. Version 2.0 offline
+migration preserved all 503 retained canonical conclusions
+while changing 275 diagnosis codes. The historical manuscript
+and versioned evidence ledger retain denominators, protocol
+deviations, and detailed results.
+The new experiment uses selected 2.1.1 public recording,
+contract, observation, and record-verification paths [ 7]. Its
+callback-based application polling and safety gate are explicit
+integration code. It does not evaluate the public blocking
+polling helper, composite/multiple-source verification, Open-
+Telemetry, SDK integrations, arbitrary multi-action traces, or
+the full release surface. Historical 1.1.0 results and 2.0 mi-
+gration are not relabeled as 2.1.1 performance. Byte-identical
+numerical modules alone would not establish end-to-end ver-
+sion equivalence.
+VIII. DISCUSSION AND LIMITATIONS
+An evidence protocol is useful only under meaningful
+source and operation semantics. A watermark covers history
+through a declared time; finite auditing through 𝑆 cannot prove
+absence of all future effects. Provider deduplication or termi-
+nal resolution is supplied equally to every arm, not created
+by verification. Concurrent external actors remain a distinct
+
+Native four-arm method and evaluation boundary
+Native simulated
+user
+Private user scenario
+Simulated dialogue
+Native assistant
+Full policy + tool schemas
+Complete message history
+Matched wrapper
+Pre-read   /   write   /   post-read
+Actual calls in native history
+Native environment
+Actual tools + state
+Native task initialization
+Wrapper condition
+Evidence shown to assistant Guard
+B Raw readback Off
+C Direct public-field report On
+R ConseqaX 2.1.1 receipt Off
+G ConseqaX 2.1.1 receipt On
+C / R / G share field_status; C / G share the same guard.
+Evaluator capture
+Sealed execution
+T ool calls + DB hashes
+Saved native run
+Independent audit
+Full-call replay
+Native ALL grader
+DB + COMM
+Evaluator-only gold
+Reference actions
+Expected DB + criteria
+Gold never enters the wrapper or assistant.
+Fig. 4. Prospective native comparison and information boundary. B receives raw public reads; C receives a compact field report and conservative guard; R
+receives package receipts without the guard; G receives receipts and the same guard as C. C, R and G use the same field_status application predicate. Native
+gold/reference data enter the evaluator and offline audit only. This methods diagram contains no benchmark outcome.
+source of harmful global count changes. These assumptions
+constrain any recovery conclusion.
+Strong-reference parity should be interpreted directly. Sep-
+arate arithmetic reduces reliance on one verifier implemen-
+tation, but a shared controller author and application state
+machine can preserve shared mistakes. The saved-artifact
+auditor uses separate code, while its author also implemented
+the controllers; this is not external replication. Exact agreement
+on this suite is neither superiority nor a proof of general safety.
+Advantages over response or state ablations must identify the
+omitted evidence and the precise claim or decision it changes.
+If provenance changes only reporting, that is the measured
+boundary; a causal action benefit cannot be inferred.
+The controlled recovery corpus is small, purposive, AI-
+authored, and implemented on one local substrate. Three
+record domains broaden application vocabulary and predicate
+use without establishing transfer to independent services. Re-
+peated timing seeds cannot repair this external-validity gap.
+Deterministic policies exercise recovery logic, not language
+understanding, user negotiation, planning, provider authentica-
+tion, or autonomous tool selection. These data can characterize
+a conditional decision boundary; they cannot establish general
+autonomous-agent improvement or effectiveness across inde-
+pendently operated services.
+Evaluation uses executable application contracts, effect-
+ledger ground truth, and separately implemented automated
+checks. No participant study or annotation study is part
+of this paper; interpretability, preference, rationale quality,
+and user trust are not measured. Automated cross-checks
+can expose implementation or arithmetic inconsistencies, but
+cannot establish that an external adapter’s source-admission
+declarations or provider guarantees are true. That requires
+objective validation against the service’s actual semantics and
+independently retained effects.
+The pending native comparison extends execution to an
+externally authored environment but does not inject ambigu-
+ous commits. The next fault-focused validation should freeze
+selection and a real agent policy in an external benchmark or
+provider sandbox, preserving strong classical recovery controls
+under identical capabilities and budgets. Native reward must
+accompany independently checked effect histories and vali-
+dation of adapter/status/idempotency semantics. The supplied
+strong guards and committed-effect grading of LIMBO [ 6]
+are relevant comparators, rather than novelty claims for this
+framework. A declared sampling design and precision target
+are necessary for broader inference. More internal cases, AI
+audits, or reference-action replay cannot substitute for this
+validation.
+IX. CONCLUSION AND ARTIFACT A VAILABILITY
+ConseqaX provides inspectable boundaries between tool
+responses, verified temporal state, operation-linked origin,
+and explicitly recorded assertions and evidence. The closed-
+loop study evaluates the application decisions and resource
+costs that follow from those boundaries under shared provider
+guarantees. Its scope is a frozen challenge suite and determin-
+istic recovery policies. Historical model, transfer, replay, and
+migration evidence retains its original versions and targets.
+
+Comparisons use established provider guarantees as shared
+assumptions and treat reference agreement as conformance.
+The current MIT distribution is version 2.1.2 [ 19]; these
+experiments retain their 2.1.1 pin [ 7]. The public repository
+retains protocols, source hashes, schedules, raw traces, dis-
+positions, evaluator arithmetic, and deviations. A DOI-backed
+immutable research archive has not yet been established. The
+earlier manuscript preserves full replay definitions, interval
+tradeoffs, source pins, and historical audits. No real payment
+or production-service write is part of the reported recovery
+experiments.
+AI ASSISTANCE AND VERIFICATION DISCLOSURE
+Generative AI assisted software development, case creation,
+source inspection, automated artifact checking, and manuscript
+drafting. Separate AI authorship and saved-artifact audits do
+not constitute external replication. No participant or annota-
+tion study was conducted. The author is responsible for the
+manuscript and venue-required disclosure.
+REFERENCES
+[1] P . Helland, “Idempotence Is Not a Medical Condition,” Commu-
+nications of the ACM , vol. 55, no. 5, pp. 56–65, 2012, doi:
+10.1145/2160718.2160734.
+[2] W. Vogels, “Eventually Consistent,” Communications of the ACM , vol.
+52, no. 1, pp. 40–44, 2009, doi: 10.1145/1435417.1435432.
+[3] I. K. Mansoor, A. Phadke, and P . Rana, “Verified Tool Calls Improve
+LLM Agent Reliability Under Non-Atomic Failures,” arXiv:2608.02645,
+v1, Jul. 2026. [Online]. Available: https://arxiv.org/html/2608.02645v1
+[4] Z. Wang, “Callability Is Not Operability: Controlled Interface Interven-
+tions for LLM Agents,” arXiv:2608.23628, v2, Aug. 2026. [Online].
+Available: https://arxiv.org/html/2608.23628v2
+[5] A. Trofimov and B. Novikov, “When Tool Calls Succeed but Workflows
+Fail: Anomalies at the Agent-Tool Boundary,” arXiv:2609.15397v1, Sep.
+2026. [Online]. Available: https://arxiv.org/html/2609.15397v1
+[6] J. Li, “Where Does Exactly-Once Live? Model, Harness, and
+Tool-Contract Effects on Duplicate Side Effects in LLM Agents,”
+arXiv:2609.29095v1, Sep. 2026. [Online]. Available: https://arxiv.org/
+html/2609.29095v1
+[7] D. Jhala, “ConseqaX,” MIT Python distribution, ver. 2.1.1, Oct. 19,
+2026. [Online]. Available: https://pypi.org/project/consequa-x/2.1.1/
+[8] L. Moreau and P . Missier, Eds., “PROV-DM: The PROV Data Model,”
+W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.
+w3.org/TR/2013/REC-prov-dm-20130430/
+[9] J. Shah, “Causal Agent Replay: Counterfactual Attribution for LLM-
+Agent Failures,” arXiv:2606.08275, v1, Jun. 2026.
+[10] R. Meng, “Policy-Conditioned Counterfactual Credit for Verifi-
+able Reinforcement Learning of Long-Horizon Language Agents,”
+arXiv:2606.05263, v1, Jun. 2026.
+[11] A. Sharma, “CausalLoss-Fin: Attributing Financial-Agent Loss to Deci-
+sions and Infrastructure Faults,” arXiv:2609.25960, v1, Sep. 2026.
+[12] H. Trivedi et al., “AppWorld: A Controllable World of Apps and People
+for Benchmarking Interactive Coding Agents,” in Proc. 62nd Annu.
+Meeting Association for Computational Linguistics , vol. 1, 2024, pp.
+16022–16076, doi: 10.18653/v1/2024.acl-long.850.
+[13] J. Lu et al. , “ToolSandbox: A Stateful, Conversational, Interactive
+Evaluation Benchmark for LLM Tool Use Capabilities,” in Findings of
+the Association for Computational Linguistics: NAACL 2025 , 2025, pp.
+1160–1183, doi: 10.18653/v1/2025.findings-naacl.65.
+[14] S. Y ao, N. Shinn, P . Razavi, and K. Narasimhan, “ 𝜏-bench: A
+Benchmark for Tool-Agent-User Interaction in Real-World Domains,”
+arXiv:2406.12045v1, 2024. [Online]. Available: https://arxiv.org/html/
+2406.12045v1
+[15] Sierra Research, “tau2-bench: Maintained retail and airline task corpus,”
+MIT software, commit 96a3ef92329baf908ffe9dfe188cea34e8701d2a,
+2026. [Online]. Available: https://github.com/sierra-research/
+tau2-bench/tree/96a3ef92329baf908ffe9dfe188cea34e8701d2a
+[16] Sierra Research, “Native environment evaluator,” tau2-
+bench, same pinned commit, 2026. [Online]. Avail-
+able: https://github.com/sierra-research/tau2-bench/blob/
+96a3ef92329baf908ffe9dfe188cea34e8701d2a/src/tau2/evaluator/
+evaluator_env.py
+[17] D. Jhala, “Consequa-X,” MIT Python distribution, ver. 1.1.0, Oct. 17,
+2026. [Online]. Available: https://pypi.org/project/consequa-x/1.1.0/
+[18] J. Shah, “Causal Agent Replay,” software ver. 0.2.0, commit
+db90fa28b97164c35e7c524e4597b8cbdb3035af, 2026. [Online].
+Available: https://github.com/jaineet17/causal-agent-replay/tree/
+db90fa28b97164c35e7c524e4597b8cbdb3035af
+[19] D. Jhala, “ConseqaX,” MIT Python distribution, ver. 2.1.2, Oct. 20,
+2026. [Online]. Available: https://pypi.org/project/consequa-x/2.1.2/

@@ -1,0 +1,77 @@
+{
+  "all_pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "checks": {
+    "all12font_programs_embedded": true,
+    "no_visible_clipping_overlap_or_missing_glyphs": true,
+    "references_and_captions_resolved": true,
+    "tables_and_diagrams_legible": true
+  },
+  "method": "All12pages via3contact sheets, plus full-resolution inspection of pages7,10,11",
+  "passed": true,
+  "rendered_pages": {
+    "page-01.png": {
+      "bytes": 413725,
+      "sha256": "daf912552d0df68ee561cedb92c5378d23cd679272185dfd1d7e4ca90a1e857e"
+    },
+    "page-02.png": {
+      "bytes": 425750,
+      "sha256": "b001774361c0ad1a52a6f9702bb1f23d47392ba15be64568f53309a30e4acf2d"
+    },
+    "page-03.png": {
+      "bytes": 404624,
+      "sha256": "bcc7c9356295b3484d7c84604bc4228b5c713a590ce9480d7d47675765d52bf3"
+    },
+    "page-04.png": {
+      "bytes": 371993,
+      "sha256": "27e709ed568b994df48e98897fb32f53ebf7f3416738358f443f1361c785933c"
+    },
+    "page-05.png": {
+      "bytes": 432312,
+      "sha256": "ef56fbb3a80276829a703e26fd69cf875902a4cf9bdcd1763783a55686fc54ee"
+    },
+    "page-06.png": {
+      "bytes": 190856,
+      "sha256": "73b20eeb83447f8996b306dbcc259ac5849567cefc3cccbbcb00784515436802"
+    },
+    "page-07.png": {
+      "bytes": 317885,
+      "sha256": "8cddc93024cdbe883a887b31a4a083b3524c9dfee75563f5e8af5e960e01df5f"
+    },
+    "page-08.png": {
+      "bytes": 253021,
+      "sha256": "825df8988aec1ee0d2dd5abf06731016d330c6add1c99b07221461eaa2718dd7"
+    },
+    "page-09.png": {
+      "bytes": 152947,
+      "sha256": "a4698b8887861bf7b5568bf09debd8e4fa084c60b18e5dfbf4e61fba1b94fbe4"
+    },
+    "page-10.png": {
+      "bytes": 378726,
+      "sha256": "c4c6de9159e71d66779a2670f8dd0cda414e3a2d639f570e5f66767b835a40bc"
+    },
+    "page-11.png": {
+      "bytes": 309760,
+      "sha256": "ef3956da15b8ae9b4b8448e0f577cf9acf6fc69082ec7353c9fe70cecbab34a2"
+    },
+    "page-12.png": {
+      "bytes": 318578,
+      "sha256": "1af6bdedc393d3cf1ef93dc969f7d5f3a5dc2ae18b1d9a34f39aaf94cc7ca01d"
+    }
+  },
+  "reviewed_utc": "2026-10-22T12:09:26.384563+00:00",
+  "schema": "conseqax-paper-visual-qa-v1",
+  "source_and_layout_review": "AI-assisted same-project review; not external replication or venue compliance"
+}

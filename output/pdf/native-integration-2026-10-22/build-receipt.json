@@ -1,0 +1,64 @@
+{
+  "all_fonts_embedded": true,
+  "automated_and_all_page_visual_checks_passed": true,
+  "blocking_tex_warnings": [],
+  "built_utc": "2026-10-22T12:06:58.326990+00:00",
+  "compile_exit_code": 0,
+  "complete": true,
+  "fonts": {
+    "/AKHCZK+LMMono10-Regular": {
+      "embedded": true
+    },
+    "/BZIVMZ+TeXGyreTermesX-BoldItalic": {
+      "embedded": true
+    },
+    "/CAFSZL+txmiaX": {
+      "embedded": true
+    },
+    "/DDIEWW+TeXGyreTermesX-Regular": {
+      "embedded": true
+    },
+    "/FKPJSN+txsys": {
+      "embedded": true
+    },
+    "/IHAIZV+TeXGyreTermesX-Regular": {
+      "embedded": true
+    },
+    "/IXFAWU+TeXGyreTermesX-Bold": {
+      "embedded": true
+    },
+    "/JAGKKY+txexs": {
+      "embedded": true
+    },
+    "/PVTTLK+NewTXMI7": {
+      "embedded": true
+    },
+    "/TQTHRL+TeXGyreTermesX-Italic": {
+      "embedded": true
+    },
+    "/VDVGTR+NewTXMI": {
+      "embedded": true
+    },
+    "/YEUUOC+LMMono9-Regular": {
+      "embedded": true
+    }
+  },
+  "human_labels": 0,
+  "new_model_calls": 0,
+  "new_native_evaluations": 0,
+  "official_pilot_results": false,
+  "pages": 12,
+  "pdf": {
+    "bytes": 208310,
+    "sha256": "02df4c406ac9b09fecdf0cc358ebe40ab3978aefb89566a9132d20706b013c39"
+  },
+  "prior_sealed_pdfs_unchanged": {
+    "output/pdf/recovery-study-2026-10-20/ConseqaX_Research_Paper.pdf": "3fda62c4a5706691fdbfb0892f7985bebcbb8dffd19eba4035fea83182ffe264",
+    "output/pdf/recovery-study-editorial-2026-10-21/ConseqaX_Research_Paper.pdf": "0bef4f85ac688f3fe24c2a08da703460636ca8d33065b5adefa2183ae8e36515"
+  },
+  "schema": "conseqax-native-integration-paper-build-v1",
+  "source_commit": "29f8c84fbb9b099f95e7fc7b159d6969c4958157",
+  "underfull_warnings": 19,
+  "venue_specific_submission_compliance_not_asserted": true,
+  "visual_review_pending": false
+}

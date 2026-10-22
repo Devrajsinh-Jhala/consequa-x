@@ -87,3 +87,24 @@ from the detached source, publishes only the two protocol files before any
 official generation, and collects once before running the offline auditor.
 It refuses divergent Git refs, enabled Actions, existing output/claims and
 failed prerequisite smokes. No automatic development retry is performed.
+## Terminal status, 22 October 2026
+
+The amended guarded development check timed out before any mutation or package
+receipt. Its retained nine invocations include eight completions and one failed
+request; all five native tools were reads. The
+[partial failure-integrity audit](../output/native-development-2026-10-21/guarded-20-001-failure-audit-2026-10-22/audit-result.json)
+checks the executed prefix but is explicitly not a native-reward audit.
+
+The [one-shot pipeline](../output/native-finish-pipeline-2026-10-21/pipeline-receipt.json)
+refused before readiness, protocol publication and official generation. No
+official 48-slot score exists. Do not restart that one-shot pipeline, invent
+missing grades or treat timed-out usage as zero. Any next runtime candidate or
+fault-focused study needs its own prospective record and native integration
+checks. The [paper update](../paper/native-external-validation.tex) and
+[claim bindings](../paper/native-development-claims-2026-10-21.json) retain the
+completed native check and both guarded failures with different audit scopes.
+
+The result-table and figure exporters require the explicit immutable protocol
+commit as well as a passed full audit inventory. Their tests use temporary
+synthetic fixtures only; no real pilot outcomes have been rendered. GitHub
+Actions remains disabled, and no human review or paid inference is involved.

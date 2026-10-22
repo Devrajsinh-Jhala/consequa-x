@@ -1,0 +1,170 @@
+{
+  "complete": true,
+  "files": {
+    "ConseqaX_Research_Paper.pdf": {
+      "bytes": 208310,
+      "sha256": "02df4c406ac9b09fecdf0cc358ebe40ab3978aefb89566a9132d20706b013c39"
+    },
+    "README.md": {
+      "bytes": 1326,
+      "sha256": "564b9bb0e3a7ae74b116ec508223496aaf2fe025fb09f0072f1d5de544375cb3"
+    },
+    "build-receipt.json": {
+      "bytes": 1861,
+      "sha256": "bccaa0a5eae6077464dc0bfc12111b178c60a05acacade73e4552ff23c48660e"
+    },
+    "quality/build_snapshot.source.py": {
+      "bytes": 6473,
+      "sha256": "347116cad02cab9ee48ee320064acc9b40199e234e621ef28ae392ead3d8a2e7"
+    },
+    "quality/compile-dependencies.d": {
+      "bytes": 495,
+      "sha256": "ce18f1fd61258f8a373270534eb4ef0b43db64ceeccc0d8127020925a26826c7"
+    },
+    "quality/compile.stderr.log": {
+      "bytes": 33855,
+      "sha256": "d17be62a33d66d368d4bb156adf0cde0b12a5f6e64e8045c82e95e25fa08b75a"
+    },
+    "quality/compile.stdout.log": {
+      "bytes": 417,
+      "sha256": "de6d58ab24e2ae7ce3d2a9232779137e02578404832be55cfed15d50014a40dc"
+    },
+    "quality/compile.tex.log": {
+      "bytes": 49809,
+      "sha256": "2055d43f1d0d00626ecd85eca95a6a653c668102b229103a35a9d52b5afa7796"
+    },
+    "quality/contact-sheet-1.png": {
+      "bytes": 1527219,
+      "sha256": "c84a5d3e38e3e3dcc56bf3908daef0d7301c669ace2c24ef86b8667c61654827"
+    },
+    "quality/contact-sheet-2.png": {
+      "bytes": 1138624,
+      "sha256": "9c9ff7e0a35ab950d180c82a3ce7be5af23448f301ef7eb44b5a096ca9ca0258"
+    },
+    "quality/contact-sheet-3.png": {
+      "bytes": 1150356,
+      "sha256": "d4989c34b771df49047180848afc2e49c5ffb80f45bf78761f81b8f0841776fa"
+    },
+    "quality/extracted-text.txt": {
+      "bytes": 58692,
+      "sha256": "7a1ee6d74da5ea864134773dc73cfd2e29db6a04e4e0bc211b6de45ab5905579"
+    },
+    "quality/first-compile-attempt/attempt.json": {
+      "bytes": 239,
+      "sha256": "964a454735b0e0742996ad11a3e7cecf23045cc14df35ebc85ea97568a86af75"
+    },
+    "quality/first-compile-attempt/compile.stderr.log": {
+      "bytes": 22265,
+      "sha256": "03db9fe891f39ed00fb5da967a3ccd93b2953672fe6a266924973836411728cb"
+    },
+    "quality/first-compile-attempt/compile.stdout.log": {
+      "bytes": 127,
+      "sha256": "d3a26b174536af2e297e2fe1449ba4f2e82fad09900645f7995fdfded8b8cd1a"
+    },
+    "quality/first-compile-attempt/conseqax-research.log": {
+      "bytes": 49662,
+      "sha256": "3f5adc89e0ae6b0a56949b69252d7574158cebb9688bf387854c563048a3ff7a"
+    },
+    "quality/page-01.png": {
+      "bytes": 413725,
+      "sha256": "daf912552d0df68ee561cedb92c5378d23cd679272185dfd1d7e4ca90a1e857e"
+    },
+    "quality/page-02.png": {
+      "bytes": 425750,
+      "sha256": "b001774361c0ad1a52a6f9702bb1f23d47392ba15be64568f53309a30e4acf2d"
+    },
+    "quality/page-03.png": {
+      "bytes": 404624,
+      "sha256": "bcc7c9356295b3484d7c84604bc4228b5c713a590ce9480d7d47675765d52bf3"
+    },
+    "quality/page-04.png": {
+      "bytes": 371993,
+      "sha256": "27e709ed568b994df48e98897fb32f53ebf7f3416738358f443f1361c785933c"
+    },
+    "quality/page-05.png": {
+      "bytes": 432312,
+      "sha256": "ef56fbb3a80276829a703e26fd69cf875902a4cf9bdcd1763783a55686fc54ee"
+    },
+    "quality/page-06.png": {
+      "bytes": 190856,
+      "sha256": "73b20eeb83447f8996b306dbcc259ac5849567cefc3cccbbcb00784515436802"
+    },
+    "quality/page-07.png": {
+      "bytes": 317885,
+      "sha256": "8cddc93024cdbe883a887b31a4a083b3524c9dfee75563f5e8af5e960e01df5f"
+    },
+    "quality/page-08.png": {
+      "bytes": 253021,
+      "sha256": "825df8988aec1ee0d2dd5abf06731016d330c6add1c99b07221461eaa2718dd7"
+    },
+    "quality/page-09.png": {
+      "bytes": 152947,
+      "sha256": "a4698b8887861bf7b5568bf09debd8e4fa084c60b18e5dfbf4e61fba1b94fbe4"
+    },
+    "quality/page-10.png": {
+      "bytes": 378726,
+      "sha256": "c4c6de9159e71d66779a2670f8dd0cda414e3a2d639f570e5f66767b835a40bc"
+    },
+    "quality/page-11.png": {
+      "bytes": 309760,
+      "sha256": "ef3956da15b8ae9b4b8448e0f577cf9acf6fc69082ec7353c9fe70cecbab34a2"
+    },
+    "quality/page-12.png": {
+      "bytes": 318578,
+      "sha256": "1af6bdedc393d3cf1ef93dc969f7d5f3a5dc2ae18b1d9a34f39aaf94cc7ca01d"
+    },
+    "quality/pdfinfo.txt": {
+      "bytes": 461,
+      "sha256": "310f15e399a9647bcb39d08e5bb36f5967afe5e9c4c0c8546b8bdde99e3a1161"
+    },
+    "quality/visual-qa.json": {
+      "bytes": 2356,
+      "sha256": "83eeefea5fb90685ee032f499f72809e932283a9240a7ee41ac7e3d056fd6942"
+    },
+    "source-bindings.json": {
+      "bytes": 2355,
+      "sha256": "18234c28025e26879ff03c42d72c2632325e66c2c0149103a1d17d440d471b63"
+    },
+    "source/paper/conseqax-research.md": {
+      "bytes": 55807,
+      "sha256": "5eca806b7d60e0e05b7ed32b21d889e434d7a53899d41adaddd586fa3953fe7f"
+    },
+    "source/paper/conseqax-research.tex": {
+      "bytes": 34635,
+      "sha256": "fd94baef0fcdd3204cd4e7c5a4b5bf407632141fab0e6125fccbd36b764cd580"
+    },
+    "source/paper/figures/native-four-arm-methods.pdf": {
+      "bytes": 31621,
+      "sha256": "1d85f46602e79fd58fa451f665653a9540c69a1c6d2e8da6d00ae7a1628d772e"
+    },
+    "source/paper/figures/recovery-availability-grid.pdf": {
+      "bytes": 26130,
+      "sha256": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8"
+    },
+    "source/paper/figures/recovery-family-primary-contrasts.pdf": {
+      "bytes": 24641,
+      "sha256": "b305b9d32f7d8333c8031e33ebb29764531ea2e5e9a43d449a87b2f6bc66dd80"
+    },
+    "source/paper/figures/recovery-method-overview.pdf": {
+      "bytes": 25901,
+      "sha256": "562ce06657b16bc527fadc48dddcdf28bd970c99c38fe6df5ef399b744683d24"
+    },
+    "source/paper/native-development-claims-2026-10-21.json": {
+      "bytes": 4031,
+      "sha256": "9eb5fbf8881aaa33a84e346f0669dd01256bacc60bf0f6c15aaacdf1ca1a17fb"
+    },
+    "source/paper/native-external-validation.tex": {
+      "bytes": 8738,
+      "sha256": "de6e33d9fe9ebde7740c980d66c251eebca28cc5aec4a0da907f424a725bda1d"
+    },
+    "source/paper/recovery-availability-results.tex": {
+      "bytes": 4782,
+      "sha256": "3f5d0edaced86131e3ef574754a21918540dba05ac759e737a0b7e037336f63c"
+    },
+    "source/paper/recovery-study-results.tex": {
+      "bytes": 7255,
+      "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
+    }
+  },
+  "schema": "conseqax-native-integration-paper-artifacts-v1"
+}

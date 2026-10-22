@@ -7,15 +7,18 @@ ambiguous-action recovery. The author is Devrajsinh Jhala, **Independent
 Researcher**. No specific conference or journal has been selected, and a contact
 email has not been supplied.
 
-The [checked 10-page PDF](../output/pdf/recovery-study-editorial-2026-10-21/ConseqaX_Research_Paper.pdf)
+The [checked 12-page PDF](../output/pdf/native-integration-2026-10-22/ConseqaX_Research_Paper.pdf)
 is accompanied by exact source/figure copies, compile diagnostics, all-page
 previews, and byte-bound evidence references in the same snapshot directory.
 It is a complete generic IEEE draft; venue-specific length, anonymity, contact,
 and submission requirements remain to be applied after a venue is selected.
-This editorial revision corrects source-independence wording and adds explicit
-versioned reference links. It adds no experimental outcomes. The
+This revision adds the audited native development finding, retained guarded
+execution failures, a disposition table and a four-condition methods diagram.
+It contains no official comparative native benchmark score. The
+[earlier editorial build](../output/pdf/recovery-study-editorial-2026-10-21/ConseqaX_Research_Paper.pdf)
+and
 [original sealed 20 October build](../output/pdf/recovery-study-2026-10-20/ConseqaX_Research_Paper.pdf)
-is preserved.
+are preserved.
 
 ## Current controlled evaluation
 
@@ -78,30 +81,49 @@ The [20 October review addendum](recovery-review-response-2026-10-20.md) records
 scope change and remaining objective validation gaps. No human-review packet is
 part of the current paper.
 
-## Native autonomous external pilot in development
+## Native external pilot: audited development, collection not started
 
 The [automated workflow](../docs/native-external-benchmark.md) implements four
 matched native airline conditions on twelve prespecified task IDs (48 planned
 slots), local inference, required native DB/communication grading, complete
-request/tool capture and offline replay. All 190 benchmark-infrastructure tests
-pass; a further 20 tests cover the auxiliary resource observer.
+request/tool capture and offline replay. Its 190 benchmark-infrastructure tests
+passed before collection; a further 20 cover the auxiliary resource observer
+and 18 cover the one-shot pipeline.
 
 The first unmodified development episode returned 14 model completions and
 five actual tools. Its [independent saved-artifact audit](../output/native-development-2026-10-21/native-19-000-audit/audit-result.json)
 passed; native task reward was **0**, and its empty communication requirement
 passed vacuously. This establishes integration, not framework benefit. Later
 development checks fix and retain hidden SDK retry and null-serialization
-issues before any official collection. Exact-source native and guarded
-readiness checks remain in progress; there is no official pilot result yet.
+issues before any official collection. The exact-source native check returned
+grading, but guarded readiness failed; there is no official pilot result.
 GitHub Actions stays disabled, with no human review or paid inference.
 
 The fresh final-source native check returned 12 completions and five tools.
 Its [audit](../output/native-development-2026-10-21/native-19-002-audit/audit-result.json)
 also passed, including exact native-request/HTTP/context linkage; native reward
-remains zero. The first guarded check timed out without native grading, and
-its failure is retained. A final guarded check uses the prospectively amended
-uniform CPU time limits. The auxiliary pipeline has 18 offline tests and
-publishes a frozen protocol before it can collect any official trajectories.
+remains zero. The first guarded check timed out without native grading. The
+amended check also timed out: nine model invocations, eight completions and five
+read-only native tools, with no native simulation, package receipt or guard block.
+Its [partial failure-integrity audit](../output/native-development-2026-10-21/guarded-20-001-failure-audit-2026-10-22/audit-result.json)
+verified the complete retained prefix and explicitly declined native-reward
+validation. Returned token usage excludes the timed-out request's unknown usage.
+
+The [terminal pipeline receipt](../output/native-finish-pipeline-2026-10-21/pipeline-receipt.json)
+records refusal before readiness, protocol publication and official collection.
+No official trajectory ran, and no automatic replacement is pending. Development
+settlement is 44/64 excluded-task requests; 20 unused requests were released.
+The [resource-observer finalization](../output/native-resource-observer-finalization-2026-10-22/README.md)
+preserves its incomplete closing status and actually sampled coverage.
+
+The reviewed paper exporters require a complete passed artifact inventory,
+explicit protocol commit and internally consistent per-slot accounting. Their
+60 focused tests pass; no official result table or outcome chart was generated.
+The later [LIMBO integration design](../research/limbo_agent/DESIGN.md) and public
+runtime boundary have 60 focused boundary tests. That scaffold exposes copied
+public values and delegated actual calls; it still needs a reviewed policy
+adapter, native parity/replay validation and separately frozen execution. It
+does not supply a benchmark score or an operating-system security sandbox.
 
 ## Product version and evidence boundaries
 
@@ -141,9 +163,10 @@ neither scientific validity nor venue-specific submission compliance.
 
 ## Remaining research and submission work
 
-External validation still needs actual autonomous-agent decisions with native
-benchmark reward, matched classical controls, and an independently checked
-side-effect ledger. Adapter predicates, source authority, and provider
+External validation still needs a completed matched autonomous-agent comparison
+with native benchmark reward, strong classical controls, and independently
+checked effect histories. The single excluded native development execution
+cannot fill that gap. Adapter predicates, source authority, and provider
 finality/idempotency assumptions need independent service or ground-truth
 validation. More internal seeds cannot fill those gaps. Methodological novelty,
 transfer beyond the controlled substrate, and the limits of prior-work overlap

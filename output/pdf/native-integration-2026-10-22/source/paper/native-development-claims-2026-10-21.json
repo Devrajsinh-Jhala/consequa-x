@@ -1,0 +1,102 @@
+{
+  "audit_manifest_files_verified": 18,
+  "audited_guarded_failure": {
+    "actual_http_generation_dispatches": 9,
+    "actual_tool_dispatches": 5,
+    "complete_model_invocations": 8,
+    "controller_declarations": {
+      "event_counts": {
+        "model_input": 7,
+        "model_proposal": 6,
+        "native_emit": 6,
+        "native_input": 7
+      },
+      "guard_blocks": 0,
+      "scheduled_verification_reads": 0,
+      "scope": "Saved controller declarations, not semantic receipt validation",
+      "sdk_receipt_path_exercised": false,
+      "sdk_receipts": 0
+    },
+    "failed_model_invocations": 1,
+    "failure_integrity_checks_passed": true,
+    "maximum_context_prompt_tokens": 8697,
+    "maximum_context_required_tokens": 9273,
+    "native_reward": null,
+    "native_reward_audit_passed": false,
+    "official_collection_not_started": true,
+    "pending_model_invocations": 0,
+    "pipeline_refused_as_declared": true,
+    "sdk_receipt_path_exercised": false,
+    "timed_out_request_usage_available": false
+  },
+  "audited_native_check": {
+    "actual_http_generation_dispatch_records": 12,
+    "actual_tool_dispatches": 5,
+    "execution_wall_seconds": 1806.5,
+    "maximum_context_prompt_tokens": 7536,
+    "maximum_context_required_tokens": 8112,
+    "model_completion_invocations": 12,
+    "native_components": {
+      "COMMUNICATE": 1.0,
+      "DB": 0.0
+    },
+    "native_reward": 0.0,
+    "nonempty_communication": false,
+    "observed_completion_tokens": 1228,
+    "observed_prompt_tokens": 53420,
+    "source_commit": "8bd1cd88ab3644a9c6417e29308ab4b502b40484",
+    "termination_reason": "user_stop"
+  },
+  "guarded_failure_manifest_files_verified": 86,
+  "human_labels": 0,
+  "inputs": {
+    "output/native-development-2026-10-21/guarded-20-000/episode/execution-receipt.json": {
+      "bytes": 630,
+      "sha256": "9a810c2132313185739675e6f9b7fff37317961689d66b10005cbf64b3ec388a"
+    },
+    "output/native-development-2026-10-21/guarded-20-000/parent-receipt.json": {
+      "bytes": 284,
+      "sha256": "c390cbd81b488c64d613cac13bcaf8619b3ffb7f81a62e90825116d86eb443ec"
+    },
+    "output/native-development-2026-10-21/guarded-20-001-failure-audit-2026-10-22/audit-result.json": {
+      "bytes": 3027,
+      "sha256": "0e1b7136cc4fa7ab2c900f79e0c5089beb5c74fae7b9b3c456ac2c601525905b"
+    },
+    "output/native-development-2026-10-21/guarded-20-001-failure-audit-2026-10-22/manifest.json": {
+      "bytes": 10878,
+      "sha256": "4fe605971629ec3e97c1a225e8ab513e64f572364ef7bb7e334de45cd3a474b6"
+    },
+    "output/native-development-2026-10-21/native-19-002-audit/audit-result.json": {
+      "bytes": 4944,
+      "sha256": "a61cedddce0003458fed2e92f1771488a5929f32f6d57f8956ecda96e474bb2a"
+    },
+    "output/native-development-2026-10-21/native-19-002-audit/manifest.json": {
+      "bytes": 2166,
+      "sha256": "a41d8897e27bfadabd5f916bf5370e5cc7feca478d744551a891f5fb20523899"
+    },
+    "output/native-method-figure-2026-10-21/manifest.json": {
+      "bytes": 1717,
+      "sha256": "1f01cc6fba7bb52cb049c3f4f9c1cd28c29dcba3c9dab652eebfba935793bd60"
+    },
+    "output/native-resource-observer-finalization-2026-10-22/manifest.json": {
+      "bytes": 559,
+      "sha256": "6a4e9e4dde52fafa93a3ea120042c08ef2f3be5410ab146071c2830795231c08"
+    },
+    "output/native-resource-observer-finalization-2026-10-22/result.json": {
+      "bytes": 22585,
+      "sha256": "bc631d63ff39427d6d32a1feb7a599e5402290c4a95d51e79e2cb483a3323444"
+    }
+  },
+  "new_model_calls": 0,
+  "new_native_evaluations": 0,
+  "official_benchmark_score": null,
+  "retained_earlier_guarded_failure": {
+    "attempted": 7,
+    "completed": 6,
+    "native_reward": null,
+    "reason": "No returned native simulation",
+    "request_timeout_seconds": 600
+  },
+  "schema": "conseqax-native-development-paper-claims-v1",
+  "scope": "Retained excluded development check and prospective methods; no official comparison result"
+}

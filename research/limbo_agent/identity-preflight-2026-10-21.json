@@ -1,0 +1,719 @@
+{
+  "available_distribution_versions": {
+    "consequa-x": "2.1.1",
+    "matplotlib": null,
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": null,
+    "statsmodels": null
+  },
+  "dependency_check_scope": "Installed metadata only; upstream modules were not imported or executed",
+  "detached": true,
+  "episodes_executed": 0,
+  "fixtures_or_archives_opened": 0,
+  "git_lazy_fetch_disabled": true,
+  "limits": [
+    "Not an execution protocol, dependency import proof or performance result",
+    "Public verification detail is an unconstrained dictionary; per-domain shape/cost remains unvalidated",
+    "Source inventory excludes hidden task data and uninspected runtime dependencies"
+  ],
+  "model_generations": 0,
+  "passed": true,
+  "preflight_source_sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc",
+  "production_service_requests": 0,
+  "public_api_inventory": {
+    "limbo/__init__.py": {
+      "classes": {},
+      "functions": {},
+      "imports": []
+    },
+    "limbo/agent.py": {
+      "classes": {
+        "EpisodeSpec": {
+          "fields": {
+            "contract": "str",
+            "doc_variant": "str",
+            "experiment": "str",
+            "focal": "str",
+            "harness": "str",
+            "human_available": "bool",
+            "index": "int",
+            "instruction_variant": "str",
+            "max_tool_calls": "int",
+            "mode": "str",
+            "model": "str",
+            "paraphrase": "int",
+            "policy": "str",
+            "reasoning_effort": "str | None",
+            "replicate": "int",
+            "template": "str"
+          },
+          "line": 24,
+          "methods": {
+            "episode_id": {
+              "arguments": "self",
+              "line": 43
+            },
+            "world_seed": {
+              "arguments": "self",
+              "line": 56
+            }
+          }
+        },
+        "ScriptedModel": {
+          "fields": {},
+          "line": 62,
+          "methods": {
+            "__init__": {
+              "arguments": "self, fn: Callable[[list[dict[str, Any]]], list[dict[str, Any]]]",
+              "line": 65
+            }
+          }
+        }
+      },
+      "functions": {
+        "_tool_schemas": {
+          "arguments": "task, tools, doc_variant: str",
+          "line": 70
+        },
+        "run_episode": {
+          "arguments": "spec: EpisodeSpec, client: Any=None",
+          "line": 78
+        }
+      },
+      "imports": [
+        ".behavior",
+        ".grader",
+        ".llm",
+        ".policies",
+        ".prompts",
+        ".runtime",
+        ".services",
+        ".tasks",
+        ".world",
+        "__future__",
+        "dataclasses",
+        "hashlib",
+        "json",
+        "time",
+        "traceback",
+        "typing"
+      ]
+    },
+    "limbo/grader.py": {
+      "classes": {},
+      "functions": {
+        "_collateral": {
+          "arguments": "task: TaskInstance, w: World",
+          "line": 114
+        },
+        "_effect_matches": {
+          "arguments": "t: Target, e: Effect, w: World",
+          "line": 38
+        },
+        "_is_target_duplicate": {
+          "arguments": "task: TaskInstance, refund: Effect, w: World",
+          "line": 132
+        },
+        "_live_count": {
+          "arguments": "t: Target, w: World",
+          "line": 71
+        },
+        "_mail_to": {
+          "arguments": "value: Any",
+          "line": 32
+        },
+        "_tokens_in": {
+          "arguments": "text: Any, tokens: list[str]",
+          "line": 27
+        },
+        "grade": {
+          "arguments": "task: TaskInstance, w: World",
+          "line": 145
+        }
+      },
+      "imports": [
+        ".services",
+        ".tasks",
+        ".world",
+        "__future__",
+        "typing"
+      ]
+    },
+    "limbo/llm.py": {
+      "classes": {
+        "AssistantTurn": {
+          "fields": {
+            "finish_reason": "str | None",
+            "latency_s": "float",
+            "replay_items": "list[dict[str, Any]]",
+            "text": "str",
+            "tool_calls": "list[ToolCall]",
+            "usage": "Usage"
+          },
+          "line": 78,
+          "methods": {}
+        },
+        "LLMClient": {
+          "fields": {},
+          "line": 134,
+          "methods": {
+            "__init__": {
+              "arguments": "self, model: str, *, protocol: str | None=None, max_output_tokens: int=8192, reasoning_effort: str | None=None, temperature: float | None=None, timeout_s: float=240.0, max_attempts: int=8, concurrency: int=6",
+              "line": 135
+            },
+            "_complete_chat": {
+              "arguments": "self, system, conversation, tools",
+              "line": 211
+            },
+            "_complete_responses": {
+              "arguments": "self, system, conversation, tools",
+              "line": 302
+            },
+            "_headers": {
+              "arguments": "self",
+              "line": 160
+            },
+            "_post": {
+              "arguments": "self, path: str, body: dict[str, Any]",
+              "line": 164
+            },
+            "_responses_input": {
+              "arguments": "self, conversation: list[dict[str, Any]]",
+              "line": 270
+            },
+            "complete": {
+              "arguments": "self, system: str, conversation: list[dict[str, Any]], tools: list[dict[str, Any]]",
+              "line": 201
+            }
+          }
+        },
+        "LLMError": {
+          "fields": {},
+          "line": 88,
+          "methods": {
+            "__init__": {
+              "arguments": "self, message: str, status: int | None=None, retryable: bool=False",
+              "line": 89
+            }
+          }
+        },
+        "RateGate": {
+          "fields": {},
+          "line": 117,
+          "methods": {
+            "__init__": {
+              "arguments": "self",
+              "line": 120
+            },
+            "get": {
+              "arguments": "self, model: str, limit: int",
+              "line": 124
+            }
+          }
+        },
+        "ToolCall": {
+          "fields": {
+            "arguments": "str",
+            "id": "str",
+            "name": "str"
+          },
+          "line": 40,
+          "methods": {
+            "parsed_arguments": {
+              "arguments": "self",
+              "line": 45
+            }
+          }
+        },
+        "Usage": {
+          "fields": {
+            "cached_tokens": "int",
+            "input_tokens": "int",
+            "output_tokens": "int",
+            "reasoning_tokens": "int"
+          },
+          "line": 56,
+          "methods": {
+            "add": {
+              "arguments": "self, other: 'Usage'",
+              "line": 62
+            },
+            "as_dict": {
+              "arguments": "self",
+              "line": 68
+            }
+          }
+        }
+      },
+      "functions": {
+        "default_protocol": {
+          "arguments": "model: str",
+          "line": 33
+        },
+        "extra_headers": {
+          "arguments": "",
+          "line": 103
+        },
+        "resolve_credentials": {
+          "arguments": "",
+          "line": 95
+        }
+      },
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "json",
+        "os",
+        "random",
+        "threading",
+        "time",
+        "typing",
+        "urllib.error",
+        "urllib.request"
+      ]
+    },
+    "limbo/policies.py": {
+      "classes": {
+        "Aware": {
+          "fields": {},
+          "line": 80,
+          "methods": {}
+        },
+        "OutcomeGuard": {
+          "fields": {},
+          "line": 133,
+          "methods": {
+            "__init__": {
+              "arguments": "self, episode_id: str='', *, name: str='guard', auto_key: bool=True, consistency_aware: bool=True, block_unverifiable: bool=True, annotate: bool=True, oracle: str | None=None, min_wait: float=0.0",
+              "line": 148
+            },
+            "_absorb_escalation": {
+              "arguments": "self, obs: dict[str, Any]",
+              "line": 278
+            },
+            "_after": {
+              "arguments": "self, rt, name, args, identity, obs",
+              "line": 269
+            },
+            "_find_pending": {
+              "arguments": "self, identity: tuple",
+              "line": 165
+            },
+            "_in_flight_due": {
+              "arguments": "self, rt: ToolRuntime, p: Pending",
+              "line": 174
+            },
+            "_key": {
+              "arguments": "self, identity: tuple",
+              "line": 161
+            },
+            "_verify": {
+              "arguments": "self, rt: ToolRuntime, p: Pending",
+              "line": 180
+            },
+            "execute": {
+              "arguments": "self, rt, name, args",
+              "line": 212
+            }
+          }
+        },
+        "Pending": {
+          "fields": {
+            "args": "dict[str, Any]",
+            "detail": "dict[str, Any]",
+            "identity": "tuple",
+            "key": "str | None",
+            "status": "str",
+            "t": "float",
+            "tool": "str"
+          },
+          "line": 54,
+          "methods": {}
+        },
+        "Policy": {
+          "fields": {},
+          "line": 64,
+          "methods": {
+            "__init__": {
+              "arguments": "self, episode_id: str=''",
+              "line": 69
+            },
+            "execute": {
+              "arguments": "self, rt: ToolRuntime, name: str, args: dict[str, Any]",
+              "line": 73
+            },
+            "log": {
+              "arguments": "self, kind: str, **info: Any",
+              "line": 76
+            }
+          }
+        },
+        "Reflect": {
+          "fields": {},
+          "line": 85,
+          "methods": {}
+        },
+        "Rules": {
+          "fields": {},
+          "line": 112,
+          "methods": {
+            "execute": {
+              "arguments": "self, rt, name, args",
+              "line": 117
+            }
+          }
+        },
+        "SDKRetry": {
+          "fields": {},
+          "line": 90,
+          "methods": {
+            "__init__": {
+              "arguments": "self, episode_id: str='', retries: int=3",
+              "line": 95
+            },
+            "execute": {
+              "arguments": "self, rt, name, args",
+              "line": 99
+            }
+          }
+        }
+      },
+      "functions": {
+        "error_kind": {
+          "arguments": "obs: dict[str, Any]",
+          "line": 31
+        },
+        "is_ambiguous": {
+          "arguments": "obs: dict[str, Any]",
+          "line": 36
+        },
+        "is_error": {
+          "arguments": "obs: dict[str, Any]",
+          "line": 27
+        },
+        "make_policy": {
+          "arguments": "name: str, episode_id: str",
+          "line": 291
+        },
+        "same_intent": {
+          "arguments": "a: tuple, b: tuple",
+          "line": 41
+        }
+      },
+      "imports": [
+        ".runtime",
+        ".services",
+        "__future__",
+        "dataclasses",
+        "hashlib",
+        "json",
+        "re",
+        "typing"
+      ]
+    },
+    "limbo/runner.py": {
+      "classes": {},
+      "functions": {
+        "compatible": {
+          "arguments": "mode: str, tool: str, batch: bool",
+          "line": 30
+        },
+        "done_ids": {
+          "arguments": "path: Path",
+          "line": 59
+        },
+        "expand": {
+          "arguments": "experiment: str, templates: Iterable[str], indices: Iterable[int], modes: Iterable[str], models: Iterable[str], policies: Iterable[str], replicates: int=1, focal_filter: str | None=None, max_focals: int | None=None, **extra",
+          "line": 38
+        },
+        "main": {
+          "arguments": "",
+          "line": 113
+        },
+        "run": {
+          "arguments": "specs: list[EpisodeSpec], out_dir: Path, workers: int",
+          "line": 72
+        }
+      },
+      "imports": [
+        "__future__",
+        "argparse",
+        "concurrent.futures",
+        "json",
+        "limbo.agent",
+        "limbo.runtime",
+        "limbo.services",
+        "limbo.tasks",
+        "pathlib",
+        "sys",
+        "threading",
+        "time",
+        "typing"
+      ]
+    },
+    "limbo/runtime.py": {
+      "classes": {
+        "FaultSpec": {
+          "fields": {
+            "match": "dict[str, Any]",
+            "mode": "str",
+            "nth": "int",
+            "tool": "str"
+          },
+          "line": 74,
+          "methods": {
+            "to_dict": {
+              "arguments": "self",
+              "line": 80
+            }
+          }
+        },
+        "ToolEvent": {
+          "fields": {
+            "args": "dict[str, Any]",
+            "effects": "list[int]",
+            "fault": "str | None",
+            "index": "int",
+            "note": "str",
+            "observation": "dict[str, Any]",
+            "source": "str",
+            "t_end": "float",
+            "t_start": "float",
+            "tool": "str"
+          },
+          "line": 162,
+          "methods": {
+            "to_dict": {
+              "arguments": "self",
+              "line": 174
+            }
+          }
+        },
+        "ToolRuntime": {
+          "fields": {},
+          "line": 189,
+          "methods": {
+            "__init__": {
+              "arguments": "self, world: World, tools: dict[str, ToolSpec], faults: list[FaultSpec]",
+              "line": 190
+            },
+            "_dry_run_error": {
+              "arguments": "self, spec: ToolSpec, args: dict[str, Any]",
+              "line": 370
+            },
+            "_escalate": {
+              "arguments": "self, args: dict[str, Any]",
+              "line": 396
+            },
+            "_fault_for": {
+              "arguments": "self, name: str, args: dict[str, Any]",
+              "line": 229
+            },
+            "_late_commit": {
+              "arguments": "self, name: str, args: dict[str, Any]",
+              "line": 205
+            },
+            "_log_event": {
+              "arguments": "self, source, name, args, obs, t0, fault, eids, note=''",
+              "line": 242
+            },
+            "_note_uncertain": {
+              "arguments": "self, name: str, args: dict[str, Any], t0: float, obs: dict[str, Any]",
+              "line": 383
+            },
+            "execute": {
+              "arguments": "self, name: str, args: dict[str, Any], source: str='agent', note: str=''",
+              "line": 249
+            },
+            "flush": {
+              "arguments": "self",
+              "line": 224
+            },
+            "trace": {
+              "arguments": "self",
+              "line": 423
+            },
+            "verify": {
+              "arguments": "self, name: str, args: dict[str, Any], t_call: float, *, truth: bool=False",
+              "line": 390
+            }
+          }
+        }
+      },
+      "functions": {
+        "_arg_matches": {
+          "arguments": "args: dict[str, Any], match: dict[str, Any]",
+          "line": 84
+        },
+        "_fingerprint": {
+          "arguments": "args: dict[str, Any]",
+          "line": 124
+        },
+        "http500_observation": {
+          "arguments": "",
+          "line": 109
+        },
+        "http503_observation": {
+          "arguments": "domain: str",
+          "line": 113
+        },
+        "invoke": {
+          "arguments": "spec: ToolSpec, w: World, args: dict[str, Any]",
+          "line": 128
+        },
+        "late_tail_delay": {
+          "arguments": "world_seed: int",
+          "line": 67
+        },
+        "observation_text": {
+          "arguments": "obs: dict[str, Any]",
+          "line": 427
+        },
+        "timeout_observation": {
+          "arguments": "domain: str",
+          "line": 98
+        }
+      },
+      "imports": [
+        ".services",
+        ".world",
+        "__future__",
+        "copy",
+        "dataclasses",
+        "json",
+        "math",
+        "random",
+        "typing"
+      ]
+    }
+  },
+  "public_file_bindings": {
+    "DATA_LICENSE": {
+      "git_bytes": 858,
+      "git_sha256": "3e63d8367a0391e12dd4fa8150684c0b8ce4e7c1d3f6598d25768f76bc39edbb",
+      "runtime_bytes": 858,
+      "runtime_sha256": "3e63d8367a0391e12dd4fa8150684c0b8ce4e7c1d3f6598d25768f76bc39edbb"
+    },
+    "LICENSE": {
+      "git_bytes": 1067,
+      "git_sha256": "f0eb9424d0a8ddbc53ef34cb90e039af7a1e11cef3250fb69b163ae95d739a53",
+      "runtime_bytes": 1067,
+      "runtime_sha256": "f0eb9424d0a8ddbc53ef34cb90e039af7a1e11cef3250fb69b163ae95d739a53"
+    },
+    "README.md": {
+      "git_bytes": 15124,
+      "git_sha256": "f2b9043f9eff13c08211885e7390aa3cd4046e5e62167fb8ef2a1edaa15bd70e",
+      "runtime_bytes": 15124,
+      "runtime_sha256": "f2b9043f9eff13c08211885e7390aa3cd4046e5e62167fb8ef2a1edaa15bd70e"
+    },
+    "limbo/__init__.py": {
+      "git_bytes": 89,
+      "git_sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34",
+      "runtime_bytes": 89,
+      "runtime_sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+    },
+    "limbo/agent.py": {
+      "git_bytes": 7859,
+      "git_sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672",
+      "runtime_bytes": 7859,
+      "runtime_sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+    },
+    "limbo/grader.py": {
+      "git_bytes": 8805,
+      "git_sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99",
+      "runtime_bytes": 8805,
+      "runtime_sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+    },
+    "limbo/llm.py": {
+      "git_bytes": 15062,
+      "git_sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464",
+      "runtime_bytes": 15062,
+      "runtime_sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+    },
+    "limbo/policies.py": {
+      "git_bytes": 14938,
+      "git_sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8",
+      "runtime_bytes": 14938,
+      "runtime_sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+    },
+    "limbo/runner.py": {
+      "git_bytes": 6937,
+      "git_sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc",
+      "runtime_bytes": 6937,
+      "runtime_sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+    },
+    "limbo/runtime.py": {
+      "git_bytes": 18364,
+      "git_sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad",
+      "runtime_bytes": 18364,
+      "runtime_sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+    },
+    "requirements.txt": {
+      "git_bytes": 70,
+      "git_sha256": "1f73fa2b147d6c033e645353e18b56c119d5e98e71df786716f58c19d8655800",
+      "runtime_bytes": 70,
+      "runtime_sha256": "1f73fa2b147d6c033e645353e18b56c119d5e98e71df786716f58c19d8655800"
+    }
+  },
+  "public_schema_source": {
+    "git_bytes": 40579,
+    "git_sha256": "68483bbfbfed20b422627850ee6f73edd947c6487810e838da5fab59b4dcb906",
+    "inspection_scope": "VerifyResult, Contract and ToolSpec declaration metadata only",
+    "path": "limbo/services.py"
+  },
+  "public_schemas": {
+    "Contract": {
+      "fields": {
+        "batch_field": "str | None",
+        "compensator": "str | None",
+        "destructive": "bool",
+        "drift": "tuple[str, str] | None",
+        "idempotent": "bool",
+        "identity": "Callable[[dict[str, Any]], tuple] | None",
+        "irreversible": "bool",
+        "supports_key": "Callable[[dict[str, Any]], bool]",
+        "verifier": "Callable[[World, dict[str, Any], float, bool], VerifyResult] | None",
+        "visibility_sla": "Callable[[dict[str, Any]], float]",
+        "write": "bool"
+      },
+      "line": 72,
+      "methods": {}
+    },
+    "ToolSpec": {
+      "fields": {
+        "consistency_note": "str",
+        "contract": "Contract",
+        "description": "str",
+        "domain": "str",
+        "explicit_note": "str",
+        "handler": "Callable[[World, dict[str, Any]], dict[str, Any]]",
+        "latency": "float",
+        "name": "str",
+        "parameters": "dict[str, Any]"
+      },
+      "line": 87,
+      "methods": {
+        "schema": {
+          "arguments": "self, doc_variant: str='neutral'",
+          "line": 98
+        }
+      }
+    },
+    "VerifyResult": {
+      "fields": {
+        "detail": "dict[str, Any]",
+        "status": "str"
+      },
+      "line": 66,
+      "methods": {}
+    }
+  },
+  "recorded_utc": "2026-10-21T17:28:20.390271+00:00",
+  "schema": "conseqax-limbo-public-api-preflight-v1",
+  "task_definition_files_read": 0,
+  "upstream_commit": "2db09fba22a0572a70639162a808906409f612a8",
+  "upstream_modules_imported": 0,
+  "upstream_repository": "https://github.com/jaxblack/limbo-bench",
+  "upstream_root": "D:\\ConsequaX-Research\\limbo-pinned-2db09fba"
+}

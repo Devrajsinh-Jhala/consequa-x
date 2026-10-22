@@ -1,0 +1,696 @@
+{
+  "messages": [
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "Hi! How can I help you today?",
+      "cost": 0.0,
+      "generation_time_seconds": null,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": null,
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:31:10.988613",
+      "tool_calls": null,
+      "turn_idx": 0,
+      "turn_taking_action": null,
+      "usage": null,
+      "utterance_ids": null
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "Hi, I'm Mia Li, user ID mia_li_3668. I'd like to book a one-way flight from New York to Seattle on May 20. Could you help me with that? I'd prefer a direct flight, but a one-stop flight is acceptable. I'm traveling in economy and don't want flight insurance. I also have three pieces of luggage. Could you check what options are available and help me with the booking?",
+      "cost": 0.0,
+      "generation_time_seconds": null,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "Hi, I'm Mia Li, user ID mia_li_3668. I'd like to book a one-way flight from New York to Seattle on May 20. Could you help me with that? I'd prefer a direct flight, but a one-stop flight is acceptable. I'm traveling in economy and don't want flight insurance. I also have three pieces of luggage. Could you check what options are available and help me with the booking?",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792602108,
+        "id": "chatcmpl-622",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": null,
+          "prompt_tokens": 500,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 499,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 594
+        }
+      },
+      "role": "user",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:31:48.747500",
+      "tool_calls": null,
+      "turn_idx": 1,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 94,
+        "prompt_tokens": 500
+      },
+      "utterance_ids": null
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "",
+      "cost": 0.0,
+      "generation_time_seconds": 60.20575639999879,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": [
+                {
+                  "function": {
+                    "arguments": "{\"user_id\":\"mia_li_3668\"}",
+                    "name": "get_user_details"
+                  },
+                  "id": "wJGPvftjFpbbs4wgZc99jQTpoBZi9CxU",
+                  "index": 0,
+                  "type": "function"
+                }
+              ]
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792602168,
+        "id": "chatcmpl-974",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 28,
+          "completion_tokens_details": null,
+          "prompt_tokens": 4734,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 4636,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 4762
+        }
+      },
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:32:48.969346",
+      "tool_calls": [
+        {
+          "arguments": {
+            "user_id": "mia_li_3668"
+          },
+          "id": "wJGPvftjFpbbs4wgZc99jQTpoBZi9CxU",
+          "name": "get_user_details",
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 2,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 4734
+      },
+      "utterance_ids": null
+    },
+    {
+      "content": "{\"user_id\": \"mia_li_3668\", \"name\": {\"first_name\": \"Mia\", \"last_name\": \"Li\"}, \"address\": {\"address1\": \"975 Sunset Drive\", \"address2\": \"Suite 217\", \"city\": \"Austin\", \"country\": \"USA\", \"state\": \"TX\", \"zip\": \"78750\"}, \"email\": \"mia.li3818@example.com\", \"dob\": \"1990-04-05\", \"payment_methods\": {\"credit_card_4421486\": {\"source\": \"credit_card\", \"id\": \"credit_card_4421486\", \"brand\": \"visa\", \"last_four\": \"7447\"}, \"certificate_4856383\": {\"source\": \"certificate\", \"id\": \"certificate_4856383\", \"amount\": 100.0}, \"certificate_7504069\": {\"source\": \"certificate\", \"id\": \"certificate_7504069\", \"amount\": 250.0}, \"credit_card_1955700\": {\"source\": \"credit_card\", \"id\": \"credit_card_1955700\", \"brand\": \"visa\", \"last_four\": \"1907\"}}, \"saved_passengers\": [{\"first_name\": \"Amelia\", \"last_name\": \"Ahmed\", \"dob\": \"1957-03-21\"}], \"membership\": \"gold\", \"reservations\": [\"NO6JO3\", \"AIXC49\", \"HKEG34\"]}",
+      "error": false,
+      "id": "wJGPvftjFpbbs4wgZc99jQTpoBZi9CxU",
+      "requestor": "assistant",
+      "role": "tool",
+      "timestamp": "2026-10-21T22:32:49.257523",
+      "turn_idx": 3
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "",
+      "cost": 0.0,
+      "generation_time_seconds": 156.00489780000134,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": [
+                {
+                  "function": {
+                    "arguments": "{\"origin\":\"JFK\",\"destination\":\"SEA\",\"date\":\"2024-05-20\"}",
+                    "name": "search_direct_flight"
+                  },
+                  "id": "xoktBGWXU6w0Thk0Aqj53OW8AuKQdXgL",
+                  "index": 0,
+                  "type": "function"
+                }
+              ]
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792602325,
+        "id": "chatcmpl-155",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 43,
+          "completion_tokens_details": null,
+          "prompt_tokens": 5140,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 4761,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 5183
+        }
+      },
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:35:25.279082",
+      "tool_calls": [
+        {
+          "arguments": {
+            "date": "2024-05-20",
+            "destination": "SEA",
+            "origin": "JFK"
+          },
+          "id": "xoktBGWXU6w0Thk0Aqj53OW8AuKQdXgL",
+          "name": "search_direct_flight",
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 4,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 5140
+      },
+      "utterance_ids": null
+    },
+    {
+      "content": "[{\"flight_number\": \"HAT069\", \"origin\": \"JFK\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"06:00:00\", \"scheduled_arrival_time_est\": \"12:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 17, \"economy\": 12, \"business\": 3}, \"prices\": {\"basic_economy\": 51, \"economy\": 121, \"business\": 239}}, {\"flight_number\": \"HAT083\", \"origin\": \"JFK\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"07:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 16, \"economy\": 7, \"business\": 3}, \"prices\": {\"basic_economy\": 87, \"economy\": 100, \"business\": 276}}]",
+      "error": false,
+      "id": "xoktBGWXU6w0Thk0Aqj53OW8AuKQdXgL",
+      "requestor": "assistant",
+      "role": "tool",
+      "timestamp": "2026-10-21T22:35:25.556348",
+      "turn_idx": 5
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "",
+      "cost": 0.0,
+      "generation_time_seconds": 126.95012880000286,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": [
+                {
+                  "function": {
+                    "arguments": "{\"origin\":\"JFK\",\"destination\":\"SEA\",\"date\":\"2024-05-20\"}",
+                    "name": "search_onestop_flight"
+                  },
+                  "id": "WSsNBUFIjWtyI8G2pPosJg4RTK2B7ktI",
+                  "index": 0,
+                  "type": "function"
+                }
+              ]
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792602452,
+        "id": "chatcmpl-358",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 45,
+          "completion_tokens_details": null,
+          "prompt_tokens": 5448,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 5182,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 5493
+        }
+      },
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:37:32.531749",
+      "tool_calls": [
+        {
+          "arguments": {
+            "date": "2024-05-20",
+            "destination": "SEA",
+            "origin": "JFK"
+          },
+          "id": "WSsNBUFIjWtyI8G2pPosJg4RTK2B7ktI",
+          "name": "search_onestop_flight",
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 6,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 5448
+      },
+      "utterance_ids": null
+    },
+    {
+      "content": "[[{\"flight_number\": \"HAT057\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"09:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 7, \"economy\": 3, \"business\": 9}, \"prices\": {\"basic_economy\": 76, \"economy\": 141, \"business\": 477}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}], [{\"flight_number\": \"HAT136\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"19:00:00\", \"scheduled_arrival_time_est\": \"21:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 15, \"economy\": 14, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 152, \"business\": 277}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}], [{\"flight_number\": \"HAT218\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"18:00:00\", \"scheduled_arrival_time_est\": \"20:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 12, \"economy\": 1, \"business\": 4}, \"prices\": {\"basic_economy\": 76, \"economy\": 158, \"business\": 342}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}], [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"09:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 17, \"economy\": 19, \"business\": 12}, \"prices\": {\"basic_economy\": 91, \"economy\": 101, \"business\": 453}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}]]",
+      "error": false,
+      "id": "WSsNBUFIjWtyI8G2pPosJg4RTK2B7ktI",
+      "requestor": "assistant",
+      "role": "tool",
+      "timestamp": "2026-10-21T22:37:32.844307",
+      "turn_idx": 7
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "Here are the available flight options for your one-way trip from New York (JFK) to Seattle (SEA) on May 20, 2024:\n\n### Direct Flights:\n1. **Flight HAT069**\n   - Departure: 06:00 AM (JFK)\n   - Arrival: 12:00 PM (SEA)\n   - Economy Price: $121\n   - Available Seats: 12\n\n2. **Flight HAT083**\n   - Departure: 01:00 AM (JFK)\n   - Arrival: 07:00 AM (SEA)\n   - Economy Price: $100\n   - Available Seats: 7\n\n### One-Stop Flights:\nAll one-stop flights involve a stop in Atlanta (ATL) and have the following details:\n- First Leg (JFK to ATL):\n  - Departure: 07:00 AM to 19:00 PM (varies)\n  - Arrival: 09:30 AM to 21:30 PM (varies)\n- Second Leg (ATL to SEA):\n  - Departure: 10:00 PM\n  - Arrival: 03:00 AM (next day)\n  - Economy Price: $103\n- Total Economy Price: $244 (first leg price + second leg price)\n\nPlease note:\n- You are traveling in economy class.\n- You have three pieces of luggage.\n- As a gold member, you are entitled to 3 free checked bags per passenger for economy class.\n- Since you have three pieces of luggage, no additional charge will apply.\n\nWould you like to proceed with booking one of these options? If so, please confirm which flight you'd like to book.",
+      "cost": 0.0,
+      "generation_time_seconds": 797.0946304999998,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "Here are the available flight options for your one-way trip from New York (JFK) to Seattle (SEA) on May 20, 2024:\n\n### Direct Flights:\n1. **Flight HAT069**\n   - Departure: 06:00 AM (JFK)\n   - Arrival: 12:00 PM (SEA)\n   - Economy Price: $121\n   - Available Seats: 12\n\n2. **Flight HAT083**\n   - Departure: 01:00 AM (JFK)\n   - Arrival: 07:00 AM (SEA)\n   - Economy Price: $100\n   - Available Seats: 7\n\n### One-Stop Flights:\nAll one-stop flights involve a stop in Atlanta (ATL) and have the following details:\n- First Leg (JFK to ATL):\n  - Departure: 07:00 AM to 19:00 PM (varies)\n  - Arrival: 09:30 AM to 21:30 PM (varies)\n- Second Leg (ATL to SEA):\n  - Departure: 10:00 PM\n  - Arrival: 03:00 AM (next day)\n  - Economy Price: $103\n- Total Economy Price: $244 (first leg price + second leg price)\n\nPlease note:\n- You are traveling in economy class.\n- You have three pieces of luggage.\n- As a gold member, you are entitled to 3 free checked bags per passenger for economy class.\n- Since you have three pieces of luggage, no additional charge will apply.\n\nWould you like to proceed with booking one of these options? If so, please confirm which flight you'd like to book.",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792603249,
+        "id": "chatcmpl-828",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 385,
+          "completion_tokens_details": null,
+          "prompt_tokens": 6608,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 5492,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 6993
+        }
+      },
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:50:49.957361",
+      "tool_calls": null,
+      "turn_idx": 8,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 385,
+        "prompt_tokens": 6608
+      },
+      "utterance_ids": null
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "Thank you for the details. I'd like to book a flight from New York to Seattle on May 20.  \n\nI don't want to fly before 11 AM EST, so I need to check which options meet that time requirement.  \n\nLooking at the direct flights:  \n- Flight HAT069 departs at 06:00 AM \u2014 that's before 11 AM, so it doesn't meet my preference.  \n- Flight HAT083 departs at 01:00 AM \u2014 also before 11 AM, so it doesn't meet my preference either.  \n\nAll the one-stop flights depart from JFK at 07:00 AM to 19:00 PM, but the second leg departs at 10:00 PM. Since I don't want to fly before 11 AM EST, none of the available flights meet my time preference.  \n\nCould you please check if there are any flights departing at or after 11 AM EST on May 20? Or is there another option I might have missed?",
+      "cost": 0.0,
+      "generation_time_seconds": null,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "Thank you for the details. I'd like to book a flight from New York to Seattle on May 20.  \n\nI don't want to fly before 11 AM EST, so I need to check which options meet that time requirement.  \n\nLooking at the direct flights:  \n- Flight HAT069 departs at 06:00 AM \u2014 that's before 11 AM, so it doesn't meet my preference.  \n- Flight HAT083 departs at 01:00 AM \u2014 also before 11 AM, so it doesn't meet my preference either.  \n\nAll the one-stop flights depart from JFK at 07:00 AM to 19:00 PM, but the second leg departs at 10:00 PM. Since I don't want to fly before 11 AM EST, none of the available flights meet my time preference.  \n\nCould you please check if there are any flights departing at or after 11 AM EST on May 20? Or is there another option I might have missed?",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792603330,
+        "id": "chatcmpl-616",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 228,
+          "completion_tokens_details": null,
+          "prompt_tokens": 987,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 593,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 1215
+        }
+      },
+      "role": "user",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:52:10.210106",
+      "tool_calls": null,
+      "turn_idx": 9,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 228,
+        "prompt_tokens": 987
+      },
+      "utterance_ids": null
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "",
+      "cost": 0.0,
+      "generation_time_seconds": 214.48126260000208,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": [
+                {
+                  "function": {
+                    "arguments": "{\"origin\":\"JFK\",\"destination\":\"SEA\",\"date\":\"2024-05-20\"}",
+                    "name": "search_direct_flight"
+                  },
+                  "id": "otRmulICGcBySdyYHliojG4l9JWQuomG",
+                  "index": 0,
+                  "type": "function"
+                }
+              ]
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792603544,
+        "id": "chatcmpl-878",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 43,
+          "completion_tokens_details": null,
+          "prompt_tokens": 7229,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 6992,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 7272
+        }
+      },
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T22:55:44.712354",
+      "tool_calls": [
+        {
+          "arguments": {
+            "date": "2024-05-20",
+            "destination": "SEA",
+            "origin": "JFK"
+          },
+          "id": "otRmulICGcBySdyYHliojG4l9JWQuomG",
+          "name": "search_direct_flight",
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 10,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 7229
+      },
+      "utterance_ids": null
+    },
+    {
+      "content": "[{\"flight_number\": \"HAT069\", \"origin\": \"JFK\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"06:00:00\", \"scheduled_arrival_time_est\": \"12:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 17, \"economy\": 12, \"business\": 3}, \"prices\": {\"basic_economy\": 51, \"economy\": 121, \"business\": 239}}, {\"flight_number\": \"HAT083\", \"origin\": \"JFK\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"01:00:00\", \"scheduled_arrival_time_est\": \"07:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 16, \"economy\": 7, \"business\": 3}, \"prices\": {\"basic_economy\": 87, \"economy\": 100, \"business\": 276}}]",
+      "error": false,
+      "id": "otRmulICGcBySdyYHliojG4l9JWQuomG",
+      "requestor": "assistant",
+      "role": "tool",
+      "timestamp": "2026-10-21T22:55:45.101756",
+      "turn_idx": 11
+    },
+    {
+      "audio_format": null,
+      "audio_path": null,
+      "audio_script_gold": null,
+      "channel_effects": null,
+      "chunk_id": null,
+      "contains_speech": true,
+      "content": "",
+      "cost": 0.0,
+      "generation_time_seconds": 262.2099100999985,
+      "is_audio": false,
+      "is_final_chunk": true,
+      "raw_data": {
+        "choices": [
+          {
+            "finish_reason": "tool_calls",
+            "index": 0,
+            "message": {
+              "content": "",
+              "function_call": null,
+              "provider_specific_fields": {
+                "refusal": null
+              },
+              "role": "assistant",
+              "tool_calls": [
+                {
+                  "function": {
+                    "arguments": "{\"origin\":\"JFK\",\"destination\":\"SEA\",\"date\":\"2024-05-20\"}",
+                    "name": "search_onestop_flight"
+                  },
+                  "id": "3JrpskawBYX4fn69LnIgJiVWLObKZyZu",
+                  "index": 0,
+                  "type": "function"
+                }
+              ]
+            },
+            "provider_specific_fields": {}
+          }
+        ],
+        "created": 1792603807,
+        "id": "chatcmpl-963",
+        "metadata": null,
+        "model": "conseqax-native-probe-20261020:ctx16k",
+        "moderation": null,
+        "object": "chat.completion",
+        "service_tier": null,
+        "system_fingerprint": "fp_ollama",
+        "usage": {
+          "completion_tokens": 45,
+          "completion_tokens_details": null,
+          "prompt_tokens": 7537,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 7271,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 7582
+        }
+      },
+      "role": "assistant",
+      "source": null,
+      "source_effects": null,
+      "speech_effects": null,
+      "timestamp": "2026-10-21T23:00:07.338006",
+      "tool_calls": [
+        {
+          "arguments": {
+            "date": "2024-05-20",
+            "destination": "SEA",
+            "origin": "JFK"
+          },
+          "id": "3JrpskawBYX4fn69LnIgJiVWLObKZyZu",
+          "name": "search_onestop_flight",
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 12,
+      "turn_taking_action": null,
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 7537
+      },
+      "utterance_ids": null
+    },
+    {
+      "content": "[[{\"flight_number\": \"HAT057\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"09:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 7, \"economy\": 3, \"business\": 9}, \"prices\": {\"basic_economy\": 76, \"economy\": 141, \"business\": 477}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}], [{\"flight_number\": \"HAT136\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"19:00:00\", \"scheduled_arrival_time_est\": \"21:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 15, \"economy\": 14, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 152, \"business\": 277}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}], [{\"flight_number\": \"HAT218\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"18:00:00\", \"scheduled_arrival_time_est\": \"20:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 12, \"economy\": 1, \"business\": 4}, \"prices\": {\"basic_economy\": 76, \"economy\": 158, \"business\": 342}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}], [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"09:30:00\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 17, \"economy\": 19, \"business\": 12}, \"prices\": {\"basic_economy\": 91, \"economy\": 101, \"business\": 453}}, {\"flight_number\": \"HAT039\", \"origin\": \"ATL\", \"destination\": \"SEA\", \"status\": \"available\", \"scheduled_departure_time_est\": \"22:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": \"2024-05-20\", \"available_seats\": {\"basic_economy\": 18, \"economy\": 10, \"business\": 2}, \"prices\": {\"basic_economy\": 52, \"economy\": 103, \"business\": 283}}]]",
+      "error": false,
+      "id": "3JrpskawBYX4fn69LnIgJiVWLObKZyZu",
+      "requestor": "assistant",
+      "role": "tool",
+      "timestamp": "2026-10-21T23:00:07.793191",
+      "turn_idx": 13
+    }
+  ]
+}

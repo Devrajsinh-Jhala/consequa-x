@@ -177,3 +177,34 @@ remaining **29** combined completions within the unchanged shared ceiling of
 calls + 7 guarded-timeout invocations = 35 consumed. There is no task-reward-one
 readiness rule and no change to policy based on task reward. A new timeout or
 integration failure stays failed; no official trajectory has been replaced.
+## Terminal follow-up recorded 22 October 2026
+
+The final guarded development check `guarded-20-001` ended on 21 October at
+17:50:14 UTC with an execution failure. Nine model invocations were dispatched;
+eight returned and the ninth hit the 1,200-second request timeout. Five actual
+tools completed, all reads. No mutation, package receipt, guard block, native
+simulation or native reward was returned. The final prompt required 9,273 of
+16,384 context tokens including the declared output allowance and margin; its
+fit did not establish completion within the wall-time ceiling.
+
+The parent did not hit its hard trajectory deadline. Its exit status was 1,
+with no recorded capture/cleanup error. The settlement consumes nine requests
+and releases 20 unused requests, leaving the excluded native-development total
+at **44 of 64**, and the task-independent transport allowance remains exhausted.
+No failure is relabeled as native reward zero. Neither guarded attempt validated
+the package receipt path.
+
+The one-shot auxiliary pipeline correctly refused to continue at 17:50:20 UTC
+on the failed guarded parent receipt. It created no readiness output, published
+no official protocol and collected no official pilot trajectories. No automatic
+retry or resumed replacement run is authorized by this pipeline. Any new runtime
+condition needs an explicit prospective record, complete failed-run retention
+and unchanged planned-denominator accounting.
+
+The separately finalized resource observer retains only its actually recorded
+interval and discloses an unavailable original closing status. During the
+timed-out request it observed sustained runner CPU activity and at least
+2.207 GiB of sampled available system RAM. This does not identify the causal
+bottleneck or rule out paging. The next benchmark integration work prepares
+a public-information boundary for the pinned external fault simulator; it does
+not supply a new execution result or silently replace this failed condition.

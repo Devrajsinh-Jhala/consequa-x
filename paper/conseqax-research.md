@@ -614,9 +614,33 @@ completions, without a returned native simulation or grade. It emitted zero pack
 receipts and zero guard blocks, so it did not validate the receipt path. Its task reward is
 unavailable, rather than an invented semantic zero. Before any official collection,
 the [candidate condition was amended uniformly](../docs/native-resource-amendment-2026-10-21.md#full-history-cpu-timeout-amendment-before-official-collection)
-to 1,200 seconds per request and 7,200 seconds per trajectory. The final guarded
-readiness check remains separate from any official pilot outcome. **No comparative
-pilot score is reported here.**
+to 1,200 seconds per request and 7,200 seconds per trajectory. That guarded check
+also timed out: eight of nine model invocations returned, five actual read-only tool calls
+completed, and no native simulation or grade was returned. It likewise emitted
+no package receipt or guard block. The failed request's full prompt fit within the
+context allowance; context fit alone did not ensure completion within the wall-time budget.
+The one-shot pipeline
+refused to proceed before readiness, protocol publication or official collection.
+**No comparative pilot score is reported here.**
+
+| Excluded development check | Request limit (s) | Returned/attempted model calls | Actual tools | Native reward |
+| --- | ---: | ---: | ---: | ---: |
+| Native 19 | 600 | 12/12 | 5 | 0 |
+| Guard 20a | 600 | 6/7 | 3 | Unavailable |
+| Guard 20b | 1,200 | 8/9 | 5 | Unavailable |
+
+These are not paired comparative trials. Model-call counts include both roles.
+Only native 19 returned native grading and passed full replay/regrading audit.
+
+A [separate failure-integrity audit](../output/native-development-2026-10-21/guarded-20-001-failure-audit-2026-10-22/audit-result.json)
+verified all nine canonical request/context links and replayed all five completed
+reads with unchanged database snapshots. It passed those partial checks while
+explicitly declining native-reward validation: no native simulation exists to
+regrade. Returned-response usage covers eight completions only; the timed-out
+request's usage remains unknown. Both development inventories were finalized
+after collection, with original bytes preserved. The
+[claim-to-artifact ledger](native-development-claims-2026-10-21.json) binds these
+values and their audit manifests.
 
 ### 6.2 Matched conditions and audit boundary
 

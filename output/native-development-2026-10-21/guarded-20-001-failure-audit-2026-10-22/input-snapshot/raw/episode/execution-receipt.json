@@ -1,0 +1,26 @@
+{
+  "actual_tool_dispatches": 5,
+  "arm": "G",
+  "capture_errors": [],
+  "completed_tool_dispatches": 5,
+  "corrective_reruns": 0,
+  "episode_id": "development-20-G",
+  "error_type": "Timeout",
+  "inflight_tool_dispatches": [],
+  "model_requests": {
+    "attempted": 9,
+    "completed": 8,
+    "completion_tokens": 911,
+    "failed": 1,
+    "prompt_tokens": 38183,
+    "provider_invoked": 9,
+    "provider_returned": 8,
+    "refused_before_provider": 0,
+    "usage_unavailable": 0
+  },
+  "native_reward_not_fabricated": true,
+  "stage": "execution",
+  "status": "failed",
+  "task_id": "20",
+  "wall_seconds": 2961.2040000000015
+}

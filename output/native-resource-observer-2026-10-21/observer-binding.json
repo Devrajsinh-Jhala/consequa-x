@@ -1,0 +1,53 @@
+{
+  "actual_generation_requests": 0,
+  "cpu_percent_definition": "100 * process CPU user+system seconds delta / monotonic wall seconds delta; may exceed 100 across CPU cores; first sample null",
+  "created_utc": "2026-10-21T11:48:08.286314+00:00",
+  "inputs": {
+    "launch": {
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\isolated-q8-server-launch.json",
+      "sha256": "1150d1643a0ed84ec64d1d4f7bcfd5b7ac29fac3de8882ab59656dcc2af84a7c"
+    },
+    "render": {
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\native-transport-development-2026-10-21\\restart-1645\\render-v2\\isolated-q8-render-result.json",
+      "sha256": "c4bcaa8ef79c3eaa7bd9851a82f63b23fe61206dccd4bad05a334e1e9f34136e"
+    }
+  },
+  "interval_seconds": 30,
+  "limitations": [
+    "30-second samples do not establish the true peak between samples",
+    "RSS is a process working set; shared pages may appear in both processes",
+    "System available RAM includes effects of unobserved applications",
+    "No inference about task success or model configuration is made"
+  ],
+  "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "network_requests": 0,
+  "processes": {
+    "runner": {
+      "create_time_epoch_seconds": 1792582144.5793643,
+      "create_time_utc": "2026-10-21T11:29:04.579364+00:00",
+      "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+      "executable_mtime_ns": 1792178144000000000,
+      "executable_sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+      "executable_size": 22920,
+      "parent_pid": 6788,
+      "pid": 2480
+    },
+    "server": {
+      "create_time_epoch_seconds": 1792581573.5974936,
+      "create_time_utc": "2026-10-21T11:19:33.597494+00:00",
+      "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+      "executable_mtime_ns": 1792178144000000000,
+      "executable_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+      "executable_size": 27944328,
+      "parent_pid": 11444,
+      "pid": 6788
+    }
+  },
+  "schema": "native-resource-observer-binding-v1",
+  "scope": "Read-only measurements of the two bound research processes and system RAM",
+  "script": {
+    "path": "D:\\ConsequaX-Research\\paper-writing\\scripts\\observe_native_resources.py",
+    "sha256": "a25f3799e492670dfaf238b42fe4a3cc4e78bab19041948fec84e0b567e8c078"
+  },
+  "stop_file": "D:\\ConsequaX-Research\\paper-writing\\output\\stop-native-resource-observer-2026-10-21.flag"
+}

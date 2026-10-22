@@ -1,0 +1,27 @@
+{
+  "official_collection_not_started": true,
+  "official_output_absent": true,
+  "pipeline_manifest_sha256": "4db08a65bf8899cfa0f3fe93807cd92eadc657b0089f9b5c8e99deba1f9a9a05",
+  "protocol_not_frozen": true,
+  "receipt": {
+    "corrective_reruns": 0,
+    "error_type": "PipelineRefusal",
+    "finished_utc": "2026-10-21T17:50:20.220514+00:00",
+    "message": "guarded_smoke terminal parent receipt failed; no automatic development retry",
+    "started_utc": "2026-10-21T17:04:18.388530+00:00",
+    "status": "failed"
+  },
+  "source_identity_stages_only": [
+    "stage-000-source-head",
+    "stage-001-source-status",
+    "stage-002-source-blob",
+    "stage-003-source-blob",
+    "stage-004-source-blob",
+    "stage-005-source-blob",
+    "stage-006-source-blob",
+    "stage-007-source-blob",
+    "stage-008-source-blob",
+    "stage-009-source-blob"
+  ],
+  "verified": true
+}

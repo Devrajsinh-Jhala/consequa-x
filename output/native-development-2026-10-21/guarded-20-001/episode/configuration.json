@@ -1,0 +1,70 @@
+{
+  "arm": "G",
+  "config": {
+    "agent": "conseqax_research_G_3eb8938876e23e4f",
+    "auto_resume": false,
+    "auto_review": false,
+    "domain": "airline",
+    "enforce_communication_protocol": false,
+    "hallucination_retries": 0,
+    "is_remote": false,
+    "llm_agent": "openai/conseqax-native-probe-20261020:ctx16k",
+    "llm_args_agent": {
+      "api_base": "http://127.0.0.1:11436/v1",
+      "api_key": "local-dummy-unused",
+      "max_tokens": 512,
+      "num_retries": 0,
+      "seed": 1701,
+      "temperature": 0,
+      "timeout": 1200
+    },
+    "llm_args_user": {
+      "api_base": "http://127.0.0.1:11436/v1",
+      "api_key": "local-dummy-unused",
+      "max_tokens": 512,
+      "num_retries": 0,
+      "seed": 1701,
+      "temperature": 0,
+      "timeout": 1200
+    },
+    "llm_user": "openai/conseqax-native-probe-20261020:ctx16k",
+    "log_level": "ERROR",
+    "max_concurrency": 1,
+    "max_errors": 5,
+    "max_retries": 0,
+    "max_steps": 80,
+    "num_tasks": null,
+    "num_trials": 1,
+    "provider_limits": null,
+    "retrieval_config": null,
+    "retrieval_config_kwargs": null,
+    "retry_delay": 1.0,
+    "review_mode": "full",
+    "review_model": "claude-opus-4-5",
+    "save_to": null,
+    "seed": 1701,
+    "task_ids": null,
+    "task_set_name": null,
+    "task_split_name": "base",
+    "text_streaming_config": null,
+    "timeout": 7200.0,
+    "user": "user_simulator",
+    "verbose_logs": false,
+    "workers": 0
+  },
+  "episode_id": "development-20-G",
+  "evaluation_type": "ALL",
+  "framework_identity": {
+    "module_origin": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\consequa_x\\__init__.py",
+    "version": "2.1.1"
+  },
+  "maximum_attempted_requests": 29,
+  "native_module_origin": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tau2-bench-audit\\src\\tau2\\__init__.py",
+  "native_strict_replay": true,
+  "required_reward_basis": [
+    "DB",
+    "COMMUNICATE"
+  ],
+  "task_id": "20",
+  "task_object_not_supplied_to_research_policy": true
+}

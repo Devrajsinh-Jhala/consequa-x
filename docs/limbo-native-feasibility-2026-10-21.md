@@ -100,3 +100,39 @@ all planned dispositions, and keep evaluator-only targets/ledgers outside the
 package adapter. This targets ambiguous-commit recovery more directly, but
 remains a simulated external benchmark and supplies no result, superiority,
 novelty or conference-readiness claim today.
+
+## Later sparse-source and grading clarification — 21 October 2026
+
+The opening status records the initial feasibility assessment. Subsequently,
+a separate sparse checkout was created at
+`D:/ConsequaX-Research/limbo-pinned-2db09fba`, detached at
+`2db09fba22a0572a70639162a808906409f612a8`. The later public-API preflight is
+retained in `research/limbo_agent/identity-preflight-2026-10-21.json`; its
+inspection covers eleven explicitly allowed public/documentation files and
+three public schema declarations, not tasks, fixtures or released archives.
+The follow-up source review checked those eleven actual file hashes and the
+preflight source hash against that record. No upstream module, task episode or
+model was executed. This remains source feasibility and declaration metadata,
+not an import/dependency proof, benchmark result or execution protocol.
+
+The pinned grader's metric names require these qualifications:
+
+- `TS` requires target minimum live counts and no **graded** collateral change;
+  native `EOS` adds only `dup_executed == 0`.
+- `exact_state` means each target's final live count equals its expected count.
+  It does not test complete-world equality or exclude collateral/extraneous
+  writes. `clean_success` is `TS and dup_live == 0`.
+- Status targets have `executed == 0` because `_effect_matches` has no status
+  branch, so repeated status writes cannot increase native executed duplicates.
+  Upsert execution counts use matching `CREATE` effects for the table/key and
+  then cap that count at final matching live records. Refund execution counts
+  are not capped by the final live count.
+- `dup_compensated` is `max(0, dup_executed - dup_live)`, not an independently
+  counted number of compensation operations. Executed/duplicate counts are
+  domain-specific grader abstractions rather than universal physical counts.
+
+These statements follow public `limbo/grader.py:38–68,145–178` at the pinned
+revision. They qualify interpretation without changing upstream grading or
+the active airline study. The more detailed prospective adapter design is in
+`research/limbo_agent/DESIGN.md`; no comparative performance, human validation
+or external replication is established by this follow-up inspection.

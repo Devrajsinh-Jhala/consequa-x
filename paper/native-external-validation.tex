@@ -9,7 +9,25 @@ The final-source check on development task 19 returned 12 model completions and 
 
 The model journal retained 53,420 prompt tokens and 1,228 completion tokens across both model roles. Prompt totals already include cached tokens. The maximum complete prompt was 7,536 tokens; its required context including the output allowance and margin was 8,112 of 16,384 tokens. Execution took 1,806.5 seconds on this CPU host, under the earlier 600-second request and 3,600-second trajectory limits. These observations characterize one development execution, not framework overhead, a comparative success rate, or a task-population estimate. The bound execution source is \texttt{\seqsplit{8bd1cd88ab3644a9c6417e29308ab4b502b40484}}; the artifact retains the separate audit and its complete manifest.
 
-Development failures are retained as well. An earlier guarded execution ended at a 600-second request timeout, after seven invocations and six returned completions, without a returned native simulation or native grade. It emitted zero package receipts and zero guard blocks, so it did not validate the receipt path. Its task reward is unavailable, rather than an invented semantic zero. Before any official collection, the candidate condition was amended uniformly to 1,200 seconds per request and 7,200 seconds per trajectory. The final guarded readiness check remains separate from any official pilot outcome. No comparative pilot score is reported here.
+Development failures are retained as well. An earlier guarded execution ended at a 600-second request timeout, after seven invocations and six returned completions, without a returned native simulation or native grade. It emitted zero package receipts and zero guard blocks, so it did not validate the receipt path. Its task reward is unavailable, rather than an invented semantic zero. Before any official collection, the candidate condition was amended uniformly to 1,200 seconds per request and 7,200 seconds per trajectory. That guarded check also timed out: eight of nine model invocations returned, five actual read-only tool calls completed, and no native simulation or grade was returned. It likewise emitted no package receipt or guard block. The failed request's full prompt fit within the context allowance; context fit alone did not ensure completion within the wall-time budget. The one-shot pipeline refused to proceed before readiness, protocol publication or official collection. Table~\ref{tab:native-development} retains these distinct dispositions. No comparative pilot score is reported here.
+
+\begin{table}[t]
+\caption{Retained excluded development executions, not paired comparative trials. Calls are returned/attempted model invocations across both roles. A dash denotes unavailable native reward, rather than semantic zero. Only native 19 returned native grading and passed full replay/regrading audit.}
+\label{tab:native-development}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Check & Request limit (s) & Calls & Tools & Reward \\
+\midrule
+Native 19 & 600 & 12/12 & 5 & 0 \\
+Guard 20a & 600 & 6/7 & 3 & -- \\
+Guard 20b & 1,200 & 8/9 & 5 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A separate failure-integrity audit verified all nine canonical request/context links and replayed all five completed reads with unchanged database snapshots. It passed those partial checks while explicitly declining native-reward validation: no native simulation exists to regrade. Returned-response usage covers eight completions only; the timed-out request's usage remains unknown. Both development inventories were finalized after collection, with original bytes preserved.
 
 \subsection{Matched conditions and audit boundary}
 

@@ -1,0 +1,100 @@
+{
+  "allowed_equivalences": [
+    "assistant tool_calls:null may be absent",
+    "assistant content:null may be absent only with nonempty tool_calls"
+  ],
+  "passed": true,
+  "rows": [
+    {
+      "actual_http_parsed_body_sha256": "646ab90d455ae22d5c27cdb5a1a2b2d44e413e2724563a8ebf9dfd83c058a872",
+      "actual_http_raw_body_sha256": "c041b58cc5a0aa1b17f58938169fbf06e86436f6d975dc121fe1c4f33c421e54",
+      "call_index": 0,
+      "generation_dispatches": 1,
+      "prompt_tokens": 500,
+      "required_tokens": 1076,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "515cae5238cf98f7ea211a669bbddfdd28a719ecf3b0e6fd4245b1d695487bc8",
+      "actual_http_raw_body_sha256": "5005ec160e8a8e052f68de0e73c79e568fa73ef1976f29d0804296616058605e",
+      "call_index": 1,
+      "generation_dispatches": 1,
+      "prompt_tokens": 4734,
+      "required_tokens": 5310,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "6307a7bb29265f6a5908a7abebaaa9b736362b545bd7d4cb60bc5bda4015580b",
+      "actual_http_raw_body_sha256": "469634b3b100e99bc10c403d7a5b939d6e71f07f775ff7c219e146c9cac71b82",
+      "call_index": 2,
+      "generation_dispatches": 1,
+      "prompt_tokens": 5140,
+      "required_tokens": 5716,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "08dd4118a3d81b6fd465435767b61a8faec60aabd069008c7c899c5a49ad7b69",
+      "actual_http_raw_body_sha256": "3385de3e99dcd6492507a2e9b05b6e2a0e9dc6b5ed05fe8edd68bf083558e69c",
+      "call_index": 3,
+      "generation_dispatches": 1,
+      "prompt_tokens": 5448,
+      "required_tokens": 6024,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "90242893cc5c1c9b12d8062c55c51451930725bd35c1573d5976cdbba3171b97",
+      "actual_http_raw_body_sha256": "94095750b413e2d89511c1b3d73569ac1cf1493b5ad8b85bc9dc556e059f2497",
+      "call_index": 4,
+      "generation_dispatches": 1,
+      "prompt_tokens": 6608,
+      "required_tokens": 7184,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "197e7f25c1df73b7118850e60db46e477666a07ca6b2d722ca222e5768706d16",
+      "actual_http_raw_body_sha256": "2bbd82858800d07481e484dea6af990276540ee6a532e43b7bd7d293525ac249",
+      "call_index": 5,
+      "generation_dispatches": 1,
+      "prompt_tokens": 987,
+      "required_tokens": 1563,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "ecdb564f668112d341394f03f8f59b2c8176aa8cbae4e4d0e24089b63e17e779",
+      "actual_http_raw_body_sha256": "aa563e116943569f1d9f687cf088375c02b6de13d7620aae9cf7640879efa69e",
+      "call_index": 6,
+      "generation_dispatches": 1,
+      "prompt_tokens": 7229,
+      "required_tokens": 7805,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "7748f2146db284edc7877ca6cc573d742b2c1848757dd66cd0c5d4908a9c88d1",
+      "actual_http_raw_body_sha256": "e0da3b162cd4613504cb50c66f5145de853dbf21eb18f2cd3e4c180c4c6199f4",
+      "call_index": 7,
+      "generation_dispatches": 1,
+      "prompt_tokens": 7537,
+      "required_tokens": 8113,
+      "strict_native_input_match": true,
+      "terminal": "request_return"
+    },
+    {
+      "actual_http_parsed_body_sha256": "223d1c479f2134f38d34c94a08236b5751a2e09457d6dc30e32b98138ae3fedf",
+      "actual_http_raw_body_sha256": "39735eb86a5e232ad5e5f3d794c5f7d8c38125fd1fd0988d97a38ee564e7eb93",
+      "call_index": 8,
+      "generation_dispatches": 1,
+      "prompt_tokens": 8697,
+      "required_tokens": 9273,
+      "strict_native_input_match": true,
+      "terminal": "request_error"
+    }
+  ],
+  "scope": "All nine native invocations, including timed-out final request; one captured HTTP generation each"
+}

@@ -1,0 +1,21 @@
+{
+  "accounted_attempts": 9,
+  "recorded_utc": "2026-10-21T17:50:14.348896+00:00",
+  "released_unused_requests": 20,
+  "reservation_sha256": "d5c2bba0b6b11f6787fc90ae481a51d85d70bd088bae3dccd8ec1655aa567a88",
+  "schema": "conseqax-native-development-settlement-v1",
+  "verified_artifacts": [
+    {
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001\\parent-receipt.json",
+      "sha256": "ec6753095662e0fbb61a7af801216939524ba21b4ce04276688a1fa47cc47ed0"
+    },
+    {
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001\\episode\\execution-receipt.json",
+      "sha256": "b41e3231e52db3117890b3afcf908a866ecc8ace1a81799710e6a241cf51525f"
+    },
+    {
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001\\episode\\model-calls.jsonl",
+      "sha256": "103961e7c304150dc419fb32654abb13c53fdfa61113c2498bfaf42006118c2b"
+    }
+  ]
+}

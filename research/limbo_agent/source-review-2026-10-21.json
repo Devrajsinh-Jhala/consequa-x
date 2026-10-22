@@ -1,0 +1,95 @@
+{
+  "clarifications": [
+    "exact_state checks target live counts only, ignoring collateral and extraneous writes",
+    "status executed is always zero because no effect-match branch exists",
+    "upsert matching CREATE counts are capped by final live counts; refund execution counts are not capped",
+    "clean_success equals TS and dup_live == 0",
+    "dup_compensated is the nonnegative executed-minus-live duplicate difference, not a compensation-call count"
+  ],
+  "documentation_outputs": {
+    "docs/limbo-native-feasibility-2026-10-21.md": {
+      "bytes": 9217,
+      "sha256": "a3e19eb98d6290cb50cc23bb25f2a300ec9cdd7b002dc22c27c8dbfae699e570"
+    },
+    "research/limbo_agent/DESIGN.md": {
+      "bytes": 15068,
+      "sha256": "4cc342883714b87a842554a8693163dea3997f97d2a083c7937a5b978ee1638b"
+    }
+  },
+  "episodes_executed": 0,
+  "fixtures_or_archives_opened": 0,
+  "git_commands_run_for_this_review": 0,
+  "human_labels": 0,
+  "limits": [
+    "No fresh Git identity or dependency-import execution was performed; source identity is tied to the retained pinned preflight and matching local bytes.",
+    "No service verification shapes/costs, trajectories, native grading outputs or performance were validated.",
+    "The active frozen airline source, running jobs and paper were not changed."
+  ],
+  "model_generations": 0,
+  "preflight_and_receipt_unchanged": true,
+  "preflight_source_sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc",
+  "public_file_bytes_match_retained_preflight": {
+    "DATA_LICENSE": {
+      "bytes": 858,
+      "sha256": "3e63d8367a0391e12dd4fa8150684c0b8ce4e7c1d3f6598d25768f76bc39edbb"
+    },
+    "LICENSE": {
+      "bytes": 1067,
+      "sha256": "f0eb9424d0a8ddbc53ef34cb90e039af7a1e11cef3250fb69b163ae95d739a53"
+    },
+    "README.md": {
+      "bytes": 15124,
+      "sha256": "f2b9043f9eff13c08211885e7390aa3cd4046e5e62167fb8ef2a1edaa15bd70e"
+    },
+    "limbo/__init__.py": {
+      "bytes": 89,
+      "sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+    },
+    "limbo/agent.py": {
+      "bytes": 7859,
+      "sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+    },
+    "limbo/grader.py": {
+      "bytes": 8805,
+      "sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+    },
+    "limbo/llm.py": {
+      "bytes": 15062,
+      "sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+    },
+    "limbo/policies.py": {
+      "bytes": 14938,
+      "sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+    },
+    "limbo/runner.py": {
+      "bytes": 6937,
+      "sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+    },
+    "limbo/runtime.py": {
+      "bytes": 18364,
+      "sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+    },
+    "requirements.txt": {
+      "bytes": 70,
+      "sha256": "1f73fa2b147d6c033e645353e18b56c119d5e98e71df786716f58c19d8655800"
+    }
+  },
+  "public_source_bodies_inspected": [
+    "limbo/agent.py",
+    "limbo/grader.py",
+    "limbo/policies.py",
+    "limbo/runtime.py (selected control-flow methods)",
+    "limbo/llm.py (selected provider methods)",
+    "limbo/runner.py (selected runner methods)"
+  ],
+  "recorded_utc": "2026-10-21T17:48:30.987809+00:00",
+  "retained_preflight_sha256": "8da6bc6836599d8568ab24775913cd3a69ea82843de1f3c6e6a3a118ea1be254",
+  "review_scope": "Automated separate-agent source inspection within the same project; not human review or external replication",
+  "schema": "conseqax-limbo-public-source-review-v1",
+  "scientific_outputs_generated": 0,
+  "services_inspection_scope": "VerifyResult, Contract and ToolSpec declaration metadata in the retained preflight only; no service handler or verifier body",
+  "task_definition_files_read": 0,
+  "upstream_commit_in_retained_preflight": "2db09fba22a0572a70639162a808906409f612a8",
+  "upstream_modules_imported": 0,
+  "upstream_root": "D:\\ConsequaX-Research\\limbo-pinned-2db09fba"
+}

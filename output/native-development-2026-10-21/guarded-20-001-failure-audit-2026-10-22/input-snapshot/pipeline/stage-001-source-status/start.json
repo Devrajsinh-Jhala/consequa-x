@@ -1,0 +1,21 @@
+{
+  "command": [
+    "git",
+    "-C",
+    "D:\\ConsequaX-Research\\paper-frozen-native-2026-10-21",
+    "status",
+    "--porcelain",
+    "--",
+    "research/native_agent/__init__.py",
+    "research/native_agent/controller.py",
+    "research/native_agent/transport.py",
+    "research/native_agent/harness.py",
+    "research/native_agent/audit.py",
+    "research/native_agent/protocol.py",
+    "scripts/run_native_external_benchmark.py",
+    "scripts/audit_native_external_benchmark.py"
+  ],
+  "cwd": "D:\\ConsequaX-Research\\paper-writing",
+  "environment_values_recorded": false,
+  "started_utc": "2026-10-21T17:04:18.513652+00:00"
+}

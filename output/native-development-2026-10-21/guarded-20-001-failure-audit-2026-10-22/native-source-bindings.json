@@ -1,0 +1,1909 @@
+{
+  "commit": "96a3ef92329baf908ffe9dfe188cea34e8701d2a",
+  "files": {
+    "data/tau2/domains/airline/audio_difficulty.json": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1263575,
+      "git_sha256": "d06ed804877e25a8eaa379596f8ec78946145e2648cddf706c59dce5a85a3908",
+      "runtime_bytes": 1297601,
+      "runtime_sha256": "d5f59f250def086cc38f568509b0fe16d51efe0de40176352bac5e6d9ce6b77e"
+    },
+    "data/tau2/domains/airline/db.json": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7042725,
+      "git_sha256": "1af9fea6e03ca7ca15a22bb3fcaf3e351393e3fc9070b6777947da8996f7531b",
+      "runtime_bytes": 7247917,
+      "runtime_sha256": "7184914bd3720d93f1160a09bb2724c3a5601d8ca39d02d371cbbfa62626f7e2"
+    },
+    "data/tau2/domains/airline/policy.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7676,
+      "git_sha256": "10dc0525421521208be39cee235bba84a16e2bcba9899eb93d92cd81d2f62fc4",
+      "runtime_bytes": 7842,
+      "runtime_sha256": "7db375ddcce5061cf9f48a5aabe1fc3e52aa2936d6a65b7c5b62e3c7ca54cfe4"
+    },
+    "data/tau2/domains/airline/split_tasks.json": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1443,
+      "git_sha256": "b22ced4d9a9850ac9aea31c53bdcb6d6009058140bd9acc7db37c1d36222ba8b",
+      "runtime_bytes": 1550,
+      "runtime_sha256": "8249d7af4c654a48e5fa776993c3416c3b68c7213a26d00ec89e976c28363e97"
+    },
+    "data/tau2/domains/airline/tasks.json": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 155528,
+      "git_sha256": "ccd8ba737b4cc371415af70151187788f728d6108d0916e73bb4317b40542052",
+      "runtime_bytes": 159049,
+      "runtime_sha256": "34dfcf0622792d0d0fa32aa491d21582e1b5d3ec1948e7743bae881885f878ea"
+    },
+    "data/tau2/domains/airline/tasks_voice.json": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1354490,
+      "git_sha256": "e1360a2a1ecbdb97270838b428d6f51bcf8a121afa5bcbd132f30158589d5a6e",
+      "runtime_bytes": 1396194,
+      "runtime_sha256": "11b04b1ceb3f35a2b75fec3245bd2020f118fa888f9c994ee9ad9d414d451bda"
+    },
+    "src/tau2/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3615,
+      "git_sha256": "0ce892494155fa432fe4e8caabc2ffb1349a19959ad756215f2d9031156bfb78",
+      "runtime_bytes": 3730,
+      "runtime_sha256": "7c7f758fc4ba618d30ca93b1014d1c0088fe3f9868949732aa257ed688499b61"
+    },
+    "src/tau2/agent/AGENTS.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2642,
+      "git_sha256": "fb614bcd050c50310064fc5d7375e71b55fa393c1e533c12f87cc15d2e10e7b3",
+      "runtime_bytes": 2714,
+      "runtime_sha256": "923de97beeffc6618a9e1a325b750795d89a31b6a262c09ad8ec7df7334b7105"
+    },
+    "src/tau2/agent/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9576,
+      "git_sha256": "6b8ff0946d53ed2e7712f9bf3b9c32f07880bdcecf44f0990c1304788ff79005",
+      "runtime_bytes": 9856,
+      "runtime_sha256": "8a65beb811638cd070e815ecc7682c9689fe713bd5ab771163a644d44a470763"
+    },
+    "src/tau2/agent/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3177,
+      "git_sha256": "fe543554d2638c983cbbc64ca19b2a4ce39c08c36dbf8ec303ac4d65a0244075",
+      "runtime_bytes": 3275,
+      "runtime_sha256": "2444dc995dcf43972375d247e2b1e3c3abbb83367e8eebf5736e4a67b1828915"
+    },
+    "src/tau2/agent/base/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17100,
+      "git_sha256": "852c2dc905a8f5f65ed8f3cfefe22052c3507ab92ad99c802d9012d3c7c67454",
+      "runtime_bytes": 17636,
+      "runtime_sha256": "97ab36217676072dd831612e4a5eca2b61d472e421129f64f9bffbb1e4897af5"
+    },
+    "src/tau2/agent/base/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2584,
+      "git_sha256": "c0099fefb99b15f6f1482c9ebd918d560d104aaa47471e86b8574b25c259f534",
+      "runtime_bytes": 2679,
+      "runtime_sha256": "6dbbfcf92f2a4406373f14d68126af94cfefd58fc80082bbdce7c6a279c59469"
+    },
+    "src/tau2/agent/base/llm_config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1276,
+      "git_sha256": "3b5bf4c5f69e5df5357374a9e379e6932096bcdbfcf3e411c4791c33d73d35b4",
+      "runtime_bytes": 1324,
+      "runtime_sha256": "1718c9b9f0ec4c2c31c716a4be481dd16d5a011a9d0aa4d7f868081f319bdb29"
+    },
+    "src/tau2/agent/base/participant.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8137,
+      "git_sha256": "64609023945372948cbec447fbf3b9d7b2eb53701a185680305af5247402d420",
+      "runtime_bytes": 8403,
+      "runtime_sha256": "5b927d178db33e9292118e2414c1c91de4230436de17cd00af3f963e10430ffc"
+    },
+    "src/tau2/agent/base/streaming.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 107718,
+      "git_sha256": "34eb4e80cd8136c28ebda0f9dba3e68a236b4444c7592d66302d60859c3a57d6",
+      "runtime_bytes": 110359,
+      "runtime_sha256": "60caa7b7bf0c5d3a7763fa42f27d807e3208a815ddbad0db6f3a9f20a5393054"
+    },
+    "src/tau2/agent/base/streaming_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7656,
+      "git_sha256": "e9b26a7f4f4bf1decd291fe8b3fd12da97a8158ecc250281a18b175f8d79cc15",
+      "runtime_bytes": 7884,
+      "runtime_sha256": "66672a094e97d9af62379f47411640964afcc1660999b1725287ad1d0698edaa"
+    },
+    "src/tau2/agent/base/voice.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7691,
+      "git_sha256": "d749493fca8b1ca1be65af9ec57371e40dd1293bd24f0adf4814864669a1cd53",
+      "runtime_bytes": 7880,
+      "runtime_sha256": "61cc93ec25bcb483adf3be0b4c5fcd01675124602b16285fb89ce032229e6296"
+    },
+    "src/tau2/agent/base_agent.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 6331,
+      "git_sha256": "97f1033723d03da99f3338ff7a12ed60114a55ed293928ff4ca0bdace6851b4d",
+      "runtime_bytes": 6539,
+      "runtime_sha256": "4db86f93a28df7c96ece36274641e169f32da51c2336f3fcceaf2e38885d9669"
+    },
+    "src/tau2/agent/discrete_time_audio_native_agent.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 34790,
+      "git_sha256": "ec289ac21262d059c2f18e10976068a52aaf872b604fab9b2926810b77bc4c13",
+      "runtime_bytes": 35664,
+      "runtime_sha256": "9d869ed49e0ea24705ac0464ae551706d96de39bb173305470d762254f7edb4e"
+    },
+    "src/tau2/agent/llm_agent.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 18019,
+      "git_sha256": "d13412ff502859f0ef0492af0128f1b2666be32640057ba8e076d2602af084d8",
+      "runtime_bytes": 18563,
+      "runtime_sha256": "d4bbd03fc1b395ac206a96bae126d3e61b9ca292b315fcd5cc4ca5528be1eeb7"
+    },
+    "src/tau2/api_service/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 19,
+      "git_sha256": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "runtime_bytes": 20,
+      "runtime_sha256": "b3ed6c022cc89c2332bc98c4e0ebb4a96e7d692ab509d3f921468f6000014db8"
+    },
+    "src/tau2/api_service/api_config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1033,
+      "git_sha256": "7eedc4d41d7dd41c45afa243037c6eb03b7de68f8be28bdda8db869ecae3ebc0",
+      "runtime_bytes": 1063,
+      "runtime_sha256": "43aebe8d8f91a42963f23f4ad5f3c6e7a19a13146000b59a09dce40fdf695bf0"
+    },
+    "src/tau2/api_service/data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 277,
+      "git_sha256": "3aa78323402498716bc5773217ff7d79ed0b703e2d0bce0d6f37699426a4152e",
+      "runtime_bytes": 296,
+      "runtime_sha256": "37098f95f750e1184ee371cfa045149806cd74c1b0e3965df602724c8aab3bc4"
+    },
+    "src/tau2/api_service/simulation_service.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1307,
+      "git_sha256": "b74b43da92ba0db9434130a9f403ce709d33c38b361ab63dd99cfb9b253564b2",
+      "runtime_bytes": 1363,
+      "runtime_sha256": "4ac234e23b0eef0ad12a2f3502a93579966b22e53f42f483d958c44729037556"
+    },
+    "src/tau2/cli.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 45427,
+      "git_sha256": "e21fec239a67ebf409453b60205fbd90a577dbc998216d3997f864bd1aa85964",
+      "runtime_bytes": 46710,
+      "runtime_sha256": "48c33e260074f3e3b59226de0a377fcdce31f0ad3ee0a7a698ceeb6af1d450da"
+    },
+    "src/tau2/config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 11123,
+      "git_sha256": "68711cebe516fc8891ff563ea2ea10d5f3a16b8da8bc46598fcccb8c1d563f1a",
+      "runtime_bytes": 11370,
+      "runtime_sha256": "80f6182945998b6bf391758fda7498290cec2190f4fe9a412c531c9db503380a"
+    },
+    "src/tau2/data_model/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/data_model/audio.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 6148,
+      "git_sha256": "443de1a2c4fa856621eaccf8b6d0637f4e8d4f0de0aba990e9732c49b3751bb0",
+      "runtime_bytes": 6335,
+      "runtime_sha256": "0b17a5bd21589afc10822ad8e7abf24d5414d96915eb04fb3282dd4bc060da88"
+    },
+    "src/tau2/data_model/audio_effects.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9102,
+      "git_sha256": "30fc2e70e27e1691b5e098c7e165cdaee44108efff48ee36c41ccef9fb448ee0",
+      "runtime_bytes": 9372,
+      "runtime_sha256": "b3a05bc8d57c378849f9812c6fb19d2c9fb0b2db98c180216b114762ac74d2ac"
+    },
+    "src/tau2/data_model/message.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 32440,
+      "git_sha256": "378cc451ded5b4314c4fe177bf83e72abb2e0bba53b79c2a0e27c53f3cbd15b0",
+      "runtime_bytes": 33327,
+      "runtime_sha256": "0ceb19272d45cb7667fa570cd006c7770f0c573408f3edc44704bbf3dd586e2a"
+    },
+    "src/tau2/data_model/persona.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5854,
+      "git_sha256": "e012387070438f51673aed61291288541c7270bce310b9851fde89493fac8e19",
+      "runtime_bytes": 5994,
+      "runtime_sha256": "388fbe29442528b7bc4a2af6bd0ed32f12d8ef5bc5b97af21e9d95807cba8cf1"
+    },
+    "src/tau2/data_model/simulation.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 60871,
+      "git_sha256": "8e855715c83c344a01c20b2ebc42b50c019619df03044666a961a9456d2e5472",
+      "runtime_bytes": 62620,
+      "runtime_sha256": "f2286fe1e912f5cc1e57cca95504ac68da4be481dd4450d1f21179cf8640aff4"
+    },
+    "src/tau2/data_model/tasks.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 22764,
+      "git_sha256": "0243a6454b2e9c8a14b8364c38ff95dc1dd7512105b69fada9bf9295fc8170fa",
+      "runtime_bytes": 23449,
+      "runtime_sha256": "f0bfd370b46d4a3746190c40a8acd0efbf288aab32aadf1a7069fcefac40ad99"
+    },
+    "src/tau2/data_model/usage.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 11967,
+      "git_sha256": "d80b94c3ec5b8c53094b3938a3e432a4154eca238e4cfd90b317c3fca033b43d",
+      "runtime_bytes": 12283,
+      "runtime_sha256": "efe3b0e583ba9cbfaae01ded59ed935f6cd375350667a58f146970ec6c604658"
+    },
+    "src/tau2/data_model/voice.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 13369,
+      "git_sha256": "019841fc7efa629043f4df2905c6f26c9c2d6b254421981ed60baf62a8515e82",
+      "runtime_bytes": 13725,
+      "runtime_sha256": "258e14efae388e99d9a775c64bb721166d90e682213e8dbdeba5a73a28b39309"
+    },
+    "src/tau2/data_model/voice_personas.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9862,
+      "git_sha256": "674761a5b702aebfe3064d87644dd9bf95ca86b0f38ffbb31f94f45191927264",
+      "runtime_bytes": 10062,
+      "runtime_sha256": "3e2ec8062e3407105be53d1dc4de12c3aeb6ebb432be5997c58451726d5c3388"
+    },
+    "src/tau2/domains/AGENTS.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3670,
+      "git_sha256": "2332cebc44528f6ad1582102de7bc0aba19eb7a67a511566bf7c59cf9e14ec5d",
+      "runtime_bytes": 3744,
+      "runtime_sha256": "b5eb2899594ea28d82c7a010c77db104f3dcfa6789226d868ab9f18db75ef6e4"
+    },
+    "src/tau2/domains/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5060,
+      "git_sha256": "fedcd187044e34a714e85897ad40139c99d79638118d242162fc86c6a3e33b0c",
+      "runtime_bytes": 5152,
+      "runtime_sha256": "d424b90042be4b77fd5b5dc90634504614628299fad6ce54d89e5dd0f7c38cda"
+    },
+    "src/tau2/domains/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/domains/airline/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 19,
+      "git_sha256": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "runtime_bytes": 20,
+      "runtime_sha256": "b3ed6c022cc89c2332bc98c4e0ebb4a96e7d692ab509d3f921468f6000014db8"
+    },
+    "src/tau2/domains/airline/data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 10402,
+      "git_sha256": "a8083e2f590e4b9b66a65d7cd50b7a0247e4fa33d6961aaeb02e4d92488b3cff",
+      "runtime_bytes": 10686,
+      "runtime_sha256": "cc29aeda7208e91bc8ad4529466f059708c5ee1a07f6b86cccc1696a916173a1"
+    },
+    "src/tau2/domains/airline/environment.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1612,
+      "git_sha256": "64589faffbcb75c8ac7c95d2c94ad27f4bd70e23b9856a6928fa678a0f7fcc8d",
+      "runtime_bytes": 1665,
+      "runtime_sha256": "748d4bb02f1ad2083eb75924804d5737a9e2f3bf3d97f44ebfd922e1e17b8cff"
+    },
+    "src/tau2/domains/airline/tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 28123,
+      "git_sha256": "3987f21c286314cb48764f97052934ff4fd60e27a0b2e4a43423911adf8eaa26",
+      "runtime_bytes": 28865,
+      "runtime_sha256": "025fcf7a777be9cf5049c09b87775fe31edcd6899d08570f3a718627c880a7d6"
+    },
+    "src/tau2/domains/airline/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 256,
+      "git_sha256": "9da26327af3d7fa94e05d48869d8b06cd8110313fc24d308993a750106b11f06",
+      "runtime_bytes": 262,
+      "runtime_sha256": "5359082c333968a18e84c63a91ce76239dd6a69b685aea29c946bd86b93e8343"
+    },
+    "src/tau2/domains/banking_knowledge/DATABASE_GUIDE.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1831,
+      "git_sha256": "987db29707bd8d3126b6a9f9d664ba8e1e57f45e45fe89752dfa85375e4d8c70",
+      "runtime_bytes": 1895,
+      "runtime_sha256": "1dc882f02a8ea961c034f56e2dafb9d2a9ba82c96e9449a2f36e172cee2b775e"
+    },
+    "src/tau2/domains/banking_knowledge/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 613,
+      "git_sha256": "090929481bbbf2436b2e7ab84cba3d736b6dbd79f0c408157e41fc116fcf5cbc",
+      "runtime_bytes": 641,
+      "runtime_sha256": "f8028d194c27fcc45ac0c481835a9fc4b26c61ba26465ad3127b0051c196070c"
+    },
+    "src/tau2/domains/banking_knowledge/data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7735,
+      "git_sha256": "8451829795c7cf18668b26adc2db06c10426f4e69b553824ea886c40765ee3c4",
+      "runtime_bytes": 7906,
+      "runtime_sha256": "e0801c88ed9e6bc952fe8e68fe3e1a44c0bea03e0c48459d5d20f5e041d9638f"
+    },
+    "src/tau2/domains/banking_knowledge/db_query.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17039,
+      "git_sha256": "0f42b5cba53fdb8f41984af160bd6f2bc20416460973b3256542785fd318065a",
+      "runtime_bytes": 17553,
+      "runtime_sha256": "b651ed19e34d258706d88c89e5e575dc60159863fceabe473d3986ef7dd1ae63"
+    },
+    "src/tau2/domains/banking_knowledge/environment.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4034,
+      "git_sha256": "3e68a4adec87a2b32cb7a6f367c050a25bbd331c85a14d13fa22fda98bd60cfe",
+      "runtime_bytes": 4156,
+      "runtime_sha256": "2a1bcb1bf1d401dc1d6f01b91be1b6d65a407ba886f4125f8bb7472b102e218d"
+    },
+    "src/tau2/domains/banking_knowledge/retrieval.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 27979,
+      "git_sha256": "daa5b514532dd13c6f5caa04195282d6fe80f3af4f2d1ab139949bf208dfe2cd",
+      "runtime_bytes": 28799,
+      "runtime_sha256": "728148a8a3bf96e820842efa4c5e7412b8e67d8036428560723be2651b6a69be"
+    },
+    "src/tau2/domains/banking_knowledge/retrieval_mixins.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7032,
+      "git_sha256": "1eb9051ff164329ab16fb0976ac36f7442346a894061ce657b1fb86c8e1ff86e",
+      "runtime_bytes": 7231,
+      "runtime_sha256": "b2117a1b190fe68434d1c3baf68a4aa9274bc3115066d72d5c856f3961bd0daf"
+    },
+    "src/tau2/domains/banking_knowledge/retrieval_toolkits.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3393,
+      "git_sha256": "be37543d4459125e502ba983f5444e923b1d80ab24d57f58057592f331a15f3e",
+      "runtime_bytes": 3505,
+      "runtime_sha256": "d55a0f292b53530c91c476509b47d412fa33b9825adb1e76c95396d6af1299b5"
+    },
+    "src/tau2/domains/banking_knowledge/tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 189257,
+      "git_sha256": "e7287dc76ab74f7c172a9b632b6ebdb067a85bbc0cb7c769f7bdf08ec18aa1c0",
+      "runtime_bytes": 194017,
+      "runtime_sha256": "789cbd5468930011f1fe002d86cec443d0ca81cf6a5c36baf48bb6ecb11d6084"
+    },
+    "src/tau2/domains/banking_knowledge/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 11497,
+      "git_sha256": "ff116aef99e023d7492690fafff54fc24e9b6f3d3af18b7402a26b974b41fc66",
+      "runtime_bytes": 11899,
+      "runtime_sha256": "67a2854adb86a41679b5af5cbb7b63d59a6dbc41d36797f884c3c3436b09dc8d"
+    },
+    "src/tau2/domains/mock/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 19,
+      "git_sha256": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "runtime_bytes": 20,
+      "runtime_sha256": "b3ed6c022cc89c2332bc98c4e0ebb4a96e7d692ab509d3f921468f6000014db8"
+    },
+    "src/tau2/domains/mock/data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1089,
+      "git_sha256": "12f8be77d805d8d332291d6f0b3283d30ff0581c15d887ab5a1f37f8a9f395aa",
+      "runtime_bytes": 1125,
+      "runtime_sha256": "29bcc1a350859277fc375cff880dd730a0e33bbfda01c5fc516c37da7d50c2a8"
+    },
+    "src/tau2/domains/mock/environment.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2294,
+      "git_sha256": "4a45228c388606fe16203c107ae107622fb5d9505d90b56e6fbc33acc2dc0d51",
+      "runtime_bytes": 2367,
+      "runtime_sha256": "3887be8d9ee7911e2e7e09547475a593b316d2300417dfde8f147d75276e61b5"
+    },
+    "src/tau2/domains/mock/tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3806,
+      "git_sha256": "926b077132c8eabd2bbae8173dbed299eea7fcd4a78c74c3986766626a24b928",
+      "runtime_bytes": 3929,
+      "runtime_sha256": "54e5926b297ce3f0e4c5073ecf5ffc49c83da5b4c7304b86bbdc1c9eb2d66c44"
+    },
+    "src/tau2/domains/mock/user_data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 927,
+      "git_sha256": "0c1d084d1f2e4539e050f28ba01d97528d2e05c6d4c4a3cb49cb8c9a0eb4ebd9",
+      "runtime_bytes": 957,
+      "runtime_sha256": "3aee67b0a74a1374c7e9f17400dd08fbd82110715109dc44def8407132a99e3c"
+    },
+    "src/tau2/domains/mock/user_tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2286,
+      "git_sha256": "75a8e33dca3b358b2fab08786922aa142d03e053bc02c69c0d292af325a3131f",
+      "runtime_bytes": 2353,
+      "runtime_sha256": "012a6377931db67dc9956e4b1e9a0efc5717f9e9604932b547a3378eac97580f"
+    },
+    "src/tau2/domains/mock/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 340,
+      "git_sha256": "d9f43cf5eeefad0817973d188dad2113e73c37d1b9bae6fc86a6b0f1a703622e",
+      "runtime_bytes": 348,
+      "runtime_sha256": "058e0386ed187aeda0e86706fa4867eb511396fdd96eba6b780dccbcb93f4ad6"
+    },
+    "src/tau2/domains/retail/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 19,
+      "git_sha256": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "runtime_bytes": 20,
+      "runtime_sha256": "b3ed6c022cc89c2332bc98c4e0ebb4a96e7d692ab509d3f921468f6000014db8"
+    },
+    "src/tau2/domains/retail/data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8799,
+      "git_sha256": "f5ad09590953855cc49d2ab2ad5c0594be408cae74d1500fb278e5a6bf2c50d6",
+      "runtime_bytes": 9042,
+      "runtime_sha256": "0abb14dc3bcddc10769a6b726924359c07eaf74614d3e7769e3ccb766e268806"
+    },
+    "src/tau2/domains/retail/environment.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1615,
+      "git_sha256": "5b819fb895a4ef49df71404c3d9678ab09e8578eec841b8ec9229c8f51e32405",
+      "runtime_bytes": 1669,
+      "runtime_sha256": "3e62fee191a1d727275aaab1104afb0cebcb6cbb6175721497bd6158e74beb5b"
+    },
+    "src/tau2/domains/retail/tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 29202,
+      "git_sha256": "34f4fe9702d36f0dd4697700fbcd63d0cf5386e6eb8e7499aaa336243bad8750",
+      "runtime_bytes": 29954,
+      "runtime_sha256": "b40ceefd87b428792e2fdce545b0156131273be6e3ad36e29093763f5dd370f4"
+    },
+    "src/tau2/domains/retail/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 248,
+      "git_sha256": "a385b085b63d0e5921c15f7e2201b00df1d984990f4dbb7b24a867e3bf7cb648",
+      "runtime_bytes": 254,
+      "runtime_sha256": "1be2b0d4cc0621bcf5af5c2dd42e1ba8362c5123ca0a18c779ebfb40faeee76f"
+    },
+    "src/tau2/domains/telecom/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 19,
+      "git_sha256": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "runtime_bytes": 20,
+      "runtime_sha256": "b3ed6c022cc89c2332bc98c4e0ebb4a96e7d692ab509d3f921468f6000014db8"
+    },
+    "src/tau2/domains/telecom/data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9418,
+      "git_sha256": "f868cbbd344cadf6c376f21976edfa38b8cfe199922748e31eee666f791a0628",
+      "runtime_bytes": 9676,
+      "runtime_sha256": "41b62b75d2bf467a10c7954d3f3f7ba79874881bc413a980229cefe1c62ac49a"
+    },
+    "src/tau2/domains/telecom/environment.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7286,
+      "git_sha256": "7bc335d717a8cb6bda54551fa2b5c12ff073f6287878d215f4181572e551abcd",
+      "runtime_bytes": 7486,
+      "runtime_sha256": "884ab97b01239e5bdf3d9229f124fcc4d3e2c5f574deaa1388d7a92ffaa1455d"
+    },
+    "src/tau2/domains/telecom/tasks/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/domains/telecom/tasks/const.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2204,
+      "git_sha256": "1f7100229a56c86ea2f47d6c78fe26f7e0fbab65ad91150f9436f0fee09d7784",
+      "runtime_bytes": 2230,
+      "runtime_sha256": "5e76ee5854810a0da6fa46b881e65f9cb52553094efc77c1c064858b63b7394a"
+    },
+    "src/tau2/domains/telecom/tasks/create_tasks.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3639,
+      "git_sha256": "7ce75c5afc869a344985e68f7725d18709e51f6aa1233a91e5d387ba45bfac59",
+      "runtime_bytes": 3735,
+      "runtime_sha256": "7bb9eeec186a06b299f19d7e8b6d30b23a681d1a34e94493d95addc22c8029d4"
+    },
+    "src/tau2/domains/telecom/tasks/manager.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8836,
+      "git_sha256": "ba1fe1c514e8a85c58c417cfbe5ecfa853289bbc181874e37e90e610bdee3e9e",
+      "runtime_bytes": 9063,
+      "runtime_sha256": "cc654229b5d9508fb1e1c19347a3d77fe31e6c7364afe8a242a23fbfca26fd78"
+    },
+    "src/tau2/domains/telecom/tasks/mms_issues.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 10313,
+      "git_sha256": "f7350a6771ac28464ee392731f741486b421126ddf907082891d2cfc4a739b24",
+      "runtime_bytes": 10652,
+      "runtime_sha256": "cd0c56813cd49814129536039dedf4f7b9148e60926ba9be44b5adb87a23eb57"
+    },
+    "src/tau2/domains/telecom/tasks/mobile_data_issues.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 16347,
+      "git_sha256": "2c5169d82c6fad894ffd9447b98c249312155354d428fb3d3f373176b82fd667",
+      "runtime_bytes": 16892,
+      "runtime_sha256": "375d2e7e511a4d80c95ef59b3c452f8d7eec9ed7737dc18238f2bb5b1b0366b0"
+    },
+    "src/tau2/domains/telecom/tasks/service_issues.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14396,
+      "git_sha256": "a646ab516cdd7f9a3716dfa9acd7ca60741bb7db81494c26c2c988f2efe3db2a",
+      "runtime_bytes": 14848,
+      "runtime_sha256": "6262d59d8bdb38aeab274de9da2464439134d651c9be6d0d645ab505062392cd"
+    },
+    "src/tau2/domains/telecom/tasks/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4162,
+      "git_sha256": "aaf9ee7d1e3699918292902951ca929ff7d0e7d7a2c8f782a0bd14e3bf13ca26",
+      "runtime_bytes": 4288,
+      "runtime_sha256": "4a2c05d42f4bb71a98e87f90160650347452d51a70c8728c6d05fbd04622b39b"
+    },
+    "src/tau2/domains/telecom/tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 26442,
+      "git_sha256": "388552434d1b8225e33e7958bdb6efccfe92b49e11d1838568d9b559514e9d01",
+      "runtime_bytes": 27219,
+      "runtime_sha256": "ce927252e5c74a90e8524e3d060194009cf578b634921813880d58779d181f7b"
+    },
+    "src/tau2/domains/telecom/user_data_model.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 15172,
+      "git_sha256": "27be0006694e9a740dd378f42099d6d1afecbd445f7906aedcd1f800087377c2",
+      "runtime_bytes": 15602,
+      "runtime_sha256": "d1c307d98ebb54afae56b4322f7497a519cfec7a2db3ade3a3879bb57e663176"
+    },
+    "src/tau2/domains/telecom/user_tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 48531,
+      "git_sha256": "03fa751eeea3734313a3f5274223d42750fd5c1a28f2624265a678f271ac309d",
+      "runtime_bytes": 49684,
+      "runtime_sha256": "a2546c93e9d01adca250edb26715b12d68f10b84bed2e7686fed28163f915bc6"
+    },
+    "src/tau2/domains/telecom/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1260,
+      "git_sha256": "9195707fca3d96b41d78de661bd2408cfaab75793769c9a739a7521b690fc6dd",
+      "runtime_bytes": 1292,
+      "runtime_sha256": "73a8c1a578b667f0ceff2d173cf48f6190336d6774aba2eed7d2044f8922eef9"
+    },
+    "src/tau2/environment/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/environment/db.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1267,
+      "git_sha256": "49e12f900a8aabe62d6137a9baa1e7d471f9b3e516cf7c85fb61ecde8a65154c",
+      "runtime_bytes": 1308,
+      "runtime_sha256": "7482474b00c913ca2031f3e6487f1b4234da1a4be77d5e3976d35d844d35dee7"
+    },
+    "src/tau2/environment/environment.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 18486,
+      "git_sha256": "b5357f11e2914c11ce0372af919cc1d726191b91cd97f776b8fb388ae0615350",
+      "runtime_bytes": 18976,
+      "runtime_sha256": "da029bace881af938aa332363fbc04c11408f260bed347fce1307a843f00cea1"
+    },
+    "src/tau2/environment/server.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7918,
+      "git_sha256": "5ec31d6b75139106bf331a8a0125854ecf873fa3517bfe7420323bd560d12d4e",
+      "runtime_bytes": 8145,
+      "runtime_sha256": "9629ba70d91a5c442606322e828fc1b5a78d50332bf6df4a1be7588ad2b3b3f7"
+    },
+    "src/tau2/environment/tool.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8092,
+      "git_sha256": "6dd74021ba95a6f8dfa0971546b768b90e15b212f8f9051156ae6bcdd24b77d3",
+      "runtime_bytes": 8314,
+      "runtime_sha256": "7e76a01e99bfd766465557802d23492e5711d582eb324cb290e7e18c6baad4a3"
+    },
+    "src/tau2/environment/toolkit.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 11313,
+      "git_sha256": "3e897891e8878c3399aec72e42eb0eb5546642420c0c902b225421fc936b924a",
+      "runtime_bytes": 11636,
+      "runtime_sha256": "e78091fdbeddf767b0eab37155e9e47f07a7bb042d0ac0d9ecf600bec298cde5"
+    },
+    "src/tau2/environment/utils/interface_agent.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9563,
+      "git_sha256": "9c26fdc3f787c0551c2335d0932f6099c1e054cfa7d5f4da733ee8396a82b040",
+      "runtime_bytes": 9828,
+      "runtime_sha256": "7a5300f27e9aaa6df96eb985efad51ba4d8b7265a27c00c5c3de4c797c49504e"
+    },
+    "src/tau2/evaluator/AGENTS.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4684,
+      "git_sha256": "302b5491200f2adff4ca5ae4fb00efe055e37b4a126712f4df5222f9537524b0",
+      "runtime_bytes": 4750,
+      "runtime_sha256": "2b17437afd8064297cdff997ec90ca9d712ef95ed30934aebf32bd6db6f118e1"
+    },
+    "src/tau2/evaluator/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1,
+      "git_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "runtime_bytes": 2,
+      "runtime_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/tau2/evaluator/auth_classifier.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7884,
+      "git_sha256": "3a9184b16c7212ddfb81050d94bcc0f591c12ddec7517db0c4e7e83701eb2c2f",
+      "runtime_bytes": 8114,
+      "runtime_sha256": "7d14b9216cfd2a5577396ea6f1a206e0de677c4da947ef879b3e1e421fda4362"
+    },
+    "src/tau2/evaluator/evaluator.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14218,
+      "git_sha256": "204d95a82812402f2fee989250392d3c66de702a8bcc20258c7e2a8153a1ea8d",
+      "runtime_bytes": 14569,
+      "runtime_sha256": "10a87710931429d9abe80fe244cbe7fa0494333587a9c01522a233d64f94196a"
+    },
+    "src/tau2/evaluator/evaluator_action.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8150,
+      "git_sha256": "4347ec90fd09db73b9f7e46515220363f91f0c3b12aeddf7ece83346f49227f8",
+      "runtime_bytes": 8388,
+      "runtime_sha256": "bf79bf821c3cf1b67199069f35f5f1f27826cebe511da6a5876fa864e6510a4a"
+    },
+    "src/tau2/evaluator/evaluator_base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 665,
+      "git_sha256": "1f79c11e5cb5c8cabc26cdaad7ff3a3a1687380f4d7fb1f9fbd9b6f9ab18e1ff",
+      "runtime_bytes": 692,
+      "runtime_sha256": "4523a12429e9eb6fd58226da3f828822a60db5e4ada40ef88c3f8fc8daa39fd5"
+    },
+    "src/tau2/evaluator/evaluator_communicate.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7462,
+      "git_sha256": "7a082f91c746b84cc37c6994eb6ff78f297222fd067503a4cc86d45750696507",
+      "runtime_bytes": 7668,
+      "runtime_sha256": "6efd259a1aee43fb55d2ae4c6024deb467064b8941383fca23550e4ae3a347c0"
+    },
+    "src/tau2/evaluator/evaluator_env.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14100,
+      "git_sha256": "b53ebfe6b0b06d7a2071b5f9dd03ee6ca8ac6000b0ef44f3bd345b346c30d8ac",
+      "runtime_bytes": 14472,
+      "runtime_sha256": "40751ab96a96acf878474cc460fadb3c16d189ffe493df8c130685ec0421ce60"
+    },
+    "src/tau2/evaluator/evaluator_nl_assertions.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8843,
+      "git_sha256": "cb6b3758cdceb02a726732b4ee1af618affcc08f8ab84b44f060146b8f3ad90a",
+      "runtime_bytes": 9086,
+      "runtime_sha256": "f625ede39bac7052dbfa57a175a8d177d8574e9fe464058634fe161dcff763fc"
+    },
+    "src/tau2/evaluator/hallucination_reviewer.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8618,
+      "git_sha256": "86f898a47bfb5bf837f9a1146ec4987f1dafed3d57ee18c84894829a33d50029",
+      "runtime_bytes": 8835,
+      "runtime_sha256": "da7fe7226e999bc70d098a3960bcfe2a2821fe6763bb9c55e87d232fbbe6837a"
+    },
+    "src/tau2/evaluator/review_llm_judge.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 29158,
+      "git_sha256": "34f3e44975b804e755cc94aaf07dd79cd6f1e8c3ffd4a8a5af80f5d3c24616e1",
+      "runtime_bytes": 29825,
+      "runtime_sha256": "8317924fa247aa721d302016f4c2fe95f48e3b1032668fcba28febfb6f6942d5"
+    },
+    "src/tau2/evaluator/review_llm_judge_user_only.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 24065,
+      "git_sha256": "cf95c8e13192b8ad0447689b7a58b995ce0cb40cdbc738847e88758305d123cf",
+      "runtime_bytes": 24624,
+      "runtime_sha256": "5f130a74335beb841a5db489a95142f525431a60a443b336deac7807346fa4bd"
+    },
+    "src/tau2/evaluator/reviewer.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7466,
+      "git_sha256": "5412e17e6f6453558318999a150e20cc2085157c54c9bdfedff0a2bbee3a36b0",
+      "runtime_bytes": 7685,
+      "runtime_sha256": "99d5886bb2363e9d13a7be6ee638f1e64005a97ac21b969460303e7f7b821080"
+    },
+    "src/tau2/gym/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17545,
+      "git_sha256": "a0292533146f6cd60100504d04494b4d765fdaf53f016957313697c59837f1a2",
+      "runtime_bytes": 18032,
+      "runtime_sha256": "9966e2674fa5a990dee9c73b816a8b281394a84bd75ffe19b581574670e31130"
+    },
+    "src/tau2/gym/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 330,
+      "git_sha256": "8b617d7665ee63a601dd5b70e9b20afb85a826a81c5bad72f2a0192f4acd6511",
+      "runtime_bytes": 349,
+      "runtime_sha256": "c83c52eaa0503bda776034d5991a78bc6c7e82d35fd8c858578b9066152f50b6"
+    },
+    "src/tau2/gym/gym_agent.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 60236,
+      "git_sha256": "109a7d5a84ecae3c84c56bc7a20fd4b9be8e87727a6cfd0e3bd3e6c011f4dcf7",
+      "runtime_bytes": 61775,
+      "runtime_sha256": "6514ee7c013d71ed59b8506d5dfddc144081be486f0b8d43d75993f50ec2a654"
+    },
+    "src/tau2/knowledge/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4424,
+      "git_sha256": "876ac287cd251b5d689d28e21696342f2c349670704f1db06ec42880ffeddf27",
+      "runtime_bytes": 4511,
+      "runtime_sha256": "1919d3011444fbb02ac84951272dbb98dbe6bc1ccecdbbb786435b714fbb0f75"
+    },
+    "src/tau2/knowledge/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1034,
+      "git_sha256": "7b2f1aa6e9f265c70cabe0c8aabcfe34bc27c2b680a841cd6c8d145b689e60d0",
+      "runtime_bytes": 1059,
+      "runtime_sha256": "8ad52cf1e24de6d2901307ad131c949ef34684227052e31631ed6c5ecc3e892f"
+    },
+    "src/tau2/knowledge/config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4551,
+      "git_sha256": "3c2d0048dc9af7d6af49cebfe25be54dff88cee2bdaff84456b17a6020b3e1dd",
+      "runtime_bytes": 4684,
+      "runtime_sha256": "91a5531a8d57e5e9ecc590fefeca176bd712aa1355477cdd65861a756d634ba1"
+    },
+    "src/tau2/knowledge/document_preprocessors/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/knowledge/document_preprocessors/base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1355,
+      "git_sha256": "1256bc851213dd0c28b3242938f97521503d7a6ea64faad65c2e621888451699",
+      "runtime_bytes": 1390,
+      "runtime_sha256": "a426ea2487474179f990417f8459ce8fa707796110975e147c3e7f32e65ba606"
+    },
+    "src/tau2/knowledge/document_preprocessors/bm25_indexer.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1359,
+      "git_sha256": "5808f4bd2a8406fcbe575dd8412dbfcdab7637b94bc0ca053414710dad0a9059",
+      "runtime_bytes": 1404,
+      "runtime_sha256": "964475a83d2b26e18c8579dffc03910c9cdc018f03540cd93a162f30000b41fb"
+    },
+    "src/tau2/knowledge/document_preprocessors/embedding_indexer.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4197,
+      "git_sha256": "5861371cb3879c8027a03da409d6c1e8c7f6dcf70c71599d60ec00e4338fe638",
+      "runtime_bytes": 4322,
+      "runtime_sha256": "8251300e7c85964b929870030060ed9f9e6d87ca5c8d52f25f03b2d241bf4165"
+    },
+    "src/tau2/knowledge/embedders/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 267,
+      "git_sha256": "8c4a2b6728007db804ab6dd135243ad5db1acd46cffe6230ffb581693ba56e80",
+      "runtime_bytes": 272,
+      "runtime_sha256": "d0010e04ec496c831ad81e45f6f40a4771849a7156e2520092a919e88453edda"
+    },
+    "src/tau2/knowledge/embedders/base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 595,
+      "git_sha256": "8905218ed326c3ebca8cabdb21ab11e28aff752c61ba567e82379d40298aaf4d",
+      "runtime_bytes": 623,
+      "runtime_sha256": "3239f90942ff9634b91d745dba3198e344dce7900adfb2e1104f188f4358ce0e"
+    },
+    "src/tau2/knowledge/embedders/openai_embedder.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1519,
+      "git_sha256": "3da18207179a790930e507464d94d97be9f2cdbfdccb712df10a75c6f9cb47f9",
+      "runtime_bytes": 1567,
+      "runtime_sha256": "6a4b4df1b45a59999915c4cf36d14688a32bfcf3bdefb255dcbc6538a9005b2c"
+    },
+    "src/tau2/knowledge/embedders/openrouter_embedder.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7524,
+      "git_sha256": "e3eed96867aaef0de493fd7535abd2ae58c5ba56f3e5421bf464554de4f7fb58",
+      "runtime_bytes": 7724,
+      "runtime_sha256": "5e9512dcf74ec2e23b3494f417f55a8b417f47a98bd39333b8e2e973a55d9855"
+    },
+    "src/tau2/knowledge/embeddings_cache.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 22614,
+      "git_sha256": "9e7d82bff25eb88129a4f90d7c6b1b185bc71c0e7bd21503dcf5f83815a4919d",
+      "runtime_bytes": 23254,
+      "runtime_sha256": "fd7219797db5eba0db171ebd4da8443b29186f6e17c83916af2c89d2892eb98c"
+    },
+    "src/tau2/knowledge/input_preprocessors/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 242,
+      "git_sha256": "10a9fb1fc962f9b7642dbb338762945078309e3380a5aa08552cfd7902d239e6",
+      "runtime_bytes": 253,
+      "runtime_sha256": "d899a9c9891f06b30a354604916c636d42de2e6ceb48bf2b798f7a4f1d7b7d19"
+    },
+    "src/tau2/knowledge/input_preprocessors/base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1481,
+      "git_sha256": "32c1064e520195df17c0b0d0a1d0a8c1863ce84546dcd6139b9f9b697df2090c",
+      "runtime_bytes": 1526,
+      "runtime_sha256": "b8b0a2da8562fef99d7a36880458c2ead6b0e0c2849e657bd8befcf23a293aca"
+    },
+    "src/tau2/knowledge/input_preprocessors/embedding_encoder.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4873,
+      "git_sha256": "d4b0406b78fe4b7d07de7a37cec018c222e9f198342a45154172f6202925cbf7",
+      "runtime_bytes": 5011,
+      "runtime_sha256": "fb8b3e0d58e8a371983ef21b6b6ff9b4d072217afa48ea87323abfc652349621"
+    },
+    "src/tau2/knowledge/pipeline.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 10143,
+      "git_sha256": "6aed4b8d6186986299a3af5cb840985b1041a69893ce94bf62c5ecdc2fc64286",
+      "runtime_bytes": 10408,
+      "runtime_sha256": "6e1f83d585666fc100b41675e87005ca3bb205c6efce5a5db92ada237e568ff1"
+    },
+    "src/tau2/knowledge/postprocessors/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 421,
+      "git_sha256": "63c5a76cb486e25617d2942c17378a9bda8211fc31fd9c4d590ce6b2fae4f6db",
+      "runtime_bytes": 438,
+      "runtime_sha256": "fc658a7d4f124cfbad9713998297d935dfed978f8a443ebee513a1e56d749672"
+    },
+    "src/tau2/knowledge/postprocessors/base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1861,
+      "git_sha256": "4cbffeb5028150f50a06d72e2cb861f651c5b34e56726ddc0c90875830935875",
+      "runtime_bytes": 1917,
+      "runtime_sha256": "a6c0be5eb3164be0f8f94d239a72f63afca2aadcefa8862bf8d766ef1c5d0ba9"
+    },
+    "src/tau2/knowledge/postprocessors/bge_reranker.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7219,
+      "git_sha256": "4430889114d7f519abe3a69afa22a0815528d60e549e5c05699c5392306d811b",
+      "runtime_bytes": 7437,
+      "runtime_sha256": "daf4fb2161065e3e4d9ef9022f788ebd9521c7e213257570b92f824af66174e9"
+    },
+    "src/tau2/knowledge/postprocessors/pointwise_llm_reranker.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4054,
+      "git_sha256": "878a8f22f507727357e2d7cff8ff6d289b3101ea33b602a198594eb5e8e23503",
+      "runtime_bytes": 4179,
+      "runtime_sha256": "ecfc7256d2acb1f266be96e9377b6c145ac1a2cd126fdbc1a34d08c7c5f99938"
+    },
+    "src/tau2/knowledge/postprocessors/qwen_reranker.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9532,
+      "git_sha256": "430c5f4e7371950cba39457b77f49c8201809ce2da6ace868571969b8b19ea67",
+      "runtime_bytes": 9815,
+      "runtime_sha256": "24bf071c563fd520b7bbe63fa377f9aad4a60e7520805121e1a91aa4ed20bdb7"
+    },
+    "src/tau2/knowledge/registry.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1914,
+      "git_sha256": "98b476f3ac15de7555e2ee621c6ea16cf1b860d383b6e6b85e47bb0e097d815c",
+      "runtime_bytes": 1982,
+      "runtime_sha256": "9efbe656043bdb1d1a8dbd5bdcb11cbd0a1ea8eb4567e217b06c69a5f40c3de1"
+    },
+    "src/tau2/knowledge/retrievers/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 363,
+      "git_sha256": "1ebced75a6122c66f071f38443e6cab1d8eba909b8066935863428021d73c514",
+      "runtime_bytes": 374,
+      "runtime_sha256": "4e1dc6c48d6b9dbbc183e531bdea8d83c9fd788ff2405fa2a9b956ecd48ad12a"
+    },
+    "src/tau2/knowledge/retrievers/base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1560,
+      "git_sha256": "14d5584225cf31d90bed97175e6b74c9e49a5b94f2296f673cbdf3f382cd1930",
+      "runtime_bytes": 1605,
+      "runtime_sha256": "689d2d5ad2b54a6a3f2faa643999cab76d33e9e6d4ff262c22f3a7d408d84421"
+    },
+    "src/tau2/knowledge/retrievers/bm25_retriever.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2267,
+      "git_sha256": "2a9f6dc19db6e7bd05eb5d2d39d9944a5dc87019c69ea708c42b1d515f2834ba",
+      "runtime_bytes": 2336,
+      "runtime_sha256": "b245004441576f6535edb7c0938e1cbec06db96a665b53692f5fe22477cdf969"
+    },
+    "src/tau2/knowledge/retrievers/cosine_retriever.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3154,
+      "git_sha256": "1c06852a79299e58d3a0b56175e72d870b90ae022b814ea68487ff7336bf01eb",
+      "runtime_bytes": 3249,
+      "runtime_sha256": "7e7bc4a6e3da8181782cdb5693562b8c15ea84a2ee4d27e951deda17bd1a9ecb"
+    },
+    "src/tau2/knowledge/retrievers/grep_retriever.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1835,
+      "git_sha256": "ea7d5427b128666b71049ac5e5dc4851ef8c65ac4ddd0faf29a04b9bcc1d52cd",
+      "runtime_bytes": 1894,
+      "runtime_sha256": "ffe005f8efb3ad01380ade37a5a440e0a819b41ccf041a42464ea5b35c2710d1"
+    },
+    "src/tau2/knowledge/sandbox_manager.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 21268,
+      "git_sha256": "7bacd92019c51230616dffe73c731e721ccb76ebfa3bfa9c8da1cc2287168f10",
+      "runtime_bytes": 21815,
+      "runtime_sha256": "b052d33a3904725492e1e4c1826c8108916c1601371c260c325416ad012318d0"
+    },
+    "src/tau2/metrics/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/metrics/agent_metrics.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 18374,
+      "git_sha256": "136b5ebcc0c115b5817a4f6d6b485a871aba199ddedf56458f35f339569a54dc",
+      "runtime_bytes": 18876,
+      "runtime_sha256": "da3e95e6c1c3773305d7c02ed60cac944fac18ff6821b3a0df16d9255083c62d"
+    },
+    "src/tau2/metrics/break_down_metrics.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5582,
+      "git_sha256": "8eb9e7571d49d7fa9e6a3dcf3c9dd9004b5326dea5cb8f7694f53ffb7b8d92fd",
+      "runtime_bytes": 5747,
+      "runtime_sha256": "4c32027a783c874306c93162a087cb05b045876159c3104faf76a3d8ddcd91f2"
+    },
+    "src/tau2/metrics/voice_interaction_metrics.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 89594,
+      "git_sha256": "61a0db7da4429c1f3c7be22708e3c048ca5bf0863b1ac97abb61279a5843a6ab",
+      "runtime_bytes": 91936,
+      "runtime_sha256": "530cf6f339a311a47fdf714c01caf8f59e4193102ea66c3e646fc6e379e298d7"
+    },
+    "src/tau2/orchestrator/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5201,
+      "git_sha256": "880d08235518048278e7e6007965dfdcc25dd125fe9f677d6b0fd6dd9cb8289b",
+      "runtime_bytes": 5379,
+      "runtime_sha256": "a78571d5b89f8e137162c600ed939f4bc521370cc7baf574ad772517a90620fa"
+    },
+    "src/tau2/orchestrator/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 500,
+      "git_sha256": "8cfdda384404bbc2a14999757d3f304da71db2191d828723dbd19a40c8906828",
+      "runtime_bytes": 514,
+      "runtime_sha256": "9371f4b789835dd0d1e71884781634a8d5bedc795132b42da7411a6a45d69af5"
+    },
+    "src/tau2/orchestrator/environment_manager.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8876,
+      "git_sha256": "c548268b3c7a9a526c7b9fcfcef9058bff878dc3b17cef31793eccc695b6a049",
+      "runtime_bytes": 9145,
+      "runtime_sha256": "74661d747116a6d324367c44653d74f9c64752923029264c224da8a0487ce20f"
+    },
+    "src/tau2/orchestrator/full_duplex_orchestrator.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 24960,
+      "git_sha256": "2222e20f59ccd250f7391835e86471ccd696cc62258b4ebdd783b0e1715a0739",
+      "runtime_bytes": 25607,
+      "runtime_sha256": "7386bfbda35db315075e73282241accaddff5376bf8c794b2be03f4ad60bf8ff"
+    },
+    "src/tau2/orchestrator/modes.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 808,
+      "git_sha256": "b2d131cef3f15b1558568b1e4b0b316aeea26ae7fbe1e1092d79febbb7d74553",
+      "runtime_bytes": 834,
+      "runtime_sha256": "90e8869aaa17ce0fc069586586433708e8b0742977ddc871c50bda1967c511c6"
+    },
+    "src/tau2/orchestrator/orchestrator.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 40736,
+      "git_sha256": "ff6c2631a02b68a3341b1ca3d9a6122bb43ab872ee6acc960379c78015eca420",
+      "runtime_bytes": 41762,
+      "runtime_sha256": "5abc510f375204a267c54ecf6c84f60c2bc5f18967e41e2518dbecdba9a2db87"
+    },
+    "src/tau2/orchestrator/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 319,
+      "git_sha256": "b0940cb324f4c44bfd6a63e9a3cbaf9336a5b95c50c3da201ad1ea8340858dbe",
+      "runtime_bytes": 329,
+      "runtime_sha256": "b44be4c1574fb8f484e846b001a7d0a4b6592e5d79cebd5e37ef6a3ac9494300"
+    },
+    "src/tau2/registry.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 13109,
+      "git_sha256": "d170c1f4b7323a75e26b2ead6754ed423b17a3deb91fe2c89e7e8ec78c6bf12a",
+      "runtime_bytes": 13464,
+      "runtime_sha256": "0c8361c9ec25b2a5cc2d083804d26ee8629cba832d02399684dff87e244297c2"
+    },
+    "src/tau2/run.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 10098,
+      "git_sha256": "5a32c35582b8070e8d50c135508d436859392bf2db179a52711a3c53fb108dc9",
+      "runtime_bytes": 10404,
+      "runtime_sha256": "d9fad494637cd7bd2551d6f0cc5ad277b4eebf9ec4ecf324e886cf85e5fe8551"
+    },
+    "src/tau2/runner/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4443,
+      "git_sha256": "b04a5b17ddf516a86172eccd1153901633bf6c794e980e52995a69464dcc1c97",
+      "runtime_bytes": 4540,
+      "runtime_sha256": "82fffe8f57e66913548a4857e145d27fc7715fab2c435d4dac68ea877092f2f7"
+    },
+    "src/tau2/runner/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1564,
+      "git_sha256": "a4691118a6a612a7e3339ae638a76910d2f1746ff3bd3ed584946e32731aef6e",
+      "runtime_bytes": 1624,
+      "runtime_sha256": "a5edbc5f21f24abe776db2c4bc88b4be1e5892944c13fba48dd6a98b2ca2ab81"
+    },
+    "src/tau2/runner/batch.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 42078,
+      "git_sha256": "a75853aa6a982aaceb1faad4f5c96ec21545795636d68df7dcb59ea0902a39bd",
+      "runtime_bytes": 43273,
+      "runtime_sha256": "e69e7f3ea50a38b1023d2e28f3fa680cc61311a32c50c08dfd9245895688c170"
+    },
+    "src/tau2/runner/build.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 21502,
+      "git_sha256": "8f6d0819b91e208cd0f17e44e46cd19e86239697dd6656c1a01019343e79ccc8",
+      "runtime_bytes": 22090,
+      "runtime_sha256": "0384704b8e971c00ff80223d00bcbcf3cc76acd46f9b13feada845b602c2d122"
+    },
+    "src/tau2/runner/checkpoint.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 16355,
+      "git_sha256": "3c4cf66101ec30a3dc47ad7b3be35a4e542ffcbf85b3ba2bad66ad28064e9ca3",
+      "runtime_bytes": 16790,
+      "runtime_sha256": "7de82f46e109cf1d161488176fa1f1ddcfb0899b7a3b3812d5d47469048fecb5"
+    },
+    "src/tau2/runner/controller.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17171,
+      "git_sha256": "1b698d61e607d70bd813d722799813f908005eae3d044db8f24983f5b69019bb",
+      "runtime_bytes": 17650,
+      "runtime_sha256": "88a94e6c025ec2a45cd549ecd17bda28bbe6e1799c4e8a47dd25205c9faee6cc"
+    },
+    "src/tau2/runner/helpers.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 6851,
+      "git_sha256": "39f804b325b8bb73893fc75ba422a70d5bacd258bc64ebaf1c0fe71b2fa93b66",
+      "runtime_bytes": 7052,
+      "runtime_sha256": "929146f042922fc63169e49d6213de34c975a4fa746aa8a619b43835b8c80591"
+    },
+    "src/tau2/runner/progress.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7868,
+      "git_sha256": "3264ea8ad797f6d513626b9baec1a57c2a3b0aa499cebf9915f9038b90edf68f",
+      "runtime_bytes": 8088,
+      "runtime_sha256": "16a16a9710d89035b96063d979cc19a470389c1d5cd4620ad8e15faa623dafa1"
+    },
+    "src/tau2/runner/simulation.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3240,
+      "git_sha256": "1b98532199a05d87dcc14aead9d59c320d20f11d3d8e4c8458663ed5964eafef",
+      "runtime_bytes": 3332,
+      "runtime_sha256": "ff49a679abdd6eb5310d4c12ce651fbd9d76854889948a4797eb493f22808033"
+    },
+    "src/tau2/runner/work.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8617,
+      "git_sha256": "f11fa55bf873e064bc1103afc316bcd91790d701f909726d8c95f898a1766f41",
+      "runtime_bytes": 8855,
+      "runtime_sha256": "f5f0007c8a49482049f7f1d7c6426de8a7b6ee2aa55f206ed436afaf54bbb2f2"
+    },
+    "src/tau2/runner/worker.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 11791,
+      "git_sha256": "ed2780ab8c345754adaa22a2423184b76c3f7cea32a21971d3d55167c3efc595",
+      "runtime_bytes": 12109,
+      "runtime_sha256": "b2cb914902597dae29abdb99938c7f13b8834e4b9858277e454adefbe6a11942"
+    },
+    "src/tau2/scripts/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/scripts/analyze_vad_silence.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7779,
+      "git_sha256": "2396b1b2326bfb1bf5a43864d68a927dfff0451175ac80015422a37fbcd9e317",
+      "runtime_bytes": 8001,
+      "runtime_sha256": "541086b2af5dfcc335089d8fcd71f49dfae9dff9f37b6eee2790f45ddfac0529"
+    },
+    "src/tau2/scripts/check_data.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 812,
+      "git_sha256": "60878ba719227e2583c02fbe9dec93b6589ed33c6e56ce6874f1f2c7492acf03",
+      "runtime_bytes": 843,
+      "runtime_sha256": "436f454227afc1b704a2afa1eeb85eb9b734b58f44f4d028c6c0d590700ddab0"
+    },
+    "src/tau2/scripts/evaluate_trajectories.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 10468,
+      "git_sha256": "4122061d8e062f7a968622f63a8da9117c0bdd2aae20f590fb96582a649e1ed3",
+      "runtime_bytes": 10748,
+      "runtime_sha256": "ded5a6853157f0ca599702a09a41fa48f0070230e151c371cfc7d0afcf085283"
+    },
+    "src/tau2/scripts/get_experiment_results.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3994,
+      "git_sha256": "d6355f0e4386c472ee84db55ad7acb7665ec623050951d0de55eb742cbe979a7",
+      "runtime_bytes": 4133,
+      "runtime_sha256": "97b32c79b4264df521872fca28a172a393b0f35bc0a9ae6a0ce86a9dab10d758"
+    },
+    "src/tau2/scripts/leaderboard/MAINTAINER.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5580,
+      "git_sha256": "7287ef844f89029ebc68d744fadad3d9f5f5e735d99c4d50fcea14efb9df477c",
+      "runtime_bytes": 5736,
+      "runtime_sha256": "be25e3af2fde9b8ba655deb850793ac80a6c4ec5395feb817d32121bba157f2e"
+    },
+    "src/tau2/scripts/leaderboard/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2540,
+      "git_sha256": "af99294a3b149ff9a55c5c7d13bc3ff5e5fbfac6e8e0b9658f1f7bbafeebdfea",
+      "runtime_bytes": 2637,
+      "runtime_sha256": "42cc3f10bd650e6ef720e917f25eb12d134bf8ef0fa730161dfdbe9abbd7ad85"
+    },
+    "src/tau2/scripts/leaderboard/backfill_interaction_metrics.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4897,
+      "git_sha256": "a1c82d1b5572f7361db7098411d47b82abbf19efae669af6312da1015cf5013c",
+      "runtime_bytes": 5048,
+      "runtime_sha256": "20c092f65809af6d5cf46d2b905aeaeea380d47b79e96a3b76e9603a2caece18"
+    },
+    "src/tau2/scripts/leaderboard/compute_interaction_metrics.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8234,
+      "git_sha256": "e48fab2363f7b8dc7dbf97b4e73f161d1fbe44cbd1c41b800dc4cc26bd0006ec",
+      "runtime_bytes": 8471,
+      "runtime_sha256": "f058663d1e08417643380b3666fa9240f89d1503c5e592b01c274b7dae50c293"
+    },
+    "src/tau2/scripts/leaderboard/generate_schema.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2300,
+      "git_sha256": "4b8926308fd24d9478e42f8308022e2bbfed8f9ecd1a373ea2a63c91a470897f",
+      "runtime_bytes": 2380,
+      "runtime_sha256": "b4c0a4d042a84aa46e4b5166f26bd41f640e0964388e630cdf6b0e03b59775b3"
+    },
+    "src/tau2/scripts/leaderboard/leaderboard.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17996,
+      "git_sha256": "ec27bc5e56a6705003e49b72fe54d8b4b395c697c6d114bf6aad90558dd2b903",
+      "runtime_bytes": 18503,
+      "runtime_sha256": "fe1ec0ec9bc84d1ae0019813248bae13d6f101fee857d7f974e93d09c391ad1d"
+    },
+    "src/tau2/scripts/leaderboard/prepare_submission.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 36574,
+      "git_sha256": "99740b39acb6d2cbc41d127a43bdad0716c4ae6de5efab12e2569b032092fa05",
+      "runtime_bytes": 37513,
+      "runtime_sha256": "f99151373faa03c67b92423ebf531decc6addd3bb870941b9fe0381d816d23ce"
+    },
+    "src/tau2/scripts/leaderboard/review_submission.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17385,
+      "git_sha256": "c69198685154755b2a9ea88e019f91bc44190036fcb4fb3a374942b7232b8364",
+      "runtime_bytes": 17879,
+      "runtime_sha256": "a7d5135865a6e912ce25bbd0cfb52e6a0c6202753abae701dc4d3c2450a11b0b"
+    },
+    "src/tau2/scripts/leaderboard/submission.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 20240,
+      "git_sha256": "ebaa54dd669a9b1d6bb8ae0c05e3b202045a5614bec83a8f076ed3fcc9bdf5a5",
+      "runtime_bytes": 20779,
+      "runtime_sha256": "550f6b93b7d1e6e7d53e5e02b6310925d1fb5d2ef84eef724d5de2cb0257d66f"
+    },
+    "src/tau2/scripts/leaderboard/trim_trajectories.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8896,
+      "git_sha256": "9c38da31b884f96c29681ef93d965c071b4472bdfc73c6642051edaeafe4929e",
+      "runtime_bytes": 9156,
+      "runtime_sha256": "ead6f7b3c8576cac42dc913dc5a3fbae5c1deedcea1b48c878384d129b23f148"
+    },
+    "src/tau2/scripts/leaderboard/verify_trajectories.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3482,
+      "git_sha256": "33260c9c00ea329aaabbf998d6413450af818f2e8f9fb66f8f82a94f0eca681a",
+      "runtime_bytes": 3593,
+      "runtime_sha256": "79cd9eee0e0b14db8a6a32e04e0756e19911820ffed591ade3bcf1aa3cac5b73"
+    },
+    "src/tau2/scripts/leaderboard/verify_trajectories_private.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 243,
+      "git_sha256": "8559f11d219655a01093f74028a7be232161dcdea5fe6d1346c15184a463c22a",
+      "runtime_bytes": 251,
+      "runtime_sha256": "cb37683d637e79af6896693e1dc47262e0e6d44dddd96ef8e7bed202768c3892"
+    },
+    "src/tau2/scripts/leaderboard/verify_trajectories_public.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2607,
+      "git_sha256": "577fdd4be68cfcada461698c60607a7f61487759819dd9dd4b44258075c69b71",
+      "runtime_bytes": 2680,
+      "runtime_sha256": "1648b853125f29f8d4fdd04c598d51583196c97b2af4dba2d80795f3cfe87e26"
+    },
+    "src/tau2/scripts/manual_mode.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 27665,
+      "git_sha256": "2b44a8dc68c7267bb859bc1b347e3bbac16cff9320865ed7762d0221f841cd60",
+      "runtime_bytes": 28423,
+      "runtime_sha256": "3ed2ec300c32de73b868a58375f45e4c8f2823e76ad44cb1cfcb92a449e962dc"
+    },
+    "src/tau2/scripts/per_task_summary.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14203,
+      "git_sha256": "2a2d23496501adda712e66b46cb0e298b800cb938b9c62f7034ef018c1e05b7a",
+      "runtime_bytes": 14562,
+      "runtime_sha256": "48a041cf2202a6d4860eb41514cb66672b55a727d57e4b0ab2020eb0f83877dd"
+    },
+    "src/tau2/scripts/recombine_rewards.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9763,
+      "git_sha256": "8c4843e7d3cd202a34441492570f7980fe7d874a7bcf2a6f9084405c1dd4ce0d",
+      "runtime_bytes": 10031,
+      "runtime_sha256": "db08d7d9bc21ef51bdf69fe4120b531ba919db5a6d76d474ce62f28cc1ef4f56"
+    },
+    "src/tau2/scripts/review_conversation.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 43714,
+      "git_sha256": "2da50b56312097667557166427cf3d2a1601fb2a20971a61e217218d1a2ea5cd",
+      "runtime_bytes": 44961,
+      "runtime_sha256": "3f774e3fbd0a49a6fc6fc0ef4bff0df55da9a018a8163bffaa80d4e7c4f1de20"
+    },
+    "src/tau2/scripts/show_domain_doc.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2122,
+      "git_sha256": "af6b584d51d05fa961df91434d2e262a10a751d5362d8fc1ad570ceec06432cc",
+      "runtime_bytes": 2201,
+      "runtime_sha256": "5ce86699da6c9ebd4b8cb5c9f49ec9021ebc0053d2eb29075d734de3285d8f50"
+    },
+    "src/tau2/scripts/start_servers.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3462,
+      "git_sha256": "d1d98bc7c6fb34b57569ded1ee2bf155b30f84028c9582d07913a79895d29688",
+      "runtime_bytes": 3563,
+      "runtime_sha256": "0adcacd865bd314737ca70b71a0635a2f2bf1fce196606399c32a93ed326f132"
+    },
+    "src/tau2/scripts/view_simulations.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 42733,
+      "git_sha256": "68b4d3bca639ea2eaeb3fa3b14d2218ecf92d155c75a893ffe5085d2807d10d6",
+      "runtime_bytes": 43861,
+      "runtime_sha256": "fe388fb8cf22ca4a8539f6dbe6b8627f3b787eefe000fd185f4a4ecea4319f60"
+    },
+    "src/tau2/user/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2240,
+      "git_sha256": "7698d14639e2eea82fc40169113ad99d0f57de30207a3cb47b8f9d5fa96ca351",
+      "runtime_bytes": 2319,
+      "runtime_sha256": "92d38ca347872ace30fb0255e60a6f3e76b72b9c5379990426fdc167b073a478"
+    },
+    "src/tau2/user/user_simulator.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9350,
+      "git_sha256": "bfe1defe73bce25450b2be697c249d6cec2f3ba25a70e32e2452ba75a53a630c",
+      "runtime_bytes": 9639,
+      "runtime_sha256": "0049b3b0bc9ef576c8fd58d0753cbb5fcb68bc197fe6cfeff4bea9c1b490279e"
+    },
+    "src/tau2/user/user_simulator_base.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 6622,
+      "git_sha256": "e6c4bae08fb7ae6fa6ee5ee29624bc35e0dd6c6fe8ffeab065592c7b51fa32f2",
+      "runtime_bytes": 6850,
+      "runtime_sha256": "a8173e86db1da410c6a40b76a8b687a1d2ced1f9c6e0f97b23bed758c7e84b51"
+    },
+    "src/tau2/user/user_simulator_streaming.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 68103,
+      "git_sha256": "e3608a63ba49afc8374a0d57222768ee6fef9ed975fd570717409c27067c5be4",
+      "runtime_bytes": 69687,
+      "runtime_sha256": "a7f74af3fa4d605dd39602d6c2f22cd3ae0c3178344331ee24dec3167262d367"
+    },
+    "src/tau2/user/user_simulator_voice.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4357,
+      "git_sha256": "e4543b619836a5dab127ba125ffc150aa012ec2ee154109716095556d7563aeb",
+      "runtime_bytes": 4485,
+      "runtime_sha256": "40d40d1dce03c5db1113163024928e4edbabc323d3841d540b1b6b2f67f75ae8"
+    },
+    "src/tau2/user_simulation_voice_presets.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 35426,
+      "git_sha256": "0d5c480871549a6d565b9ec90339e66c1c43d674072b4b7c2a6cc325d91ddc30",
+      "runtime_bytes": 36372,
+      "runtime_sha256": "4452930b02f2904e3f671011ed022c1c3df5f49f68d89b3064dc1ac8a8023f62"
+    },
+    "src/tau2/utils/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 353,
+      "git_sha256": "e255aeff0258cf0042f57283c5375cd78b034509b886ba827cd927a2a6d27c6a",
+      "runtime_bytes": 366,
+      "runtime_sha256": "5a1c7d054234db62683067c4bacc783740731c22a719d75d8636145a6c6c0ba6"
+    },
+    "src/tau2/utils/display.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 116837,
+      "git_sha256": "b025cc7f7a74a0032d12cd345d00f10a833cf11dc3825b6444bb068f8d83f436",
+      "runtime_bytes": 119807,
+      "runtime_sha256": "4bcb1637cfd565782d23d01602f21feace87b05f73c74531d9d0a1c0470b95ef"
+    },
+    "src/tau2/utils/io_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5890,
+      "git_sha256": "ce66fb275b9bbf09a17be2cb2092bf2e696ab07655bf7571fe53ba8db4ed3015",
+      "runtime_bytes": 6056,
+      "runtime_sha256": "3f960d78016c14f214d2d726d8d97a645740a1cffe1dade23c9f34836a221c9d"
+    },
+    "src/tau2/utils/llm_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 19202,
+      "git_sha256": "ba939b0cea27b2357275963a853b781243ca9a936bd50e1de3519c81ba923aa0",
+      "runtime_bytes": 19779,
+      "runtime_sha256": "25007c6e4e83238fd8fc6eb09541ed93e40f97cf7bad912013bdc63e6ca1d28b"
+    },
+    "src/tau2/utils/pydantic_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 994,
+      "git_sha256": "618dfc39b619bb0f623151682962ddc52bf2ea70bc2562dded884f118c84b78a",
+      "runtime_bytes": 1028,
+      "runtime_sha256": "173005da32ac15c8bee98290fe5a4e1f8e3299df7b424af50920355909d1e718"
+    },
+    "src/tau2/utils/retry.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4875,
+      "git_sha256": "8a4f833ea1880b79a3d6086ad2a87f78372949e8918acdff76d500e8a33bc550",
+      "runtime_bytes": 5015,
+      "runtime_sha256": "ac3ccb9e5f36e4b59c33a5140072180ddc57c8ef95bddfc4fadc6c2cf585d110"
+    },
+    "src/tau2/utils/tools.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 10589,
+      "git_sha256": "0b7900a9a31a5a65c32780410f30539dface4fdb94c68196199eb2dd575e5763",
+      "runtime_bytes": 10883,
+      "runtime_sha256": "420604c58331454a6cd11d76497273f5aa4ebf6307396212c27e7a499f75c978"
+    },
+    "src/tau2/utils/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2957,
+      "git_sha256": "e0c39544b01700e60a3a26c7cf2c2d17e37e3852d5f0fa466b8517f82b83622b",
+      "runtime_bytes": 3061,
+      "runtime_sha256": "2f699d8edf0478a456093fddf60c5ee8a8b9757c1de04fc18bbc9951c454e056"
+    },
+    "src/tau2/voice/AGENTS.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5747,
+      "git_sha256": "580fdbda55a9192da6d7b6c3b4ca278e14b1458c65613aac50c3c8ce168b5d3a",
+      "runtime_bytes": 5874,
+      "runtime_sha256": "6eef29d963f1ceb7ad7789f1e71caaf38b9403f90cb1f8f3dc2c5c747ae79963"
+    },
+    "src/tau2/voice/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5864,
+      "git_sha256": "9a8fffe5b9d67859c8a756980159b864a9484b486c448763e1bbe39d6611a256",
+      "runtime_bytes": 6002,
+      "runtime_sha256": "168ca2af2a3e6ea653621e5acbce4d2cbe209ac78ae1a9ffba61bb6342f0538f"
+    },
+    "src/tau2/voice/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 59,
+      "git_sha256": "e134adb31cb51580d967b2ef853ecd0c54537f73f5f72336642cb52622e73b77",
+      "runtime_bytes": 61,
+      "runtime_sha256": "18a02b5a24fb9c05bdb20c037330b9f283adf41a54d92bf0252770b0ec068271"
+    },
+    "src/tau2/voice/audio_native/AGENTS.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1974,
+      "git_sha256": "058ed3e649037b64d1376d1be7d00f6449089635b8303e86827d800574bae1af",
+      "runtime_bytes": 2005,
+      "runtime_sha256": "559f8563d13eca64bb536fd5b8d1a16e2020736f14c95b7846e3a5db29b41b86"
+    },
+    "src/tau2/voice/audio_native/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3081,
+      "git_sha256": "e3379965b5920d36d6fa468db423b75be2d331006dcc1228577ada6445f1d23b",
+      "runtime_bytes": 3143,
+      "runtime_sha256": "7f1626b4c5b53538dcdc7b91d366a2cea616132c62537a81ae141b27f55f7a47"
+    },
+    "src/tau2/voice/audio_native/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 160,
+      "git_sha256": "946065799bbc9687cf4c4d9a9e49a71d59ed3a6016ce71bd986c0dcf382685ef",
+      "runtime_bytes": 165,
+      "runtime_sha256": "e713f026f3d7195e5af7732c9fa4db56691ae915544b5614bb25def410af1a06"
+    },
+    "src/tau2/voice/audio_native/adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 20624,
+      "git_sha256": "90abc4f8c3e0fa3cae633c8f23f59056c6107fed23baaae8b22df99b9e59a9d6",
+      "runtime_bytes": 21165,
+      "runtime_sha256": "ab0a931b9143996cb347d0435210985153f605e29a717679253eb80bdd196d27"
+    },
+    "src/tau2/voice/audio_native/async_loop.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3433,
+      "git_sha256": "596c4669fd4feb7a5268b6477e6d1e6fb8bca78a6ec629be1e2a8f7b160c2656",
+      "runtime_bytes": 3535,
+      "runtime_sha256": "3e12f5c0ba1c99d9fb691644902a56730d163f0839625a49c22ef3af4281455d"
+    },
+    "src/tau2/voice/audio_native/audio_converter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3955,
+      "git_sha256": "d674b43bfbf273a3e5691e6bb3625f6db9f154e99aac703fbdb58245cdf6abdb",
+      "runtime_bytes": 4078,
+      "runtime_sha256": "202474fcd0bca219cd2513ca2d2df1ed10a9605826f33e513bbbc52096fce5e6"
+    },
+    "src/tau2/voice/audio_native/gemini/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1771,
+      "git_sha256": "1fd35255bc262e64046778fc81ac4067e31d20b5e4d4b6e611904df83a2eb407",
+      "runtime_bytes": 1815,
+      "runtime_sha256": "69bdc3c143ccff433bbd21741f10543b38fa0cced4df4e5a40f7d293c47836b4"
+    },
+    "src/tau2/voice/audio_native/gemini/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1151,
+      "git_sha256": "2452584629ff6ee1db4bc5c72ae4b8a4d4c0d9213db76d6e10d38848fa4bf024",
+      "runtime_bytes": 1199,
+      "runtime_sha256": "5abdb6b836c47b946947ffd6b87301953a203058cdca7ec3c5694e88a8b32012"
+    },
+    "src/tau2/voice/audio_native/gemini/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 20314,
+      "git_sha256": "23ac473c7be7470cb1399159af02d14aae44a22ff4fb04291552511bf0a9fdeb",
+      "runtime_bytes": 20841,
+      "runtime_sha256": "475721bec8752ed505e4b71285ee6d83da9e59258945149d4fb83f49173d071d"
+    },
+    "src/tau2/voice/audio_native/gemini/events.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 6147,
+      "git_sha256": "914cf3cfe793e4f81ad4d6e3d0eb5ac25e123044b32cf8368390eadc64c5f452",
+      "runtime_bytes": 6348,
+      "runtime_sha256": "d88a1f8ab02d518cf163160f7dfa111d29607cba799d052b0f2c4e36c5ad2e88"
+    },
+    "src/tau2/voice/audio_native/gemini/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 58247,
+      "git_sha256": "ad2334a094982feeff5b803fdf2cfc3960fe9b0308306c3e2e0766723b1dc287",
+      "runtime_bytes": 59702,
+      "runtime_sha256": "36cd051bb5df29337b7006d3a02f3897285df348572936f929c5d084e48262be"
+    },
+    "src/tau2/voice/audio_native/launa/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3006,
+      "git_sha256": "68a8a498969f67e412c4002513c029cc9d6650fe5b83cbff5fdd21c5d157f66e",
+      "runtime_bytes": 3076,
+      "runtime_sha256": "635fe8ed6dfccb0883f231ae096c7a5d0a87a72242b9643f2fdbdb28ffc8cccd"
+    },
+    "src/tau2/voice/audio_native/launa/THIRD_PARTY_NOTICES.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1304,
+      "git_sha256": "238d9e4db13ce13b2473afa587f9b4b0639b222784423373d7f12b28a4801d49",
+      "runtime_bytes": 1329,
+      "runtime_sha256": "40eef6a73fbf4bb13a5699263ee7923a4933367a673441f0f39d6ec4bd7a1642"
+    },
+    "src/tau2/voice/audio_native/launa/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 216,
+      "git_sha256": "2cb7bd66212817556333136e9f608cd99cd3fc264d4e62ccdd0671ca51a3df1c",
+      "runtime_bytes": 222,
+      "runtime_sha256": "d147294a4f9adb8495322c33e5382d0f3ba7521a84c2bcd9af26705efba98bbc"
+    },
+    "src/tau2/voice/audio_native/launa/config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 845,
+      "git_sha256": "6e5ef1cb21c2ed7cf3d3fcf897f5f52d407016f008a2a0fc378cbd83bba634a8",
+      "runtime_bytes": 864,
+      "runtime_sha256": "76d1b926f3c542bf676e2678ffa0c469c72c08efc6db51d16ac3a40fead8537d"
+    },
+    "src/tau2/voice/audio_native/launa/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 6822,
+      "git_sha256": "12eeb7c19b3c4d7778e444440d0f0e1596289c0af5f683b4498bc007fde037c4",
+      "runtime_bytes": 6993,
+      "runtime_sha256": "05c59980ddf1bb7ebdf659308629e31a0697bf175f1356edb762f87c507ac47d"
+    },
+    "src/tau2/voice/audio_native/launa/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8875,
+      "git_sha256": "3067c047fee76ac7c2ceb51f5c12a65089988f5cbd4bca6ffb21eedbf6b51300",
+      "runtime_bytes": 9114,
+      "runtime_sha256": "19c25603d9a6cc583a3cc44e19a400f92d44f274f7392b5660309eb7a0bdb400"
+    },
+    "src/tau2/voice/audio_native/livekit/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5505,
+      "git_sha256": "e0105f4eda4db88bf711108d882cce7e75a3ff960377e35400c77b07cbbb2d5d",
+      "runtime_bytes": 5591,
+      "runtime_sha256": "e5f9abf5c8bc9a38a77f47ca26aa4fb63731cd6a606b26ffb5f7e2313db37fd2"
+    },
+    "src/tau2/voice/audio_native/livekit/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3342,
+      "git_sha256": "e42ede2bb9f0ba349036c5be8586feca35f1f6a45edd3d3ab8bcf32810a72463",
+      "runtime_bytes": 3459,
+      "runtime_sha256": "019401e2333ba45506e629303288ff28dd14cc7b03777a119a9c7c2b559539e1"
+    },
+    "src/tau2/voice/audio_native/livekit/config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7550,
+      "git_sha256": "4e1eda41b8058caab797944b9d2f76d217a28916e1549b6a4cf9c21204aab83f",
+      "runtime_bytes": 7754,
+      "runtime_sha256": "b77a51c9aa6934ae8808096318edb7f6d93c42a0bef4432d8d59a13149c80122"
+    },
+    "src/tau2/voice/audio_native/livekit/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 27788,
+      "git_sha256": "396c8b84477132541992a47b351e4d142805bb872a196f05e1e9279a5deb915d",
+      "runtime_bytes": 28501,
+      "runtime_sha256": "2c0171e643a320becb2b55e2f88265df9d76d01b57ab4957c7f2beab360b6fba"
+    },
+    "src/tau2/voice/audio_native/livekit/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 44323,
+      "git_sha256": "83dfc0606aebc935afc542e87bb6c08513d41944cb2719806ded28a2b7fb05e7",
+      "runtime_bytes": 45575,
+      "runtime_sha256": "52751970d9f5110a236435ab4a8e81857eb21975a539d5611100864936a540cd"
+    },
+    "src/tau2/voice/audio_native/nova/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1027,
+      "git_sha256": "69f4c0b2cce21dac956a14a82f3a478d4eccfa6c50958512914240c9a2b0aae4",
+      "runtime_bytes": 1058,
+      "runtime_sha256": "209bcd44e9aad71206fc429aa75cdf677c5c7e4fe51f06001b130470c5e45a28"
+    },
+    "src/tau2/voice/audio_native/nova/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 22129,
+      "git_sha256": "b3a4643252db3eb6987c697d8b69a832ec1af95b7728216cad77b69a4f1bd873",
+      "runtime_bytes": 22696,
+      "runtime_sha256": "d9d6fccef94b1aa5f823ed448d1a684cc9224c554c73f7cdf2544e03ef8edfb1"
+    },
+    "src/tau2/voice/audio_native/nova/events.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 12800,
+      "git_sha256": "e895d96f582bdd71f07c4f2da9964bd5b92ed5a7c5708c9f2ec8d38f7e1a9f4c",
+      "runtime_bytes": 13186,
+      "runtime_sha256": "b7cf0e76ce49ceed97e08738a27484c95f0b2e79f15bb9f9588fa6b5434742e1"
+    },
+    "src/tau2/voice/audio_native/nova/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 31331,
+      "git_sha256": "e1f40124b1a845b692b01eda0d74095a3659c7d0bcfba05bba80c6673d8ef6ed",
+      "runtime_bytes": 32246,
+      "runtime_sha256": "98e4ea4779c5afb9a2e006d0882fa683fceaf1ef17316ac10a6a1247735a09df"
+    },
+    "src/tau2/voice/audio_native/nova/test_provider_standalone.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8247,
+      "git_sha256": "cea112576479eecae2f8d5e2f8e2040c249f55f81f32bc7c55bb87e55efc72ff",
+      "runtime_bytes": 8485,
+      "runtime_sha256": "9379436567ebafc8cbbb6a437178f26fafe586102ecec238b4dfb7f56803d4b5"
+    },
+    "src/tau2/voice/audio_native/openai/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1643,
+      "git_sha256": "cccf047f0b2c9252ba147535114f363a0c5df9b1e79c180724f604825a7feeb7",
+      "runtime_bytes": 1708,
+      "runtime_sha256": "3b0d151de1bec3fb3e7842def1acd83334e58a5907779c2e23d165c04d8404e5"
+    },
+    "src/tau2/voice/audio_native/openai/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 12465,
+      "git_sha256": "c2500c72eec1b28aec34cc1b5cd32b15baad2171a9e4e173ad27ba3bded81521",
+      "runtime_bytes": 12809,
+      "runtime_sha256": "6ec0d83590c52fcbbccb41c1c5829e84a32c6c4fd1216bea658b679ae5e48e11"
+    },
+    "src/tau2/voice/audio_native/openai/events.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9733,
+      "git_sha256": "4730083edfa93ac0678c7ff81d4e5615ee9ae342505ac9e75770b826c180c37e",
+      "runtime_bytes": 10062,
+      "runtime_sha256": "250f1f97b986b9e66a83ef383abcc6b30c33530e1a35ec258bc9e992d7fd2f93"
+    },
+    "src/tau2/voice/audio_native/openai/live_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 7344,
+      "git_sha256": "02bce6e2a1730e4072f40e1de517f6124c7b83a0aff5e8f58030c2fce37043ac",
+      "runtime_bytes": 7520,
+      "runtime_sha256": "83634746043bed7ba740a62c0f6de555fb5c712fcd9a8eaeee29cefcbecdffb6"
+    },
+    "src/tau2/voice/audio_native/openai/live_config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2102,
+      "git_sha256": "bb3283e485cb216f17a37f0bf0b7c5ae806bab972d8ea68ab379b9dfb6c92be4",
+      "runtime_bytes": 2150,
+      "runtime_sha256": "3f757fb48c7ed4667d02bcc40b9b4c1f8cda925297b866b1bba914d56cf830b9"
+    },
+    "src/tau2/voice/audio_native/openai/live_provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 21723,
+      "git_sha256": "b1c96ccfd3951c2ecf71a3df09fb7b62ba3e8036bc1835b247f4c82eb52dabf2",
+      "runtime_bytes": 22258,
+      "runtime_sha256": "0bd1aba6d88f31715fdf5fab54ada67e1881978dc2fa405c6ccdd92534664e5b"
+    },
+    "src/tau2/voice/audio_native/openai/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 18770,
+      "git_sha256": "784cffc2fff72241255c945f42e0618146bc9e6f331edfaed736b10ca411f2da",
+      "runtime_bytes": 19279,
+      "runtime_sha256": "be80338b2de06938133285e9d1a20673d194344c1f83b5f9099dfb795a22586b"
+    },
+    "src/tau2/voice/audio_native/qwen/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2124,
+      "git_sha256": "09d457a6d47f937a09cc11dce4dda71c29b5c51346a8933e49666c217129e832",
+      "runtime_bytes": 2200,
+      "runtime_sha256": "9294f01a85aee426ebb4e4c11f088439a0d53305cb4795568881b37b645fe126"
+    },
+    "src/tau2/voice/audio_native/qwen/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14981,
+      "git_sha256": "3be061481ca50af5c4cd253d4ad9a4a185d87d0d8e64f5a345556525751c6c0b",
+      "runtime_bytes": 15388,
+      "runtime_sha256": "87b7eb5d43dd40f782187054f4f84007dccda232c47c0c84fed7dd88dd47be6e"
+    },
+    "src/tau2/voice/audio_native/qwen/events.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 12970,
+      "git_sha256": "ef6c33e4f001bb3967086a5b837a8c65399583796f3e62642d0b615c514ca74e",
+      "runtime_bytes": 13416,
+      "runtime_sha256": "a2ab5519e6d8bc7c79165b7b231980e0f9f00b68a2911fff2a1df7031a2ed647"
+    },
+    "src/tau2/voice/audio_native/qwen/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 15804,
+      "git_sha256": "48f754abcf7b674deb98bc221815741355887f84da6e929648909198c1434a2a",
+      "runtime_bytes": 16250,
+      "runtime_sha256": "21cf6d3287fdc7536ca7d14dd9750e65033268ad553cd06c15408345e5e1b52b"
+    },
+    "src/tau2/voice/audio_native/tick_result.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 20470,
+      "git_sha256": "3e73ec0f2f849bc6cbefadde5c48b4804844b3b1725e476e70abf32e190b245e",
+      "runtime_bytes": 20971,
+      "runtime_sha256": "73b3396d6b9f08720db020e791fa97e172fdb2b46c8f65ef80b7b837dd7dffbf"
+    },
+    "src/tau2/voice/audio_native/xai/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 2340,
+      "git_sha256": "4b3c6e19820146b6481bb946acba25e865b5ec739879e9c2dda1f2245fd47f46",
+      "runtime_bytes": 2421,
+      "runtime_sha256": "e73b3761a84589851c4a9a81923033fffe0b1ba92a93bbec3f0ee47d2139cd7c"
+    },
+    "src/tau2/voice/audio_native/xai/discrete_time_adapter.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 15763,
+      "git_sha256": "71ead5813b9c9ac4b6c7411041816da519d34f9fef05787ecc8c255c5401385a",
+      "runtime_bytes": 16185,
+      "runtime_sha256": "56e14352e0b115b074f472efee634950cc4f1975e4ffd324b87c33a38248aa6f"
+    },
+    "src/tau2/voice/audio_native/xai/events.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 12733,
+      "git_sha256": "93100ffc2f63e9034dc4b2e5e748d500f54bac5f4c7068e80980ed037ef0ba76",
+      "runtime_bytes": 13119,
+      "runtime_sha256": "2d15a4b14302403b20ee2e4bfc3b746975de24f7c96576260cbe8b726329a52e"
+    },
+    "src/tau2/voice/audio_native/xai/provider.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14739,
+      "git_sha256": "ddc2cd36a26c3b2232c4a0300c036d0cb83a5907874660f3ca59c966a9d5ad9e",
+      "runtime_bytes": 15146,
+      "runtime_sha256": "ead2a508b41e720ae08ef0d8adb0a1dc27874e36a5a87ee36f714a6ef692365a"
+    },
+    "src/tau2/voice/pricing.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 12753,
+      "git_sha256": "01f68ef5471076651774cfd5d0dff8dd8b0cb1121022537a0f45f29564d48016",
+      "runtime_bytes": 13110,
+      "runtime_sha256": "780bc936cd3f7271d640e484a0098577e2cf799a8494cdc673edcfd1ef4a143a"
+    },
+    "src/tau2/voice/scripts/elevenlabs.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4551,
+      "git_sha256": "4eaf14e9a529b62083b66d1b5afd6a0d79bc473276560f6a82da3a3271b9c7d0",
+      "runtime_bytes": 4724,
+      "runtime_sha256": "4cf0c50e6cc6835e40452ccb0df657d6ea07d2b15b1d641870a9213243a5e4f9"
+    },
+    "src/tau2/voice/scripts/setup_voices.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 13369,
+      "git_sha256": "04ba1964f493df145bf0c286c9f085cb3411b5e16f7b9dbc84b4e4acab3881e2",
+      "runtime_bytes": 13750,
+      "runtime_sha256": "4bd1525b20080879a67fa86b70e5dcf0152235bc7048702d8cb12ff7859add47"
+    },
+    "src/tau2/voice/synthesis/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 49,
+      "git_sha256": "2568ad9034e97543894a35d973a11973ca74fcd3f70e88227c42111091b5a9a8",
+      "runtime_bytes": 51,
+      "runtime_sha256": "f29a11f3495aac8d2ae3407e18cc60c5ea78bec7f5d24e38fc5b296e250e4631"
+    },
+    "src/tau2/voice/synthesis/audio_effects/README.md": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8464,
+      "git_sha256": "9b2327ce23b2928068bb7b025a869de3d02cc1712ed1413b4b252e5ddcf75920",
+      "runtime_bytes": 8661,
+      "runtime_sha256": "75798a10ce36bfb8fe2bbf9dd9b1779eec76ebe52f6b855a7cf64404aca013e5"
+    },
+    "src/tau2/voice/synthesis/audio_effects/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 71,
+      "git_sha256": "4a7f6f50bb323e96b3e03854ba334231fa23e10a332097562dd5075291b68328",
+      "runtime_bytes": 73,
+      "runtime_sha256": "4834ef9c3142898bdd0dd98816f83e562c867b0d1df79f5bf44d79baeb16601e"
+    },
+    "src/tau2/voice/synthesis/audio_effects/effects.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14217,
+      "git_sha256": "5de2d38c9ad0403394bd82fd629759baa8e39a861f19875f11c56e8622032b41",
+      "runtime_bytes": 14651,
+      "runtime_sha256": "7a63d4be27ed5d051b9849a68bd6d0ac085edb780f12441c87039560cf289851"
+    },
+    "src/tau2/voice/synthesis/audio_effects/noise_generator.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 14407,
+      "git_sha256": "97ee7b2ee4b44e9d593718a3e6cd60554a2be4332bfa63a7675ca42fc59ee4d9",
+      "runtime_bytes": 14781,
+      "runtime_sha256": "a34224b600b6b4b1dfca7b24b459a51ad3faa46cfa61d865ddc76fb528742eb7"
+    },
+    "src/tau2/voice/synthesis/audio_effects/processor.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 11692,
+      "git_sha256": "9d91250848bb350a2740913a1d377a92ba723b5e4d1fda79c7d59cc3aed4b023",
+      "runtime_bytes": 12016,
+      "runtime_sha256": "20da747f3ce2f4869d690433233c2a83e362ab4e373846705052bf11f64b5e30"
+    },
+    "src/tau2/voice/synthesis/audio_effects/scheduler.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 13901,
+      "git_sha256": "c52bc5a5d3a4f21c4c2b090c0861a089c07bf6c82e5bb55e217597b076b12fdf",
+      "runtime_bytes": 14293,
+      "runtime_sha256": "e1c27e73d1de4f26f14c0c162d51d7389fc018a25ee47ca950d1bad59122b98b"
+    },
+    "src/tau2/voice/synthesis/audio_effects/speech_generator.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5280,
+      "git_sha256": "4a5392fed0c75c542582e1289a515da2c0ac54f510383e8cc6b1075abb83ef25",
+      "runtime_bytes": 5418,
+      "runtime_sha256": "4ed7d2bead6866eb7bf6ee55b4b8a2959963809a16b2097b7b2e9a9a5b295958"
+    },
+    "src/tau2/voice/synthesis/cli.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9491,
+      "git_sha256": "f4c46f67ea3a843c483f4f57e637fd759317921399b8602f1e5ce9889c829a0e",
+      "runtime_bytes": 9775,
+      "runtime_sha256": "68521bb40ba73066cdee014b6a61914ae6360d841dd933e75c2c40bd51d28ef7"
+    },
+    "src/tau2/voice/synthesis/conversation_builder.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 26802,
+      "git_sha256": "1fd98cb3d14b46daa6b74d7b09aeab748a5f9d8917b7c458fcc7b1f2ee6671d1",
+      "runtime_bytes": 27523,
+      "runtime_sha256": "96623e33f22577778d9902251884814f8d1d615315c8720f09a55446653fb6fc"
+    },
+    "src/tau2/voice/synthesis/synthesize.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 947,
+      "git_sha256": "c5436ead082d5bd58fb6e2e9f373b59bb1359157d3366bd0288e001f68013b01",
+      "runtime_bytes": 980,
+      "runtime_sha256": "aed12025c063a50061ae9e5edda7b39705f480a038329694c42611e02e6ff1cf"
+    },
+    "src/tau2/voice/transcription/__init__.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 247,
+      "git_sha256": "43d1f7cca8b2919f4a489422c818e9f110169d777fa7553b717815d0952a1118",
+      "runtime_bytes": 261,
+      "runtime_sha256": "55496455efb06245747caeb42b57d3c3d9c9bf411bc40c4eb72376514b7b7d96"
+    },
+    "src/tau2/voice/transcription/transcribe.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8827,
+      "git_sha256": "79fafd188681f7e32ee290218fd0e463e07ab271fd8f9c357f56f3c482d336e2",
+      "runtime_bytes": 9098,
+      "runtime_sha256": "9faae97dd1535656788b88b4f65d4bd40fe1cb067f434ca700793ca62b29677a"
+    },
+    "src/tau2/voice/transcription/transcription_test.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3692,
+      "git_sha256": "3383d6792d96bc8a2a50ee9fefb4b6f559e0171fda33831672b44cdc88817435",
+      "runtime_bytes": 3809,
+      "runtime_sha256": "dd066f3bc7098127b9d1c56bc2a70c38387bf08123ec60c4e5fa06e562afa623"
+    },
+    "src/tau2/voice/utils/__init__.py": {
+      "checkout_mode": "exact_git_bytes",
+      "git_bytes": 0,
+      "git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_bytes": 0,
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/tau2/voice/utils/audio_debug.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 17189,
+      "git_sha256": "1b41b8f362a4ccef7ccf386da65467b9e53ea6994f77b8fe4cab8649142dc87e",
+      "runtime_bytes": 17699,
+      "runtime_sha256": "7fea2849491a71bd9fd75990f11b2fcf617806f8a954d1c06999d44ae44894ad"
+    },
+    "src/tau2/voice/utils/audio_io.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3869,
+      "git_sha256": "0a42d9ae79029edcafead1639ddda9c78f275430ff34320b040ad6f495fae32e",
+      "runtime_bytes": 3980,
+      "runtime_sha256": "fccc6f2db666815176c6f729f9aedf74fbfcf02faa9d717f29606fbfa8853a6d"
+    },
+    "src/tau2/voice/utils/audio_preprocessing.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 22153,
+      "git_sha256": "88bc6d226f3d0423b3398769d3358eb284915f37c2fc518cc6c09070af7798e1",
+      "runtime_bytes": 22813,
+      "runtime_sha256": "1a12db2151595dae326695825090203a935b58b40de2b47353183809c7694bdd"
+    },
+    "src/tau2/voice/utils/audio_tap.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3566,
+      "git_sha256": "7a1cfc3b84d629a7ce40dac51d67ef120cb0c32762e6320ded5f9f53e3cdcce1",
+      "runtime_bytes": 3674,
+      "runtime_sha256": "17c4943d1824a8c854e7f7ff9288f14e5745ad3a5204c28762b095df6224d8fb"
+    },
+    "src/tau2/voice/utils/conversation_builder.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 8984,
+      "git_sha256": "8ce5f45becc6dd5439f9019155f274485419ee5b4e47c397a917d6fb519ce924",
+      "runtime_bytes": 9177,
+      "runtime_sha256": "eb467331294ce25a1fb04c54dcedbed7736af9f6410b0f1b6ee12eddb72161d3"
+    },
+    "src/tau2/voice/utils/convert_audio_files.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5254,
+      "git_sha256": "923b7398b919d6d0632dca4a2a942f0fd282c0212b6b01112a82821f16e2aa12",
+      "runtime_bytes": 5436,
+      "runtime_sha256": "2576e8d04f3d043705c98d81c93af9432c3479771aeec424722c6dc34b77f2d1"
+    },
+    "src/tau2/voice/utils/elevenlabs_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3797,
+      "git_sha256": "f488172e46b373b8902f56edd0fc8e24ae9c447aba49827464a7f6b00c225a71",
+      "runtime_bytes": 3917,
+      "runtime_sha256": "e6865bdefee041e5ae30cc94c678df0a8e862029aa1e39825d95580e04320f26"
+    },
+    "src/tau2/voice/utils/openai_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 3097,
+      "git_sha256": "f41e76d7d1f47f760a6c62be57123cdd2ed9fcd133ba45230880edad1c66a915",
+      "runtime_bytes": 3188,
+      "runtime_sha256": "d49c41b58367bbcbf20f2d62e7302b2b9e2535bcded7eae2f184b001482c6393"
+    },
+    "src/tau2/voice/utils/probability.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 5030,
+      "git_sha256": "76403e6293cf6cd170288fcad4972087dd1db267b1c6dd2e9b07c466404f38ec",
+      "runtime_bytes": 5177,
+      "runtime_sha256": "4c0d745e3ab724913eb0f1aa4042471e21847e1395b1e85287a9f3a1b98caa02"
+    },
+    "src/tau2/voice/utils/text_effects.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1129,
+      "git_sha256": "ac9b4c92bf8a35b020b4bf6e365362f3e5593ef69638a94bf74328b1ad8225c3",
+      "runtime_bytes": 1168,
+      "runtime_sha256": "0e478116a2a7fc1b66139e665dff0ed3bfcd4c399ffb958389e582384523c467"
+    },
+    "src/tau2/voice/utils/transcript_utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 9893,
+      "git_sha256": "cbe7b406058c8140448c5b6fc571794b87e24970e5e9e9baeeb6ffe98ee34312",
+      "runtime_bytes": 10190,
+      "runtime_sha256": "fb049396e7b0f60cd36aabc8e2187093863fdd1a0ea73bdf0c7d3cc054a57d15"
+    },
+    "src/tau2/voice/utils/utils.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 1121,
+      "git_sha256": "70bc0caa3d46a7188535a2f941206d355ef2c3da311a36dd49827a851d1305a9",
+      "runtime_bytes": 1156,
+      "runtime_sha256": "36f29569aea4282e924dead9f7c502a6ccbdaf9053e59d0831c3256d5d51f46d"
+    },
+    "src/tau2/voice_config.py": {
+      "checkout_mode": "git_lf_to_windows_crlf",
+      "git_bytes": 4071,
+      "git_sha256": "b644b1ef1c1f32c17e318d4f253ce420216b68c7ce30f184c6a1f5ff113f8121",
+      "runtime_bytes": 4197,
+      "runtime_sha256": "6f301d9b28b79385249ebee8f3492e15d5ba6025cb1865495f7c8bf54fe1228b"
+    }
+  }
+}

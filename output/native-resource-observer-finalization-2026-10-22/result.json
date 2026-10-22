@@ -1,0 +1,608 @@
+{
+  "G1_execution_receipt": {
+    "actual_tool_dispatches": 5,
+    "arm": "G",
+    "capture_errors": [],
+    "completed_tool_dispatches": 5,
+    "corrective_reruns": 0,
+    "episode_id": "development-20-G",
+    "error_type": "Timeout",
+    "inflight_tool_dispatches": [],
+    "model_requests": {
+      "attempted": 9,
+      "completed": 8,
+      "completion_tokens": 911,
+      "failed": 1,
+      "prompt_tokens": 38183,
+      "provider_invoked": 9,
+      "provider_returned": 8,
+      "refused_before_provider": 0,
+      "usage_unavailable": 0
+    },
+    "native_reward_not_fabricated": true,
+    "stage": "execution",
+    "status": "failed",
+    "task_id": "20",
+    "wall_seconds": 2961.2040000000015
+  },
+  "G1_request_windows": [
+    {
+      "call_index": 0,
+      "recorded_wall_seconds": 35.43700000000172,
+      "request_start_utc": "2026-10-21T17:01:13.295761+00:00",
+      "request_terminal_utc": "2026-10-21T17:01:48.745532+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 625,
+          "first_sample_utc": "2026-10-21T17:01:35.024162+00:00",
+          "last_sample_index": 625,
+          "last_sample_utc": "2026-10-21T17:01:35.024162+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 0.0
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": null,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 2768687104,
+              "minimum": 2768687104
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7120527360,
+              "minimum": 7120527360
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": null,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 47403008,
+              "minimum": 47403008
+            },
+            "sampled_vms_bytes": {
+              "maximum": 60592128,
+              "minimum": 60592128
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 3010404352,
+          "minimum": 3010404352
+        },
+        "samples": 1
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 1,
+      "recorded_wall_seconds": 60.21900000000096,
+      "request_start_utc": "2026-10-21T17:01:48.763527+00:00",
+      "request_terminal_utc": "2026-10-21T17:02:48.968348+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 626,
+          "first_sample_utc": "2026-10-21T17:02:05.089624+00:00",
+          "last_sample_index": 627,
+          "last_sample_utc": "2026-10-21T17:02:35.170712+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 30.06300000000192
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 396.4591025512896,
+            "cpu_seconds_delta_between_first_and_last_sample": 119.18750000000182,
+            "sampled_rss_bytes": {
+              "maximum": 3148173312,
+              "minimum": 2963738624
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7167086592,
+              "minimum": 7165255680
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.0,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 49033216,
+              "minimum": 49033216
+            },
+            "sampled_vms_bytes": {
+              "maximum": 61878272,
+              "minimum": 61878272
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 3395371008,
+          "minimum": 3233038336
+        },
+        "samples": 2
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 2,
+      "recorded_wall_seconds": 156.0,
+      "request_start_utc": "2026-10-21T17:02:49.273643+00:00",
+      "request_terminal_utc": "2026-10-21T17:05:25.277952+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 628,
+          "first_sample_utc": "2026-10-21T17:03:05.264636+00:00",
+          "last_sample_index": 632,
+          "last_sample_utc": "2026-10-21T17:05:05.553522+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 120.31300000000192
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 398.28405907922865,
+            "cpu_seconds_delta_between_first_and_last_sample": 479.1875,
+            "sampled_rss_bytes": {
+              "maximum": 3225542656,
+              "minimum": 3201564672
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7167086592,
+              "minimum": 7165255680
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.0,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 49672192,
+              "minimum": 48275456
+            },
+            "sampled_vms_bytes": {
+              "maximum": 62476288,
+              "minimum": 60768256
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 3960500224,
+          "minimum": 3394453504
+        },
+        "samples": 5
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 3,
+      "recorded_wall_seconds": 126.9529999999977,
+      "request_start_utc": "2026-10-21T17:05:25.581976+00:00",
+      "request_terminal_utc": "2026-10-21T17:07:32.530644+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 633,
+          "first_sample_utc": "2026-10-21T17:05:35.623429+00:00",
+          "last_sample_index": 636,
+          "last_sample_utc": "2026-10-21T17:07:05.858612+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 90.21900000000096
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 398.2496757889074,
+            "cpu_seconds_delta_between_first_and_last_sample": 359.2968749999982,
+            "sampled_rss_bytes": {
+              "maximum": 3241496576,
+              "minimum": 3226877952
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7165255680,
+              "minimum": 7165255680
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.0,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 49631232,
+              "minimum": 48365568
+            },
+            "sampled_vms_bytes": {
+              "maximum": 62308352,
+              "minimum": 62308352
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 4149178368,
+          "minimum": 3769249792
+        },
+        "samples": 4
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 4,
+      "recorded_wall_seconds": 797.094000000001,
+      "request_start_utc": "2026-10-21T17:07:32.862302+00:00",
+      "request_terminal_utc": "2026-10-21T17:20:49.956786+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 637,
+          "first_sample_utc": "2026-10-21T17:07:35.946380+00:00",
+          "last_sample_index": 663,
+          "last_sample_utc": "2026-10-21T17:20:38.097335+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 782.125
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 396.721671727665,
+            "cpu_seconds_delta_between_first_and_last_sample": 3102.859375,
+            "sampled_rss_bytes": {
+              "maximum": 3444809728,
+              "minimum": 3286990848
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7167287296,
+              "minimum": 7165456384
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.013984337541953013,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.109375,
+            "sampled_rss_bytes": {
+              "maximum": 49512448,
+              "minimum": 47681536
+            },
+            "sampled_vms_bytes": {
+              "maximum": 62283776,
+              "minimum": 60055552
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 4121694208,
+          "minimum": 3419299840
+        },
+        "samples": 27
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 5,
+      "recorded_wall_seconds": 80.25,
+      "request_start_utc": "2026-10-21T17:20:49.961691+00:00",
+      "request_terminal_utc": "2026-10-21T17:22:10.208804+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 664,
+          "first_sample_utc": "2026-10-21T17:21:08.165080+00:00",
+          "last_sample_index": 666,
+          "last_sample_utc": "2026-10-21T17:22:08.353596+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 60.17199999999866
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 387.4050638170664,
+            "cpu_seconds_delta_between_first_and_last_sample": 233.109375,
+            "sampled_rss_bytes": {
+              "maximum": 4043083776,
+              "minimum": 4016373760
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7716171776,
+              "minimum": 7714344960
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.10386890912717109,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0625,
+            "sampled_rss_bytes": {
+              "maximum": 49270784,
+              "minimum": 49078272
+            },
+            "sampled_vms_bytes": {
+              "maximum": 61980672,
+              "minimum": 61800448
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 3167055872,
+          "minimum": 2821582848
+        },
+        "samples": 3
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 6,
+      "recorded_wall_seconds": 214.48400000000038,
+      "request_start_utc": "2026-10-21T17:22:10.230463+00:00",
+      "request_terminal_utc": "2026-10-21T17:25:44.710445+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 667,
+          "first_sample_utc": "2026-10-21T17:22:38.450256+00:00",
+          "last_sample_index": 673,
+          "last_sample_utc": "2026-10-21T17:25:39.231538+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 180.75
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 394.38969571230984,
+            "cpu_seconds_delta_between_first_and_last_sample": 712.859375,
+            "sampled_rss_bytes": {
+              "maximum": 4114120704,
+              "minimum": 4093968384
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7765024768,
+              "minimum": 7763193856
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.0,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 50888704,
+              "minimum": 49070080
+            },
+            "sampled_vms_bytes": {
+              "maximum": 63590400,
+              "minimum": 61362176
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 2862759936,
+          "minimum": 2551889920
+        },
+        "samples": 7
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 7,
+      "recorded_wall_seconds": 262.20300000000134,
+      "request_start_utc": "2026-10-21T17:25:45.127352+00:00",
+      "request_terminal_utc": "2026-10-21T17:30:07.335165+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 674,
+          "first_sample_utc": "2026-10-21T17:26:09.342664+00:00",
+          "last_sample_index": 681,
+          "last_sample_utc": "2026-10-21T17:29:40.331948+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 210.92199999999866
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 394.66603768217885,
+            "cpu_seconds_delta_between_first_and_last_sample": 832.4375,
+            "sampled_rss_bytes": {
+              "maximum": 4130820096,
+              "minimum": 4115120128
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7765024768,
+              "minimum": 7763193856
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.0,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.0,
+            "sampled_rss_bytes": {
+              "maximum": 50671616,
+              "minimum": 48132096
+            },
+            "sampled_vms_bytes": {
+              "maximum": 63262720,
+              "minimum": 61493248
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 3002249216,
+          "minimum": 2574131200
+        },
+        "samples": 8
+      },
+      "terminal_error_type": null,
+      "terminal_kind": "request_return"
+    },
+    {
+      "call_index": 8,
+      "recorded_wall_seconds": 1201.75,
+      "request_start_utc": "2026-10-21T17:30:07.830917+00:00",
+      "request_terminal_utc": "2026-10-21T17:50:09.587191+00:00",
+      "resource_samples_recorded_inside_request_window": {
+        "observed_interval": {
+          "first_sample_index": 682,
+          "first_sample_utc": "2026-10-21T17:30:10.425415+00:00",
+          "last_sample_index": 721,
+          "last_sample_utc": "2026-10-21T17:49:44.630489+00:00",
+          "monotonic_seconds_between_first_and_last_sample": 1174.2029999999977
+        },
+        "processes": {
+          "runner": {
+            "cpu_percent_between_first_and_last_sample": 395.10709604727737,
+            "cpu_seconds_delta_between_first_and_last_sample": 4639.359375000004,
+            "sampled_rss_bytes": {
+              "maximum": 4206161920,
+              "minimum": 4116713472
+            },
+            "sampled_vms_bytes": {
+              "maximum": 7765295104,
+              "minimum": 7763464192
+            }
+          },
+          "server": {
+            "cpu_percent_between_first_and_last_sample": 0.00798413902877102,
+            "cpu_seconds_delta_between_first_and_last_sample": 0.09375,
+            "sampled_rss_bytes": {
+              "maximum": 50081792,
+              "minimum": 47726592
+            },
+            "sampled_vms_bytes": {
+              "maximum": 62820352,
+              "minimum": 60063744
+            }
+          }
+        },
+        "sampled_available_ram_bytes": {
+          "maximum": 3033051136,
+          "minimum": 2369855488
+        },
+        "samples": 40
+      },
+      "terminal_error_type": "Timeout",
+      "terminal_kind": "request_error"
+    }
+  ],
+  "created_utc": "2026-10-22T12:01:27.536345+00:00",
+  "full_recorded_interval": {
+    "observed_interval": {
+      "first_sample_index": 0,
+      "first_sample_utc": "2026-10-21T11:48:08.378293+00:00",
+      "last_sample_index": 774,
+      "last_sample_utc": "2026-10-21T18:16:21.668520+00:00",
+      "monotonic_seconds_between_first_and_last_sample": 23293.282000000003
+    },
+    "processes": {
+      "runner": {
+        "cpu_percent_between_first_and_last_sample": 105.82933310986402,
+        "cpu_seconds_delta_between_first_and_last_sample": 24651.125,
+        "sampled_rss_bytes": {
+          "maximum": 5042356224,
+          "minimum": 23228416
+        },
+        "sampled_vms_bytes": {
+          "maximum": 7765295104,
+          "minimum": 5461045248
+        }
+      },
+      "server": {
+        "cpu_percent_between_first_and_last_sample": 0.023880275866664042,
+        "cpu_seconds_delta_between_first_and_last_sample": 5.5625,
+        "sampled_rss_bytes": {
+          "maximum": 82931712,
+          "minimum": 44670976
+        },
+        "sampled_vms_bytes": {
+          "maximum": 63590400,
+          "minimum": 59494400
+        }
+      }
+    },
+    "sampled_available_ram_bytes": {
+      "maximum": 4983844864,
+      "minimum": 1571893248
+    },
+    "samples": 775
+  },
+  "historical_process_binding": {
+    "runner": {
+      "create_time_epoch_seconds": 1792582144.5793643,
+      "create_time_utc": "2026-10-21T11:29:04.579364+00:00",
+      "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+      "executable_mtime_ns": 1792178144000000000,
+      "executable_sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+      "executable_size": 22920,
+      "parent_pid": 6788,
+      "pid": 2480
+    },
+    "server": {
+      "create_time_epoch_seconds": 1792581573.5974936,
+      "create_time_utc": "2026-10-21T11:19:33.597494+00:00",
+      "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+      "executable_mtime_ns": 1792178144000000000,
+      "executable_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+      "executable_size": 27944328,
+      "parent_pid": 11444,
+      "pid": 6788
+    }
+  },
+  "interpretation": "The timed-out G1 request overlaps sustained runner CPU activity and available system RAM in the retained samples. These measurements describe resource use, not the causal reason for the timeout. They cannot exclude paging, memory pressure between samples, scheduler effects, or other bottlenecks.",
+  "limitations": [
+    "No new measurements were taken; there is no coverage beyond the final sample.",
+    "Samples are approximately 30 seconds apart and do not establish true resource peaks.",
+    "Per-request CPU is computed from the first and last samples fully inside that request, not extrapolated to its unsampled edges; each interval is reported explicitly.",
+    "CPU percent is 100 times process user+system CPU seconds delta divided by monotonic wall seconds delta; it may exceed 100 across cores.",
+    "RSS is working-set memory, and VMS is virtual allocation; neither establishes physical resident model cache size or memory bandwidth.",
+    "System available RAM reflects unobserved applications. No paging, GPU utilization, or per-request generation-versus-prefill timing was measured by this observer.",
+    "The linked G1 task is development data and has no fabricated native reward.",
+    "This new bundle is a postcollection inventory and analysis, not the missing original observer terminal receipt or manifest."
+  ],
+  "linked_G1_inputs": {
+    "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001\\episode\\execution-receipt.json": {
+      "bytes": 630,
+      "sha256": "b41e3231e52db3117890b3afcf908a866ecc8ace1a81799710e6a241cf51525f"
+    },
+    "D:\\ConsequaX-Research\\paper-writing\\output\\native-development-2026-10-21\\guarded-20-001\\episode\\model-calls.jsonl": {
+      "bytes": 202715,
+      "sha256": "103961e7c304150dc419fb32654abb13c53fdfa61113c2498bfaf42006118c2b"
+    }
+  },
+  "monotonic_sample_interval_seconds": {
+    "maximum": 30.264999999999418,
+    "median": 30.093000000000757,
+    "minimum": 30.03099999999904
+  },
+  "observer_directory": "D:\\ConsequaX-Research\\paper-writing\\output\\native-resource-observer-2026-10-21",
+  "observer_termination": {
+    "cause": "unknown_from_retained_observer_artifacts",
+    "closing_status": null,
+    "coverage_after_last_recorded_sample": "unavailable",
+    "original_manifest_present": false,
+    "original_summary_present": false,
+    "retrospective_observer_seal_created": false,
+    "termination_classification": "unclean_or_unsealed_observer_termination"
+  },
+  "original_inputs_unchanged": true,
+  "original_inventory_after": {
+    "launch.source.json": {
+      "bytes": 1812,
+      "sha256": "1150d1643a0ed84ec64d1d4f7bcfd5b7ac29fac3de8882ab59656dcc2af84a7c"
+    },
+    "observer-binding.json": {
+      "bytes": 2623,
+      "sha256": "adc96a0da80280b5a6e351f6cce1c25badccb08164c8e77e39297e207a95f524"
+    },
+    "observer.source.py": {
+      "bytes": 13440,
+      "sha256": "a25f3799e492670dfaf238b42fe4a3cc4e78bab19041948fec84e0b567e8c078"
+    },
+    "render.source.json": {
+      "bytes": 682655,
+      "sha256": "c4bcaa8ef79c3eaa7bd9851a82f63b23fe61206dccd4bad05a334e1e9f34136e"
+    },
+    "resources.jsonl": {
+      "bytes": 594491,
+      "sha256": "ac220b2f736aff65dea286246129c56c921577290bb67862e3e91eae466a6fa8"
+    }
+  },
+  "original_inventory_before": {
+    "launch.source.json": {
+      "bytes": 1812,
+      "sha256": "1150d1643a0ed84ec64d1d4f7bcfd5b7ac29fac3de8882ab59656dcc2af84a7c"
+    },
+    "observer-binding.json": {
+      "bytes": 2623,
+      "sha256": "adc96a0da80280b5a6e351f6cce1c25badccb08164c8e77e39297e207a95f524"
+    },
+    "observer.source.py": {
+      "bytes": 13440,
+      "sha256": "a25f3799e492670dfaf238b42fe4a3cc4e78bab19041948fec84e0b567e8c078"
+    },
+    "render.source.json": {
+      "bytes": 682655,
+      "sha256": "c4bcaa8ef79c3eaa7bd9851a82f63b23fe61206dccd4bad05a334e1e9f34136e"
+    },
+    "resources.jsonl": {
+      "bytes": 594491,
+      "sha256": "ac220b2f736aff65dea286246129c56c921577290bb67862e3e91eae466a6fa8"
+    }
+  },
+  "process_identity_interpretation": "All retained samples match the original PID and creation-time lease. The original observer additionally bound executable identity and parent PID. A historical PID alone never authorizes inspecting or controlling a current process. This analysis did not inspect or act on any current process.",
+  "schema": "native-resource-observer-posthoc-finalization-v1"
+}

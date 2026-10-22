@@ -1,0 +1,110 @@
+{
+  "initial_and_final_db_snapshots_verified": true,
+  "native_reward": null,
+  "offline_network_attempts": 0,
+  "partial_message_cost_metadata": {
+    "assistant": {
+      "messages": 7,
+      "native_cost": 0.0,
+      "scope": "message metadata; deterministic wrapper messages are not model requests",
+      "sum_observed_cost": 0.0,
+      "unavailable_cost_messages": 0,
+      "usage": {
+        "completion_tokens": {
+          "observed_messages": 6,
+          "sum_observed": 589,
+          "unavailable_messages": 1
+        },
+        "prompt_tokens": {
+          "observed_messages": 6,
+          "sum_observed": 36696,
+          "unavailable_messages": 1
+        },
+        "total_tokens": {
+          "observed_messages": 0,
+          "sum_observed": 0,
+          "unavailable_messages": 7
+        }
+      }
+    },
+    "user": {
+      "messages": 2,
+      "native_cost": 0.0,
+      "scope": "message metadata; deterministic wrapper messages are not model requests",
+      "sum_observed_cost": 0.0,
+      "unavailable_cost_messages": 0,
+      "usage": {
+        "completion_tokens": {
+          "observed_messages": 2,
+          "sum_observed": 322,
+          "unavailable_messages": 0
+        },
+        "prompt_tokens": {
+          "observed_messages": 2,
+          "sum_observed": 1487,
+          "unavailable_messages": 0
+        },
+        "total_tokens": {
+          "observed_messages": 0,
+          "sum_observed": 0,
+          "unavailable_messages": 2
+        }
+      }
+    }
+  },
+  "replay": {
+    "calls": [
+      {
+        "call_index": 0,
+        "db_changed": false,
+        "id": "wJGPvftjFpbbs4wgZc99jQTpoBZi9CxU",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "get_user_details"
+      },
+      {
+        "call_index": 1,
+        "db_changed": false,
+        "id": "xoktBGWXU6w0Thk0Aqj53OW8AuKQdXgL",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "search_direct_flight"
+      },
+      {
+        "call_index": 2,
+        "db_changed": false,
+        "id": "WSsNBUFIjWtyI8G2pPosJg4RTK2B7ktI",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "search_onestop_flight"
+      },
+      {
+        "call_index": 3,
+        "db_changed": false,
+        "id": "otRmulICGcBySdyYHliojG4l9JWQuomG",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "search_direct_flight"
+      },
+      {
+        "call_index": 4,
+        "db_changed": false,
+        "id": "3JrpskawBYX4fn69LnIgJiVWLObKZyZu",
+        "requestor": "assistant",
+        "returned": true,
+        "tool_name": "search_onestop_flight"
+      }
+    ],
+    "counts": {
+      "calls": 5,
+      "db_changed_calls": 0,
+      "returned": 5
+    },
+    "final_hashes": {
+      "agent_db_hash": "124e39a664b56402bcd09cb8a6a9cece6acb8462337c969799d5658e3250f263",
+      "user_db_hash": null
+    }
+  },
+  "required_communication_criterion_nonempty": false,
+  "scope": "Completed saved native tool prefix only; no native reward evaluation"
+}

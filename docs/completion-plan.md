@@ -1,5 +1,11 @@
 # Completion target
 
+**Historical scoped status.** The current external-validation completion gates
+are in [the 22 October criteria](paper-completion-criteria-2026-10-22.md).
+Earlier completion statements below describe their dated software/protocol
+scope; they do not establish completion of the stronger research study requested
+after review. No human review is required by the current automated-only study.
+
 The maintainer asked to finish the framework and paper beyond an alpha on
 14 October 2026. The Python package is the first distribution; a second npm
 implementation is optional future work. The paper will use the standard IEEE

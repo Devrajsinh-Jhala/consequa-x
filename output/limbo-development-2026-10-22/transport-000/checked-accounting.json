@@ -1,0 +1,15 @@
+{
+  "actual_generation_dispatches": 2,
+  "checked_utc": "2026-10-22T12:25:35.296965+00:00",
+  "framework_receipts": 0,
+  "model_invocations": 2,
+  "native_tasks": 0,
+  "returned": 2,
+  "schema": "conseqax-limbo-task-independent-probe-accounting-v1",
+  "scope": "Transport fixture, not benchmark or native environment score",
+  "source_snapshots": {
+    "probe.py": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1",
+    "transport.py": "258cdff8d7c999d3a338ca227f269f60128c7e6823488c9ed81441909ac0176d"
+  },
+  "source_unchanged_during_probe": true
+}

@@ -1,0 +1,13 @@
+{
+  "allowance": 8,
+  "kind": "task_independent",
+  "output": "output/limbo-development-2026-10-22/transport-001",
+  "prior_consumed": 2,
+  "reserved_requests": 2,
+  "reserved_utc": "2026-10-22T12:40:52.763137+00:00",
+  "schema": "conseqax-limbo-development-reservation-v1",
+  "sources": {
+    "research/limbo_agent/probe.py": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1",
+    "research/limbo_agent/transport.py": "874a9cafb885a6a1707cba3b08bccc1998006a8d77d4536d417d7bd61c0008d1"
+  }
+}

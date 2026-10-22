@@ -1,0 +1,22 @@
+{
+  "all_future_invocations_require_reservation_within_remaining_allowance": true,
+  "allowance": {
+    "excluded_native": 24,
+    "transport": 8
+  },
+  "consumed": {
+    "excluded_native": 0,
+    "transport": 2
+  },
+  "criteria_file_declared_allowance_before_probe": "docs/paper-completion-criteria-2026-10-22.md",
+  "criteria_file_sha256": "179ab90d05baf47ea206322d98fcb708c88c08d3093c839f9afededebb8f6631",
+  "first_probe_preceded_this_machine_ledger": true,
+  "recorded_utc": "2026-10-22T12:25:35.684802+00:00",
+  "remaining": {
+    "excluded_native": 24,
+    "transport": 6
+  },
+  "schema": "conseqax-limbo-development-budget-v1",
+  "scope": "Separate LIMBO experiment; no resumption of Tau44of64",
+  "terminal_probe_manifest_sha256": "378d8109ff4a54d33c9ad7a23673441d8fda2bb1110a2af5381d5ddb2886d7e1"
+}

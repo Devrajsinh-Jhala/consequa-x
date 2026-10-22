@@ -1,0 +1,444 @@
+[
+  {
+    "domains": [
+      "mail",
+      "social"
+    ],
+    "family": "announce",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "social",
+        "idempotency": "non_idempotent",
+        "label": "publish:x",
+        "reversible": true,
+        "tool": "social_publish",
+        "verification": "none"
+      },
+      {
+        "batch": false,
+        "domain": "social",
+        "idempotency": "keyed_optional",
+        "label": "publish:mastodon",
+        "reversible": true,
+        "tool": "social_publish",
+        "verification": "strong"
+      }
+    ],
+    "index": 22614,
+    "template": "cross_post"
+  },
+  {
+    "domains": [
+      "mail",
+      "tickets"
+    ],
+    "family": "notify",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail:1",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail:0",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      },
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "ticket_create",
+        "reversible": true,
+        "tool": "tickets_create",
+        "verification": "strong"
+      }
+    ],
+    "index": 586821,
+    "template": "customer_notice"
+  },
+  {
+    "domains": [
+      "deploy",
+      "tickets"
+    ],
+    "family": "deploy",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "deploy",
+        "idempotency": "non_idempotent",
+        "label": "deploy:production",
+        "reversible": true,
+        "tool": "deploy_trigger",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "deploy",
+        "idempotency": "non_idempotent",
+        "label": "deploy:staging",
+        "reversible": true,
+        "tool": "deploy_trigger",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "comment",
+        "reversible": false,
+        "tool": "tickets_add_comment",
+        "verification": "strong"
+      }
+    ],
+    "index": 601493,
+    "template": "deploy_release"
+  },
+  {
+    "domains": [
+      "data",
+      "social"
+    ],
+    "family": "data",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "data",
+        "idempotency": "idempotent",
+        "label": "upsert",
+        "reversible": true,
+        "tool": "db_upsert",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "social",
+        "idempotency": "non_idempotent",
+        "label": "publish:linkedin",
+        "reversible": true,
+        "tool": "social_publish",
+        "verification": "strong"
+      }
+    ],
+    "index": 135281,
+    "template": "feature_flags"
+  },
+  {
+    "domains": [
+      "data",
+      "deploy",
+      "mail",
+      "social",
+      "tickets"
+    ],
+    "family": "composite",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "deploy",
+        "idempotency": "non_idempotent",
+        "label": "deploy:production",
+        "reversible": true,
+        "tool": "deploy_trigger",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "social",
+        "idempotency": "non_idempotent",
+        "label": "publish:weibo",
+        "reversible": true,
+        "tool": "social_publish",
+        "verification": "eventual"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      },
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "ticket_create",
+        "reversible": true,
+        "tool": "tickets_create",
+        "verification": "strong"
+      }
+    ],
+    "index": 759468,
+    "template": "hotfix_long"
+  },
+  {
+    "domains": [
+      "mail",
+      "tickets"
+    ],
+    "family": "incident",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "ticket_create",
+        "reversible": true,
+        "tool": "tickets_create",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "comment",
+        "reversible": false,
+        "tool": "tickets_add_comment",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      }
+    ],
+    "index": 786765,
+    "template": "incident_open"
+  },
+  {
+    "domains": [
+      "billing",
+      "mail"
+    ],
+    "family": "billing",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "billing",
+        "idempotency": "keyed_optional",
+        "label": "charge:0",
+        "reversible": true,
+        "tool": "billing_create_charge",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "billing",
+        "idempotency": "keyed_optional",
+        "label": "charge:1",
+        "reversible": true,
+        "tool": "billing_create_charge",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      }
+    ],
+    "index": 404628,
+    "template": "invoice_batch"
+  },
+  {
+    "domains": [
+      "data"
+    ],
+    "family": "data",
+    "focals": [
+      {
+        "batch": true,
+        "domain": "data",
+        "idempotency": "non_idempotent",
+        "label": "insert_many",
+        "reversible": true,
+        "tool": "db_insert_many",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "data",
+        "idempotency": "non_idempotent",
+        "label": "audit",
+        "reversible": true,
+        "tool": "db_insert",
+        "verification": "strong"
+      }
+    ],
+    "index": 857261,
+    "template": "migration_log"
+  },
+  {
+    "domains": [
+      "billing",
+      "mail"
+    ],
+    "family": "billing",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "billing",
+        "idempotency": "naturally_idempotent",
+        "label": "refund",
+        "reversible": false,
+        "tool": "billing_refund_charge",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      }
+    ],
+    "index": 964286,
+    "template": "refund_duplicate"
+  },
+  {
+    "domains": [
+      "mail",
+      "social",
+      "tickets"
+    ],
+    "family": "announce",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "social",
+        "idempotency": "keyed_optional",
+        "label": "publish:mastodon",
+        "reversible": true,
+        "tool": "social_publish",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "social",
+        "idempotency": "non_idempotent",
+        "label": "publish:linkedin",
+        "reversible": true,
+        "tool": "social_publish",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "ticket_create",
+        "reversible": true,
+        "tool": "tickets_create",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      }
+    ],
+    "index": 639339,
+    "template": "release_announcement"
+  },
+  {
+    "domains": [
+      "billing",
+      "data",
+      "mail"
+    ],
+    "family": "billing",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "billing",
+        "idempotency": "keyed_optional",
+        "label": "charge",
+        "reversible": true,
+        "tool": "billing_create_charge",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      },
+      {
+        "batch": false,
+        "domain": "data",
+        "idempotency": "idempotent",
+        "label": "upsert",
+        "reversible": true,
+        "tool": "db_upsert",
+        "verification": "strong"
+      }
+    ],
+    "index": 17463,
+    "template": "subscription_upgrade"
+  },
+  {
+    "domains": [
+      "mail",
+      "tickets"
+    ],
+    "family": "incident",
+    "focals": [
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "non_idempotent",
+        "label": "comment",
+        "reversible": false,
+        "tool": "tickets_add_comment",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "tickets",
+        "idempotency": "idempotent",
+        "label": "status",
+        "reversible": true,
+        "tool": "tickets_update_status",
+        "verification": "strong"
+      },
+      {
+        "batch": false,
+        "domain": "mail",
+        "idempotency": "non_idempotent",
+        "label": "mail",
+        "reversible": false,
+        "tool": "mail_send",
+        "verification": "eventual"
+      }
+    ],
+    "index": 53348,
+    "template": "ticket_resolution"
+  }
+]

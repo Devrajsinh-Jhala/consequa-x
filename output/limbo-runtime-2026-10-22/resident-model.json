@@ -1,0 +1,20 @@
+{
+  "context_length": 8192,
+  "details": {
+    "families": [
+      "qwen3"
+    ],
+    "family": "qwen3",
+    "format": "gguf",
+    "parameter_size": "4.0B",
+    "parent_model": "",
+    "quantization_level": "Q4_K_M"
+  },
+  "digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+  "expires_at": "2319-02-01T17:39:49.354302207+05:30",
+  "model": "conseqax-limbo-qwen4b-20261022:ctx8k",
+  "name": "conseqax-limbo-qwen4b-20261022:ctx8k",
+  "runner": "llamacpp",
+  "size": 3322517912,
+  "size_vram": 0
+}

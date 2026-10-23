@@ -1,4 +1,5 @@
 """Start a separate local research listener and load existing weights only."""
+import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -38,6 +39,15 @@ def write(name, value):
 
 
 def main():
+    global OUT, TAG
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, default=OUT)
+    parser.add_argument('--tag', default=TAG)
+    args = parser.parse_args()
+    OUT = args.output.resolve()
+    TAG = args.tag
+    if not TAG.startswith('conseqax-limbo-') or not TAG.endswith(':ctx8k'):
+        raise SystemExit('Use a new explicitly named ConseqaX research alias ending :ctx8k')
     if OUT.exists():
         raise SystemExit('Refuse existing one-shot runtime output')
     with socket.socket() as test:

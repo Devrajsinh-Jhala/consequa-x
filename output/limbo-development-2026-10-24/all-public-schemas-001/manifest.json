@@ -1,0 +1,30 @@
+{
+  "client/client-config.json": {
+    "bytes": 1573,
+    "sha256": "f36a431f28bcf69c138db83c82b901c262404b9e93c85abec11b073db87942c2"
+  },
+  "client/client-summary.json": {
+    "bytes": 340,
+    "sha256": "976d1b1bd86d6cf5cde9570911530d4d3b6b9c35e7f7f9206e30d75a2c0fdaa2"
+  },
+  "client/model-calls.jsonl": {
+    "bytes": 164,
+    "sha256": "40588d5f16ef9beb00409cb6d36639ca10c6d89722ebfb89058bec2621d7edd9"
+  },
+  "client/network-events.json": {
+    "bytes": 1158,
+    "sha256": "fc6b4b2954d8986fd64d83e3bb054ec1560e764ca773fa0929eb6d2d0abeb1a1"
+  },
+  "native-public-request.json": {
+    "bytes": 11821,
+    "sha256": "0fa9b39b8e99ce231ed30939f10e8bfc13ec838697199089d12284d090e70b18"
+  },
+  "result.json": {
+    "bytes": 1475,
+    "sha256": "dba74e2a2d13420170efa618cf1685992a4aebea974cdb53f815021b0d7c6a46"
+  },
+  "schema-preview-context.json": {
+    "bytes": 55763,
+    "sha256": "f86de2f83709701906ed533b4732e7115f487f2238a21b6d4f29fcc8abfc2cf8"
+  }
+}

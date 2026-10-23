@@ -1,0 +1,57 @@
+{
+  "base_manifest_sha256_after": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "base_manifest_sha256_before": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "cold_memory_gate": {
+    "available_bytes": 7649509376,
+    "required_bytes": 4212750816,
+    "scope": "Weights + expected single8k q8 KV +1GiB reserve, not maximum later memory"
+  },
+  "finished_utc": "2026-10-22T12:22:32.788611+00:00",
+  "model_downloads": 0,
+  "model_generation_attempts": 0,
+  "model_load_requests": 1,
+  "normal_service_modified": false,
+  "process_only_environment": {
+    "OLLAMA_CONTEXT_LENGTH": "8192",
+    "OLLAMA_DEBUG": "1",
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_HOST": "127.0.0.1:11436",
+    "OLLAMA_KEEP_ALIVE": "-1",
+    "OLLAMA_KV_CACHE_TYPE": "q8_0",
+    "OLLAMA_MAX_LOADED_MODELS": "1",
+    "OLLAMA_MODELS": "C:\\Users\\DELL\\.ollama\\models",
+    "OLLAMA_NOPRUNE": "1",
+    "OLLAMA_NO_CLOUD": "1",
+    "OLLAMA_NUM_PARALLEL": "1"
+  },
+  "removed_environment_names": [
+    "GOOGLE_API_KEY"
+  ],
+  "runner_pid": 7884,
+  "runtime_binding": {
+    "api_base": "http://127.0.0.1:11436/v1",
+    "context_tokens": 8192,
+    "model": "conseqax-limbo-qwen4b-20261022:ctx8k",
+    "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+    "parallel_slots": 1,
+    "runner_create_time": 1792671742.386226,
+    "runner_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+    "runner_executable_sha256": "bb3d2f86e3d8907c4febc3d7a299a8d13d95ddc281c5f81fe496e0d32b12dca3",
+    "runner_pid": 7884,
+    "runner_port": 60469,
+    "server_create_time": 1792671725.0504391,
+    "server_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+    "server_executable_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+    "server_pid": 9552
+  },
+  "scope": "New separate LIMBO candidate; existing weights, no download or completion",
+  "server_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+  "server_executable_sha256": "71d2002d3ae572d5fa8c1d368ce9d1b9a39c7187cf169e8b330c55410bf6c58e",
+  "server_pid": 9552,
+  "started_utc": "2026-10-22T12:22:01.051581+00:00",
+  "version_response": {
+    "version": "0.40.6"
+  }
+}

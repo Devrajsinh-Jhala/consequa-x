@@ -1,0 +1,435 @@
+{
+  "development_audits": {
+    "baseline": {
+      "bytes": 9348,
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\limbo-development-2026-10-23\\baseline-migration-000-audit\\audit-result.json",
+      "sha256": "1157bc56689a548be07549f679260d0584bff4d31f9736450b1fbf9e60317fbd"
+    },
+    "guard": {
+      "bytes": 9361,
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\limbo-development-2026-10-23\\guard-migration-002-audit\\audit-result.json",
+      "sha256": "7649f54b2cb532506042263330ccf397b23cf568d4e2377cc893fcf3f97ad813"
+    }
+  },
+  "native": {
+    "commit": "2db09fba22a0572a70639162a808906409f612a8",
+    "files": {
+      "limbo/__init__.py": {
+        "bytes": 89,
+        "sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+      },
+      "limbo/agent.py": {
+        "bytes": 7859,
+        "sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+      },
+      "limbo/analysis.py": {
+        "bytes": 12999,
+        "sha256": "31261718867753704c565a6db124e834096d0886ff95b176453cefeec97146ea"
+      },
+      "limbo/behavior.py": {
+        "bytes": 3318,
+        "sha256": "46e85534cbaa313bea84bd9ae093463f58700de0a374ba91ed9e92a9bb492a13"
+      },
+      "limbo/cases.py": {
+        "bytes": 4485,
+        "sha256": "c1547c384b58ae6b36efe1aca3e80039a9340c49e5049d7576c13fb765d54211"
+      },
+      "limbo/gateway_proxy.py": {
+        "bytes": 3605,
+        "sha256": "c3ca046de0ef6e4c56a2950a8df02a2b94ac19c699f9ee09bf5f6414973541d1"
+      },
+      "limbo/grader.py": {
+        "bytes": 8805,
+        "sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+      },
+      "limbo/harness.py": {
+        "bytes": 11131,
+        "sha256": "7d863bfc1bc9af8f2075a36adac3840aa86c6153af1cdcb6befdfc5d248f19d6"
+      },
+      "limbo/key_contract_probe.py": {
+        "bytes": 3260,
+        "sha256": "82fc61a09b694c3beb333822f1f134b626969153ea7c3ae29c2b3905ba77d863"
+      },
+      "limbo/llm.py": {
+        "bytes": 15062,
+        "sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+      },
+      "limbo/mcp_proxy.py": {
+        "bytes": 3039,
+        "sha256": "f1dee64be46a17dd8e982dd7d2c0d72b0892cd03dc49cedca06160d14a5d9faa"
+      },
+      "limbo/pipeline.py": {
+        "bytes": 10210,
+        "sha256": "775eb847d4058455ae93caedc65a32c11d5cec9259db0c05a8fdd0ca9da7e217"
+      },
+      "limbo/policies.py": {
+        "bytes": 14938,
+        "sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+      },
+      "limbo/prompts.py": {
+        "bytes": 3944,
+        "sha256": "9761f4c50d2209e9dd1b2346be40f2cefa5d35976f00e98b178ae5c44a2c24cd"
+      },
+      "limbo/real_api.py": {
+        "bytes": 26175,
+        "sha256": "e9ecadcc4fe33cca8d6e04dccc04fcc573495763ccc30f39b24ee4cf11f68369"
+      },
+      "limbo/real_api_analysis.py": {
+        "bytes": 10063,
+        "sha256": "4bf93655408b214d0a6e2c960d8b077106977e1812891844399d943d8a9b45ce"
+      },
+      "limbo/report.py": {
+        "bytes": 81057,
+        "sha256": "aaabda2c661dd24e7e4b97fa0198930487f67b549cb8cc36cf2a3f65db8220ed"
+      },
+      "limbo/runner.py": {
+        "bytes": 6937,
+        "sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+      },
+      "limbo/runtime.py": {
+        "bytes": 18364,
+        "sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+      },
+      "limbo/sandbox_http.py": {
+        "bytes": 6957,
+        "sha256": "72509f445fb38c5d3d2a3ce5538e050d3ec81079c58236b9cbcf4161299b740c"
+      },
+      "limbo/services.py": {
+        "bytes": 40579,
+        "sha256": "68483bbfbfed20b422627850ee6f73edd947c6487810e838da5fab59b4dcb906"
+      },
+      "limbo/tasks.py": {
+        "bytes": 25478,
+        "sha256": "02efac4e4dbc1079d8534a1ea85bbc1bb5c7b676db60a40ffca08ca3b14f03eb"
+      },
+      "limbo/world.py": {
+        "bytes": 6525,
+        "sha256": "d2d9a346d07769ad5157eac67d2f204bea73c1a5cdacf093fe647a001b47e00d"
+      }
+    }
+  },
+  "native_grades_used_to_select_readiness": false,
+  "official_model_policy_or_proposals_changed": false,
+  "passed": true,
+  "prospective_amendment": {
+    "bytes": 3042,
+    "path": "D:\\ConsequaX-Research\\paper-writing\\docs\\limbo-readiness-amendment-2026-10-24.md",
+    "sha256": "8f5d28d0cb887ac9dc9b219e87bb9fe7b0d5a766fc51f93ddca6384c7be2b060"
+  },
+  "readiness_checker": {
+    "bytes": 8939,
+    "path": "D:\\ConsequaX-Research\\paper-writing\\scripts\\check_limbo_readiness.py",
+    "sha256": "0b5c358a06922739386a4279f5d2908138bd7b83c43f6caf5dc0f0a74539f694"
+  },
+  "runtime_binding": {
+    "api_base": "http://127.0.0.1:11436/v1",
+    "context_tokens": 8192,
+    "model": "conseqax-limbo-qwen4b-20261023:ctx8k",
+    "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+    "parallel_slots": 1,
+    "runner_create_time": 1792779768.0485156,
+    "runner_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+    "runner_executable_sha256": "f3d991efc561b7f537a45f1693e8839b5e8fef18e337b0cf202303dfc730bab9",
+    "runner_pid": 19640,
+    "runner_port": 50708,
+    "server_create_time": 1792779748.250586,
+    "server_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+    "server_executable_sha256": "034a26a71836df581ef8b9ab4db489154f548c81b53aa8816d0e843b9e385c2b",
+    "server_pid": 19092
+  },
+  "schema": "conseqax-limbo-separated-readiness-v1",
+  "scope": "Passed autonomous native executions plus separately scripted SDK path; no autonomous receipt-activation requirement",
+  "scripted_receipt_path_proof": {
+    "bytes": 18652,
+    "path": "D:\\ConsequaX-Research\\paper-writing\\output\\limbo-development-2026-10-24\\saved-proposal-receipt-000\\proof.json",
+    "sha256": "854b130b58c8b28547089455c0f0fe4088b1f30d85a878067b4c832d25771858"
+  },
+  "sources": {
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    }
+  },
+  "transport_proof": {
+    "bytes": 1446,
+    "path": "D:\\ConsequaX-Research\\paper-writing\\output\\limbo-development-2026-10-23\\transport-002\\probe-result.json",
+    "sha256": "c51d651f094674fbea3f604975376ba64af6b9450aefef69ba83eb69a1c31b0d"
+  },
+  "utc": "2026-10-23T18:45:00.549299+00:00",
+  "wheel": {
+    "coverage": "All wheel package payload bytes; excludes cache bytecode and dependency payloads",
+    "framework_payload": {
+      "consequa_x/__init__.py": {
+        "bytes": 2515,
+        "sha256": "478c57d8f957fa4b83430fb2f7f65a485ea78ea5b21cdfd14c53ce0cf2020ff8"
+      },
+      "consequa_x/__main__.py": {
+        "bytes": 48,
+        "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+      },
+      "consequa_x/adapters/__init__.py": {
+        "bytes": 135,
+        "sha256": "4f5894f1a872af11e46660789f1f8709821324748cb6751ded0453fab7badeda"
+      },
+      "consequa_x/adapters/ollama.py": {
+        "bytes": 18220,
+        "sha256": "e7d752bc2b3751ea279e5b512997c0de9ad9d53858cbe2ac9aa75ac3224da01e"
+      },
+      "consequa_x/attribution.py": {
+        "bytes": 17742,
+        "sha256": "5aa352becbb75d1aec15aa5b77465227811505d846d56d8b4c742443557bf717"
+      },
+      "consequa_x/benchmark/__init__.py": {
+        "bytes": 61,
+        "sha256": "5a978fbc5abf98e04b92aed5c32ab7916f83cd09a551c791ea55d14bdb2fca1b"
+      },
+      "consequa_x/benchmark/assessment_metrics.py": {
+        "bytes": 2445,
+        "sha256": "6c6f5cb9386ada10a8f0ce0b2c9d6cc002f4905552b8eacc54c9c8e2f2283c63"
+      },
+      "consequa_x/benchmark/calibration.py": {
+        "bytes": 41933,
+        "sha256": "98ae708804af391050b3ea3431a114f0076e13a79134a301880f21b11fd7aebb"
+      },
+      "consequa_x/benchmark/calibration_export.py": {
+        "bytes": 7524,
+        "sha256": "b75f54f89f15eaf7206130efd924b7fd3fcd7e4919eb8eb7f9fddb102c8991e9"
+      },
+      "consequa_x/benchmark/calibration_mechanisms.py": {
+        "bytes": 13106,
+        "sha256": "84debd9ad20b88398760ee7aa95be4afc38e4ccc835da4a52358a48e00205cb2"
+      },
+      "consequa_x/benchmark/decision_coalition.py": {
+        "bytes": 12052,
+        "sha256": "e226ac3b3ea6c8a12ccf87f796f0846048cdfe8e5a5907fa14dfe1d3a95e862f"
+      },
+      "consequa_x/benchmark/decision_contrastive.py": {
+        "bytes": 22451,
+        "sha256": "3a4b664de7c1fe056bd69ced02765258882e8f7037af0404df82b4104f1c155a"
+      },
+      "consequa_x/benchmark/decision_replay.py": {
+        "bytes": 15503,
+        "sha256": "9c67172eaf907d7bfdeff9ae87dacda2dbd2e6fa6ae5c0c2b07aa3b15512f870"
+      },
+      "consequa_x/benchmark/decision_shapley.py": {
+        "bytes": 32581,
+        "sha256": "944d99da393ed5c7e6a7674c88942773498ce4a42279dc43fb80bd7d75e6fccf"
+      },
+      "consequa_x/benchmark/evaluation.py": {
+        "bytes": 8541,
+        "sha256": "5782108d6f1728b5940c8842f3caa8a6bcae8279bfa710333d3de0856f6a9403"
+      },
+      "consequa_x/benchmark/interaction_export.py": {
+        "bytes": 14789,
+        "sha256": "ce8fc7958157d148de7f3ee9ff28e231c8c89b9f4e104c84c4fe92c0fb38d384"
+      },
+      "consequa_x/benchmark/interaction_mechanisms.py": {
+        "bytes": 9911,
+        "sha256": "e529d64e292138e4eeefc2b463fdeb2c8718d4f6766ee2daa75ebadb2589cf35"
+      },
+      "consequa_x/benchmark/interaction_sampling.py": {
+        "bytes": 36001,
+        "sha256": "b5cec9b36a4b1b2181d55533fa593cb1df059ad6403b7b03b3b29cb5a520df03"
+      },
+      "consequa_x/benchmark/interval_comparison.py": {
+        "bytes": 17077,
+        "sha256": "d981faabded0aeff7bb5582db62f98864022222482fa6554764b0ae667a58103"
+      },
+      "consequa_x/benchmark/intervals.py": {
+        "bytes": 7292,
+        "sha256": "13cfd6863e9224c0e609753435bf190f5695b98201d7ce8a8bd36917dfb3e85e"
+      },
+      "consequa_x/benchmark/payments.py": {
+        "bytes": 17277,
+        "sha256": "92a654a88bc73055a7927c1e4f22089cdc1dc8dc0b32b6dd0b4fb0cdb7ad8ec2"
+      },
+      "consequa_x/benchmark/policy_experiment.py": {
+        "bytes": 13235,
+        "sha256": "14a7f51fde3508eaf8f56034246548c612b8d0e92dade3615d256f9406d18544"
+      },
+      "consequa_x/benchmark/policy_runner.py": {
+        "bytes": 11257,
+        "sha256": "91192e53f75ec29e69635035b9c64131ae4dfe18df4e695f48dae37378b1a799"
+      },
+      "consequa_x/benchmark/runner.py": {
+        "bytes": 12825,
+        "sha256": "323ebe964800db7261a2a7c0ec1880e6965dc177b9b8b182ec0dd9c21d440c52"
+      },
+      "consequa_x/benchmark/study.py": {
+        "bytes": 8973,
+        "sha256": "c7b0b9e0b8398b1353497ee0e154c3b9fc73ab84624974c009be8b040ee6946b"
+      },
+      "consequa_x/benchmark/targets.py": {
+        "bytes": 7106,
+        "sha256": "16273ea10b7ac59102ac5abd78dc90511734657d5826f5dc2b1013a33f7ed2d3"
+      },
+      "consequa_x/benchmark/templates.py": {
+        "bytes": 4990,
+        "sha256": "2e61a0247f24ad067678649b1cc937f053b2daa0faf6363171bce8a04740e5c7"
+      },
+      "consequa_x/capture.py": {
+        "bytes": 27165,
+        "sha256": "32bcd35281d8b3a95713145f66137c529dd00ac261c85494a23723df16737615"
+      },
+      "consequa_x/cli.py": {
+        "bytes": 90649,
+        "sha256": "4e899adbf9640b3adc13180c4e2aae03f012e55949b6286a1c5a0ee6e4e5f7e2"
+      },
+      "consequa_x/compare.py": {
+        "bytes": 4299,
+        "sha256": "7f1ed3ff57a81e13c51e391727baf706c1e6fae8e77e5f8092e7b76824dd08db"
+      },
+      "consequa_x/composite.py": {
+        "bytes": 16232,
+        "sha256": "7007999a5fd8dfd679150e205d7d7ebcd79251c667791d5f944a6cbbe4192f92"
+      },
+      "consequa_x/errors.py": {
+        "bytes": 1199,
+        "sha256": "4fb793eb0e51591c90fb18bee569fafc5a2f470d7e2bf6b6fb83c2f61064aeaf"
+      },
+      "consequa_x/explanation.py": {
+        "bytes": 9905,
+        "sha256": "233ac34a13690bf2f8cbd2415e4482423c3327a24806d8ad91f76264c1200ab2"
+      },
+      "consequa_x/graph.py": {
+        "bytes": 10387,
+        "sha256": "6b746976d24c8bdef99602cbac11cffbc1b60b3f19e2713c1201041a994e220c"
+      },
+      "consequa_x/guard.py": {
+        "bytes": 3679,
+        "sha256": "a0d1e4a240e674089a0f2d80e652f87a3ab0166ee82310c024af8952e186c639"
+      },
+      "consequa_x/integrations/__init__.py": {
+        "bytes": 7443,
+        "sha256": "272bd9acf9d784d52ad43f8a9ee4f8649655b38c4f43548c9bef649282569a39"
+      },
+      "consequa_x/integrations/claude_agent_sdk.py": {
+        "bytes": 4012,
+        "sha256": "b584d329ba2baefb18e64e4ecfd7386e74e716a1881a40d3fd309fb26ae23858"
+      },
+      "consequa_x/integrations/langchain.py": {
+        "bytes": 3461,
+        "sha256": "ec65feaab965fc23d4f2416f76001efbcf3d9e812191e860e9cd5a003ce8f362"
+      },
+      "consequa_x/integrations/openai_agents.py": {
+        "bytes": 4423,
+        "sha256": "6d83f8f802ad03a4ec0e5402b782ae5c5cb7e5eb7ec1fefd006bac1a655e4078"
+      },
+      "consequa_x/mcp_capture.py": {
+        "bytes": 2681,
+        "sha256": "26d77d0c468abfbfa1a6242ef3dd5d2e2366c6ab8c653976d38f1ac9bc21bbb1"
+      },
+      "consequa_x/migrate.py": {
+        "bytes": 8518,
+        "sha256": "fa003e7f466417819a0290ac1830d98638ffb2e106ca1b5720adaa1d75feff97"
+      },
+      "consequa_x/models.py": {
+        "bytes": 29609,
+        "sha256": "953ddf8375dc74bf8f66c29d0a01a5840a094eecc24aab73dd72e6314012185d"
+      },
+      "consequa_x/otel.py": {
+        "bytes": 30080,
+        "sha256": "54047e1357fc4305da9179905d03b05a13f468323d8a50c3c340035fc714296c"
+      },
+      "consequa_x/policies.py": {
+        "bytes": 10732,
+        "sha256": "ff6031e4c3dd29eb17419fa921341e839a51995f02517b4c583d41bb5c2398f1"
+      },
+      "consequa_x/py.typed": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "consequa_x/readback.py": {
+        "bytes": 4776,
+        "sha256": "aaf0004a6d4478e55af97ee8bcec5fff74324a3f258687a4a228724502950098"
+      },
+      "consequa_x/record_verifier.py": {
+        "bytes": 14288,
+        "sha256": "4d9a4971c2a97a0ba2065edefe44724820620715474463dd5b4d027e9fc28b05"
+      },
+      "consequa_x/report.py": {
+        "bytes": 28964,
+        "sha256": "03f53c55ff901f9f1c2f887eb0064ecf491d2248b20e79dd5118e00dbb03613b"
+      },
+      "consequa_x/research.py": {
+        "bytes": 938,
+        "sha256": "ee183e4bc4b27719f12f15be0bb989dcf6907a267cb05044f225396511ee951d"
+      },
+      "consequa_x/schema.py": {
+        "bytes": 7113,
+        "sha256": "3c42d0e4abcfa162f969fd6718ca8b9a149024031fa3a865b144ce894ebae372"
+      },
+      "consequa_x/schemas/trace-v1.0.json": {
+        "bytes": 13861,
+        "sha256": "e506df633c71ef52d9d98fa4d6ab0f9b5c0b499c6fc7c328130a44cbc8f18101"
+      },
+      "consequa_x/store.py": {
+        "bytes": 2289,
+        "sha256": "2d569b0f1b0ea04dd375846e2178e3f037c9cab9429e7f3a04415532aae8622d"
+      },
+      "consequa_x/summary.py": {
+        "bytes": 6162,
+        "sha256": "e5ac2548f01dbf339f171313964aaff9a6a46bf2caa38c9782f8678edb9c9890"
+      },
+      "consequa_x/verification.py": {
+        "bytes": 17618,
+        "sha256": "e8d2618f80b5f4da577ace852b8db2036e2ffff5597d72378f534a80b4d63f6e"
+      }
+    },
+    "framework_payload_count": 54,
+    "framework_root": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\consequa_x",
+    "framework_version": "2.1.1",
+    "framework_wheel": "D:\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+    "framework_wheel_sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98"
+  },
+  "wheel_file": {
+    "bytes": 215139,
+    "sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98"
+  }
+}

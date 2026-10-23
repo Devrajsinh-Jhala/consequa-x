@@ -1,0 +1,151 @@
+{
+  "budget": {
+    "reason": "Complete terminal accounting is absent; the full reservation remains held, irrespective of observed prefix calls",
+    "released": 0,
+    "remaining_held": 11,
+    "reservation_file": "output/limbo-development-2026-10-22/native-ledger/reservation-001.json",
+    "reserved": 11,
+    "settlement_created": false,
+    "settlement_present": false
+  },
+  "created_utc": "2026-10-23T18:29:29.737093+00:00",
+  "execution_sources_match_saved_worker_config": true,
+  "framework_journal_prefix": {
+    "complete_lines": 17,
+    "first_invalid_line": null,
+    "package_receipts_recorded": 0
+  },
+  "grade_available": false,
+  "host_observation": {
+    "current_boot_time_epoch_seconds": 1792730735.0148695,
+    "current_boot_time_utc": "2026-10-23T04:45:35.014869+00:00",
+    "method": "psutil.boot_time(); no process enumeration, termination, or model requests",
+    "observed_utc": "2026-10-23T18:28:41.419385+00:00"
+  },
+  "input_directories": [
+    "output/limbo-development-2026-10-22/guard-migration-001",
+    "output/limbo-resource-observer-2026-10-22",
+    "output/limbo-runtime-2026-10-22"
+  ],
+  "interruption_cause": "unknown; missing terminal records and current boot observation do not establish cause",
+  "limitations": [
+    "This new preservation manifest seals copied prefixes after interruption; it is not the missing contemporaneous episode or observer manifest.",
+    "No native grade, final state, late flush, complete token cost, successful SDK path, or completed fault-handling claim follows from these prefixes.",
+    "A before_dispatch journal entry establishes a client-side attempt, not server acceptance or completion.",
+    "Runtime logs are preserved verbatim, without reconstructing a native grade or interpreting missing responses as zero work.",
+    "No GitHub Actions API or workflow is used by this helper."
+  ],
+  "model_journal_prefix": {
+    "before_dispatch_count": 2,
+    "complete_lines": 6,
+    "first_invalid_line": null,
+    "invocations": [
+      {
+        "before_dispatch_recorded": true,
+        "invocation": 1,
+        "missing_response_or_usage_is_not_zero": true,
+        "raw_request_present": true,
+        "raw_response_present": true,
+        "server_acceptance_from_before_dispatch_alone": "unknown",
+        "transport_terminal": {
+          "budget_refusal": false,
+          "dispatch_attempt_count_is_not_proof_of_server_acceptance": true,
+          "dispatches": 1,
+          "finished_utc": "2026-10-22T17:11:19.439435+00:00",
+          "invocation": 1,
+          "native_usage_aggregate": {
+            "cached_tokens": 6,
+            "input_tokens": 1139,
+            "output_tokens": 242,
+            "reasoning_tokens": 0
+          },
+          "permitted_model_invocation": true,
+          "returned": true,
+          "schema": "conseqax-limbo-local-transport-v1",
+          "started_utc": "2026-10-22T17:09:32.443550+00:00",
+          "usage": {
+            "cached_tokens": {
+              "available": true,
+              "value": 6
+            },
+            "input_tokens": {
+              "available": true,
+              "value": 1139
+            },
+            "output_tokens": {
+              "available": true,
+              "value": 242
+            },
+            "reasoning_tokens": {
+              "available": false,
+              "value": null
+            }
+          },
+          "wall_s": 106.98500000000058
+        },
+        "transport_terminal_present": true
+      },
+      {
+        "before_dispatch_recorded": true,
+        "invocation": 2,
+        "missing_response_or_usage_is_not_zero": true,
+        "raw_request_present": true,
+        "raw_response_present": false,
+        "server_acceptance_from_before_dispatch_alone": "unknown",
+        "transport_terminal": null,
+        "transport_terminal_present": false
+      }
+    ],
+    "request_return_count": 1,
+    "request_return_usage": [
+      {
+        "invocation": 1,
+        "usage": {
+          "cached_tokens": {
+            "available": true,
+            "value": 6
+          },
+          "input_tokens": {
+            "available": true,
+            "value": 1139
+          },
+          "output_tokens": {
+            "available": true,
+            "value": 242
+          },
+          "reasoning_tokens": {
+            "available": false,
+            "value": null
+          }
+        }
+      }
+    ],
+    "total_completed_generations_and_tokens": "unknown; only the saved returned prefix is known"
+  },
+  "native_grade": null,
+  "native_replay_performed": false,
+  "network_requests": 0,
+  "new_model_requests": 0,
+  "new_native_terminal_or_world_invented": false,
+  "original_file_count": 46,
+  "originals_unchanged_during_copy": true,
+  "process_control_actions": 0,
+  "resource_journal_prefix": {
+    "complete_lines": 557,
+    "first_invalid_line": null,
+    "first_recorded_utc": "2026-10-22T12:32:46.987497+00:00",
+    "last_recorded_utc": "2026-10-22T17:11:49.055313+00:00",
+    "prefix_is_not_a_complete_observation_interval": true
+  },
+  "schema": "conseqax-limbo-interrupted-development-preservation-v1",
+  "scope": "Copy-only post-interruption preservation of an excluded-development prefix, not an episode audit or grade",
+  "terminal_record_absence": {
+    "episode/manifest.json": true,
+    "episode/native-result.json": true,
+    "episode/parent-terminal.json": true,
+    "episode/worker-terminal.json": true,
+    "episode/world.json": true,
+    "observer/manifest.json": true,
+    "observer/terminal-summary.json": true
+  }
+}

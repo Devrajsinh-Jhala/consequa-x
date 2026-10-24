@@ -1,0 +1,17 @@
+{
+  "actual_generation_requests": 0,
+  "elapsed_seconds": 45999.734000000004,
+  "finished_utc": "2026-10-24T17:39:23.745287+00:00",
+  "maximum_sampled_rss_bytes": {
+    "runner": 3973980160,
+    "server": 43532288
+  },
+  "minimum_sampled_available_ram_bytes": 266141696,
+  "network_requests": 0,
+  "pilot_completion_not_assessed": true,
+  "samples": 824,
+  "schema": "native-resource-observer-summary-v1",
+  "started_utc": "2026-10-24T04:52:44.007600+00:00",
+  "stream_closed": true,
+  "terminal_reason": "explicit_stop_file"
+}

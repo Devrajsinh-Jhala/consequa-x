@@ -1,0 +1,200 @@
+{
+  "all_fonts_embedded": true,
+  "all_page_images": {
+    "page-01.png": {
+      "bytes": 391218,
+      "sha256": "00626056d8c5452653f6dfef21b05aa3b35971ba0bbdd44d9b8a4cda8547205c"
+    },
+    "page-02.png": {
+      "bytes": 412137,
+      "sha256": "42a585746ad88ccd32f497e8703ac487beb81fcca7c67100536b109c19855c87"
+    },
+    "page-03.png": {
+      "bytes": 412647,
+      "sha256": "a09e2e1278b899a463cf019912180890bb241bf13ff3200f1833ecfb9a9c5b5f"
+    },
+    "page-04.png": {
+      "bytes": 366961,
+      "sha256": "89673543d88a8ccd07313c1dc5ab1af4a15ee7434d35a5e029a9bc9d4712d28d"
+    },
+    "page-05.png": {
+      "bytes": 454443,
+      "sha256": "2925c8f1eb554eecc1515ccfdc6998066662652fdfcdef3d9383fefeb37e3b58"
+    },
+    "page-06.png": {
+      "bytes": 190856,
+      "sha256": "73b20eeb83447f8996b306dbcc259ac5849567cefc3cccbbcb00784515436802"
+    },
+    "page-07.png": {
+      "bytes": 333240,
+      "sha256": "375a09773d1543197fc229181ca28def7a714fa163a26d94b798b193bd5ba6e9"
+    },
+    "page-08.png": {
+      "bytes": 257248,
+      "sha256": "55214d142766c261c8e6546f2a45323c1b70b9e4ceff35732171c8a4f3ef740f"
+    },
+    "page-09.png": {
+      "bytes": 152947,
+      "sha256": "a4698b8887861bf7b5568bf09debd8e4fa084c60b18e5dfbf4e61fba1b94fbe4"
+    },
+    "page-10.png": {
+      "bytes": 431889,
+      "sha256": "c732b2a162de15e38d88efce4b11cb3ef5cc9bd598163ef925c90e2dc0c99870"
+    },
+    "page-11.png": {
+      "bytes": 293519,
+      "sha256": "14637994ec9698ae83c14cf37c41bc0bb3503462ae90ab0d3d3932ea9d8167b8"
+    },
+    "page-12.png": {
+      "bytes": 448295,
+      "sha256": "c43fdd407b4b7dd6b47b7b3b8b152c032342d53ed624d36b3649df01a02b3f98"
+    },
+    "page-13.png": {
+      "bytes": 365160,
+      "sha256": "51b5e07dd7ab303a6b857e10d424234e56e8e12b2c6a4e17223d5867a4e4fde3"
+    },
+    "page-14.png": {
+      "bytes": 236589,
+      "sha256": "9756a5d9dd56e98e81329cd7114f5a825c84c1bff47db5f971b47ef96f771877"
+    },
+    "page-15.png": {
+      "bytes": 232944,
+      "sha256": "6a3093de0df09b2b7806a21fe926b99e8ca48b33dcb3cf3eae4678867fc45477"
+    },
+    "page-16.png": {
+      "bytes": 328355,
+      "sha256": "f3cba853318574709878af317a01e8573dd45ad60993ef1f481e9cb370d5983c"
+    }
+  },
+  "arm_results": {
+    "conseqax_guard": {
+      "EOS": 15,
+      "TS": 20,
+      "graded": 24,
+      "normal_returns": 22,
+      "planned": 24
+    },
+    "guard": {
+      "EOS": 16,
+      "TS": 21,
+      "graded": 24,
+      "normal_returns": 23,
+      "planned": 24
+    },
+    "sdk_retry3": {
+      "EOS": 14,
+      "TS": 24,
+      "graded": 24,
+      "normal_returns": 24,
+      "planned": 24
+    },
+    "vanilla": {
+      "EOS": 16,
+      "TS": 21,
+      "graded": 24,
+      "normal_returns": 24,
+      "planned": 24
+    }
+  },
+  "audited_followup_grades": 96,
+  "benchmark_source_or_analysis_changed": false,
+  "blocking_tex_warnings": [],
+  "cohorts_pooled": false,
+  "completed_utc": "2026-10-24T18:29:00.611605+00:00",
+  "conference_acceptance_or_external_replication_claim": false,
+  "native_error_returns_with_audited_grades": 3,
+  "new_models_humans_paid_inference_or_github_actions": false,
+  "nonblocking_underfull_warnings_visually_checked": 27,
+  "normal_followup_returns": 93,
+  "original_audited_grades": 6,
+  "original_planned_slots": 96,
+  "original_protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875",
+  "original_unavailable_grades": 90,
+  "pages": 16,
+  "paper_source_commit": "2cd685a7fe65abb034711dbe7f43f7f0caceffe2",
+  "pdf": {
+    "bytes": 286329,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\ConseqaX_Research_Paper.pdf",
+    "sha256": "68a85adfba62a540efed268f5d739d319b2d3bd2fcf25ca903924280981be075"
+  },
+  "planned_followup_slots": 96,
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "receipt_bearing_sdk_episodes": 3,
+  "receipt_count": 3,
+  "root_full_page_review": {
+    "notes": "Full-page PNGs 01-08, all contact sheets and all new standalone figures inspected; no overlap, clipping, missing glyphs or blocking legibility issue.",
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "reviewer": "AI assistant /root"
+  },
+  "schema": "conseqax-audited-paper-completion-v1",
+  "scope": "All finite generic IEEE manuscript gates are closed. The immutable build receipt retains its original pending snapshot; this later receipt records completed source and all-page visual review. Venue-specific compliance/submission remains separate.",
+  "second_half_review": {
+    "bytes": 5429,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-paper-visual-review-pages09-16-2026-10-24-v4\\review-receipt.json",
+    "sha256": "a73929fc98cc8f6a504280c7cfb0a3abd61d597040ec9fb619adfc44668ee453"
+  },
+  "status": "EVIDENCE_BACKED_MANUSCRIPT_COMPLETE",
+  "text_and_claim_review_passed": true,
+  "text_review_scope": "Both cohort denominators, four-arm counts, adverse findings, baseline contrasts, receipts, costs, unknown usage and native limits match sealed evidence. AI checks are not human validation or external replication.",
+  "unique_base_instances_across_conditions": 12,
+  "verified_seals": {
+    "limbo-followup-analysis-2026-10-24": {
+      "bytes": 2395,
+      "sha256": "bca64f4f5d3ebbdb5f484129188654d9f104b9f3ea33126a0b6bed0ac7db4b88"
+    },
+    "limbo-followup-audit-2026-10-24": {
+      "bytes": 135,
+      "sha256": "cda7c4e5439fbb3cf0407a20dc3061ed3015973ad45461d96c8af7e4a3395d59"
+    },
+    "limbo-followup-collection-2026-10-24": {
+      "bytes": 700067,
+      "sha256": "a1b2ff7568ea01070d343c553126d3c6f666227b50adaa4842174bd200a18329"
+    },
+    "limbo-followup-draft-build-2026-10-24": {
+      "bytes": 17233,
+      "sha256": "2de1ac2ce2c12786c83684e9dca10eb1d56283292c9a4eff317b2096165b41ba"
+    },
+    "limbo-followup-pipeline-2026-10-24": {
+      "bytes": 3823,
+      "sha256": "de3ed2ea589180938924bac2463ce1adb911a4d6665eb36ea39159e131959cf1"
+    },
+    "limbo-followup-portable-audit-2026-10-24-v2": {
+      "bytes": 135,
+      "sha256": "7b6bf6490a7ee35abd136cb0a0a81ce980637553da163700c0ccc147b57b8e1b"
+    },
+    "limbo-followup-poststudy-2026-10-24-v2": {
+      "bytes": 5883,
+      "sha256": "a3b906f485688ae416347706f26ab79290e46f85a5bb1aedb8ab220952fb5e87"
+    },
+    "limbo-followup-resource-observer-2026-10-24": {
+      "bytes": 574,
+      "sha256": "5dde5f12b36a8818aa01d6e66e9a307214cd5298b1d897b7105e6d713638a2b2"
+    },
+    "limbo-interrupted-analysis-2026-10-24": {
+      "bytes": 1195,
+      "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+    },
+    "limbo-official-interruption-2026-10-24": {
+      "bytes": 58698,
+      "sha256": "7aa299986bff9d7885f64f9b03dd4b2f5625670bdc6a6451c4ed02d4089e7d89"
+    },
+    "limbo-paper-visual-review-pages09-16-2026-10-24-v4": {
+      "bytes": 135,
+      "sha256": "f8b68c9b77f5cca4bd1be07f424dc65d75e5debaa4d8effc13383522bf59e2e3"
+    },
+    "pdf/limbo-audited-paper-2026-10-24-v4": {
+      "bytes": 11673,
+      "sha256": "85cb60326457519262ca142f44d6a04ef9e87a82ebf4869e7a8541eac0ebac35"
+    }
+  },
+  "visual_review_pending": false
+}

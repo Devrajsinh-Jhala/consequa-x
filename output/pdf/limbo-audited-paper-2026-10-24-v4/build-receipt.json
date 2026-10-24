@@ -1,0 +1,334 @@
+{
+  "all_fonts_embedded": true,
+  "all_pages_rendered": true,
+  "all_planned_trajectories_succeeded_is_not_asserted": true,
+  "audited_native_grade_available": 96,
+  "base_instances": 12,
+  "blocking_tex_warnings": [],
+  "both_cohorts_retained_separately": true,
+  "built_utc": "2026-10-24T18:18:47.987283+00:00",
+  "cohorts_pooled": false,
+  "compile_exit_code": 0,
+  "execution_success": 93,
+  "fonts": [
+    {
+      "embedded": true,
+      "name": "/IHAIZV+TeXGyreTermesX-Regular",
+      "programs": [
+        {
+          "bytes": 13771,
+          "sha256": "7dfe69194642ccd3fa914da098cf50984209d0b054515cc0bd468e03a0e39834"
+        }
+      ],
+      "subtype": "/CIDFontType0"
+    },
+    {
+      "embedded": true,
+      "name": "/BZIVMZ+TeXGyreTermesX-BoldItalic",
+      "programs": [
+        {
+          "bytes": 2703,
+          "sha256": "efb69f0890b6d85d06b62bbfe887950b559164614339f82caeb6af60b71b6eb5"
+        }
+      ],
+      "subtype": "/CIDFontType0"
+    },
+    {
+      "embedded": true,
+      "name": "/IXFAWU+TeXGyreTermesX-Bold",
+      "programs": [
+        {
+          "bytes": 7531,
+          "sha256": "7baaa2af417de16ce1cf470f93dfdab08632acf2484fccaba8f73a5c59284802"
+        }
+      ],
+      "subtype": "/CIDFontType0"
+    },
+    {
+      "embedded": true,
+      "name": "/TQTHRL+TeXGyreTermesX-Italic",
+      "programs": [
+        {
+          "bytes": 7547,
+          "sha256": "2c2f80990020db4502fcc4e496815470287ba9ebdfe59a9cfddcf6fa6291de04"
+        }
+      ],
+      "subtype": "/CIDFontType0"
+    },
+    {
+      "embedded": true,
+      "name": "/VDVGTR+NewTXMI",
+      "programs": [
+        {
+          "bytes": 2286,
+          "sha256": "9f12adab9966340a3305b8ba82e95c35754795f3d5e0513da9180cb775ecbd71"
+        }
+      ],
+      "subtype": "/Type1"
+    },
+    {
+      "embedded": true,
+      "name": "/DDIEWW+TeXGyreTermesX-Regular",
+      "programs": [
+        {
+          "bytes": 2579,
+          "sha256": "cb0a88cc56b2451cec036ca5d9bd9ec9136c3ea307ba653e7d8cae0e6b45af06"
+        }
+      ],
+      "subtype": "/Type1"
+    },
+    {
+      "embedded": true,
+      "name": "/CAFSZL+txmiaX",
+      "programs": [
+        {
+          "bytes": 269,
+          "sha256": "44e6eaca2706bee95b167ccb1f326771f7ff915043ff3869a6cb4f107004cc97"
+        }
+      ],
+      "subtype": "/Type1"
+    },
+    {
+      "embedded": true,
+      "name": "/FKPJSN+txsys",
+      "programs": [
+        {
+          "bytes": 851,
+          "sha256": "6d94caf98f631ff27d654305bbfed6abac40853e1a938d961b55b1aad3d8485b"
+        }
+      ],
+      "subtype": "/Type1"
+    },
+    {
+      "embedded": true,
+      "name": "/YEUUOC+LMMono9-Regular",
+      "programs": [
+        {
+          "bytes": 2595,
+          "sha256": "7583a892afe6b020f1fecc7d77f57f3ea5dfd27d46cab86ba9aeaaaa7c6404ae"
+        }
+      ],
+      "subtype": "/CIDFontType0"
+    },
+    {
+      "embedded": true,
+      "name": "/PVTTLK+NewTXMI7",
+      "programs": [
+        {
+          "bytes": 1528,
+          "sha256": "302a816ce5997afbd00b127482611892409d9d4eec7d9e3b97bb2549f3160644"
+        }
+      ],
+      "subtype": "/Type1"
+    },
+    {
+      "embedded": true,
+      "name": "/JAGKKY+txexs",
+      "programs": [
+        {
+          "bytes": 261,
+          "sha256": "4c20c152fd3e5d36caa621c26d4866d713b75c628ef131f8e83c7c576abaf984"
+        }
+      ],
+      "subtype": "/Type1"
+    },
+    {
+      "embedded": true,
+      "name": "/AKHCZK+LMMono10-Regular",
+      "programs": [
+        {
+          "bytes": 5966,
+          "sha256": "abf8983b61202746fff9bccab9c9b27f1fc93acee08ff9ef96fa553ca8381ffe"
+        }
+      ],
+      "subtype": "/CIDFontType0"
+    },
+    {
+      "embedded": true,
+      "name": "/BOOGLL+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 18948,
+          "sha256": "46607a5ed45f855c145e44eb569aed74b98a7747c372e14b22dc67dbf4df3f45"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/CPUQYB+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 3844,
+          "sha256": "d72ba4d109cd6242233e747f479a32136537d7c1c306c5f0f2b57db8312f3b08"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/FDALYQ+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 15876,
+          "sha256": "265c0619001a4d05e4613ef3a1c9012d92c9fa26fed2e13443497c1661bd7e20"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/FGAXJN+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 4112,
+          "sha256": "f061cd0aa5708a3c37c08b34b0115b09fda5de5c77ae43b1a104386c1b2eb508"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/HHFFBJ+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 15616,
+          "sha256": "0b23d1087c29fddac7106ef8e551e9a4bf946a87346fb3bf5a49da1f42bd754b"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/CPUQYB+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 3844,
+          "sha256": "d72ba4d109cd6242233e747f479a32136537d7c1c306c5f0f2b57db8312f3b08"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/BPLBXI+DejaVuSans-Bold",
+      "programs": [
+        {
+          "bytes": 15244,
+          "sha256": "b84ff403b93746d22b9e34547a7eabff25dda9a554d6a295cf40e3bd02d31958"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/EEZAWI+DejaVuSans-Bold",
+      "programs": [
+        {
+          "bytes": 4332,
+          "sha256": "ede81e253e4121e7136c489450ef18276239e922826e05a0028c1d2d52ef3607"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/BEDUHV+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 13884,
+          "sha256": "cee6d1ad51dc52f44e18c649dbeaaa1f00c70a057fc90aea312109def2df9707"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/DQIFZV+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 4040,
+          "sha256": "8a110afa61969f5d11017b2816728c88c8ec86a54fac042458ba5b3ca67ed875"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/GTNHKA+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 13716,
+          "sha256": "cfc205c27d2c78c19b2dcd1dcf964bfa53e1ccebaf880bc907675962132327ad"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/CTURUU+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 15300,
+          "sha256": "88ea3131fc8bf75f61d38c120ae61a82986fecdd71b1e005a0274511d65f8bd2"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/DEOWHK+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 3984,
+          "sha256": "bf5eb4172a0f1b7c3978a9485bb682a9f0ede1f66ac51136802d3f5e4e39f5d0"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/ZOCNBF+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 15736,
+          "sha256": "246f9e8f89ec4426e7b79381cf1e4bf3eb82d8b54f0ffb050c6cba9327b8be3a"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    },
+    {
+      "embedded": true,
+      "name": "/CPUQYB+DejaVuSans",
+      "programs": [
+        {
+          "bytes": 3844,
+          "sha256": "d72ba4d109cd6242233e747f479a32136537d7c1c306c5f0f2b57db8312f3b08"
+        }
+      ],
+      "subtype": "/CIDFontType2"
+    }
+  ],
+  "human_labels": 0,
+  "interrupted_cohort_audited_grades": 6,
+  "interrupted_cohort_planned_slots": 96,
+  "native_grade_unavailable": 0,
+  "new_model_calls": 0,
+  "new_native_evaluations": 0,
+  "official_native_results": true,
+  "official_results_mean_passed_analysis_of_all_planned_dispositions": true,
+  "pages": 16,
+  "pdf": {
+    "bytes": 286329,
+    "sha256": "68a85adfba62a540efed268f5d739d319b2d3bd2fcf25ca903924280981be075"
+  },
+  "planned_slots": 96,
+  "planned_worlds": 24,
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "render_dpi": 110,
+  "schema": "conseqax-final-limbo-paper-build-v1",
+  "source_authentication_or_external_replication": false,
+  "source_commit": "2cd685a7fe65abb034711dbe7f43f7f0caceffe2",
+  "underfull_warnings": 27,
+  "visual_review_pending": true
+}

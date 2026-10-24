@@ -1,0 +1,66 @@
+{
+  "initial/build-failure.json": {
+    "bytes": 230,
+    "sha256": "8e6a3450509bb2755b24c5aa2d227e86bf4269ee7d27d6f120c13516fe7aab29"
+  },
+  "initial/quality/compile.stderr.log": {
+    "bytes": 27598,
+    "sha256": "e6e99f8e494c0af0299045886fe09ac6e031d77038759fd685ca77e90881d351"
+  },
+  "initial/quality/compile.stdout.log": {
+    "bytes": 205,
+    "sha256": "f581038fd144eb4a4e3c50bc7d0237150dd68e45d20156074ca09b20e942750a"
+  },
+  "initial/source/paper/conseqax-research.tex": {
+    "bytes": 38122,
+    "sha256": "1bd32f2a36d82655c6c78a3f1c36f8c1fffc61f7e0575527c1f2ae14784e688f"
+  },
+  "initial/source/paper/limbo-native-methods.tex": {
+    "bytes": 14545,
+    "sha256": "ab3db3ac3d5be44c5841b8efd956c484248bd5e54d9b5ce679216681fd45f77d"
+  },
+  "repairs.json": {
+    "bytes": 3681,
+    "sha256": "9ad34e8d2a29e8fb6367315a054e6f33c74a7d73fa4447c38745cbd33613ecb1"
+  },
+  "v2/build-failure.json": {
+    "bytes": 1739,
+    "sha256": "68e9e178128eee1e8ea42ed862431f8c3782455de42fe8033d11fce2991dfc0a"
+  },
+  "v2/quality/compile.stderr.log": {
+    "bytes": 35429,
+    "sha256": "19daeda8c061a04cde30174faabdd3da86a16611a81201af20804c544a19085c"
+  },
+  "v2/quality/compile.stdout.log": {
+    "bytes": 743,
+    "sha256": "5506d8bea0ef54e0f4d2c86492d6f0b53b10f6365cd4245e1bc8a44e1ae10e84"
+  },
+  "v2/source/paper/conseqax-research.tex": {
+    "bytes": 38113,
+    "sha256": "8970ddd5e554b02c592e0c1c98abc1ed32a1839c279f27a90e03aa7fbd10d91d"
+  },
+  "v2/source/paper/limbo-native-methods.tex": {
+    "bytes": 14513,
+    "sha256": "6491e9150dc86b464b0dd05e6be7daff65eee728368a09d7b1f8c8fd3be7c3de"
+  },
+  "v3/build-failure.json": {
+    "bytes": 230,
+    "sha256": "a06bedaefb47416560cfe68df4da9f14aede08c87598d164f8a494bfb4a7160a"
+  },
+  "v3/quality/compile.stderr.log": {
+    "bytes": 1852,
+    "sha256": "310b9c412d4d290cdd65ef22fdc19b7b1ec5b1316d7a9d031e39e7779944aeac"
+  },
+  "v3/quality/compile.stdout.log": {
+    "bytes": 208,
+    "sha256": "479403abaa1a254f61b8c90d3db7f989461c61f092b00961fe78757d533334d2"
+  },
+  "v3/source/paper/conseqax-research.tex": {
+    "bytes": 38219,
+    "sha256": "e6c137443eae71e044849fd85b4d0669193cc9b088afb5a4e66b17779fa6a172"
+  },
+  "v3/source/paper/limbo-native-methods.tex": {
+    "bytes": 14513,
+    "sha256": "6491e9150dc86b464b0dd05e6be7daff65eee728368a09d7b1f8c8fd3be7c3de"
+  }
+}

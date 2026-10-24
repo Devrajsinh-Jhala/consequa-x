@@ -1,0 +1,21 @@
+{
+  "processes": [
+    {
+      "pid": 4168,
+      "role": "server",
+      "status": "private_process_stopped"
+    },
+    {
+      "pid": 8880,
+      "role": "runner",
+      "status": "private_process_stopped"
+    }
+  ],
+  "runtime_binding": {
+    "bytes": 1006,
+    "sha256": "2eb5c76cb0ed4d245d21ca992ee63f19f469ddc0b6a455f29323f3d53da07862"
+  },
+  "schema": "conseqax-private-runtime-shutdown-v1",
+  "scope": "Only the two exact bound private benchmark processes. Normal desktop Ollama/service, model weights and files unchanged. No model request.",
+  "utc": "2026-10-24T18:28:05.567202+00:00"
+}

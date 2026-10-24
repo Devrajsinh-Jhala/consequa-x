@@ -1,0 +1,138 @@
+{
+  "all_document_pages_reviewed_by_this_receipt": false,
+  "blocking_issues": [],
+  "document_pages": 16,
+  "github_actions_used": false,
+  "independent_human_review": false,
+  "new_model_or_native_calls": 0,
+  "new_pdf_created": false,
+  "pages": [
+    {
+      "blocking_issues": [],
+      "notes": "Availability grid, cell counts, legend, axis labels and Study B caption are legible; no clipping or overlap.",
+      "page": 9,
+      "passed": true,
+      "render": {
+        "bytes": 152947,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-09.png",
+        "sha256": "a4698b8887861bf7b5568bf09debd8e4fa084c60b18e5dfbf4e61fba1b94fbe4"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Table V human-readable arm labels and wrapped rules fit; two-column methods and qualification text are unobstructed.",
+      "page": 10,
+      "passed": true,
+      "render": {
+        "bytes": 431889,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-10.png",
+        "sha256": "c732b2a162de15e38d88efce4b11cb3ef5cc9bd598163ef925c90e2dc0c99870"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Native methods diagram, arrows and evaluator boundary are legible; caption and continued text fit.",
+      "page": 11,
+      "passed": true,
+      "render": {
+        "bytes": 293519,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-11.png",
+        "sha256": "14637994ec9698ae83c14cf37c41bc0bb3503462ae90ab0d3d3932ea9d8167b8"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Dense methods/results prose, fractions and disposition identifiers remain within both columns; no overlap or missing glyphs.",
+      "page": 12,
+      "passed": true,
+      "render": {
+        "bytes": 448295,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-12.png",
+        "sha256": "c43fdd407b4b7dd6b47b7b3b8b152c032342d53ed624d36b3649df01a02b3f98"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Two-cohort accounting table and follow-up outcome table fit with clear headers and values; continued prose is legible.",
+      "page": 13,
+      "passed": true,
+      "render": {
+        "bytes": 365160,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-13.png",
+        "sha256": "51b5e07dd7ab303a6b857e10d424234e56e8e12b2c6a4e17223d5867a4e4fde3"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Effect table and TS/EOS graph are legible; follow-up caption identifies the cohort; lower limitation text is unobstructed.",
+      "page": 14,
+      "passed": true,
+      "render": {
+        "bytes": 236589,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-14.png",
+        "sha256": "9756a5d9dd56e98e81329cd7114f5a825c84c1bff47db5f971b47ef96f771877"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Both stratification heatmaps, values and labels are legible; follow-up caption, conclusion and disclosure flow correctly.",
+      "page": 15,
+      "passed": true,
+      "render": {
+        "bytes": 232944,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-15.png",
+        "sha256": "6a3093de0df09b2b7806a21fe926b99e8ca48b33dcb3cf3eae4678867fc45477"
+      }
+    },
+    {
+      "blocking_issues": [],
+      "notes": "Cost plot, rotated labels and caption are legible; references flow across columns and long source hashes/URLs wrap without clipping.",
+      "page": 16,
+      "passed": true,
+      "render": {
+        "bytes": 328355,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\quality\\page-16.png",
+        "sha256": "f3cba853318574709878af317a01e8573dd45ad60993ef1f481e9cb370d5983c"
+      }
+    }
+  ],
+  "paper_sources_modified": false,
+  "pdf": {
+    "bytes": 286329,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\ConseqaX_Research_Paper.pdf",
+    "sha256": "68a85adfba62a540efed268f5d739d319b2d3bd2fcf25ca903924280981be075"
+  },
+  "pdf_bundle_manifest": {
+    "bytes": 11673,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\pdf\\limbo-audited-paper-2026-10-24-v4\\manifest.json",
+    "sha256": "85cb60326457519262ca142f44d6a04ef9e87a82ebf4869e7a8541eac0ebac35"
+  },
+  "pdf_bundle_modified": false,
+  "reviewed_pages": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "reviewed_utc": "2026-10-24T18:22:00.086452+00:00",
+  "reviewer": "AI assistant subagent /root/recover_paper_tools",
+  "schema": "conseqax-pdf-visual-review-v1",
+  "scope": "Visual layout, legibility, font rendering, captions, tables and bibliography flow for pages 09-16 only; no new scientific or external replication claim",
+  "source_commit": "2cd685a7fe65abb034711dbe7f43f7f0caceffe2",
+  "status": "PASSED_FOR_PAGES_09_TO_16",
+  "unreviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "viewing_method": "Existing full-page PNGs inspected with view_image at original detail"
+}

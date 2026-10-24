@@ -1,0 +1,48 @@
+{
+  "finished_utc": "2026-10-24T17:39:24.430443+00:00",
+  "return_code": 0,
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "Process exit only; scientific completeness requires the collector/auditor artifacts",
+  "status": "target_exited",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 174,
+    "sha256": "87745db5f1b3221109484d1a9983daa5c7f2b58f89a59c110df860c815ed3499"
+  },
+  "target": {
+    "command_line": [
+      "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+      "-B",
+      "C:/Code/ConsequaX-Research/paper-writing/scripts/run_limbo_completion_pipeline.py",
+      "--native-root",
+      "C:/Code/ConsequaX-Research/limbo-pinned-2db09fba",
+      "--protocol",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-protocol-2026-10-24/protocol.json",
+      "--protocol-commit",
+      "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+      "--output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-pipeline-2026-10-24",
+      "--collection-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-collection-2026-10-24",
+      "--audit-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-audit-2026-10-24",
+      "--analysis-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-analysis-2026-10-24",
+      "--observer-stop-file",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-observer-stop-2026-10-24.flag",
+      "--figure-dependencies",
+      "C:/Code/ConsequaX-Research/figure-dependencies",
+      "--mpl-config-dir",
+      "C:/Code/ConsequaX-Research/figure-matplotlib-cache"
+    ],
+    "create_time": 1792817573.282704,
+    "executable": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "in_any_windows_job": true,
+    "listed_in_supervisor_non_killing_ambient_job": true,
+    "pid": 6528,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  }
+}

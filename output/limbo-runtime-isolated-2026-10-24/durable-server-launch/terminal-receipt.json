@@ -1,0 +1,27 @@
+{
+  "finished_utc": "2026-10-24T18:28:05.071341+00:00",
+  "return_code": 15,
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "Process exit only; scientific completeness requires the collector/auditor artifacts",
+  "status": "target_exited",
+  "stderr": {
+    "bytes": 2752431,
+    "sha256": "1c18fca80c97a6dd2870eefaf92aa739fe1b2a20e10c715517944a3691ccf1df"
+  },
+  "stdout": {
+    "bytes": 154744,
+    "sha256": "b3749708232308f8cf0cc62d3b1fe3302d30e89caf47b9316ed04c056b85e32b"
+  },
+  "target": {
+    "command_line": [
+      "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\ollama.exe",
+      "serve"
+    ],
+    "create_time": 1792816649.471334,
+    "executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\ollama.exe",
+    "in_any_windows_job": true,
+    "listed_in_supervisor_non_killing_ambient_job": true,
+    "pid": 4168,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  }
+}

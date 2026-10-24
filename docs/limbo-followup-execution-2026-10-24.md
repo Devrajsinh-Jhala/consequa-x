@@ -119,3 +119,14 @@ PID 9908, exact creation epoch `1792847395.3639548`. Its launch receipt is in
 wait observation confirmed the exact active poststudy identity as matching.
 Its downstream edited/PDF outputs remain prospective until the required input
 seals pass. No new model calls, humans, paid inference or GitHub Actions are added.
+
+
+## Completed audited manuscript
+
+All 96 follow-up slots returned and passed official/portable replay. Analysis,
+editorial integration and all-page review are complete; see the
+[completion record](../output/limbo-paper-completion-2026-10-24/README.md).
+Three preserved typesetting failures were repaired without changing benchmark
+source, analysis, numeric tables or figure data. The exact private benchmark
+server/runner were stopped after completion to release memory; the normal
+Ollama service and weights were untouched.

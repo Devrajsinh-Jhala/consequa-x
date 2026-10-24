@@ -1,0 +1,127 @@
+{
+  "schema_version": "consequa-x-conceptual-paper-figures-v1",
+  "purpose": "Illustrative software architecture and event order; no empirical data plotted",
+  "source_script": {
+    "path": "scripts/draw_paper_diagrams.py",
+    "sha256": "08fb5090d63002333dfebc33886db793aef360b456e102ac021a6510654f15e3",
+    "bytes": 14141
+  },
+  "reviewed_runtime_sources": [
+    {
+      "path": "src/consequa_x/models.py",
+      "sha256": "71b3bcae70604e315487e45769915845cdca75fcde05cfc24a0874ca7bd4cc2d",
+      "bytes": 20260
+    },
+    {
+      "path": "src/consequa_x/verification.py",
+      "sha256": "b3ad94acee15fdb794eca89532cbd91cbba12890e01c2adbab82278f6debdf4f",
+      "bytes": 11792
+    },
+    {
+      "path": "src/consequa_x/explanation.py",
+      "sha256": "341d11a03566f256c4a8e02643abfbe19784cd39f3257d2546884e47e54fbb2e",
+      "bytes": 11056
+    },
+    {
+      "path": "src/consequa_x/graph.py",
+      "sha256": "69f8d978af342c33401710206c2d12298507f3c20e6765fcb261032b06de832c",
+      "bytes": 9859
+    },
+    {
+      "path": "src/consequa_x/benchmark/payments.py",
+      "sha256": "6efda5be5ceb8df3c98a02bae1d43f355a6b63e09c2070f56ffafaa23c08f2d7",
+      "bytes": 17249
+    },
+    {
+      "path": "src/consequa_x/benchmark/policy_runner.py",
+      "sha256": "a1935005f24699449e4b82e292891ce5ad7802058069c2c4fda899de4a4d2b1e",
+      "bytes": 10942
+    },
+    {
+      "path": "src/consequa_x/benchmark/decision_shapley.py",
+      "sha256": "944d99da393ed5c7e6a7674c88942773498ce4a42279dc43fb80bd7d75e6fccf",
+      "bytes": 32581
+    },
+    {
+      "path": "src/consequa_x/benchmark/targets.py",
+      "sha256": "aaa893aaca6913f3b45af127fad96405adc081304cb2e66e8a0036fc1cad5ce5",
+      "bytes": 7099
+    }
+  ],
+  "physical_width_inches": 6.9,
+  "minimum_font_size_points": 8,
+  "font_family": [
+    "Times New Roman",
+    "Liberation Serif",
+    "DejaVu Serif"
+  ],
+  "resolved_font_family": "Times New Roman",
+  "svg_text_editable": true,
+  "layout_checks": {
+    "diagram-evidence-architecture": {
+      "labels": 15,
+      "all_labels_within_canvas": true,
+      "minimum_font_size_points": 8.0
+    },
+    "diagram-timeout-retry": {
+      "labels": 16,
+      "all_labels_within_canvas": true,
+      "minimum_font_size_points": 8.3
+    }
+  },
+  "captions": {
+    "diagram-evidence-architecture": "Evidence-only core and optional intervention path. Applications supply captured records and independently read observations; explicit verifiers produce state and origin receipts. A domain matcher qualifies custom assessment targets. Explanation does not execute tools or replay. Separately invoked research adapters may supply estimates with refusal records; evaluator-only truth is reserved for audit. Adapter declarations are trusted inputs, not authentication or guarantees of read-only behavior.",
+    "diagram-timeout-retry": "Illustrative timeout-after-commit sequence for an exactly-one contract. The first effect commits before its timeout acknowledgement and the agent reports failure. A retry without idempotency creates a second effect; a retry with the same provider-scoped operation key and payload reuses the first effect. Final independent, complete readback covers the stability horizon before a definite conclusion is drawn. Times are illustrative, arrows show event order rather than causal necessity, and the provider behavior is a declared example rather than a real-service guarantee."
+  },
+  "illustrative_times_ms": {
+    "registered": 0,
+    "first_dispatch": 5,
+    "first_commit": 15,
+    "timeout_response": 20,
+    "reported_failure": 22,
+    "retry_dispatch": 30,
+    "retry_execution": 35,
+    "deadline": 50,
+    "horizon": 70,
+    "observed_at": 80,
+    "readback_watermark": 70
+  },
+  "trust_limits": [
+    "Verifier and TargetMatcher domain semantics remain application responsibilities",
+    "Source assertions, schema validation and hashes do not authenticate sources",
+    "Origin support does not establish counterfactual necessity",
+    "PaymentWorld idempotency is an illustrative declared provider behavior"
+  ],
+  "artifacts": [
+    {
+      "path": "paper/figures/diagram-evidence-architecture.pdf",
+      "sha256": "971f659f941029f286f2933d010800978ddbcafe02466df27b9759da227f95aa",
+      "bytes": 58092
+    },
+    {
+      "path": "paper/figures/diagram-evidence-architecture.svg",
+      "sha256": "b9876bf3e96cefb6d21497082abed955ac9c0afbea84a72079a6c09addf7dc45",
+      "bytes": 15533
+    },
+    {
+      "path": "paper/figures/diagram-evidence-architecture.png",
+      "sha256": "49387b940098b70e7aaa35e0f6e4c320f8232f8493d2f88f914c6493dfdfd2c7",
+      "bytes": 159488
+    },
+    {
+      "path": "paper/figures/diagram-timeout-retry.pdf",
+      "sha256": "5c1c49a94bb962966449f565e491beca890b9631d3074d6cac22edb0bca19ad1",
+      "bytes": 60890
+    },
+    {
+      "path": "paper/figures/diagram-timeout-retry.svg",
+      "sha256": "028e8598b6afd875768f690c98b1202979f9d17c6c9eab43eb9bbcf3261363c7",
+      "bytes": 14440
+    },
+    {
+      "path": "paper/figures/diagram-timeout-retry.png",
+      "sha256": "4dd0a7d4bd63776ca363979b556cf6a4666a63383316412beebaeda69e944c7f",
+      "bytes": 141799
+    }
+  ]
+}

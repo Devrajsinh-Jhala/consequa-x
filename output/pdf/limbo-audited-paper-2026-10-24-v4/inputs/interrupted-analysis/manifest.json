@@ -1,0 +1,38 @@
+{
+  "inputs/analyze_limbo_external_benchmark.py": {
+    "bytes": 43865,
+    "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+  },
+  "inputs/audit-manifest.json": {
+    "bytes": 134,
+    "sha256": "e20aa81a1f0772b5520cdba613c0f64f7b9af921c1cf32a33c71d3ea7eec2e63"
+  },
+  "inputs/audit-result.json": {
+    "bytes": 58255,
+    "sha256": "1349a616ae987c0389b89ef554de249461edb53456aa52ef686f4204939b5aab"
+  },
+  "inputs/protocol.json": {
+    "bytes": 118781,
+    "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+  },
+  "narrative.md": {
+    "bytes": 5089,
+    "sha256": "4ab2b609f77cc3b8ea69dfc9569034da4ab7ae20eb5063b4c5d5899eec6ace6f"
+  },
+  "narrative.tex": {
+    "bytes": 5156,
+    "sha256": "eed1ad6ba90d7e952f1332ebcd6363e08b1a13be4f1d1327c120b011a6b44200"
+  },
+  "results.json": {
+    "bytes": 2611415,
+    "sha256": "71c5e2e8bb3b642a3673888d9b1e54ec97bac1163f88d712e403d90c0efd53fb"
+  },
+  "results.md": {
+    "bytes": 4217,
+    "sha256": "fc1d236ad5d7e8804713fb0c716ba0c2cdea3d489fb987786e4400c84f8c19ba"
+  },
+  "results.tex": {
+    "bytes": 412,
+    "sha256": "c01911a4d09b48b9eb48d5aae60a57a5c3fe88c35f3edbc947d919da4760ff2f"
+  }
+}

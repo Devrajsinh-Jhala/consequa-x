@@ -13,3 +13,17 @@ Follow-up matched baseline contrasts over all 24 planned native worlds were Nati
 Qualification evidence is separated from measurement. Preserved excluded autonomous native executions validated normal baseline/guard returns under the historical runtime; a separately scripted repeated-proposal fixture exercised the actual SDK receipt path without model generations or a native task grade. Relocated readiness retained those historical executions and added current-runtime full-schema render/token parity and a two-call task-independent structured-tool roundtrip. Historical executions are not relabeled as current-runtime trajectories, and fixture receipts do not enter measured counts. Measured follow-up activation comprised 3 audited receipts in 3/24 planned SDK episodes; 24/24 had complete audited accounting. The auditor checks saved receipt mappings and native behavior; it does not independently re-execute the SDK or authenticate a production service.
 
 T1/T7: all frozen baseline/stratum contrasts are presented without population inference. T2: externally authored native simulation supplements the controlled SQLite studies; production validation remains absent. T14/T16: all planned dispositions, error returns, unavailable grades and unknown usage are retained. T20: exact protocol/runtime/version identities are bound. These are scoped dispositions, not universal resolution of the criticisms or an acceptance claim.
+
+## Completed manuscript review - 24 October 2026
+
+The fixed native comparison and generic IEEE manuscript are complete. Both
+follow-up audits pass for all 96 planned slots; all 16 rendered pages and the
+actual claims/counts have been reviewed. The immutable PDF source commit is
+`2cd685a7fe65abb034711dbe7f43f7f0caceffe2`. The
+[dated completion receipt](../output/limbo-paper-completion-2026-10-24/completion-receipt.json)
+supersedes the earlier local-draft QA status without rewriting its snapshots.
+The [reviewed PDF](../output/pdf/limbo-audited-paper-2026-10-24-v4/ConseqaX_Research_Paper.pdf)
+retains both 96-slot cohorts on the same 12 base instances, actual adverse
+findings and scoped limitations. This closes the fixed manuscript gates;
+venue-specific compliance and submission are separate, with no acceptance claim.
+GitHub Actions remained disabled; no human labels or paid inference were used.

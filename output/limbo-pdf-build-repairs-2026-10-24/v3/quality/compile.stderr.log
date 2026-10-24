@@ -1,0 +1,37 @@
+Fontconfig error: Cannot load default config file: No such file: (null)
+error: fontspec-xetex.sty:4160: Font TU/lmr/b/n/10=[lmromandemi10-regular]:mapping=tex-text; at 10.0pt not loadable: Metric (TFM) file or installed font not found
+error: something bad happened inside XeTeX; its output follows:
+
+===============================================================================
+(conseqax-research.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (fontenc.sty (t1lmr.fd)) (IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+(t1ptm.fd)
+-- Using 8.5in x 11in (letter) paper.
+-- Using DVI output.
+-- This is a 10 point document.
+) (amsmath.sty
+For additional information on amsmath, use the `?' option.
+(amstext.sty (amsgen.sty)) (amsbsy.sty) (amsopn.sty)) (amssymb.sty
+(amsfonts.sty)) (newtxtext.sty
+`newtxtext' v1.71, 2022/02/28 Text macros taking advantage of TeXGyre Termes an
+d its extensions (msharpe) (iftex.sty) (xkeyval.sty (xkeyval (xkvutils (keyval)
+))) (etoolbox.sty) (textcomp.sty) (xstring.sty (xstring.tex)) (ifthen.sty)
+(scalefnt.sty) (binhex)
+ntx@otftexttrue
+(fontspec.sty (xparse.sty (expl3.sty (l3backend-xetex.def)))
+(fontspec-xetex.sty (fontenc.sty) (fontspec.cfg)
+! Font TU/lmr/b/n/10=[lmromandemi10-regular]:mapping=tex-text; at 10.0pt not lo
+adable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.4160 \strongfontdeclare{ \bfseries }
+                                      
+No pages of output.
+Transcript written on conseqax-research.log.
+===============================================================================
+error: the XeTeX engine had an unrecoverable error
+caused by: halted on potentially-recoverable error as specified

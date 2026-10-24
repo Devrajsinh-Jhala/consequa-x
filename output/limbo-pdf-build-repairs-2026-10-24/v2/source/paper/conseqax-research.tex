@@ -1,0 +1,245 @@
+% Focused manuscript. Recovery results input is finalized by the lead integrator.
+\RequirePackage[T1]{fontenc}
+\documentclass[conference]{IEEEtran}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage{graphicx}
+\graphicspath{{paper/figures/}{figures/}}
+\usepackage{booktabs,array}
+\usepackage{seqsplit}
+\usepackage{balance}
+\usepackage{placeins}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\title{ConseqaX: An Evidence Protocol for Recovering Ambiguous Agent Actions}
+\author{\IEEEauthorblockN{Devrajsinh Jhala}\IEEEauthorblockA{Independent Researcher}}
+\begin{document}
+\raggedbottom
+\maketitle
+
+\begin{abstract}
+A timed-out tool call can leave an agent uncertain whether an operation failed or will commit later. ConseqaX separates state, action-origin and unknown conclusions through explicit contracts and readback witnesses. Study A retains 15,360 SQLite worlds from 24 authored cases: readback safely recovers 14/24 versus 8/24 for response-driven retry, matching a strong reference. Repeated seeds add no recorded-metric diversity; polling adds no coverage and detection does not repair all harmful effects. Study B retains 960 worlds: polling raises correct-state yield from 3/192 to 81/192 at 741 versus 192 reads, with identical physical outcomes. The externally authored LIMBO study covers 12 base instances, 24 task/fault conditions and four arms. The interrupted original retains 6/96 audited grades. A separately declared follow-up, after partial-data exposure, retains another 96 planned slots on the same instances; cohorts are not pooled. Replay establishes 96/96 follow-up grades, including 3 native error returns after settlement. All-planned results are Vanilla: TS 21/24, EOS 16/24; SDK retry: TS 24/24, EOS 14/24; Native guard: TS 21/24, EOS 16/24; ConseqaX guard: TS 20/24, EOS 15/24. The package emits 3 audited receipts in 3/24 episodes, with complete accounting in 24/24. Receipt activation demonstrates integration rather than a new recovery algorithm. Missing grades remain unavailable. Native EOS has domain-specific accounting, not a universal exactly-once guarantee. Study A's packaging deviation remains disclosed. These finite simulator results establish neither task-population superiority nor independent service validation.
+\end{abstract}
+\begin{IEEEkeywords}agent systems, outcome verification, recovery, idempotency, evidence provenance, uncertainty\end{IEEEkeywords}
+
+\section{Introduction}
+
+An agent requests an inventory allocation, ticket, or published artifact. The provider accepts the operation, but the acknowledgement times out. An immediate retry may create a second record; stopping may leave the task unfinished. A separate read can reveal an existing effect, yet even a fresh empty snapshot cannot establish that the first request will never commit later. A reliable recovery decision depends on the operation's identity, provider guarantees, temporal target, and available evidence, rather than the response alone.
+
+Three distinctions matter. First, a response describes a tool interaction, whereas a readback supplies evidence about external state. Second, global task satisfaction differs from an effect being linked to this agent's operation. Another actor can complete the task; missing actor metadata need not imply an external actor. Third, a hindsight-correct assertion can have been unsupported when issued. A controller that guesses the eventual outcome correctly has not thereby justified a retry or a completion claim.
+
+These are established systems and verification concerns \cite{helland,vogels,verified,operability,agenttool,limbo}. ConseqaX makes them explicit in a reusable evidence protocol \cite{artifact}. Its typed records bind contracts, attempts, responses, observations, and verification receipts. Admitted readback can support satisfied, violated, or unknown state, while origin remains a separate conclusion. The protocol does not authenticate a provider or manufacture request finality. Applications supply source semantics and the policy connecting receipts to actions.
+
+This paper centers that policy boundary. We compare response-driven same-key retry, state-only readback, a separately implemented provenance-aware reference, a package-backed single-final-read ablation, and package-backed bounded polling. Controller actions change subsequent SQLite effects and observations. The experiment asks whether the declared evidence policy changes safe recovery, final-report correctness, or definite-report coverage at a measured read/wait cost, and when ordinary provider idempotency removes the apparent advantage.
+
+The research questions are falsifiable. \textbf{Q1:} How does polling change safe recovery relative to response-driven retry, together with own harmful effects and recovery failures? \textbf{Q2:} Does the package-backed implementation agree with a same-information reference using separate evidence arithmetic? \textbf{Q3:} What additional origin-report coverage and correctness appear beyond state-only reporting? \textbf{Q4:} Does continued polling change final-report correctness and coverage relative to one final read at its additional resource cost? \textbf{Q5:} What abstention and definite-error tradeoffs remain under incomplete public histories? Equal or worse recovery, incorrect conclusions, unnecessary reads, or parity under shared provider guarantees can limit the proposed benefit. \textbf{Q6:} Under native ambiguous-commit faults, how do all-planned task/effect outcomes, failures and actual work differ among vanilla dispatch, transparent retry, the supplied strong guard and its receipt-preserving SDK integration?
+
+The contributions are an executable evidence protocol, a controlled evaluation of recovery/reporting boundaries and a native external fault-benchmark integration with audited first-attempt accounting. The controlled reference uses separate arithmetic but shares application transitions; its agreement supports conformance. The external SDK arm deliberately preserves an established strong guard, so it does not introduce a new recovery algorithm. Provenance changes only reporting in the controlled shared-transition comparison. The native experiment and actual results in Sections~\ref{sec:limbo} and~\ref{sec:limbo-results} retain 96 planned slots per cohort on the same 12 base instances, including the original interrupted cohort and the separately frozen follow-up. Neither repeated seeds nor repeated arms create independently sampled tasks.
+
+\section{Related Work and Positioning}
+
+Idempotence and eventual consistency are longstanding systems concerns \cite{helland}, \cite{vogels}. Verified Tool Calls separates acknowledgements from independently checked effects and admits unknown postconditions \cite{verified}. Callability Is Not Operability examines controlled interface ambiguity and terminal agent claims \cite{operability}. Agent-tool anomaly work distinguishes runtime observations from external events \cite{agenttool}. LIMBO grades committed-effect histories and studies late commits \cite{limbo}. Consequently, response/effect separation, effect ledgers, and the danger of ambiguous retries are foundations and comparison requirements here, rather than priority claims.
+
+PROV-DM represents entities, activities, agents, and responsibility \cite{prov}. ConseqaX is neither a new general provenance model nor a PROV conformance implementation. Its narrower boundary links operation identity, temporal contracts, individual observation witnesses, and explicit unknown verdicts. A source-supported origin link is not proof that the action was counterfactually necessary.
+
+Causal Agent Replay (CAR) performs same-policy interventions with contrastive suffix and permutation Shapley attribution \cite{car}. Policy-Conditioned Counterfactual Credit studies verified outcomes under declared interventions and continuation policies \cite{pccc}; CausalLoss-Fin jointly intervenes on decisions and infrastructure messages \cite{causalloss}. Those questions differ from whether a live recovery action is justified by its available evidence. Our earlier replay adapter uses existing estimators. The present experiment requires neither counterfactual writes nor a new attribution method.
+
+AppWorld, ToolSandbox and tau-bench evaluate stateful agent interaction and world outcomes \cite{appworld,toolsandbox,taubench}. Earlier model-free transfer used maintained retail/airline tools and native DB evaluation \cite{tau3tasks,tau3eval}; reference-action replay is not an autonomous score. Our external experiment uses LIMBO's authored tasks, native faults and unchanged grader \cite{limbo,limbosource}, retaining its supplied strong guard as a comparator. The receipt arm tests protocol integration under that same recovery law. The native grade and independently replayed effect history extend the controlled evaluation while remaining simulated evidence from one local quantized model.
+
+The present contribution is therefore conditional: an executable evidence contract and an auditable comparison of policy tradeoffs under declared capabilities. Its value must come from the recovery behavior, final-report correctness, coverage, and cost actually measured, rather than from attributing established distributed-systems guarantees to a framework.
+
+\section{Evidence and Recovery Protocol}
+
+This section specifies the temporal record contract and application recovery law evaluated in controlled Studies A and B. The external LIMBO condition instead uses the benchmark's own guard and a custom current-public-report verifier; it does not apply this controller or the temporal RecordVerifier to native reports.
+
+\subsection{Objects and temporal targets}
+
+A logical action has stable identity and payload; each dispatch has a distinct attempt identity. Captured records include the request, provider response, reported assessment, separately captured observation, and resulting verification receipt. Reported assessments are outputs, not measurements of hidden reasoning. An observation states its source, scope, completeness, availability, observation time, watermark, and effect history. The application declares which source and clock are authoritative.
+
+Let registration be $t_0$, the original deadline $D$, stability duration $W$, and original horizon $H=D+W$. The original contract remains fixed. A separate recovery deadline $R\geq H$ and safety horizon $S\geq R$ define later recovery in this study: its matching candidates must commit by $R$ and persist through $S$, and its count is checked throughout $[R,S]$. A later completion may satisfy recovery while violating the original SLA. Neither a new read nor an explanatory receipt moves $D$.
+
+For the exact-count record contract, a candidate matches the expected business fields, commits within $[t_0,D]$, and persists through $H$. The declared count must hold, including the maximum simultaneous matching count over $[D,H]$. Historical removals and transient extras therefore matter; a current-row snapshot alone is insufficient. Simultaneous commits and removals are evaluated together, with boundary conventions fixed before collection.
+
+The verifier concludes satisfied, violated, or unknown. A complete admitted observation must cover the registered scope and history through $H$. Stale watermarks, inadequate scope, unavailable reads, or malformed history retain unknown. Source identity, completeness, timestamps, and provenance are trusted adapter declarations. Schema checks and hashes establish structure and retained bytes, not source authenticity or transactional guarantees.
+
+\subsection{State, origin, and support}
+
+Global state satisfaction does not require this agent to have produced the effect. Action-linked satisfaction additionally requires qualifying target evidence linked to the logical operation. A known global violation makes this linked contract false even if an own matching record exists: a second effect can invalidate an exactly-one task. Mere witness presence cannot replace the whole contract.
+
+A matching action identity with absent or matching actor metadata can support linkage under the admitted provenance law. Explicitly different identities exclude this operation; missing or conflicting linkage can remain unknown. Provenance does not turn an externally satisfied state into a failure. Each observation retains its own witnesses. A later record sharing an effect ID cannot inherit an earlier observation's origin link while silently changing payload, actor, or removal history.
+
+Hindsight correctness and evidence support are distinct questions. The controlled-study evaluator scores final state and action-linkage reports against full-ledger truth, with separate definite-report and abstention counts. It does not independently label support at issuance or score safe-to-retry assertions. Retained public histories permit automated checks against the declared admission rules; a hindsight-correct guess alone does not establish support. An origin abstention does not erase a definite state conclusion. Conditional error among definite assessable reports and correct definite yield over all planned worlds answer different questions.
+
+\subsection{Why historical absence cannot resolve a pending attempt}
+
+\textbf{Conditional retry boundary.} Suppose an operation times out without atomic deduplication, terminal resolution, completed cancellation, or an enforceable in-flight bound. Let $L<R$ be the last useful retry time. Two provider worlds give identical admissible histories through $L$: the initial attempt never commits in one and commits after $R$ but by $S$ in the other. A retry by $L$ achieves recovery by $R$; a later retry cannot. An extra effect is harmful even if compensated, and no alternative operation achieves the target.
+
+A deterministic policy takes the same decision in both histories. Retrying creates a duplicate in the late-commit world; declining misses recovery in the never-commit world. For a randomized policy, couple its randomness and let $p$ be its useful-retry probability. Duplicate risk in the second world is at least $p$ and missed-recovery risk in the first at least $1-p$. Their sum is at least one for this constructed pair. This elementary indistinguishability argument states a known systems boundary \cite{limbo}, rather than a new impossibility or a measured prevalence. Provider guarantees can break its assumptions.
+
+\subsection{Application safety gate and bounded reads}
+
+Every policy preserves the operation key and payload. When a public native idempotency capability is admitted, the provider atomically reserves pending and completed work for that key. All readback policies may use the same-key exception to retry within the common cap before $D$. The response-driven arm also benefits from the identical provider semantics; it is the ordinary bounded idempotent-retry comparator in that stratum.
+
+Without that capability, the readback policies permit another dispatch only when every previous attempt has an admitted terminal-no-effect guarantee, fresh complete trusted readback establishes no relevant effect through the decision time, budget remains, and time is strictly before $D$. A newer terminal response does not resolve an older ambiguous request. An empty watermark proves only past absence; it supplies no terminal guarantee. Resolution of the agent's attempts also cannot prevent another actor's future write. Global race freedom would require additional provider semantics.
+
+The package's generic retry advice is recorded, but this application gate authorizes dispatches. Provisional predeadline verification has its own target ending at the current time; it never replaces the fixed $D/H$ receipt. Bounded polling uses externally scheduled callbacks rather than the public blocking polling helper, allowing all arms to share admitted opportunities. At exhaustion, insufficient evidence remains an abstention. No policy dispatches after $D$; recovery at $R$ is a distinct evaluator outcome, not an extension of the original dispatch window.
+
+\section{Frozen Closed-Loop Study}
+
+\subsection{Corpus, separation, and execution}
+
+The schedule crosses 24 new cases, 128 timing seeds, and five policies: 15,360 planned worlds. Cases span 12 purposive families in three nonpayment SQLite domains: inventory, tickets, and artifacts. Related cases share mechanisms; identifiers and seeds do not create new families. Separate AI agents authored controllers and cases. The controller author never inspected the case file, and the lead integrator did not manually inspect case values before freeze. This is procedural separation within an AI-assisted workflow; the tasks are not externally authored or randomly sampled from a task population.
+
+Each world uses a fresh database. The frozen exogenous event schedule, timing seed, provider law, source behavior, budgets, and read opportunities are paired across policies. Actions create branch-specific effects, so later observation contents can legitimately diverge. Matching means equal capabilities and opportunities, not forcing one policy to consume another's realized evidence. Readback is a separate application method on the same SQLite connection and ledger. It supplies a signal separate from the acknowledgement, rather than an independent connection, source, or trust domain.
+
+The public allowlist includes request/contract, identities, response history, provider capability and terminal receipts, and scoped readback history. Controllers receive no case/family/fault labels, hidden future events, evaluator truth, or another policy's reports. They are deterministic application state machines. The run requires no LLM, user simulator, remote provider, or paid API call and supplies no autonomous-agent benchmark reward.
+
+\subsection{Five policies and the strong comparison}
+
+\begin{table*}[t]
+\caption{Frozen policies, evidence interpretation, and recovery/read behavior. Native idempotency and terminal-resolution capabilities are shared; independent reference arithmetic does not imply an independently designed application policy.}
+\label{tab:policies}
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}}
+\toprule
+Policy & Evidence interpretation & Recovery and reads \\
+\midrule
+\texttt{response\_retry} & ACK/error proxies for state and action completion; unresolved timeout unknown. & Retry ambiguous timeouts with the same key within the cap and original deadline. \\
+\texttt{readback\_state} & Trusted complete history for global state; abstain on provenance when state holds. & Shared gate and bounded scheduled reads. \\
+\texttt{reference} & Independent standard-library count/time and provenance arithmetic. & Same application state machine and read opportunities as polling. \\
+\texttt{consequax\_one\_read} & Public 2.1.1 verification receipts plus explicit linkage uncertainty. & Gate-relevant predeadline queries; one final horizon-eligible query. \\
+\texttt{consequax\_poll} & Same public verification and linkage rule. & Shared gate with continued scheduled reads until known or exhausted. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The single-read arm is not forced to spend its final query before $H$. It may perform a predeadline gate query when terminal guarantees make retry relevant; its first query at or after $H$ is its only final query. Polling can use later opportunities to resolve lag, incompleteness, or unavailability. Equal maximum budgets need not yield equal spend; early stopping and skipped queries are policy outcomes.
+
+The reference imports no package verifier. The controller author implemented its evidence arithmetic separately, while sharing the declared application transition logic with the polling comparison. Thus exact agreement is a conformance result, not a contest between independently designed recovery algorithms or external implementations. State-only and provenance-aware arms likewise do not test a provenance-caused action benefit when transitions coincide. They test origin-report coverage and correctness under the admitted provenance law.
+
+\subsection{Endpoints, costs, and finite-suite analysis}
+
+The primary all-slot endpoint is \textbf{operational safe recovery}: the global recovery payload/count contract holds by $R$ and persists through $S$, with neither an own duplicate nor an own unwanted effect committed through $S$. An own duplicate means more cumulative own committed effects than the allowed logical-operation count, including effects later removed. An own unwanted effect mismatches the expected business fields or commits after $R$. These predicates do not certify the absence of every harmful external activity; another actor's effects can still violate the global recovery count. Every scheduled cell remains in the operational denominator, and failed or unstarted execution cannot earn success. Failed cells' semantic state, origin, and harm outputs remain unavailable rather than receiving fabricated violation labels; an incomplete collection cannot yield a complete audited result. Own duplicate and unwanted events are mandatory companions, including effects subsequently removed. If safety is unauditable, all-slot harm lower/upper bounds must expose that uncertainty.
+
+Retained truth records distinguish original $D/H$ satisfaction, operation-linked satisfaction, and controller-created effects. The summary scores the final state and action-linked reports for hindsight correctness, false success, definite coverage, and abstention. Conditional error is wrong definite outputs divided by definite assessable outputs; correct definite yield uses all planned worlds. A zero-claim error rate is undefined. Semantic rates and resource means use observed completed cells with unavailable counts shown; the primary operational score and claim yields retain planned denominators. External completion does not establish successful execution by this controller.
+
+For family $f$ and policy $m$, let $y_{fm}$ be mean operational safe recovery over every scheduled case/seed cell in that family. The predeclared primary contrast is
+
+\begin{equation}
+\Delta = \frac{1}{12}\sum_{f=1}^{12}
+  (y_{f,\mathrm{poll}}-y_{f,\mathrm{response}}).
+\end{equation}
+
+The full 12 paired differences accompany the equal-family mean and all-slot cell totals. Secondary views compare polling with state-only and one-read; reference agreement is implementation checking. Capability, domain, and fault strata are descriptive. No population p-values, task-population confidence intervals, equivalence, or noninferiority claims follow from these purposive families. Timing-seed replication characterizes this fixed suite, not new independent tasks. Any seed-law uncertainty must identify its own sampling assumptions and cannot supply task-population inference.
+
+The analysis retains actual dispatches, readbacks, wait decisions, and logical decision time under shared ceilings, separating evaluator audit work. Accounting includes unsuccessful requests and timeout dispatches. Provider terminal guarantees are response fields; separate resolution, cancellation, and refused-request cost endpoints are not implemented. A zero-success cost-per-success ratio is undefined. Host runtime is separate from simulated logical time; one local collection does not establish intrinsic production overhead, wall latency, or service charges.
+
+\subsection{Freeze and first-run integrity}
+
+The pinned 2.1.1 wheel runtime is bound to study source \texttt{\seqsplit{22e88498cff0e2afd1549803fb4d9645902e74b9}} and protocol commit \texttt{\seqsplit{3d3dd4ca663d3e16c7cb1ead4c59c724af9bedd7}}. Protocol SHA-256 is \texttt{\seqsplit{b5c6a06bf1d758678e4d9890aa66872d4036634e2a4a4fd89626bd710bbc5aaa}}. The artifact binds corpus, schedule, controllers, provider/evaluator law, analysis, Python executable identity, and installed framework source/runtime before measured execution. It retains first-run cells, failures, stop/abstain decisions, and deviations. Corrections after exposure require a separate version; deterministic re-execution cannot replace the original denominator or create new independent trials. Hashes identify bytes rather than authenticating the source's semantic claims.
+
+A packaging deviation is retained explicitly. All scheduled trials, database snapshots, journal rows, and the summary were present when the session resumed, but the original runner's terminal manifest and receipt were absent. Its exit status and termination cause are unknown. A separate postcollection finalizer preserved every existing byte, rechecked source/runtime/claims, and created only the missing packaging files. It did not resume or rerun worlds or regenerate the summary. The completion timestamp denotes packaging time. The unchanged frozen auditor subsequently checks all retained semantics; neither this audit nor retained claims prove absence of off-record execution or earlier tampering.
+
+\section{Recovery Results}
+
+\input{recovery-study-results.tex}
+
+\input{limbo-native-methods.tex}
+\input{limbo-native-results.tex}
+
+\section{Supporting Evidence and Version Boundaries}
+
+Earlier experiments corroborate narrower components without adding independent recovery families. Version 1.1.0 retained 503/504 factual-audit episodes across three small local models, with 72 unknown state reports; an 84-trace same-evidence judge made nine wrong among 60 definite state reports. Model-free tool transfer retained 656 cells and 900 operation captures, without autonomous reward. The native CAR bridge matched eligible point vectors in 640/1,024 paired groups; 384 were unavailable \cite{experimentartifact,carcode}. Version 2.0 offline migration preserved all 503 retained canonical conclusions while changing 275 diagnosis codes. The historical manuscript and versioned evidence ledger retain denominators, protocol deviations, and detailed results.
+
+Studies A and B use selected ConseqaX 2.1.1 recording, contract, observation and built-in record-verification paths \cite{artifact}, together with explicit application polling and safety-gate code. The native LIMBO arm instead uses a custom verifier over current public reports; it does not exercise the temporal RecordVerifier. These studies do not evaluate the public blocking polling helper, composite/multiple-source verification, OpenTelemetry, unrelated SDK integrations or the full release surface. Historical 1.1.0 results and 2.0 migration retain their original versions; byte-identical numerical modules alone do not establish end-to-end version equivalence.
+
+An earlier excluded airline development check used the native environment at revision 96a3ef92329baf908ffe9dfe188cea34e8701d2a. Its unwrapped execution returned 12 model completions and five tool calls but native reward 0 (DB 0; communication 1 was vacuous). Two guarded checks timed out at 600- and 1,200-second request limits, respectively, with no returned native grade and no SDK receipt. Their grades remain unavailable; they are excluded development evidence rather than paired comparative results. No official airline matrix was collected. Full original traces, partial failure audits and the historical manuscript retain these limitations.
+
+\section{Discussion and Limitations}
+
+An evidence protocol is useful only under meaningful source and operation semantics. A watermark covers history through a declared time; finite auditing through $S$ cannot prove absence of all future effects. Provider deduplication or terminal resolution is supplied equally to every arm, not created by verification. Concurrent external actors remain a distinct source of harmful global count changes. These assumptions constrain any recovery conclusion.
+
+Strong-reference parity should be interpreted directly. Separate arithmetic reduces reliance on one verifier implementation, but a shared controller author and application state machine can preserve shared mistakes. The saved-artifact auditor uses separate code, while its author also implemented the controllers; this is not external replication. Exact agreement on this suite is neither superiority nor a proof of general safety. Advantages over response or state ablations must identify the omitted evidence and the precise claim or decision it changes. If provenance changes only reporting, that is the measured boundary; a causal action benefit cannot be inferred.
+
+The controlled recovery corpus is small, purposive, AI-authored, and implemented on one local substrate. Three record domains broaden application vocabulary and predicate use without establishing transfer to independent services. Repeated timing seeds cannot repair this external-validity gap. Deterministic policies exercise recovery logic, not language understanding, user negotiation, planning, provider authentication, or autonomous tool selection. These data can characterize a conditional decision boundary; they cannot establish general autonomous-agent improvement or effectiveness across independently operated services.
+
+Evaluation uses executable application contracts, effect-ledger ground truth, and separately implemented automated checks. No participant study or annotation study is part of this paper; interpretability, preference, rationale quality, and user trust are not measured. Automated cross-checks can expose implementation or arithmetic inconsistencies, but cannot establish that an external adapter's source-admission declarations or provider guarantees are true. That requires objective validation against the service's actual semantics and independently retained effects.
+
+The external native study exercises ambiguous commits in authored LIMBO tasks with unchanged service semantics and native grading. It remains one 4B quantized local model, one declared seed, one base instance per template and one compatible assigned fault per template, rather than an exhaustive fault cross-product or a task-population sample. The follow-up condition was frozen after observing partial original results and repairing runtime paths after host migration; it is not an unseen replication or a replacement of the original. Both full 96-slot cohorts are retained separately on the same 12 instances. The original has 6/96 audited grades. Follow-up native grades are available in 96/96 planned slots, including 3 audited error returns after settlement; unavailable grades do not become semantic failures. The guard comparison uses the same control law; descriptive outcome agreement is not population equivalence. Native status/upsert duplicate accounting and target-scoped exact-state checks limit exactly-once interpretations. Serial host wall time, cache and shared load do not isolate SDK overhead. Independently operated service validation, broader model/task sampling and external replication remain outside these findings.
+
+\section{Conclusion and Artifact Availability}
+
+ConseqaX exposes inspectable boundaries between acknowledgements, admitted evidence, temporal state, operation-linked origin and explicitly unknown conclusions. The controlled studies show when polling improves report yield at additional cost and when it adds no benefit; the equally informed reference shares its gains. The 12-instance external native follow-up matrix retains all 96 planned dispositions and 96/96 audited grades: Vanilla TS/EOS 21/24 and 16/24; SDK retry TS/EOS 24/24 and 14/24; Native guard TS/EOS 21/24 and 16/24; ConseqaX guard TS/EOS 20/24 and 15/24. Its SDK condition emits 3 audited receipts in 3/24 planned episodes while preserving the supplied strong guard. The original interrupted cohort retains 6/96 audited grades and every unknown disposition separately; the same 12 instances are reused. These finite findings support an executable protocol and observed integration/coverage/cost tradeoffs rather than algorithmic superiority or universal exactly-once execution.
+
+Studies A/B and both native runtime conditions retain the 2.1.1 package pin; the 2.1.2 distribution was released on 20 October 2026. The accompanying artifact binds protocols, exact source/runtime/wheel identities, planned schedules, dispositions, saved evidence, audits, analysis and deviations. The public repository is \url{https://github.com/Devrajsinh-Jhala/consequa-x}. A DOI-backed immutable archive has not been established. Historical replay, model, transfer and migration evidence retains its original targets and versions. No real payment or production-service write is part of these experiments. The evaluated and later release records are cited separately \cite{artifact,currentrelease}.
+
+\section*{AI Assistance and Verification Disclosure}
+
+Generative AI assisted software development, case creation, source inspection, automated artifact checking, and manuscript drafting. Separate AI authorship and saved-artifact audits do not constitute external replication. No participant or annotation study was conducted. The author is responsible for the manuscript and venue-required disclosure.
+
+\FloatBarrier
+\balance
+\begin{thebibliography}{99}
+\bibitem{helland}
+P. Helland, ``Idempotence Is Not a Medical Condition,'' \emph{Communications of the ACM}, vol. 55, no. 5, pp. 56--65, 2012, doi: 10.1145/2160718.2160734.
+\bibitem{vogels}
+W. Vogels, ``Eventually Consistent,'' \emph{Communications of the ACM}, vol. 52, no. 1, pp. 40--44, 2009, doi: 10.1145/1435417.1435432.
+\bibitem{verified} I. K. Mansoor, A. Phadke, and P. Rana, ``Verified Tool Calls
+Improve LLM Agent Reliability Under Non-Atomic Failures,'' arXiv:2608.02645,
+v1, Jul. 2026. [Online]. Available: \url{https://arxiv.org/html/2608.02645v1}
+\bibitem{operability} Z. Wang, ``Callability Is Not Operability: Controlled
+Interface Interventions for LLM Agents,'' arXiv:2608.23628, v2, Aug. 2026. [Online]. Available: \url{https://arxiv.org/html/2608.23628v2}
+\bibitem{agenttool}
+A. Trofimov and B. Novikov, ``When Tool Calls Succeed but Workflows Fail: Anomalies at the Agent-Tool Boundary,'' arXiv:2609.15397v1, Sep. 2026. [Online]. Available: \url{https://arxiv.org/html/2609.15397v1}
+\bibitem{limbo}
+J. Li, ``Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents,'' arXiv:2609.29095v1, Sep. 2026. [Online]. Available: \url{https://arxiv.org/html/2609.29095v1}
+\bibitem{artifact} D. Jhala, ``ConseqaX,'' MIT Python distribution,
+ver. 2.1.1, Oct. 19, 2026. [Online]. Available:
+\url{https://pypi.org/project/consequa-x/2.1.1/}
+\bibitem{prov}
+L. Moreau and P. Missier, Eds., ``PROV-DM: The PROV Data Model,'' W3C Recommendation, Apr. 30, 2013. [Online]. Available: \url{https://www.w3.org/TR/2013/REC-prov-dm-20130430/}
+\bibitem{car} J. Shah, ``Causal Agent Replay: Counterfactual Attribution for
+LLM-Agent Failures,'' arXiv:2606.08275, v1, Jun. 2026.
+\bibitem{pccc} R. Meng, ``Policy-Conditioned Counterfactual Credit for Verifiable
+Reinforcement Learning of Long-Horizon Language Agents,'' arXiv:2606.05263, v1,
+Jun. 2026.
+\bibitem{causalloss} A. Sharma, ``CausalLoss-Fin: Attributing Financial-Agent
+Loss to Decisions and Infrastructure Faults,'' arXiv:2609.25960, v1, Sep. 2026.
+\bibitem{appworld}
+H. Trivedi \emph{et al.}, ``AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents,'' in \emph{Proc. 62nd Annu. Meeting Association for Computational Linguistics}, vol. 1, 2024, pp. 16022--16076, doi: 10.18653/v1/2024.acl-long.850.
+\bibitem{toolsandbox}
+J. Lu \emph{et al.}, ``ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities,'' in \emph{Findings of the Association for Computational Linguistics: NAACL 2025}, 2025, pp. 1160--1183, doi: 10.18653/v1/2025.findings-naacl.65.
+\bibitem{taubench}
+S. Yao, N. Shinn, P. Razavi, and K. Narasimhan, ``$\tau$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains,'' arXiv:2406.12045v1, 2024. [Online]. Available: \url{https://arxiv.org/html/2406.12045v1}
+\bibitem{tau3tasks}
+Sierra Research, ``tau2-bench: Maintained retail and airline task corpus,''
+MIT software, commit 96a3ef92329baf908ffe9dfe188cea34e8701d2a, 2026.
+[Online]. Available:
+\url{https://github.com/sierra-research/tau2-bench/tree/96a3ef92329baf908ffe9dfe188cea34e8701d2a}
+\bibitem{tau3eval}
+Sierra Research, ``Native environment evaluator,'' tau2-bench, same pinned
+commit, 2026. [Online]. Available:
+\url{https://github.com/sierra-research/tau2-bench/blob/96a3ef92329baf908ffe9dfe188cea34e8701d2a/src/tau2/evaluator/evaluator_env.py}
+\bibitem{experimentartifact} D. Jhala, ``Consequa-X,'' MIT Python distribution,
+ver. 1.1.0, Oct. 17, 2026. [Online]. Available:
+\url{https://pypi.org/project/consequa-x/1.1.0/}
+\bibitem{carcode}
+J. Shah, ``Causal Agent Replay,'' software ver. 0.2.0, commit
+db90fa28b97164c35e7c524e4597b8cbdb3035af, 2026. [Online]. Available:
+\url{https://github.com/jaineet17/causal-agent-replay/tree/db90fa28b97164c35e7c524e4597b8cbdb3035af}
+\bibitem{currentrelease} D. Jhala, ``ConseqaX,'' MIT Python distribution,
+ver. 2.1.2, Oct. 20, 2026. [Online]. Available:
+\url{https://pypi.org/project/consequa-x/2.1.2/}
+\bibitem{limbosource}
+J. Li, ``LIMBO: Benchmark code, harness adapters and episode traces,'' MIT software, commit \seqsplit{2db09fba22a0572a70639162a808906409f612a8}, 2026. [Online]. Available: \url{https://github.com/jaxblack/limbo-bench/tree/2db09fba22a0572a70639162a808906409f612a8}
+\bibitem{qwenmodel}
+Qwen Team, ``Qwen3-4B-Instruct-2507,'' official model card, Apache 2.0. [Online]. Available: \url{https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507}
+\bibitem{ollamaqwen}
+Ollama, ``qwen3:4b-instruct-2507-q4\_K\_M,'' Q4\_K\_M model distribution. [Online]. Available: \url{https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M}
+\bibitem{ollamaruntime}
+Ollama, ``Ollama,'' software vers. 0.40.8 and 0.40.10. Exact evaluated executable bytes are bound separately by cohort. [Online]. Available: \url{https://github.com/ollama/ollama/releases}
+\end{thebibliography}
+\end{document}

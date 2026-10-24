@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Code\ConsequaX-Research\paper-writing\scripts\build_final_limbo_paper.py", line 660, in <module>
+    main()
+  File "C:\Code\ConsequaX-Research\paper-writing\scripts\build_final_limbo_paper.py", line 649, in main
+    result = build(args)
+             ^^^^^^^^^^^
+  File "C:\Code\ConsequaX-Research\paper-writing\scripts\build_final_limbo_paper.py", line 536, in build
+    require(compiled.returncode == 0, "Cached TeX compilation failed; inspect work/quality logs")
+  File "C:\Code\ConsequaX-Research\paper-writing\scripts\build_final_limbo_paper.py", line 35, in require
+    raise ValueError(message)
+ValueError: Cached TeX compilation failed; inspect work/quality logs

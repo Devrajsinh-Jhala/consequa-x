@@ -1,0 +1,102 @@
+{
+  "alias-create.json": {
+    "bytes": 26,
+    "sha256": "36f579d4c4606f9ff3c022585bab9c993c9fb9f0aec51523d0a81a7065d0eb31"
+  },
+  "durable-server-launch/create-wmi-supervisor.ps1": {
+    "bytes": 697,
+    "sha256": "2baaf6d0b8adef33eb6f93c93f038c643e8a3e67cbd85ab6da76eed99a2108a3"
+  },
+  "durable-server-launch/launch-config.json": {
+    "bytes": 3322,
+    "sha256": "cd89a7d033ac5adc9e70eb85869cbf4a2761c161bf8c4ea93b4c95da74bdd53f"
+  },
+  "durable-server-launch/launch-receipt.json": {
+    "bytes": 3371,
+    "sha256": "15e20cb83be31208450893edde40f0670ff52e6beef68d1cc2bc47c02324dccd"
+  },
+  "durable-server-launch/launcher-source.py": {
+    "bytes": 21273,
+    "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+  },
+  "durable-server-launch/supervisor-identity.json": {
+    "bytes": 2464,
+    "sha256": "be92f1ccca317c52c781eb9f62a00ba6291e4bbd64f3ce297621630ce97d8d9e"
+  },
+  "durable-server-launch/supervisor.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "durable-server-launch/supervisor.stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "durable-server-launch/target.stderr.log": {
+    "bytes": 2752431,
+    "sha256": "1c18fca80c97a6dd2870eefaf92aa739fe1b2a20e10c715517944a3691ccf1df"
+  },
+  "durable-server-launch/target.stdout.log": {
+    "bytes": 154744,
+    "sha256": "b3749708232308f8cf0cc62d3b1fe3302d30e89caf47b9316ed04c056b85e32b"
+  },
+  "durable-server-launch/terminal-receipt.json": {
+    "bytes": 906,
+    "sha256": "cf7a2274dd196e1e70cb340fd49b4d0ee7cd885508a3c0e696db6b9db1fada33"
+  },
+  "durable-server-launch/wmi-call.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "durable-server-launch/wmi-call.stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "durable-server-launch/wmi-create-result.json": {
+    "bytes": 53,
+    "sha256": "51530a22a1720d7e992911887c8b760c71e7d158db1fafc8546548e0a310be34"
+  },
+  "durable-server-launch/wmi-handoff-identity.json": {
+    "bytes": 2466,
+    "sha256": "de0884c82690dec46219a1c50a258c6af8dd048e789387f16beae3e541b84e72"
+  },
+  "durable-server-launch/wmi-handoff-receipt.json": {
+    "bytes": 822,
+    "sha256": "a063463413959e03378a5bfe7c8946c0bb9775e3c4c4f024dd17347aa15687a1"
+  },
+  "durable-server-launch/wmi-request.json": {
+    "bytes": 591,
+    "sha256": "4731372d871a8541acbc0c17972d7b0201db0aeff6822c91691e4d845b5828af"
+  },
+  "launch-receipt.json": {
+    "bytes": 3137,
+    "sha256": "cdf57eda319a6b560f25cabf8c4a32ec09319d2e66fef6af2b67763f7aa8ff2c"
+  },
+  "load-only.json": {
+    "bytes": 161,
+    "sha256": "ec90fe5a2554d91dffa698a42b3814596b929ca8592afa058868e98fd4095bf5"
+  },
+  "model-show.json": {
+    "bytes": 31432,
+    "sha256": "f42dbc8e80f9a0ed80371e01824e7a45b0edbe8cccecb73a945fd08c32ce1a16"
+  },
+  "private-runtime-manifest.json": {
+    "bytes": 5739,
+    "sha256": "fef3e4559bb6a82b8b19dc25ac98a551259bc5d160e0f42cc8fd095f78758f9b"
+  },
+  "resident-model.json": {
+    "bytes": 522,
+    "sha256": "75d6212c862568ddf6a9bdf660d76c5d55db563c2636b5926fe27f5ff48b75b8"
+  },
+  "runtime-binding.json": {
+    "bytes": 1006,
+    "sha256": "2eb5c76cb0ed4d245d21ca992ee63f19f469ddc0b6a455f29323f3d53da07862"
+  },
+  "shutdown-receipt.json": {
+    "bytes": 597,
+    "sha256": "f10f7bc706985bf9cef8d8fba666f4130fdca7523eaa760857aa481cd2517ba8"
+  },
+  "start.json": {
+    "bytes": 1554,
+    "sha256": "fe034a148b400246b4a21be99a50c9099c2ffadbbe74a06cfda039594c2f71ba"
+  }
+}

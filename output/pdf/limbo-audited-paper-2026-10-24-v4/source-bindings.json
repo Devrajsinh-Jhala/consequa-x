@@ -1,0 +1,197 @@
+{
+  "analysis_manifest": {
+    "bytes": 2395,
+    "sha256": "bca64f4f5d3ebbdb5f484129188654d9f104b9f3ea33126a0b6bed0ac7db4b88"
+  },
+  "analysis_values_recomputed": true,
+  "analyzer": {
+    "bytes": 43865,
+    "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+  },
+  "builder": {
+    "bytes": 38315,
+    "sha256": "baae05993b2490e3680b733e1dfe9ce50c8fded77340947fdf3bb977f8448b52"
+  },
+  "cohorts_pooled": false,
+  "compile_command": [
+    "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tectonic\\tectonic.exe",
+    "paper/conseqax-research.tex",
+    "--only-cached",
+    "--untrusted",
+    "--outdir",
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\tmp\\pdfs\\limbo-audited-paper-2026-10-24-v4\\build",
+    "--keep-logs",
+    "--keep-intermediates",
+    "--makefile-rules",
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\tmp\\pdfs\\limbo-audited-paper-2026-10-24-v4\\quality\\compile-dependencies.d"
+  ],
+  "dependency_edges": [
+    {
+      "from": "paper/conseqax-research.tex",
+      "kind": "input",
+      "to": "paper/recovery-study-results.tex"
+    },
+    {
+      "from": "paper/recovery-study-results.tex",
+      "kind": "input",
+      "to": "paper/recovery-availability-results.tex"
+    },
+    {
+      "from": "paper/conseqax-research.tex",
+      "kind": "input",
+      "to": "paper/limbo-native-methods.tex"
+    },
+    {
+      "from": "paper/conseqax-research.tex",
+      "kind": "input",
+      "to": "paper/limbo-native-results.tex"
+    },
+    {
+      "from": "paper/limbo-native-results.tex",
+      "kind": "input",
+      "to": "paper/limbo-cohort-accounting.tex"
+    },
+    {
+      "from": "paper/limbo-native-results.tex",
+      "kind": "input",
+      "to": "paper/limbo-results-table.tex"
+    },
+    {
+      "from": "paper/recovery-study-results.tex",
+      "kind": "graphic",
+      "to": "paper/figures/recovery-method-overview.pdf"
+    },
+    {
+      "from": "paper/recovery-study-results.tex",
+      "kind": "graphic",
+      "to": "paper/figures/recovery-family-primary-contrasts.pdf"
+    },
+    {
+      "from": "paper/recovery-availability-results.tex",
+      "kind": "graphic",
+      "to": "paper/figures/recovery-availability-grid.pdf"
+    },
+    {
+      "from": "paper/limbo-native-methods.tex",
+      "kind": "graphic",
+      "to": "paper/figures/limbo-native-methods.pdf"
+    },
+    {
+      "from": "paper/limbo-native-results.tex",
+      "kind": "graphic",
+      "to": "paper/figures/limbo-outcomes.pdf"
+    },
+    {
+      "from": "paper/limbo-native-results.tex",
+      "kind": "graphic",
+      "to": "paper/figures/limbo-stratification.pdf"
+    },
+    {
+      "from": "paper/limbo-native-results.tex",
+      "kind": "graphic",
+      "to": "paper/figures/limbo-costs.pdf"
+    }
+  ],
+  "interrupted_cohort": {
+    "analysis_manifest": {
+      "bytes": 1195,
+      "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+    },
+    "grade_available": 6,
+    "planned_slots": 96,
+    "protocol": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875"
+  },
+  "offline_cached_resources_only": true,
+  "protocol": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "source_commit": "2cd685a7fe65abb034711dbe7f43f7f0caceffe2",
+  "sources": {
+    "paper/conseqax-research.md": {
+      "bytes": 72572,
+      "sha256": "a0ed3f265da9d28fe4925383da4685b63eb88d77a7a7d341f04c168dabf3508d"
+    },
+    "paper/conseqax-research.tex": {
+      "bytes": 38249,
+      "sha256": "d6e3a2482b21bc0a09471f1e94685e479707038ab493920fad6e2569dd60d65a"
+    },
+    "paper/figures/limbo-costs.pdf": {
+      "bytes": 19976,
+      "sha256": "dc3d63cf29429608936f0fa1d4e666db74bfba58284f9208b8b6592a02877997"
+    },
+    "paper/figures/limbo-native-methods.pdf": {
+      "bytes": 36407,
+      "sha256": "30df66d103e64d67db6a0d9f31acf2c5b6584aba21b7345edc5a6dd23a6a9839"
+    },
+    "paper/figures/limbo-outcomes.pdf": {
+      "bytes": 14773,
+      "sha256": "dc83f0716f6ccfe2c3c080016b765107afd2baf7094f6d04b13bcaa34df47553"
+    },
+    "paper/figures/limbo-stratification.pdf": {
+      "bytes": 23822,
+      "sha256": "f3d6131e9b3a55fd79df290dcd80ccf7e4f7b2825c7a0cd943f5348931318aaf"
+    },
+    "paper/figures/recovery-availability-grid.pdf": {
+      "bytes": 26130,
+      "sha256": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8"
+    },
+    "paper/figures/recovery-family-primary-contrasts.pdf": {
+      "bytes": 24641,
+      "sha256": "b305b9d32f7d8333c8031e33ebb29764531ea2e5e9a43d449a87b2f6bc66dd80"
+    },
+    "paper/figures/recovery-method-overview.pdf": {
+      "bytes": 25901,
+      "sha256": "562ce06657b16bc527fadc48dddcdf28bd970c99c38fe6df5ef399b744683d24"
+    },
+    "paper/limbo-cohort-accounting.tex": {
+      "bytes": 1150,
+      "sha256": "592a47c33e20d69c18a9eb7f95352f03647ca06f060468fca4bbad96bbd8bf34"
+    },
+    "paper/limbo-native-methods.tex": {
+      "bytes": 14513,
+      "sha256": "6491e9150dc86b464b0dd05e6be7daff65eee728368a09d7b1f8c8fd3be7c3de"
+    },
+    "paper/limbo-native-results.tex": {
+      "bytes": 8316,
+      "sha256": "7f41c8ad14550316c222074d5bef07632604411db3e0a8cdb6adc51037e9557f"
+    },
+    "paper/limbo-results-table.tex": {
+      "bytes": 420,
+      "sha256": "885daa7a1a4d7f772c8b23cb93e44f846f549bd44c21f1859195dca1b7ca2006"
+    },
+    "paper/recovery-availability-results.tex": {
+      "bytes": 4782,
+      "sha256": "3f5d0edaced86131e3ef574754a21918540dba05ac759e737a0b7e037336f63c"
+    },
+    "paper/recovery-study-results.tex": {
+      "bytes": 7255,
+      "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
+    }
+  },
+  "sources_match_explicit_git_blobs": true,
+  "tools": {
+    "pdfinfo.exe": {
+      "bytes": 81712,
+      "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdfinfo.exe",
+      "sha256": "d6c3d0f28158f46fd772162204901cab44aa641b4d8fd1c2acbfc21b1a4a4877"
+    },
+    "pdftoppm.exe": {
+      "bytes": 65840,
+      "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+      "sha256": "477e3282a3f36b65f39db0d463330c5065cf60368403fcc3bb9a5d85a6a74854"
+    },
+    "tectonic": {
+      "bytes": 51538432,
+      "path": "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tectonic\\tectonic.exe",
+      "sha256": "99ffcfdbf1ebf8bdda9e791942e3d06aedb12463fddc33f07de6f5211c8bf08d"
+    }
+  },
+  "unique_base_instances_across_cohorts": 12,
+  "untrusted_tex_mode": true
+}

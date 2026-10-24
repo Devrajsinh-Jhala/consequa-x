@@ -216,6 +216,13 @@ and are reported with their denominators and limits. Start with the
 [research roadmap](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/docs/research-roadmap.md)
 and the [paper notes](https://github.com/Devrajsinh-Jhala/consequa-x/blob/main/paper/README.md).
 
+The [audited IEEE paper](output/pdf/limbo-audited-paper-2026-10-24-v4/ConseqaX_Research_Paper.pdf)
+reports the controlled studies and completed 96-slot native comparison.
+Both follow-up replay audits pass; all 16 pages have been reviewed. The
+[paper notes](paper/README.md) retain the full denominators, adverse results,
+three measured SDK receipt activations and simulator/metric limitations.
+No algorithmic superiority or conference acceptance is claimed.
+
 ## Platforms
 
 The package is pure Python. Released wheels have been install-tested on Windows

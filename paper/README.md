@@ -7,18 +7,15 @@ ambiguous-action recovery. The author is Devrajsinh Jhala, **Independent
 Researcher**. No specific conference or journal has been selected, and a contact
 email has not been supplied.
 
-The [checked 12-page PDF](../output/pdf/native-integration-2026-10-22/ConseqaX_Research_Paper.pdf)
-is accompanied by exact source/figure copies, compile diagnostics, all-page
-previews, and byte-bound evidence references in the same snapshot directory.
-It is a complete generic IEEE draft; venue-specific length, anonymity, contact,
-and submission requirements remain to be applied after a venue is selected.
-This revision adds the audited native development finding, retained guarded
-execution failures, a disposition table and a four-condition methods diagram.
-It contains no official comparative native benchmark score. The
-[earlier editorial build](../output/pdf/recovery-study-editorial-2026-10-21/ConseqaX_Research_Paper.pdf)
-and
-[original sealed 20 October build](../output/pdf/recovery-study-2026-10-20/ConseqaX_Research_Paper.pdf)
-are preserved.
+The [reviewed 16-page PDF](../output/pdf/limbo-audited-paper-2026-10-24-v4/ConseqaX_Research_Paper.pdf)
+contains the completed controlled studies and audited native comparison.
+The [completion receipt](../output/limbo-paper-completion-2026-10-24/completion-receipt.json)
+binds the exact sources, both cohorts, passed audits and all-page visual review.
+Its source/figure copies and diagnostics accompany the immutable PDF bundle.
+Generic IEEE formatting is complete; a specific venue's length, anonymity,
+author/contact and submission requirements remain separate.
+The [earlier 12-page development build](../output/pdf/native-integration-2026-10-22/ConseqaX_Research_Paper.pdf)
+and earlier dated artifacts remain historical records.
 
 ## Current controlled evaluation
 
@@ -81,7 +78,38 @@ The [20 October review addendum](recovery-review-response-2026-10-20.md) records
 scope change and remaining objective validation gaps. No human-review packet is
 part of the current paper.
 
-## Native external pilot: audited development, collection not started
+## Completed native LIMBO comparison
+
+The separately [published follow-up protocol](../output/limbo-followup-protocol-2026-10-24/protocol.json)
+completed all 96 planned slots on 24 conditions from 12 base instances. All 96
+native grades passed [independent replay](../output/limbo-followup-audit-2026-10-24/audit-result.json)
+and the [portable comparison](../output/limbo-followup-portable-audit-2026-10-24-v2/audit-result.json)
+agreed. Normal returns and semantic success remain separate: three native error
+returns retain audited post-settlement grades.
+
+| Arm | Graded | TS true | Native EOS true | Normal returns |
+| --- | ---: | ---: | ---: | ---: |
+| Vanilla | 24/24 | 21/24 | 16/24 | 24/24 |
+| SDK retry | 24/24 | 24/24 | 14/24 | 24/24 |
+| Native guard | 24/24 | 21/24 | 16/24 | 23/24 |
+| ConseqaX guard | 24/24 | 20/24 | 15/24 | 22/24 |
+
+The SDK integration emitted three audited receipts in three measured episodes.
+It preserves the supplied strong guard's control law; these findings do not
+establish a new recovery algorithm or superiority. Native EOS has domain-specific
+accounting and is not a universal exactly-once guarantee. The
+[analysis and actual figures](../output/limbo-followup-analysis-2026-10-24/results.md)
+retain all matched contrasts, condition strata, adverse effects, costs and unknown usage.
+
+The original interrupted 96-slot condition remains separate: six replayed grades,
+one interrupted trajectory and 89 unstarted slots, with 90 grades unavailable.
+Its [later preservation archive](../output/limbo-official-interruption-2026-10-24/manifest.json)
+is not an original collector seal. The follow-up was declared after partial-data
+exposure, reuses the same 12 base instances and changed the execution environment;
+it is neither an unseen holdout nor an independently sampled replication.
+The two denominators are never pooled into 192 independent tasks.
+
+## Historical airline development: no official matrix collected
 
 The [automated workflow](../docs/native-external-benchmark.md) implements four
 matched native airline conditions on twelve prespecified task IDs (48 planned
@@ -116,18 +144,13 @@ settlement is 44/64 excluded-task requests; 20 unused requests were released.
 The [resource-observer finalization](../output/native-resource-observer-finalization-2026-10-22/README.md)
 preserves its incomplete closing status and actually sampled coverage.
 
-The reviewed paper exporters require a complete passed artifact inventory,
-explicit protocol commit and internally consistent per-slot accounting. Their
-60 focused tests pass; no official result table or outcome chart was generated.
-The later [LIMBO integration design](../research/limbo_agent/DESIGN.md) and public
-runtime boundary have 60 focused boundary tests. That scaffold exposes copied
-public values and delegated actual calls; it still needs a reviewed policy
-adapter, native parity/replay validation and separately frozen execution. It
-does not supply a benchmark score or an operating-system security sandbox.
+These excluded airline checks remain feasibility evidence. The later LIMBO
+comparison above supplies the completed native fault comparison; it does not
+manufacture an official airline score or replace a collected airline matrix.
 
 ## Product version and evidence boundaries
 
-The published product is **2.1.2**, with a retained
+The retained 20 October product release is **2.1.2**, with a
 [release record](../output/release-2.1.2-2026-10-20/README.md) and
 [publication receipt](../output/release-2.1.2-2026-10-20/publication.json).
 The controlled research retains its 2.1.1 pin. Publishing a newer package does
@@ -157,20 +180,17 @@ The [checked 19 October extended PDF](../output/pdf/external-validation-2026-10-
 and its [quality receipt](../output/pdf/external-validation-2026-10-19/qa.json)
 remain historical artifacts. That receipt binds the exact seventeen-page,
 nine-figure source/PDF revision; it does not cover the new focused manuscript.
-The focused manuscript requires its own final compilation and visual-quality
-receipt after its results are integrated. A document-quality check establishes
-neither scientific validity nor venue-specific submission compliance.
+The focused manuscript has its own completed compilation and all-page review
+linked above. Document quality does not establish scientific validity or
+venue-specific submission compliance.
 
 ## Remaining research and submission work
 
-External validation still needs a completed matched autonomous-agent comparison
-with native benchmark reward, strong classical controls, and independently
-checked effect histories. The single excluded native development execution
-cannot fill that gap. Adapter predicates, source authority, and provider
-finality/idempotency assumptions need independent service or ground-truth
-validation. More internal seeds cannot fill those gaps. Methodological novelty,
-transfer beyond the controlled substrate, and the limits of prior-work overlap
-remain substantive questions.
+The fixed matched native comparison, saved-effect replay, results integration
+and generic IEEE manuscript are complete. Broader model/task sampling,
+independently operated services, source authentication and external replication
+remain limits rather than experiments claimed here. No population inference or
+algorithmic-superiority claim is supported by this finite matrix.
 
 An immutable evidence archive, final author/contact metadata, and an actual
 venue's length, anonymity, disclosure, and submission requirements remain open.

@@ -11,3 +11,17 @@ Protocol commit: `8b25d4c7769c5c593333c9d3eeeceb8ae001dba4`; original: `267cd1a3
 Follow-up matched baseline contrasts over all 24 planned native worlds were Native guard minus Vanilla: TS numerator difference +0/24, both grades available 24/24 and at least one grade unavailable 0/24; EOS numerator difference +0/24, both grades available 24/24 and at least one grade unavailable 0/24. Native guard minus SDK retry: TS numerator difference -3/24, both grades available 24/24 and at least one grade unavailable 0/24; EOS numerator difference +2/24, both grades available 24/24 and at least one grade unavailable 0/24. These finite paired counts retain every unavailable pair; they are not population significance, equivalence or an independent recovery-algorithm claim.
 
 Qualification evidence is separated from measurement. Preserved excluded autonomous native executions validated normal baseline/guard returns under the historical runtime; a separately scripted repeated-proposal fixture exercised the actual SDK receipt path without model generations or a native task grade. Relocated readiness retained those historical executions and added current-runtime full-schema render/token parity and a two-call task-independent structured-tool roundtrip. Historical executions are not relabeled as current-runtime trajectories, and fixture receipts do not enter measured counts. Measured follow-up activation comprised 3 audited receipts in 3/24 planned SDK episodes; 24/24 had complete audited accounting. The auditor checks saved receipt mappings and native behavior; it does not independently re-execute the SDK or authenticate a production service.
+
+## Completed manuscript review - 24 October 2026
+
+The fixed native comparison and generic IEEE manuscript are complete. Both
+follow-up audits pass for all 96 planned slots; all 16 rendered pages and the
+actual claims/counts have been reviewed. The immutable PDF source commit is
+`2cd685a7fe65abb034711dbe7f43f7f0caceffe2`. The
+[dated completion receipt](../output/limbo-paper-completion-2026-10-24/completion-receipt.json)
+supersedes the earlier local-draft QA status without rewriting its snapshots.
+The [reviewed PDF](../output/pdf/limbo-audited-paper-2026-10-24-v4/ConseqaX_Research_Paper.pdf)
+retains both 96-slot cohorts on the same 12 base instances, actual adverse
+findings and scoped limitations. This closes the fixed manuscript gates;
+venue-specific compliance and submission are separate, with no acceptance claim.
+GitHub Actions remained disabled; no human labels or paid inference were used.

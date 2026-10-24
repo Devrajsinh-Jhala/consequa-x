@@ -1,0 +1,2950 @@
+{
+  "arithmetic": "Exact fractions; no floating-point interval comparisons",
+  "assumptions": [
+    "Independent ideal Bernoulli selection p and retry q, not a statement about model seeds",
+    "Planted factual refund/retry/stop; on-reach holding, with final stop a dummy",
+    "First timeout commits; at most one subsequent clean retry; sufficient funds and deadline",
+    "Unsafe retries create a second effect; idempotency reuses the first effect",
+    "Exactly-one complete horizon-covering state readback; no other actor or reversal",
+    "Linked target agrees only with sufficient provenance; missing evidence remains unknown",
+    "No finite call-cap truncation; a budget control can refuse a finite estimate of this ideal law"
+  ],
+  "case_count": 100,
+  "cases": [
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "1/2",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "-1/2",
+        "1/2",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "1",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-2/5",
+        "2/5",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1/5",
+        "1",
+        "1",
+        "1",
+        "1/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "-2/5",
+        "2/5",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "4/5",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/4",
+        "1/4",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1/2",
+        "1",
+        "1",
+        "1",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "-1/4",
+        "1/4",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "1/2",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/10",
+        "1/10",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "4/5",
+        "1",
+        "1",
+        "1",
+        "4/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "-1/10",
+        "1/10",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "1/5",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "0",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "endpoint_difference": "-1",
+      "enumerated_shares": [
+        "-1",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "0",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-2/5",
+        "3/5",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "1",
+        "1",
+        "4/5",
+        "0",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/5",
+      "enumerated_shares": [
+        "-2/5",
+        "3/5",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "4/5",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-8/25",
+        "12/25",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "21/25",
+        "1/5",
+        "1",
+        "1",
+        "21/25",
+        "1/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "4/25",
+      "enumerated_shares": [
+        "-8/25",
+        "12/25",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "16/25",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "3/10",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "9/10",
+        "1/2",
+        "1",
+        "1",
+        "9/10",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/10",
+      "enumerated_shares": [
+        "-1/5",
+        "3/10",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "2/5",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-2/25",
+        "3/25",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "24/25",
+        "4/5",
+        "1",
+        "1",
+        "24/25",
+        "4/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/25",
+      "enumerated_shares": [
+        "-2/25",
+        "3/25",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "4/25",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0",
+        "4/5",
+        "0"
+      ],
+      "endpoint_difference": "-4/5",
+      "enumerated_shares": [
+        "-4/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/4",
+        "3/4",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1",
+        "1",
+        "1/2",
+        "0",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/2",
+      "enumerated_shares": [
+        "-1/4",
+        "3/4",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "1/2",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "3/5",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "3/5",
+        "1/5",
+        "1",
+        "1",
+        "3/5",
+        "1/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "2/5",
+      "enumerated_shares": [
+        "-1/5",
+        "3/5",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "2/5",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/8",
+        "3/8",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "3/4",
+        "1/2",
+        "1",
+        "1",
+        "3/4",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/4",
+      "enumerated_shares": [
+        "-1/8",
+        "3/8",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "1/4",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/20",
+        "3/20",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "9/10",
+        "4/5",
+        "1",
+        "1",
+        "9/10",
+        "4/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/10",
+      "enumerated_shares": [
+        "-1/20",
+        "3/20",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "1/10",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1/2",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      "endpoint_difference": "-1/2",
+      "enumerated_shares": [
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1/2",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/10",
+        "9/10",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1",
+        "1",
+        "1/5",
+        "0",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "4/5",
+      "enumerated_shares": [
+        "-1/10",
+        "9/10",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "1/5",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-2/25",
+        "18/25",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "9/25",
+        "1/5",
+        "1",
+        "1",
+        "9/25",
+        "1/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "16/25",
+      "enumerated_shares": [
+        "-2/25",
+        "18/25",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "4/25",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/20",
+        "9/20",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "3/5",
+        "1/2",
+        "1",
+        "1",
+        "3/5",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "2/5",
+      "enumerated_shares": [
+        "-1/20",
+        "9/20",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "1/10",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/50",
+        "9/50",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "21/25",
+        "4/5",
+        "1",
+        "1",
+        "21/25",
+        "4/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "4/25",
+      "enumerated_shares": [
+        "-1/50",
+        "9/50",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "1/25",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "4/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0",
+        "1/5",
+        "0"
+      ],
+      "endpoint_difference": "-1/5",
+      "enumerated_shares": [
+        "-1/5",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "4/5",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "1",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0",
+        "0",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1",
+      "enumerated_shares": [
+        "0",
+        "1",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "0",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "4/5",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/5",
+        "1/5",
+        "1",
+        "1",
+        "1/5",
+        "1/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "4/5",
+      "enumerated_shares": [
+        "0",
+        "4/5",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "1/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1/2",
+        "1/2",
+        "1",
+        "1",
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/2",
+      "enumerated_shares": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "1/2",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "4/5",
+        "4/5",
+        "1",
+        "1",
+        "4/5",
+        "4/5",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "1/5",
+      "enumerated_shares": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "4/5",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": false,
+      "p": "1",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "action"
+    },
+    {
+      "closed_form_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coalition_bad_rates_by_mask": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "endpoint_difference": "0",
+      "enumerated_shares": [
+        "0",
+        "0",
+        "0"
+      ],
+      "idempotent": true,
+      "p": "1",
+      "passed": true,
+      "q": "1",
+      "selection_retry_interaction": "0",
+      "target": "consequence"
+    }
+  ],
+  "checked_at_utc": "2026-10-15T14:18:06.218546+00:00",
+  "coalition_values_enumerated": 800,
+  "controls": {
+    "idempotent": [
+      false,
+      true
+    ],
+    "target": [
+      "action",
+      "consequence"
+    ]
+  },
+  "framework_imports": 0,
+  "framework_or_simulator_calls": 0,
+  "grid": [
+    "0",
+    "1/5",
+    "1/2",
+    "4/5",
+    "1"
+  ],
+  "limitations": [
+    "Finite grid check complements the algebraic derivation; it is not a proof for arbitrary policies",
+    "Does not execute or independently validate simulator/verifier/replay implementations",
+    "No sampling coverage, model recovery, strict-game completion or empirical superiority claim",
+    "Repeated target/idempotency controls are not independent empirical replications"
+  ],
+  "model_calls": 0,
+  "network_calls": 0,
+  "passed": true,
+  "permutation_orders_enumerated": 600,
+  "saved_study_files_read": 0,
+  "schema_version": "analytic-refund-reference-check-v1",
+  "script_sha256": "ccafbecf5fe30ec854500cd9719aed9d43c47750102d54afdf431eea7825a3f9",
+  "weighted_choice_components_enumerated": 3200
+}

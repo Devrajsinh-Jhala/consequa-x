@@ -1,0 +1,2404 @@
+{
+  "live_runtime_processes": {
+    "runner": {
+      "create_time": 1792816651.342602,
+      "executable_sha256": "e4df46adeadd70e0148e47f4fa5157614419bc09bd63f9dfce359a4b66ecf0d5",
+      "pid": 8880
+    },
+    "server": {
+      "create_time": 1792816649.471334,
+      "executable_sha256": "c691333e17b3b66f922804a09d030dc2ac69d5e92b3609ca5596ed803dcfe50f",
+      "pid": 4168
+    }
+  },
+  "model_generations": 0,
+  "native_tasks_constructed_or_graded": false,
+  "observed_remote_main": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "passed": true,
+  "prior_condition": {
+    "analysis": {
+      "bytes": 2611415,
+      "sha256": "71c5e2e8bb3b642a3673888d9b1e54ec97bac1163f88d712e403d90c0efd53fb"
+    },
+    "archive_manifest": {
+      "bytes": 58698,
+      "sha256": "7aa299986bff9d7885f64f9b03dd4b2f5625670bdc6a6451c4ed02d4089e7d89"
+    },
+    "audit": {
+      "bytes": 58255,
+      "sha256": "1349a616ae987c0389b89ef554de249461edb53456aa52ef686f4204939b5aab"
+    },
+    "cohorts_pooled": false,
+    "partial_data_exposed_before_followup_freeze": true,
+    "protocol": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    }
+  },
+  "private_runtime_full_inventory_verified": true,
+  "processes_started_or_controlled": false,
+  "protocol": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "published_files_verified": {
+    "docs/durable-local-runtime-2026-10-24.md": {
+      "bytes": 3958,
+      "sha256": "b7bbe3440a8accfcfe0cf96e3c7213fc7852367b12d319e4922fb0f4e95008ba"
+    },
+    "docs/limbo-analysis-plan-2026-10-24.md": {
+      "bytes": 3631,
+      "sha256": "61eb14920372e22a18b0ec16e4c16223b19abd74acbaceca374fcb2ff998b5b5"
+    },
+    "docs/limbo-followup-condition-2026-10-24.md": {
+      "bytes": 4536,
+      "sha256": "47facffc4138d3dfd14f96fa99af033a9761b6417f4277ce7a27758bffbbbc50"
+    },
+    "docs/limbo-readiness-amendment-2026-10-24.md": {
+      "bytes": 3042,
+      "sha256": "8f5d28d0cb887ac9dc9b219e87bb9fe7b0d5a766fc51f93ddca6384c7be2b060"
+    },
+    "docs/third-party-attribution.md": {
+      "bytes": 1680,
+      "sha256": "25d6442e4f1929009ee02edeed26ea100fc9630d63a56147bd2539a78b117157"
+    },
+    "docs/third-party/limbo-MIT-LICENSE.txt": {
+      "bytes": 1067,
+      "sha256": "f0eb9424d0a8ddbc53ef34cb90e039af7a1e11cef3250fb69b163ae95d739a53"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/create-wmi-supervisor.ps1": {
+      "bytes": 697,
+      "sha256": "2baaf6d0b8adef33eb6f93c93f038c643e8a3e67cbd85ab6da76eed99a2108a3"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/launch-config.json": {
+      "bytes": 3078,
+      "sha256": "573f9c4c54f7e8173176b8daf310002ae629a5f51278c342a319c0fe88aff348"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/launch-receipt.json": {
+      "bytes": 3621,
+      "sha256": "204596c6bf0174969ee4f40136b4af73aebd127d96aa8e0f28211a500654f6b7"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/launcher-source.py": {
+      "bytes": 21273,
+      "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/lifetime-proof.json": {
+      "bytes": 4006,
+      "sha256": "2773a26b125eef612c40656662ed57fd7ab4e4e327499887402249bb6dc4d717"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/manifest.json": {
+      "bytes": 2924,
+      "sha256": "15c3c9da53bc3c9b946870318d1dbe4c3bc0dfd5b87ea29a2e311cd3331cf565"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/sealer-source.py": {
+      "bytes": 6064,
+      "sha256": "38db6d078b600241ae87126e8c4ef8e2b98af7fbe85c9f0619620e9e7a669bd3"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/sentinel-source.py": {
+      "bytes": 1497,
+      "sha256": "f7125163e803fa657da3fc952fbdfc5050319f046a35e58f3e27441adafc8b9e"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/sentinel/delayed-sentinel.json": {
+      "bytes": 2634,
+      "sha256": "84dd12e614660f2ab4073cc1a6581d6b68982167d35e8245863b707acf231ac9"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/sentinel/started.json": {
+      "bytes": 2738,
+      "sha256": "c105f026ea1088d67af5f45a0ecd41f259bfcea7c808bce00cc16f6b42d69e7d"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/supervisor-identity.json": {
+      "bytes": 2433,
+      "sha256": "101a749786ac31ba1c73ea1e043b8a52a35e941a1c3ab4cb1560cd2280a64220"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/supervisor.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/supervisor.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/target.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/target.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/terminal-receipt.json": {
+      "bytes": 1175,
+      "sha256": "c38bdbf215d466b8311392943c28ca526db78811709d198adcb5217cf4ba53e6"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/tool-return-observation.json": {
+      "bytes": 328,
+      "sha256": "17c8e2c288f344ea13078359ad8ef444149c2cb6f9daf452b2a4f8f906a4e8d2"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/wmi-call.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/wmi-call.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/wmi-create-result.json": {
+      "bytes": 53,
+      "sha256": "856f890e6a17022de71646940f7a406908d2b69de4737b0f008df733c2d3e655"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/wmi-handoff-identity.json": {
+      "bytes": 2449,
+      "sha256": "224c92db881c608dba833e00c9f6abc0a92b7bd9ca33a8c54bc0ad69d3383e39"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/wmi-handoff-receipt.json": {
+      "bytes": 805,
+      "sha256": "ee7f6533cbcb1cd86536e98301931b2a5ae44f0cf7d8b653e06d61ffadab6595"
+    },
+    "output/durable-launch-lifetime-probe-2026-10-24/wmi-request.json": {
+      "bytes": 550,
+      "sha256": "2d7ebfed48e8bbcaed4f592735cce1aede9f4d6ae248fc74865e52963dff0d2b"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000-audit/audit-result.json": {
+      "bytes": 9348,
+      "sha256": "1157bc56689a548be07549f679260d0584bff4d31f9736450b1fbf9e60317fbd"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000-audit/manifest.json": {
+      "bytes": 133,
+      "sha256": "c76a24b2c9cf5749a3d15a42879dd2fa363b7afa77a47e829bf35fd2989dfe0a"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/manifest.json": {
+      "bytes": 5128,
+      "sha256": "432e25717f2e59e9a9f30eb850bc86f368b086d3fc2279a58830679e877cb7ad"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0001-context.json": {
+      "bytes": 23032,
+      "sha256": "91225e42360645da077689b25eae767adb35ef2dc434f286f705c9422e2fe5c0"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0001-native-input.json": {
+      "bytes": 4038,
+      "sha256": "b54504086e8e6b0967f39211f55c8653ca3f59d51e18aa4e46b51f59823195c0"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0001-request.bin": {
+      "bytes": 4426,
+      "sha256": "a70d72d7ca541bcb9b7ff37167e9d2115b6d074bf0800035b532df73a5935c84"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "dd338784b26391ed60ceacf36b1ffa60fc0d5c86f608efd2ff16a96c638e5be3"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0001-response.bin": {
+      "bytes": 1081,
+      "sha256": "555755084bbd9aa76dead373227a01ecf4b2ab6e88d84ee5a46089bb263175a8"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0001-terminal.json": {
+      "bytes": 702,
+      "sha256": "bc5d98c5fb694f20549e726635fd721177ea7cabb3b664351efb66b864423884"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0002-context.json": {
+      "bytes": 30168,
+      "sha256": "ed92b92d3f8c845d37c16ba410afaac511f1509beb95e52e8579df401a20b40d"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0002-native-input.json": {
+      "bytes": 5706,
+      "sha256": "b45102ec60e30e21017fb6626cdf18c13d7f7c78840f8f4e5b89017151ff0f65"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0002-request.bin": {
+      "bytes": 6095,
+      "sha256": "0d8c22c66b2a4ec74e5cdc4373be05a04730bb496d724bd6ed5dbb281c2eb498"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0002-response-meta.json": {
+      "bytes": 270,
+      "sha256": "05fab710959913bdb27e4ea22cd33fb6cb261d5b5811aa5c3a2ae695bcb598c1"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0002-response.bin": {
+      "bytes": 1037,
+      "sha256": "19ac3fae9da73b2f2b75affc641010ddc0adb56d995133d7abc1bc6f92d6b222"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0002-terminal.json": {
+      "bytes": 703,
+      "sha256": "02873315cf993ae7161bcf938a14e6ef1d6ec21d7be3a4ecda92ec19360d6f46"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0003-context.json": {
+      "bytes": 33466,
+      "sha256": "bfc62ba5f6082463f2ccaa7d79d675f6f867da9cec39e3bb07043f36db015af0"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0003-native-input.json": {
+      "bytes": 6556,
+      "sha256": "a88d2d68b9a14e33bb5618061d3ee5f4584876eaf51ff557ea3fbec4a25ca633"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0003-request.bin": {
+      "bytes": 6907,
+      "sha256": "c60acc065c5506f2a4d51b4c47dcb11beccb80299db7ac55ad670c27a3a3e44a"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0003-response-meta.json": {
+      "bytes": 270,
+      "sha256": "02534af9b92fb82a2836051af11d84676f26627b94c2786db9c039b6d8875290"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0003-response.bin": {
+      "bytes": 820,
+      "sha256": "3721342d26cb045a0cf6938868516c5f8e44ef13836dd4c6792be1a623ca97c0"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0003-terminal.json": {
+      "bytes": 700,
+      "sha256": "177939eec081aaedbd667664862ab321513507f3eeacf13869f513ac82e65101"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0004-context.json": {
+      "bytes": 35871,
+      "sha256": "02d5edbc7c4665453e2f5bcff900e0f606920252b6e597342ed451db603340fa"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0004-native-input.json": {
+      "bytes": 7189,
+      "sha256": "1e43b36b50ca5d7db92f1457152b0c0660a30f6f76c30a5afec049f9a3256d58"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0004-request.bin": {
+      "bytes": 7502,
+      "sha256": "6b8a6cb0ae4e6d19d9a8c6e3c89c0af11169381361ee2ae2841ecdf169656fe7"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0004-response-meta.json": {
+      "bytes": 269,
+      "sha256": "b0d4328683764966997d040502c76c85eb7d697070d29ec70c5aca6e663c08b0"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0004-response.bin": {
+      "bytes": 768,
+      "sha256": "6418cc6bc88d944c18ba73bd2b2aa5e10f9a0e03f998f9fc0e233c8bf075053a"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/0004-terminal.json": {
+      "bytes": 700,
+      "sha256": "a8527e5e5f9710a3c5ba988a05b31784062fd19f301a5afc4ff19b110ecea85e"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/client-config.json": {
+      "bytes": 1580,
+      "sha256": "322f1609fc4160a081795b0cee38b59886c0d16930d5ef08f648425cc266c916"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "15d568402ebd8c2e4114770b6dae664382a4deed7b3c264e2e9bfbbd50bc4fe6"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/model-calls.jsonl": {
+      "bytes": 3710,
+      "sha256": "3f3150908ed71158732540c084093ed5d6070c73c6369b066de44c6c939b4e1a"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/model/network-events.json": {
+      "bytes": 6205,
+      "sha256": "0191a97fe712eba63c84eb59c332546f2e5aa5ca1ef0a7547700d70a053e1dac"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/native-result.json": {
+      "bytes": 13417,
+      "sha256": "43460b990e8eebb5a00b2cc7f9606816625527b19f3ae535d80cf07497e126b7"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/parent-terminal.json": {
+      "bytes": 248,
+      "sha256": "1e7cbef833e8fc2c7848f69ead171a75e8e72d9c4777812675379be448377481"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/runtime.jsonl": {
+      "bytes": 1967,
+      "sha256": "babba7a32edc92c30abcf3f6c0c99d4335e24d11d0a5f3e8a262300bed4f4cef"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/worker-config.json": {
+      "bytes": 8820,
+      "sha256": "eefe794ac6f0e8ef00ac54bd1df023738468a3501ec36d157341a3ec73aef8f5"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/worker-terminal.json": {
+      "bytes": 160,
+      "sha256": "037df817ed19c4862d5c941584311965fb45268ca8b6fb50baf1ec32fb329dd2"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000/world.json": {
+      "bytes": 39743,
+      "sha256": "a2fe641c8a66406d37d5952706971e0f94399eeae80bfcab5c9efec6dcf466ae"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002-audit/audit-result.json": {
+      "bytes": 9361,
+      "sha256": "7649f54b2cb532506042263330ccf397b23cf568d4e2377cc893fcf3f97ad813"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002-audit/manifest.json": {
+      "bytes": 133,
+      "sha256": "7cd71cdcf0ac05f3fba7b7e2db0facf234fd9a937505d4272fd144c05540b886"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/framework.jsonl": {
+      "bytes": 41409,
+      "sha256": "3f65fe7b8b4055a850f77448f865e8eba3bd5205a5c3fed2b4c4e71a3b5a05a0"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/manifest.json": {
+      "bytes": 4308,
+      "sha256": "f0fda28b463c8eaa497cfabfe771dd5f929e8723b8c85eca3a74c92be863e914"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0001-context.json": {
+      "bytes": 23033,
+      "sha256": "8031371a47f2dc3e44aeed121779112620f04e8f90f1bb528ee2f1518a85b292"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0001-native-input.json": {
+      "bytes": 4038,
+      "sha256": "b54504086e8e6b0967f39211f55c8653ca3f59d51e18aa4e46b51f59823195c0"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0001-request.bin": {
+      "bytes": 4426,
+      "sha256": "a70d72d7ca541bcb9b7ff37167e9d2115b6d074bf0800035b532df73a5935c84"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0001-response-meta.json": {
+      "bytes": 271,
+      "sha256": "7d64c7364522116d5e047cef9a4e29cdc088e3ad427dd746e65f52bf06759427"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0001-response.bin": {
+      "bytes": 1078,
+      "sha256": "7f935845532d6fad496f33b2f4b683cbccea552e259a683dbf09843b9451da55"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0001-terminal.json": {
+      "bytes": 697,
+      "sha256": "80480a614c93813a4f60e6b39565380bae9a79db1d427ee7fdcc85ea7dd5cd63"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0002-context.json": {
+      "bytes": 28799,
+      "sha256": "53e0db1d528ea7308570b51986b87693e322969d3a45e030a4351d018ba7d446"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0002-native-input.json": {
+      "bytes": 5454,
+      "sha256": "a414c8aa7a7b49081d7615b9993221e9330ccde8a209fa8c481f51d8f65d897a"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0002-request.bin": {
+      "bytes": 5843,
+      "sha256": "30b0b14bbbcd7c2af2ea2f688a898307267e7d0228fe4a46bcf0d0695b21aba6"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0002-response-meta.json": {
+      "bytes": 271,
+      "sha256": "76d5dc1c8c106225971b1f1b78da26cb29f8fc198d072f0ba68d392c7f586389"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0002-response.bin": {
+      "bytes": 1516,
+      "sha256": "7548e57f817b8907ec1caccf0c3417b2b561eb42d83b37a318e99a359af96ae5"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0002-terminal.json": {
+      "bytes": 703,
+      "sha256": "d2136af5bb6f05d656f6222374110e9722f9afc8a2d4dfb5c2d56bf6789e81cc"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0003-context.json": {
+      "bytes": 34469,
+      "sha256": "94ade282fe3802d13b2438fe4ae76d2016f14babc810021809b5455be414ce35"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0003-native-input.json": {
+      "bytes": 6880,
+      "sha256": "15de04b4a4db4f007ccbaaac95d1e1c74ffb4a4c95ba67f3108d0abcc9f8b694"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0003-request.bin": {
+      "bytes": 7254,
+      "sha256": "d37f938a0a91cbbc45d9d4d2a772512914053f635e1d1819f148ad8a3ccb974b"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0003-response-meta.json": {
+      "bytes": 270,
+      "sha256": "bcda56b5febd6c6487808580fcdd7ddd0d0f0101c66172ad877cdcd3555da8b2"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0003-response.bin": {
+      "bytes": 1469,
+      "sha256": "f6b3d036526af10fde5db1e7f376b06af95a4f68db4a1733f94ed10a9d737c2a"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/0003-terminal.json": {
+      "bytes": 702,
+      "sha256": "7a3ae33efa9d8d03a8a428f3adcb82c8b16ffaa27f486ccef6a615af2fe51914"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/client-config.json": {
+      "bytes": 1580,
+      "sha256": "ccbe694cb4d40199155c30263d0b5f2db9e88f7b3b247251e73cab22152a9817"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "fb530a3496825aa4e4017ae8442a359e5e61840d26d6ed54ede95d876e495b06"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/model-calls.jsonl": {
+      "bytes": 2821,
+      "sha256": "b6f9b7b0f3165f32080ef314151fbf84b218c4f10f08029e9673bdb925e29c4a"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/model/network-events.json": {
+      "bytes": 4654,
+      "sha256": "1e64544110dd74dbba9f2610cab7ca66409fe1e53878bacd50878d9f5ac02d63"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/native-result.json": {
+      "bytes": 16572,
+      "sha256": "45b5257e43b40cb48240c751712e931a82e77c3f31d5bb64bf4de85fde008e94"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/parent-terminal.json": {
+      "bytes": 252,
+      "sha256": "92c46eeb0143a18b1d3ce283c69f09da0b46d8a4729481155c1e45c56a7ff19d"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/runtime.jsonl": {
+      "bytes": 3313,
+      "sha256": "34012c696473350fcd92747e95127e50b3049a261dabf87e6702f3bd41101454"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/worker-config.json": {
+      "bytes": 8842,
+      "sha256": "fbb87edd1af80aa8dc02b5046120304e28bcd5e5096953f7ce1851eac2f26b25"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/worker-terminal.json": {
+      "bytes": 153,
+      "sha256": "93aa57289079856a2b2270ca2047545572da60bc75245bfd8ff32b1334d49ebc"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002/world.json": {
+      "bytes": 39721,
+      "sha256": "f1752e6d4ea2eaebfcb3c933d4a357f1a91155f0d498b2cfd1bc17777a13dc66"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0001-context.json": {
+      "bytes": 6126,
+      "sha256": "8d3077a5e6f011ad51c44858514d5424a3bf71c0f090fe5dde93c5dedd981756"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0001-native-input.json": {
+      "bytes": 475,
+      "sha256": "b6b214e189d2fb03b0f458e1b5cda3528a9f81ba21521ce83c00a19edd50b81f"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0001-request.bin": {
+      "bytes": 625,
+      "sha256": "02f7e5d0cd435b21b5ace3ac7434fb361e6b392fa9b466b7b4e38aebd5331a89"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "53d88509915c61455b89e3886f9929128927dc1b8b144b14bdcc25facd58187f"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0001-response.bin": {
+      "bytes": 543,
+      "sha256": "7bc6e27c2a54e47b2cb810efeb8a6fb72dcda881edfcfc4699a578d88cc0ae19"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0001-terminal.json": {
+      "bytes": 692,
+      "sha256": "49408d75eaca1f45e470cd2481f2a36d1d2224e139da4723b02e588e547895ce"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0002-context.json": {
+      "bytes": 7430,
+      "sha256": "59f87aa48bd050bd63a4d72bf84381154ab4ddaca838a40cfbc55ded544177b0"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0002-native-input.json": {
+      "bytes": 842,
+      "sha256": "614e119e97cc954f1c2dcd36ef18d6f75450b95cf4de80dd2a6d40cdae5ed131"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0002-request.bin": {
+      "bytes": 998,
+      "sha256": "99f8d7dcd06c20a8e32a978a9677307743fd097e69995c9aad926a6c651aa2a5"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0002-response-meta.json": {
+      "bytes": 270,
+      "sha256": "28048c11cb0bca4ee3f89bb8a9d0e00892f0dd4e5868adffa5fd03201307ed71"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0002-response.bin": {
+      "bytes": 402,
+      "sha256": "49ca5da699a225b2d6ea5aed16ded510ac3b7fb5b57d0909b3edb0fc21562d90"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/0002-terminal.json": {
+      "bytes": 695,
+      "sha256": "acf75d811bb0b91400f0a1f6fbed430b096be216187fc4c5e4e97abdaba6e19a"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/client-config.json": {
+      "bytes": 1580,
+      "sha256": "8c9b84abfb4325306c8c5269f14256a611ae025666364a4f88d8c197a706f7cf"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/client-summary.json": {
+      "bytes": 340,
+      "sha256": "2fa56eb2f012b15547a2d1b0376a1603e05f798c0cdaaac577497227a302fcaf"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/model-calls.jsonl": {
+      "bytes": 1928,
+      "sha256": "ff8fa2845c7c7e966176521b8a3166c2507acea6ba2520447bbf8946347e7ca6"
+    },
+    "output/limbo-development-2026-10-23/transport-002/client/network-events.json": {
+      "bytes": 3103,
+      "sha256": "ead79c02b9e60ecb3b5e483e5a0fa2c273bf1005cca17eaf938692c3cf1bef75"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "output/limbo-development-2026-10-23/transport-002/execution-source/scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    },
+    "output/limbo-development-2026-10-23/transport-002/manifest.json": {
+      "bytes": 4570,
+      "sha256": "6069d2cb63f5b1caa760038ba79c194bf2d2dabb91de95e8acf621ccd52c4375"
+    },
+    "output/limbo-development-2026-10-23/transport-002/probe-result.json": {
+      "bytes": 1446,
+      "sha256": "c51d651f094674fbea3f604975376ba64af6b9450aefef69ba83eb69a1c31b0d"
+    },
+    "output/limbo-development-2026-10-23/transport-002/seal-receipt.json": {
+      "bytes": 2218,
+      "sha256": "6f7780e8cab0e5938fe0fadadfd87329ad92a8a8593fb4a75361068377e68910"
+    },
+    "output/limbo-development-2026-10-23/transport-002/sealing-helper.source.py": {
+      "bytes": 2782,
+      "sha256": "317856ffee0e0b53758884abab531a9cf2e7469820280426fc28fd7a3449d99f"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/conseqax_guard/framework.jsonl": {
+      "bytes": 45210,
+      "sha256": "6f674ad2d9538b26ae4a58b12b7b3b41dd240d4d0bb55c54324f9d0d0d9fbe50"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/conseqax_guard/runtime.jsonl": {
+      "bytes": 2058,
+      "sha256": "57f5614e2eb288d2306bd5fa8ef54a8f9be949ca2b2e260bc46497fab6013f74"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/conseqax_guard/state.json": {
+      "bytes": 100545,
+      "sha256": "d4b1a62d3f566f7a81b2780d5ed137e92dee14f863a171f233d78199f62f7822"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/manifest.json": {
+      "bytes": 1260,
+      "sha256": "50df95060baec36de941135d2d27473e40d740f4849c7389f50f771f93f643be"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/native_guard/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/native_guard/runtime.jsonl": {
+      "bytes": 2058,
+      "sha256": "57f5614e2eb288d2306bd5fa8ef54a8f9be949ca2b2e260bc46497fab6013f74"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/native_guard/state.json": {
+      "bytes": 100545,
+      "sha256": "d4b1a62d3f566f7a81b2780d5ed137e92dee14f863a171f233d78199f62f7822"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/proof.json": {
+      "bytes": 18652,
+      "sha256": "854b130b58c8b28547089455c0f0fe4088b1f30d85a878067b4c832d25771858"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/selected-proposal.json": {
+      "bytes": 679,
+      "sha256": "582070a36824be7027d4d3f2503ad7d9d7840dcddf9600751059c4c69e52efc3"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/sources/check_limbo_saved_proposal_receipt.py": {
+      "bytes": 16448,
+      "sha256": "68b3c61d6085a88a1d3fe21b6492e46d8f79d16d7751e328d6f0b1bffc809dee"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/client/client-config.json": {
+      "bytes": 1576,
+      "sha256": "c98d0a92853688ea3e0298d0344d6afa3ac425a1badf5646eefaf5b4f54114a2"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/client/client-summary.json": {
+      "bytes": 340,
+      "sha256": "80da1c93634f3be7604358ec85e1ad6e860c2ac6897c4168a298b899f7b79f5c"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/client/model-calls.jsonl": {
+      "bytes": 163,
+      "sha256": "f9eae9aad977eb2bf635cb9b5515fb77a892c5ee5ec10269c821f92ebb40875f"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/client/network-events.json": {
+      "bytes": 1158,
+      "sha256": "fcf55a9d56667e592778db38b73b6d85cfa5606bb8a007aa6b23a7f9730ae65b"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/manifest.json": {
+      "bytes": 959,
+      "sha256": "0a4406dbdc28be524bdc3e71a4dadfd5290df840136b8dc9b97c817608af9e53"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/native-public-request.json": {
+      "bytes": 11821,
+      "sha256": "adb5e4c0f88ac7ff0e4a1c3825a5cd1e403f3fe4f4d014e9c8a4dbac263f9077"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/result.json": {
+      "bytes": 1478,
+      "sha256": "eb2553a02730304c0d3d7e410529f1d9f98584f9c9501d98c49fac73de504842"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002/schema-preview-context.json": {
+      "bytes": 55766,
+      "sha256": "db0aaefd6ad41e2bc5b3492566b4f03d584d4f22c8a1470fec8a6258d1c5da79"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0001-context.json": {
+      "bytes": 6129,
+      "sha256": "4da3148523f62768f86cd9eb957bd97cc902bcee48efb88ebdb758a8ec0d5de8"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0001-native-input.json": {
+      "bytes": 475,
+      "sha256": "b6b214e189d2fb03b0f458e1b5cda3528a9f81ba21521ce83c00a19edd50b81f"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0001-request.bin": {
+      "bytes": 625,
+      "sha256": "5d37ef14d09195598708782981d6e05ca4a755ed5c3f23c8f9b2a1ef018e3c5b"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "e3f38ece6a3306b243192513f9bfb676d86bf529fba5861c3a4f6ff1ec79b4ca"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0001-response.bin": {
+      "bytes": 543,
+      "sha256": "81b888b5026062dab637e04f7205c89b2e547c1ea6b5b38b1ae57c17f3ff0bb9"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0001-terminal.json": {
+      "bytes": 693,
+      "sha256": "410408b9705e325c34d74c39367e9afc6f390995579cc9e3910ed9ae10da3c4d"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0002-context.json": {
+      "bytes": 7433,
+      "sha256": "68a86c617cd19bb478312b4f71a15980c2dc67210cf04ba9871ac72337969cab"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0002-native-input.json": {
+      "bytes": 842,
+      "sha256": "1efa28db9b281e951037f8826e76f302d3393124d0773df96940e831d570d577"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0002-request.bin": {
+      "bytes": 998,
+      "sha256": "87f91ecc63ae4746d68a65321fda0d9f80906a6fce06ddcac31bce4cc89432d5"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0002-response-meta.json": {
+      "bytes": 270,
+      "sha256": "dbeb6ac47e3bfd542d142bd865d1594bb04a316a32bd67aa9ca32b45b743e39f"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0002-response.bin": {
+      "bytes": 401,
+      "sha256": "c8a520f8d62469961d7f5b00dc32fae19e645805828871f24d5e20f233631224"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/0002-terminal.json": {
+      "bytes": 695,
+      "sha256": "4f722e652fc1fffdfff12f38ef347fd9f6e8582f67b7315bd49e383d2776ce00"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/client-config.json": {
+      "bytes": 1592,
+      "sha256": "58f7f9bdda2cbb7f9f1cac8cf7419104041e9c7aa7d74886c87972a6eacd0a7b"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/client-summary.json": {
+      "bytes": 340,
+      "sha256": "01406833b8e3b381fac016877141a16f60341ea9e63ed5e44c1d0aaeaa519744"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/model-calls.jsonl": {
+      "bytes": 1920,
+      "sha256": "4308ac711957c2a84f5591089ffba76af03cf796f8ff398a59e2e5afbbe48515"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/client/network-events.json": {
+      "bytes": 3103,
+      "sha256": "0e7b555a268939fa3ec8dcfdbbe011312e5079077db987a5a1da77ca63bb2d2f"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/execution-source/scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/manifest.json": {
+      "bytes": 4570,
+      "sha256": "f35d548f990f2d2a34f3d63c52446f824163f7ca816fb0f47b311c843b00cd39"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/probe-result.json": {
+      "bytes": 1449,
+      "sha256": "32abd73d7c316fd9969c77d96d563df651c696fac12b4713c4fadd00c50465cc"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/seal-receipt.json": {
+      "bytes": 2218,
+      "sha256": "d6239655aca51cd1d7b92f3741aab0127d52f3215ea549dd0d3884ef93979026"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003/sealing-helper.source.py": {
+      "bytes": 2782,
+      "sha256": "317856ffee0e0b53758884abab531a9cf2e7469820280426fc28fd7a3449d99f"
+    },
+    "output/limbo-followup-protocol-2026-10-24/protocol.json": {
+      "bytes": 121774,
+      "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+    },
+    "output/limbo-followup-readiness-2026-10-24/manifest.json": {
+      "bytes": 131,
+      "sha256": "05ad12689a687990a322adcffab78ea882dacb962a009c624e66431168a84a42"
+    },
+    "output/limbo-followup-readiness-2026-10-24/readiness.json": {
+      "bytes": 26865,
+      "sha256": "34d928ec2651c940516b5de04af4856b4fc3fce096951f47959e7c01aa25ed44"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/inputs/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/inputs/audit-manifest.json": {
+      "bytes": 134,
+      "sha256": "e20aa81a1f0772b5520cdba613c0f64f7b9af921c1cf32a33c71d3ea7eec2e63"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/inputs/audit-result.json": {
+      "bytes": 58255,
+      "sha256": "1349a616ae987c0389b89ef554de249461edb53456aa52ef686f4204939b5aab"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/inputs/protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/manifest.json": {
+      "bytes": 1195,
+      "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/narrative.md": {
+      "bytes": 5089,
+      "sha256": "4ab2b609f77cc3b8ea69dfc9569034da4ab7ae20eb5063b4c5d5899eec6ace6f"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/narrative.tex": {
+      "bytes": 5156,
+      "sha256": "eed1ad6ba90d7e952f1332ebcd6363e08b1a13be4f1d1327c120b011a6b44200"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/results.json": {
+      "bytes": 2611415,
+      "sha256": "71c5e2e8bb3b642a3673888d9b1e54ec97bac1163f88d712e403d90c0efd53fb"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/results.md": {
+      "bytes": 4217,
+      "sha256": "fc1d236ad5d7e8804713fb0c716ba0c2cdea3d489fb987786e4400c84f8c19ba"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24/results.tex": {
+      "bytes": 412,
+      "sha256": "c01911a4d09b48b9eb48d5aae60a57a5c3fe88c35f3edbc947d919da4760ff2f"
+    },
+    "output/limbo-official-interruption-2026-10-24/finalization-source/audit_limbo_interrupted_collection.py": {
+      "bytes": 19930,
+      "sha256": "81a068555d481fe39cda65a4965c55127d762f4e00fa65dcbb900323786d973c"
+    },
+    "output/limbo-official-interruption-2026-10-24/finalization-source/audit_limbo_portable.py": {
+      "bytes": 23268,
+      "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/__init__.py": {
+      "bytes": 89,
+      "sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/agent.py": {
+      "bytes": 7859,
+      "sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/analysis.py": {
+      "bytes": 12999,
+      "sha256": "31261718867753704c565a6db124e834096d0886ff95b176453cefeec97146ea"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/behavior.py": {
+      "bytes": 3318,
+      "sha256": "46e85534cbaa313bea84bd9ae093463f58700de0a374ba91ed9e92a9bb492a13"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/cases.py": {
+      "bytes": 4485,
+      "sha256": "c1547c384b58ae6b36efe1aca3e80039a9340c49e5049d7576c13fb765d54211"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/gateway_proxy.py": {
+      "bytes": 3605,
+      "sha256": "c3ca046de0ef6e4c56a2950a8df02a2b94ac19c699f9ee09bf5f6414973541d1"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/grader.py": {
+      "bytes": 8805,
+      "sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/harness.py": {
+      "bytes": 11131,
+      "sha256": "7d863bfc1bc9af8f2075a36adac3840aa86c6153af1cdcb6befdfc5d248f19d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/key_contract_probe.py": {
+      "bytes": 3260,
+      "sha256": "82fc61a09b694c3beb333822f1f134b626969153ea7c3ae29c2b3905ba77d863"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/llm.py": {
+      "bytes": 15062,
+      "sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/mcp_proxy.py": {
+      "bytes": 3039,
+      "sha256": "f1dee64be46a17dd8e982dd7d2c0d72b0892cd03dc49cedca06160d14a5d9faa"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/pipeline.py": {
+      "bytes": 10210,
+      "sha256": "775eb847d4058455ae93caedc65a32c11d5cec9259db0c05a8fdd0ca9da7e217"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/policies.py": {
+      "bytes": 14938,
+      "sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/prompts.py": {
+      "bytes": 3944,
+      "sha256": "9761f4c50d2209e9dd1b2346be40f2cefa5d35976f00e98b178ae5c44a2c24cd"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/real_api.py": {
+      "bytes": 26175,
+      "sha256": "e9ecadcc4fe33cca8d6e04dccc04fcc573495763ccc30f39b24ee4cf11f68369"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/real_api_analysis.py": {
+      "bytes": 10063,
+      "sha256": "4bf93655408b214d0a6e2c960d8b077106977e1812891844399d943d8a9b45ce"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/report.py": {
+      "bytes": 81057,
+      "sha256": "aaabda2c661dd24e7e4b97fa0198930487f67b549cb8cc36cf2a3f65db8220ed"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/runner.py": {
+      "bytes": 6937,
+      "sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/runtime.py": {
+      "bytes": 18364,
+      "sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/sandbox_http.py": {
+      "bytes": 6957,
+      "sha256": "72509f445fb38c5d3d2a3ce5538e050d3ec81079c58236b9cbcf4161299b740c"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/services.py": {
+      "bytes": 40579,
+      "sha256": "68483bbfbfed20b422627850ee6f73edd947c6487810e838da5fab59b4dcb906"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/tasks.py": {
+      "bytes": 25478,
+      "sha256": "02efac4e4dbc1079d8534a1ea85bbc1bb5c7b676db60a40ffca08ca3b14f03eb"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-native-source/limbo/world.py": {
+      "bytes": 6525,
+      "sha256": "d2d9a346d07769ad5157eac67d2f204bea73c1a5cdacf093fe647a001b47e00d"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "output/limbo-official-interruption-2026-10-24/frozen-scientific-source/scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    },
+    "output/limbo-official-interruption-2026-10-24/manifest.json": {
+      "bytes": 58698,
+      "sha256": "7aa299986bff9d7885f64f9b03dd4b2f5625670bdc6a6451c4ed02d4089e7d89"
+    },
+    "output/limbo-official-interruption-2026-10-24/preservation.json": {
+      "bytes": 45883,
+      "sha256": "19dc3937fa15587dbecf7f55cc3565bb654ed528f7c4cc01bf23882eb92de7cf"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/claim.json": {
+      "bytes": 239,
+      "sha256": "0a4c38e253dbb0f4aa2dbb132c0c39a14b97aa5e4bda8b1ee83ef62facd77245"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/disposition-000.json": {
+      "bytes": 234,
+      "sha256": "6427ebd6c671d20cdf7b7f90549d21e0f6a678894c3588cae36b7a9674016c88"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/disposition-001.json": {
+      "bytes": 237,
+      "sha256": "790c70f177a306e92c6619ec8b5a2124b3023e9756a8717b504ddc47c5782c39"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/disposition-002.json": {
+      "bytes": 232,
+      "sha256": "69e19896969bfe3b98a09ca3c4c68b98a1b6416c9e4b685544ab154cb4188268"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/disposition-003.json": {
+      "bytes": 241,
+      "sha256": "c71800c9a13c791794943d029b2b74b9b53cbb371cbb14562eb7fcc56cf94633"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/disposition-004.json": {
+      "bytes": 237,
+      "sha256": "86074b037999e0205c7458d7a633220e25df102be9ea7e6bd9cb8f2eb189453d"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/disposition-005.json": {
+      "bytes": 232,
+      "sha256": "2cd65a51fbcd43d79fff4e476da203f17b2bb0c1994117c9269c994a25775045"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/manifest.json": {
+      "bytes": 3478,
+      "sha256": "1bb663abbff04142b18d94751557eee46dab9a3deec68617077eceafb36e8c12"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0001-context.json": {
+      "bytes": 24253,
+      "sha256": "1b405660ba5f96d4c12d00b57a782a5c9c7aa0b8f106de8c95d22e35c79aad4c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0001-response-meta.json": {
+      "bytes": 271,
+      "sha256": "4e1e74d6e013515d32fee85f43aac651e8ec7a1705f663bba82124323c3433b4"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0001-response.bin": {
+      "bytes": 1001,
+      "sha256": "cfe66de46b79fd33f97c8335eb1445b6bab7dfbf8e518d569524901e55b2547c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0001-terminal.json": {
+      "bytes": 701,
+      "sha256": "29de3cf6e32eace852f0036e66753a86a7466848b84ff4e43a3485fb55354db5"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0002-context.json": {
+      "bytes": 28176,
+      "sha256": "89b965d69b7f03a2bf56882042c06c8e2574ca91ba278948426554e367cdbac3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0002-native-input.json": {
+      "bytes": 5380,
+      "sha256": "e074d936cb343fa4fa37d4b81e00ebdcccce0819406d598a425ccfaa45e3b4f1"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0002-request.bin": {
+      "bytes": 5762,
+      "sha256": "45cb7d1c033c5305a5bf288d57b262fd9bfb506297518cc5d511688a26e78bff"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0002-response-meta.json": {
+      "bytes": 269,
+      "sha256": "fab5a9167e317d48838621b3fc8dc46768f93f3d76038639ef296000789dab83"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0002-response.bin": {
+      "bytes": 676,
+      "sha256": "836112dabc7e401c4f9191686d57197528432d3cf0922d4e98a54fa25f07319a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/0002-terminal.json": {
+      "bytes": 700,
+      "sha256": "097c37ae338e93ee73758755c7091541be4a5d7b5a9dad11602dd7823447751f"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/client-config.json": {
+      "bytes": 1581,
+      "sha256": "6c216d559c62edbb5e43da2cc362dc35b2cbb6e83672399ca6c8f2371d02def8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "fb6509512c54b8c573b74616fe8c61ffbdbd2bb2ac1b4684393ed9e4f9b66f37"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/model-calls.jsonl": {
+      "bytes": 1936,
+      "sha256": "ecbebe33ce4615706c871b3b90ae38c2f0b6307c21148aec1bb8902a34bf674b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/model/network-events.json": {
+      "bytes": 3103,
+      "sha256": "f3d9fe3a940b80a058b0021424c3e127c9263fa03718082be62f5d2048e59e1c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/native-result.json": {
+      "bytes": 8467,
+      "sha256": "9e960ce45b295a5f09b65ad42d4371e4aaefd7cd9be76d111fad25d07479316a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/parent-terminal.json": {
+      "bytes": 234,
+      "sha256": "6427ebd6c671d20cdf7b7f90549d21e0f6a678894c3588cae36b7a9674016c88"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/runtime.jsonl": {
+      "bytes": 1829,
+      "sha256": "4d1550ed471b24b051edab1ded7c8d7f6b7b3942e3f4956e2dc2765e63b1d986"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/worker-config.json": {
+      "bytes": 128214,
+      "sha256": "4fa27e969db47cc8a6e9c9ee98e441440433c6c8e9409d58c788de690e26c007"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/worker-terminal.json": {
+      "bytes": 153,
+      "sha256": "ee2f575ce2ab5253348d8ad444feec2218ba3e68b6faad5d9b9f3efd481edfb3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-000/world.json": {
+      "bytes": 39794,
+      "sha256": "f49a0674e3ca7712717b6aa76b175d5e9b06e34f42afefe7f5a204703ac29d46"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/manifest.json": {
+      "bytes": 3478,
+      "sha256": "fbe0befde98edfb378ff6d265882583da91280950b43f4e70ddb46b519842642"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0001-context.json": {
+      "bytes": 24253,
+      "sha256": "7ce2ee1c48b5781754210575c73d3accc643aee8ca8e3b72c47e4b28faa29ee9"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "89134cd7313fc3215c716688b929aea806c2f868a1c61f30fcf6bcf67aa2d871"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0001-response.bin": {
+      "bytes": 1002,
+      "sha256": "0799fc2b6448d251edb78790420714d55976d72a1327d2cdc2547ce18891417b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0001-terminal.json": {
+      "bytes": 702,
+      "sha256": "4ad8c9af30dfa0856951fd14f66289f64265b25d63504d173f549a7dbb361ec8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0002-context.json": {
+      "bytes": 28176,
+      "sha256": "418990f41040be3baf61f49816c26f53b31fe80a6bc8906b9427823ee93a6e3e"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0002-native-input.json": {
+      "bytes": 5380,
+      "sha256": "de1ab5599521870cd21929fac7b10bdd3e965e6198142b4017235e7df9157c5a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0002-request.bin": {
+      "bytes": 5762,
+      "sha256": "279ec8f34126e8d3ffdb43250e212c1c79c757116cac50b807b3d182706f454a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0002-response-meta.json": {
+      "bytes": 269,
+      "sha256": "ccc499272d54d3bbfbccfa370a0b4b0aa108f4f60c3e429e541c00b4ccf5d4f7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0002-response.bin": {
+      "bytes": 676,
+      "sha256": "c3bbc2e513d0495d2875132c5a8ad8e7416d0bab653f78c9ec4871235a31f975"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/0002-terminal.json": {
+      "bytes": 687,
+      "sha256": "5a53cbea75c40522b68cfc16a07918befc6648a88a7b553211c1a6e71eaab6b9"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/client-config.json": {
+      "bytes": 1581,
+      "sha256": "8ed95a30258af38307316aec0314188dd24712c3d379f977df0555736f5c2c1b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "eb8248e8bf7feee997d75f90b4e911b0040d983a61a7c80f8df0d2156de4aa43"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/model-calls.jsonl": {
+      "bytes": 1936,
+      "sha256": "5a17f947e48e0f6034d8485a5cafd4f7ebc13c3f14d2c25ca06e9c3f9c89e22d"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/model/network-events.json": {
+      "bytes": 3103,
+      "sha256": "34eec58c752c0f5470fe73afaeafc0be680dd873b1c797bf945922f4fd824b61"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/native-result.json": {
+      "bytes": 8468,
+      "sha256": "efcb85ad85b6777478275e320013f759aab1fa007c5fa01147097afdecfbc564"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/parent-terminal.json": {
+      "bytes": 237,
+      "sha256": "790c70f177a306e92c6619ec8b5a2124b3023e9756a8717b504ddc47c5782c39"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/runtime.jsonl": {
+      "bytes": 1829,
+      "sha256": "4d1550ed471b24b051edab1ded7c8d7f6b7b3942e3f4956e2dc2765e63b1d986"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/worker-config.json": {
+      "bytes": 128220,
+      "sha256": "fd1366fd4846ec30dcf26d506573db6b9472e5fc3d770401769e46b46e80d291"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/worker-terminal.json": {
+      "bytes": 153,
+      "sha256": "ddefad9dd9266ad9355532b93c324ba86e43429934384f0f2b12d22892f43ef3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-001/world.json": {
+      "bytes": 39794,
+      "sha256": "f49a0674e3ca7712717b6aa76b175d5e9b06e34f42afefe7f5a204703ac29d46"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/manifest.json": {
+      "bytes": 3478,
+      "sha256": "9791e378300caf25cc36b292b818640f83ec802abb0a268e075ceca36017703e"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0001-context.json": {
+      "bytes": 24253,
+      "sha256": "389c64156ab92ebe31992d409f84135b736225df11e27c5916747605bfa852ff"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "464e956fe27f7532c6da9b5890a519fc7d63be09cc4ad3b74e213e59ec0b96a1"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0001-response.bin": {
+      "bytes": 1002,
+      "sha256": "3341baeaa23a36e8c6e5b3442f15faac3de289ee7fe2e1e3c717ff2570b662fe"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0001-terminal.json": {
+      "bytes": 702,
+      "sha256": "f0d5d03d72c6df2ba7ba0e7c4fe8f491bb02116865a23d394890882cf8fb8656"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0002-context.json": {
+      "bytes": 28176,
+      "sha256": "223c2949533684ca2fc2d9796ef69c8766e7d2bf276bc16b8c28671dda6652b4"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0002-native-input.json": {
+      "bytes": 5380,
+      "sha256": "f58bf390c15204f317267c927546d4b157dff7c4ce481b53ec6bcc517d938444"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0002-request.bin": {
+      "bytes": 5762,
+      "sha256": "60c172cb5e8f6d9370e63dd68e140d510429b7f6a9bb0160dde5cebdd0972f7b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0002-response-meta.json": {
+      "bytes": 269,
+      "sha256": "2e66ab3fcffa6806ccaf611e83b49d3ee3511da7cbf6655b13208596c64a0f48"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0002-response.bin": {
+      "bytes": 676,
+      "sha256": "708b631ccf019a654ae25b1bd586635527bb8aa7077ce96a6f073c4dab1fdcb7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/0002-terminal.json": {
+      "bytes": 688,
+      "sha256": "3ddda59a33e4c390731115a29ed197b55d15955bb5a32148a68295ea6b8eb53f"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/client-config.json": {
+      "bytes": 1581,
+      "sha256": "ff9539becf17cd9e8fb0aa7993b64d661ddced4bb8ddf39b384e266ce90fb7c7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "cbcc2c020cdeed2ca092b701d6dd59aeda024034157e227dabd6e21b5fbac021"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/model-calls.jsonl": {
+      "bytes": 1936,
+      "sha256": "931877fb6d8d9cb91f2f1a2e959463c97d893846c7ecde9acb36b8c99078c6c3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/model/network-events.json": {
+      "bytes": 3103,
+      "sha256": "b23ed4baf259cf50fde360dcb48276aba0f19ded377cc42d9f215db2c30b4d26"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/native-result.json": {
+      "bytes": 8463,
+      "sha256": "e8ad4e5d164e780e0d4d69d1977fe1e87a990d88bcbae59aa7b7a548f33ff52a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/parent-terminal.json": {
+      "bytes": 232,
+      "sha256": "69e19896969bfe3b98a09ca3c4c68b98a1b6416c9e4b685544ab154cb4188268"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/runtime.jsonl": {
+      "bytes": 1829,
+      "sha256": "4d1550ed471b24b051edab1ded7c8d7f6b7b3942e3f4956e2dc2765e63b1d986"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/worker-config.json": {
+      "bytes": 128210,
+      "sha256": "588fd5f9d1afdaaeaff4d7d69358ef1f1b2dc49666d1eed0a2d48883614eaf3c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/worker-terminal.json": {
+      "bytes": 153,
+      "sha256": "c890810c45732486cc5b8fd6b3daa9d301f56018a26bc2bc314e3ee2f9ba6770"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-002/world.json": {
+      "bytes": 39794,
+      "sha256": "f49a0674e3ca7712717b6aa76b175d5e9b06e34f42afefe7f5a204703ac29d46"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/framework.jsonl": {
+      "bytes": 39653,
+      "sha256": "bcd3380146ba299a63afcf7ef0e4e3fc3cc404f71d3cc7f3f258e4c5ddf01dbb"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/manifest.json": {
+      "bytes": 3482,
+      "sha256": "749b702bf5ff18afe203506056859f99de976e17a12bd1dc205fde1c04f73be0"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0001-context.json": {
+      "bytes": 24253,
+      "sha256": "1b141cca1859b6bc8d3e37e98615afc6b8c160843a59c3013da9b1dc7c7993a8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "af35c245fa73b145158974875abc85970d3430c94a6305493811b83a14651f3e"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0001-response.bin": {
+      "bytes": 1000,
+      "sha256": "f3202f65cc2e4a37ed162329744174c29b1f2075251254bc069376c5097643cb"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0001-terminal.json": {
+      "bytes": 691,
+      "sha256": "d68b93d90a9814535a12cc4245569e4bd690f95c362dad7e03fceff2a571f1f3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0002-context.json": {
+      "bytes": 28176,
+      "sha256": "3173217bc5bedbe732e586d3e06d877d199213210566e5397e2171f7bd6b8c12"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0002-native-input.json": {
+      "bytes": 5380,
+      "sha256": "93ea13f8348f9a34b613062610b0b5f9dc9cae59b0ecba45462d6d0c5ee4103e"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0002-request.bin": {
+      "bytes": 5762,
+      "sha256": "084e0182bd0f1c035facaa2ac7a13b12cdc9a16dc9612c3e83e249b06fe9f2f1"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0002-response-meta.json": {
+      "bytes": 270,
+      "sha256": "70c66a69fd018ba7cbcc15b4b5f86847be7ee1a94702a0a87831d26a09434498"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0002-response.bin": {
+      "bytes": 676,
+      "sha256": "8834df87f02aac7cd9abeadf346946472e600c936086597d8b83c15b3e93f4a9"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/0002-terminal.json": {
+      "bytes": 701,
+      "sha256": "9cedfe35e81f3ddcd03e28f77f1c7f84f752399ce3f67e4797ca049b24046004"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/client-config.json": {
+      "bytes": 1581,
+      "sha256": "7017c197438c64fd4aa4326a36d02db813861739cb7810f47620e034dddd0c33"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "9fbe439303ee8684d33e29cde06d8edd9fe8ce3cc1827ab56f49cd7e71b25fe8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/model-calls.jsonl": {
+      "bytes": 1934,
+      "sha256": "1ad5993c779af7575bf7163daf4cde61459fafddcc45c43212f9123fd292991c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/model/network-events.json": {
+      "bytes": 3103,
+      "sha256": "2a121056318ae231de9488320c9181188111852a4ec06e096202da773c54e757"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/native-result.json": {
+      "bytes": 8472,
+      "sha256": "b62887c924d2019e529d9d063b28ad691162c0af6ee3028525ded1cac689c1ff"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/parent-terminal.json": {
+      "bytes": 241,
+      "sha256": "c71800c9a13c791794943d029b2b74b9b53cbb371cbb14562eb7fcc56cf94633"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/runtime.jsonl": {
+      "bytes": 1829,
+      "sha256": "4d1550ed471b24b051edab1ded7c8d7f6b7b3942e3f4956e2dc2765e63b1d986"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/worker-config.json": {
+      "bytes": 128228,
+      "sha256": "f5465e62e10355e89c3ae62e458066359a784cb42a85730f7f3d7710cb50edcf"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/worker-terminal.json": {
+      "bytes": 153,
+      "sha256": "f25ae05e2960253602b0a984fae1927d3f9ba405823d585421d040ab6456f683"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-003/world.json": {
+      "bytes": 39794,
+      "sha256": "f49a0674e3ca7712717b6aa76b175d5e9b06e34f42afefe7f5a204703ac29d46"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/manifest.json": {
+      "bytes": 3478,
+      "sha256": "244132c9b43627cd8870cb1e61be9315a2996f9a639cf988aa08004187ad1391"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0001-context.json": {
+      "bytes": 24253,
+      "sha256": "da008fc2712beb424438eb5d30f95e51a121c9a50c7b7e44391e1b081dd63495"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "867053db11c115339972aee19fcf17316c2736a4f12df6ed83270f3b2be5c73e"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0001-response.bin": {
+      "bytes": 1002,
+      "sha256": "acf40c16c6aa6a3a3aa74aa89ac956e3191f526a9d7f018d9293702049dc2a99"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0001-terminal.json": {
+      "bytes": 702,
+      "sha256": "29df71cba4606edad9958306ad96bf479dfb9256d2e24fb42c4e6cf220ac3481"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0002-context.json": {
+      "bytes": 28176,
+      "sha256": "2151e89cb7b95f1b129c75b4bd95b4f4f57bd2d3f0063c4ce39d24bda8c44209"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0002-native-input.json": {
+      "bytes": 5380,
+      "sha256": "25733d8065a0c7cc5c9596f4596c0e6cf022e261c19917f2bf361d416564f7d7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0002-request.bin": {
+      "bytes": 5762,
+      "sha256": "47061fa1f1d1466e20e50595bafc9f28d52445fd598399d49904098997e27f0a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0002-response-meta.json": {
+      "bytes": 270,
+      "sha256": "1efae6ab097feac7016d08df9435aa620f8b11d6260074afa38e5add15a71438"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0002-response.bin": {
+      "bytes": 675,
+      "sha256": "947a5f3e44a607a5f8fec9f17c0d18284fb4a61c05b51e9b1c13bd27225c5d73"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/0002-terminal.json": {
+      "bytes": 700,
+      "sha256": "fec609898bd69fef16792e23e0ee17bc0bf78a1fcea5bf1356fd1133cb8c34c5"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/client-config.json": {
+      "bytes": 1581,
+      "sha256": "37eeb07a59de889b9c3e2c31cd525dd92d37e002397a6db72da90ec6719b6100"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "8a3ee22c01d917f9aaad939d34a3ca7d0e9d06ed01f2a3b28345b3c84971d302"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/model-calls.jsonl": {
+      "bytes": 1934,
+      "sha256": "95d1383c74bce573991d97272c413d6ce2cb77d80c2d56cfd25700f9c391f393"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/model/network-events.json": {
+      "bytes": 3103,
+      "sha256": "1f956c2f565dd483ac54769ef99253862c60ffd767f3de7e1e2c6ecd4adedd72"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/native-result.json": {
+      "bytes": 9495,
+      "sha256": "ac5663854db0d402c279b7053ab07f60c7e84da94d2e3403a0b702a232eb88e6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/parent-terminal.json": {
+      "bytes": 237,
+      "sha256": "86074b037999e0205c7458d7a633220e25df102be9ea7e6bd9cb8f2eb189453d"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/runtime.jsonl": {
+      "bytes": 2844,
+      "sha256": "14b16a592f4c58d295e8a50b1673b6d5b2b35d10c201617bb9d48e8f0dd317d5"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/worker-config.json": {
+      "bytes": 128234,
+      "sha256": "dcc5c73d873b989a1d31edd51f2ccdddefe762c50c6a996c5559f00a5e50f8c6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/worker-terminal.json": {
+      "bytes": 153,
+      "sha256": "8a5ee3ab1bc244eedba34e018d3010cfef314c3435bec6844129d615aea60850"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-004/world.json": {
+      "bytes": 39829,
+      "sha256": "95f620ad8d0c13bafb5b0b46cd2f44c1bcdf07db0c9c9dbc7b6913a86c8b73ad"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/framework.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/manifest.json": {
+      "bytes": 7606,
+      "sha256": "b1973be7ee18db09415e7b031c51adc62f772d542f011a72ae3cfbc4aae30870"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0001-context.json": {
+      "bytes": 24253,
+      "sha256": "5d9a5ead284e955d2ef975a80df483e9673b8df966dfa3c10d8d9f086f48f058"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "7e9d3b739f3284d1f8e59cc79664edfc1ba5bce4a3c93b40b2fcf982b939bc9a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0001-response.bin": {
+      "bytes": 1002,
+      "sha256": "8d5c1cf2f905a35ec7e4ef8bc7b8dda83e3cbe7647e9070461f922e26a5cdaa2"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0001-terminal.json": {
+      "bytes": 703,
+      "sha256": "ee160b9d4cffb30880ff2482c89c220ca1c2f214132bc504541cb49f5ba26671"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0002-context.json": {
+      "bytes": 29262,
+      "sha256": "1b6af344bf9655915b57fb56e264765b4fa892bf790070af9b08cb2c3dc0eb04"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0002-native-input.json": {
+      "bytes": 5646,
+      "sha256": "b1092bd18fc479c2eca43a0917ace66c73d27a306795335f6ee244a22dba04fb"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0002-request.bin": {
+      "bytes": 6028,
+      "sha256": "e17f1985f610558e80f98b984d90eee0ddf95b2515a977147e1157557dcc1b34"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0002-response-meta.json": {
+      "bytes": 269,
+      "sha256": "48a03437c6c4d224503cbaf079149b5edc53458567188d957fc08609bc672443"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0002-response.bin": {
+      "bytes": 551,
+      "sha256": "fea88c6be0be78693624da244c5271b0552bf56d660aa57909009830c970b1ee"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0002-terminal.json": {
+      "bytes": 699,
+      "sha256": "9cf54e5141fc3a2e932f78dd26102d0a275561ad6a8545f5914de553d7438c67"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0003-context.json": {
+      "bytes": 30473,
+      "sha256": "8d41a298bf924d92fee3136f620007120c7ce9de0190fc1062c8c798d08f7e5d"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0003-native-input.json": {
+      "bytes": 6012,
+      "sha256": "ff4e3ec8fd6350d9fc0488a7890acd093ec60ca8e9432e44ec1c2030243f94a7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0003-request.bin": {
+      "bytes": 6380,
+      "sha256": "e31a7faec3cb3853531da5e741388c4f42a52a58a759aa5e8224da267cdc3ded"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0003-response-meta.json": {
+      "bytes": 269,
+      "sha256": "e5852addbdc000b535382b65cb3c0e84e84d9d863697b06ab8e6282baf88c970"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0003-response.bin": {
+      "bytes": 903,
+      "sha256": "4034500ab86637cc509168d5607978a3d176c927e2422e446bff652cc36d9acf"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0003-terminal.json": {
+      "bytes": 702,
+      "sha256": "002ea049b7fa212b3ce1111d243d1dd3fa8073a926a7f4096553b487a53f9831"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0004-context.json": {
+      "bytes": 33275,
+      "sha256": "48cf7ac05e1853338f3c7b05fbe3018dd9ef748f399100bd71e5eb2a89cbccb5"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0004-native-input.json": {
+      "bytes": 6727,
+      "sha256": "0f3308a854c0969565be558f8bf3aa869023e2e5bee0cc6de4a7341d28eb453b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0004-request.bin": {
+      "bytes": 7057,
+      "sha256": "fbb90618a7e160a254a748c0a7a64571ceb9f4d6c998aed591467dc3009eb116"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0004-response-meta.json": {
+      "bytes": 270,
+      "sha256": "829e455eee89f7e4171667e9ad856d33cc68b2e526dd0c61fe8a65a6168f610c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0004-response.bin": {
+      "bytes": 512,
+      "sha256": "ccb9beef4f092059c9e5c0fe34a9119d6a711020fe3a56e0d9c1f1b9d9513bf3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0004-terminal.json": {
+      "bytes": 701,
+      "sha256": "8c44137669c7f283a685858132288792a77437fea5b0dbbcd8716709f9e79d34"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0005-context.json": {
+      "bytes": 34465,
+      "sha256": "3ca754b65129da27c11fb229e19d9d85dca1118859f00c0d4e2677b6b2780375"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0005-native-input.json": {
+      "bytes": 7067,
+      "sha256": "9059978b1d0dbe561fb6140f0c15561bf0f0aa9bb93c82fd0fb2ca8cdf132bf5"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0005-request.bin": {
+      "bytes": 7395,
+      "sha256": "9802f64732ea6a3d9970b2fca797819b4ea0b05a4c8bc5317f194d43a5203c12"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0005-response-meta.json": {
+      "bytes": 270,
+      "sha256": "b6d3ebc8b39900b46078bccd27ee0add3740686186062ae1a329c921b43a0141"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0005-response.bin": {
+      "bytes": 551,
+      "sha256": "611502e7196da78cfc38136a8e66ccfb627396f3cd6c41660de26c427aac5dd1"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0005-terminal.json": {
+      "bytes": 700,
+      "sha256": "56e01f4edc1456d32b90fbec9829970a4425dec7a771bd035a840a3f38319906"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0006-context.json": {
+      "bytes": 35676,
+      "sha256": "121c61bd8e9b0153b8ce96d12dbb2e8bba33ee1fc89e0a922b8a3092c816b292"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0006-native-input.json": {
+      "bytes": 7433,
+      "sha256": "7015d4b6c46f71c65410be26456d37f19ab3b6a920edcc71cb505d7a521eca2c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0006-request.bin": {
+      "bytes": 7747,
+      "sha256": "d38a77f6bfbaa279a4c4f39a50387ab9ac686029e2d6e3c393893d029bd4c1db"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0006-response-meta.json": {
+      "bytes": 269,
+      "sha256": "247f7a1175c4ad8eecfdea381e218ebcdab63d97da4558342c6b287a8bb33db3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0006-response.bin": {
+      "bytes": 915,
+      "sha256": "b325aa73670854cf7ead183b5296b5d16e7753158c2973e1214486a0677850aa"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0006-terminal.json": {
+      "bytes": 703,
+      "sha256": "27a0d53f436908cf3858a2ee6b59304653f6a312f4d92040f68d067b4bf7c120"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0007-context.json": {
+      "bytes": 38522,
+      "sha256": "a13f58cf7026378717c6066bd6845f2cb2ea61f4b570f988438c0a39db37a906"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0007-native-input.json": {
+      "bytes": 8160,
+      "sha256": "a4ac2f5f44393eef29c52fd83353f8aa1a00b4b73f7d2f89def20a8526870fd4"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0007-request.bin": {
+      "bytes": 8436,
+      "sha256": "979c5b8c5553280e2825b238ff2c9204015483a06bab035462f1c3387d7228c7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0007-response-meta.json": {
+      "bytes": 270,
+      "sha256": "b346e83413e1258f9181887c1a707313e972f0e0ba576fe607ef316422830ef3"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0007-response.bin": {
+      "bytes": 1143,
+      "sha256": "3aa87ab3742d8e4dc5457ffe368f96a4edb729344718a16fdeca3e4a4c60d2bb"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/0007-terminal.json": {
+      "bytes": 702,
+      "sha256": "67790daedc8bb3d5e9230955b8042d0f72b390a17c639c5b87ff4909efd20666"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/client-config.json": {
+      "bytes": 1581,
+      "sha256": "8ade03cd0c712596a251b604d829b9bd3cb67f7a36e4c47efc4687dcf99f8137"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/client-summary.json": {
+      "bytes": 340,
+      "sha256": "098e97468dbbc61cf51ad80e095ce818b18e145ecb39137e4529a3c8e9f81409"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/model-calls.jsonl": {
+      "bytes": 6365,
+      "sha256": "9fbfa9959ee3fd60b88caeeb1f430fba58ee6614c3165e5c9cc728d6e0699492"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/model/network-events.json": {
+      "bytes": 10858,
+      "sha256": "5b8f2c8dac20728f051922c34c2bac7a47e6db8e09e518e94008e551e1de781a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/native-result.json": {
+      "bytes": 14950,
+      "sha256": "87067eb23f2befbda04611ca774337b678b048ecd240e61584358c12622b668a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/parent-terminal.json": {
+      "bytes": 232,
+      "sha256": "2cd65a51fbcd43d79fff4e476da203f17b2bb0c1994117c9269c994a25775045"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/runtime.jsonl": {
+      "bytes": 3031,
+      "sha256": "f15ba29f2f46e51a197f02fdf9704a9eef2236a1a204642edf14bd3cc9f8336c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/worker-config.json": {
+      "bytes": 128224,
+      "sha256": "95a84953690de10c55fbbd5dccfc580176593b4c953e9e41dfff88969eab6d70"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/worker-terminal.json": {
+      "bytes": 161,
+      "sha256": "4f326e61ba219283fa401b3e8f86c941315222d290b56e6d81a1d31290ba0f33"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-005/world.json": {
+      "bytes": 38628,
+      "sha256": "fed99fa1f0e6f3ddd9f8a6c57660bfb7f554d3b8c0d35f386c28878d1eb373d7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/framework.jsonl": {
+      "bytes": 40745,
+      "sha256": "317b58d7d020400026b323feb3e738d9fdea5f535c1505af2b19e9084b66e53d"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/installed-wheel.json": {
+      "bytes": 8699,
+      "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0001-context.json": {
+      "bytes": 24251,
+      "sha256": "a9ce054834331a968cf0e91622844ec70afff6ee3ce2add93cfb92e1b5406fbd"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0001-native-input.json": {
+      "bytes": 4339,
+      "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0001-request.bin": {
+      "bytes": 4727,
+      "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0001-response-meta.json": {
+      "bytes": 270,
+      "sha256": "01d1bbf2642dda1fab14ad94176ecd6f3ea5263f5d268a21580fde0220933cdd"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0001-response.bin": {
+      "bytes": 1002,
+      "sha256": "a8bbd513d0979d6a58cf429fe47ce55c8fb0c00716ac4de849495384ad943d28"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0001-terminal.json": {
+      "bytes": 703,
+      "sha256": "d8a315f3e1747809e1cda5562e6cff4d64af9983ffe187d5a09fd08ef7beb288"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0002-context.json": {
+      "bytes": 29262,
+      "sha256": "1b48d42d9914576f03ded92953eeaa8590a2d5e1468ddccb5dfb4f0f780f9de7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0002-native-input.json": {
+      "bytes": 5646,
+      "sha256": "13780336f47582c2961337d38799489362d0d52bcdc73ef660216963041f7ce6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0002-request.bin": {
+      "bytes": 6028,
+      "sha256": "114c0cae9c1289306be059c24559c183b21cffd626fb486966d361eeffcdfbcf"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0002-response-meta.json": {
+      "bytes": 269,
+      "sha256": "ef5efb20af9d90ce7dc066c658d57f019ad4d3aa422680b6013e8f052af0c9a8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0002-response.bin": {
+      "bytes": 551,
+      "sha256": "ee3ab9ac46839310231b7fa517b4313173f7c7c22cdcd7a674e849e430be1026"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0002-terminal.json": {
+      "bytes": 688,
+      "sha256": "8f14093763e3b965e8a98567cff85bd3f4af8c2417ef628780ffab1773c578a8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0003-context.json": {
+      "bytes": 30473,
+      "sha256": "f6aec0d553765368cec544df705f557e5ce358186d98ff33eece205b4e46010b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0003-native-input.json": {
+      "bytes": 6012,
+      "sha256": "65d67873e87f43f33deed6b3d5e8e8987750243fef2d150b9b120dd33c5ffd83"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0003-request.bin": {
+      "bytes": 6380,
+      "sha256": "00a85efb9f89942c2fcc51ae018f5a04fb3e43f7b2e7f5aec76c03604e65571b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0003-response-meta.json": {
+      "bytes": 269,
+      "sha256": "bef4e161e4f1e09ce6600c78c22a476e188d809daf7358d3b545ec706d16668b"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0003-response.bin": {
+      "bytes": 903,
+      "sha256": "d021a41d425af31376ce5d9bfd8cd83eaaafd98baadb45fdc45550f0b7641ba2"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0003-terminal.json": {
+      "bytes": 702,
+      "sha256": "dc1f634a2fa14451bdd1ff1ef3442cff3ae22eb9e1acc9ce6477b2d34f1ea408"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0004-context.json": {
+      "bytes": 33275,
+      "sha256": "e9ed37b2da2cc74f50f324632cd6e4f7e9fd66d19b5c9bdbf9b09b9e33e8be87"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0004-native-input.json": {
+      "bytes": 6727,
+      "sha256": "7f7ff6e4d7eafc4da97f6a960136018ebc63a9cd55de806a8d0cd282627da41f"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0004-request.bin": {
+      "bytes": 7057,
+      "sha256": "b36de76e845c3f2b38920f29b0ba788c03abc2c769de22b6f00a21a7e5202189"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0004-response-meta.json": {
+      "bytes": 270,
+      "sha256": "dc4403a8944b6215ec1efb1085b5d3fe72604a9edc384bfea99bf123eebc0615"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0004-response.bin": {
+      "bytes": 512,
+      "sha256": "fb59139e4fd40cebbdf991b610a7cdccfb534828f41d00bf5253c4c1d80ad858"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0004-terminal.json": {
+      "bytes": 689,
+      "sha256": "274ddb4429fb2193a614993c6078559aa12c9012c41e4b3ddd97ae1269a6e46d"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0005-context.json": {
+      "bytes": 34464,
+      "sha256": "2faa53489d1fef197bffe93e306279438f752d64357d8dafc8b649245b90394f"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0005-native-input.json": {
+      "bytes": 7067,
+      "sha256": "ad6a9adb01fd5a57e7e0bec8e3eae6b6742ca6547a609e02f5cdd49ec44c931c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0005-request.bin": {
+      "bytes": 7395,
+      "sha256": "381df0bbb14e1334efff1716c4da883214b88b06ae7df75cb5f66434c920b435"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0005-response-meta.json": {
+      "bytes": 270,
+      "sha256": "e21399f59fcc0200df2bc1e4208ed79e3db5db84da0d424e7f25ba7dc442d251"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0005-response.bin": {
+      "bytes": 551,
+      "sha256": "68ebfce067fa8d639a4d2acdad112825750908d60aad9ff6cd807d1aa16bbc45"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0005-terminal.json": {
+      "bytes": 701,
+      "sha256": "6ce416a41ccec1c3ff2e192192b05e21ced1a27a5dbfb0b716b67bf63ef9e041"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0006-context.json": {
+      "bytes": 35676,
+      "sha256": "d3f791c8d1dc426486b1bbf02e580ff2e7d61b8b6b5546d06e19e54a9b96235c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0006-native-input.json": {
+      "bytes": 7433,
+      "sha256": "fdfa5879fb8114039f59d3417323b17e201cd9a17a31f19b15c0c0b1438ac10e"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/0006-request.bin": {
+      "bytes": 7747,
+      "sha256": "f585fa2218309043782610b3d5d34d771a5f9a70f9b3936417e6d144894f7adb"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/client-config.json": {
+      "bytes": 1579,
+      "sha256": "10493ca44692bd2bdf4e44c53b7aadc26d5b56d7ec3172a7c2b97ca88e7d2160"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/model/model-calls.jsonl": {
+      "bytes": 5096,
+      "sha256": "a6213aa183ef1b093ac24e79f260a6db65985cb9b3760ca845e296bba823e2d9"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/runtime.jsonl": {
+      "bytes": 2867,
+      "sha256": "bcf4a4b43713c742c5b289e720f24802a176cd702c1d4517ec2cdeb33e18da42"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-collection-2026-10-24/slot-006/worker-config.json": {
+      "bytes": 128242,
+      "sha256": "18f3f34aba5e7615e0ce6a9e78e047c4915f8b9efc1803fc759e78bb619d34f5"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/claim.json": {
+      "bytes": 4467,
+      "sha256": "03fb91312ea65cb215dbcbc39c936c9f888b1308b21114d4dd08d154d0faf037"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/collector.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/collector.stdout.log": {
+      "bytes": 426,
+      "sha256": "4e9734d64bcbb3fc10a2ae4ca96ca230f71e84e05cdf73b4905e2d93544dc015"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/events.jsonl": {
+      "bytes": 910,
+      "sha256": "f2804c14d9971eaf49fff178d81a60bcbd5c9f533a70b6f8da4b389e6554ce01"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/scripts/run_limbo_completion_pipeline.py": {
+      "bytes": 22896,
+      "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-2026-10-24/inputs/source/scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-launch-2026-10-24/launch.json": {
+      "bytes": 1291,
+      "sha256": "293aa19b97d81fd289a46cc19388b8129f88001ee80dccd7894c085705eb5784"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-launch-2026-10-24/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-pipeline-launch-2026-10-24/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-prelaunch-2026-10-24/check_limbo_launch.source.py": {
+      "bytes": 4875,
+      "sha256": "e8c3c5d7e0e440349de2c0f68c7b7ebc64353d0aacd1f81e79e8c0a0c1054490"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-prelaunch-2026-10-24/manifest.json": {
+      "bytes": 271,
+      "sha256": "806887f4edcc1d74f4f28b61f038b94d67d121dd01d1b3a96fc580b3291c7f12"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-prelaunch-2026-10-24/prelaunch.json": {
+      "bytes": 5062,
+      "sha256": "5582ecf25b8c550da21e10f17c6919c0fb4f8252b54010f508aace4355d99553"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-protocol-2026-10-24/protocol-receipt.json": {
+      "bytes": 179,
+      "sha256": "36f6ea244fdf51beb78dbf80e478e74ac342a0983a084e4680e37316ae71f8e4"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-protocol-2026-10-24/protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-resource-observer-2026-10-23/observer-binding.json": {
+      "bytes": 4774,
+      "sha256": "ec93f65f605a98677d73a1d19f3feac1652d2edb3b2afd77bbb8a575126513bc"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-resource-observer-2026-10-23/observer.source.py": {
+      "bytes": 13440,
+      "sha256": "a25f3799e492670dfaf238b42fe4a3cc4e78bab19041948fec84e0b567e8c078"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-resource-observer-2026-10-23/resources.jsonl": {
+      "bytes": 68600,
+      "sha256": "556ba3e24af679dd4ba550c453a7d608f9dc535692d9575d876b9011d78e8971"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-resource-observer-2026-10-23/runtime_binding.source.json": {
+      "bytes": 1003,
+      "sha256": "518a8fb1981bceda5536c0c05c3abc6e63ad2fe51dfaafc2137f1af0ad8be7d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/alias-create.json": {
+      "bytes": 26,
+      "sha256": "36f579d4c4606f9ff3c022585bab9c993c9fb9f0aec51523d0a81a7065d0eb31"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/launch-receipt.json": {
+      "bytes": 2530,
+      "sha256": "5dda85ec177fb1b57f0115b71f73f919f288e2215deb3b7583e5d8a9683e61d1"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/load-only.json": {
+      "bytes": 161,
+      "sha256": "1872459f8b4a33cbdf3c9b0337d5d7ba8a7d5ca1fb95cab6447068e811c05e3a"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/model-show.json": {
+      "bytes": 31432,
+      "sha256": "5dd79092e1ee1d02158bebaf3e6d538bdae324938005f181b757d98e7271b490"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/resident-model.json": {
+      "bytes": 522,
+      "sha256": "bf054e83f1a4a65cf9c759d3593de380e130ae2ab75a56dec7cb97dda51777aa"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/runtime-binding.json": {
+      "bytes": 1003,
+      "sha256": "518a8fb1981bceda5536c0c05c3abc6e63ad2fe51dfaafc2137f1af0ad8be7d6"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/server.stderr.log": {
+      "bytes": 189489,
+      "sha256": "817b5a61f0f23056d57dad8b342a089e85eadffd3e39ff83f76d018d6d6d28fd"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/server.stdout.log": {
+      "bytes": 10683,
+      "sha256": "8fc1db5f88b99bc83deff1dd986e8a5ff893edbadab452f9531065a1236575a8"
+    },
+    "output/limbo-official-interruption-2026-10-24/preserved/output/limbo-runtime-2026-10-23/start.json": {
+      "bytes": 1218,
+      "sha256": "b62cf0f78de9607f47f9f09c3cc5b5493ec98aa2b3d5c60ad3df3f03fbd146e0"
+    },
+    "output/limbo-official-interruption-audit-2026-10-24-v2/audit-result.json": {
+      "bytes": 58255,
+      "sha256": "1349a616ae987c0389b89ef554de249461edb53456aa52ef686f4204939b5aab"
+    },
+    "output/limbo-official-interruption-audit-2026-10-24-v2/manifest.json": {
+      "bytes": 134,
+      "sha256": "e20aa81a1f0772b5520cdba613c0f64f7b9af921c1cf32a33c71d3ea7eec2e63"
+    },
+    "output/limbo-protocol-2026-10-24/protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "output/limbo-readiness-2026-10-24/manifest.json": {
+      "bytes": 131,
+      "sha256": "4ff5f2b5e8ffd222888440483b917ecdfb5268536833658d21ea12f51e582643"
+    },
+    "output/limbo-readiness-2026-10-24/readiness.json": {
+      "bytes": 17583,
+      "sha256": "c0a8c17fdb7628ca7dfac83447cff7f7d64b4ff6eddf3fe6d6a33c5afd3122ac"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/alias-create.json": {
+      "bytes": 26,
+      "sha256": "36f579d4c4606f9ff3c022585bab9c993c9fb9f0aec51523d0a81a7065d0eb31"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/create-wmi-supervisor.ps1": {
+      "bytes": 697,
+      "sha256": "2baaf6d0b8adef33eb6f93c93f038c643e8a3e67cbd85ab6da76eed99a2108a3"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/launch-config.json": {
+      "bytes": 3322,
+      "sha256": "cd89a7d033ac5adc9e70eb85869cbf4a2761c161bf8c4ea93b4c95da74bdd53f"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/launch-receipt.json": {
+      "bytes": 3371,
+      "sha256": "15e20cb83be31208450893edde40f0670ff52e6beef68d1cc2bc47c02324dccd"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/launcher-source.py": {
+      "bytes": 21273,
+      "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/supervisor-identity.json": {
+      "bytes": 2464,
+      "sha256": "be92f1ccca317c52c781eb9f62a00ba6291e4bbd64f3ce297621630ce97d8d9e"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/wmi-create-result.json": {
+      "bytes": 53,
+      "sha256": "51530a22a1720d7e992911887c8b760c71e7d158db1fafc8546548e0a310be34"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/wmi-handoff-identity.json": {
+      "bytes": 2466,
+      "sha256": "de0884c82690dec46219a1c50a258c6af8dd048e789387f16beae3e541b84e72"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/wmi-handoff-receipt.json": {
+      "bytes": 822,
+      "sha256": "a063463413959e03378a5bfe7c8946c0bb9775e3c4c4f024dd17347aa15687a1"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/durable-server-launch/wmi-request.json": {
+      "bytes": 591,
+      "sha256": "4731372d871a8541acbc0c17972d7b0201db0aeff6822c91691e4d845b5828af"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/launch-receipt.json": {
+      "bytes": 3137,
+      "sha256": "cdf57eda319a6b560f25cabf8c4a32ec09319d2e66fef6af2b67763f7aa8ff2c"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/load-only.json": {
+      "bytes": 161,
+      "sha256": "ec90fe5a2554d91dffa698a42b3814596b929ca8592afa058868e98fd4095bf5"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/model-show.json": {
+      "bytes": 31432,
+      "sha256": "f42dbc8e80f9a0ed80371e01824e7a45b0edbe8cccecb73a945fd08c32ce1a16"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/private-runtime-manifest.json": {
+      "bytes": 5739,
+      "sha256": "fef3e4559bb6a82b8b19dc25ac98a551259bc5d160e0f42cc8fd095f78758f9b"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/resident-model.json": {
+      "bytes": 522,
+      "sha256": "75d6212c862568ddf6a9bdf660d76c5d55db563c2636b5926fe27f5ff48b75b8"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/runtime-binding.json": {
+      "bytes": 1006,
+      "sha256": "2eb5c76cb0ed4d245d21ca992ee63f19f469ddc0b6a455f29323f3d53da07862"
+    },
+    "output/limbo-runtime-isolated-2026-10-24/start.json": {
+      "bytes": 1554,
+      "sha256": "fe034a148b400246b4a21be99a50c9099c2ffadbbe74a06cfda039594c2f71ba"
+    },
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/audit_limbo_interrupted_collection.py": {
+      "bytes": 22230,
+      "sha256": "72a5c15be1a06ba832d303eee77a1e43b106bfcdb031ac13154ed05e110e7103"
+    },
+    "scripts/audit_limbo_portable.py": {
+      "bytes": 23268,
+      "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+    },
+    "scripts/build_final_limbo_paper.py": {
+      "bytes": 38315,
+      "sha256": "baae05993b2490e3680b733e1dfe9ce50c8fded77340947fdf3bb977f8448b52"
+    },
+    "scripts/check_limbo_followup_launch.py": {
+      "bytes": 21978,
+      "sha256": "254f4d20b663dda7cbbb9d8a964be6a8acd374ed595457ccd2de6d4d95596b1c"
+    },
+    "scripts/check_limbo_launch.py": {
+      "bytes": 4875,
+      "sha256": "e8c3c5d7e0e440349de2c0f68c7b7ebc64353d0aacd1f81e79e8c0a0c1054490"
+    },
+    "scripts/check_limbo_readiness.py": {
+      "bytes": 8939,
+      "sha256": "0b5c358a06922739386a4279f5d2908138bd7b83c43f6caf5dc0f0a74539f694"
+    },
+    "scripts/check_limbo_relocated_readiness.py": {
+      "bytes": 23573,
+      "sha256": "a71f0178ce133d41c3595a20fdec7fd19cb70784173da2d44b45c45a1e791753"
+    },
+    "scripts/check_limbo_saved_proposal_receipt.py": {
+      "bytes": 16448,
+      "sha256": "68b3c61d6085a88a1d3fe21b6492e46d8f79d16d7751e328d6f0b1bffc809dee"
+    },
+    "scripts/copy_private_ollama_runtime.py": {
+      "bytes": 4476,
+      "sha256": "c0371a6eaa45e93c941d549fc7cf4d95e218cefb9527c9116a1fed3f36f3ed41"
+    },
+    "scripts/declare_limbo_followup.py": {
+      "bytes": 8135,
+      "sha256": "72cc91136583a5ee0e66ba5bbb4cb33fc69fc2c751279b9423f694eacdc0e682"
+    },
+    "scripts/finish_limbo_poststudy.py": {
+      "bytes": 27234,
+      "sha256": "c1658844476ba5b39fb6e94a1ece1e6007ce6cbe51d8d1b03fb6dafcfb2952b0"
+    },
+    "scripts/launch_durable_research.py": {
+      "bytes": 21273,
+      "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+    },
+    "scripts/prepare_final_limbo_manuscript.py": {
+      "bytes": 48535,
+      "sha256": "2eb17fe87f09155f34c42e6de50a6b604aa1db23cb0ebab1be7c71565554c9c8"
+    },
+    "scripts/probe_durable_research_lifetime.py": {
+      "bytes": 1497,
+      "sha256": "f7125163e803fa657da3fc952fbdfc5050319f046a35e58f3e27441adafc8b9e"
+    },
+    "scripts/run_limbo_completion_pipeline.py": {
+      "bytes": 22896,
+      "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    },
+    "scripts/seal_durable_lifetime_probe.py": {
+      "bytes": 6064,
+      "sha256": "38db6d078b600241ae87126e8c4ef8e2b98af7fbe85c9f0619620e9e7a669bd3"
+    },
+    "scripts/seal_limbo_transport_proof.py": {
+      "bytes": 2782,
+      "sha256": "317856ffee0e0b53758884abab531a9cf2e7469820280426fc28fd7a3449d99f"
+    },
+    "scripts/start_durable_limbo_runtime.py": {
+      "bytes": 10012,
+      "sha256": "1e0c638959e3443cd286fee6bcb57b1ef1daa20452c3368380a0d73d64f23160"
+    }
+  },
+  "readiness": {
+    "bytes": 26865,
+    "sha256": "34d928ec2651c940516b5de04af4856b4fc3fce096951f47959e7c01aa25ed44"
+  },
+  "schema": "conseqax-limbo-followup-prelaunch-v1",
+  "scope": "Read-only publication/evidence gate; original and follow-up cohorts remain separate",
+  "sealed_manifests_verified": {
+    "output/durable-launch-lifetime-probe-2026-10-24": {
+      "bytes": 2924,
+      "sha256": "15c3c9da53bc3c9b946870318d1dbe4c3bc0dfd5b87ea29a2e311cd3331cf565"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000": {
+      "bytes": 5128,
+      "sha256": "432e25717f2e59e9a9f30eb850bc86f368b086d3fc2279a58830679e877cb7ad"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000-audit": {
+      "bytes": 133,
+      "sha256": "c76a24b2c9cf5749a3d15a42879dd2fa363b7afa77a47e829bf35fd2989dfe0a"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002": {
+      "bytes": 4308,
+      "sha256": "f0fda28b463c8eaa497cfabfe771dd5f929e8723b8c85eca3a74c92be863e914"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002-audit": {
+      "bytes": 133,
+      "sha256": "7cd71cdcf0ac05f3fba7b7e2db0facf234fd9a937505d4272fd144c05540b886"
+    },
+    "output/limbo-development-2026-10-23/transport-002": {
+      "bytes": 4570,
+      "sha256": "6069d2cb63f5b1caa760038ba79c194bf2d2dabb91de95e8acf621ccd52c4375"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000": {
+      "bytes": 1260,
+      "sha256": "50df95060baec36de941135d2d27473e40d740f4849c7389f50f771f93f643be"
+    },
+    "output/limbo-followup-development-2026-10-24/all-public-schemas-002": {
+      "bytes": 959,
+      "sha256": "0a4406dbdc28be524bdc3e71a4dadfd5290df840136b8dc9b97c817608af9e53"
+    },
+    "output/limbo-followup-development-2026-10-24/transport-003": {
+      "bytes": 4570,
+      "sha256": "f35d548f990f2d2a34f3d63c52446f824163f7ca816fb0f47b311c843b00cd39"
+    },
+    "output/limbo-followup-readiness-2026-10-24": {
+      "bytes": 131,
+      "sha256": "05ad12689a687990a322adcffab78ea882dacb962a009c624e66431168a84a42"
+    },
+    "output/limbo-interrupted-analysis-2026-10-24": {
+      "bytes": 1195,
+      "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+    },
+    "output/limbo-official-interruption-2026-10-24": {
+      "bytes": 58698,
+      "sha256": "7aa299986bff9d7885f64f9b03dd4b2f5625670bdc6a6451c4ed02d4089e7d89"
+    },
+    "output/limbo-official-interruption-audit-2026-10-24-v2": {
+      "bytes": 134,
+      "sha256": "e20aa81a1f0772b5520cdba613c0f64f7b9af921c1cf32a33c71d3ea7eec2e63"
+    },
+    "output/limbo-readiness-2026-10-24": {
+      "bytes": 131,
+      "sha256": "4ff5f2b5e8ffd222888440483b917ecdfb5268536833658d21ea12f51e582643"
+    }
+  },
+  "utc": "2026-10-24T04:52:20.919513+00:00"
+}

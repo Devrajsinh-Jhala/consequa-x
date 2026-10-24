@@ -1,0 +1,4 @@
+{"binding": {"bytes": 5583, "sha256": "b786e7166771d6f1acbb16d6f73c071b75f4661c035d751728bfdfa4a75381ae"}, "event": "claim_sealed", "utc": "2026-10-24T04:53:19.277977+00:00"}
+{"event": "pipeline_wait_observation", "manifest_present": false, "observation": {"actual_create_time": 1792817573.282704, "status": "pid_reused"}, "terminal_present": false, "utc": "2026-10-24T04:53:19.490615+00:00"}
+{"error": "PipelineInterrupted: Original pipeline identity lost before seal: {'status': 'pid_reused', 'actual_create_time': 1792817573.282704}", "event": "dependent_work_stopped", "status": "ORIGINAL_PIPELINE_INTERRUPTED", "utc": "2026-10-24T04:53:19.498710+00:00"}
+{"all_dependent_children_known_closed": true, "event": "poststudy_exit", "exit_code": 1, "paper_stage": "NOT_PREPARED", "status": "ORIGINAL_PIPELINE_INTERRUPTED", "utc": "2026-10-24T04:53:19.498710+00:00"}

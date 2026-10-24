@@ -1,0 +1,97 @@
+{
+  "bound_inputs": [
+    {
+      "binding": {
+        "bytes": 1006,
+        "sha256": "2eb5c76cb0ed4d245d21ca992ee63f19f469ddc0b6a455f29323f3d53da07862"
+      },
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-runtime-isolated-2026-10-24\\runtime-binding.json"
+    }
+  ],
+  "command": [
+    "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "-B",
+    "C:/Code/ConsequaX-Research/paper-writing/scripts/observe_limbo_resources.py",
+    "--runtime-binding",
+    "C:/Code/ConsequaX-Research/paper-writing/output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+    "--output",
+    "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-resource-observer-2026-10-24",
+    "--stop-file",
+    "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-observer-stop-2026-10-24.flag"
+  ],
+  "command_executable_binding": {
+    "bytes": 277808,
+    "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+  },
+  "creationflag_names": [
+    "DETACHED_PROCESS",
+    "CREATE_NEW_PROCESS_GROUP",
+    "CREATE_BREAKAWAY_FROM_JOB"
+  ],
+  "creationflags": 16777736,
+  "cwd": "C:\\Code\\ConsequaX-Research\\paper-writing",
+  "environment_overrides": {
+    "PYTHONPATH": "C:/Code/ConsequaX-Research/paper-writing"
+  },
+  "job_policy": "ambient_non_killing",
+  "launcher_source": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\launch_durable_research.py",
+  "launcher_source_binding": {
+    "bytes": 21273,
+    "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+  },
+  "mechanism": "wmi_two_stage",
+  "parent": {
+    "command_line": [
+      "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "scripts/launch_durable_research.py",
+      "launch",
+      "--mechanism",
+      "wmi_two_stage",
+      "--job-policy",
+      "ambient_non_killing",
+      "--cwd",
+      "C:/Code/ConsequaX-Research/paper-writing",
+      "--output",
+      "output/limbo-followup-observer-launch-2026-10-24",
+      "--env",
+      "PYTHONPATH=C:/Code/ConsequaX-Research/paper-writing",
+      "--bind-input",
+      "output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+      "--",
+      "C:/Code/ConsequaX-Research/native-agent-pilot-venv/Scripts/python.exe",
+      "-B",
+      "C:/Code/ConsequaX-Research/paper-writing/scripts/observe_limbo_resources.py",
+      "--runtime-binding",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+      "--output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-resource-observer-2026-10-24",
+      "--stop-file",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-observer-stop-2026-10-24.flag"
+    ],
+    "create_time": 1792817560.400186,
+    "executable": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "in_any_windows_job": true,
+    "pid": 7192,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  },
+  "parent_current_job_limits": {
+    "assigned_process_count": 3,
+    "breakaway_ok": true,
+    "kill_on_job_close": true,
+    "limit_flags": 10240,
+    "process_id_list_complete": true,
+    "process_ids": [
+      14056,
+      1860,
+      7192
+    ],
+    "query_current_job_succeeded": true,
+    "scope": "Innermost current job; does not identify every nested outer job",
+    "silent_breakaway_ok": false,
+    "winerror": null
+  },
+  "planned_utc": "2026-10-24T04:52:40.897239+00:00",
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "One-shot launch; no retries, resumes, scheduling, auto-start or unrelated process control"
+}

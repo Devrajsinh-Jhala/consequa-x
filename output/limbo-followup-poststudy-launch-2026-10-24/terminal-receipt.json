@@ -1,0 +1,58 @@
+{
+  "finished_utc": "2026-10-24T04:53:19.658356+00:00",
+  "return_code": 1,
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "Process exit only; scientific completeness requires the collector/auditor artifacts",
+  "status": "target_exited",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 236,
+    "sha256": "e153f82f09d0209db06e253873496a17759b64d24be7ab177590c52efd0ce8e0"
+  },
+  "target": {
+    "command_line": [
+      "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+      "-B",
+      "C:/Code/ConsequaX-Research/paper-writing/scripts/finish_limbo_poststudy.py",
+      "--pipeline",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-pipeline-2026-10-24",
+      "--pipeline-pid",
+      "6528",
+      "--pipeline-created-time",
+      "1792817573.2827",
+      "--protocol",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-protocol-2026-10-24/protocol.json",
+      "--protocol-commit",
+      "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+      "--collection",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-collection-2026-10-24",
+      "--official-audit",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-audit-2026-10-24",
+      "--analysis",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-analysis-2026-10-24",
+      "--native-root",
+      "C:/Code/ConsequaX-Research/limbo-pinned-2db09fba",
+      "--output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-poststudy-2026-10-24",
+      "--portable-audit-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-portable-audit-2026-10-24",
+      "--manuscript-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-manuscript-stage-2026-10-24",
+      "--interrupted-analysis",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-interrupted-analysis-2026-10-24",
+      "--interrupted-protocol",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-protocol-2026-10-24/protocol.json",
+      "--interrupted-protocol-commit",
+      "267cd1a3e846c46c009f20accbf302746e064875"
+    ],
+    "create_time": 1792817597.570829,
+    "executable": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "in_any_windows_job": true,
+    "listed_in_supervisor_non_killing_ambient_job": true,
+    "pid": 13948,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  }
+}

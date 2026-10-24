@@ -1,0 +1,15 @@
+{
+  "ended_utc": "2026-10-24T04:53:19.498710+00:00",
+  "error": "PipelineInterrupted: Original pipeline identity lost before seal: {'status': 'pid_reused', 'actual_create_time': 1792817573.282704}",
+  "exit_code": 1,
+  "final_pdf_or_conference_acceptance_claim": false,
+  "new_model_calls": 0,
+  "new_pdf_created": false,
+  "official_collection_restart": false,
+  "paper_stage": "NOT_PREPARED",
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "schema": "conseqax-limbo-poststudy-terminal-v1",
+  "stages": [],
+  "started_utc": "2026-10-24T04:53:18.045878+00:00",
+  "status": "ORIGINAL_PIPELINE_INTERRUPTED"
+}

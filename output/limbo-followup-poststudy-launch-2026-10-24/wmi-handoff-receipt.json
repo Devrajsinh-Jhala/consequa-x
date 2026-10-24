@@ -1,0 +1,18 @@
+{
+  "handed_off_utc": "2026-10-24T04:53:17.210199+00:00",
+  "scope": "Strict bootstrap only; it must independently verify no job before any target launch",
+  "supervisor": {
+    "command_line": [
+      "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\launch_durable_research.py",
+      "_supervise",
+      "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-poststudy-launch-2026-10-24\\launch-config.json"
+    ],
+    "create_time": 1792817597.193147,
+    "executable": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "in_any_windows_job": true,
+    "pid": 19452,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  }
+}

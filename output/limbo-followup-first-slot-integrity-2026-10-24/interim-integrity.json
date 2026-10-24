@@ -1,0 +1,189 @@
+{
+  "audited_episode": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24\\slot-000",
+  "current_offline_environment": {
+    "SDK_installation_required": false,
+    "executable": {
+      "bytes": 107312,
+      "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "sha256": "3ceb740cb3eb2c1c38602cf75a199e6331dd1295957e0d91e4dd4ef248466bf4"
+    },
+    "historical_environment_equality_required": false,
+    "implementation": "cpython",
+    "machine": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "third_party_replay_dependencies_required": []
+  },
+  "episode_inventory_files": 26,
+  "episode_manifest": {
+    "bytes": 3477,
+    "sha256": "c891e7d39ff5905acd885405ddcd7a08f58ece567bde9d9eb14590e5eaff02fd"
+  },
+  "helper": {
+    "bytes": 5537,
+    "sha256": "b98aef99d4dbfbbf1eae8c9db91829ba7e79c2f5ade2a0d45588dbb7dff452be"
+  },
+  "passed": true,
+  "planned_slot": {
+    "arm": "vanilla",
+    "metadata": {
+      "affordances": {
+        "batch": false,
+        "idempotency": "non_idempotent",
+        "reversible": false,
+        "verification": "eventual"
+      },
+      "domain": "mail",
+      "family": "billing",
+      "focal": "mail",
+      "index": 964286,
+      "mode": "none",
+      "template": "refund_duplicate"
+    },
+    "slot": 0,
+    "spec": {
+      "contract": "native",
+      "doc_variant": "neutral",
+      "experiment": "conseqax-limbo-frozen-v1",
+      "focal": "mail",
+      "harness": "minimal",
+      "human_available": false,
+      "index": 964286,
+      "instruction_variant": "default",
+      "max_tool_calls": 16,
+      "mode": "none",
+      "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+      "paraphrase": 0,
+      "policy": "vanilla",
+      "reasoning_effort": null,
+      "replicate": 0,
+      "template": "refund_duplicate"
+    },
+    "world_rank": 0
+  },
+  "portable_bootstrap": {
+    "bytes": 23268,
+    "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+  },
+  "protocol": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "row": {
+    "arm": "vanilla",
+    "audit_complete": true,
+    "execution_success": true,
+    "fault_triggered": false,
+    "grade_available": true,
+    "model_cap_refusals": 0,
+    "model_completions": 2,
+    "model_dispatches": 2,
+    "model_invocations": 2,
+    "native_error": null,
+    "native_grade": {
+      "EOS": true,
+      "TS": true,
+      "clean_success": true,
+      "collateral": [],
+      "dup_compensated": 0,
+      "dup_executed": 0,
+      "dup_live": 0,
+      "exact_state": true,
+      "extraneous_writes": 0,
+      "goal_met": true,
+      "n_effects": 2,
+      "targets": [
+        {
+          "dup_executed": 0,
+          "dup_live": 0,
+          "executed": 1,
+          "expected": 1,
+          "kind": "refund",
+          "label": "refund",
+          "live": 1,
+          "met": true
+        },
+        {
+          "dup_executed": 0,
+          "dup_live": 0,
+          "executed": 1,
+          "expected": 1,
+          "kind": "mail",
+          "label": "mail",
+          "live": 1,
+          "met": true
+        }
+      ]
+    },
+    "native_stop_reason": "finish",
+    "operational": true,
+    "package_same_native_guard_replay": false,
+    "receipt_count": 0,
+    "slot": 0,
+    "started": true,
+    "status": "audited_native_return",
+    "usage": {
+      "cached_tokens": {
+        "complete_for_all_invocations": true,
+        "observed_prefix_total": 1329,
+        "unknown_invocations": 0
+      },
+      "input_tokens": {
+        "complete_for_all_invocations": true,
+        "observed_prefix_total": 2596,
+        "unknown_invocations": 0
+      },
+      "output_tokens": {
+        "complete_for_all_invocations": true,
+        "observed_prefix_total": 195,
+        "unknown_invocations": 0
+      },
+      "reasoning_tokens": {
+        "complete_for_all_invocations": false,
+        "observed_prefix_total": 0,
+        "unknown_invocations": 2
+      }
+    },
+    "virtual_seconds": 1.8,
+    "wall_s": 143.05,
+    "work": {
+      "advance": 2,
+      "execute": 3,
+      "flush": 1
+    },
+    "work_charges": {
+      "boundary_enter_counts_are_not_physical_effect_counts": true,
+      "flush_attempts": 1,
+      "native_tool_events": 3,
+      "outer_virtual_wait_seconds": 0,
+      "outer_wait_attempts": 0,
+      "public_verify_attempts": 0
+    },
+    "world_rank": 0
+  },
+  "schema": "conseqax-limbo-followup-first-slot-interim-integrity-v1",
+  "scope": {
+    "SDK_execution_or_independent_service_verifier_replay": false,
+    "SDK_receipt_current_public_report_mapping_recomputation": true,
+    "SDK_reexecution": false,
+    "comparative_score": false,
+    "conseqax_guard_replayed_as_declared_native_guard": true,
+    "final_collection_audit": false,
+    "fresh_model_calls": 0,
+    "human_or_network_used": false,
+    "independent_native_policy_and_effect_replay": true,
+    "independent_tokenizer_reconstruction": false,
+    "live_service_or_network_calls": 0,
+    "live_tokenizer_or_render_calls": 0,
+    "native_simulator_replay_of_saved_trajectory": true,
+    "only_first_already_sealed_slot_replayed": true,
+    "original_episode_modified": false,
+    "other_slots_inspected_or_replayed": false,
+    "passed_means_all_slots_operational_or_successful": false,
+    "passed_means_first_native_task_succeeded": false,
+    "saved_context_render_token_proof_consistency": true,
+    "treatment_or_collection_changed_based_on_outcome": false
+  },
+  "utc": "2026-10-24T04:58:08.867944+00:00"
+}

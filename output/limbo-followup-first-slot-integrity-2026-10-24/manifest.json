@@ -1,0 +1,266 @@
+{
+  "audit_limbo_portable.source.py": {
+    "bytes": 23268,
+    "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+  },
+  "check-first-slot.py": {
+    "bytes": 5537,
+    "sha256": "b98aef99d4dbfbbf1eae8c9db91829ba7e79c2f5ade2a0d45588dbb7dff452be"
+  },
+  "frozen-native-source/limbo/__init__.py": {
+    "bytes": 89,
+    "sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+  },
+  "frozen-native-source/limbo/agent.py": {
+    "bytes": 7859,
+    "sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+  },
+  "frozen-native-source/limbo/analysis.py": {
+    "bytes": 12999,
+    "sha256": "31261718867753704c565a6db124e834096d0886ff95b176453cefeec97146ea"
+  },
+  "frozen-native-source/limbo/behavior.py": {
+    "bytes": 3318,
+    "sha256": "46e85534cbaa313bea84bd9ae093463f58700de0a374ba91ed9e92a9bb492a13"
+  },
+  "frozen-native-source/limbo/cases.py": {
+    "bytes": 4485,
+    "sha256": "c1547c384b58ae6b36efe1aca3e80039a9340c49e5049d7576c13fb765d54211"
+  },
+  "frozen-native-source/limbo/gateway_proxy.py": {
+    "bytes": 3605,
+    "sha256": "c3ca046de0ef6e4c56a2950a8df02a2b94ac19c699f9ee09bf5f6414973541d1"
+  },
+  "frozen-native-source/limbo/grader.py": {
+    "bytes": 8805,
+    "sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+  },
+  "frozen-native-source/limbo/harness.py": {
+    "bytes": 11131,
+    "sha256": "7d863bfc1bc9af8f2075a36adac3840aa86c6153af1cdcb6befdfc5d248f19d6"
+  },
+  "frozen-native-source/limbo/key_contract_probe.py": {
+    "bytes": 3260,
+    "sha256": "82fc61a09b694c3beb333822f1f134b626969153ea7c3ae29c2b3905ba77d863"
+  },
+  "frozen-native-source/limbo/llm.py": {
+    "bytes": 15062,
+    "sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+  },
+  "frozen-native-source/limbo/mcp_proxy.py": {
+    "bytes": 3039,
+    "sha256": "f1dee64be46a17dd8e982dd7d2c0d72b0892cd03dc49cedca06160d14a5d9faa"
+  },
+  "frozen-native-source/limbo/pipeline.py": {
+    "bytes": 10210,
+    "sha256": "775eb847d4058455ae93caedc65a32c11d5cec9259db0c05a8fdd0ca9da7e217"
+  },
+  "frozen-native-source/limbo/policies.py": {
+    "bytes": 14938,
+    "sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+  },
+  "frozen-native-source/limbo/prompts.py": {
+    "bytes": 3944,
+    "sha256": "9761f4c50d2209e9dd1b2346be40f2cefa5d35976f00e98b178ae5c44a2c24cd"
+  },
+  "frozen-native-source/limbo/real_api.py": {
+    "bytes": 26175,
+    "sha256": "e9ecadcc4fe33cca8d6e04dccc04fcc573495763ccc30f39b24ee4cf11f68369"
+  },
+  "frozen-native-source/limbo/real_api_analysis.py": {
+    "bytes": 10063,
+    "sha256": "4bf93655408b214d0a6e2c960d8b077106977e1812891844399d943d8a9b45ce"
+  },
+  "frozen-native-source/limbo/report.py": {
+    "bytes": 81057,
+    "sha256": "aaabda2c661dd24e7e4b97fa0198930487f67b549cb8cc36cf2a3f65db8220ed"
+  },
+  "frozen-native-source/limbo/runner.py": {
+    "bytes": 6937,
+    "sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+  },
+  "frozen-native-source/limbo/runtime.py": {
+    "bytes": 18364,
+    "sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+  },
+  "frozen-native-source/limbo/sandbox_http.py": {
+    "bytes": 6957,
+    "sha256": "72509f445fb38c5d3d2a3ce5538e050d3ec81079c58236b9cbcf4161299b740c"
+  },
+  "frozen-native-source/limbo/services.py": {
+    "bytes": 40579,
+    "sha256": "68483bbfbfed20b422627850ee6f73edd947c6487810e838da5fab59b4dcb906"
+  },
+  "frozen-native-source/limbo/tasks.py": {
+    "bytes": 25478,
+    "sha256": "02efac4e4dbc1079d8534a1ea85bbc1bb5c7b676db60a40ffca08ca3b14f03eb"
+  },
+  "frozen-native-source/limbo/world.py": {
+    "bytes": 6525,
+    "sha256": "d2d9a346d07769ad5157eac67d2f204bea73c1a5cdacf093fe647a001b47e00d"
+  },
+  "frozen-scientific-source/research/limbo_agent/audit.py": {
+    "bytes": 30335,
+    "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+  },
+  "frozen-scientific-source/research/limbo_agent/boundary.py": {
+    "bytes": 16895,
+    "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+  },
+  "frozen-scientific-source/research/limbo_agent/harness.py": {
+    "bytes": 13858,
+    "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+  },
+  "frozen-scientific-source/research/limbo_agent/policy.py": {
+    "bytes": 16239,
+    "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+  },
+  "frozen-scientific-source/research/limbo_agent/preflight.py": {
+    "bytes": 6899,
+    "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+  },
+  "frozen-scientific-source/research/limbo_agent/probe.py": {
+    "bytes": 4230,
+    "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+  },
+  "frozen-scientific-source/research/limbo_agent/protocol.py": {
+    "bytes": 13796,
+    "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+  },
+  "frozen-scientific-source/research/limbo_agent/transport.py": {
+    "bytes": 24399,
+    "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+  },
+  "frozen-scientific-source/research/native_agent/__init__.py": {
+    "bytes": 80,
+    "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+  },
+  "frozen-scientific-source/research/native_agent/transport.py": {
+    "bytes": 33759,
+    "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+  },
+  "frozen-scientific-source/scripts/audit_limbo_external_benchmark.py": {
+    "bytes": 1296,
+    "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+  },
+  "frozen-scientific-source/scripts/run_limbo_external_benchmark.py": {
+    "bytes": 11968,
+    "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+  },
+  "interim-integrity.json": {
+    "bytes": 5742,
+    "sha256": "3f4cc0eef0d3cca1d60833060cb78c1749626b207122a89a4014b6b3abc81c12"
+  },
+  "protocol.json": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "saved-first-slot/framework.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "saved-first-slot/installed-wheel.json": {
+    "bytes": 8711,
+    "sha256": "e048a7ac2bb7d66d5075100db15d07773035f24f4b024d42c0db97a7228f181e"
+  },
+  "saved-first-slot/manifest.json": {
+    "bytes": 3477,
+    "sha256": "c891e7d39ff5905acd885405ddcd7a08f58ece567bde9d9eb14590e5eaff02fd"
+  },
+  "saved-first-slot/model/0001-context.json": {
+    "bytes": 24256,
+    "sha256": "bac93f6cd2e39a05ad23beac772cd016b78aaa01e3e06d658117c9cff6f4bd46"
+  },
+  "saved-first-slot/model/0001-native-input.json": {
+    "bytes": 4339,
+    "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+  },
+  "saved-first-slot/model/0001-request.bin": {
+    "bytes": 4727,
+    "sha256": "24c07079cee8db06ed88a2313cd423d6e844257a5df255bbe803dce54194e940"
+  },
+  "saved-first-slot/model/0001-response-meta.json": {
+    "bytes": 257,
+    "sha256": "5357f47cff1203bb576304ca06050043e8a8895b02726ca78997e7fa0b61a365"
+  },
+  "saved-first-slot/model/0001-response.bin": {
+    "bytes": 992,
+    "sha256": "99e84728c2e0b7740f6be5b5626db87575abee346eb37ee624fac26c14dc4792"
+  },
+  "saved-first-slot/model/0001-terminal.json": {
+    "bytes": 697,
+    "sha256": "65ffe379b3aca620a7c5a2afc369505b919e944f11bf064fe4e5e8706068edd4"
+  },
+  "saved-first-slot/model/0002-context.json": {
+    "bytes": 28200,
+    "sha256": "181c1aafd3df3e14df33450daf091d4059b0431da5032a5efd22a43c5e13c76e"
+  },
+  "saved-first-slot/model/0002-native-input.json": {
+    "bytes": 5373,
+    "sha256": "8997aa75a3c8913993f60bac82c71aba262c04d18ee2b3692234974bd929ba90"
+  },
+  "saved-first-slot/model/0002-request.bin": {
+    "bytes": 5755,
+    "sha256": "4833976a162f41d7b4a31a426d31f9b95468c7cd3d3152c0761a6c051922a197"
+  },
+  "saved-first-slot/model/0002-response-meta.json": {
+    "bytes": 269,
+    "sha256": "41abcd8af52da7a2efa6e12f460c2b431d48c9db1522c17f18957da21a26d282"
+  },
+  "saved-first-slot/model/0002-response.bin": {
+    "bytes": 676,
+    "sha256": "c597f665a460537566e1beea372249cf9accda1ae82b86b5ca0ef09d075928be"
+  },
+  "saved-first-slot/model/0002-terminal.json": {
+    "bytes": 701,
+    "sha256": "27f342e02d8ff26d025b21a6e56803ae34ed8537b4a45293b80d61e78b30359e"
+  },
+  "saved-first-slot/model/client-config.json": {
+    "bytes": 1583,
+    "sha256": "b1e988b43c4a65fee44dc1f21b99173cc28e67397d29c093cb3bfcf4b5f108e4"
+  },
+  "saved-first-slot/model/client-summary.json": {
+    "bytes": 340,
+    "sha256": "b90bf750ffa6424bd1ea4829015667eca408a9047a7eeccdc246a27fe0afc213"
+  },
+  "saved-first-slot/model/model-calls.jsonl": {
+    "bytes": 1925,
+    "sha256": "f6a3155713b3492796971f320199337f49fccb674abb689487ece3f8d926a1cf"
+  },
+  "saved-first-slot/model/network-events.json": {
+    "bytes": 3103,
+    "sha256": "a9492103c09f98839cc14c3fd7c324c52a98827650698bfe774eba19ccda2500"
+  },
+  "saved-first-slot/native-result.json": {
+    "bytes": 8436,
+    "sha256": "fa93c13b0137b89359ada20389993b628f2ef936c50b1df367adf0f32d3548ef"
+  },
+  "saved-first-slot/parent-terminal.json": {
+    "bytes": 234,
+    "sha256": "0a959d2bbdfbebf8ab4ddd38272bb86c881390e84eb4e60fda27f994fc8a0a12"
+  },
+  "saved-first-slot/runtime.jsonl": {
+    "bytes": 1817,
+    "sha256": "bebf10a5203f3096c2054ba67707a847fb2b152d3ce049ac09784d05c2afac7f"
+  },
+  "saved-first-slot/stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "saved-first-slot/stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "saved-first-slot/worker-config.json": {
+    "bytes": 131325,
+    "sha256": "c4301ab499077d8df2eccba9d6acea86e43ce79cef3437ec8e630cb1b70da143"
+  },
+  "saved-first-slot/worker-terminal.json": {
+    "bytes": 153,
+    "sha256": "13f0400df0040457561f7ee3cefa774aff7844908b65d36235c2e90956e808b5"
+  },
+  "saved-first-slot/world.json": {
+    "bytes": 39784,
+    "sha256": "1753e7d1715b12598769fe296ba027005b5e92b57c68292c1fb0526e60314011"
+  }
+}

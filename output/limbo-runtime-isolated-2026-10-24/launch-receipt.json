@@ -1,0 +1,74 @@
+{
+  "base_manifest_after": {
+    "bytes": 859,
+    "sha256": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "base_manifest_before": {
+    "bytes": 859,
+    "sha256": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "cold_memory_gate": {
+    "available_bytes": 5928796160,
+    "required_bytes": 4212750816,
+    "scope": "Weights + expected single8k q8 KV +1GiB reserve, not maximum later memory"
+  },
+  "declared_runtime_version": "0.40.10",
+  "finished_utc": "2026-10-24T04:37:39.879755+00:00",
+  "job_policy": "ambient_non_killing",
+  "job_scope": "Escapes tool kill-on-close job; retained ambient Windows job is allowed; no reboot/logoff survival promise",
+  "model_downloads": 0,
+  "model_generation_attempts": 0,
+  "model_load_requests": 1,
+  "normal_service_modified": false,
+  "private_runtime_manifest": {
+    "bytes": 5739,
+    "path": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\private-runtime-manifest.json",
+    "sha256": "fef3e4559bb6a82b8b19dc25ac98a551259bc5d160e0f42cc8fd095f78758f9b"
+  },
+  "process_only_environment": {
+    "OLLAMA_CONTEXT_LENGTH": "8192",
+    "OLLAMA_DEBUG": "1",
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_HOST": "127.0.0.1:11436",
+    "OLLAMA_KEEP_ALIVE": "-1",
+    "OLLAMA_KV_CACHE_TYPE": "q8_0",
+    "OLLAMA_MAX_LOADED_MODELS": "1",
+    "OLLAMA_MODELS": "C:\\Users\\DELL\\.ollama\\models",
+    "OLLAMA_NOPRUNE": "1",
+    "OLLAMA_NO_CLOUD": "1",
+    "OLLAMA_NUM_PARALLEL": "1"
+  },
+  "runner_in_any_windows_job": true,
+  "runner_pid": 8880,
+  "runtime_binding": {
+    "api_base": "http://127.0.0.1:11436/v1",
+    "context_tokens": 8192,
+    "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+    "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+    "model_digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+    "parallel_slots": 1,
+    "runner_create_time": 1792816651.342602,
+    "runner_executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\lib\\ollama\\llama-server.exe",
+    "runner_executable_sha256": "e4df46adeadd70e0148e47f4fa5157614419bc09bd63f9dfce359a4b66ecf0d5",
+    "runner_pid": 8880,
+    "runner_port": 59579,
+    "server_create_time": 1792816649.471334,
+    "server_executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\ollama.exe",
+    "server_executable_sha256": "c691333e17b3b66f922804a09d030dc2ac69d5e92b3609ca5596ed803dcfe50f",
+    "server_pid": 4168
+  },
+  "schema": "conseqax-durable-limbo-runtime-v1",
+  "scope": "One isolated private CPU listener; existing weights; zero completion requests",
+  "server_in_any_windows_job": true,
+  "server_pid": 4168,
+  "source": {
+    "bytes": 10012,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\start_durable_limbo_runtime.py",
+    "sha256": "1e0c638959e3443cd286fee6bcb57b1ef1daa20452c3368380a0d73d64f23160"
+  },
+  "started_utc": "2026-10-24T04:37:23.255657+00:00",
+  "version_response": {
+    "version": "0.40.10"
+  }
+}

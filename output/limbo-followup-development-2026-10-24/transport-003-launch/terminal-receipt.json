@@ -1,0 +1,39 @@
+{
+  "finished_utc": "2026-10-24T04:41:06.330055+00:00",
+  "return_code": 0,
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "Process exit only; scientific completeness requires the collector/auditor artifacts",
+  "status": "target_exited",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 137,
+    "sha256": "5005f93675f73c963914dcb5ae2ea2af75c255038188f04e96b34c089a54c786"
+  },
+  "target": {
+    "command_line": [
+      "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "research.limbo_agent.probe",
+      "--binding",
+      "output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+      "--output",
+      "output/limbo-followup-development-2026-10-24/transport-003",
+      "--max-output-tokens",
+      "512",
+      "--request-timeout",
+      "1200",
+      "--seed",
+      "1701"
+    ],
+    "create_time": 1792816827.2621017,
+    "executable": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "in_any_windows_job": true,
+    "listed_in_supervisor_non_killing_ambient_job": true,
+    "pid": 1880,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  }
+}

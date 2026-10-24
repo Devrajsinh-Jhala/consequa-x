@@ -1,0 +1,127 @@
+{
+  "model_generations": 0,
+  "observed_remote_main": "267cd1a3e846c46c009f20accbf302746e064875",
+  "passed": true,
+  "protocol": {
+    "bytes": 118781,
+    "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+  },
+  "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875",
+  "published_files_verified": {
+    "docs/limbo-analysis-plan-2026-10-24.md": {
+      "bytes": 3631,
+      "sha256": "61eb14920372e22a18b0ec16e4c16223b19abd74acbaceca374fcb2ff998b5b5"
+    },
+    "docs/limbo-readiness-amendment-2026-10-24.md": {
+      "bytes": 3042,
+      "sha256": "8f5d28d0cb887ac9dc9b219e87bb9fe7b0d5a766fc51f93ddca6384c7be2b060"
+    },
+    "output/limbo-development-2026-10-23/baseline-migration-000-audit/audit-result.json": {
+      "bytes": 9348,
+      "sha256": "1157bc56689a548be07549f679260d0584bff4d31f9736450b1fbf9e60317fbd"
+    },
+    "output/limbo-development-2026-10-23/guard-migration-002-audit/audit-result.json": {
+      "bytes": 9361,
+      "sha256": "7649f54b2cb532506042263330ccf397b23cf568d4e2377cc893fcf3f97ad813"
+    },
+    "output/limbo-development-2026-10-23/transport-002/probe-result.json": {
+      "bytes": 1446,
+      "sha256": "c51d651f094674fbea3f604975376ba64af6b9450aefef69ba83eb69a1c31b0d"
+    },
+    "output/limbo-development-2026-10-24/saved-proposal-receipt-000/proof.json": {
+      "bytes": 18652,
+      "sha256": "854b130b58c8b28547089455c0f0fe4088b1f30d85a878067b4c832d25771858"
+    },
+    "output/limbo-protocol-2026-10-24/protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "output/limbo-readiness-2026-10-24/readiness.json": {
+      "bytes": 17583,
+      "sha256": "c0a8c17fdb7628ca7dfac83447cff7f7d64b4ff6eddf3fe6d6a33c5afd3122ac"
+    },
+    "output/limbo-runtime-2026-10-23/runtime-binding.json": {
+      "bytes": 1003,
+      "sha256": "518a8fb1981bceda5536c0c05c3abc6e63ad2fe51dfaafc2137f1af0ad8be7d6"
+    },
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/check_limbo_launch.py": {
+      "bytes": 4875,
+      "sha256": "e8c3c5d7e0e440349de2c0f68c7b7ebc64353d0aacd1f81e79e8c0a0c1054490"
+    },
+    "scripts/check_limbo_readiness.py": {
+      "bytes": 8939,
+      "sha256": "0b5c358a06922739386a4279f5d2908138bd7b83c43f6caf5dc0f0a74539f694"
+    },
+    "scripts/check_limbo_saved_proposal_receipt.py": {
+      "bytes": 16448,
+      "sha256": "68b3c61d6085a88a1d3fe21b6492e46d8f79d16d7751e328d6f0b1bffc809dee"
+    },
+    "scripts/run_limbo_completion_pipeline.py": {
+      "bytes": 22896,
+      "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    },
+    "scripts/seal_limbo_transport_proof.py": {
+      "bytes": 2782,
+      "sha256": "317856ffee0e0b53758884abab531a9cf2e7469820280426fc28fd7a3449d99f"
+    }
+  },
+  "readiness": {
+    "bytes": 17583,
+    "sha256": "c0a8c17fdb7628ca7dfac83447cff7f7d64b4ff6eddf3fe6d6a33c5afd3122ac"
+  },
+  "runtime_process_identities_checked": true,
+  "scope": "Read-only publication and readiness check; no benchmark score",
+  "utc": "2026-10-23T18:49:14.331104+00:00"
+}

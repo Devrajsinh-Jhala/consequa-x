@@ -1,0 +1,32 @@
+{
+  "base_manifest_sha256_before": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "cold_memory_gate": {
+    "available_bytes": 5911560192,
+    "required_bytes": 4212750816,
+    "scope": "Weights + expected single8k q8 KV +1GiB reserve, not maximum later memory"
+  },
+  "model_downloads": 0,
+  "model_generation_attempts": 0,
+  "model_load_requests": 0,
+  "normal_service_modified": false,
+  "process_only_environment": {
+    "OLLAMA_CONTEXT_LENGTH": "8192",
+    "OLLAMA_DEBUG": "1",
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_HOST": "127.0.0.1:11436",
+    "OLLAMA_KEEP_ALIVE": "-1",
+    "OLLAMA_KV_CACHE_TYPE": "q8_0",
+    "OLLAMA_MAX_LOADED_MODELS": "1",
+    "OLLAMA_MODELS": "C:\\Users\\DELL\\.ollama\\models",
+    "OLLAMA_NOPRUNE": "1",
+    "OLLAMA_NO_CLOUD": "1",
+    "OLLAMA_NUM_PARALLEL": "1"
+  },
+  "removed_environment_names": [
+    "GOOGLE_API_KEY"
+  ],
+  "scope": "New separate LIMBO candidate; existing weights, no download or completion",
+  "server_executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+  "server_executable_sha256": "034a26a71836df581ef8b9ab4db489154f548c81b53aa8816d0e843b9e385c2b",
+  "started_utc": "2026-10-23T18:22:25.847865+00:00"
+}

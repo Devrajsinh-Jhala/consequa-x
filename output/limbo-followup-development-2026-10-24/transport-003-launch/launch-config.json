@@ -1,0 +1,125 @@
+{
+  "bound_inputs": [
+    {
+      "binding": {
+        "bytes": 1006,
+        "sha256": "2eb5c76cb0ed4d245d21ca992ee63f19f469ddc0b6a455f29323f3d53da07862"
+      },
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-runtime-isolated-2026-10-24\\runtime-binding.json"
+    },
+    {
+      "binding": {
+        "bytes": 4230,
+        "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+      },
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\research\\limbo_agent\\probe.py"
+    },
+    {
+      "binding": {
+        "bytes": 24399,
+        "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+      },
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\research\\limbo_agent\\transport.py"
+    }
+  ],
+  "command": [
+    "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "research.limbo_agent.probe",
+    "--binding",
+    "output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+    "--output",
+    "output/limbo-followup-development-2026-10-24/transport-003",
+    "--max-output-tokens",
+    "512",
+    "--request-timeout",
+    "1200",
+    "--seed",
+    "1701"
+  ],
+  "command_executable_binding": {
+    "bytes": 277808,
+    "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+  },
+  "creationflag_names": [
+    "DETACHED_PROCESS",
+    "CREATE_NEW_PROCESS_GROUP",
+    "CREATE_BREAKAWAY_FROM_JOB"
+  ],
+  "creationflags": 16777736,
+  "cwd": "C:\\Code\\ConsequaX-Research\\paper-writing",
+  "environment_overrides": {
+    "PYTHONPATH": "C:/Code/ConsequaX-Research/paper-writing;C:/Code/ConsequaX-Research/limbo-pinned-2db09fba"
+  },
+  "job_policy": "ambient_non_killing",
+  "launcher_source": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\launch_durable_research.py",
+  "launcher_source_binding": {
+    "bytes": 21273,
+    "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+  },
+  "mechanism": "wmi_two_stage",
+  "parent": {
+    "command_line": [
+      "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "scripts/launch_durable_research.py",
+      "launch",
+      "--mechanism",
+      "wmi_two_stage",
+      "--job-policy",
+      "ambient_non_killing",
+      "--cwd",
+      "C:/Code/ConsequaX-Research/paper-writing",
+      "--output",
+      "output/limbo-followup-development-2026-10-24/transport-003-launch",
+      "--env",
+      "PYTHONPATH=C:/Code/ConsequaX-Research/paper-writing;C:/Code/ConsequaX-Research/limbo-pinned-2db09fba",
+      "--bind-input",
+      "output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+      "--bind-input",
+      "research/limbo_agent/probe.py",
+      "--bind-input",
+      "research/limbo_agent/transport.py",
+      "--",
+      "C:/Code/ConsequaX-Research/native-agent-pilot-venv/Scripts/python.exe",
+      "-B",
+      "-m",
+      "research.limbo_agent.probe",
+      "--binding",
+      "output/limbo-runtime-isolated-2026-10-24/runtime-binding.json",
+      "--output",
+      "output/limbo-followup-development-2026-10-24/transport-003",
+      "--max-output-tokens",
+      "512",
+      "--request-timeout",
+      "1200",
+      "--seed",
+      "1701"
+    ],
+    "create_time": 1792816824.0147288,
+    "executable": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "in_any_windows_job": true,
+    "pid": 12524,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  },
+  "parent_current_job_limits": {
+    "assigned_process_count": 3,
+    "breakaway_ok": true,
+    "kill_on_job_close": true,
+    "limit_flags": 10240,
+    "process_id_list_complete": true,
+    "process_ids": [
+      18128,
+      10444,
+      12524
+    ],
+    "query_current_job_succeeded": true,
+    "scope": "Innermost current job; does not identify every nested outer job",
+    "silent_breakaway_ok": false,
+    "winerror": null
+  },
+  "planned_utc": "2026-10-24T04:40:24.407158+00:00",
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "One-shot launch; no retries, resumes, scheduling, auto-start or unrelated process control"
+}

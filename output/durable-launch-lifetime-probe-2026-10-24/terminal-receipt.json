@@ -1,0 +1,30 @@
+{
+  "finished_utc": "2026-10-24T04:36:30.577516+00:00",
+  "return_code": 0,
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "Process exit only; scientific completeness requires the collector/auditor artifacts",
+  "status": "target_exited",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "target": {
+    "command_line": [
+      "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "C:/Code/ConsequaX-Research/paper-writing/scripts/probe_durable_research_lifetime.py",
+      "--output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/durable-launch-lifetime-probe-2026-10-24/sentinel"
+    ],
+    "create_time": 1792816575.1538894,
+    "executable": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "in_any_windows_job": true,
+    "listed_in_supervisor_non_killing_ambient_job": true,
+    "pid": 16192,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "api_base": "http://127.0.0.1:11436/v1",
+  "context_tokens": 8192,
+  "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+  "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "model_digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+  "parallel_slots": 1,
+  "runner_create_time": 1792816651.342602,
+  "runner_executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\lib\\ollama\\llama-server.exe",
+  "runner_executable_sha256": "e4df46adeadd70e0148e47f4fa5157614419bc09bd63f9dfce359a4b66ecf0d5",
+  "runner_pid": 8880,
+  "runner_port": 59579,
+  "server_create_time": 1792816649.471334,
+  "server_executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\ollama.exe",
+  "server_executable_sha256": "c691333e17b3b66f922804a09d030dc2ac69d5e92b3609ca5596ed803dcfe50f",
+  "server_pid": 4168
+}

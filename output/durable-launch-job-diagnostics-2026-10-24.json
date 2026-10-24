@@ -1,0 +1,18 @@
+{
+  "breakaway_ok": true,
+  "current_in_any_windows_job": true,
+  "current_pid": 14460,
+  "explorer_processes": [
+    {
+      "in_any_windows_job": true,
+      "pid": 8516
+    }
+  ],
+  "innermost_job_limit_flags": 10240,
+  "kill_on_job_close": true,
+  "observed_utc": "2026-10-24T04:29:17.970887+00:00",
+  "query_current_job_succeeded": true,
+  "query_winerror": null,
+  "scope": "Read-only job membership/limits; innermost job flags do not identify every nested outer job",
+  "silent_breakaway_ok": false
+}

@@ -1,0 +1,383 @@
+{
+  "episode_audits_passed": 4,
+  "new_model_calls": 0,
+  "official_protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875",
+  "protocol": {
+    "bytes": 118781,
+    "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+  },
+  "rows": [
+    {
+      "arm": "vanilla",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 0,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 1355,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 175.12,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 1,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 90.62,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "guard",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 2,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 74.83,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": true,
+      "receipt_count": 0,
+      "slot": 3,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 84.41,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    }
+  ],
+  "schema": "conseqax-limbo-first-world-integrity-v1",
+  "scope": "First completed world only; intermediate integrity monitoring, not the final all-planned benchmark score",
+  "selection_or_schedule_changed": false,
+  "utc": "2026-10-23T18:59:58.269447+00:00"
+}

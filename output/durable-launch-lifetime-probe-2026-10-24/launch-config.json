@@ -1,0 +1,85 @@
+{
+  "bound_inputs": [
+    {
+      "binding": {
+        "bytes": 1497,
+        "sha256": "f7125163e803fa657da3fc952fbdfc5050319f046a35e58f3e27441adafc8b9e"
+      },
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\probe_durable_research_lifetime.py"
+    }
+  ],
+  "command": [
+    "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "C:/Code/ConsequaX-Research/paper-writing/scripts/probe_durable_research_lifetime.py",
+    "--output",
+    "C:/Code/ConsequaX-Research/paper-writing/output/durable-launch-lifetime-probe-2026-10-24/sentinel"
+  ],
+  "command_executable_binding": {
+    "bytes": 107312,
+    "sha256": "3ceb740cb3eb2c1c38602cf75a199e6331dd1295957e0d91e4dd4ef248466bf4"
+  },
+  "creationflag_names": [
+    "DETACHED_PROCESS",
+    "CREATE_NEW_PROCESS_GROUP",
+    "CREATE_BREAKAWAY_FROM_JOB"
+  ],
+  "creationflags": 16777736,
+  "cwd": "C:\\Code\\ConsequaX-Research\\paper-writing",
+  "environment_overrides": {},
+  "job_policy": "ambient_non_killing",
+  "launcher_source": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\launch_durable_research.py",
+  "launcher_source_binding": {
+    "bytes": 21273,
+    "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+  },
+  "mechanism": "wmi_two_stage",
+  "parent": {
+    "command_line": [
+      "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "scripts/launch_durable_research.py",
+      "launch",
+      "--mechanism",
+      "wmi_two_stage",
+      "--job-policy",
+      "ambient_non_killing",
+      "--cwd",
+      "C:/Code/ConsequaX-Research/paper-writing",
+      "--output",
+      "output/durable-launch-lifetime-probe-2026-10-24",
+      "--bind-input",
+      "scripts/probe_durable_research_lifetime.py",
+      "--",
+      "C:/Users/DELL/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "C:/Code/ConsequaX-Research/paper-writing/scripts/probe_durable_research_lifetime.py",
+      "--output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/durable-launch-lifetime-probe-2026-10-24/sentinel"
+    ],
+    "create_time": 1792816572.5618508,
+    "executable": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "in_any_windows_job": true,
+    "pid": 13428,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  },
+  "parent_current_job_limits": {
+    "assigned_process_count": 3,
+    "breakaway_ok": true,
+    "kill_on_job_close": true,
+    "limit_flags": 10240,
+    "process_id_list_complete": true,
+    "process_ids": [
+      17132,
+      12600,
+      13428
+    ],
+    "query_current_job_succeeded": true,
+    "scope": "Innermost current job; does not identify every nested outer job",
+    "silent_breakaway_ok": false,
+    "winerror": null
+  },
+  "planned_utc": "2026-10-24T04:36:12.929817+00:00",
+  "schema": "conseqax-durable-research-launch-v1",
+  "scope": "One-shot launch; no retries, resumes, scheduling, auto-start or unrelated process control"
+}

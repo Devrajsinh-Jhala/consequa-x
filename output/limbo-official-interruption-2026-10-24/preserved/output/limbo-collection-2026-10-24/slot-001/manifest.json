@@ -1,0 +1,106 @@
+{
+  "framework.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "installed-wheel.json": {
+    "bytes": 8699,
+    "sha256": "38f048cffdd870054345e697394c4270ff70031093a2822ebe1ae3dd304a78d6"
+  },
+  "model/0001-context.json": {
+    "bytes": 24253,
+    "sha256": "7ce2ee1c48b5781754210575c73d3accc643aee8ca8e3b72c47e4b28faa29ee9"
+  },
+  "model/0001-native-input.json": {
+    "bytes": 4339,
+    "sha256": "629428a57247bc97fb2185a89b5744d5ff58b19390093bac02b70aa16c4bee53"
+  },
+  "model/0001-request.bin": {
+    "bytes": 4727,
+    "sha256": "f10422e45515952341e5a4755a92e06a3547e1f4e0ff9f53d40fb12034824679"
+  },
+  "model/0001-response-meta.json": {
+    "bytes": 270,
+    "sha256": "89134cd7313fc3215c716688b929aea806c2f868a1c61f30fcf6bcf67aa2d871"
+  },
+  "model/0001-response.bin": {
+    "bytes": 1002,
+    "sha256": "0799fc2b6448d251edb78790420714d55976d72a1327d2cdc2547ce18891417b"
+  },
+  "model/0001-terminal.json": {
+    "bytes": 702,
+    "sha256": "4ad8c9af30dfa0856951fd14f66289f64265b25d63504d173f549a7dbb361ec8"
+  },
+  "model/0002-context.json": {
+    "bytes": 28176,
+    "sha256": "418990f41040be3baf61f49816c26f53b31fe80a6bc8906b9427823ee93a6e3e"
+  },
+  "model/0002-native-input.json": {
+    "bytes": 5380,
+    "sha256": "de1ab5599521870cd21929fac7b10bdd3e965e6198142b4017235e7df9157c5a"
+  },
+  "model/0002-request.bin": {
+    "bytes": 5762,
+    "sha256": "279ec8f34126e8d3ffdb43250e212c1c79c757116cac50b807b3d182706f454a"
+  },
+  "model/0002-response-meta.json": {
+    "bytes": 269,
+    "sha256": "ccc499272d54d3bbfbccfa370a0b4b0aa108f4f60c3e429e541c00b4ccf5d4f7"
+  },
+  "model/0002-response.bin": {
+    "bytes": 676,
+    "sha256": "c3bbc2e513d0495d2875132c5a8ad8e7416d0bab653f78c9ec4871235a31f975"
+  },
+  "model/0002-terminal.json": {
+    "bytes": 687,
+    "sha256": "5a53cbea75c40522b68cfc16a07918befc6648a88a7b553211c1a6e71eaab6b9"
+  },
+  "model/client-config.json": {
+    "bytes": 1581,
+    "sha256": "8ed95a30258af38307316aec0314188dd24712c3d379f977df0555736f5c2c1b"
+  },
+  "model/client-summary.json": {
+    "bytes": 340,
+    "sha256": "eb8248e8bf7feee997d75f90b4e911b0040d983a61a7c80f8df0d2156de4aa43"
+  },
+  "model/model-calls.jsonl": {
+    "bytes": 1936,
+    "sha256": "5a17f947e48e0f6034d8485a5cafd4f7ebc13c3f14d2c25ca06e9c3f9c89e22d"
+  },
+  "model/network-events.json": {
+    "bytes": 3103,
+    "sha256": "34eec58c752c0f5470fe73afaeafc0be680dd873b1c797bf945922f4fd824b61"
+  },
+  "native-result.json": {
+    "bytes": 8468,
+    "sha256": "efcb85ad85b6777478275e320013f759aab1fa007c5fa01147097afdecfbc564"
+  },
+  "parent-terminal.json": {
+    "bytes": 237,
+    "sha256": "790c70f177a306e92c6619ec8b5a2124b3023e9756a8717b504ddc47c5782c39"
+  },
+  "runtime.jsonl": {
+    "bytes": 1829,
+    "sha256": "4d1550ed471b24b051edab1ded7c8d7f6b7b3942e3f4956e2dc2765e63b1d986"
+  },
+  "stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "worker-config.json": {
+    "bytes": 128220,
+    "sha256": "fd1366fd4846ec30dcf26d506573db6b9472e5fc3d770401769e46b46e80d291"
+  },
+  "worker-terminal.json": {
+    "bytes": 153,
+    "sha256": "ddefad9dd9266ad9355532b93c324ba86e43429934384f0f2b12d22892f43ef3"
+  },
+  "world.json": {
+    "bytes": 39794,
+    "sha256": "f49a0674e3ca7712717b6aa76b175d5e9b06e34f42afefe7f5a204703ac29d46"
+  }
+}

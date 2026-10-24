@@ -1,0 +1,90 @@
+{
+  "create-wmi-supervisor.ps1": {
+    "bytes": 697,
+    "sha256": "2baaf6d0b8adef33eb6f93c93f038c643e8a3e67cbd85ab6da76eed99a2108a3"
+  },
+  "launch-config.json": {
+    "bytes": 3078,
+    "sha256": "573f9c4c54f7e8173176b8daf310002ae629a5f51278c342a319c0fe88aff348"
+  },
+  "launch-receipt.json": {
+    "bytes": 3621,
+    "sha256": "204596c6bf0174969ee4f40136b4af73aebd127d96aa8e0f28211a500654f6b7"
+  },
+  "launcher-source.py": {
+    "bytes": 21273,
+    "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+  },
+  "lifetime-proof.json": {
+    "bytes": 4006,
+    "sha256": "2773a26b125eef612c40656662ed57fd7ab4e4e327499887402249bb6dc4d717"
+  },
+  "sealer-source.py": {
+    "bytes": 6064,
+    "sha256": "38db6d078b600241ae87126e8c4ef8e2b98af7fbe85c9f0619620e9e7a669bd3"
+  },
+  "sentinel-source.py": {
+    "bytes": 1497,
+    "sha256": "f7125163e803fa657da3fc952fbdfc5050319f046a35e58f3e27441adafc8b9e"
+  },
+  "sentinel/delayed-sentinel.json": {
+    "bytes": 2634,
+    "sha256": "84dd12e614660f2ab4073cc1a6581d6b68982167d35e8245863b707acf231ac9"
+  },
+  "sentinel/started.json": {
+    "bytes": 2738,
+    "sha256": "c105f026ea1088d67af5f45a0ecd41f259bfcea7c808bce00cc16f6b42d69e7d"
+  },
+  "supervisor-identity.json": {
+    "bytes": 2433,
+    "sha256": "101a749786ac31ba1c73ea1e043b8a52a35e941a1c3ab4cb1560cd2280a64220"
+  },
+  "supervisor.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "supervisor.stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "target.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "target.stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "terminal-receipt.json": {
+    "bytes": 1175,
+    "sha256": "c38bdbf215d466b8311392943c28ca526db78811709d198adcb5217cf4ba53e6"
+  },
+  "tool-return-observation.json": {
+    "bytes": 328,
+    "sha256": "17c8e2c288f344ea13078359ad8ef444149c2cb6f9daf452b2a4f8f906a4e8d2"
+  },
+  "wmi-call.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "wmi-call.stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "wmi-create-result.json": {
+    "bytes": 53,
+    "sha256": "856f890e6a17022de71646940f7a406908d2b69de4737b0f008df733c2d3e655"
+  },
+  "wmi-handoff-identity.json": {
+    "bytes": 2449,
+    "sha256": "224c92db881c608dba833e00c9f6abc0a92b7bd9ca33a8c54bc0ad69d3383e39"
+  },
+  "wmi-handoff-receipt.json": {
+    "bytes": 805,
+    "sha256": "ee7f6533cbcb1cd86536e98301931b2a5ae44f0cf7d8b653e06d61ffadab6595"
+  },
+  "wmi-request.json": {
+    "bytes": 550,
+    "sha256": "2d7ebfed48e8bbcaed4f592735cce1aede9f4d6ae248fc74865e52963dff0d2b"
+  }
+}

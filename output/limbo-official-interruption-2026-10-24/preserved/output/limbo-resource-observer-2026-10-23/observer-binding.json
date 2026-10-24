@@ -1,0 +1,54 @@
+{
+  "actual_generation_requests": 0,
+  "adapter_source": {
+    "path": "D:\\ConsequaX-Research\\paper-writing\\scripts\\observe_limbo_resources.py",
+    "sha256": "25d833a53cf2d2b162267f740fed28135fd843473fa94d022acf1dee8d9f09c5",
+    "source": "\"\"\"Read-only auxiliary observations using the already tested resource sampler.\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport psutil\n\nimport observe_native_resources as sampler\n\n\ndef main():\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('--runtime-binding', type=Path, required=True)\n    parser.add_argument('--output', type=Path, required=True)\n    parser.add_argument('--stop-file', type=Path, required=True)\n    args = parser.parse_args()\n    path = args.runtime_binding.resolve()\n    runtime = json.loads(path.read_text(encoding='utf-8'))\n    processes = {}\n    for role in ('server', 'runner'):\n        born = runtime[role + '_create_time']\n        processes[role] = sampler.bind_process(psutil, runtime[role + '_pid'],\n            runtime[role + '_executable'], runtime[role + '_executable_sha256'],\n            (born - .001, born + .001), runtime['server_pid'] if role == 'runner' else None)\n    source = Path(__file__).resolve()\n    binding = {'schema': 'limbo-resource-observer-binding-v1', 'created_utc': sampler.utc(),\n        'scope': 'Auxiliary read-only bound-process CPU/RSS and system available RAM; no inference or process control',\n        'script': {'path': str(Path(sampler.__file__).resolve()), 'sha256': sampler.sha_file(sampler.__file__)},\n        'adapter_source': {'path': str(source), 'sha256': sampler.sha_file(source),\n                           'source': source.read_text(encoding='utf-8')},\n        'inputs': {'runtime_binding': {'path': str(path), 'sha256': sampler.sha_file(path)}},\n        'processes': processes, 'model_blob_sha256': runtime['model_blob_sha256'],\n        'cpu_percent_definition': '100*processCPUdelta/monotonicwalltime; may exceed100 across cores; firstsample null',\n        'limitations': ['Thirty-second sampling does not establish true peaks',\n            'RSS can count shared pages', 'Unobserved programs affect available RAM',\n            'Caches and host load prevent causal SDK-overhead inference'],\n        'actual_generation_requests': 0, 'network_requests': 0}\n    code, summary = sampler.observe(binding, args.output, args.stop_file, 30, psutil)\n    print(json.dumps(summary, sort_keys=True))\n    return code\n\n\nif __name__ == '__main__':\n    raise SystemExit(main())\n"
+  },
+  "cpu_percent_definition": "100*processCPUdelta/monotonicwalltime; may exceed100 across cores; firstsample null",
+  "created_utc": "2026-10-23T18:23:19.058658+00:00",
+  "inputs": {
+    "runtime_binding": {
+      "path": "D:\\ConsequaX-Research\\paper-writing\\output\\limbo-runtime-2026-10-23\\runtime-binding.json",
+      "sha256": "518a8fb1981bceda5536c0c05c3abc6e63ad2fe51dfaafc2137f1af0ad8be7d6"
+    }
+  },
+  "interval_seconds": 30,
+  "limitations": [
+    "Thirty-second sampling does not establish true peaks",
+    "RSS can count shared pages",
+    "Unobserved programs affect available RAM",
+    "Caches and host load prevent causal SDK-overhead inference"
+  ],
+  "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "network_requests": 0,
+  "processes": {
+    "runner": {
+      "create_time_epoch_seconds": 1792779768.0485156,
+      "create_time_utc": "2026-10-23T18:22:48.048516+00:00",
+      "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\lib\\ollama\\llama-server.exe",
+      "executable_mtime_ns": 1792596514000000000,
+      "executable_sha256": "f3d991efc561b7f537a45f1693e8839b5e8fef18e337b0cf202303dfc730bab9",
+      "executable_size": 22920,
+      "parent_pid": 19092,
+      "pid": 19640
+    },
+    "server": {
+      "create_time_epoch_seconds": 1792779748.250586,
+      "create_time_utc": "2026-10-23T18:22:28.250586+00:00",
+      "executable": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+      "executable_mtime_ns": 1792596514000000000,
+      "executable_sha256": "034a26a71836df581ef8b9ab4db489154f548c81b53aa8816d0e843b9e385c2b",
+      "executable_size": 28141960,
+      "parent_pid": 17932,
+      "pid": 19092
+    }
+  },
+  "schema": "limbo-resource-observer-binding-v1",
+  "scope": "Auxiliary read-only bound-process CPU/RSS and system available RAM; no inference or process control",
+  "script": {
+    "path": "D:\\ConsequaX-Research\\paper-writing\\scripts\\observe_native_resources.py",
+    "sha256": "a25f3799e492670dfaf238b42fe4a3cc4e78bab19041948fec84e0b567e8c078"
+  },
+  "stop_file": "D:\\ConsequaX-Research\\paper-writing\\output\\stop-limbo-resource-observer-2026-10-23.flag"
+}

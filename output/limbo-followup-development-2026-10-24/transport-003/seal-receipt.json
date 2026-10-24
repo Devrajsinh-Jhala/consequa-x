@@ -1,0 +1,60 @@
+{
+  "actual_dispatch_attempts": 2,
+  "model_generation_requests_by_sealer": 0,
+  "native_episodes": 0,
+  "passed": true,
+  "returned_completions": 2,
+  "scope": "Postcompletion packaging of original raw proof; not prospective source registration",
+  "source_copies_observed_after_collection": true,
+  "sources": {
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    }
+  },
+  "utc": "2026-10-24T04:43:52.539564+00:00"
+}

@@ -113,5 +113,9 @@ the resulting paper or its final publication is presented to the user.
 
 The draft-build journal is `output/limbo-followup-draft-build-2026-10-24`, with
 its edited source bundle in `output/limbo-followup-editorial-stage-2026-10-24`.
-These paths are prospective until the recorded launch and passed input seals
-exist. No new model calls, humans, paid inference or GitHub Actions are added.
+The draft builder launched at `2026-10-24T13:09:55.378904+00:00`, target
+PID 9908, exact creation epoch `1792847395.3639548`. Its launch receipt is in
+`output/limbo-followup-draft-build-launch-2026-10-24`. The initial read-only
+wait observation confirmed the exact active poststudy identity as matching.
+Its downstream edited/PDF outputs remain prospective until the required input
+seals pass. No new model calls, humans, paid inference or GitHub Actions are added.

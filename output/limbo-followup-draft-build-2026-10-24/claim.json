@@ -1,0 +1,615 @@
+{
+  "branch": "codex/native-external-2026-10-21",
+  "inputs": {
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-poststudy-2026-10-24-v2\\claim.json": {
+      "bytes": 5591,
+      "sha256": "ac37f73a499482911b5503d3b3f81722ed19674f9ba495f299232e146a13f3d5"
+    },
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-poststudy-launch-2026-10-24-v2\\launch-config.json": {
+      "bytes": 7618,
+      "sha256": "d9bb7fad9034efb7549805676ab796f3864b08fa2ba8218661b03a20a2cd0bd2"
+    },
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-poststudy-launch-2026-10-24-v2\\launch-receipt.json": {
+      "bytes": 5252,
+      "sha256": "c4139539dfa11c4022760f5b0e35e7354e51b93989c0178e4678c8a878f0395e"
+    },
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json": {
+      "bytes": 121774,
+      "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+    },
+    "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-protocol-2026-10-24\\protocol.json": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    }
+  },
+  "launch_head": "d6d75060e86db3031a762cf0af524b3836910d77",
+  "new_model_calls": 0,
+  "original_poststudy_claim": {
+    "both_cohorts_required": true,
+    "cohorts_pooled": false,
+    "collection_launches": 0,
+    "interrupted_cohort": {
+      "analysis_manifest": {
+        "bytes": 1195,
+        "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+      },
+      "analysis_path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-interrupted-analysis-2026-10-24",
+      "protocol": {
+        "bytes": 118781,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-protocol-2026-10-24\\protocol.json",
+        "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+      },
+      "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875"
+    },
+    "model_requests": 0,
+    "network_requests": 0,
+    "new_outputs": {
+      "manuscript_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-manuscript-stage-2026-10-24-v2",
+      "portable_audit_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-portable-audit-2026-10-24-v2"
+    },
+    "original_paths": {
+      "analysis": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-analysis-2026-10-24",
+      "collection": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24",
+      "native_root": "C:\\Code\\ConsequaX-Research\\limbo-pinned-2db09fba",
+      "official_audit": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-audit-2026-10-24",
+      "pipeline": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-pipeline-2026-10-24"
+    },
+    "original_pipeline_claim": {
+      "bytes": 4557,
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-pipeline-2026-10-24\\claim.json",
+      "sha256": "c0777cd83b82dce1e79947364910c9fa66a13d13d12a30205e3d16131431ba52"
+    },
+    "original_pipeline_process": {
+      "exact_create_time_epoch_seconds": 1792817573.282704,
+      "pid": 6528
+    },
+    "poll_interval_seconds": 30,
+    "process_control_actions": 0,
+    "protocol": {
+      "bytes": 121774,
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+      "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+    },
+    "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+    "python": {
+      "bytes": 277808,
+      "path": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+      "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+    },
+    "retries_resume_replacement_or_scheduling": false,
+    "schema": "conseqax-limbo-poststudy-claim-v1",
+    "scope": "Dependent offline replay and static manuscript staging only; REVIEW_PENDING, no final PDF or acceptance claim",
+    "source_files": {
+      "research/limbo_agent/audit.py": {
+        "bytes": 30335,
+        "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+      },
+      "research/limbo_agent/boundary.py": {
+        "bytes": 16895,
+        "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+      },
+      "research/limbo_agent/harness.py": {
+        "bytes": 13858,
+        "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+      },
+      "research/limbo_agent/policy.py": {
+        "bytes": 16239,
+        "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+      },
+      "research/limbo_agent/preflight.py": {
+        "bytes": 6899,
+        "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+      },
+      "research/limbo_agent/probe.py": {
+        "bytes": 4230,
+        "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+      },
+      "research/limbo_agent/protocol.py": {
+        "bytes": 13796,
+        "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+      },
+      "research/limbo_agent/transport.py": {
+        "bytes": 24399,
+        "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+      },
+      "research/native_agent/__init__.py": {
+        "bytes": 80,
+        "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+      },
+      "research/native_agent/transport.py": {
+        "bytes": 33759,
+        "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+      },
+      "scripts/analyze_limbo_external_benchmark.py": {
+        "bytes": 43865,
+        "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+      },
+      "scripts/audit_limbo_external_benchmark.py": {
+        "bytes": 1296,
+        "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+      },
+      "scripts/audit_limbo_portable.py": {
+        "bytes": 23268,
+        "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+      },
+      "scripts/build_final_limbo_paper.py": {
+        "bytes": 38315,
+        "sha256": "baae05993b2490e3680b733e1dfe9ce50c8fded77340947fdf3bb977f8448b52"
+      },
+      "scripts/finish_limbo_poststudy.py": {
+        "bytes": 27234,
+        "sha256": "c1658844476ba5b39fb6e94a1ece1e6007ce6cbe51d8d1b03fb6dafcfb2952b0"
+      },
+      "scripts/prepare_final_limbo_manuscript.py": {
+        "bytes": 48535,
+        "sha256": "2eb17fe87f09155f34c42e6de50a6b604aa1db23cb0ebab1be7c71565554c9c8"
+      },
+      "scripts/run_limbo_completion_pipeline.py": {
+        "bytes": 22896,
+        "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+      },
+      "scripts/run_limbo_external_benchmark.py": {
+        "bytes": 11968,
+        "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+      }
+    },
+    "utc": "2026-10-24T04:53:47.014613+00:00"
+  },
+  "paper_base": {
+    "paper/README.md": {
+      "bytes": 12660,
+      "sha256": "d2d546005d8a02c497e774bcdbc734529973ee0a0b2cc1071587e449d33dae2d"
+    },
+    "paper/analytic-reference-check.json": {
+      "bytes": 53435,
+      "sha256": "4004d03183980851b152f815932c8790855c50e3ee7feb7b9b36f617568648fe"
+    },
+    "paper/conseqax-research.md": {
+      "bytes": 55807,
+      "sha256": "5eca806b7d60e0e05b7ed32b21d889e434d7a53899d41adaddd586fa3953fe7f"
+    },
+    "paper/conseqax-research.tex": {
+      "bytes": 34635,
+      "sha256": "fd94baef0fcdd3204cd4e7c5a4b5bf407632141fab0e6125fccbd36b764cd580"
+    },
+    "paper/consequa-x-ieee.tex": {
+      "bytes": 75053,
+      "sha256": "189e81ae65858d3203a10fdcd776d490442e852b85bc318a84f86492a8cd2c85"
+    },
+    "paper/evidence-ledger.md": {
+      "bytes": 38630,
+      "sha256": "8075b79b03b13e4419652dee6281b07444cd88e38b2c66726301de340c6cb6cd"
+    },
+    "paper/external-validation-findings-2026-10-18.md": {
+      "bytes": 15365,
+      "sha256": "6d39aff0d9b0d303d2755e247da7ab5c6bdac7f5c58f203919960b432ff3efd4"
+    },
+    "paper/figures/README.md": {
+      "bytes": 11130,
+      "sha256": "5743f3eb9284d6e3ab14346f9f72cb8a9637b5d7dca2c31a4ba39035260d2d8a"
+    },
+    "paper/figures/benchmark-state-transfer.pdf": {
+      "bytes": 23100,
+      "sha256": "4f0a66c4a234688cbdff75998193823b45c89d58b0e19307274faf2b140f5b9f"
+    },
+    "paper/figures/benchmark-state-transfer.png": {
+      "bytes": 171927,
+      "sha256": "899ea63cd0330fd259c121ebbdecb975d8da4b01d232e5dac7b6211175af4156"
+    },
+    "paper/figures/benchmark-state-transfer.svg": {
+      "bytes": 122968,
+      "sha256": "b986367718b17c7dc85ee4fb1d3ad087e89dd14eccb4512caeecce15f28d1f85"
+    },
+    "paper/figures/data-branch-disposition.pdf": {
+      "bytes": 39677,
+      "sha256": "1b5124a03dd213c9eb6d66c2df19533ed13b83718ed03d1e571804ae312a4e8a"
+    },
+    "paper/figures/data-branch-disposition.png": {
+      "bytes": 126484,
+      "sha256": "a2cd3536bbc1227900cc8492927b56258899b4b2c1103acc4184d9d65e20f251"
+    },
+    "paper/figures/data-branch-disposition.svg": {
+      "bytes": 198308,
+      "sha256": "a82470e4a9d6e1159b3ea6524fa1384667be4ef18526dc500a78f70c80307041"
+    },
+    "paper/figures/data-figures.json": {
+      "bytes": 41305,
+      "sha256": "d6393f963656a39d4079d9497b85472d9991580f646f43e65c02a2770329ee87"
+    },
+    "paper/figures/data-interval-tradeoffs.pdf": {
+      "bytes": 19395,
+      "sha256": "fe3219a7e66d5a4b93b6652bf04d51cb9b3ba8758177c37d7b520bfc635c5630"
+    },
+    "paper/figures/data-interval-tradeoffs.png": {
+      "bytes": 120988,
+      "sha256": "dfbc5eb08f0525117ff947cddf6e90e91e59adcc88f3256d7c89e42a213eba65"
+    },
+    "paper/figures/data-interval-tradeoffs.svg": {
+      "bytes": 45245,
+      "sha256": "f116a908f2d93434e787e1f38c5fb1dc18f7610a447cbda0a75dda6a4eb406d5"
+    },
+    "paper/figures/diagram-evidence-architecture.pdf": {
+      "bytes": 58092,
+      "sha256": "971f659f941029f286f2933d010800978ddbcafe02466df27b9759da227f95aa"
+    },
+    "paper/figures/diagram-evidence-architecture.png": {
+      "bytes": 159488,
+      "sha256": "49387b940098b70e7aaa35e0f6e4c320f8232f8493d2f88f914c6493dfdfd2c7"
+    },
+    "paper/figures/diagram-evidence-architecture.svg": {
+      "bytes": 15533,
+      "sha256": "b9876bf3e96cefb6d21497082abed955ac9c0afbea84a72079a6c09addf7dc45"
+    },
+    "paper/figures/diagram-figures.json": {
+      "bytes": 5282,
+      "sha256": "46a64218c7713f4dfd7cd298f79824e2b772e5dd3c06f4a6521ce1bf5fa0a7d6"
+    },
+    "paper/figures/diagram-timeout-retry.pdf": {
+      "bytes": 60890,
+      "sha256": "5c1c49a94bb962966449f565e491beca890b9631d3074d6cac22edb0bca19ad1"
+    },
+    "paper/figures/diagram-timeout-retry.png": {
+      "bytes": 141799,
+      "sha256": "4dd0a7d4bd63776ca363979b556cf6a4666a63383316412beebaeda69e944c7f"
+    },
+    "paper/figures/diagram-timeout-retry.svg": {
+      "bytes": 14440,
+      "sha256": "028e8598b6afd875768f690c98b1202979f9d17c6c9eab43eb9bbcf3261363c7"
+    },
+    "paper/figures/limbo-native-methods.pdf": {
+      "bytes": 36407,
+      "sha256": "30df66d103e64d67db6a0d9f31acf2c5b6584aba21b7345edc5a6dd23a6a9839"
+    },
+    "paper/figures/limbo-native-methods.png": {
+      "bytes": 163181,
+      "sha256": "c776b0805af452819ae175b5bbcb6e8246d07d4c7de36f5809ef4d756cd18152"
+    },
+    "paper/figures/limbo-native-methods.svg": {
+      "bytes": 14678,
+      "sha256": "a4d5f70287534c1e24d5f18e8cf2a0d7d29146c8ef50b6917abdf2064ca531fb"
+    },
+    "paper/figures/matched-baseline-metrics.pdf": {
+      "bytes": 26607,
+      "sha256": "310709074a7e4c8ef5a383b0c68001d73f93b247aaec3c3b8d85821a543cdc4a"
+    },
+    "paper/figures/matched-baseline-metrics.png": {
+      "bytes": 153696,
+      "sha256": "cff372aee0372af1316b1fc340b7e0cfffed8ecd50aa0029a9da221e4613e761"
+    },
+    "paper/figures/matched-baseline-metrics.svg": {
+      "bytes": 48869,
+      "sha256": "22a6f4cae4afd51b20cbf3a81452fc0e118c848dc795bf89962d89c5a9e2dccd"
+    },
+    "paper/figures/matched-model-disposition.pdf": {
+      "bytes": 24297,
+      "sha256": "27d9da0b95ca740831ef507784c114bbd84367af129f22256d3506a2373b72be"
+    },
+    "paper/figures/matched-model-disposition.png": {
+      "bytes": 135257,
+      "sha256": "059cf21809800fc60b35692a7a31e26e7cfc3262287253819a539e0e691660fa"
+    },
+    "paper/figures/matched-model-disposition.svg": {
+      "bytes": 38374,
+      "sha256": "a0f49b2f3b86a2f79735e6a7b3e4b090ce983ae440a0a21327ce6b057505f5d6"
+    },
+    "paper/figures/native-four-arm-methods.pdf": {
+      "bytes": 31621,
+      "sha256": "1d85f46602e79fd58fa451f665653a9540c69a1c6d2e8da6d00ae7a1628d772e"
+    },
+    "paper/figures/native-four-arm-methods.png": {
+      "bytes": 210794,
+      "sha256": "0a954e9e3a5ebc00c953fa2f7cb9873f2d625cdd4f8aa1cf453b867d62090ce0"
+    },
+    "paper/figures/native-four-arm-methods.svg": {
+      "bytes": 17336,
+      "sha256": "c15cb57107e2168e2961ef31c45bc41368f61354823bf5e363d4de54c14cad7c"
+    },
+    "paper/figures/recovery-availability-grid.pdf": {
+      "bytes": 26130,
+      "sha256": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8"
+    },
+    "paper/figures/recovery-availability-grid.png": {
+      "bytes": 424603,
+      "sha256": "4880e73de4d72acfdeb6fd8072d6b4855d4e674b5ab5a4902ba6a61fd50e16dd"
+    },
+    "paper/figures/recovery-availability-grid.svg": {
+      "bytes": 66712,
+      "sha256": "9e023f05ab5717f7e1c439a5084ddb1dea0df73e4ada5f889107990feb08172c"
+    },
+    "paper/figures/recovery-family-primary-contrasts.pdf": {
+      "bytes": 24641,
+      "sha256": "b305b9d32f7d8333c8031e33ebb29764531ea2e5e9a43d449a87b2f6bc66dd80"
+    },
+    "paper/figures/recovery-family-primary-contrasts.png": {
+      "bytes": 456432,
+      "sha256": "0752adcf0b2efd84bc2e44b321d8c7005075e38d829389402b5fcbe225e207f0"
+    },
+    "paper/figures/recovery-family-primary-contrasts.svg": {
+      "bytes": 44620,
+      "sha256": "9c84a445d3dad64faff8037e59065888dc647b73cdb44a41d1ff8a0e7211677f"
+    },
+    "paper/figures/recovery-method-overview.pdf": {
+      "bytes": 25901,
+      "sha256": "562ce06657b16bc527fadc48dddcdf28bd970c99c38fe6df5ef399b744683d24"
+    },
+    "paper/figures/recovery-method-overview.png": {
+      "bytes": 730410,
+      "sha256": "86d254b2ee63310287c69467d8387c8868c138b171b60c0a598b4916cda35a08"
+    },
+    "paper/figures/recovery-method-overview.svg": {
+      "bytes": 46018,
+      "sha256": "12068fc9bf97372e1a805869442d13572f8cb570938b92ca87e39fdcfe8fef28"
+    },
+    "paper/figures/same-evidence-trace-judge.pdf": {
+      "bytes": 26666,
+      "sha256": "a37a28d4259ccdd9bba5012f10f8450be3c9a56858f7ceadfbb5af2823992a8f"
+    },
+    "paper/figures/same-evidence-trace-judge.png": {
+      "bytes": 218181,
+      "sha256": "597f00455715bc5f72e5ba3681752f741f579d7c79beddfd64ebe2804fdb47ba"
+    },
+    "paper/figures/same-evidence-trace-judge.svg": {
+      "bytes": 164101,
+      "sha256": "251e7df9ffebdf7d7ab6c53e3e284184459bc8d1db484a6a7c90538f3608eee2"
+    },
+    "paper/figures/upstream-car-intervals.pdf": {
+      "bytes": 28824,
+      "sha256": "8d417082a4c6d244ac1f0e1ef84534bba494466b9308573c85d350eafa2295a1"
+    },
+    "paper/figures/upstream-car-intervals.png": {
+      "bytes": 424703,
+      "sha256": "6025c2f5061629a0ec78ba503c2454df7ba7ab7449d970d4a279908845a00622"
+    },
+    "paper/figures/upstream-car-intervals.svg": {
+      "bytes": 193546,
+      "sha256": "f7396e5798a180ac47e639ff0f4c3a3ac4efa3b3db7f35859390613a5384f1cf"
+    },
+    "paper/india-venue-plan-2026-10-18.md": {
+      "bytes": 14106,
+      "sha256": "67e673d23b048e6260828e10dc59f760bf71c2aa3e11e72741421a21c7b3f043"
+    },
+    "paper/limbo-native-methods.tex": {
+      "bytes": 12370,
+      "sha256": "2e1c66dac3ef7bf2ad5cfabc867ef35ef785e50d547a6ad5aacea326384e64f3"
+    },
+    "paper/manuscript.md": {
+      "bytes": 72742,
+      "sha256": "72f9b8ed591e390f40d7769b8cfd4f8cab93641c16f0d072a7c2da7163e92c0e"
+    },
+    "paper/matched-study-findings-2026-10-18.md": {
+      "bytes": 4584,
+      "sha256": "a6bfe07b044d3833baf7df262df15c328d3c6ace524761d175d50635c57e91b8"
+    },
+    "paper/matched-study-update-2026-10-18.md": {
+      "bytes": 5296,
+      "sha256": "c460e3101bdd06a5104b1962ede58465814e409fc2facce22e0c742bb183a9bb"
+    },
+    "paper/native-development-claims-2026-10-21.json": {
+      "bytes": 4031,
+      "sha256": "9eb5fbf8881aaa33a84e346f0669dd01256bacc60bf0f6c15aaacdf1ca1a17fb"
+    },
+    "paper/native-external-methods-draft-2026-10-21.md": {
+      "bytes": 8842,
+      "sha256": "64013d2ae59d39b7be8b0f06dfbd031777bddcd835c93c90458a9e79fee72000"
+    },
+    "paper/native-external-validation.tex": {
+      "bytes": 8738,
+      "sha256": "de6e33d9fe9ebde7740c980d66c251eebca28cc5aec4a0da907f424a725bda1d"
+    },
+    "paper/protocol-external-validation-2026-10-18.md": {
+      "bytes": 6479,
+      "sha256": "bd115258c49013487d8dfac60da2abac377a78a53e0ba98d627d6aa0d62d4363"
+    },
+    "paper/protocol-matched-local-2026-10-18.md": {
+      "bytes": 10889,
+      "sha256": "4b440d135d5611231bc3816dae71f69cbfba50abd50742c4a7ce04fdfe8cfed6"
+    },
+    "paper/protocol-next-validation.md": {
+      "bytes": 9071,
+      "sha256": "990526b0ef4d8b10a7af360f1e8e3893a7562f806768c2baca35273c1b7109ef"
+    },
+    "paper/recovery-availability-results.tex": {
+      "bytes": 4782,
+      "sha256": "3f5d0edaced86131e3ef574754a21918540dba05ac759e737a0b7e037336f63c"
+    },
+    "paper/recovery-paper-focus-plan-2026-10-20.md": {
+      "bytes": 12726,
+      "sha256": "4e777a5f95cf6296423e60d975574ec7c60435faa389bf364e3e5c2e1fe7f6b1"
+    },
+    "paper/recovery-review-response-2026-10-20.md": {
+      "bytes": 14829,
+      "sha256": "f440d1a2977796199bc0fe3f03f3010e0c791171755f14e87263d1abc0b1dbcf"
+    },
+    "paper/recovery-study-findings-2026-10-20.md": {
+      "bytes": 15336,
+      "sha256": "994be3c5c58a4f6a5440b25e137f5359e741aadda49e2280e5061e7ecf95464d"
+    },
+    "paper/recovery-study-results.tex": {
+      "bytes": 7255,
+      "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
+    },
+    "paper/references.bib": {
+      "bytes": 12459,
+      "sha256": "a60d76a2ad0d6faffb3646e73f9a710dd901694805b0875ba72579cd6a9b2de9"
+    },
+    "paper/related-work-update-2026-10-18.md": {
+      "bytes": 16310,
+      "sha256": "43b7ac2a73c8fad92cadc26f05834f5820d6b76dbdc619695bef5cd614d272c2"
+    },
+    "paper/review-response-2026-10-18.md": {
+      "bytes": 16184,
+      "sha256": "1452ee2637d4886c5578784cace35b35e6c54af8461102aebd341544ffe35230"
+    },
+    "paper/source-audit.md": {
+      "bytes": 33525,
+      "sha256": "2ae6a0dcb4a74146e0f2140b98697cf69492a64e0559ea3da4506861bd96c5c7"
+    },
+    "paper/technical-review-audit-2026-10-18.md": {
+      "bytes": 19255,
+      "sha256": "bd9e4518677135dcf973e8a432734d6bf9c94a5efcfb62f664986e6d09155a97"
+    },
+    "paper/verify_analytic_references.py": {
+      "bytes": 6556,
+      "sha256": "ccafbecf5fe30ec854500cd9719aed9d43c47750102d54afdf431eea7825a3f9"
+    }
+  },
+  "poststudy": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-poststudy-2026-10-24-v2",
+  "poststudy_identity": {
+    "command_line": [
+      "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+      "-B",
+      "C:/Code/ConsequaX-Research/paper-writing/scripts/finish_limbo_poststudy.py",
+      "--pipeline",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-pipeline-2026-10-24",
+      "--pipeline-pid",
+      "6528",
+      "--pipeline-created-time",
+      "1792817573.282704",
+      "--protocol",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-protocol-2026-10-24/protocol.json",
+      "--protocol-commit",
+      "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+      "--collection",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-collection-2026-10-24",
+      "--official-audit",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-audit-2026-10-24",
+      "--analysis",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-analysis-2026-10-24",
+      "--native-root",
+      "C:/Code/ConsequaX-Research/limbo-pinned-2db09fba",
+      "--output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-poststudy-2026-10-24-v2",
+      "--portable-audit-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-portable-audit-2026-10-24-v2",
+      "--manuscript-output",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-followup-manuscript-stage-2026-10-24-v2",
+      "--interrupted-analysis",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-interrupted-analysis-2026-10-24",
+      "--interrupted-protocol",
+      "C:/Code/ConsequaX-Research/paper-writing/output/limbo-protocol-2026-10-24/protocol.json",
+      "--interrupted-protocol-commit",
+      "267cd1a3e846c46c009f20accbf302746e064875"
+    ],
+    "create_time": 1792817626.0065167,
+    "executable": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "in_any_windows_job": true,
+    "listed_in_supervisor_non_killing_ambient_job": true,
+    "pid": 18052,
+    "username": "DESKTOP-6IGLDLD\\DELL"
+  },
+  "poststudy_launch": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-poststudy-launch-2026-10-24-v2\\launch-receipt.json",
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "pushes_main_actions_or_external_publication": false,
+  "schema": "conseqax-limbo-local-draft-claim-v1",
+  "scope": "Presentation of all already frozen statistics after partial follow-up exposure; no endpoint, filter, sample, or analysis changes. One local review-pending draft commit/build only.",
+  "sources": {
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/audit_limbo_portable.py": {
+      "bytes": 23268,
+      "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+    },
+    "scripts/build_final_limbo_paper.py": {
+      "bytes": 38315,
+      "sha256": "baae05993b2490e3680b733e1dfe9ce50c8fded77340947fdf3bb977f8448b52"
+    },
+    "scripts/finalize_limbo_editorial_sources.py": {
+      "bytes": 20094,
+      "sha256": "9dbbfd6c5136702d002b417813105e7ded729479d7f1b93b31541c5fdf33cc19"
+    },
+    "scripts/finish_limbo_paper_build.py": {
+      "bytes": 32810,
+      "sha256": "0694f3e5199158a5870291440c530c83511ca9fa3b490f29b34bd76f2cde1cdd"
+    },
+    "scripts/finish_limbo_poststudy.py": {
+      "bytes": 27234,
+      "sha256": "c1658844476ba5b39fb6e94a1ece1e6007ce6cbe51d8d1b03fb6dafcfb2952b0"
+    },
+    "scripts/prepare_final_limbo_manuscript.py": {
+      "bytes": 48535,
+      "sha256": "2eb17fe87f09155f34c42e6de50a6b604aa1db23cb0ebab1be7c71565554c9c8"
+    },
+    "scripts/run_limbo_completion_pipeline.py": {
+      "bytes": 22896,
+      "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    }
+  },
+  "tools": {
+    "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdfinfo.exe": {
+      "bytes": 81712,
+      "sha256": "d6c3d0f28158f46fd772162204901cab44aa641b4d8fd1c2acbfc21b1a4a4877"
+    },
+    "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe": {
+      "bytes": 65840,
+      "sha256": "477e3282a3f36b65f39db0d463330c5065cf60368403fcc3bb9a5d85a6a74854"
+    },
+    "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe": {
+      "bytes": 93713712,
+      "sha256": "6416a2fc6ccaf41d71fc50e3c0ff9074c633249e3c74564d55cd0a5c25b61ecb"
+    },
+    "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe": {
+      "bytes": 107312,
+      "sha256": "3ceb740cb3eb2c1c38602cf75a199e6331dd1295957e0d91e4dd4ef248466bf4"
+    },
+    "C:\\Users\\DELL\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1022.11436\\skills\\pdf\\container_tools\\mark_artifact_operation_started.mjs": {
+      "bytes": 735,
+      "sha256": "968d66a7b491c7728f2ab009dcb54ac0025d6f474de6f3734f66b8809f6c18a8"
+    },
+    "C:\\Users\\DELL\\OneDrive\\Desktop\\ConseqaX\\tmp\\tectonic\\tectonic.exe": {
+      "bytes": 51538432,
+      "sha256": "99ffcfdbf1ebf8bdda9e791942e3d06aedb12463fddc33f07de6f5211c8bf08d"
+    }
+  },
+  "utc": "2026-10-24T13:10:03.626802+00:00",
+  "visual_review_pending": true
+}

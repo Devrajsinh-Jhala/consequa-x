@@ -79,3 +79,39 @@ replication, production-service write or human validation is claimed.
 Keep the machine running and preserve these paths during collection. The tested
 launcher outlives the chat tool's temporary job; it is not a guarantee against
 restart, logoff, power loss or another directory move.
+
+## Automatic local draft after the audited chain
+
+Two additional presentation/build helpers were prepared while partial follow-up
+records were already visible. They do not change the frozen collector, native
+audit, analysis, endpoints, cases or inclusion rules. The
+[editorial checklist](limbo-final-editorial-checklist-2026-10-24.md) describes
+the finite changes: explicit cohort captions and TS/EOS denominators, the
+already computed condition/paired baseline counts, accurate qualification and
+receipt-activation wording, and dated evidence links.
+
+`finalize_limbo_editorial_sources.py` first recomputes the original staged prose
+using its held preparer and both validated cohort analyses. It preserves the
+original staging bundle, numeric table and every actual result-figure byte.
+Its new bundle remains `EDITORIAL_REVIEW_PENDING`.
+
+`finish_limbo_paper_build.py` derives the active poststudy process identity from
+the exact saved JSON launch receipt, preserving timestamp precision. It waits
+for that process's complete passed seal, validates the entire dependent chain,
+then creates the edited bundle. Before applying paper files it rejects a changed
+branch, dirty index, concurrent paper edit, changed source/tool or unsealed
+study artifact. It commits only explicit validated paper files and sealed
+research inputs on the local research branch. It never pushes or changes main.
+
+After one required PDF authoring marker, it invokes the existing compiler and
+all-page renderer once. The local artifact directory is
+`output/pdf/limbo-audited-draft-2026-10-24`; its receipt must keep
+`visual_review_pending: true`. Its automatic result can be only
+`LOCAL_DRAFT_VISUAL_REVIEW_PENDING`, not finished/publishable/accepted.
+Actual sources, figures and every rendered page still require review before
+the resulting paper or its final publication is presented to the user.
+
+The draft-build journal is `output/limbo-followup-draft-build-2026-10-24`, with
+its edited source bundle in `output/limbo-followup-editorial-stage-2026-10-24`.
+These paths are prospective until the recorded launch and passed input seals
+exist. No new model calls, humans, paid inference or GitHub Actions are added.

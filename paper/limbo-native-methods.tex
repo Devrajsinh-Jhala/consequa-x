@@ -48,12 +48,12 @@ strong guard's control law; it is a receipt-integration comparison.}
 \toprule
 Arm & Execution rule \\
 \midrule
-\texttt{vanilla} & Unchanged native direct tool dispatch. \\
-\texttt{sdk\_retry3} & Unchanged native transparent retry rule: up to three
+Vanilla & Unchanged native direct tool dispatch. \\
+SDK retry & Unchanged native transparent retry rule: up to three
 automatic retries after an initial retryable failure, with native backoff. \\
-\texttt{guard} & Unchanged native strong guard: supported key insertion,
+Native guard & Unchanged native strong guard: supported key insertion,
 consistency-aware verification, partial-batch recovery and repeat suppression. \\
-\texttt{conseqax\_guard} & The same strong guard consuming statuses reconstructed
+ConseqaX guard & The same strong guard consuming statuses reconstructed
 from actual ConseqaX 2.1.1 receipts. \\
 \bottomrule
 \end{tabular}

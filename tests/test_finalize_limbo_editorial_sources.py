@@ -15,18 +15,34 @@ SPEC.loader.exec_module(M)
 ANALYSIS = ROOT / "output/limbo-interrupted-analysis-2026-10-24"
 
 
+@pytest.fixture(scope="module")
+def original_paper_sources():
+    """Keep the old preparer input stable after its output becomes the paper."""
+    b = M.module(ROOT, M.BUILDER, "fixture_source_builder")
+    commit = "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4"
+    preserved = ROOT / "output/limbo-followup-manuscript-stage-2026-10-24-v2/inputs/source/paper"
+    sources = {}
+    for name in ("conseqax-research.tex", "conseqax-research.md", "limbo-native-methods.tex"):
+        committed = b.git(ROOT, "show", f"{commit}:paper/{name}")
+        path = preserved / name
+        data = path.read_bytes() if path.is_file() else committed
+        assert data == committed, "Preserved preparer fixture differs from the immutable source: " + name
+        sources[name] = data.decode("utf-8")
+    return sources
+
+
 @pytest.fixture()
-def fixture():
+def fixture(original_paper_sources):
     # No new benchmark outcome is generated, graded or written by these tests.
     b, p = M.module(ROOT, M.BUILDER, "fixture_builder"), M.module(ROOT, M.PREPARER, "fixture_preparer")
     result = b.load(ANALYSIS / "results.json")
     earlier = {"result": result}
     protocol = b.load(ROOT / "output/limbo-followup-protocol-2026-10-24/protocol.json")
-    methods = p.final_methods((ROOT / "paper/limbo-native-methods.tex").read_text(encoding="utf-8"),
+    methods = p.final_methods(original_paper_sources["limbo-native-methods.tex"],
         protocol, "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
         b.binding(ROOT / "output/limbo-followup-protocol-2026-10-24/protocol.json"), earlier)
-    tex, md = p.assemble((ROOT / "paper/conseqax-research.tex").read_text(encoding="utf-8"),
-        (ROOT / "paper/conseqax-research.md").read_text(encoding="utf-8"), methods, result, ANALYSIS, earlier)
+    tex, md = p.assemble(original_paper_sources["conseqax-research.tex"],
+        original_paper_sources["conseqax-research.md"], methods, result, ANALYSIS, earlier)
     return p, result, earlier, (tex, md, methods, p.native_results(result, ANALYSIS, True, earlier))
 
 

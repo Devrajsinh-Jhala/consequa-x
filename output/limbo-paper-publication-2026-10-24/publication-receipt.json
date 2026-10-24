@@ -1,0 +1,23 @@
+{
+  "benchmark_runs_added": 0,
+  "completion_receipt": {
+    "bytes": 7129,
+    "sha256": "7e04d77137e0364574a5be20ffbbdab81b5e9e989184c02bc840e374ca83f1d1"
+  },
+  "github_actions_enabled": false,
+  "observed_remote_refs": [
+    "821323a864c540899d1a9beb154f9f712c8a8b45\trefs/heads/codex/native-external-2026-10-21",
+    "821323a864c540899d1a9beb154f9f712c8a8b45\trefs/heads/main"
+  ],
+  "pdf": {
+    "bytes": 286329,
+    "repository_path": "output/pdf/limbo-audited-paper-2026-10-24-v4/ConseqaX_Research_Paper.pdf",
+    "sha256": "68a85adfba62a540efed268f5d739d319b2d3bd2fcf25ca903924280981be075"
+  },
+  "repository": "https://github.com/Devrajsinh-Jhala/consequa-x",
+  "schema": "conseqax-paper-publication-v1",
+  "scope": "Observed published immutable release. This receipt may be committed afterward; it does not claim its own commit was already remote or assert conference submission/acceptance.",
+  "source_and_all_page_visual_review_completed": true,
+  "verified_release_commit": "821323a864c540899d1a9beb154f9f712c8a8b45",
+  "verified_utc": "2026-10-24T18:35:41.701641+00:00"
+}

@@ -9,6 +9,21 @@ from scripts import build_final_limbo_paper as build
 from scripts import prepare_final_limbo_manuscript as prepare
 
 
+@pytest.fixture(scope="module")
+def original_paper_sources():
+    """The preparer consumes the pre-integration template, not today's paper."""
+    commit = "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4"
+    preserved = prepare.ROOT / "output/limbo-followup-manuscript-stage-2026-10-24-v2/inputs/source/paper"
+    sources = {}
+    for name in ("conseqax-research.tex", "conseqax-research.md", "limbo-native-methods.tex"):
+        committed = build.git(prepare.ROOT, "show", f"{commit}:paper/{name}")
+        path = preserved / name
+        data = path.read_bytes() if path.is_file() else committed
+        assert data == committed, "Preserved preparer fixture differs from the immutable source: " + name
+        sources[name] = data.decode("utf-8")
+    return sources
+
+
 @pytest.fixture
 def cohorts(tmp_path, monkeypatch):
     def checked(alias, original):
@@ -129,9 +144,9 @@ def test_both_denominators_and_unknowns_are_kept_in_table_and_prose(cohorts):
     assert "not pooled" in prose
 
 
-def test_methods_use_actual_runtime_and_retain_partial_data_exposure(cohorts):
+def test_methods_use_actual_runtime_and_retain_partial_data_exposure(cohorts, original_paper_sources):
     current, earlier, *_ = cohorts
-    source = (prepare.ROOT / "paper/limbo-native-methods.tex").read_text(encoding="utf-8")
+    source = original_paper_sources["limbo-native-methods.tex"]
     text = prepare.final_methods(source, current["protocol"], "e" * 40,
                                  {"sha256": "2" * 64}, earlier)
     assert "version 0.40.10" in text and "Ollama 0.40.8 to 0.40.10" in text
@@ -141,15 +156,14 @@ def test_methods_use_actual_runtime_and_retain_partial_data_exposure(cohorts):
     prepare.reject_stale(text)
 
 
-def test_full_manuscript_mirrors_both_cohorts_without_new_document(cohorts, tmp_path):
+def test_full_manuscript_mirrors_both_cohorts_without_new_document(cohorts, tmp_path, original_paper_sources):
     current, earlier, *_ = cohorts
     (tmp_path / "narrative.md").write_text("\n\n".join("Invented test paragraph " + str(index) for index in range(7)),
                                            encoding="utf-8")
-    source = prepare.ROOT / "paper"
-    methods = prepare.final_methods((source / "limbo-native-methods.tex").read_text(encoding="utf-8"),
+    methods = prepare.final_methods(original_paper_sources["limbo-native-methods.tex"],
         current["protocol"], "e" * 40, {"sha256": "2" * 64}, earlier)
-    tex, md = prepare.assemble((source / "conseqax-research.tex").read_text(encoding="utf-8"),
-        (source / "conseqax-research.md").read_text(encoding="utf-8"), methods,
+    tex, md = prepare.assemble(original_paper_sources["conseqax-research.tex"],
+        original_paper_sources["conseqax-research.md"], methods,
         current["result"], tmp_path, earlier)
     results_tex = prepare.native_results(current["result"], tmp_path, True, earlier)
     assert r"\input{limbo-cohort-accounting.tex}" in results_tex

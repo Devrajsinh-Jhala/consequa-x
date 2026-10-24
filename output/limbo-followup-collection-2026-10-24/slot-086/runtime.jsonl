@@ -1,0 +1,42 @@
+{"args": ["social_publish", {"idempotency_key": "limbo-72a09dc84f61a53606ef", "platform": "mastodon", "text": "Lumen 1.19.8 is out today: faster sync, a redesigned settings page, and 14 bug fixes. Release notes: https://acme.example/lumen/1.19.8"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"clock": 0.9, "event": "return", "id": 0, "result": {"ok": true, "result": {"created_at": 0.0, "platform": "mastodon", "post_id": "md-1010", "text": "Lumen 1.19.8 is out today: faster sync, a redesigned settings page, and 14 bug fixes. Release notes: https://acme.example/lumen/1.19.8", "url": "https://mastodon.example/p/md-1010"}}}
+{"args": ["social_publish", {"platform": "linkedin", "text": "Lumen 1.19.8 is out today: faster sync, a redesigned settings page, and 14 bug fixes. Release notes: https://acme.example/lumen/1.19.8"}], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.9, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": 2}
+{"clock": 1.8, "event": "return", "id": 3, "result": null}
+{"clock": 1.8, "event": "return", "id": 2, "result": {"ok": true, "result": {"created_at": 0.9, "platform": "linkedin", "post_id": "li-1011", "text": "Lumen 1.19.8 is out today: faster sync, a redesigned settings page, and 14 bug fixes. Release notes: https://acme.example/lumen/1.19.8", "url": "https://linkedin.example/p/li-1011"}}}
+{"args": ["tickets_create", {"body": "Posts:\n- Mastodon: https://mastodon.example/p/md-1010\n- LinkedIn: https://linkedin.example/p/li-1011", "project": "COMMS", "title": "Release Lumen 1.19.8 announced"}], "clock": 1.8, "event": "enter", "id": 4, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [30.0], "clock": 1.8, "event": "enter", "id": 5, "kwargs": {}, "op": "advance", "parent": 4}
+{"clock": 31.8, "event": "return", "id": 5, "result": null}
+{"clock": 31.8, "event": "return", "id": 4, "result": {"error": {"message": "Request timed out after 30s: no response was received from the tickets service before the connection was closed.", "type": "timeout"}, "ok": false}}
+{"args": ["mail_send", {"body": "Lumen 1.19.8 is out today: faster sync, a redesigned settings page, and 14 bug fixes. Release notes: https://acme.example/lumen/1.19.8\n\nPosts:\n- Mastodon: https://mastodon.example/p/md-1010\n- LinkedIn: https://linkedin.example/p/li-1011", "subject": "Lumen 1.19.8 released", "to": ["release-team@acme.example"]}], "clock": 31.8, "event": "enter", "id": 6, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 31.8, "event": "enter", "id": 7, "kwargs": {}, "op": "advance", "parent": 6}
+{"clock": 32.7, "event": "return", "id": 7, "result": null}
+{"clock": 32.7, "event": "return", "id": 6, "result": {"ok": true, "result": {"message_id": "msg-1012", "status": "sent"}}}
+{"args": ["tickets_search", {"project": "COMMS", "query": "Release Lumen 1.19.8 announced"}], "clock": 32.7, "event": "enter", "id": 8, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 32.7, "event": "enter", "id": 9, "kwargs": {}, "op": "advance", "parent": 8}
+{"clock": 33.1, "event": "return", "id": 9, "result": null}
+{"clock": 33.1, "event": "return", "id": 8, "result": {"ok": true, "result": {"tickets": []}}}
+{"args": ["tickets_list_recent", {"limit": 10, "project": "COMMS"}], "clock": 33.1, "event": "enter", "id": 10, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 33.1, "event": "enter", "id": 11, "kwargs": {}, "op": "advance", "parent": 10}
+{"clock": 33.5, "event": "return", "id": 11, "result": null}
+{"clock": 33.5, "event": "return", "id": 10, "result": {"ok": true, "result": {"tickets": [{"created_at": -86400.0, "project": "COMMS", "status": "open", "ticket_key": "COMMS-91", "title": "Quarterly housekeeping for COMMS"}]}}}
+{"args": ["tickets_create", {"body": "Posts:\n- Mastodon: https://mastodon.example/p/md-1010\n- LinkedIn: https://linkedin.example/p/li-1011", "project": "COMMS", "title": "Release Lumen 1.19.8 announced"}, 1.8], "clock": 33.5, "event": "enter", "id": 12, "kwargs": {"truth": false}, "op": "verify", "parent": null}
+{"clock": 33.5, "event": "return", "id": 12, "result": {"detail": {}, "status": "absent"}}
+{"args": ["tickets_create", {"body": "Posts:\n- Mastodon: https://mastodon.example/p/md-1010\n- LinkedIn: https://linkedin.example/p/li-1011", "project": "COMMS", "title": "Release Lumen 1.19.8 announced"}], "clock": 33.5, "event": "enter", "id": 13, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 33.5, "event": "enter", "id": 14, "kwargs": {}, "op": "advance", "parent": 13}
+{"clock": 34.4, "event": "return", "id": 14, "result": null}
+{"clock": 34.4, "event": "return", "id": 13, "result": {"ok": true, "result": {"created_at": 33.5, "project": "COMMS", "status": "open", "ticket_key": "COMMS-102", "title": "Release Lumen 1.19.8 announced"}}}
+{"args": ["tickets_get", {"ticket_key": "COMMS-102"}], "clock": 34.4, "event": "enter", "id": 15, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 34.4, "event": "enter", "id": 16, "kwargs": {}, "op": "advance", "parent": 15}
+{"clock": 34.8, "event": "return", "id": 16, "result": null}
+{"clock": 34.8, "event": "return", "id": 15, "result": {"ok": true, "result": {"body": "Posts:\n- Mastodon: https://mastodon.example/p/md-1010\n- LinkedIn: https://linkedin.example/p/li-1011", "comments": [], "created_at": 33.5, "project": "COMMS", "status": "open", "ticket_key": "COMMS-102", "title": "Release Lumen 1.19.8 announced"}}}
+{"args": ["mail_search_sent", {"limit": 10, "query": "Lumen 1.19.8"}], "clock": 34.8, "event": "enter", "id": 17, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 34.8, "event": "enter", "id": 18, "kwargs": {}, "op": "advance", "parent": 17}
+{"clock": 35.2, "event": "return", "id": 18, "result": null}
+{"clock": 35.2, "event": "return", "id": 17, "result": {"ok": true, "result": {"messages": []}}}
+{"args": [], "clock": 35.2, "event": "enter", "id": 19, "kwargs": {}, "op": "flush", "parent": null}
+{"args": [593.7009999999999], "clock": 35.2, "event": "enter", "id": 20, "kwargs": {}, "op": "advance", "parent": 19}
+{"clock": 628.901, "event": "return", "id": 20, "result": null}
+{"clock": 628.901, "event": "return", "id": 19, "result": null}

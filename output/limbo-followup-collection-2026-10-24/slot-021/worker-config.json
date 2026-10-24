@@ -1,0 +1,4338 @@
+{
+  "protocol": {
+    "arms": [
+      "vanilla",
+      "sdk_retry3",
+      "guard",
+      "conseqax_guard"
+    ],
+    "claims": {
+      "base_task_parameters_matched_clean_fault": true,
+      "human_available": false,
+      "model_calls_serial": true,
+      "native_EOS_is_universal_exactly_once": false,
+      "native_world_rng_seed_depends_on_fault_mode": true,
+      "paid_inference": false,
+      "receipt_arm_same_native_guard_decisions": true,
+      "retry_resume_replacement": false,
+      "selection_uses_targets_or_outcomes": false
+    },
+    "created_utc": "2026-10-24T04:49:17.624598+00:00",
+    "endpoints": {
+      "execution_success_secondary": "Operational plus no native error and no llm_error/harness_error stop",
+      "operational": "Complete independent native replay and available native grade, including saved LLM-error returns after native flush",
+      "primary": "Unchanged native TS and EOS true among independently replayed grades over all planned slots",
+      "receipt": "Native guard behavioral conformance and current public report mapping; no algorithmic superiority requirement",
+      "unavailable_native_grade": "No invented semantic zero; contributes zero to planned primary success numerator"
+    },
+    "environment": {
+      "base_executable": {
+        "bytes": 107312,
+        "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "sha256": "3ceb740cb3eb2c1c38602cf75a199e6331dd1295957e0d91e4dd4ef248466bf4"
+      },
+      "coverage": "Interpreter executable bytes and dependency distribution versions; not all dependency payload bytes",
+      "distributions": {
+        "Jinja2": "3.1.6",
+        "consequa-x": "2.1.1",
+        "psutil": "7.2.2",
+        "tokenizers": "0.23.3"
+      },
+      "executable": {
+        "bytes": 277808,
+        "path": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+      },
+      "implementation": "cpython",
+      "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+    },
+    "execution_condition": {
+      "amendment": {
+        "bytes": 4536,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\docs\\limbo-followup-condition-2026-10-24.md",
+        "sha256": "47facffc4138d3dfd14f96fa99af033a9761b6417f4277ce7a27758bffbbbc50"
+      },
+      "declaration_source": {
+        "bytes": 8135,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\declare_limbo_followup.py",
+        "sha256": "72cc91136583a5ee0e66ba5bbb4cb33fc69fc2c751279b9423f694eacdc0e682"
+      },
+      "durability_proof": {
+        "bytes": 4006,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\durable-launch-lifetime-probe-2026-10-24\\lifetime-proof.json",
+        "sha256": "2773a26b125eef612c40656662ed57fd7ab4e4e327499887402249bb6dc4d717"
+      },
+      "id": "relocated-isolated-runtime-2026-10-24",
+      "launcher": {
+        "bytes": 21273,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\launch_durable_research.py",
+        "sha256": "5878dc5edcc88a330efa66f93fe608a9e7f25bbccba457ffda546791aeefa5e7"
+      },
+      "ollama_version": "0.40.10",
+      "private_runtime_manifest": {
+        "bytes": 5739,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-runtime-isolated-2026-10-24\\private-runtime-manifest.json",
+        "sha256": "fef3e4559bb6a82b8b19dc25ac98a551259bc5d160e0f42cc8fd095f78758f9b"
+      },
+      "runtime_launch_receipt": {
+        "bytes": 3137,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-runtime-isolated-2026-10-24\\launch-receipt.json",
+        "sha256": "cdf57eda319a6b560f25cabf8c4a32ec09319d2e66fef6af2b67763f7aa8ff2c"
+      },
+      "scope": "One separately declared full execution condition; same cases/weights/design, relocated paths and private runtime; no retry/resume/replacement of the interrupted original"
+    },
+    "limits": {
+      "episode_timeout_s": 7200.0,
+      "max_output_tokens": 512,
+      "max_requests": 16,
+      "request_timeout_s": 1200.0,
+      "work": {
+        "execute": 96,
+        "total_wait_seconds": 172800,
+        "verify": 64,
+        "wait": 64
+      }
+    },
+    "metadata": [
+      {
+        "domains": [
+          "mail",
+          "social"
+        ],
+        "family": "announce",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "social",
+            "idempotency": "non_idempotent",
+            "label": "publish:x",
+            "reversible": true,
+            "tool": "social_publish",
+            "verification": "none"
+          },
+          {
+            "batch": false,
+            "domain": "social",
+            "idempotency": "keyed_optional",
+            "label": "publish:mastodon",
+            "reversible": true,
+            "tool": "social_publish",
+            "verification": "strong"
+          }
+        ],
+        "index": 22614,
+        "template": "cross_post"
+      },
+      {
+        "domains": [
+          "mail",
+          "tickets"
+        ],
+        "family": "notify",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail:1",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail:0",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          },
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "ticket_create",
+            "reversible": true,
+            "tool": "tickets_create",
+            "verification": "strong"
+          }
+        ],
+        "index": 586821,
+        "template": "customer_notice"
+      },
+      {
+        "domains": [
+          "deploy",
+          "tickets"
+        ],
+        "family": "deploy",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "deploy",
+            "idempotency": "non_idempotent",
+            "label": "deploy:production",
+            "reversible": true,
+            "tool": "deploy_trigger",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "deploy",
+            "idempotency": "non_idempotent",
+            "label": "deploy:staging",
+            "reversible": true,
+            "tool": "deploy_trigger",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "comment",
+            "reversible": false,
+            "tool": "tickets_add_comment",
+            "verification": "strong"
+          }
+        ],
+        "index": 601493,
+        "template": "deploy_release"
+      },
+      {
+        "domains": [
+          "data",
+          "social"
+        ],
+        "family": "data",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "data",
+            "idempotency": "idempotent",
+            "label": "upsert",
+            "reversible": true,
+            "tool": "db_upsert",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "social",
+            "idempotency": "non_idempotent",
+            "label": "publish:linkedin",
+            "reversible": true,
+            "tool": "social_publish",
+            "verification": "strong"
+          }
+        ],
+        "index": 135281,
+        "template": "feature_flags"
+      },
+      {
+        "domains": [
+          "data",
+          "deploy",
+          "mail",
+          "social",
+          "tickets"
+        ],
+        "family": "composite",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "deploy",
+            "idempotency": "non_idempotent",
+            "label": "deploy:production",
+            "reversible": true,
+            "tool": "deploy_trigger",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "social",
+            "idempotency": "non_idempotent",
+            "label": "publish:weibo",
+            "reversible": true,
+            "tool": "social_publish",
+            "verification": "eventual"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          },
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "ticket_create",
+            "reversible": true,
+            "tool": "tickets_create",
+            "verification": "strong"
+          }
+        ],
+        "index": 759468,
+        "template": "hotfix_long"
+      },
+      {
+        "domains": [
+          "mail",
+          "tickets"
+        ],
+        "family": "incident",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "ticket_create",
+            "reversible": true,
+            "tool": "tickets_create",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "comment",
+            "reversible": false,
+            "tool": "tickets_add_comment",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          }
+        ],
+        "index": 786765,
+        "template": "incident_open"
+      },
+      {
+        "domains": [
+          "billing",
+          "mail"
+        ],
+        "family": "billing",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "billing",
+            "idempotency": "keyed_optional",
+            "label": "charge:0",
+            "reversible": true,
+            "tool": "billing_create_charge",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "billing",
+            "idempotency": "keyed_optional",
+            "label": "charge:1",
+            "reversible": true,
+            "tool": "billing_create_charge",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          }
+        ],
+        "index": 404628,
+        "template": "invoice_batch"
+      },
+      {
+        "domains": [
+          "data"
+        ],
+        "family": "data",
+        "focals": [
+          {
+            "batch": true,
+            "domain": "data",
+            "idempotency": "non_idempotent",
+            "label": "insert_many",
+            "reversible": true,
+            "tool": "db_insert_many",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "data",
+            "idempotency": "non_idempotent",
+            "label": "audit",
+            "reversible": true,
+            "tool": "db_insert",
+            "verification": "strong"
+          }
+        ],
+        "index": 857261,
+        "template": "migration_log"
+      },
+      {
+        "domains": [
+          "billing",
+          "mail"
+        ],
+        "family": "billing",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "billing",
+            "idempotency": "naturally_idempotent",
+            "label": "refund",
+            "reversible": false,
+            "tool": "billing_refund_charge",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          }
+        ],
+        "index": 964286,
+        "template": "refund_duplicate"
+      },
+      {
+        "domains": [
+          "mail",
+          "social",
+          "tickets"
+        ],
+        "family": "announce",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "social",
+            "idempotency": "keyed_optional",
+            "label": "publish:mastodon",
+            "reversible": true,
+            "tool": "social_publish",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "social",
+            "idempotency": "non_idempotent",
+            "label": "publish:linkedin",
+            "reversible": true,
+            "tool": "social_publish",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "ticket_create",
+            "reversible": true,
+            "tool": "tickets_create",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          }
+        ],
+        "index": 639339,
+        "template": "release_announcement"
+      },
+      {
+        "domains": [
+          "billing",
+          "data",
+          "mail"
+        ],
+        "family": "billing",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "billing",
+            "idempotency": "keyed_optional",
+            "label": "charge",
+            "reversible": true,
+            "tool": "billing_create_charge",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          },
+          {
+            "batch": false,
+            "domain": "data",
+            "idempotency": "idempotent",
+            "label": "upsert",
+            "reversible": true,
+            "tool": "db_upsert",
+            "verification": "strong"
+          }
+        ],
+        "index": 17463,
+        "template": "subscription_upgrade"
+      },
+      {
+        "domains": [
+          "mail",
+          "tickets"
+        ],
+        "family": "incident",
+        "focals": [
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "non_idempotent",
+            "label": "comment",
+            "reversible": false,
+            "tool": "tickets_add_comment",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "tickets",
+            "idempotency": "idempotent",
+            "label": "status",
+            "reversible": true,
+            "tool": "tickets_update_status",
+            "verification": "strong"
+          },
+          {
+            "batch": false,
+            "domain": "mail",
+            "idempotency": "non_idempotent",
+            "label": "mail",
+            "reversible": false,
+            "tool": "mail_send",
+            "verification": "eventual"
+          }
+        ],
+        "index": 53348,
+        "template": "ticket_resolution"
+      }
+    ],
+    "native": {
+      "commit": "2db09fba22a0572a70639162a808906409f612a8",
+      "files": {
+        "limbo/__init__.py": {
+          "bytes": 89,
+          "sha256": "b975345ff0ecd3729814f8f1482dc6faf088eb8a537a8e3797ab4ab9c9b69a34"
+        },
+        "limbo/agent.py": {
+          "bytes": 7859,
+          "sha256": "c145bc4c32050fa0446f061aa6c300a8e178c186dcc8cc180ba028b7dc47d672"
+        },
+        "limbo/analysis.py": {
+          "bytes": 12999,
+          "sha256": "31261718867753704c565a6db124e834096d0886ff95b176453cefeec97146ea"
+        },
+        "limbo/behavior.py": {
+          "bytes": 3318,
+          "sha256": "46e85534cbaa313bea84bd9ae093463f58700de0a374ba91ed9e92a9bb492a13"
+        },
+        "limbo/cases.py": {
+          "bytes": 4485,
+          "sha256": "c1547c384b58ae6b36efe1aca3e80039a9340c49e5049d7576c13fb765d54211"
+        },
+        "limbo/gateway_proxy.py": {
+          "bytes": 3605,
+          "sha256": "c3ca046de0ef6e4c56a2950a8df02a2b94ac19c699f9ee09bf5f6414973541d1"
+        },
+        "limbo/grader.py": {
+          "bytes": 8805,
+          "sha256": "77ea82d94e8a3339538b23824f4ed2babd35edd186d5129de87bc5bff4f90b99"
+        },
+        "limbo/harness.py": {
+          "bytes": 11131,
+          "sha256": "7d863bfc1bc9af8f2075a36adac3840aa86c6153af1cdcb6befdfc5d248f19d6"
+        },
+        "limbo/key_contract_probe.py": {
+          "bytes": 3260,
+          "sha256": "82fc61a09b694c3beb333822f1f134b626969153ea7c3ae29c2b3905ba77d863"
+        },
+        "limbo/llm.py": {
+          "bytes": 15062,
+          "sha256": "a394cb8bc6777ea94c1e5071f690c6b3e49e1e74626cb389d494ab0e458dd464"
+        },
+        "limbo/mcp_proxy.py": {
+          "bytes": 3039,
+          "sha256": "f1dee64be46a17dd8e982dd7d2c0d72b0892cd03dc49cedca06160d14a5d9faa"
+        },
+        "limbo/pipeline.py": {
+          "bytes": 10210,
+          "sha256": "775eb847d4058455ae93caedc65a32c11d5cec9259db0c05a8fdd0ca9da7e217"
+        },
+        "limbo/policies.py": {
+          "bytes": 14938,
+          "sha256": "63075898473ef729020cbe3b176325958ed7eb3212e8b4927fb0461ef00e72f8"
+        },
+        "limbo/prompts.py": {
+          "bytes": 3944,
+          "sha256": "9761f4c50d2209e9dd1b2346be40f2cefa5d35976f00e98b178ae5c44a2c24cd"
+        },
+        "limbo/real_api.py": {
+          "bytes": 26175,
+          "sha256": "e9ecadcc4fe33cca8d6e04dccc04fcc573495763ccc30f39b24ee4cf11f68369"
+        },
+        "limbo/real_api_analysis.py": {
+          "bytes": 10063,
+          "sha256": "4bf93655408b214d0a6e2c960d8b077106977e1812891844399d943d8a9b45ce"
+        },
+        "limbo/report.py": {
+          "bytes": 81057,
+          "sha256": "aaabda2c661dd24e7e4b97fa0198930487f67b549cb8cc36cf2a3f65db8220ed"
+        },
+        "limbo/runner.py": {
+          "bytes": 6937,
+          "sha256": "f6790f8ea20d2c0421e061f710c72896e6aeecb2c2a09044a526bf9a8bbb50bc"
+        },
+        "limbo/runtime.py": {
+          "bytes": 18364,
+          "sha256": "241a21b60fd41deced45354d2c5565df399bc25e48c292acce1e1fafb25846ad"
+        },
+        "limbo/sandbox_http.py": {
+          "bytes": 6957,
+          "sha256": "72509f445fb38c5d3d2a3ce5538e050d3ec81079c58236b9cbcf4161299b740c"
+        },
+        "limbo/services.py": {
+          "bytes": 40579,
+          "sha256": "68483bbfbfed20b422627850ee6f73edd947c6487810e838da5fab59b4dcb906"
+        },
+        "limbo/tasks.py": {
+          "bytes": 25478,
+          "sha256": "02efac4e4dbc1079d8534a1ea85bbc1bb5c7b676db60a40ffca08ca3b14f03eb"
+        },
+        "limbo/world.py": {
+          "bytes": 6525,
+          "sha256": "d2d9a346d07769ad5157eac67d2f204bea73c1a5cdacf093fe647a001b47e00d"
+        }
+      }
+    },
+    "prior_condition": {
+      "causal_runtime_version_comparison": false,
+      "cohorts_pooled": false,
+      "independent_task_count_across_conditions": 12,
+      "interrupted_analysis": {
+        "bytes": 2611415,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-interrupted-analysis-2026-10-24\\results.json",
+        "sha256": "71c5e2e8bb3b642a3673888d9b1e54ec97bac1163f88d712e403d90c0efd53fb"
+      },
+      "interrupted_analysis_manifest": {
+        "bytes": 1195,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-interrupted-analysis-2026-10-24\\manifest.json",
+        "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+      },
+      "partial_data_exposed_before_followup_freeze": true,
+      "protocol": {
+        "bytes": 118781,
+        "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-protocol-2026-10-24\\protocol.json",
+        "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+      },
+      "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875",
+      "same_base_instances": true,
+      "unseen_holdout_claim": false
+    },
+    "readiness": {
+      "bytes": 26865,
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-readiness-2026-10-24\\readiness.json",
+      "sha256": "34d928ec2651c940516b5de04af4856b4fc3fce096951f47959e7c01aa25ed44"
+    },
+    "runtime_binding": {
+      "api_base": "http://127.0.0.1:11436/v1",
+      "context_tokens": 8192,
+      "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+      "model_blob": "C:\\Users\\DELL\\.ollama\\models\\blobs\\sha256-85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "model_blob_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+      "model_digest": "51b412db8810eb32fc9fc60dbca884d7409076ae6dbf333b5dce139c88b2537f",
+      "parallel_slots": 1,
+      "runner_create_time": 1792816651.342602,
+      "runner_executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\lib\\ollama\\llama-server.exe",
+      "runner_executable_sha256": "e4df46adeadd70e0148e47f4fa5157614419bc09bd63f9dfce359a4b66ecf0d5",
+      "runner_pid": 8880,
+      "runner_port": 59579,
+      "server_create_time": 1792816649.471334,
+      "server_executable": "C:\\Code\\ConsequaX-Research\\ollama-runtime-0.40.10\\ollama.exe",
+      "server_executable_sha256": "c691333e17b3b66f922804a09d030dc2ac69d5e92b3609ca5596ed803dcfe50f",
+      "server_pid": 4168
+    },
+    "runtime_binding_file": {
+      "bytes": 1006,
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-runtime-isolated-2026-10-24\\runtime-binding.json",
+      "sha256": "2eb5c76cb0ed4d245d21ca992ee63f19f469ddc0b6a455f29323f3d53da07862"
+    },
+    "schedule": [
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "none",
+          "template": "refund_duplicate"
+        },
+        "slot": 0,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 0
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "none",
+          "template": "refund_duplicate"
+        },
+        "slot": 1,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 0
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "none",
+          "template": "refund_duplicate"
+        },
+        "slot": 2,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 0
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "none",
+          "template": "refund_duplicate"
+        },
+        "slot": 3,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 0
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "timeout_pre",
+          "template": "refund_duplicate"
+        },
+        "slot": 4,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 1
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "timeout_pre",
+          "template": "refund_duplicate"
+        },
+        "slot": 5,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 1
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "timeout_pre",
+          "template": "refund_duplicate"
+        },
+        "slot": 6,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 1
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "billing",
+          "focal": "mail",
+          "index": 964286,
+          "mode": "timeout_pre",
+          "template": "refund_duplicate"
+        },
+        "slot": 7,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 964286,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "refund_duplicate"
+        },
+        "world_rank": 1
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "none",
+          "template": "hotfix_long"
+        },
+        "slot": 8,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 2
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "none",
+          "template": "hotfix_long"
+        },
+        "slot": 9,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 2
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "none",
+          "template": "hotfix_long"
+        },
+        "slot": 10,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 2
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "none",
+          "template": "hotfix_long"
+        },
+        "slot": 11,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 2
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "timeout_late",
+          "template": "hotfix_long"
+        },
+        "slot": 12,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 3
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "timeout_late",
+          "template": "hotfix_long"
+        },
+        "slot": 13,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 3
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "timeout_late",
+          "template": "hotfix_long"
+        },
+        "slot": 14,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 3
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "composite",
+          "focal": "ticket_create",
+          "index": 759468,
+          "mode": "timeout_late",
+          "template": "hotfix_long"
+        },
+        "slot": 15,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 759468,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "hotfix_long"
+        },
+        "world_rank": 3
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "none",
+          "template": "ticket_resolution"
+        },
+        "slot": 16,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 4
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "none",
+          "template": "ticket_resolution"
+        },
+        "slot": 17,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 4
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "none",
+          "template": "ticket_resolution"
+        },
+        "slot": 18,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 4
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "none",
+          "template": "ticket_resolution"
+        },
+        "slot": 19,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 4
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "timeout_late_tail",
+          "template": "ticket_resolution"
+        },
+        "slot": 20,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 5
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "timeout_late_tail",
+          "template": "ticket_resolution"
+        },
+        "slot": 21,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 5
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "timeout_late_tail",
+          "template": "ticket_resolution"
+        },
+        "slot": 22,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 5
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "incident",
+          "focal": "status",
+          "index": 53348,
+          "mode": "timeout_late_tail",
+          "template": "ticket_resolution"
+        },
+        "slot": 23,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "status",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 53348,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "ticket_resolution"
+        },
+        "world_rank": 5
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "none",
+          "template": "incident_open"
+        },
+        "slot": 24,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 6
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "none",
+          "template": "incident_open"
+        },
+        "slot": 25,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 6
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "none",
+          "template": "incident_open"
+        },
+        "slot": 26,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 6
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "none",
+          "template": "incident_open"
+        },
+        "slot": 27,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 6
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "timeout_post",
+          "template": "incident_open"
+        },
+        "slot": 28,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 7
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "timeout_post",
+          "template": "incident_open"
+        },
+        "slot": 29,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 7
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "timeout_post",
+          "template": "incident_open"
+        },
+        "slot": 30,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 7
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "incident",
+          "focal": "mail",
+          "index": 786765,
+          "mode": "timeout_post",
+          "template": "incident_open"
+        },
+        "slot": 31,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 786765,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "incident_open"
+        },
+        "world_rank": 7
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "none",
+          "template": "migration_log"
+        },
+        "slot": 32,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 8
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "none",
+          "template": "migration_log"
+        },
+        "slot": 33,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 8
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "none",
+          "template": "migration_log"
+        },
+        "slot": 34,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 8
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "none",
+          "template": "migration_log"
+        },
+        "slot": 35,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 8
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "partial_timeout",
+          "template": "migration_log"
+        },
+        "slot": 36,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "partial_timeout",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 9
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "partial_timeout",
+          "template": "migration_log"
+        },
+        "slot": 37,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "partial_timeout",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 9
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "partial_timeout",
+          "template": "migration_log"
+        },
+        "slot": 38,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "partial_timeout",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 9
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": true,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "data",
+          "family": "data",
+          "focal": "insert_many",
+          "index": 857261,
+          "mode": "partial_timeout",
+          "template": "migration_log"
+        },
+        "slot": 39,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "insert_many",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 857261,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "partial_timeout",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "migration_log"
+        },
+        "world_rank": 9
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "none",
+          "template": "feature_flags"
+        },
+        "slot": 40,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 10
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "none",
+          "template": "feature_flags"
+        },
+        "slot": 41,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 10
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "none",
+          "template": "feature_flags"
+        },
+        "slot": 42,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 10
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "none",
+          "template": "feature_flags"
+        },
+        "slot": 43,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 10
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "duplicate_delivery",
+          "template": "feature_flags"
+        },
+        "slot": 44,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 11
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "duplicate_delivery",
+          "template": "feature_flags"
+        },
+        "slot": 45,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 11
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "duplicate_delivery",
+          "template": "feature_flags"
+        },
+        "slot": 46,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 11
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "social",
+          "family": "data",
+          "focal": "publish:linkedin",
+          "index": 135281,
+          "mode": "duplicate_delivery",
+          "template": "feature_flags"
+        },
+        "slot": 47,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:linkedin",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 135281,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "feature_flags"
+        },
+        "world_rank": 11
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "none",
+          "template": "subscription_upgrade"
+        },
+        "slot": 48,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 12
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "none",
+          "template": "subscription_upgrade"
+        },
+        "slot": 49,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 12
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "none",
+          "template": "subscription_upgrade"
+        },
+        "slot": 50,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 12
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "none",
+          "template": "subscription_upgrade"
+        },
+        "slot": 51,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 12
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "timeout_post",
+          "template": "subscription_upgrade"
+        },
+        "slot": 52,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 13
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "timeout_post",
+          "template": "subscription_upgrade"
+        },
+        "slot": 53,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 13
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "timeout_post",
+          "template": "subscription_upgrade"
+        },
+        "slot": 54,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 13
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge",
+          "index": 17463,
+          "mode": "timeout_post",
+          "template": "subscription_upgrade"
+        },
+        "slot": 55,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 17463,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_post",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "subscription_upgrade"
+        },
+        "world_rank": 13
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "none",
+          "template": "invoice_batch"
+        },
+        "slot": 56,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 14
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "none",
+          "template": "invoice_batch"
+        },
+        "slot": 57,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 14
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "none",
+          "template": "invoice_batch"
+        },
+        "slot": 58,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 14
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "none",
+          "template": "invoice_batch"
+        },
+        "slot": 59,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 14
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "duplicate_delivery",
+          "template": "invoice_batch"
+        },
+        "slot": 60,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 15
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "duplicate_delivery",
+          "template": "invoice_batch"
+        },
+        "slot": 61,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 15
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "duplicate_delivery",
+          "template": "invoice_batch"
+        },
+        "slot": 62,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 15
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "keyed_optional",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "billing",
+          "family": "billing",
+          "focal": "charge:0",
+          "index": 404628,
+          "mode": "duplicate_delivery",
+          "template": "invoice_batch"
+        },
+        "slot": 63,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "charge:0",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 404628,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "duplicate_delivery",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "invoice_batch"
+        },
+        "world_rank": 15
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "none",
+          "template": "deploy_release"
+        },
+        "slot": 64,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 16
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "none",
+          "template": "deploy_release"
+        },
+        "slot": 65,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 16
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "none",
+          "template": "deploy_release"
+        },
+        "slot": 66,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 16
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "none",
+          "template": "deploy_release"
+        },
+        "slot": 67,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 16
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "timeout_pre",
+          "template": "deploy_release"
+        },
+        "slot": 68,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 17
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "timeout_pre",
+          "template": "deploy_release"
+        },
+        "slot": 69,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 17
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "timeout_pre",
+          "template": "deploy_release"
+        },
+        "slot": 70,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 17
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "deploy",
+          "family": "deploy",
+          "focal": "deploy:production",
+          "index": 601493,
+          "mode": "timeout_pre",
+          "template": "deploy_release"
+        },
+        "slot": 71,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "deploy:production",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 601493,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_pre",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "deploy_release"
+        },
+        "world_rank": 17
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "none",
+          "template": "cross_post"
+        },
+        "slot": 72,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 18
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "none",
+          "template": "cross_post"
+        },
+        "slot": 73,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 18
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "none",
+          "template": "cross_post"
+        },
+        "slot": 74,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 18
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "none",
+          "template": "cross_post"
+        },
+        "slot": 75,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 18
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "timeout_late",
+          "template": "cross_post"
+        },
+        "slot": 76,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 19
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "timeout_late",
+          "template": "cross_post"
+        },
+        "slot": 77,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 19
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "timeout_late",
+          "template": "cross_post"
+        },
+        "slot": 78,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 19
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "none"
+          },
+          "domain": "social",
+          "family": "announce",
+          "focal": "publish:x",
+          "index": 22614,
+          "mode": "timeout_late",
+          "template": "cross_post"
+        },
+        "slot": 79,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "publish:x",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 22614,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "cross_post"
+        },
+        "world_rank": 19
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "none",
+          "template": "release_announcement"
+        },
+        "slot": 80,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 20
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "none",
+          "template": "release_announcement"
+        },
+        "slot": 81,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 20
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "none",
+          "template": "release_announcement"
+        },
+        "slot": 82,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 20
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "none",
+          "template": "release_announcement"
+        },
+        "slot": 83,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 20
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "timeout_late_tail",
+          "template": "release_announcement"
+        },
+        "slot": 84,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 21
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "timeout_late_tail",
+          "template": "release_announcement"
+        },
+        "slot": 85,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 21
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "timeout_late_tail",
+          "template": "release_announcement"
+        },
+        "slot": 86,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 21
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": true,
+            "verification": "strong"
+          },
+          "domain": "tickets",
+          "family": "announce",
+          "focal": "ticket_create",
+          "index": 639339,
+          "mode": "timeout_late_tail",
+          "template": "release_announcement"
+        },
+        "slot": 87,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "ticket_create",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 639339,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late_tail",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "release_announcement"
+        },
+        "world_rank": 21
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "none",
+          "template": "customer_notice"
+        },
+        "slot": 88,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 22
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "none",
+          "template": "customer_notice"
+        },
+        "slot": 89,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 22
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "none",
+          "template": "customer_notice"
+        },
+        "slot": 90,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 22
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "none",
+          "template": "customer_notice"
+        },
+        "slot": 91,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "none",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 22
+      },
+      {
+        "arm": "conseqax_guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "timeout_late",
+          "template": "customer_notice"
+        },
+        "slot": 92,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "conseqax_guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 23
+      },
+      {
+        "arm": "vanilla",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "timeout_late",
+          "template": "customer_notice"
+        },
+        "slot": 93,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "vanilla",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 23
+      },
+      {
+        "arm": "sdk_retry3",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "timeout_late",
+          "template": "customer_notice"
+        },
+        "slot": 94,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "sdk_retry3",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 23
+      },
+      {
+        "arm": "guard",
+        "metadata": {
+          "affordances": {
+            "batch": false,
+            "idempotency": "non_idempotent",
+            "reversible": false,
+            "verification": "eventual"
+          },
+          "domain": "mail",
+          "family": "notify",
+          "focal": "mail:1",
+          "index": 586821,
+          "mode": "timeout_late",
+          "template": "customer_notice"
+        },
+        "slot": 95,
+        "spec": {
+          "contract": "native",
+          "doc_variant": "neutral",
+          "experiment": "conseqax-limbo-frozen-v1",
+          "focal": "mail:1",
+          "harness": "minimal",
+          "human_available": false,
+          "index": 586821,
+          "instruction_variant": "default",
+          "max_tool_calls": 16,
+          "mode": "timeout_late",
+          "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+          "paraphrase": 0,
+          "policy": "guard",
+          "reasoning_effort": null,
+          "replicate": 0,
+          "template": "customer_notice"
+        },
+        "world_rank": 23
+      }
+    ],
+    "schema": "conseqax-limbo-protocol-v1",
+    "seed": 1701,
+    "sources": {
+      "research/limbo_agent/audit.py": {
+        "bytes": 30335,
+        "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+      },
+      "research/limbo_agent/boundary.py": {
+        "bytes": 16895,
+        "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+      },
+      "research/limbo_agent/harness.py": {
+        "bytes": 13858,
+        "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+      },
+      "research/limbo_agent/policy.py": {
+        "bytes": 16239,
+        "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+      },
+      "research/limbo_agent/preflight.py": {
+        "bytes": 6899,
+        "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+      },
+      "research/limbo_agent/probe.py": {
+        "bytes": 4230,
+        "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+      },
+      "research/limbo_agent/protocol.py": {
+        "bytes": 13796,
+        "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+      },
+      "research/limbo_agent/transport.py": {
+        "bytes": 24399,
+        "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+      },
+      "research/native_agent/__init__.py": {
+        "bytes": 80,
+        "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+      },
+      "research/native_agent/transport.py": {
+        "bytes": 33759,
+        "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+      },
+      "scripts/audit_limbo_external_benchmark.py": {
+        "bytes": 1296,
+        "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+      },
+      "scripts/run_limbo_external_benchmark.py": {
+        "bytes": 11968,
+        "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+      }
+    },
+    "wheel": {
+      "bytes": 215139,
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+      "sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98"
+    }
+  },
+  "slot": {
+    "arm": "guard",
+    "metadata": {
+      "affordances": {
+        "batch": false,
+        "idempotency": "idempotent",
+        "reversible": true,
+        "verification": "strong"
+      },
+      "domain": "tickets",
+      "family": "incident",
+      "focal": "status",
+      "index": 53348,
+      "mode": "timeout_late_tail",
+      "template": "ticket_resolution"
+    },
+    "slot": 21,
+    "spec": {
+      "contract": "native",
+      "doc_variant": "neutral",
+      "experiment": "conseqax-limbo-frozen-v1",
+      "focal": "status",
+      "harness": "minimal",
+      "human_available": false,
+      "index": 53348,
+      "instruction_variant": "default",
+      "max_tool_calls": 16,
+      "mode": "timeout_late_tail",
+      "model": "conseqax-limbo-qwen4b-20261024:ctx8k",
+      "paraphrase": 0,
+      "policy": "guard",
+      "reasoning_effort": null,
+      "replicate": 0,
+      "template": "ticket_resolution"
+    },
+    "world_rank": 5
+  }
+}

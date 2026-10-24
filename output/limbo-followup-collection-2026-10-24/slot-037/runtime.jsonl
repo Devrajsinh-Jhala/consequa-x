@@ -1,0 +1,30 @@
+{"args": ["db_insert_many", {"rows": [{"applied_by": "deploy-bot", "version": "20260917_01_split_user_names"}, {"applied_by": "deploy-bot", "version": "20260917_02_create_webhooks"}, {"applied_by": "deploy-bot", "version": "20260917_03_add_audit_columns"}, {"applied_by": "deploy-bot", "version": "20260917_04_drop_legacy_flags"}], "table": "schema_migrations"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [30.0], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 30.0, "event": "return", "id": 1, "result": null}
+{"clock": 30.0, "event": "return", "id": 0, "result": {"error": {"message": "Request timed out after 30s: no response was received from the data service before the connection was closed.", "type": "timeout"}, "ok": false}}
+{"args": ["db_query", {"table": "schema_migrations", "where": {"version": "20260917_01_split_user_names"}}], "clock": 30.0, "event": "enter", "id": 2, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 30.0, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": 2}
+{"clock": 30.4, "event": "return", "id": 3, "result": null}
+{"clock": 30.4, "event": "return", "id": 2, "result": {"ok": true, "result": {"count": 1, "rows": [{"applied_by": "deploy-bot", "row_id": "r1010", "table": "schema_migrations", "version": "20260917_01_split_user_names"}]}}}
+{"args": ["db_query", {"table": "schema_migrations", "where": {"version": "20260917_02_create_webhooks"}}], "clock": 30.4, "event": "enter", "id": 4, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 30.4, "event": "enter", "id": 5, "kwargs": {}, "op": "advance", "parent": 4}
+{"clock": 30.8, "event": "return", "id": 5, "result": null}
+{"clock": 30.8, "event": "return", "id": 4, "result": {"ok": true, "result": {"count": 1, "rows": [{"applied_by": "deploy-bot", "row_id": "r1011", "table": "schema_migrations", "version": "20260917_02_create_webhooks"}]}}}
+{"args": ["db_query", {"table": "schema_migrations", "where": {"version": "20260917_03_add_audit_columns"}}], "clock": 30.8, "event": "enter", "id": 6, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 30.8, "event": "enter", "id": 7, "kwargs": {}, "op": "advance", "parent": 6}
+{"clock": 31.2, "event": "return", "id": 7, "result": null}
+{"clock": 31.2, "event": "return", "id": 6, "result": {"ok": true, "result": {"count": 0, "rows": []}}}
+{"args": ["db_insert", {"row": {"applied_by": "deploy-bot", "version": "20260917_03_add_audit_columns"}, "table": "schema_migrations"}], "clock": 31.2, "event": "enter", "id": 8, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 31.2, "event": "enter", "id": 9, "kwargs": {}, "op": "advance", "parent": 8}
+{"clock": 32.1, "event": "return", "id": 9, "result": null}
+{"clock": 32.1, "event": "return", "id": 8, "result": {"ok": true, "result": {"applied_by": "deploy-bot", "row_id": "r1012", "table": "schema_migrations", "version": "20260917_03_add_audit_columns"}}}
+{"args": ["db_query", {"table": "schema_migrations", "where": {"version": "20260917_03_add_audit_columns"}}], "clock": 32.1, "event": "enter", "id": 10, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 32.1, "event": "enter", "id": 11, "kwargs": {}, "op": "advance", "parent": 10}
+{"clock": 32.5, "event": "return", "id": 11, "result": null}
+{"clock": 32.5, "event": "return", "id": 10, "result": {"ok": true, "result": {"count": 1, "rows": [{"applied_by": "deploy-bot", "row_id": "r1012", "table": "schema_migrations", "version": "20260917_03_add_audit_columns"}]}}}
+{"args": ["db_insert", {"row": {"batch": "20260917", "count": 4, "event": "migrations_recorded"}, "table": "audit_log"}], "clock": 32.5, "event": "enter", "id": 12, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 32.5, "event": "enter", "id": 13, "kwargs": {}, "op": "advance", "parent": 12}
+{"clock": 33.4, "event": "return", "id": 13, "result": null}
+{"clock": 33.4, "event": "return", "id": 12, "result": {"ok": true, "result": {"batch": "20260917", "count": 4, "event": "migrations_recorded", "row_id": "r1013", "table": "audit_log"}}}
+{"args": [], "clock": 33.4, "event": "enter", "id": 14, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 33.4, "event": "return", "id": 14, "result": null}

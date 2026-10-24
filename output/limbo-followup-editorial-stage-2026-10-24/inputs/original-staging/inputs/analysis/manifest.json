@@ -1,0 +1,74 @@
+{
+  "inputs/analyze_limbo_external_benchmark.py": {
+    "bytes": 43865,
+    "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+  },
+  "inputs/audit-manifest.json": {
+    "bytes": 135,
+    "sha256": "cda7c4e5439fbb3cf0407a20dc3061ed3015973ad45461d96c8af7e4a3395d59"
+  },
+  "inputs/audit-result.json": {
+    "bytes": 284401,
+    "sha256": "d8059d830e1e24b31a4c633d040958d41c82e555d70ab2dde5dcc0d112c2cf31"
+  },
+  "inputs/protocol.json": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "limbo-costs.pdf": {
+    "bytes": 19976,
+    "sha256": "dc3d63cf29429608936f0fa1d4e666db74bfba58284f9208b8b6592a02877997"
+  },
+  "limbo-costs.png": {
+    "bytes": 110420,
+    "sha256": "70d35bf1dac018ebfe27fbc9263322b9535fb58fa186bb2bdbc797b936e6ab95"
+  },
+  "limbo-costs.svg": {
+    "bytes": 19962,
+    "sha256": "e5de7772969dd29fcca0a7f008d9f871b6221d3be928d2118f89a83681bbb2e8"
+  },
+  "limbo-outcomes.pdf": {
+    "bytes": 14773,
+    "sha256": "dc83f0716f6ccfe2c3c080016b765107afd2baf7094f6d04b13bcaa34df47553"
+  },
+  "limbo-outcomes.png": {
+    "bytes": 70938,
+    "sha256": "8863bf48be64aae5e966677a2e6747bd0b9359b9a3cd431370aaa0ca62cfaf19"
+  },
+  "limbo-outcomes.svg": {
+    "bytes": 18145,
+    "sha256": "3193db58b35d6504c0508bfd66431d34558b6fe12acb23b818610e723c3e31ea"
+  },
+  "limbo-stratification.pdf": {
+    "bytes": 23822,
+    "sha256": "f3d6131e9b3a55fd79df290dcd80ccf7e4f7b2825c7a0cd943f5348931318aaf"
+  },
+  "limbo-stratification.png": {
+    "bytes": 184856,
+    "sha256": "ee4e831e979560b9284f6b81868d028bc976e7d9a02716d9ea07a48684a7e119"
+  },
+  "limbo-stratification.svg": {
+    "bytes": 43098,
+    "sha256": "a01d251504994b9cc35dbe4906d282c41eb6ab818ad0aecb47e8499e25f86926"
+  },
+  "narrative.md": {
+    "bytes": 5157,
+    "sha256": "93fdf34ee80090b41b75c773acaefd8c8c891640165ded8f17c94bf7101a93bb"
+  },
+  "narrative.tex": {
+    "bytes": 5224,
+    "sha256": "30d78a6a7ea7de6ec5b18f5f72a82d12d92f35c8bb5998db74c116f6b66b7185"
+  },
+  "results.json": {
+    "bytes": 2609732,
+    "sha256": "136eb7431a94bb6ac8881d57029388bdc103b57788897286adcd42aa62f87ce1"
+  },
+  "results.md": {
+    "bytes": 4247,
+    "sha256": "162e195807bb10217963973fdd47298a78dbed45c13fda39e223fa95a9919dcd"
+  },
+  "results.tex": {
+    "bytes": 420,
+    "sha256": "885daa7a1a4d7f772c8b23cb93e44f846f549bd44c21f1859195dca1b7ca2006"
+  }
+}

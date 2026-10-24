@@ -1,0 +1,117 @@
+{
+  "ended_utc": "2026-10-24T17:41:31.211134+00:00",
+  "error": null,
+  "exit_code": 0,
+  "final_pdf_or_conference_acceptance_claim": false,
+  "manuscript_manifest": {
+    "bytes": 12510,
+    "sha256": "6c4fae334664684b19d77ed3784c4987b5c94161f1016f8cc996148d8a84bbc1"
+  },
+  "new_model_calls": 0,
+  "new_pdf_created": false,
+  "official_collection_restart": false,
+  "original_chain": {
+    "analysis_manifest": {
+      "bytes": 2395,
+      "sha256": "bca64f4f5d3ebbdb5f484129188654d9f104b9f3ea33126a0b6bed0ac7db4b88"
+    },
+    "audit_manifest": {
+      "bytes": 135,
+      "sha256": "cda7c4e5439fbb3cf0407a20dc3061ed3015973ad45461d96c8af7e4a3395d59"
+    },
+    "collection_manifest": {
+      "bytes": 700067,
+      "sha256": "a1b2ff7568ea01070d343c553126d3c6f666227b50adaa4842174bd200a18329"
+    },
+    "pipeline_exit_code": 0,
+    "pipeline_manifest": {
+      "bytes": 3823,
+      "sha256": "de3ed2ea589180938924bac2463ce1adb911a4d6665eb36ea39159e131959cf1"
+    },
+    "pipeline_terminal": {
+      "bytes": 5857,
+      "sha256": "179145f5749a421358516f527f46da19cd40b118d1f8305262e0256e9d1baad7"
+    }
+  },
+  "paper_stage": "REVIEW_PENDING",
+  "portable_audit_manifest": {
+    "bytes": 135,
+    "sha256": "7b6bf6490a7ee35abd136cb0a0a81ce980637553da163700c0ccc147b57b8e1b"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "schema": "conseqax-limbo-poststudy-terminal-v1",
+  "stages": [
+    {
+      "command": [
+        "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\audit_limbo_portable.py",
+        "--native-root",
+        "C:\\Code\\ConsequaX-Research\\limbo-pinned-2db09fba",
+        "--protocol",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+        "--protocol-commit",
+        "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+        "--collection",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24",
+        "--compare-official",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-audit-2026-10-24\\audit-result.json",
+        "--output",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-portable-audit-2026-10-24-v2"
+      ],
+      "ended_utc": "2026-10-24T17:41:04.070217+00:00",
+      "known_subprocess_closed": true,
+      "returncode": 0,
+      "stage": "portable_audit",
+      "started_utc": "2026-10-24T17:40:07.283081+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "portable_audit.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 1033,
+        "path": "portable_audit.stdout.log",
+        "sha256": "1bd03604407dc2959af49af1671723fb4ab64968d011441e3a4ec9e4da3faae2"
+      }
+    },
+    {
+      "command": [
+        "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\prepare_final_limbo_manuscript.py",
+        "--analysis",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-analysis-2026-10-24",
+        "--protocol",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+        "--protocol-commit",
+        "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+        "--interrupted-analysis",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-interrupted-analysis-2026-10-24",
+        "--interrupted-protocol",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-protocol-2026-10-24\\protocol.json",
+        "--interrupted-protocol-commit",
+        "267cd1a3e846c46c009f20accbf302746e064875",
+        "--output",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-manuscript-stage-2026-10-24-v2"
+      ],
+      "ended_utc": "2026-10-24T17:41:16.841276+00:00",
+      "known_subprocess_closed": true,
+      "returncode": 0,
+      "stage": "prepare_manuscript",
+      "started_utc": "2026-10-24T17:41:04.252021+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "prepare_manuscript.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 478,
+        "path": "prepare_manuscript.stdout.log",
+        "sha256": "51f95a305c3106743734d88e42636a7b1f36416a096f7ef9b3cc91fcdbfd27dd"
+      }
+    }
+  ],
+  "started_utc": "2026-10-24T04:53:46.399419+00:00",
+  "status": "REVIEW_PENDING"
+}

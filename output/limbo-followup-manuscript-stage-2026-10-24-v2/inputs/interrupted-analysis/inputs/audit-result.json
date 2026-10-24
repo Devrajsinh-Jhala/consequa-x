@@ -1,0 +1,1924 @@
+{
+  "collection_manifest": {
+    "bytes": 58698,
+    "sha256": "7aa299986bff9d7885f64f9b03dd4b2f5625670bdc6a6451c4ed02d4089e7d89"
+  },
+  "counts": {
+    "audited_available_native_grades": 6,
+    "interrupted_without_terminal": 1,
+    "planned_slots": 96,
+    "unavailable_native_grades": 90,
+    "unstarted": 89
+  },
+  "current_offline_environment": {
+    "SDK_installation_required": false,
+    "executable": {
+      "bytes": 107312,
+      "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "sha256": "3ceb740cb3eb2c1c38602cf75a199e6331dd1295957e0d91e4dd4ef248466bf4"
+    },
+    "historical_environment_equality_required": false,
+    "implementation": "cpython",
+    "machine": "AMD64",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "third_party_replay_dependencies_required": []
+  },
+  "helper_sources": {
+    "audit_limbo_interrupted_collection.py": {
+      "bytes": 22230,
+      "sha256": "72a5c15be1a06ba832d303eee77a1e43b106bfcdb031ac13154ed05e110e7103"
+    },
+    "audit_limbo_portable.py": {
+      "bytes": 23268,
+      "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+    }
+  },
+  "historical_environment": {
+    "base_executable": {
+      "bytes": 107312,
+      "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "sha256": "3ceb740cb3eb2c1c38602cf75a199e6331dd1295957e0d91e4dd4ef248466bf4"
+    },
+    "coverage": "Interpreter executable bytes and dependency distribution versions; not all dependency payload bytes",
+    "distributions": {
+      "Jinja2": "3.1.6",
+      "consequa-x": "2.1.1",
+      "psutil": "7.2.2",
+      "tokenizers": "0.23.3"
+    },
+    "executable": {
+      "bytes": 277808,
+      "path": "D:\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+      "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+    },
+    "implementation": "cpython",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "interrupted_collection": {
+    "archive": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-official-interruption-2026-10-24",
+    "collection_manifest_field_refers_to": "new_post_collection_copy_archive_manifest",
+    "no_original_final_collection_manifest_exists": true,
+    "original_pipeline_and_observer_prefixes_preserved": true,
+    "original_sealed_returns_only_replayed": true,
+    "schema": "conseqax-limbo-interrupted-official-audit-v1"
+  },
+  "passed": true,
+  "protocol": {
+    "bytes": 118781,
+    "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+  },
+  "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875",
+  "rows": [
+    {
+      "arm": "vanilla",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 0,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 1355,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 175.12,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 1,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 90.62,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "guard",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 2,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 74.83,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": false,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": true,
+      "receipt_count": 0,
+      "slot": 3,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 1.8,
+      "wall_s": 84.41,
+      "work": {
+        "advance": 2,
+        "execute": 3,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 3,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 0
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": true,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 2,
+      "model_dispatches": 2,
+      "model_invocations": 2,
+      "native_error": null,
+      "native_grade": {
+        "EOS": true,
+        "TS": true,
+        "clean_success": true,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": true,
+        "extraneous_writes": 0,
+        "goal_met": true,
+        "n_effects": 2,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 1,
+            "met": true
+          }
+        ]
+      },
+      "native_stop_reason": "finish",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 4,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2379,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 2590,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 211,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 2
+        }
+      },
+      "virtual_seconds": 32.8,
+      "wall_s": 89.87,
+      "work": {
+        "advance": 4,
+        "execute": 4,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 4,
+        "outer_virtual_wait_seconds": 1.0,
+        "outer_wait_attempts": 1,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 1
+    },
+    {
+      "arm": "guard",
+      "audit_complete": true,
+      "execution_success": true,
+      "fault_triggered": true,
+      "grade_available": true,
+      "model_cap_refusals": 0,
+      "model_completions": 7,
+      "model_dispatches": 7,
+      "model_invocations": 7,
+      "native_error": null,
+      "native_grade": {
+        "EOS": false,
+        "TS": false,
+        "clean_success": false,
+        "collateral": [],
+        "dup_compensated": 0,
+        "dup_executed": 0,
+        "dup_live": 0,
+        "exact_state": false,
+        "extraneous_writes": 0,
+        "goal_met": false,
+        "n_effects": 1,
+        "targets": [
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 1,
+            "expected": 1,
+            "kind": "refund",
+            "label": "refund",
+            "live": 1,
+            "met": true
+          },
+          {
+            "dup_executed": 0,
+            "dup_live": 0,
+            "executed": 0,
+            "expected": 1,
+            "kind": "mail",
+            "label": "mail",
+            "live": 0,
+            "met": false
+          }
+        ]
+      },
+      "native_stop_reason": "no_tool_calls",
+      "operational": true,
+      "package_same_native_guard_replay": false,
+      "receipt_count": 0,
+      "slot": 5,
+      "started": true,
+      "status": "audited_native_return",
+      "usage": {
+        "cached_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 10778,
+          "unknown_invocations": 0
+        },
+        "input_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 11185,
+          "unknown_invocations": 0
+        },
+        "output_tokens": {
+          "complete_for_all_invocations": true,
+          "observed_prefix_total": 632,
+          "unknown_invocations": 0
+        },
+        "reasoning_tokens": {
+          "complete_for_all_invocations": false,
+          "observed_prefix_total": 0,
+          "unknown_invocations": 7
+        }
+      },
+      "virtual_seconds": 151.7,
+      "wall_s": 276.32,
+      "work": {
+        "advance": 6,
+        "execute": 5,
+        "flush": 1
+      },
+      "work_charges": {
+        "boundary_enter_counts_are_not_physical_effect_counts": true,
+        "flush_attempts": 1,
+        "native_tool_events": 5,
+        "outer_virtual_wait_seconds": 0,
+        "outer_wait_attempts": 0,
+        "public_verify_attempts": 0
+      },
+      "world_rank": 1
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "observed_journal_prefix": {
+        "actual_work_may_exceed_saved_prefix": true,
+        "complete_accounting": false,
+        "generation_dispatch_attempts": 6,
+        "missing_terminal_for_started_invocations": 1,
+        "model": {
+          "available": true,
+          "complete_accounting": false,
+          "events": {
+            "before_dispatch": 6,
+            "client_ready": 1,
+            "request_return": 5,
+            "request_start": 6
+          },
+          "first_invalid": null,
+          "trailing_newline": true,
+          "valid_prefix_records": 18
+        },
+        "model_invocations_started": 6,
+        "native_grade_or_final_physical_state_inferred": false,
+        "partial_saved_response_checks_are_not_a_native_trajectory_replay": true,
+        "runtime": {
+          "available": true,
+          "complete_accounting": false,
+          "events": {
+            "enter": 11,
+            "return": 11
+          },
+          "first_invalid": null,
+          "trailing_newline": true,
+          "valid_prefix_records": 22
+        },
+        "runtime_boundary_enter_counts": {
+          "advance": 6,
+          "execute": 5
+        },
+        "saved_model_terminals_checked_for_raw_response_metering_consistency": 5,
+        "usage": {
+          "cached_tokens": {
+            "complete_for_actual_episode": false,
+            "observed_prefix_total": 7152,
+            "unknown_started_invocations": 1,
+            "unrecorded_work_possible": true
+          },
+          "input_tokens": {
+            "complete_for_actual_episode": false,
+            "observed_prefix_total": 7508,
+            "unknown_started_invocations": 1,
+            "unrecorded_work_possible": true
+          },
+          "output_tokens": {
+            "complete_for_actual_episode": false,
+            "observed_prefix_total": 350,
+            "unknown_started_invocations": 1,
+            "unrecorded_work_possible": true
+          },
+          "reasoning_tokens": {
+            "complete_for_actual_episode": false,
+            "observed_prefix_total": 0,
+            "unknown_started_invocations": 6,
+            "unrecorded_work_possible": true
+          }
+        }
+      },
+      "operational": false,
+      "slot": 6,
+      "started": true,
+      "status": "interrupted_terminal_unavailable",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 1
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 7,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 1
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 8,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 2
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 9,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 2
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 10,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 2
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 11,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 2
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 12,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 3
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 13,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 3
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 14,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 3
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 15,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 3
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 16,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 4
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 17,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 4
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 18,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 4
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 19,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 4
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 20,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 5
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 21,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 5
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 22,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 5
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 23,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 5
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 24,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 6
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 25,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 6
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 26,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 6
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 27,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 6
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 28,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 7
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 29,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 7
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 30,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 7
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 31,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 7
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 32,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 8
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 33,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 8
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 34,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 8
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 35,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 8
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 36,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 9
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 37,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 9
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 38,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 9
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 39,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 9
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 40,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 10
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 41,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 10
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 42,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 10
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 43,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 10
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 44,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 11
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 45,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 11
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 46,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 11
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 47,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 11
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 48,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 12
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 49,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 12
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 50,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 12
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 51,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 12
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 52,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 13
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 53,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 13
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 54,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 13
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 55,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 13
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 56,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 14
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 57,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 14
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 58,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 14
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 59,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 14
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 60,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 15
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 61,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 15
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 62,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 15
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 63,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 15
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 64,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 16
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 65,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 16
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 66,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 16
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 67,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 16
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 68,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 17
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 69,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 17
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 70,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 17
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 71,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 17
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 72,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 18
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 73,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 18
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 74,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 18
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 75,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 18
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 76,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 19
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 77,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 19
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 78,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 19
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 79,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 19
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 80,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 20
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 81,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 20
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 82,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 20
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 83,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 20
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 84,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 21
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 85,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 21
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 86,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 21
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 87,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 21
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 88,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 22
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 89,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 22
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 90,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 22
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 91,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 22
+    },
+    {
+      "arm": "conseqax_guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 92,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 23
+    },
+    {
+      "arm": "vanilla",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 93,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 23
+    },
+    {
+      "arm": "sdk_retry3",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 94,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 23
+    },
+    {
+      "arm": "guard",
+      "audit_complete": false,
+      "execution_success": false,
+      "grade_available": false,
+      "native_grade": null,
+      "operational": false,
+      "slot": 95,
+      "started": false,
+      "status": "unstarted_interruption",
+      "unavailable_reason": "No original native terminal/grade; no new run or reconstructed terminal",
+      "world_rank": 23
+    }
+  ],
+  "schema": "conseqax-limbo-audit-v1",
+  "scope": {
+    "SDK_execution_or_independent_service_verifier_replay": false,
+    "SDK_receipt_current_public_report_mapping_recomputation": true,
+    "all_planned_operational_rates_keep_96_slot_denominator": true,
+    "collection_resumed": false,
+    "conseqax_guard_replayed_as_declared_native_guard": true,
+    "human_or_network_used": false,
+    "independent_native_policy_and_effect_replay": true,
+    "independent_tokenizer_reconstruction": false,
+    "new_model_calls": 0,
+    "original_collection_had_final_collector_seal": false,
+    "original_collector_terminal_exit_or_cause_inferred": false,
+    "partial_slot_replayed_or_graded": false,
+    "passed_means_all_slots_operational_or_successful": false,
+    "passed_means_full_matrix_completed": false,
+    "post_collection_derived_finalization": true,
+    "replacement_slots": false,
+    "saved_context_render_token_proof_consistency": true,
+    "unavailable_grades_are_semantic_failures": false
+  },
+  "summary": {
+    "conseqax_guard": {
+      "audited_native_returns": 1,
+      "native_EOS_true_available": 1,
+      "operational": 1,
+      "operational_native_EOS": 1,
+      "operational_native_TS": 1,
+      "planned": 24,
+      "started": 2,
+      "unavailable_native_grade": 23
+    },
+    "guard": {
+      "audited_native_returns": 2,
+      "native_EOS_true_available": 1,
+      "operational": 2,
+      "operational_native_EOS": 1,
+      "operational_native_TS": 1,
+      "planned": 24,
+      "started": 2,
+      "unavailable_native_grade": 22
+    },
+    "sdk_retry3": {
+      "audited_native_returns": 2,
+      "native_EOS_true_available": 2,
+      "operational": 2,
+      "operational_native_EOS": 2,
+      "operational_native_TS": 2,
+      "planned": 24,
+      "started": 2,
+      "unavailable_native_grade": 22
+    },
+    "vanilla": {
+      "audited_native_returns": 1,
+      "native_EOS_true_available": 1,
+      "operational": 1,
+      "operational_native_EOS": 1,
+      "operational_native_TS": 1,
+      "planned": 24,
+      "started": 1,
+      "unavailable_native_grade": 23
+    }
+  },
+  "utc": "2026-10-24T04:30:45.508416+00:00"
+}

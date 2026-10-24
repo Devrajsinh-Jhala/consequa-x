@@ -1,0 +1,34 @@
+{"args": ["billing_create_charge", {"amount_cents": 14900, "customer_id": "cus_1136", "description": "Upgrade to business"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"args": [29.1], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 30.0, "event": "return", "id": 2, "result": null}
+{"clock": 30.0, "event": "return", "id": 0, "result": {"error": {"message": "Request timed out after 30s: no response was received from the billing service before the connection was closed.", "type": "timeout"}, "ok": false}}
+{"args": [1.0], "clock": 30.0, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": null}
+{"clock": 31.0, "event": "return", "id": 3, "result": null}
+{"args": ["billing_create_charge", {"amount_cents": 14900, "customer_id": "cus_1136", "description": "Upgrade to business"}], "clock": 31.0, "event": "enter", "id": 4, "kwargs": {"note": "sdk retry 1", "source": "harness"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 31.0, "event": "enter", "id": 5, "kwargs": {}, "op": "advance", "parent": 4}
+{"clock": 31.9, "event": "return", "id": 5, "result": null}
+{"clock": 31.9, "event": "return", "id": 4, "result": {"ok": true, "result": {"amount_cents": 14900, "charge_id": "ch_1011", "created_at": 31.0, "currency": "usd", "customer_id": "cus_1136", "description": "Upgrade to business", "status": "succeeded"}}}
+{"args": ["db_upsert", {"key_field": "customer_id", "row": {"customer_id": "cus_1136", "plan": "business"}, "table": "subscriptions"}], "clock": 31.9, "event": "enter", "id": 6, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 31.9, "event": "enter", "id": 7, "kwargs": {}, "op": "advance", "parent": 6}
+{"clock": 32.8, "event": "return", "id": 7, "result": null}
+{"clock": 32.8, "event": "return", "id": 6, "result": {"ok": true, "result": {"customer_id": "cus_1136", "plan": "business", "row_id": "r1012", "table": "subscriptions", "upserted": "inserted"}}}
+{"args": ["mail_send", {"body": "Thank you for upgrading to the business plan! Your subscription is now active.", "subject": "Welcome to business", "to": ["kai.garcia@customer.example"]}], "clock": 32.8, "event": "enter", "id": 8, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 32.8, "event": "enter", "id": 9, "kwargs": {}, "op": "advance", "parent": 8}
+{"clock": 33.7, "event": "return", "id": 9, "result": null}
+{"clock": 33.7, "event": "return", "id": 8, "result": {"ok": true, "result": {"message_id": "msg-1013", "status": "sent"}}}
+{"args": ["db_query", {"table": "subscriptions", "where": {"customer_id": "cus_1136"}}], "clock": 33.7, "event": "enter", "id": 10, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 33.7, "event": "enter", "id": 11, "kwargs": {}, "op": "advance", "parent": 10}
+{"clock": 34.1, "event": "return", "id": 11, "result": null}
+{"clock": 34.1, "event": "return", "id": 10, "result": {"ok": true, "result": {"count": 1, "rows": [{"customer_id": "cus_1136", "plan": "business", "row_id": "r1012", "table": "subscriptions"}]}}}
+{"args": ["mail_search_sent", {"query": "Welcome to business"}], "clock": 34.1, "event": "enter", "id": 12, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 34.1, "event": "enter", "id": 13, "kwargs": {}, "op": "advance", "parent": 12}
+{"clock": 34.5, "event": "return", "id": 13, "result": null}
+{"clock": 34.5, "event": "return", "id": 12, "result": {"ok": true, "result": {"messages": []}}}
+{"args": ["billing_list_charges", {"customer_id": "cus_1136", "limit": 1}], "clock": 34.5, "event": "enter", "id": 14, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 34.5, "event": "enter", "id": 15, "kwargs": {}, "op": "advance", "parent": 14}
+{"clock": 34.9, "event": "return", "id": 15, "result": null}
+{"clock": 34.9, "event": "return", "id": 14, "result": {"ok": true, "result": {"charges": [{"amount_cents": 14900, "charge_id": "ch_1011", "created_at": 31.0, "currency": "usd", "customer_id": "cus_1136", "description": "Upgrade to business", "status": "succeeded"}]}}}
+{"args": [], "clock": 34.9, "event": "enter", "id": 16, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 34.9, "event": "return", "id": 16, "result": null}

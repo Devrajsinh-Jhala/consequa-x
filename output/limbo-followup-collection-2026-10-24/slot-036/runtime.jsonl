@@ -1,0 +1,16 @@
+{"args": ["db_insert_many", {"rows": [{"applied_by": "deploy-bot", "version": "20260917_01_split_user_names"}, {"applied_by": "deploy-bot", "version": "20260917_02_create_webhooks"}, {"applied_by": "deploy-bot", "version": "20260917_03_add_audit_columns"}, {"applied_by": "deploy-bot", "version": "20260917_04_drop_legacy_flags"}], "table": "schema_migrations"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [30.0], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 30.0, "event": "return", "id": 1, "result": null}
+{"clock": 30.0, "event": "return", "id": 0, "result": {"error": {"message": "Request timed out after 30s: no response was received from the data service before the connection was closed.", "type": "timeout"}, "ok": false}}
+{"args": [1.0], "clock": 30.0, "event": "enter", "id": 2, "kwargs": {}, "op": "advance", "parent": null}
+{"clock": 31.0, "event": "return", "id": 2, "result": null}
+{"args": ["db_insert_many", {"rows": [{"applied_by": "deploy-bot", "version": "20260917_01_split_user_names"}, {"applied_by": "deploy-bot", "version": "20260917_02_create_webhooks"}, {"applied_by": "deploy-bot", "version": "20260917_03_add_audit_columns"}, {"applied_by": "deploy-bot", "version": "20260917_04_drop_legacy_flags"}], "table": "schema_migrations"}], "clock": 31.0, "event": "enter", "id": 3, "kwargs": {"note": "sdk retry 1", "source": "harness"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 31.0, "event": "enter", "id": 4, "kwargs": {}, "op": "advance", "parent": 3}
+{"clock": 31.9, "event": "return", "id": 4, "result": null}
+{"clock": 31.9, "event": "return", "id": 3, "result": {"ok": true, "result": {"inserted": [{"applied_by": "deploy-bot", "row_id": "r1012", "table": "schema_migrations", "version": "20260917_01_split_user_names"}, {"applied_by": "deploy-bot", "row_id": "r1013", "table": "schema_migrations", "version": "20260917_02_create_webhooks"}, {"applied_by": "deploy-bot", "row_id": "r1014", "table": "schema_migrations", "version": "20260917_03_add_audit_columns"}, {"applied_by": "deploy-bot", "row_id": "r1015", "table": "schema_migrations", "version": "20260917_04_drop_legacy_flags"}]}}}
+{"args": ["db_insert", {"row": {"batch": "20260917", "count": 4, "event": "migrations_recorded"}, "table": "audit_log"}], "clock": 31.9, "event": "enter", "id": 5, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 31.9, "event": "enter", "id": 6, "kwargs": {}, "op": "advance", "parent": 5}
+{"clock": 32.8, "event": "return", "id": 6, "result": null}
+{"clock": 32.8, "event": "return", "id": 5, "result": {"ok": true, "result": {"batch": "20260917", "count": 4, "event": "migrations_recorded", "row_id": "r1016", "table": "audit_log"}}}
+{"args": [], "clock": 32.8, "event": "enter", "id": 7, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 32.8, "event": "return", "id": 7, "result": null}

@@ -1,0 +1,71 @@
+\subsection{Retained collection and effective diversity}
+
+All 15,360 scheduled worlds are retained, with 3,072 completed cells per policy and no execution failures. The unchanged auditor verified every SQLite snapshot and recomputed the endpoint summary; a portable artifact recheck agreed. The packaging deviation in Section~IV-D remains part of this result. Across all 120 case--policy groups, none of the recorded endpoint or resource metrics varied over the 128 seeds. Some exogenous timestamps varied, but the repetitions added no endpoint diversity. The substantive challenge set therefore remains 24 authored cases in 12 purposive families, rather than 15,360 independent tasks.
+
+\subsection{Recovery, harms, and the strong comparison}
+
+Every readback policy achieved operational safe recovery in 1,792/3,072 worlds (14/24 cases), compared with 1,024/3,072 (8/24) for response-driven retry. The predeclared equal-family primary difference was $+0.25$. Figure~\ref{fig:recovery-families} shows all 12 family contrasts: three were $+1$, and nine were zero. Differences against the reference, state-only, and one-final-read policies were zero in every family.
+
+The three positive families have specific explanations. In weather-supply and translation-routing cases, response-driven timeout retries created an extra non-idempotent effect; the readback policies dispatched once. In mobile-lab cases, the first response explicitly terminated without an effect; readback policies verified fresh absence and retried, while the response baseline's declared error rule stopped. This third gain concerns that rule, rather than superior deduplication. The equally informed classical reference achieved the same recovery as the package.
+
+\begin{table*}[t]
+\caption{Study A: recovery and resources. Each policy has 3,072 planned and completed worlds. Original $D/H$ satisfaction and recovery $R/S$ are distinct targets. Own duplicate and unwanted events can overlap. Means are exact charged counts, not wall latency.}
+\label{tab:recovery-outcomes}
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Policy & Safe recovery & Original $D/H$ & Recovery $R/S$ & Own duplicate & Own unwanted & Mean reads & Mean dispatches \\
+\midrule
+Response retry & 1024/3072 & 1280/3072 & 1024/3072 & 1024/3072 & 256/3072 & 0 & $17/12$ \\
+Readback state & 1792/3072 & 1792/3072 & 1792/3072 & 256/3072 & 256/3072 & $5/2$ & $5/4$ \\
+Separate reference & 1792/3072 & 1792/3072 & 1792/3072 & 256/3072 & 256/3072 & $5/2$ & $5/4$ \\
+ConseqaX one final read & 1792/3072 & 1792/3072 & 1792/3072 & 256/3072 & 256/3072 & $5/4$ & $5/4$ \\
+ConseqaX polling & 1792/3072 & 1792/3072 & 1792/3072 & 256/3072 & 256/3072 & $5/2$ & $5/4$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Residual harm is material. In the same 256 archive-rights worlds, one initial provider dispatch created two wrong-payload effects. These are both duplicate and unwanted events, not 512 distinct harmed worlds. Detection did not cancel or repair the effects. Environmental-release cases supply a different failure: an external actor satisfies the original contract, then a delayed own effect breaks the later exact-count target without an own duplicate or unwanted flag. All 256 response worlds with original satisfaction but failed recovery belong to this family. Equal aggregate original/recovery counts for the readback policies conceal a 256-world later-recovery gain and a different 256-world later loss. One target cannot substitute for the other.
+
+All 3,072 reference--polling pairs agreed on final state/linkage reports, endpoint vectors, controller action sequences, and full retained truth. This is observed implementation conformance under the shared policy, not superiority over the strong reference. State-only and polling also had identical actions and physical histories; 1,024 pairs differed in the action-linked report. Provenance expanded reporting here, without a recovery-action benefit.
+
+\subsection{Reporting and the cost of additional polls}
+
+\begin{table*}[t]
+\caption{Study A: original-contract final reports. Conditional error is wrong/definite; correct yield is correct/planned. Both positive and negative conclusions count. Comparisons use full-ledger truth, rather than contemporaneous support or the later recovery target.}
+\label{tab:recovery-reports}
+\centering\small
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lrrrr}
+\toprule
+Policy & State error & State correct yield & Linked error & Linked correct yield \\
+\midrule
+Response retry & 1024/1792 & 768/3072 & 768/1792 & 1024/3072 \\
+Readback state & 0/2304 & 2304/3072 & 0/1024 & 1024/3072 \\
+Separate reference & 0/2304 & 2304/3072 & 0/2048 & 2048/3072 \\
+ConseqaX one final read & 0/2304 & 2304/3072 & 0/2048 & 2048/3072 \\
+ConseqaX polling & 0/2304 & 2304/3072 & 0/2048 & 2048/3072 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The response policy made 768 false-success and 256 false-negative state reports. The readback policies made no wrong definite state report, but abstained in 768/3,072 worlds. Provenance-aware policies retained 1,024/3,072 linked abstentions; state-only retained 2,048/3,072. Correct negative reports contribute to these yields. Zero wrong original-contract reports did not imply zero harms or guaranteed safe recovery.
+
+Polling and one-final-read agreed on both final claims, dispatches, effect histories, and every non-polling-cost endpoint in all 3,072 pairs. Polling nevertheless consumed 7,680 reads versus 3,840, with mean logical decision time 220 versus 200 ms. These are simulated decision times, not measured production latency. The schedule explains the negative finding: no case with insufficient evidence at $H$ became admissibly known at $H+40$ or $H+80$. Transient limitations either cleared before the first final read or persisted beyond the last opportunity. Thus Study A shows no incremental polling utility under its schedules; it does not test the general benefit of recoverable lag. The separately frozen follow-up below addresses that specific coverage gap.
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.89\textheight,keepaspectratio]{recovery-method-overview.pdf}
+\caption{Study A: all five policies, exact denominators, own harmful events, global-state reporting, and read/dispatch costs. All recorded metrics were constant across seeds within each of the 24 authored cases. Reference independence concerns evidence arithmetic; application transitions and controller authorship are shared. Reporting correctness is distinct from physical recovery and evidence support.}
+\label{fig:recovery-overview}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=0.76\textheight,keepaspectratio]{recovery-family-primary-contrasts.pdf}
+\caption{Study A: every planned family's paired operational-safe difference, on a fixed $[-1,1]$ scale. Each family has two related cases and 128 seeds; repetitions added no recorded-metric variation. The equal-family difference is $+0.25$ against response retry and zero against all three readback comparators. These purposive families do not support task-population inference.}
+\label{fig:recovery-families}
+\end{figure*}
+
+\input{recovery-availability-results.tex}

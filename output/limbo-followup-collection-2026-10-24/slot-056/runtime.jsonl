@@ -1,0 +1,16 @@
+{"args": ["billing_create_charge", {"amount_cents": 2900, "customer_id": "cus_8417", "description": "Invoice INV-78684", "idempotency_key": "limbo-21e794779c9f9c39709f"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"clock": 0.9, "event": "return", "id": 0, "result": {"ok": true, "result": {"amount_cents": 2900, "charge_id": "ch_1010", "created_at": 0.0, "currency": "usd", "customer_id": "cus_8417", "description": "Invoice INV-78684", "status": "succeeded"}}}
+{"args": ["billing_create_charge", {"amount_cents": 24900, "customer_id": "cus_2361", "description": "Invoice INV-78684", "idempotency_key": "limbo-3ba5ba7adade6d7cd544"}], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.9, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": 2}
+{"clock": 1.8, "event": "return", "id": 3, "result": null}
+{"clock": 1.8, "event": "return", "id": 2, "result": {"ok": true, "result": {"amount_cents": 24900, "charge_id": "ch_1011", "created_at": 0.9, "currency": "usd", "customer_id": "cus_2361", "description": "Invoice INV-78684", "status": "succeeded"}}}
+{"args": ["mail_send", {"body": "The following charges have been processed:\n- Charge ID: ch_1010 (Zoe Kowalski)\n- Charge ID: ch_1011 (Ethan Garcia)", "subject": "Invoice INV-78684 charged", "to": ["finance@acme.example"]}], "clock": 1.8, "event": "enter", "id": 4, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 1.8, "event": "enter", "id": 5, "kwargs": {}, "op": "advance", "parent": 4}
+{"clock": 2.7, "event": "return", "id": 5, "result": null}
+{"clock": 2.7, "event": "return", "id": 4, "result": {"ok": true, "result": {"message_id": "msg-1012", "status": "sent"}}}
+{"args": ["finish", {"status": "completed", "summary": "Successfully charged both customers (Zoe Kowalski and Ethan Garcia) for invoice INV-78684 and emailed finance@acme.example with the charge details.", "uncertain_operations": []}], "clock": 2.7, "event": "enter", "id": 6, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"clock": 2.7, "event": "return", "id": 6, "result": {"ok": true, "result": "Task marked finished."}}
+{"args": [], "clock": 2.7, "event": "enter", "id": 7, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 2.7, "event": "return", "id": 7, "result": null}

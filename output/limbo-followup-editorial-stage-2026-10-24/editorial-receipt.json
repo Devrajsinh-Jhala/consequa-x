@@ -1,0 +1,273 @@
+{
+  "analysis_manifest": {
+    "bytes": 2395,
+    "sha256": "bca64f4f5d3ebbdb5f484129188654d9f104b9f3ea33126a0b6bed0ac7db4b88"
+  },
+  "base_paper_bindings": {
+    "paper/conseqax-research.md": {
+      "bytes": 55807,
+      "sha256": "5eca806b7d60e0e05b7ed32b21d889e434d7a53899d41adaddd586fa3953fe7f"
+    },
+    "paper/conseqax-research.tex": {
+      "bytes": 34635,
+      "sha256": "fd94baef0fcdd3204cd4e7c5a4b5bf407632141fab0e6125fccbd36b764cd580"
+    },
+    "paper/evidence-ledger.md": {
+      "bytes": 38630,
+      "sha256": "8075b79b03b13e4419652dee6281b07444cd88e38b2c66726301de340c6cb6cd"
+    },
+    "paper/figures/limbo-costs.pdf": null,
+    "paper/figures/limbo-costs.png": null,
+    "paper/figures/limbo-costs.svg": null,
+    "paper/figures/limbo-native-methods.pdf": {
+      "bytes": 36407,
+      "sha256": "30df66d103e64d67db6a0d9f31acf2c5b6584aba21b7345edc5a6dd23a6a9839"
+    },
+    "paper/figures/limbo-native-methods.png": {
+      "bytes": 163181,
+      "sha256": "c776b0805af452819ae175b5bbcb6e8246d07d4c7de36f5809ef4d756cd18152"
+    },
+    "paper/figures/limbo-native-methods.svg": {
+      "bytes": 14678,
+      "sha256": "a4d5f70287534c1e24d5f18e8cf2a0d7d29146c8ef50b6917abdf2064ca531fb"
+    },
+    "paper/figures/limbo-outcomes.pdf": null,
+    "paper/figures/limbo-outcomes.png": null,
+    "paper/figures/limbo-outcomes.svg": null,
+    "paper/figures/limbo-stratification.pdf": null,
+    "paper/figures/limbo-stratification.png": null,
+    "paper/figures/limbo-stratification.svg": null,
+    "paper/figures/recovery-availability-grid.pdf": {
+      "bytes": 26130,
+      "sha256": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8"
+    },
+    "paper/figures/recovery-availability-grid.png": {
+      "bytes": 424603,
+      "sha256": "4880e73de4d72acfdeb6fd8072d6b4855d4e674b5ab5a4902ba6a61fd50e16dd"
+    },
+    "paper/figures/recovery-availability-grid.svg": {
+      "bytes": 66712,
+      "sha256": "9e023f05ab5717f7e1c439a5084ddb1dea0df73e4ada5f889107990feb08172c"
+    },
+    "paper/figures/recovery-family-primary-contrasts.pdf": {
+      "bytes": 24641,
+      "sha256": "b305b9d32f7d8333c8031e33ebb29764531ea2e5e9a43d449a87b2f6bc66dd80"
+    },
+    "paper/figures/recovery-family-primary-contrasts.png": {
+      "bytes": 456432,
+      "sha256": "0752adcf0b2efd84bc2e44b321d8c7005075e38d829389402b5fcbe225e207f0"
+    },
+    "paper/figures/recovery-family-primary-contrasts.svg": {
+      "bytes": 44620,
+      "sha256": "9c84a445d3dad64faff8037e59065888dc647b73cdb44a41d1ff8a0e7211677f"
+    },
+    "paper/figures/recovery-method-overview.pdf": {
+      "bytes": 25901,
+      "sha256": "562ce06657b16bc527fadc48dddcdf28bd970c99c38fe6df5ef399b744683d24"
+    },
+    "paper/figures/recovery-method-overview.png": {
+      "bytes": 730410,
+      "sha256": "86d254b2ee63310287c69467d8387c8868c138b171b60c0a598b4916cda35a08"
+    },
+    "paper/figures/recovery-method-overview.svg": {
+      "bytes": 46018,
+      "sha256": "12068fc9bf97372e1a805869442d13572f8cb570938b92ca87e39fdcfe8fef28"
+    },
+    "paper/limbo-cohort-accounting.tex": null,
+    "paper/limbo-evidence-ledger-addendum-2026-10-24.md": null,
+    "paper/limbo-native-methods.tex": {
+      "bytes": 12370,
+      "sha256": "2e1c66dac3ef7bf2ad5cfabc867ef35ef785e50d547a6ad5aacea326384e64f3"
+    },
+    "paper/limbo-native-results.tex": null,
+    "paper/limbo-results-table.tex": null,
+    "paper/limbo-review-disposition-2026-10-24.md": null,
+    "paper/recovery-availability-results.tex": {
+      "bytes": 4782,
+      "sha256": "3f5d0edaced86131e3ef574754a21918540dba05ac759e737a0b7e037336f63c"
+    },
+    "paper/recovery-study-results.tex": {
+      "bytes": 7255,
+      "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
+    }
+  },
+  "cohorts_pooled": false,
+  "git_mutations": 0,
+  "interrupted_cohort": {
+    "analysis_manifest": {
+      "bytes": 1195,
+      "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+    },
+    "protocol": {
+      "bytes": 118781,
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875"
+  },
+  "new_model_calls": 0,
+  "new_native_evaluations": 0,
+  "new_pdf_created": false,
+  "original_stage_manifest": {
+    "bytes": 12510,
+    "sha256": "6c4fae334664684b19d77ed3784c4987b5c94161f1016f8cc996148d8a84bbc1"
+  },
+  "proposed_paper_files": {
+    "paper/conseqax-research.md": {
+      "bytes": 72572,
+      "sha256": "a0ed3f265da9d28fe4925383da4685b63eb88d77a7a7d341f04c168dabf3508d"
+    },
+    "paper/conseqax-research.tex": {
+      "bytes": 38122,
+      "sha256": "1bd32f2a36d82655c6c78a3f1c36f8c1fffc61f7e0575527c1f2ae14784e688f"
+    },
+    "paper/evidence-ledger.md": {
+      "bytes": 41431,
+      "sha256": "a895f7ac4b74fd6d209350072048a60fdb21a68a10337acf2132a771a294c41a"
+    },
+    "paper/figures/limbo-costs.pdf": {
+      "bytes": 19976,
+      "sha256": "dc3d63cf29429608936f0fa1d4e666db74bfba58284f9208b8b6592a02877997"
+    },
+    "paper/figures/limbo-costs.png": {
+      "bytes": 110420,
+      "sha256": "70d35bf1dac018ebfe27fbc9263322b9535fb58fa186bb2bdbc797b936e6ab95"
+    },
+    "paper/figures/limbo-costs.svg": {
+      "bytes": 19962,
+      "sha256": "e5de7772969dd29fcca0a7f008d9f871b6221d3be928d2118f89a83681bbb2e8"
+    },
+    "paper/figures/limbo-native-methods.pdf": {
+      "bytes": 36407,
+      "sha256": "30df66d103e64d67db6a0d9f31acf2c5b6584aba21b7345edc5a6dd23a6a9839"
+    },
+    "paper/figures/limbo-native-methods.png": {
+      "bytes": 163181,
+      "sha256": "c776b0805af452819ae175b5bbcb6e8246d07d4c7de36f5809ef4d756cd18152"
+    },
+    "paper/figures/limbo-native-methods.svg": {
+      "bytes": 14678,
+      "sha256": "a4d5f70287534c1e24d5f18e8cf2a0d7d29146c8ef50b6917abdf2064ca531fb"
+    },
+    "paper/figures/limbo-outcomes.pdf": {
+      "bytes": 14773,
+      "sha256": "dc83f0716f6ccfe2c3c080016b765107afd2baf7094f6d04b13bcaa34df47553"
+    },
+    "paper/figures/limbo-outcomes.png": {
+      "bytes": 70938,
+      "sha256": "8863bf48be64aae5e966677a2e6747bd0b9359b9a3cd431370aaa0ca62cfaf19"
+    },
+    "paper/figures/limbo-outcomes.svg": {
+      "bytes": 18145,
+      "sha256": "3193db58b35d6504c0508bfd66431d34558b6fe12acb23b818610e723c3e31ea"
+    },
+    "paper/figures/limbo-stratification.pdf": {
+      "bytes": 23822,
+      "sha256": "f3d6131e9b3a55fd79df290dcd80ccf7e4f7b2825c7a0cd943f5348931318aaf"
+    },
+    "paper/figures/limbo-stratification.png": {
+      "bytes": 184856,
+      "sha256": "ee4e831e979560b9284f6b81868d028bc976e7d9a02716d9ea07a48684a7e119"
+    },
+    "paper/figures/limbo-stratification.svg": {
+      "bytes": 43098,
+      "sha256": "a01d251504994b9cc35dbe4906d282c41eb6ab818ad0aecb47e8499e25f86926"
+    },
+    "paper/figures/recovery-availability-grid.pdf": {
+      "bytes": 26130,
+      "sha256": "912d3f7423456ee72bdb907447179e419fdeff937ab411020e371bca5c2cced8"
+    },
+    "paper/figures/recovery-availability-grid.png": {
+      "bytes": 424603,
+      "sha256": "4880e73de4d72acfdeb6fd8072d6b4855d4e674b5ab5a4902ba6a61fd50e16dd"
+    },
+    "paper/figures/recovery-availability-grid.svg": {
+      "bytes": 66712,
+      "sha256": "9e023f05ab5717f7e1c439a5084ddb1dea0df73e4ada5f889107990feb08172c"
+    },
+    "paper/figures/recovery-family-primary-contrasts.pdf": {
+      "bytes": 24641,
+      "sha256": "b305b9d32f7d8333c8031e33ebb29764531ea2e5e9a43d449a87b2f6bc66dd80"
+    },
+    "paper/figures/recovery-family-primary-contrasts.png": {
+      "bytes": 456432,
+      "sha256": "0752adcf0b2efd84bc2e44b321d8c7005075e38d829389402b5fcbe225e207f0"
+    },
+    "paper/figures/recovery-family-primary-contrasts.svg": {
+      "bytes": 44620,
+      "sha256": "9c84a445d3dad64faff8037e59065888dc647b73cdb44a41d1ff8a0e7211677f"
+    },
+    "paper/figures/recovery-method-overview.pdf": {
+      "bytes": 25901,
+      "sha256": "562ce06657b16bc527fadc48dddcdf28bd970c99c38fe6df5ef399b744683d24"
+    },
+    "paper/figures/recovery-method-overview.png": {
+      "bytes": 730410,
+      "sha256": "86d254b2ee63310287c69467d8387c8868c138b171b60c0a598b4916cda35a08"
+    },
+    "paper/figures/recovery-method-overview.svg": {
+      "bytes": 46018,
+      "sha256": "12068fc9bf97372e1a805869442d13572f8cb570938b92ca87e39fdcfe8fef28"
+    },
+    "paper/limbo-cohort-accounting.tex": {
+      "bytes": 1150,
+      "sha256": "592a47c33e20d69c18a9eb7f95352f03647ca06f060468fca4bbad96bbd8bf34"
+    },
+    "paper/limbo-evidence-ledger-addendum-2026-10-24.md": {
+      "bytes": 2835,
+      "sha256": "09f2de3fabddcc29d99070b0761ff68554877f4792017d1eebb32d7d21f8ff57"
+    },
+    "paper/limbo-native-methods.tex": {
+      "bytes": 14545,
+      "sha256": "ab3db3ac3d5be44c5841b8efd956c484248bd5e54d9b5ce679216681fd45f77d"
+    },
+    "paper/limbo-native-results.tex": {
+      "bytes": 8316,
+      "sha256": "7f41c8ad14550316c222074d5bef07632604411db3e0a8cdb6adc51037e9557f"
+    },
+    "paper/limbo-results-table.tex": {
+      "bytes": 420,
+      "sha256": "885daa7a1a4d7f772c8b23cb93e44f846f549bd44c21f1859195dca1b7ca2006"
+    },
+    "paper/limbo-review-disposition-2026-10-24.md": {
+      "bytes": 3299,
+      "sha256": "d3ecb2de068ac1ca25576310913475b100ec9805bc7e8f4c6db0893ab5f4849f"
+    },
+    "paper/recovery-availability-results.tex": {
+      "bytes": 4782,
+      "sha256": "3f5d0edaced86131e3ef574754a21918540dba05ac759e737a0b7e037336f63c"
+    },
+    "paper/recovery-study-results.tex": {
+      "bytes": 7255,
+      "sha256": "85a2a41fe5c075a3e78525074f80e9dd75ce227952b9b066500b7ba152ac3c0c"
+    }
+  },
+  "proposed_sources_require_review": true,
+  "protocol": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "schema": "conseqax-limbo-final-editorial-v1",
+  "scope": "Presentation only of already frozen statistics after partial follow-up exposure; no new endpoint/filter/selection/analysis; review and publication remain pending",
+  "source_bindings": {
+    "scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "scripts/build_final_limbo_paper.py": {
+      "bytes": 38315,
+      "sha256": "baae05993b2490e3680b733e1dfe9ce50c8fded77340947fdf3bb977f8448b52"
+    },
+    "scripts/finalize_limbo_editorial_sources.py": {
+      "bytes": 20094,
+      "sha256": "9dbbfd6c5136702d002b417813105e7ded729479d7f1b93b31541c5fdf33cc19"
+    },
+    "scripts/prepare_final_limbo_manuscript.py": {
+      "bytes": 48535,
+      "sha256": "2eb17fe87f09155f34c42e6de50a6b604aa1db23cb0ebab1be7c71565554c9c8"
+    }
+  },
+  "status": "EDITORIAL_REVIEW_PENDING",
+  "utc": "2026-10-24T17:42:21.164765+00:00",
+  "visual_review_pending": true
+}

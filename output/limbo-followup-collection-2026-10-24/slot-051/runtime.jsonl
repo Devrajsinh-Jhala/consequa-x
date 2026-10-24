@@ -1,0 +1,24 @@
+{"args": ["billing_create_charge", {"amount_cents": 14900, "customer_id": "cus_1136", "description": "Upgrade to business", "idempotency_key": "limbo-cdb93416f8ab78765da6"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"clock": 0.9, "event": "return", "id": 0, "result": {"ok": true, "result": {"amount_cents": 14900, "charge_id": "ch_1010", "created_at": 0.0, "currency": "usd", "customer_id": "cus_1136", "description": "Upgrade to business", "status": "succeeded"}}}
+{"args": ["db_upsert", {"key_field": "customer_id", "row": {"customer_id": "cus_1136", "plan": "business"}, "table": "subscriptions"}], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.9, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": 2}
+{"clock": 1.8, "event": "return", "id": 3, "result": null}
+{"clock": 1.8, "event": "return", "id": 2, "result": {"ok": true, "result": {"customer_id": "cus_1136", "plan": "business", "row_id": "r1011", "table": "subscriptions", "upserted": "inserted"}}}
+{"args": ["mail_send", {"body": "Thank you for upgrading to the business plan! Your subscription is now active.", "subject": "Welcome to business", "to": ["kai.garcia@customer.example"]}], "clock": 1.8, "event": "enter", "id": 4, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 1.8, "event": "enter", "id": 5, "kwargs": {}, "op": "advance", "parent": 4}
+{"clock": 2.7, "event": "return", "id": 5, "result": null}
+{"clock": 2.7, "event": "return", "id": 4, "result": {"ok": true, "result": {"message_id": "msg-1012", "status": "sent"}}}
+{"args": ["billing_list_charges", {"customer_id": "cus_1136", "limit": 1}], "clock": 2.7, "event": "enter", "id": 6, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 2.7, "event": "enter", "id": 7, "kwargs": {}, "op": "advance", "parent": 6}
+{"clock": 3.1, "event": "return", "id": 7, "result": null}
+{"clock": 3.1, "event": "return", "id": 6, "result": {"ok": true, "result": {"charges": [{"amount_cents": 14900, "charge_id": "ch_1010", "created_at": 0.0, "currency": "usd", "customer_id": "cus_1136", "description": "Upgrade to business", "status": "succeeded"}]}}}
+{"args": ["mail_search_sent", {"limit": 1, "query": "Welcome to business"}], "clock": 3.1, "event": "enter", "id": 8, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 3.1, "event": "enter", "id": 9, "kwargs": {}, "op": "advance", "parent": 8}
+{"clock": 3.5, "event": "return", "id": 9, "result": null}
+{"clock": 3.5, "event": "return", "id": 8, "result": {"ok": true, "result": {"messages": []}}}
+{"args": ["finish", {"status": "partial", "summary": "Successfully charged customer cus_1136 and updated subscription to business plan. Email delivery was not verified and failed to appear in the sent folder.", "uncertain_operations": ["mail_send"]}], "clock": 3.5, "event": "enter", "id": 10, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"clock": 3.5, "event": "return", "id": 10, "result": {"ok": true, "result": "Task marked finished."}}
+{"args": [], "clock": 3.5, "event": "enter", "id": 11, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 3.5, "event": "return", "id": 11, "result": null}

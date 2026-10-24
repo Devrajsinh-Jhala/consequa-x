@@ -1,0 +1,226 @@
+{
+  "coverage": "All wheel package payload bytes; excludes cache bytecode and dependency payloads",
+  "framework_payload": {
+    "consequa_x/__init__.py": {
+      "bytes": 2515,
+      "sha256": "478c57d8f957fa4b83430fb2f7f65a485ea78ea5b21cdfd14c53ce0cf2020ff8"
+    },
+    "consequa_x/__main__.py": {
+      "bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    "consequa_x/adapters/__init__.py": {
+      "bytes": 135,
+      "sha256": "4f5894f1a872af11e46660789f1f8709821324748cb6751ded0453fab7badeda"
+    },
+    "consequa_x/adapters/ollama.py": {
+      "bytes": 18220,
+      "sha256": "e7d752bc2b3751ea279e5b512997c0de9ad9d53858cbe2ac9aa75ac3224da01e"
+    },
+    "consequa_x/attribution.py": {
+      "bytes": 17742,
+      "sha256": "5aa352becbb75d1aec15aa5b77465227811505d846d56d8b4c742443557bf717"
+    },
+    "consequa_x/benchmark/__init__.py": {
+      "bytes": 61,
+      "sha256": "5a978fbc5abf98e04b92aed5c32ab7916f83cd09a551c791ea55d14bdb2fca1b"
+    },
+    "consequa_x/benchmark/assessment_metrics.py": {
+      "bytes": 2445,
+      "sha256": "6c6f5cb9386ada10a8f0ce0b2c9d6cc002f4905552b8eacc54c9c8e2f2283c63"
+    },
+    "consequa_x/benchmark/calibration.py": {
+      "bytes": 41933,
+      "sha256": "98ae708804af391050b3ea3431a114f0076e13a79134a301880f21b11fd7aebb"
+    },
+    "consequa_x/benchmark/calibration_export.py": {
+      "bytes": 7524,
+      "sha256": "b75f54f89f15eaf7206130efd924b7fd3fcd7e4919eb8eb7f9fddb102c8991e9"
+    },
+    "consequa_x/benchmark/calibration_mechanisms.py": {
+      "bytes": 13106,
+      "sha256": "84debd9ad20b88398760ee7aa95be4afc38e4ccc835da4a52358a48e00205cb2"
+    },
+    "consequa_x/benchmark/decision_coalition.py": {
+      "bytes": 12052,
+      "sha256": "e226ac3b3ea6c8a12ccf87f796f0846048cdfe8e5a5907fa14dfe1d3a95e862f"
+    },
+    "consequa_x/benchmark/decision_contrastive.py": {
+      "bytes": 22451,
+      "sha256": "3a4b664de7c1fe056bd69ced02765258882e8f7037af0404df82b4104f1c155a"
+    },
+    "consequa_x/benchmark/decision_replay.py": {
+      "bytes": 15503,
+      "sha256": "9c67172eaf907d7bfdeff9ae87dacda2dbd2e6fa6ae5c0c2b07aa3b15512f870"
+    },
+    "consequa_x/benchmark/decision_shapley.py": {
+      "bytes": 32581,
+      "sha256": "944d99da393ed5c7e6a7674c88942773498ce4a42279dc43fb80bd7d75e6fccf"
+    },
+    "consequa_x/benchmark/evaluation.py": {
+      "bytes": 8541,
+      "sha256": "5782108d6f1728b5940c8842f3caa8a6bcae8279bfa710333d3de0856f6a9403"
+    },
+    "consequa_x/benchmark/interaction_export.py": {
+      "bytes": 14789,
+      "sha256": "ce8fc7958157d148de7f3ee9ff28e231c8c89b9f4e104c84c4fe92c0fb38d384"
+    },
+    "consequa_x/benchmark/interaction_mechanisms.py": {
+      "bytes": 9911,
+      "sha256": "e529d64e292138e4eeefc2b463fdeb2c8718d4f6766ee2daa75ebadb2589cf35"
+    },
+    "consequa_x/benchmark/interaction_sampling.py": {
+      "bytes": 36001,
+      "sha256": "b5cec9b36a4b1b2181d55533fa593cb1df059ad6403b7b03b3b29cb5a520df03"
+    },
+    "consequa_x/benchmark/interval_comparison.py": {
+      "bytes": 17077,
+      "sha256": "d981faabded0aeff7bb5582db62f98864022222482fa6554764b0ae667a58103"
+    },
+    "consequa_x/benchmark/intervals.py": {
+      "bytes": 7292,
+      "sha256": "13cfd6863e9224c0e609753435bf190f5695b98201d7ce8a8bd36917dfb3e85e"
+    },
+    "consequa_x/benchmark/payments.py": {
+      "bytes": 17277,
+      "sha256": "92a654a88bc73055a7927c1e4f22089cdc1dc8dc0b32b6dd0b4fb0cdb7ad8ec2"
+    },
+    "consequa_x/benchmark/policy_experiment.py": {
+      "bytes": 13235,
+      "sha256": "14a7f51fde3508eaf8f56034246548c612b8d0e92dade3615d256f9406d18544"
+    },
+    "consequa_x/benchmark/policy_runner.py": {
+      "bytes": 11257,
+      "sha256": "91192e53f75ec29e69635035b9c64131ae4dfe18df4e695f48dae37378b1a799"
+    },
+    "consequa_x/benchmark/runner.py": {
+      "bytes": 12825,
+      "sha256": "323ebe964800db7261a2a7c0ec1880e6965dc177b9b8b182ec0dd9c21d440c52"
+    },
+    "consequa_x/benchmark/study.py": {
+      "bytes": 8973,
+      "sha256": "c7b0b9e0b8398b1353497ee0e154c3b9fc73ab84624974c009be8b040ee6946b"
+    },
+    "consequa_x/benchmark/targets.py": {
+      "bytes": 7106,
+      "sha256": "16273ea10b7ac59102ac5abd78dc90511734657d5826f5dc2b1013a33f7ed2d3"
+    },
+    "consequa_x/benchmark/templates.py": {
+      "bytes": 4990,
+      "sha256": "2e61a0247f24ad067678649b1cc937f053b2daa0faf6363171bce8a04740e5c7"
+    },
+    "consequa_x/capture.py": {
+      "bytes": 27165,
+      "sha256": "32bcd35281d8b3a95713145f66137c529dd00ac261c85494a23723df16737615"
+    },
+    "consequa_x/cli.py": {
+      "bytes": 90649,
+      "sha256": "4e899adbf9640b3adc13180c4e2aae03f012e55949b6286a1c5a0ee6e4e5f7e2"
+    },
+    "consequa_x/compare.py": {
+      "bytes": 4299,
+      "sha256": "7f1ed3ff57a81e13c51e391727baf706c1e6fae8e77e5f8092e7b76824dd08db"
+    },
+    "consequa_x/composite.py": {
+      "bytes": 16232,
+      "sha256": "7007999a5fd8dfd679150e205d7d7ebcd79251c667791d5f944a6cbbe4192f92"
+    },
+    "consequa_x/errors.py": {
+      "bytes": 1199,
+      "sha256": "4fb793eb0e51591c90fb18bee569fafc5a2f470d7e2bf6b6fb83c2f61064aeaf"
+    },
+    "consequa_x/explanation.py": {
+      "bytes": 9905,
+      "sha256": "233ac34a13690bf2f8cbd2415e4482423c3327a24806d8ad91f76264c1200ab2"
+    },
+    "consequa_x/graph.py": {
+      "bytes": 10387,
+      "sha256": "6b746976d24c8bdef99602cbac11cffbc1b60b3f19e2713c1201041a994e220c"
+    },
+    "consequa_x/guard.py": {
+      "bytes": 3679,
+      "sha256": "a0d1e4a240e674089a0f2d80e652f87a3ab0166ee82310c024af8952e186c639"
+    },
+    "consequa_x/integrations/__init__.py": {
+      "bytes": 7443,
+      "sha256": "272bd9acf9d784d52ad43f8a9ee4f8649655b38c4f43548c9bef649282569a39"
+    },
+    "consequa_x/integrations/claude_agent_sdk.py": {
+      "bytes": 4012,
+      "sha256": "b584d329ba2baefb18e64e4ecfd7386e74e716a1881a40d3fd309fb26ae23858"
+    },
+    "consequa_x/integrations/langchain.py": {
+      "bytes": 3461,
+      "sha256": "ec65feaab965fc23d4f2416f76001efbcf3d9e812191e860e9cd5a003ce8f362"
+    },
+    "consequa_x/integrations/openai_agents.py": {
+      "bytes": 4423,
+      "sha256": "6d83f8f802ad03a4ec0e5402b782ae5c5cb7e5eb7ec1fefd006bac1a655e4078"
+    },
+    "consequa_x/mcp_capture.py": {
+      "bytes": 2681,
+      "sha256": "26d77d0c468abfbfa1a6242ef3dd5d2e2366c6ab8c653976d38f1ac9bc21bbb1"
+    },
+    "consequa_x/migrate.py": {
+      "bytes": 8518,
+      "sha256": "fa003e7f466417819a0290ac1830d98638ffb2e106ca1b5720adaa1d75feff97"
+    },
+    "consequa_x/models.py": {
+      "bytes": 29609,
+      "sha256": "953ddf8375dc74bf8f66c29d0a01a5840a094eecc24aab73dd72e6314012185d"
+    },
+    "consequa_x/otel.py": {
+      "bytes": 30080,
+      "sha256": "54047e1357fc4305da9179905d03b05a13f468323d8a50c3c340035fc714296c"
+    },
+    "consequa_x/policies.py": {
+      "bytes": 10732,
+      "sha256": "ff6031e4c3dd29eb17419fa921341e839a51995f02517b4c583d41bb5c2398f1"
+    },
+    "consequa_x/py.typed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "consequa_x/readback.py": {
+      "bytes": 4776,
+      "sha256": "aaf0004a6d4478e55af97ee8bcec5fff74324a3f258687a4a228724502950098"
+    },
+    "consequa_x/record_verifier.py": {
+      "bytes": 14288,
+      "sha256": "4d9a4971c2a97a0ba2065edefe44724820620715474463dd5b4d027e9fc28b05"
+    },
+    "consequa_x/report.py": {
+      "bytes": 28964,
+      "sha256": "03f53c55ff901f9f1c2f887eb0064ecf491d2248b20e79dd5118e00dbb03613b"
+    },
+    "consequa_x/research.py": {
+      "bytes": 938,
+      "sha256": "ee183e4bc4b27719f12f15be0bb989dcf6907a267cb05044f225396511ee951d"
+    },
+    "consequa_x/schema.py": {
+      "bytes": 7113,
+      "sha256": "3c42d0e4abcfa162f969fd6718ca8b9a149024031fa3a865b144ce894ebae372"
+    },
+    "consequa_x/schemas/trace-v1.0.json": {
+      "bytes": 13861,
+      "sha256": "e506df633c71ef52d9d98fa4d6ab0f9b5c0b499c6fc7c328130a44cbc8f18101"
+    },
+    "consequa_x/store.py": {
+      "bytes": 2289,
+      "sha256": "2d569b0f1b0ea04dd375846e2178e3f037c9cab9429e7f3a04415532aae8622d"
+    },
+    "consequa_x/summary.py": {
+      "bytes": 6162,
+      "sha256": "e5ac2548f01dbf339f171313964aaff9a6a46bf2caa38c9782f8678edb9c9890"
+    },
+    "consequa_x/verification.py": {
+      "bytes": 17618,
+      "sha256": "e8d2618f80b5f4da577ace852b8db2036e2ffff5597d72378f534a80b4d63f6e"
+    }
+  },
+  "framework_payload_count": 54,
+  "framework_root": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Lib\\site-packages\\consequa_x",
+  "framework_version": "2.1.1",
+  "framework_wheel": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\release-2.1.1-2026-10-19\\consequa_x-2.1.1-py3-none-any.whl",
+  "framework_wheel_sha256": "c86c02aacac53d51bd4335238c4f44b96098db9af354662b23722fab60ed3b98"
+}

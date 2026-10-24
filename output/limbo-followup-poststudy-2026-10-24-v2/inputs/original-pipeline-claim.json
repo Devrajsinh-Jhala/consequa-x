@@ -1,0 +1,101 @@
+{
+  "created_utc": "2026-10-24T04:52:54.240657+00:00",
+  "figure_dependencies": "C:\\Code\\ConsequaX-Research\\figure-dependencies",
+  "mpl_config_dir": "C:\\Code\\ConsequaX-Research\\figure-matplotlib-cache",
+  "native_root": "C:\\Code\\ConsequaX-Research\\limbo-pinned-2db09fba",
+  "node": {
+    "bytes": 93713712,
+    "path": "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "sha256": "6416a2fc6ccaf41d71fc50e3c0ff9074c633249e3c74564d55cd0a5c25b61ecb"
+  },
+  "observer_stop_file": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-observer-stop-2026-10-24.flag",
+  "one_shot": {
+    "collector_attempts": 1,
+    "replacement": false,
+    "resume": false,
+    "retry": false,
+    "slot_selection": false
+  },
+  "outputs": {
+    "analysis_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-analysis-2026-10-24",
+    "audit_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-audit-2026-10-24",
+    "collection_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24"
+  },
+  "pdf_marker": {
+    "bytes": 735,
+    "path": "C:\\Users\\DELL\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1022.11436\\skills\\pdf\\container_tools\\mark_artifact_operation_started.mjs",
+    "sha256": "968d66a7b491c7728f2ab009dcb54ac0025d6f474de6f3734f66b8809f6c18a8"
+  },
+  "protocol": {
+    "bytes": 121774,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "publication_verification": "Exact commit supplied by operator; existing collector and auditor independently verify Git-bound protocol before collection/audit; no Git operation is implemented by this orchestrator",
+  "python": {
+    "bytes": 277808,
+    "path": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+  },
+  "schema": "conseqax-limbo-one-shot-completion-pipeline-v1",
+  "scope": "Collection, independent audit, and three figure PDFs only; no manuscript completion or visual-quality claim",
+  "source_files": {
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/run_limbo_completion_pipeline.py": {
+      "bytes": 22896,
+      "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    }
+  }
+}

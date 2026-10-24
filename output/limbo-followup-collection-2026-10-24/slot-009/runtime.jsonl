@@ -1,0 +1,36 @@
+{"args": ["tickets_create", {"body": "Initiating hotfix rollout for notify-worker version 4.13.7.", "project": "OPS", "title": "Hotfix notify-worker 4.13.7"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"clock": 0.9, "event": "return", "id": 0, "result": {"ok": true, "result": {"created_at": 0.0, "project": "OPS", "status": "open", "ticket_key": "OPS-102", "title": "Hotfix notify-worker 4.13.7"}}}
+{"args": ["social_publish", {"idempotency_key": "limbo-fe52cf89257713d51cd6", "platform": "mastodon", "text": "Status update: a fix for Nimbus checkout errors (notify-worker 4.13.7) is rolling out now. Next update in 30 minutes."}], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.9, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": 2}
+{"clock": 1.8, "event": "return", "id": 3, "result": null}
+{"clock": 1.8, "event": "return", "id": 2, "result": {"ok": true, "result": {"created_at": 0.9, "platform": "mastodon", "post_id": "md-1010", "text": "Status update: a fix for Nimbus checkout errors (notify-worker 4.13.7) is rolling out now. Next update in 30 minutes.", "url": "https://mastodon.example/p/md-1010"}}}
+{"args": ["social_publish", {"platform": "weibo", "text": "Status update: a fix for Nimbus checkout errors (notify-worker 4.13.7) is rolling out now. Next update in 30 minutes."}], "clock": 1.8, "event": "enter", "id": 4, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 1.8, "event": "enter", "id": 5, "kwargs": {}, "op": "advance", "parent": 4}
+{"clock": 2.7, "event": "return", "id": 5, "result": null}
+{"clock": 2.7, "event": "return", "id": 4, "result": {"ok": true, "result": {"created_at": 1.8, "platform": "weibo", "post_id": "wb-1011", "text": "Status update: a fix for Nimbus checkout errors (notify-worker 4.13.7) is rolling out now. Next update in 30 minutes.", "url": "https://weibo.example/p/wb-1011"}}}
+{"args": ["deploy_trigger", {"environment": "staging", "service": "notify-worker", "version": "4.13.7"}], "clock": 2.7, "event": "enter", "id": 6, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [1.5], "clock": 2.7, "event": "enter", "id": 7, "kwargs": {}, "op": "advance", "parent": 6}
+{"clock": 4.2, "event": "return", "id": 7, "result": null}
+{"clock": 4.2, "event": "return", "id": 6, "result": {"ok": true, "result": {"created_at": 2.7, "environment": "staging", "run_id": "run-1012", "service": "notify-worker", "status": "queued", "version": "4.13.7"}}}
+{"args": ["deploy_list_runs", {"limit": 1, "service": "notify-worker"}], "clock": 4.2, "event": "enter", "id": 8, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 4.2, "event": "enter", "id": 9, "kwargs": {}, "op": "advance", "parent": 8}
+{"clock": 4.6, "event": "return", "id": 9, "result": null}
+{"clock": 4.6, "event": "return", "id": 8, "result": {"ok": true, "result": {"runs": [{"created_at": 2.7, "environment": "staging", "run_id": "run-1012", "service": "notify-worker", "status": "queued", "version": "4.13.7"}]}}}
+{"args": ["deploy_get_run", {"run_id": "run-1012"}], "clock": 4.6, "event": "enter", "id": 10, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 4.6, "event": "enter", "id": 11, "kwargs": {}, "op": "advance", "parent": 10}
+{"clock": 5.0, "event": "return", "id": 11, "result": null}
+{"clock": 5.0, "event": "return", "id": 10, "result": {"ok": true, "result": {"created_at": 2.7, "environment": "staging", "run_id": "run-1012", "service": "notify-worker", "status": "queued", "version": "4.13.7"}}}
+{"args": ["wait", {"seconds": 60}], "clock": 5.0, "event": "enter", "id": 12, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [60.0], "clock": 5.0, "event": "enter", "id": 13, "kwargs": {}, "op": "advance", "parent": 12}
+{"clock": 65.0, "event": "return", "id": 13, "result": null}
+{"args": [0.0], "clock": 65.0, "event": "enter", "id": 14, "kwargs": {}, "op": "advance", "parent": 12}
+{"clock": 65.0, "event": "return", "id": 14, "result": null}
+{"clock": 65.0, "event": "return", "id": 12, "result": {"ok": true, "result": {"now": 65.0, "waited_seconds": 60.0}}}
+{"args": ["deploy_trigger", {"environment": "production", "service": "notify-worker", "version": "4.13.7"}], "clock": 65.0, "event": "enter", "id": 15, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [1.5], "clock": 65.0, "event": "enter", "id": 16, "kwargs": {}, "op": "advance", "parent": 15}
+{"clock": 66.5, "event": "return", "id": 16, "result": null}
+{"clock": 66.5, "event": "return", "id": 15, "result": {"ok": true, "result": {"created_at": 65.0, "environment": "production", "run_id": "run-1013", "service": "notify-worker", "status": "queued", "version": "4.13.7"}}}
+{"args": [], "clock": 66.5, "event": "enter", "id": 17, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 66.5, "event": "return", "id": 17, "result": null}

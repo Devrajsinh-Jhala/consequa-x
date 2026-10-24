@@ -1,0 +1,153 @@
+{
+  "analysis_manifest": {
+    "bytes": 2395,
+    "sha256": "bca64f4f5d3ebbdb5f484129188654d9f104b9f3ea33126a0b6bed0ac7db4b88"
+  },
+  "artifact_chain_complete": true,
+  "audit_manifest": {
+    "bytes": 135,
+    "sha256": "cda7c4e5439fbb3cf0407a20dc3061ed3015973ad45461d96c8af7e4a3395d59"
+  },
+  "collection_manifest": {
+    "bytes": 700067,
+    "sha256": "a1b2ff7568ea01070d343c553126d3c6f666227b50adaa4842174bd200a18329"
+  },
+  "ended_utc": "2026-10-24T17:39:23.672305+00:00",
+  "error": null,
+  "exit_code": 0,
+  "observer_stop": {
+    "already_present": false,
+    "created": true,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-observer-stop-2026-10-24.flag"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "schema": "conseqax-limbo-completion-pipeline-terminal-v1",
+  "stages": [
+    {
+      "command": [
+        "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\run_limbo_external_benchmark.py",
+        "collect",
+        "--native-root",
+        "C:\\Code\\ConsequaX-Research\\limbo-pinned-2db09fba",
+        "--protocol",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+        "--protocol-commit",
+        "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+        "--output",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24"
+      ],
+      "ended_utc": "2026-10-24T17:37:33.522494+00:00",
+      "known_subprocess_closed": true,
+      "returncode": 0,
+      "stage": "collector",
+      "started_utc": "2026-10-24T04:52:57.910931+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "collector.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 6902,
+        "path": "collector.stdout.log",
+        "sha256": "502f17dc25f6a71b4cee436e771ed0b8a7dc1049f29d442c115c335d4ab9d314"
+      },
+      "wall_s": 45875.61
+    },
+    {
+      "command": [
+        "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\audit_limbo_external_benchmark.py",
+        "--native-root",
+        "C:\\Code\\ConsequaX-Research\\limbo-pinned-2db09fba",
+        "--protocol",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+        "--protocol-commit",
+        "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+        "--collection",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24",
+        "--output",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-audit-2026-10-24"
+      ],
+      "ended_utc": "2026-10-24T17:38:27.507050+00:00",
+      "known_subprocess_closed": true,
+      "returncode": 0,
+      "stage": "audit",
+      "started_utc": "2026-10-24T17:37:49.050930+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "audit.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 899,
+        "path": "audit.stdout.log",
+        "sha256": "16e0dc13305d23bae3e85ab4b7e05237c023b652df53d658401e3f785cf7f2af"
+      },
+      "wall_s": 38.45299999999406
+    },
+    {
+      "command": [
+        "C:\\Users\\DELL\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "C:\\Users\\DELL\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1022.11436\\skills\\pdf\\container_tools\\mark_artifact_operation_started.mjs",
+        "--operation-kind",
+        "create",
+        "--expected-output-count",
+        "3",
+        "--output-format",
+        "pdf"
+      ],
+      "ended_utc": "2026-10-24T17:38:46.465007+00:00",
+      "known_subprocess_closed": true,
+      "returncode": 0,
+      "stage": "pdf_marker",
+      "started_utc": "2026-10-24T17:38:43.647271+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "pdf_marker.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "pdf_marker.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "wall_s": 2.811999999998079
+    },
+    {
+      "command": [
+        "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\scripts\\analyze_limbo_external_benchmark.py",
+        "--audit",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-audit-2026-10-24\\audit-result.json",
+        "--protocol",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+        "--protocol-commit",
+        "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+        "--output",
+        "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-analysis-2026-10-24"
+      ],
+      "ended_utc": "2026-10-24T17:39:08.669597+00:00",
+      "known_subprocess_closed": true,
+      "returncode": 0,
+      "stage": "analysis",
+      "started_utc": "2026-10-24T17:38:47.138953+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "analysis.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 138,
+        "path": "analysis.stdout.log",
+        "sha256": "27add8e7fa85eba953dfc96d804df6953b6e69e6c049f9d61a5720e84b120ff1"
+      },
+      "wall_s": 21.531000000002678
+    }
+  ],
+  "started_utc": "2026-10-24T04:52:53.784736+00:00",
+  "status": "complete"
+}

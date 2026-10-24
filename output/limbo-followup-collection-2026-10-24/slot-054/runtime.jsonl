@@ -1,0 +1,40 @@
+{"args": ["billing_create_charge", {"amount_cents": 14900, "customer_id": "cus_1136", "description": "Upgrade to business", "idempotency_key": "limbo-8dc1ad2ae5af361441d9"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"args": [29.1], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 30.0, "event": "return", "id": 2, "result": null}
+{"clock": 30.0, "event": "return", "id": 0, "result": {"error": {"message": "Request timed out after 30s: no response was received from the billing service before the connection was closed.", "type": "timeout"}, "ok": false}}
+{"args": ["db_upsert", {"key_field": "customer_id", "row": {"customer_id": "cus_1136", "plan": "business"}, "table": "subscriptions"}], "clock": 30.0, "event": "enter", "id": 3, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 30.0, "event": "enter", "id": 4, "kwargs": {}, "op": "advance", "parent": 3}
+{"clock": 30.9, "event": "return", "id": 4, "result": null}
+{"clock": 30.9, "event": "return", "id": 3, "result": {"ok": true, "result": {"customer_id": "cus_1136", "plan": "business", "row_id": "r1011", "table": "subscriptions", "upserted": "inserted"}}}
+{"args": ["mail_send", {"body": "Thank you for upgrading to the business plan! Your subscription is now active.", "subject": "Welcome to business", "to": ["kai.garcia@customer.example"]}], "clock": 30.9, "event": "enter", "id": 5, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 30.9, "event": "enter", "id": 6, "kwargs": {}, "op": "advance", "parent": 5}
+{"clock": 31.8, "event": "return", "id": 6, "result": null}
+{"clock": 31.8, "event": "return", "id": 5, "result": {"ok": true, "result": {"message_id": "msg-1012", "status": "sent"}}}
+{"args": ["billing_list_charges", {"customer_id": "cus_1136", "limit": 1}], "clock": 31.8, "event": "enter", "id": 7, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 31.8, "event": "enter", "id": 8, "kwargs": {}, "op": "advance", "parent": 7}
+{"clock": 32.2, "event": "return", "id": 8, "result": null}
+{"clock": 32.2, "event": "return", "id": 7, "result": {"ok": true, "result": {"charges": [{"amount_cents": 14900, "charge_id": "ch_1010", "created_at": 0.0, "currency": "usd", "customer_id": "cus_1136", "description": "Upgrade to business", "status": "succeeded"}]}}}
+{"args": ["db_query", {"table": "subscriptions", "where": {"customer_id": "cus_1136"}}], "clock": 32.2, "event": "enter", "id": 9, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 32.2, "event": "enter", "id": 10, "kwargs": {}, "op": "advance", "parent": 9}
+{"clock": 32.6, "event": "return", "id": 10, "result": null}
+{"clock": 32.6, "event": "return", "id": 9, "result": {"ok": true, "result": {"count": 1, "rows": [{"customer_id": "cus_1136", "plan": "business", "row_id": "r1011", "table": "subscriptions"}]}}}
+{"args": ["mail_search_sent", {"limit": 1, "query": "Welcome to business"}], "clock": 32.6, "event": "enter", "id": 11, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 32.6, "event": "enter", "id": 12, "kwargs": {}, "op": "advance", "parent": 11}
+{"clock": 33.0, "event": "return", "id": 12, "result": null}
+{"clock": 33.0, "event": "return", "id": 11, "result": {"ok": true, "result": {"messages": []}}}
+{"args": ["mail_send", {"body": "Thank you for upgrading to the business plan! Your subscription is now active.", "subject": "Welcome to business", "to": ["kai.garcia@customer.example"]}], "clock": 33.0, "event": "enter", "id": 13, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 33.0, "event": "enter", "id": 14, "kwargs": {}, "op": "advance", "parent": 13}
+{"clock": 33.9, "event": "return", "id": 14, "result": null}
+{"clock": 33.9, "event": "return", "id": 13, "result": {"ok": true, "result": {"message_id": "msg-1013", "status": "sent"}}}
+{"args": ["mail_search_sent", {"limit": 1, "query": "Welcome to business"}], "clock": 33.9, "event": "enter", "id": 15, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 33.9, "event": "enter", "id": 16, "kwargs": {}, "op": "advance", "parent": 15}
+{"clock": 34.3, "event": "return", "id": 16, "result": null}
+{"clock": 34.3, "event": "return", "id": 15, "result": {"ok": true, "result": {"messages": []}}}
+{"args": ["mail_search_sent", {"limit": 1, "query": "Welcome to business"}], "clock": 34.3, "event": "enter", "id": 17, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.4], "clock": 34.3, "event": "enter", "id": 18, "kwargs": {}, "op": "advance", "parent": 17}
+{"clock": 34.7, "event": "return", "id": 18, "result": null}
+{"clock": 34.7, "event": "return", "id": 17, "result": {"ok": true, "result": {"messages": []}}}
+{"args": [], "clock": 34.7, "event": "enter", "id": 19, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 34.7, "event": "return", "id": 19, "result": null}

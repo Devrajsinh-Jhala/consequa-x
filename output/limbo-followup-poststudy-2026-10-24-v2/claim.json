@@ -1,0 +1,131 @@
+{
+  "both_cohorts_required": true,
+  "cohorts_pooled": false,
+  "collection_launches": 0,
+  "interrupted_cohort": {
+    "analysis_manifest": {
+      "bytes": 1195,
+      "sha256": "8418b4c9cac3db57f3e05de083d0b48a665c578cfe1808cfc6a654577bb33a0d"
+    },
+    "analysis_path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-interrupted-analysis-2026-10-24",
+    "protocol": {
+      "bytes": 118781,
+      "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-protocol-2026-10-24\\protocol.json",
+      "sha256": "8896a371b2c5f854293f8c4f1ee049bf8aeaab9b254c36f2e25de1b2b79881c6"
+    },
+    "protocol_commit": "267cd1a3e846c46c009f20accbf302746e064875"
+  },
+  "model_requests": 0,
+  "network_requests": 0,
+  "new_outputs": {
+    "manuscript_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-manuscript-stage-2026-10-24-v2",
+    "portable_audit_output": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-portable-audit-2026-10-24-v2"
+  },
+  "original_paths": {
+    "analysis": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-analysis-2026-10-24",
+    "collection": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-collection-2026-10-24",
+    "native_root": "C:\\Code\\ConsequaX-Research\\limbo-pinned-2db09fba",
+    "official_audit": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-audit-2026-10-24",
+    "pipeline": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-pipeline-2026-10-24"
+  },
+  "original_pipeline_claim": {
+    "bytes": 4557,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-pipeline-2026-10-24\\claim.json",
+    "sha256": "c0777cd83b82dce1e79947364910c9fa66a13d13d12a30205e3d16131431ba52"
+  },
+  "original_pipeline_process": {
+    "exact_create_time_epoch_seconds": 1792817573.282704,
+    "pid": 6528
+  },
+  "poll_interval_seconds": 30,
+  "process_control_actions": 0,
+  "protocol": {
+    "bytes": 121774,
+    "path": "C:\\Code\\ConsequaX-Research\\paper-writing\\output\\limbo-followup-protocol-2026-10-24\\protocol.json",
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "python": {
+    "bytes": 277808,
+    "path": "C:\\Code\\ConsequaX-Research\\native-agent-pilot-venv\\Scripts\\python.exe",
+    "sha256": "eb2f24f221e8f8ba5430e4d9d0247f31eba82907ee6f6b95ae424eacdccbea92"
+  },
+  "retries_resume_replacement_or_scheduling": false,
+  "schema": "conseqax-limbo-poststudy-claim-v1",
+  "scope": "Dependent offline replay and static manuscript staging only; REVIEW_PENDING, no final PDF or acceptance claim",
+  "source_files": {
+    "research/limbo_agent/audit.py": {
+      "bytes": 30335,
+      "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+    },
+    "research/limbo_agent/boundary.py": {
+      "bytes": 16895,
+      "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+    },
+    "research/limbo_agent/harness.py": {
+      "bytes": 13858,
+      "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+    },
+    "research/limbo_agent/policy.py": {
+      "bytes": 16239,
+      "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+    },
+    "research/limbo_agent/preflight.py": {
+      "bytes": 6899,
+      "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+    },
+    "research/limbo_agent/probe.py": {
+      "bytes": 4230,
+      "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+    },
+    "research/limbo_agent/protocol.py": {
+      "bytes": 13796,
+      "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+    },
+    "research/limbo_agent/transport.py": {
+      "bytes": 24399,
+      "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+    },
+    "research/native_agent/__init__.py": {
+      "bytes": 80,
+      "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+    },
+    "research/native_agent/transport.py": {
+      "bytes": 33759,
+      "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+    },
+    "scripts/analyze_limbo_external_benchmark.py": {
+      "bytes": 43865,
+      "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+    },
+    "scripts/audit_limbo_external_benchmark.py": {
+      "bytes": 1296,
+      "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+    },
+    "scripts/audit_limbo_portable.py": {
+      "bytes": 23268,
+      "sha256": "ab6c0cd58b6f820f5c610b78bfa7c4793e0ab58bd0b49d107d8507314e557ade"
+    },
+    "scripts/build_final_limbo_paper.py": {
+      "bytes": 38315,
+      "sha256": "baae05993b2490e3680b733e1dfe9ce50c8fded77340947fdf3bb977f8448b52"
+    },
+    "scripts/finish_limbo_poststudy.py": {
+      "bytes": 27234,
+      "sha256": "c1658844476ba5b39fb6e94a1ece1e6007ce6cbe51d8d1b03fb6dafcfb2952b0"
+    },
+    "scripts/prepare_final_limbo_manuscript.py": {
+      "bytes": 48535,
+      "sha256": "2eb17fe87f09155f34c42e6de50a6b604aa1db23cb0ebab1be7c71565554c9c8"
+    },
+    "scripts/run_limbo_completion_pipeline.py": {
+      "bytes": 22896,
+      "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+    },
+    "scripts/run_limbo_external_benchmark.py": {
+      "bytes": 11968,
+      "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+    }
+  },
+  "utc": "2026-10-24T04:53:47.014613+00:00"
+}

@@ -1,0 +1,12 @@
+{"args": ["billing_refund_charge", {"charge_id": "ch_dup964286", "reason": "duplicate"}], "clock": 0.0, "event": "enter", "id": 0, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.0, "event": "enter", "id": 1, "kwargs": {}, "op": "advance", "parent": 0}
+{"clock": 0.9, "event": "return", "id": 1, "result": null}
+{"clock": 0.9, "event": "return", "id": 0, "result": {"ok": true, "result": {"charge_id": "ch_dup964286", "refund_id": "re_1010", "status": "refunded"}}}
+{"args": ["mail_send", {"body": "Dear Noah,\n\nWe have processed a refund for invoice INV-38243 as it contained a duplicate charge. The original charge has been kept, and the duplicate has been refunded.\n\nBest regards,\nACME Corp.", "subject": "Refund for invoice INV-38243", "to": ["noah.kowalski@customer.example"]}], "clock": 0.9, "event": "enter", "id": 2, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"args": [0.9], "clock": 0.9, "event": "enter", "id": 3, "kwargs": {}, "op": "advance", "parent": 2}
+{"clock": 1.8, "event": "return", "id": 3, "result": null}
+{"clock": 1.8, "event": "return", "id": 2, "result": {"ok": true, "result": {"message_id": "msg-1011", "status": "sent"}}}
+{"args": ["finish", {"status": "completed", "summary": "Refunded the duplicate charge (ch_dup964286) and sent an email to Noah Kowalski explaining the action taken.", "uncertain_operations": []}], "clock": 1.8, "event": "enter", "id": 4, "kwargs": {"note": "", "source": "agent"}, "op": "execute", "parent": null}
+{"clock": 1.8, "event": "return", "id": 4, "result": {"ok": true, "result": "Task marked finished."}}
+{"args": [], "clock": 1.8, "event": "enter", "id": 5, "kwargs": {}, "op": "flush", "parent": null}
+{"clock": 1.8, "event": "return", "id": 5, "result": null}

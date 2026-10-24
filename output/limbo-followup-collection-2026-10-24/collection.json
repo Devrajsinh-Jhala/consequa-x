@@ -1,0 +1,968 @@
+{
+  "integrity_stop": null,
+  "protocol_commit": "8b25d4c7769c5c593333c9d3eeeceb8ae001dba4",
+  "rows": [
+    {
+      "arm": "vanilla",
+      "directory": "slot-000",
+      "ended_utc": "2026-10-24T04:55:47.731983+00:00",
+      "exit_code": 0,
+      "slot": 0,
+      "started_utc": "2026-10-24T04:53:00.307761+00:00",
+      "status": "child_returned",
+      "world_rank": 0
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-001",
+      "ended_utc": "2026-10-24T04:57:18.238675+00:00",
+      "exit_code": 0,
+      "slot": 1,
+      "started_utc": "2026-10-24T04:55:48.412989+00:00",
+      "status": "child_returned",
+      "world_rank": 0
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-002",
+      "ended_utc": "2026-10-24T04:58:45.917976+00:00",
+      "exit_code": 0,
+      "slot": 2,
+      "started_utc": "2026-10-24T04:57:18.716764+00:00",
+      "status": "child_returned",
+      "world_rank": 0
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-003",
+      "ended_utc": "2026-10-24T05:00:21.791555+00:00",
+      "exit_code": 0,
+      "slot": 3,
+      "started_utc": "2026-10-24T04:58:46.399604+00:00",
+      "status": "child_returned",
+      "world_rank": 0
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-004",
+      "ended_utc": "2026-10-24T05:01:56.048532+00:00",
+      "exit_code": 0,
+      "slot": 4,
+      "started_utc": "2026-10-24T05:00:22.610364+00:00",
+      "status": "child_returned",
+      "world_rank": 1
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-005",
+      "ended_utc": "2026-10-24T05:05:26.262244+00:00",
+      "exit_code": 0,
+      "slot": 5,
+      "started_utc": "2026-10-24T05:01:56.648466+00:00",
+      "status": "child_returned",
+      "world_rank": 1
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-006",
+      "ended_utc": "2026-10-24T05:08:29.893281+00:00",
+      "exit_code": 0,
+      "slot": 6,
+      "started_utc": "2026-10-24T05:05:26.985707+00:00",
+      "status": "child_returned",
+      "world_rank": 1
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-007",
+      "ended_utc": "2026-10-24T05:11:14.480455+00:00",
+      "exit_code": 0,
+      "slot": 7,
+      "started_utc": "2026-10-24T05:08:30.622246+00:00",
+      "status": "child_returned",
+      "world_rank": 1
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-008",
+      "ended_utc": "2026-10-24T05:28:22.836334+00:00",
+      "exit_code": 0,
+      "slot": 8,
+      "started_utc": "2026-10-24T05:11:15.559824+00:00",
+      "status": "child_returned",
+      "world_rank": 2
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-009",
+      "ended_utc": "2026-10-24T09:28:35.671782+00:00",
+      "exit_code": 0,
+      "slot": 9,
+      "started_utc": "2026-10-24T05:28:24.722947+00:00",
+      "status": "child_returned",
+      "world_rank": 2
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-010",
+      "ended_utc": "2026-10-24T09:40:34.818310+00:00",
+      "exit_code": 0,
+      "slot": 10,
+      "started_utc": "2026-10-24T09:28:36.841958+00:00",
+      "status": "child_returned",
+      "world_rank": 2
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-011",
+      "ended_utc": "2026-10-24T09:52:52.415509+00:00",
+      "exit_code": 0,
+      "slot": 11,
+      "started_utc": "2026-10-24T09:40:36.607189+00:00",
+      "status": "child_returned",
+      "world_rank": 2
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-012",
+      "ended_utc": "2026-10-24T10:05:12.599571+00:00",
+      "exit_code": 0,
+      "slot": 12,
+      "started_utc": "2026-10-24T09:52:53.741738+00:00",
+      "status": "child_returned",
+      "world_rank": 3
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-013",
+      "ended_utc": "2026-10-24T10:14:26.074289+00:00",
+      "exit_code": 0,
+      "slot": 13,
+      "started_utc": "2026-10-24T10:05:14.408358+00:00",
+      "status": "child_returned",
+      "world_rank": 3
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-014",
+      "ended_utc": "2026-10-24T10:25:35.677866+00:00",
+      "exit_code": 0,
+      "slot": 14,
+      "started_utc": "2026-10-24T10:14:27.566708+00:00",
+      "status": "child_returned",
+      "world_rank": 3
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-015",
+      "ended_utc": "2026-10-24T10:36:40.312441+00:00",
+      "exit_code": 0,
+      "slot": 15,
+      "started_utc": "2026-10-24T10:25:37.320858+00:00",
+      "status": "child_returned",
+      "world_rank": 3
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-016",
+      "ended_utc": "2026-10-24T10:39:23.896017+00:00",
+      "exit_code": 0,
+      "slot": 16,
+      "started_utc": "2026-10-24T10:36:41.257662+00:00",
+      "status": "child_returned",
+      "world_rank": 4
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-017",
+      "ended_utc": "2026-10-24T10:41:12.350820+00:00",
+      "exit_code": 0,
+      "slot": 17,
+      "started_utc": "2026-10-24T10:39:24.341683+00:00",
+      "status": "child_returned",
+      "world_rank": 4
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-018",
+      "ended_utc": "2026-10-24T10:42:55.659827+00:00",
+      "exit_code": 0,
+      "slot": 18,
+      "started_utc": "2026-10-24T10:41:12.708972+00:00",
+      "status": "child_returned",
+      "world_rank": 4
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-019",
+      "ended_utc": "2026-10-24T10:44:44.368697+00:00",
+      "exit_code": 0,
+      "slot": 19,
+      "started_utc": "2026-10-24T10:42:55.992849+00:00",
+      "status": "child_returned",
+      "world_rank": 4
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-020",
+      "ended_utc": "2026-10-24T10:46:27.396536+00:00",
+      "exit_code": 0,
+      "slot": 20,
+      "started_utc": "2026-10-24T10:44:44.729480+00:00",
+      "status": "child_returned",
+      "world_rank": 5
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-021",
+      "ended_utc": "2026-10-24T10:48:33.558618+00:00",
+      "exit_code": 0,
+      "slot": 21,
+      "started_utc": "2026-10-24T10:46:27.796253+00:00",
+      "status": "child_returned",
+      "world_rank": 5
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-022",
+      "ended_utc": "2026-10-24T10:50:28.218915+00:00",
+      "exit_code": 0,
+      "slot": 22,
+      "started_utc": "2026-10-24T10:48:33.960959+00:00",
+      "status": "child_returned",
+      "world_rank": 5
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-023",
+      "ended_utc": "2026-10-24T10:52:36.021081+00:00",
+      "exit_code": 0,
+      "slot": 23,
+      "started_utc": "2026-10-24T10:50:28.697203+00:00",
+      "status": "child_returned",
+      "world_rank": 5
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-024",
+      "ended_utc": "2026-10-24T10:54:43.142331+00:00",
+      "exit_code": 0,
+      "slot": 24,
+      "started_utc": "2026-10-24T10:52:36.587283+00:00",
+      "status": "child_returned",
+      "world_rank": 6
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-025",
+      "ended_utc": "2026-10-24T10:56:38.022796+00:00",
+      "exit_code": 0,
+      "slot": 25,
+      "started_utc": "2026-10-24T10:54:43.735809+00:00",
+      "status": "child_returned",
+      "world_rank": 6
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-026",
+      "ended_utc": "2026-10-24T10:58:40.945918+00:00",
+      "exit_code": 0,
+      "slot": 26,
+      "started_utc": "2026-10-24T10:56:38.632520+00:00",
+      "status": "child_returned",
+      "world_rank": 6
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-027",
+      "ended_utc": "2026-10-24T11:00:48.582392+00:00",
+      "exit_code": 0,
+      "slot": 27,
+      "started_utc": "2026-10-24T10:58:41.600915+00:00",
+      "status": "child_returned",
+      "world_rank": 6
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-028",
+      "ended_utc": "2026-10-24T11:05:38.068571+00:00",
+      "exit_code": 0,
+      "slot": 28,
+      "started_utc": "2026-10-24T11:00:49.278228+00:00",
+      "status": "child_returned",
+      "world_rank": 7
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-029",
+      "ended_utc": "2026-10-24T11:07:39.634609+00:00",
+      "exit_code": 0,
+      "slot": 29,
+      "started_utc": "2026-10-24T11:05:38.876825+00:00",
+      "status": "child_returned",
+      "world_rank": 7
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-030",
+      "ended_utc": "2026-10-24T11:09:54.662807+00:00",
+      "exit_code": 0,
+      "slot": 30,
+      "started_utc": "2026-10-24T11:07:40.069596+00:00",
+      "status": "child_returned",
+      "world_rank": 7
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-031",
+      "ended_utc": "2026-10-24T11:14:48.177295+00:00",
+      "exit_code": 0,
+      "slot": 31,
+      "started_utc": "2026-10-24T11:09:55.342580+00:00",
+      "status": "child_returned",
+      "world_rank": 7
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-032",
+      "ended_utc": "2026-10-24T11:18:53.667468+00:00",
+      "exit_code": 0,
+      "slot": 32,
+      "started_utc": "2026-10-24T11:14:49.106371+00:00",
+      "status": "child_returned",
+      "world_rank": 8
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-033",
+      "ended_utc": "2026-10-24T11:21:35.049029+00:00",
+      "exit_code": 0,
+      "slot": 33,
+      "started_utc": "2026-10-24T11:18:54.231445+00:00",
+      "status": "child_returned",
+      "world_rank": 8
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-034",
+      "ended_utc": "2026-10-24T11:24:08.629172+00:00",
+      "exit_code": 0,
+      "slot": 34,
+      "started_utc": "2026-10-24T11:21:35.739382+00:00",
+      "status": "child_returned",
+      "world_rank": 8
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-035",
+      "ended_utc": "2026-10-24T11:26:44.240196+00:00",
+      "exit_code": 0,
+      "slot": 35,
+      "started_utc": "2026-10-24T11:24:09.317192+00:00",
+      "status": "child_returned",
+      "world_rank": 8
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-036",
+      "ended_utc": "2026-10-24T11:29:17.152050+00:00",
+      "exit_code": 0,
+      "slot": 36,
+      "started_utc": "2026-10-24T11:26:44.980700+00:00",
+      "status": "child_returned",
+      "world_rank": 9
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-037",
+      "ended_utc": "2026-10-24T11:34:42.452722+00:00",
+      "exit_code": 0,
+      "slot": 37,
+      "started_utc": "2026-10-24T11:29:17.817190+00:00",
+      "status": "child_returned",
+      "world_rank": 9
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-038",
+      "ended_utc": "2026-10-24T11:40:22.080729+00:00",
+      "exit_code": 0,
+      "slot": 38,
+      "started_utc": "2026-10-24T11:34:43.726182+00:00",
+      "status": "child_returned",
+      "world_rank": 9
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-039",
+      "ended_utc": "2026-10-24T11:42:25.714135+00:00",
+      "exit_code": 0,
+      "slot": 39,
+      "started_utc": "2026-10-24T11:40:24.299538+00:00",
+      "status": "child_returned",
+      "world_rank": 9
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-040",
+      "ended_utc": "2026-10-24T11:46:01.549424+00:00",
+      "exit_code": 0,
+      "slot": 40,
+      "started_utc": "2026-10-24T11:42:26.571411+00:00",
+      "status": "child_returned",
+      "world_rank": 10
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-041",
+      "ended_utc": "2026-10-24T11:48:19.501099+00:00",
+      "exit_code": 0,
+      "slot": 41,
+      "started_utc": "2026-10-24T11:46:02.081918+00:00",
+      "status": "child_returned",
+      "world_rank": 10
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-042",
+      "ended_utc": "2026-10-24T11:50:45.766104+00:00",
+      "exit_code": 0,
+      "slot": 42,
+      "started_utc": "2026-10-24T11:48:20.109182+00:00",
+      "status": "child_returned",
+      "world_rank": 10
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-043",
+      "ended_utc": "2026-10-24T11:53:10.265329+00:00",
+      "exit_code": 0,
+      "slot": 43,
+      "started_utc": "2026-10-24T11:50:46.311309+00:00",
+      "status": "child_returned",
+      "world_rank": 10
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-044",
+      "ended_utc": "2026-10-24T11:55:35.912426+00:00",
+      "exit_code": 0,
+      "slot": 44,
+      "started_utc": "2026-10-24T11:53:10.891132+00:00",
+      "status": "child_returned",
+      "world_rank": 11
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-045",
+      "ended_utc": "2026-10-24T11:58:01.214334+00:00",
+      "exit_code": 0,
+      "slot": 45,
+      "started_utc": "2026-10-24T11:55:36.511317+00:00",
+      "status": "child_returned",
+      "world_rank": 11
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-046",
+      "ended_utc": "2026-10-24T12:00:20.734580+00:00",
+      "exit_code": 0,
+      "slot": 46,
+      "started_utc": "2026-10-24T11:58:01.828467+00:00",
+      "status": "child_returned",
+      "world_rank": 11
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-047",
+      "ended_utc": "2026-10-24T12:02:37.346933+00:00",
+      "exit_code": 0,
+      "slot": 47,
+      "started_utc": "2026-10-24T12:00:21.222676+00:00",
+      "status": "child_returned",
+      "world_rank": 11
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-048",
+      "ended_utc": "2026-10-24T12:06:07.982045+00:00",
+      "exit_code": 0,
+      "slot": 48,
+      "started_utc": "2026-10-24T12:02:37.945898+00:00",
+      "status": "child_returned",
+      "world_rank": 12
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-049",
+      "ended_utc": "2026-10-24T12:08:49.006023+00:00",
+      "exit_code": 0,
+      "slot": 49,
+      "started_utc": "2026-10-24T12:06:08.490385+00:00",
+      "status": "child_returned",
+      "world_rank": 12
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-050",
+      "ended_utc": "2026-10-24T12:43:41.300843+00:00",
+      "exit_code": 0,
+      "slot": 50,
+      "started_utc": "2026-10-24T12:08:49.625630+00:00",
+      "status": "child_returned",
+      "world_rank": 12
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-051",
+      "ended_utc": "2026-10-24T12:47:04.664392+00:00",
+      "exit_code": 0,
+      "slot": 51,
+      "started_utc": "2026-10-24T12:43:41.979609+00:00",
+      "status": "child_returned",
+      "world_rank": 12
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-052",
+      "ended_utc": "2026-10-24T12:53:08.183594+00:00",
+      "exit_code": 0,
+      "slot": 52,
+      "started_utc": "2026-10-24T12:47:05.928859+00:00",
+      "status": "child_returned",
+      "world_rank": 13
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-053",
+      "ended_utc": "2026-10-24T13:00:09.611311+00:00",
+      "exit_code": 0,
+      "slot": 53,
+      "started_utc": "2026-10-24T12:53:09.778264+00:00",
+      "status": "child_returned",
+      "world_rank": 13
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-054",
+      "ended_utc": "2026-10-24T13:07:21.159456+00:00",
+      "exit_code": 0,
+      "slot": 54,
+      "started_utc": "2026-10-24T13:00:12.494591+00:00",
+      "status": "child_returned",
+      "world_rank": 13
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-055",
+      "ended_utc": "2026-10-24T13:10:31.467683+00:00",
+      "exit_code": 0,
+      "slot": 55,
+      "started_utc": "2026-10-24T13:07:23.025969+00:00",
+      "status": "child_returned",
+      "world_rank": 13
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-056",
+      "ended_utc": "2026-10-24T13:13:49.606566+00:00",
+      "exit_code": 0,
+      "slot": 56,
+      "started_utc": "2026-10-24T13:10:32.404791+00:00",
+      "status": "child_returned",
+      "world_rank": 14
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-057",
+      "ended_utc": "2026-10-24T13:15:59.479435+00:00",
+      "exit_code": 0,
+      "slot": 57,
+      "started_utc": "2026-10-24T13:13:50.501704+00:00",
+      "status": "child_returned",
+      "world_rank": 14
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-058",
+      "ended_utc": "2026-10-24T13:17:54.406924+00:00",
+      "exit_code": 0,
+      "slot": 58,
+      "started_utc": "2026-10-24T13:16:00.328932+00:00",
+      "status": "child_returned",
+      "world_rank": 14
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-059",
+      "ended_utc": "2026-10-24T13:19:47.806529+00:00",
+      "exit_code": 0,
+      "slot": 59,
+      "started_utc": "2026-10-24T13:17:55.063816+00:00",
+      "status": "child_returned",
+      "world_rank": 14
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-060",
+      "ended_utc": "2026-10-24T13:21:31.934097+00:00",
+      "exit_code": 0,
+      "slot": 60,
+      "started_utc": "2026-10-24T13:19:48.452111+00:00",
+      "status": "child_returned",
+      "world_rank": 15
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-061",
+      "ended_utc": "2026-10-24T13:23:31.389409+00:00",
+      "exit_code": 0,
+      "slot": 61,
+      "started_utc": "2026-10-24T13:21:32.591955+00:00",
+      "status": "child_returned",
+      "world_rank": 15
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-062",
+      "ended_utc": "2026-10-24T13:25:37.565326+00:00",
+      "exit_code": 0,
+      "slot": 62,
+      "started_utc": "2026-10-24T13:23:32.061532+00:00",
+      "status": "child_returned",
+      "world_rank": 15
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-063",
+      "ended_utc": "2026-10-24T13:27:21.222750+00:00",
+      "exit_code": 0,
+      "slot": 63,
+      "started_utc": "2026-10-24T13:25:38.197416+00:00",
+      "status": "child_returned",
+      "world_rank": 15
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-064",
+      "ended_utc": "2026-10-24T13:35:47.688269+00:00",
+      "exit_code": 0,
+      "slot": 64,
+      "started_utc": "2026-10-24T13:27:21.847705+00:00",
+      "status": "child_returned",
+      "world_rank": 16
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-065",
+      "ended_utc": "2026-10-24T13:42:56.275529+00:00",
+      "exit_code": 0,
+      "slot": 65,
+      "started_utc": "2026-10-24T13:35:51.012673+00:00",
+      "status": "child_returned",
+      "world_rank": 16
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-066",
+      "ended_utc": "2026-10-24T13:55:37.716533+00:00",
+      "exit_code": 0,
+      "slot": 66,
+      "started_utc": "2026-10-24T13:42:59.732881+00:00",
+      "status": "child_returned",
+      "world_rank": 16
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-067",
+      "ended_utc": "2026-10-24T15:23:08.782837+00:00",
+      "exit_code": 0,
+      "slot": 67,
+      "started_utc": "2026-10-24T13:55:40.263587+00:00",
+      "status": "child_returned",
+      "world_rank": 16
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-068",
+      "ended_utc": "2026-10-24T15:29:08.322503+00:00",
+      "exit_code": 0,
+      "slot": 68,
+      "started_utc": "2026-10-24T15:23:11.804007+00:00",
+      "status": "child_returned",
+      "world_rank": 17
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-069",
+      "ended_utc": "2026-10-24T15:37:54.612632+00:00",
+      "exit_code": 0,
+      "slot": 69,
+      "started_utc": "2026-10-24T15:29:11.264952+00:00",
+      "status": "child_returned",
+      "world_rank": 17
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-070",
+      "ended_utc": "2026-10-24T15:45:33.090867+00:00",
+      "exit_code": 0,
+      "slot": 70,
+      "started_utc": "2026-10-24T15:37:56.116209+00:00",
+      "status": "child_returned",
+      "world_rank": 17
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-071",
+      "ended_utc": "2026-10-24T15:49:33.248351+00:00",
+      "exit_code": 0,
+      "slot": 71,
+      "started_utc": "2026-10-24T15:45:35.438660+00:00",
+      "status": "child_returned",
+      "world_rank": 17
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-072",
+      "ended_utc": "2026-10-24T15:54:42.605370+00:00",
+      "exit_code": 0,
+      "slot": 72,
+      "started_utc": "2026-10-24T15:49:34.614472+00:00",
+      "status": "child_returned",
+      "world_rank": 18
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-073",
+      "ended_utc": "2026-10-24T15:58:02.910050+00:00",
+      "exit_code": 0,
+      "slot": 73,
+      "started_utc": "2026-10-24T15:54:43.424144+00:00",
+      "status": "child_returned",
+      "world_rank": 18
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-074",
+      "ended_utc": "2026-10-24T16:01:10.756933+00:00",
+      "exit_code": 0,
+      "slot": 74,
+      "started_utc": "2026-10-24T15:58:03.494326+00:00",
+      "status": "child_returned",
+      "world_rank": 18
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-075",
+      "ended_utc": "2026-10-24T16:04:40.984981+00:00",
+      "exit_code": 0,
+      "slot": 75,
+      "started_utc": "2026-10-24T16:01:11.358346+00:00",
+      "status": "child_returned",
+      "world_rank": 18
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-076",
+      "ended_utc": "2026-10-24T16:11:24.256024+00:00",
+      "exit_code": 0,
+      "slot": 76,
+      "started_utc": "2026-10-24T16:04:41.499366+00:00",
+      "status": "child_returned",
+      "world_rank": 19
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-077",
+      "ended_utc": "2026-10-24T16:14:55.257946+00:00",
+      "exit_code": 0,
+      "slot": 77,
+      "started_utc": "2026-10-24T16:11:25.084618+00:00",
+      "status": "child_returned",
+      "world_rank": 19
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-078",
+      "ended_utc": "2026-10-24T16:18:00.343202+00:00",
+      "exit_code": 0,
+      "slot": 78,
+      "started_utc": "2026-10-24T16:14:55.858097+00:00",
+      "status": "child_returned",
+      "world_rank": 19
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-079",
+      "ended_utc": "2026-10-24T16:23:55.959483+00:00",
+      "exit_code": 0,
+      "slot": 79,
+      "started_utc": "2026-10-24T16:18:00.888200+00:00",
+      "status": "child_returned",
+      "world_rank": 19
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-080",
+      "ended_utc": "2026-10-24T16:31:10.435121+00:00",
+      "exit_code": 0,
+      "slot": 80,
+      "started_utc": "2026-10-24T16:23:56.900664+00:00",
+      "status": "child_returned",
+      "world_rank": 20
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-081",
+      "ended_utc": "2026-10-24T16:35:03.925516+00:00",
+      "exit_code": 0,
+      "slot": 81,
+      "started_utc": "2026-10-24T16:31:11.077768+00:00",
+      "status": "child_returned",
+      "world_rank": 20
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-082",
+      "ended_utc": "2026-10-24T16:38:54.645197+00:00",
+      "exit_code": 0,
+      "slot": 82,
+      "started_utc": "2026-10-24T16:35:04.532478+00:00",
+      "status": "child_returned",
+      "world_rank": 20
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-083",
+      "ended_utc": "2026-10-24T16:42:42.712223+00:00",
+      "exit_code": 0,
+      "slot": 83,
+      "started_utc": "2026-10-24T16:38:55.519981+00:00",
+      "status": "child_returned",
+      "world_rank": 20
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-084",
+      "ended_utc": "2026-10-24T16:46:19.469472+00:00",
+      "exit_code": 0,
+      "slot": 84,
+      "started_utc": "2026-10-24T16:42:43.384735+00:00",
+      "status": "child_returned",
+      "world_rank": 21
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-085",
+      "ended_utc": "2026-10-24T16:52:31.110178+00:00",
+      "exit_code": 0,
+      "slot": 85,
+      "started_utc": "2026-10-24T16:46:20.210298+00:00",
+      "status": "child_returned",
+      "world_rank": 21
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-086",
+      "ended_utc": "2026-10-24T16:59:32.619014+00:00",
+      "exit_code": 0,
+      "slot": 86,
+      "started_utc": "2026-10-24T16:52:32.275376+00:00",
+      "status": "child_returned",
+      "world_rank": 21
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-087",
+      "ended_utc": "2026-10-24T17:04:34.573541+00:00",
+      "exit_code": 0,
+      "slot": 87,
+      "started_utc": "2026-10-24T16:59:34.293569+00:00",
+      "status": "child_returned",
+      "world_rank": 21
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-088",
+      "ended_utc": "2026-10-24T17:08:25.693610+00:00",
+      "exit_code": 0,
+      "slot": 88,
+      "started_utc": "2026-10-24T17:04:35.722139+00:00",
+      "status": "child_returned",
+      "world_rank": 22
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-089",
+      "ended_utc": "2026-10-24T17:11:02.494396+00:00",
+      "exit_code": 0,
+      "slot": 89,
+      "started_utc": "2026-10-24T17:08:26.289277+00:00",
+      "status": "child_returned",
+      "world_rank": 22
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-090",
+      "ended_utc": "2026-10-24T17:13:48.081253+00:00",
+      "exit_code": 0,
+      "slot": 90,
+      "started_utc": "2026-10-24T17:11:03.117253+00:00",
+      "status": "child_returned",
+      "world_rank": 22
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-091",
+      "ended_utc": "2026-10-24T17:16:49.022378+00:00",
+      "exit_code": 0,
+      "slot": 91,
+      "started_utc": "2026-10-24T17:13:49.018183+00:00",
+      "status": "child_returned",
+      "world_rank": 22
+    },
+    {
+      "arm": "conseqax_guard",
+      "directory": "slot-092",
+      "ended_utc": "2026-10-24T17:23:53.805731+00:00",
+      "exit_code": 0,
+      "slot": 92,
+      "started_utc": "2026-10-24T17:16:49.962405+00:00",
+      "status": "child_returned",
+      "world_rank": 23
+    },
+    {
+      "arm": "vanilla",
+      "directory": "slot-093",
+      "ended_utc": "2026-10-24T17:26:41.840842+00:00",
+      "exit_code": 0,
+      "slot": 93,
+      "started_utc": "2026-10-24T17:23:55.607831+00:00",
+      "status": "child_returned",
+      "world_rank": 23
+    },
+    {
+      "arm": "sdk_retry3",
+      "directory": "slot-094",
+      "ended_utc": "2026-10-24T17:29:18.476610+00:00",
+      "exit_code": 0,
+      "slot": 94,
+      "started_utc": "2026-10-24T17:26:42.741092+00:00",
+      "status": "child_returned",
+      "world_rank": 23
+    },
+    {
+      "arm": "guard",
+      "directory": "slot-095",
+      "ended_utc": "2026-10-24T17:35:54.125325+00:00",
+      "exit_code": 0,
+      "slot": 95,
+      "started_utc": "2026-10-24T17:29:19.226506+00:00",
+      "status": "child_returned",
+      "world_rank": 23
+    }
+  ],
+  "schema": "conseqax-limbo-collection-v1",
+  "utc": "2026-10-24T17:35:56.082755+00:00"
+}

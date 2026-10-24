@@ -1,0 +1,106 @@
+{
+  "analysis.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "analysis.stdout.log": {
+    "bytes": 138,
+    "sha256": "27add8e7fa85eba953dfc96d804df6953b6e69e6c049f9d61a5720e84b120ff1"
+  },
+  "audit.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "audit.stdout.log": {
+    "bytes": 899,
+    "sha256": "16e0dc13305d23bae3e85ab4b7e05237c023b652df53d658401e3f785cf7f2af"
+  },
+  "claim.json": {
+    "bytes": 4557,
+    "sha256": "c0777cd83b82dce1e79947364910c9fa66a13d13d12a30205e3d16131431ba52"
+  },
+  "collector.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "collector.stdout.log": {
+    "bytes": 6902,
+    "sha256": "502f17dc25f6a71b4cee436e771ed0b8a7dc1049f29d442c115c335d4ab9d314"
+  },
+  "events.jsonl": {
+    "bytes": 7857,
+    "sha256": "328021bbb701de21107a9e4432f560fa3c330a62bb2a9daa78972da5a9158221"
+  },
+  "inputs/protocol.json": {
+    "bytes": 121774,
+    "sha256": "6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541"
+  },
+  "inputs/source/research/limbo_agent/audit.py": {
+    "bytes": 30335,
+    "sha256": "221c9863984d18022ce277b16429802c9ff1f7701d58a84a94f08349c546578f"
+  },
+  "inputs/source/research/limbo_agent/boundary.py": {
+    "bytes": 16895,
+    "sha256": "e6ff088ac7319bb4f571808a7c2b19a83464d574b57798725063ef0e585b4996"
+  },
+  "inputs/source/research/limbo_agent/harness.py": {
+    "bytes": 13858,
+    "sha256": "e1594516506cdccfdd601a08b82fababf611b2ad2efb989de298e58292d5e0cc"
+  },
+  "inputs/source/research/limbo_agent/policy.py": {
+    "bytes": 16239,
+    "sha256": "0c87286dac3616438e1a498e8663176c09bbb68ab59b95651ef5b92b4b64dd53"
+  },
+  "inputs/source/research/limbo_agent/preflight.py": {
+    "bytes": 6899,
+    "sha256": "3e838abd61bb1f34604e1993764efc4c5a5506041b3dbecefdc20a0e5a5616fc"
+  },
+  "inputs/source/research/limbo_agent/probe.py": {
+    "bytes": 4230,
+    "sha256": "33dac8a8e4d15c330c7a3fc69a8ef8f439a499ac85859a3b4243640b390cdbf1"
+  },
+  "inputs/source/research/limbo_agent/protocol.py": {
+    "bytes": 13796,
+    "sha256": "49773b4d5a583bc0a32fe08f92bdf077bc3e86180c36d26978904118dd706469"
+  },
+  "inputs/source/research/limbo_agent/transport.py": {
+    "bytes": 24399,
+    "sha256": "39ece2947c71b9c2213eaa64c5065047355f1436553bd356ab739a65c44b54c7"
+  },
+  "inputs/source/research/native_agent/__init__.py": {
+    "bytes": 80,
+    "sha256": "c3ce2386476dc383fb747759cd2bd135a369442b97d379cecb0946d8ceed397c"
+  },
+  "inputs/source/research/native_agent/transport.py": {
+    "bytes": 33759,
+    "sha256": "fdf9c37a6c84e37227f8a9aa2b834980cd3719c9313a47750f9550c2162fe8cf"
+  },
+  "inputs/source/scripts/analyze_limbo_external_benchmark.py": {
+    "bytes": 43865,
+    "sha256": "f24fb1916abb3c23a03e1d109a61cbf976b11622a73e67e5deba2a6599997d19"
+  },
+  "inputs/source/scripts/audit_limbo_external_benchmark.py": {
+    "bytes": 1296,
+    "sha256": "9678dc01092bad1814096c842deafbe4771595660005d46fa7e4a6e173f613d8"
+  },
+  "inputs/source/scripts/run_limbo_completion_pipeline.py": {
+    "bytes": 22896,
+    "sha256": "859dbb504adf63a4d7b8d3e28c525ee26874e6adce0e96b77c5f16d9a54497b6"
+  },
+  "inputs/source/scripts/run_limbo_external_benchmark.py": {
+    "bytes": 11968,
+    "sha256": "bb75555e21be8cbcc7d8f47932c5044deeb1cd4e8f2a23663f19f0cfac85ded8"
+  },
+  "pdf_marker.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pdf_marker.stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "terminal-result.json": {
+    "bytes": 5857,
+    "sha256": "179145f5749a421358516f527f46da19cd40b118d1f8305262e0256e9d1baad7"
+  }
+}

@@ -4,34 +4,13 @@ Devrajsinh Jhala
 
 Independent Researcher
 
-Generic IEEE conference manuscript reporting an objective software/systems
-evaluation. No venue, acceptance, or completed autonomous benchmark evaluation
-is asserted.
+Generic IEEE manuscript reporting controlled and externally authored simulator studies. No venue or acceptance is asserted.
 
 ## Abstract
 
-A timed-out tool call can leave an agent uncertain whether an operation failed or
-will commit later. ConseqaX binds temporal contracts, readback witnesses separate
-from acknowledgements, and state and action-origin conclusions to an application
-recovery policy. We evaluate five deterministic policies in two version-pinned
-SQLite studies. Study A retains 15,360 worlds from 24 authored cases in 12
-purposive families; its 128 seeds add no recorded-metric variation within
-case–policy groups. All four readback policies achieve safe recovery in 14/24
-cases, versus 8/24 for response-driven retry. Package-backed polling matches a
-strong reference with separate evidence arithmetic and shared transitions. Its
-original-contract state reports are wrong in 0/2,304 definite outputs, while
-provider harm and later global-count failures remain possible. Polling doubles
-reads without improving claims under Study A's schedules. A separately frozen,
-post hoc motivated follow-up crosses 64 availability profiles in three domains:
-all 960 worlds succeed physically. Polling increases correct-state yield from
-3/192 to 81/192 versus one final read, using 741 versus 192 reads; the classical
-reference shares this gain. The studies characterize conditional evidence
-coverage and cost, not autonomous-agent superiority, general safety, or
-task-population improvement. Study A's postcollection packaging deviation
-remains disclosed.
+A timed-out tool call can leave an agent uncertain whether an operation failed or will commit later. ConseqaX separates state, action-origin and unknown conclusions through explicit contracts and readback witnesses. Study A retains 15,360 SQLite worlds from 24 authored cases: readback safely recovers 14/24 versus 8/24 for response-driven retry, matching a strong reference. Repeated seeds add no recorded-metric diversity; polling adds no coverage and detection does not repair all harmful effects. Study B retains 960 worlds: polling raises correct-state yield from 3/192 to 81/192 at 741 versus 192 reads, with identical physical outcomes. The externally authored LIMBO study covers 12 base instances, 24 task/fault conditions and four arms. The interrupted original retains 6/96 audited grades. A separately declared follow-up, after partial-data exposure, retains another 96 planned slots on the same instances; cohorts are not pooled. Replay establishes 96/96 follow-up grades, including 3 native error returns after settlement. All-planned results are Vanilla: TS 21/24, EOS 16/24; SDK retry: TS 24/24, EOS 14/24; Native guard: TS 21/24, EOS 16/24; ConseqaX guard: TS 20/24, EOS 15/24. The package emits 3 audited receipts in 3/24 episodes, with complete accounting in 24/24. Receipt activation demonstrates integration rather than a new recovery algorithm. Missing grades remain unavailable. Native EOS has domain-specific accounting, not a universal exactly-once guarantee. Study A's packaging deviation remains disclosed. These finite simulator results establish neither task-population superiority nor independent service validation.
 
-**Index terms:** agent systems, outcome verification, recovery, idempotency,
-evidence provenance, uncertainty
+**Index terms:** agent systems, outcome verification, recovery, idempotency, evidence provenance, uncertainty
 
 ## 1. Introduction
 
@@ -78,15 +57,9 @@ polling change final-report correctness and coverage relative to one final read 
 additional resource cost? **Q5:** What abstention and definite-error tradeoffs remain
 under incomplete public histories? Equal or worse recovery, incorrect conclusions,
 unnecessary reads, or parity under shared provider guarantees can limit the proposed
-benefit.
+benefit. **Q6:** Under native ambiguous-commit faults, how do all-planned task/effect outcomes, failures and actual work differ among vanilla dispatch, transparent retry, the supplied strong guard and its receipt-preserving SDK integration?
 
-The contribution is a specified application protocol, a bounded recovery policy,
-and a paired closed-loop evaluation of these questions. Separately implemented reference
-parity would support observed conformance, without demonstrating superiority.
-Because state-only and provenance-aware variants share action transitions,
-their comparison isolates reporting rather than a provenance-caused recovery
-benefit. The 12 purposive families provide challenge-suite evidence; repeated
-seeds do not establish a population of independently sampled tasks.
+The contributions are an executable evidence protocol, a controlled evaluation of recovery/reporting boundaries and a native external fault-benchmark integration with audited first-attempt accounting. The controlled reference uses separate arithmetic but shares application transitions; its agreement supports conformance. The external SDK arm deliberately preserves an established strong guard, so it does not introduce a new recovery algorithm. Provenance changes only reporting in the controlled shared-transition comparison. The native experiment and actual results in Sections 6 and 7 retain 96 planned slots per cohort on the same 12 base instances, including the original interrupted cohort and the separately frozen follow-up. Neither repeated seeds nor repeated arms create independently sampled tasks.
 
 ## 2. Related Work and Positioning
 
@@ -114,14 +87,7 @@ recovery action is justified by its available evidence. Our earlier replay
 adapter uses existing estimators. The present experiment requires neither
 counterfactual writes nor a new attribution method.
 
-AppWorld, ToolSandbox, and $\tau$-bench already evaluate stateful agent
-interaction and world outcomes [12]–[14]. A maintained retail/airline corpus and
-native DB evaluator also support our earlier model-free transfer experiment
-[15], [16]. Replaying reference actions or executing deterministic recovery
-logic does not supply an autonomous benchmark score. Section 6 separates native
-integration evidence from the planned comparison; broader recovery validation
-still requires native reward, matched strong controls, and independently checked
-effect histories under relevant faults.
+AppWorld, ToolSandbox and tau-bench evaluate stateful agent interaction and world outcomes [12]–[14]. Earlier model-free transfer used maintained retail/airline tools and native DB evaluation [15], [16]; reference-action replay is not an autonomous score. Our external experiment uses LIMBO's authored tasks, native faults and unchanged grader [6], [20], retaining its supplied strong guard as a comparator. The receipt arm tests protocol integration under that same recovery law. The native grade and independently replayed effect history extend the controlled evaluation while remaining simulated evidence from one local quantized model.
 
 The present contribution is therefore conditional: an executable evidence contract and
 an auditable comparison of policy tradeoffs under declared capabilities. Its value must
@@ -130,6 +96,8 @@ measured, rather than from attributing established distributed-systems guarantee
 framework.
 
 ## 3. Evidence and Recovery Protocol
+
+This section specifies the temporal record contract and application recovery law evaluated in controlled Studies A and B. The external LIMBO condition instead uses the benchmark's own guard and a custom current-public-report verifier; it does not apply this controller or the temporal RecordVerifier to native reports.
 
 ### 3.1 Objects and temporal targets
 
@@ -572,137 +540,244 @@ Together, the studies show conditional polling utility and its cost, with no
 package superiority over the equally informed reference, no additional
 recovery-action benefit, and no task-population inference.
 
-## 6. Native Integration and Prospective External Pilot
+## 6. External Native Fault-Benchmark Methods
 
-### 6.1 Retained integration finding
 
-A separate local integration check executes the maintained airline environment
-at revision `96a3ef92329baf908ffe9dfe188cea34e8701d2a`, distributed as `tau2`
-1.0.1 [15], [16]. The native assistant and dynamic user both use local Qwen3 4B
-Instruct inference. This is actual autonomous dialogue, rather than reference-action
-replay, but the development task is excluded from the planned comparison. The
-unwrapped native condition does not import or invoke ConseqaX.
+The complete schedule, execution sources, native implementation, wheel and runtime identities for the separately declared follow-up were published before its generation at protocol commit `8b25d4c7769c5c593333c9d3eeeceb8ae001dba4`. The protocol SHA-256 is `6d34556a03e9d738d11367a40d4812cb93168c82d3ae775ef76f1a4c48679541`. All 96 planned follow-up dispositions are retained, including errors and unavailable grades. Source, model and resource bindings are part of the accompanying audit-linked artifact. The original cohort at protocol commit `267cd1a3e846c46c009f20accbf302746e064875` was interrupted after 6/96 native grades became available. Its original final collector seal and process terminal are unavailable. A separately dated postcollection preservation archive binds copied original bytes; replay reconstructs only available sealed child returns. The remaining dispositions stay unknown, including the interrupted child and every unstarted slot. No original exit status or interruption cause is invented. Both 96-slot cohorts remain in the paper and artifact. The host migration required explicit runtime-path repairs, a new private runtime binding and a change from Ollama 0.40.8 to 0.40.10. The follow-up was declared after access to the partial original data. It reuses the same weights, frozen scientific sources, task indices, fault assignments, arm order, control settings, limits and analysis. It is a distinct runtime condition, not a resume, successful-slot replacement or independently sampled replication. Its within-world contrasts are primary; cross-cohort outcomes and costs are descriptive and never pooled. The two planned cohorts still contain only 12 unique base instances.
 
-The [final-source check on development task 19](../output/native-development-2026-10-21/native-19-002-audit/audit-result.json)
-returned **12 model completions and five native tool calls**, ending with native
-`user_stop`. An offline auditor verified all eight execution-source files,
-272 bound upstream files, 54 installed framework payload files, and exactly one
-actual HTTP generation dispatch per recorded completion. It linked canonical parsed HTTP
-requests to context checks and strict native inputs; replayed initialization and
-every tool call, including reads; checked initial/final database snapshots; and
-reproduced native ALL grading. The raw inventory was created after collection.
-Offline render/token checks validate saved collector observations rather than rerunning
-the server or tokenizer; discarded JSON key order prevents reconstruction of the
-original wire serialization. The native reward was **0**: DB reward 0, with
-COMMUNICATE 1 because this task has no communication requirement. Vacuous
-communication success is not evidence of substantive explanation quality.
-Artifact consistency does not turn a failed native task into a successful evaluation.
+### 6.1 Benchmark, selection, and matched conditions
 
-The model journal retained **53,420 prompt tokens and 1,228 completion tokens**
-across both model roles. Prompt totals already include cached tokens. The maximum
-complete prompt was 7,536 tokens; required context including the output allowance
-and margin was 8,112 of 16,384 tokens. Execution took 1,806.5 seconds on this CPU
-host, under the earlier 600-second request and 3,600-second trajectory limits.
-These observations characterize one development execution, not framework
-overhead, a comparative success rate, or a task-population estimate. Bound execution
-source is `8bd1cd88ab3644a9c6417e29308ab4b502b40484`; the separate audit and its
-complete manifest are retained.
+The external environment is the author-maintained LIMBO sandbox
+[6], [20], pinned to commit
+`2db09fba22a0572a70639162a808906409f612a8`. This source pin
+differs from its `v1.0` tag
+(`83c59e31f8477a5fb6f186dfcc9f3d10fa336b8a`); our executions
+are not a reproduction of the preprint's released episode corpus. Native task
+construction, service implementation, fault injection, policy prompts, tool
+schemas, final settlement and grading remain unchanged. We use the minimal
+native agent loop through a scoped policy-factory extension, rather than the
+stock parallel runner and its retry/resume behavior. All services are simulated;
+no production service write or real human intervention is involved.
 
-Development failures are retained as well. An [earlier guarded execution](../output/native-development-2026-10-21/guarded-20-000/parent-receipt.json)
-ended at a 600-second request timeout, after seven invocations and six returned
-completions, without a returned native simulation or grade. It emitted zero package
-receipts and zero guard blocks, so it did not validate the receipt path. Its task reward is
-unavailable, rather than an invented semantic zero. Before any official collection,
-the [candidate condition was amended uniformly](../docs/native-resource-amendment-2026-10-21.md#full-history-cpu-timeout-amendment-before-official-collection)
-to 1,200 seconds per request and 7,200 seconds per trajectory. That guarded check
-also timed out: eight of nine model invocations returned, five actual read-only tool calls
-completed, and no native simulation or grade was returned. It likewise emitted
-no package receipt or guard block. The failed request's full prompt fit within the
-context allowance; context fit alone did not ensure completion within the wall-time budget.
-The one-shot pipeline
-refused to proceed before readiness, protocol publication or official collection.
-**No comparative pilot score is reported here.**
+The frozen schedule selected one parameterized base instance from each of
+the 12 external templates across billing, data, deploy, mail, social and
+tickets. Instance indices are hash-selected from the declared seed and index
+salt, excluding development indices. A trusted extractor releases only
+template/domain identifiers, focal-write names and public affordances for
+selection; task instructions, targets, setup values and grader outcomes do not
+enter the selection rule. Each base instance has a clean condition and one
+compatible fault condition. Metadata-based balancing and hash tie-breaking
+cover pre-dispatch timeout, post-commit timeout, late commit, heavy-tailed late
+commit, partial-batch timeout and duplicate delivery; the batch-capable template
+is reserved for the partial-batch condition. This is finite purposeful coverage,
+not a random task sample or an exhaustive fault cross-product.
 
-| Excluded development check | Request limit (s) | Returned/attempted model calls | Actual tools | Native reward |
-| --- | ---: | ---: | ---: | ---: |
-| Native 19 | 600 | 12/12 | 5 | 0 |
-| Guard 20a | 600 | 6/7 | 3 | Unavailable |
-| Guard 20b | 1,200 | 8/9 | 5 | Unavailable |
+Four arms defined 24 task/fault conditions and 96 planned execution slots on
+12 base instances. Rotating arm order balanced execution positions. Arms share
+the native world within a condition, public capabilities, neutral tool
+documentation, default instruction and resource limits. Clean and fault
+conditions share base task parameters, but the native world RNG seed depends
+on fault mode; they are not identical random worlds. The primary contrasts are
+between arms within each world.
 
-These are not paired comparative trials. Model-call counts include both roles.
-Only native 19 returned native grading and passed full replay/regrading audit.
+| Arm | Execution rule |
+| --- | --- |
+| Vanilla | Unchanged native direct dispatch. |
+| SDK retry | Unchanged native rule: up to three retries after the initial retryable failure. |
+| Native guard | Unchanged strong key/verification/suppression rule. |
+| ConseqaX guard | The same guard consuming actual SDK receipt statuses. |
 
-A [separate failure-integrity audit](../output/native-development-2026-10-21/guarded-20-001-failure-audit-2026-10-22/audit-result.json)
-verified all nine canonical request/context links and replayed all five completed
-reads with unchanged database snapshots. It passed those partial checks while
-explicitly declining native-reward validation: no native simulation exists to
-regrade. Returned-response usage covers eight completions only; the timed-out
-request's usage remains unknown. Both development inventories were finalized
-after collection, with original bytes preserved. The
-[claim-to-artifact ledger](native-development-claims-2026-10-21.json) binds these
-values and their audit manifests.
+![Native public-information boundary and four matched conditions. The package arm preserves the supplied strong guard while consuming actual SDK receipts. Only public reports enter the receipt path; targets, faults, ledgers and native grades remain evaluator-only. Offline replay checks behavior and receipt mappings, not an independently operated service or SDK re-execution.](figures/limbo-native-methods.svg)
 
-### 6.2 Matched conditions and audit boundary
+### 6.2 Actual SDK path and public-information boundary
 
-The prospective design selects **12 distinct airline task IDs** by a declared
-metadata-based hash rule, excluding development IDs 19 and 20. Six tasks have
-substantive communication criteria and six have empty criteria. Four conditions
-and one declared seed give **48 planned trajectories**, not 48 independent tasks.
-Task and rotating condition order must be published with the execution protocol
-before official generation. The corpus was exposed in the earlier model-free
-transfer study; these are externally authored, previously exposed tasks, not an
-author-unseen holdout.
+Qualification evidence is separated from measurement. Preserved excluded autonomous native executions validated normal baseline/guard returns under the historical runtime; a separately scripted repeated-proposal fixture exercised the actual SDK receipt path without model generations or a native task grade. Relocated readiness retained those historical executions and added current-runtime full-schema render/token parity and a two-call task-independent structured-tool roundtrip. Historical executions are not relabeled as current-runtime trajectories, and fixture receipts do not enter measured counts. Measured follow-up activation comprised 3 audited receipts in 3/24 planned SDK episodes; 24/24 had complete audited accounting. The auditor checks saved receipt mappings and native behavior; it does not independently re-execute the SDK or authenticate a production service.
 
-![Prospective native information boundary and four conditions. Methods only; no benchmark outcomes.](figures/native-four-arm-methods.svg)
+The package arm invokes the installed 2.1.1 wheel, bound together with all
+54 installed payload files, through a custom public-report verifier. Every
+actual native `verify(..., truth=False)` result produces a typed action,
+contract, observation and verification receipt. After receipt-binding checks,
+the guard consumes the reconstructed native status/detail. It does not bypass
+the receipt with a raw status. A clean first acknowledgement need not invoke
+verification and can therefore produce zero receipts. No extra read or prompt
+intervention is introduced solely to create a receipt.
 
-All conditions retain the complete native policy, tool schemas, actual environment,
-dynamic user, and required DB plus COMMUNICATE reward. Proposed mutations determine
-a shared public-read schedule; subsequent dialogue and evidence can diverge.
+Package inputs contain only copied public arguments, contract metadata,
+timestamps and the returned public verification report. Task targets, pending
+requests, fault plans, effect ledgers, final grades and raw service callbacks
+remain evaluator-only. A narrow facade supplies the original guard's admitted
+runtime accesses; it does not expose the complete world. This is a trusted-code
+information boundary, not an operating-system sandbox against hostile
+introspection. The original native baseline policies retain their original
+runtime. `human_available=False` disables the simulated operator in all
+arms; attempted escalation can still fail and advance virtual time.
 
-| Condition | Derived public report | Dispatch guard |
-| --- | --- | --- |
-| B | Raw public reads, without a derived verdict or framework import | None |
-| C | Compact current-field report, direct standard-library predicate | Conservative guard |
-| R | ConseqaX 2.1.1 current-field receipt | None |
-| G | ConseqaX 2.1.1 current-field receipt | Same guard as C |
+Native `found` maps to a satisfied current-visible-match predicate and
+`absent` to its violation. Partial, unverifiable and other unresolved
+reports map to unknown while retaining their exact native status/detail for
+the guard. Origin is always unknown. These are current public-report receipts,
+not evaluations by the built-in temporal `RecordVerifier`. They establish
+neither durable settlement, action ownership, a retry-safe terminal request nor
+universal exactly-once execution. The native verifier is the supplied simulator
+abstraction, not an independently operated second service.
 
-C, R and G use the same `field_status` application predicate. G invokes it through
-a custom package verifier and emits a full receipt, while C emits a compact report.
-C/G therefore tests integration, representation and guard interactions, not independent
-verifier arithmetic or the built-in temporal `RecordVerifier`. Shared predicate errors
-can survive automated agreement. The guard can suppress a legitimate later identical
-request and may never activate in ordinary dialogue; either outcome must be retained.
+Invented-world integration checks compare the native and package guard on
+identical proposals, actual calls, public reports, interventions, waits and
+settled worlds. The external comparison retained this declared
+control law under autonomous model proposals. Agreement is expected when the
+shared control law is preserved; it is not algorithmic superiority. Native
+guard limitations, including possible late-commit ambiguity and later repeated
+same-intent dispatch, remain part of the comparison.
 
-Planned shared ceilings are 80 native steps, 48 combined assistant/user model
-invocations, 512 generated tokens per request, and the amended request/trajectory
-deadlines above, with no corrective retries. Every generation must pass a complete-history
-render, token-ID/context check and model-identity check without history trimming.
-Local request normalization is restricted to the pinned provider's disclosed schema
-serialization and ordinary assistant null-field omission. A failed gate stops that
-trajectory; no replacement completion is silently substituted.
+### 6.3 Local model, transport, and fixed resources
 
-The primary finite-pilot endpoint is operational full native reward over all 12
-planned slots per condition. Failed or unstarted slots cannot earn operational
-success. Unavailable native reward and components remain unavailable; native
-premature termination retains zero reward with missing component grades. Empty
-communication criteria pass vacuously only when component evaluation is reached.
-A passed artifact audit does not imply that all planned slots ran or any task
-succeeded. All planned dispositions, complete accounting, observed journal prefixes
-and missing usage must remain distinguishable.
+The frozen runtime used Qwen3-4B-Instruct-2507 [21], the exact
+`qwen3:4b-instruct-2507-q4_K_M` quantization distributed by
+Ollama [22], served
+locally by version 0.40.10 [23]. The frozen artifact binds
+the full model-blob digest, alias manifest, server and runner executable hashes,
+process identities and creation times, interpreter and dependency versions.
+The frozen configuration was one 8,192-token cache slot, q8 KV cache,
+temperature zero, seed 1701 and at most 512 output tokens per permitted request.
+The seed is a disclosed transport extension; it does not establish bitwise
+repeatability. There is one model role and no hosted inference.
 
-A separately implemented auditor imports neither the collection runner, wrapper,
-transport nor framework. It reconstructs all actual calls chronologically and
-regrades saved native trajectories through the unchanged evaluator. Additional
-read replay matters because native strict replay skips nonmutating reads. This
-is automated checking within the same AI-assisted project, not independent
-external replication. Native synchronous execution injects no lost acknowledgement
-or delayed commit. Current public fields do not establish temporal durability,
-settlement, safe retry, or action origin; receipt origin remains unknown. The same
-small model supplies assistant and user, one seed does not estimate execution
-variance, and persistent prompt caches plus shared host load prevent causal
-wall-time attribution to the package.
+The client retains the native chat-message construction and response parser.
+Before every generation it compares the complete locally predicted prompt with
+the live server-rendered bytes and all runtime token IDs. Full history and tool
+schemas are retained, with the output allowance and 64-token reserve included
+in the context gate. A disclosed compatibility correction elides only literal
+default-true `additionalProperties` fields from copied typed-schema
+nodes in the offline predictor; actual HTTP schemas remain unchanged.
+Unsupported constrained forms are refused rather than silently weakened.
 
-## 7. Supporting Evidence and Version Boundaries
+Each admitted model invocation permits one loopback HTTP generation dispatch,
+with no transport retry, redirect, history trimming or replacement completion.
+Exact request/response bytes, failed sends, parsing failures and available usage
+are retained. Missing usage remains unknown, and cached input tokens are not
+added again to input totals. The frozen shared ceilings were 16 model
+invocations, 16 proposed native tool calls, 1,200 seconds per request and
+7,200 seconds per trajectory. An additional call refused at the invocation cap
+is recorded separately and performs no HTTP generation. Automatic tool retries
+remain visible actual work rather than model proposals.
+
+Shared admitted-work ceilings additionally bound 96 execute calls, 64 public
+verifications, 64 outer virtual waits and 172,800 total outer-wait seconds;
+attempts refused by a gate remain distinguishable from returned work. Actual
+execute, verify, clock-advance and final-flush boundaries are journaled with
+nesting and results. Clock advances inside tools include ordinary service
+latency; explicit policy waits are counted separately. Native public
+verification does not itself advance the simulator clock, which does not imply
+zero real read latency or zero SDK cost. Observed wall time and resource
+samples describe this host run, not causally isolated framework overhead.
+
+### 6.4 Native endpoints, audit, and analysis
+
+The unchanged native loop settles pending effects before grading, including
+when it returns after an LLM error. Task success (`TS`) requires all
+target minimums and no graded collateral change. Native `EOS` is
+`TS` with zero `dup_executed`; it does not additionally require
+zero extraneous writes or exact target counts. We retain both endpoints and
+separate duplicate-executed/live/compensated counts, collateral, extraneous
+writes, total effects, `clean_success` and `exact_state`.
+`clean_success` requires `TS` and no live duplicates;
+`exact_state` checks target live counts only, not full-world equality.
+
+The duplicate counters are domain-qualified. Status targets have no matching
+execution branch, so repeated status writes do not raise native
+`dup_executed`. Matching upsert creation counts are capped at final
+matching live count, whereas refund execution counts are not capped.
+`dup_compensated` is the derived nonnegative difference between
+executed and live duplicates, not a compensation-call counter. Consequently
+native `EOS` is not a universal physical exactly-once guarantee.
+
+The registered primary numerator counts independently replayed native
+`TS`/`EOS` successes over every planned slot per arm. Operational
+grade availability includes audited native error returns after settlement;
+execution without native error is a separate secondary outcome. A missing grade
+cannot earn primary success but is not assigned an invented semantic zero.
+Failed, interrupted and unstarted slots retain their planned positions, with
+no retry, resume, deletion or replacement.
+
+A separately implemented offline auditor imports neither collector, package
+policy, transport nor SDK. It reconstructs native model requests and parsed
+responses, actual public calls, virtual waits, settlement, final world and RNG
+state, ledger and every native grade field. The SDK arm is replayed through the
+original native guard with the same episode identity, while receipt bindings
+and public-status mappings are recomputed separately. This checks native
+behavioral conformance and receipt arithmetic, not SDK re-execution or an
+independent service verifier. Saved render/token proofs receive consistency
+checks; the auditor does not independently rerun the tokenizer. Audit success
+does not imply all planned executions returned or tasks succeeded. These are
+automated checks within the same AI-assisted project, not external replication.
+
+Analysis retained all planned slots and reports exact finite-suite counts,
+within-world paired contrasts, per-template variation, assigned-fault strata,
+grade/usage availability and actual costs. Fault triggering is a recorded
+post-execution outcome, not an inclusion rule. Repeated arms and clean/fault
+variants do not add independent tasks; no population confidence interval,
+significance, equivalence or noninferiority claim follows from this selection.
+
+## 7. External Native Results
+
+The original interrupted cohort retains its full 96-slot denominator: 6 independently replayed grades, 0 native error returns among those grades, and 90 unavailable grades. Its all-planned counts are Vanilla TS/EOS 1/24 and 1/24; SDK retry TS/EOS 2/24 and 2/24; Native guard TS/EOS 1/24 and 1/24; ConseqaX guard TS/EOS 1/24 and 1/24. The original collector's final seal is unavailable; its audit binds a later copy-only preservation archive and does not manufacture missing terminal evidence. The separately published follow-up is the primary runtime condition below. Both cohorts reuse the same 12 base instances and 24 condition definitions; they are not pooled or counted as 192 independent tasks. Original interrupted cohort: audited_native_return 6; interrupted_terminal_unavailable 1; unstarted_interruption 89. Follow-up cohort: audited_native_error_return 3; audited_native_return 93.
+
+| Cohort | Arm | Planned | Started | Graded | Error returns | Unavailable | TS | EOS |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Original interrupted | Vanilla | 24 | 1 | 1 | 0 | 23 | 1 | 1 |
+| Original interrupted | SDK retry | 24 | 2 | 2 | 0 | 22 | 2 | 2 |
+| Original interrupted | Native guard | 24 | 2 | 2 | 0 | 22 | 1 | 1 |
+| Original interrupted | ConseqaX guard | 24 | 2 | 1 | 0 | 23 | 1 | 1 |
+| Follow-up | Vanilla | 24 | 24 | 24 | 0 | 0 | 21 | 16 |
+| Follow-up | SDK retry | 24 | 24 | 24 | 0 | 0 | 24 | 14 |
+| Follow-up | Native guard | 24 | 24 | 24 | 1 | 0 | 21 | 16 |
+| Follow-up | ConseqaX guard | 24 | 24 | 24 | 2 | 0 | 20 | 15 |
+
+The frozen external matrix comprised 12 base instances from 12 templates across six focal domains, each in a clean condition and one compatible assigned fault condition. Four arms produced 96 planned slots on 24 matched native worlds. These are 12 base instances, not 96 independent tasks. Independent replay established native grades for 96/96 slots, including 3 native error returns after native settlement; 0 grades were unavailable. An audited error return remains eligible for the physical endpoint; normal execution success is reported separately.
+
+Assigned-condition results were Vanilla: clean TS/EOS 12/12 and 11/12, assigned-fault TS/EOS 9/12 and 5/12 (grades available 12/12 and 12/12); SDK retry: clean TS/EOS 12/12 and 11/12, assigned-fault TS/EOS 12/12 and 3/12 (grades available 12/12 and 12/12); Native guard: clean TS/EOS 12/12 and 11/12, assigned-fault TS/EOS 9/12 and 5/12 (grades available 12/12 and 12/12); ConseqaX guard: clean TS/EOS 11/12 and 10/12, assigned-fault TS/EOS 9/12 and 5/12 (grades available 12/12 and 12/12). Strata use the prospective assignment, irrespective of whether a policy triggered the fault. Base task parameters match between clean and fault conditions, but native random seeds depend on mode; these descriptive condition differences do not identify a fault-only causal effect.
+
+Follow-up matched baseline contrasts over all 24 planned native worlds were Native guard minus Vanilla: TS numerator difference +0/24, both grades available 24/24 and at least one grade unavailable 0/24; EOS numerator difference +0/24, both grades available 24/24 and at least one grade unavailable 0/24. Native guard minus SDK retry: TS numerator difference -3/24, both grades available 24/24 and at least one grade unavailable 0/24; EOS numerator difference +2/24, both grades available 24/24 and at least one grade unavailable 0/24. These finite paired counts retain every unavailable pair; they are not population significance, equivalence or an independent recovery-algorithm claim.
+
+The original six graded prefix slots, one interrupted slot and 89 unstarted slots do not support an efficacy comparison of that condition. Its 90 unavailable grades are not native failures.
+
+**Follow-up runtime condition.**
+
+| Arm | Planned | Graded | TS true | EOS true | Missing |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Vanilla | 24 | 24 | 21 | 16 | 0 |
+| SDK retry | 24 | 24 | 24 | 14 | 0 |
+| Native guard | 24 | 24 | 21 | 16 | 0 |
+| ConseqaX guard | 24 | 24 | 20 | 15 | 0 |
+
+The ConseqaX arm emitted 3 audited SDK receipts across 3/24 planned episodes with at least one receipt (24/24 episodes had complete audited accounting). The package consumes unchanged current public verification reports; clean first acknowledgments can therefore require no receipt. The independent auditor recomputes receipt mappings and replays the original native guard and physical effects, but does not independently re-execute the SDK. The integration implements the same recovery decisions as the strong native comparator, rather than a new recovery algorithm or a claim of causal origin.
+
+For the native-guard versus ConseqaX-guard comparison, 24/24 matched worlds had both native grades available. Their TS booleans agreed in 23 and EOS booleans agreed in 23 of those worlds; 0/24 worlds had at least one unavailable grade. These are descriptive paired outcome agreements. Separately generated model trajectories need not coincide, and this finite matrix supports neither population equivalence nor algorithmic superiority.
+
+Observed work totals were Vanilla: 151 execute attempts, 0 public verification attempts, 0 explicit wait attempts and 124 model generation dispatches from 24/24 slots with complete accounting; SDK retry: 157 execute attempts, 0 public verification attempts, 10 explicit wait attempts and 126 model generation dispatches from 24/24 slots with complete accounting; Native guard: 168 execute attempts, 3 public verification attempts, 0 explicit wait attempts and 156 model generation dispatches from 24/24 slots with complete accounting; ConseqaX guard: 159 execute attempts, 3 public verification attempts, 0 explicit wait attempts and 146 model generation dispatches from 24/24 slots with complete accounting. Incomplete slots may have additional unquantified work, so unavailable accounting is not zero. Boundary attempts are distinct from physical effects; nested clock advances include native tool latency and are not counted as explicit policy waits. Native virtual time and host wall time are separate costs.
+
+Secondary native endpoint counts were Vanilla: clean-success 16/24 and exact-state 16/24; SDK retry: clean-success 14/24 and exact-state 14/24; Native guard: clean-success 16/24 and exact-state 16/24; ConseqaX guard: clean-success 15/24 and exact-state 15/24. Missing grades do not count as true; exact-state checks target counts only.
+
+Across slots with complete audited accounting, journals retain 1249824 known input tokens and 51582 known output tokens, with 3 invocations lacking input usage and 3 lacking output usage. These are observed totals, not complete usage for slots without accounting. Cached input is already included in input totals. The artifact reports per-arm counts, assigned-fault/template/domain strata, paired contrasts and missingness without population significance or equivalence claims.
+
+**Follow-up runtime condition.**
+
+| Arm | Graded | Dup. executed | Dup. live | Compensated | Collateral | Extraneous | Effects |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Vanilla | 24 | 8 | 8 | 0 | 0 | 0 | 89 |
+| SDK retry | 24 | 14 | 14 | 0 | 0 | 0 | 100 |
+| Native guard | 24 | 8 | 8 | 0 | 0 | 0 | 91 |
+| ConseqaX guard | 24 | 8 | 8 | 0 | 0 | 0 | 88 |
+
+Observed native effect totals from graded slots only. Graded is the availability denominator, not a success count; unavailable effects are unquantified. Compensated is the native derived duplicate difference, not a count of compensation calls. Native domain qualifications apply.
+
+![Follow-up runtime condition. Native TS/EOS true, false and unavailable grades over all 24 planned slots per arm. Error returns with audited settled grades remain physically assessable.](figures/limbo-outcomes.svg)
+
+![Follow-up runtime condition. Native EOS true over all planned slots by base template and assigned fault. Unavailable grades remain marked. Strata are finite and descriptive; fault triggering is not an inclusion rule.](figures/limbo-stratification.svg)
+
+![Follow-up runtime condition. Observed execute, public verification and model-dispatch totals from complete audited rows. Missing-row work is unquantified. Boundary attempts are not physical effect counts or isolated SDK overhead.](figures/limbo-costs.svg)
+
+## 8. Supporting Evidence and Version Boundaries
 
 Earlier experiments corroborate narrower components, rather than multiplying
 the new recovery study's independent task count. The supporting-evidence table separates their units,
@@ -717,16 +792,11 @@ remain in the historical manuscript and versioned evidence ledger.
 | Native CAR bridge, 1.1.0 | 1,024 paired groups; 640 eligible point vectors agree, 384 unavailable. | Matched scripted-game compatibility; 64 already ineligible budget groups have disclosed refusal-record coalescing. |
 | Offline migration, 2.0 | 503 retained traces / 504 original slots preserve canonical conclusions, including 72 unknowns; 275 diagnosis-code changes. | Exposed-data conformance with no new actions/model calls; no new accuracy or broad feature validation. |
 
-The new experiment uses selected 2.1.1 public recording, contract, observation,
-and record-verification paths [7]. Its callback-based application polling and
-safety gate are explicit integration code. It does not evaluate the public
-blocking polling helper, composite/multiple-source verification, OpenTelemetry,
-SDK integrations, arbitrary multi-action traces, or the full release surface.
-Historical 1.1.0 results and 2.0 migration are not relabeled as 2.1.1 performance.
-Byte-identical numerical modules alone would not establish end-to-end version
-equivalence.
+Studies A and B use selected ConseqaX 2.1.1 recording, contract, observation and built-in record-verification paths [7], together with explicit application polling and safety-gate code. The native LIMBO arm instead uses a custom verifier over current public reports; it does not exercise the temporal RecordVerifier. These studies do not evaluate the public blocking polling helper, composite/multiple-source verification, OpenTelemetry, unrelated SDK integrations or the full release surface. Historical 1.1.0 results and 2.0 migration retain their original versions; byte-identical numerical modules alone do not establish end-to-end version equivalence.
 
-## 8. Discussion and Limitations
+An earlier excluded airline development check used the native environment at revision 96a3ef92329baf908ffe9dfe188cea34e8701d2a. Its unwrapped execution returned 12 model completions and five tool calls but native reward 0 (DB 0; communication 1 was vacuous). Two guarded checks timed out at 600- and 1,200-second request limits, respectively, with no returned native grade and no SDK receipt. Their grades remain unavailable; they are excluded development evidence rather than paired comparative results. No official airline matrix was collected. Full original traces, partial failure audits and the historical manuscript retain these limitations.
+
+## 9. Discussion and Limitations
 
 An evidence protocol is useful only under meaningful source and operation
 semantics. A watermark covers history through a declared time; finite auditing
@@ -759,37 +829,13 @@ controlled comparisons. These methods do not evaluate interpretability,
 preferences, or rationale quality. The historical T15 unblinded rationale claim
 is excluded from the current paper and is not empirically validated here.
 
-The pending native comparison extends execution to an externally authored
-environment but does not inject ambiguous commits. The next fault-focused
-validation should freeze selection and a real agent policy in an external
-benchmark or provider sandbox, preserving strong classical recovery controls
-under identical capabilities and budgets. Native reward must accompany
-independently checked effect histories and validation of adapter/status/idempotency
-semantics. The supplied strong guards and committed-effect grading of LIMBO [6]
-are relevant comparators, rather than novelty claims for this framework. A declared
-sampling design and precision target are necessary for broader inference.
-More internal cases, AI audits, or reference-action replay cannot substitute
-for this validation.
+The external native study exercises ambiguous commits in authored LIMBO tasks with unchanged service semantics and native grading. It remains one 4B quantized local model, one declared seed, one base instance per template and one compatible assigned fault per template, rather than an exhaustive fault cross-product or a task-population sample. The follow-up condition was frozen after observing partial original results and repairing runtime paths after host migration; it is not an unseen replication or a replacement of the original. Both full 96-slot cohorts are retained separately on the same 12 instances. The original has 6/96 audited grades. Follow-up native grades are available in 96/96 planned slots, including 3 audited error returns after settlement; unavailable grades do not become semantic failures. The guard comparison uses the same control law; descriptive outcome agreement is not population equivalence. Native status/upsert duplicate accounting and target-scoped exact-state checks limit exactly-once interpretations. Serial host wall time, cache and shared load do not isolate SDK overhead. Independently operated service validation, broader model/task sampling and external replication remain outside these findings.
 
-## 9. Conclusion and Artifact Availability
+## 10. Conclusion and Artifact Availability
 
-ConseqaX provides inspectable boundaries between tool responses, verified
-temporal state, operation-linked origin, and explicitly recorded assertions
-and evidence. The studies evaluate the application decisions and resource costs
-that follow from those boundaries under shared provider guarantees. Its scope
-is a frozen challenge suite, a controlled availability grid, and deterministic
-recovery policies. Historical
-model, transfer, replay, and migration evidence retains its original versions
-and targets. Comparisons use established provider guarantees as shared assumptions
-and treat reference agreement as conformance.
+ConseqaX exposes inspectable boundaries between acknowledgements, admitted evidence, temporal state, operation-linked origin and explicitly unknown conclusions. The controlled studies show when polling improves report yield at additional cost and when it adds no benefit; the equally informed reference shares its gains. The 12-instance external native follow-up matrix retains all 96 planned dispositions and 96/96 audited grades: Vanilla TS/EOS 21/24 and 16/24; SDK retry TS/EOS 24/24 and 14/24; Native guard TS/EOS 21/24 and 16/24; ConseqaX guard TS/EOS 20/24 and 15/24. Its SDK condition emits 3 audited receipts in 3/24 planned episodes while preserving the supplied strong guard. The original interrupted cohort retains 6/96 audited grades and every unknown disposition separately; the same 12 instances are reused. These finite findings support an executable protocol and observed integration/coverage/cost tradeoffs rather than algorithmic superiority or universal exactly-once execution.
 
-The current MIT distribution is version 2.1.2 [19]; this experiment retains
-its 2.1.1 pin [7]. The public repository retains protocols,
-source hashes, schedules, raw traces, dispositions, evaluator arithmetic, and
-deviations. A DOI-backed immutable research archive has not yet been established.
-The earlier manuscript preserves full replay
-definitions, interval tradeoffs, source pins, and historical audits. No real
-payment or production-service write is part of the reported recovery experiment.
+Studies A/B and both native runtime conditions retain the 2.1.1 package pin; the 2.1.2 distribution was released on 20 October 2026. The accompanying artifact binds protocols, exact source/runtime/wheel identities, planned schedules, dispositions, saved evidence, audits, analysis and deviations. The public repository is https://github.com/Devrajsinh-Jhala/consequa-x. A DOI-backed immutable archive has not been established. Historical replay, model, transfer and migration evidence retains its original targets and versions. No real payment or production-service write is part of these experiments. The evaluated and later releases are cited separately [7], [19].
 
 ## AI Assistance and Verification Disclosure
 
@@ -820,4 +866,8 @@ The author is responsible for the manuscript and venue-required disclosure.
 16. Sierra Research. Native environment evaluator at the same revision. [Evaluator](https://github.com/sierra-research/tau2-bench/blob/96a3ef92329baf908ffe9dfe188cea34e8701d2a/src/tau2/evaluator/evaluator_env.py).
 17. D. Jhala. *Consequa-X*, evaluated MIT Python distribution, 1.1.0, 2026. [Historical package](https://pypi.org/project/consequa-x/1.1.0/).
 18. J. Shah. *Causal Agent Replay*, software 0.2.0, pinned revision `db90fa28b97164c35e7c524e4597b8cbdb3035af`, 2026. [Pinned software](https://github.com/jaineet17/causal-agent-replay/tree/db90fa28b97164c35e7c524e4597b8cbdb3035af).
-19. D. Jhala. *ConseqaX*, current MIT Python distribution, 2.1.2, 20 October 2026. [Official release](https://pypi.org/project/consequa-x/2.1.2/).
+19. D. Jhala. *ConseqaX*, MIT Python distribution, 2.1.2, 20 October 2026. [Official release](https://pypi.org/project/consequa-x/2.1.2/).
+20. J. Li. *LIMBO: Benchmark code, harness adapters and episode traces*. MIT software, commit `2db09fba22a0572a70639162a808906409f612a8`, 2026. [Pinned author source](https://github.com/jaxblack/limbo-bench/tree/2db09fba22a0572a70639162a808906409f612a8).
+21. Qwen Team. *Qwen3-4B-Instruct-2507*. Official model card, Apache 2.0. [Model card](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507).
+22. Ollama. *qwen3:4b-instruct-2507-q4_K_M*. Exact Q4_K_M model distribution; actual bytes are pinned in the runtime binding. [Distribution tag](https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M).
+23. Ollama. *Ollama*, software versions 0.40.8 and 0.40.10. Exact evaluated executable bytes are bound separately by cohort. [Official releases](https://github.com/ollama/ollama/releases).

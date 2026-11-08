@@ -1,0 +1,27 @@
+{
+  "source_commit": "f5c707cf33e7bfb74785233fdb2f5730fb9ee374",
+  "bundle": {
+    "bytes": 606552,
+    "name": "conseqax-kaggle-benchmark.zip",
+    "sha256": "e87e3ef14cf61ca80676bacbdf98ff6ac2a5d51c66c90588699f280b73af160d"
+  },
+  "manifest": {
+    "bytes": 13746,
+    "sha256": "d68a1297cf9c39e5290f6c436a15b665b2775ce04dde1d8f821d3167769fcd5e"
+  },
+  "payload_files": 84,
+  "notebook": {
+    "sha256": "f44e4c04dbf0512d27acd726e8fae3a4206d26460ae3e4950bfeb92f9b0c1855",
+    "bytes": 1008775
+  },
+  "focused_offline_tests_passed": 323,
+  "fresh_namespace_all_stages_dry_run_passed": true,
+  "actual_embedded_archive_and_active_OCI_graph_verified": true,
+  "planned_slots": 3456,
+  "native_task_instances_constructed_during_release_verification": 0,
+  "revised_GPU_qualification_completed": false,
+  "uploaded_original_GPU_qualification_audited": true,
+  "retained_local_CPU_model_responses": 6,
+  "local_response_replay_is_not_prospective_GPU_readiness": true,
+  "previous_failed_qualification_preserved": true
+}

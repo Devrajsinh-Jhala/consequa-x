@@ -239,6 +239,69 @@ def test_setup_download_failure_preserves_original_error_and_recovery_guidance(t
     assert "Runtime setup finished" not in printed
 
 
+def live_command_scope(tmp_path, monkeypatch):
+    """Use a tiny invented Python child, with no GPU, native tasks or network."""
+    scope, _, _ = bootstrap(tmp_path, monkeypatch)
+    scope["DRY_RUN"] = False
+    scope["STUDY_DIR"] = tmp_path / "frozen-study"
+    scope["STUDY_DIR"].mkdir()
+    scope["OUTPUT_DIR"] = str(tmp_path / "working" / "conseqax-benchmark")
+    return scope
+
+
+def test_real_child_failure_keeps_merged_traceback_on_disk_and_does_not_retry(tmp_path, monkeypatch, capsys):
+    scope = live_command_scope(tmp_path, monkeypatch)
+    (scope["STUDY_DIR"] / "diagnostic_failure.py").write_text(
+        "from pathlib import Path\nimport sys\n"
+        "counter=Path('dispatches.txt')\n"
+        "counter.write_text(counter.read_text()+'x' if counter.exists() else 'x')\n"
+        "print('fixture stdout',flush=True)\n"
+        "print('fixture stderr',file=sys.stderr,flush=True)\n"
+        "raise RuntimeError('invented underlying collection error')\n", encoding="utf-8")
+    with pytest.raises(subprocess.CalledProcessError) as raised:
+        scope["run_command"](["diagnostic_failure"])
+    assert raised.value.returncode == 1
+    assert raised.value.cmd[-1] == "diagnostic_failure"
+    assert "RuntimeError: invented underlying collection error" in raised.value.output
+    assert (scope["STUDY_DIR"] / "dispatches.txt").read_text() == "x"
+    logs = list((tmp_path / "working" / "conseqax-diagnostics").glob("*.log"))
+    assert len(logs) == 1
+    retained = logs[0].read_text(encoding="utf-8")
+    assert "fixture stdout" in retained and "fixture stderr" in retained
+    assert "Traceback" in retained and "invented underlying collection error" in retained
+    printed = capsys.readouterr().out
+    assert str(logs[0]) in printed
+    assert "Full error log:" in printed
+    assert "No collection or model request was automatically retried" in printed
+
+
+def test_real_child_sees_frozen_native_import_path_before_external_paths(tmp_path, monkeypatch, capsys):
+    scope = live_command_scope(tmp_path, monkeypatch)
+    native = scope["STUDY_DIR"] / "native" / "limbo"
+    native.mkdir(parents=True)
+    (native / "__init__.py").write_text("IDENTITY='invented frozen native fixture'\n", encoding="utf-8")
+    outside = tmp_path / "outside"
+    (outside / "limbo").mkdir(parents=True)
+    (outside / "limbo" / "__init__.py").write_text("IDENTITY='wrong outside fixture'\n", encoding="utf-8")
+    (outside / "existing_path_fixture.py").write_text("VALUE='preserved existing path'\n", encoding="utf-8")
+    monkeypatch.setenv("PYTHONPATH", str(outside))
+    (scope["STUDY_DIR"] / "diagnostic_success.py").write_text(
+        "import os,limbo,existing_path_fixture\n"
+        "print(limbo.IDENTITY,flush=True)\n"
+        "print(limbo.__file__,flush=True)\n"
+        "print(existing_path_fixture.VALUE,flush=True)\n"
+        "assert os.environ['PYTHONUNBUFFERED']=='1'\n", encoding="utf-8")
+    assert scope["run_command"](["diagnostic_success"]) is None
+    printed = capsys.readouterr().out
+    assert "invented frozen native fixture" in printed
+    assert str(native) in printed
+    assert "preserved existing path" in printed
+    assert "wrong outside fixture" not in printed
+    logs = list((tmp_path / "working" / "conseqax-diagnostics").glob("*.log"))
+    assert len(logs) == 1
+    assert "invented frozen native fixture" in logs[0].read_text(encoding="utf-8")
+
+
 def test_expired_budget_refuses_setup_without_any_install_or_download(tmp_path, monkeypatch):
     scope, notebook_cells, _ = bootstrap(tmp_path, monkeypatch)
     scope["_SESSION_STARTED_AT"] = time.monotonic() - 7 * 3600 - 1

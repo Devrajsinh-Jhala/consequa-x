@@ -198,6 +198,7 @@ def build_notebook(bundle_sha256: str | None = None,
 
 
 BOOTSTRAP = r'''
+from collections import deque
 import hashlib
 import json
 import os
@@ -432,7 +433,41 @@ def run_command(arguments):
     if DRY_RUN:
         print("DRY RUN ·", " ".join(command))
         return
-    subprocess.run(command, cwd=STUDY_DIR, check=True)
+    environment = dict(os.environ)
+    source_paths = [str(STUDY_DIR), str(Path(STUDY_DIR) / "native")]
+    if environment.get("PYTHONPATH"):
+        source_paths.append(environment["PYTHONPATH"])
+    environment.update(PYTHONPATH=os.pathsep.join(source_paths), PYTHONUNBUFFERED="1", PYTHONUTF8="1")
+    diagnostic_dir = Path(OUTPUT_DIR).parent / "conseqax-diagnostics"
+    diagnostic_dir.mkdir(parents=True, exist_ok=True)
+    label = re.sub(r"[^a-zA-Z0-9_.-]", "_", str(arguments[0]))
+    log_path = diagnostic_dir / f"{len(COMMAND_PLAN):02d}-{label}-{time.time_ns()}.log"
+    tail = deque(maxlen=40)
+    print("Command output is also saved to:", log_path, flush=True)
+    with log_path.open("x", encoding="utf-8", newline="\n") as log:
+        with subprocess.Popen(command, cwd=STUDY_DIR, env=environment,
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                text=True, encoding="utf-8", errors="replace", bufsize=1) as process:
+            try:
+                for line in process.stdout:
+                    print(line, end="", flush=True)
+                    log.write(line)
+                    log.flush()
+                    tail.append(line)
+                returncode = process.wait()
+            except BaseException:
+                # Match subprocess.run's interruption behavior; do not leave the
+                # collector running after its notebook command was interrupted.
+                if process.poll() is None:
+                    process.kill()
+                process.wait()
+                raise
+    if returncode:
+        print(f"Command stopped with exit code {returncode}. Full error log: {log_path}", flush=True)
+        print("Last command output (the underlying error is below):", flush=True)
+        print("".join(tail), end="", flush=True)
+        print("Preserve the complete saved output. No collection or model request was automatically retried.", flush=True)
+        raise subprocess.CalledProcessError(returncode, command, output="".join(tail))
 
 require_pins()
 BUNDLE_MODE, BUNDLE = discover_bundle()

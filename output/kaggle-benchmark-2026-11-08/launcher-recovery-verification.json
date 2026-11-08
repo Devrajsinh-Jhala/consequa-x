@@ -1,0 +1,15 @@
+{
+  "confirmed_error": "ModuleNotFoundError: No module named 'limbo'",
+  "repair": "notebook child environment includes frozen native folder",
+  "bundle_unchanged": true,
+  "bundle_sha256": "9c07f2f9f4acc3b1fbcbf3c2abf13032c176410c85b69aec7b4f2959047d3c27",
+  "study_source_commit": "793f797c4940668918ea8a18c16d6fc7a2a6fa34",
+  "notebook": {
+    "sha256": "5003ca47072e0aa1467a12581f0b7b386494b492ac0a68b9ce1d41979c1fe457",
+    "bytes": 34775
+  },
+  "notebook_tests_passed": 37,
+  "actual_released_native_import_regression_passed": true,
+  "GPU_execution_performed_locally": false,
+  "measured_generations_in_repair_checks": 0
+}

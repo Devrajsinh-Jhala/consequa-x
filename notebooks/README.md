@@ -5,6 +5,27 @@ Use [the notebook](ConseqaX_Full_Benchmark_Kaggle.ipynb) with the matching
 The bundle contains the fixed 3,456-slot design, code, model identities and
 research wheel. Setup downloads the pinned model weights and Linux GPU runtime.
 
+The notebook launcher now explicitly adds the frozen study and its `native`
+folder to each child process's import path. This fixes the preflight
+`ModuleNotFoundError: No module named 'limbo'` without changing the study bundle
+or checkpoint lineage. Command output is streamed and also saved beside the
+active ledger in `conseqax-diagnostics`.
+
+For an already-open session with that exact import error, add this code in a
+new cell, then rerun **only the collection cell** within the original budget:
+
+```python
+import os
+from pathlib import Path
+os.environ["PYTHONPATH"] = os.pathsep.join(
+    (str(STUDY_DIR), str(Path(STUDY_DIR) / "native"))
+)
+```
+
+Keep the existing bundle, downloads and complete output. The failure occurred
+in preflight before any measured slot. Rerunning extraction or setup is not
+needed for this import-path repair.
+
 1. Import the notebook into Kaggle and attach the bundle as an Input dataset.
    Automatically unpacked uploads are supported. Enable **GPU** and **Internet**.
 2. Use **Save Version → Save & Run All once**. The seven-hour deadline includes

@@ -1,0 +1,272 @@
+{
+  "schema": "conseqax-local-format-engineering-evidence-v1",
+  "native_benchmark_episodes": 0,
+  "GPU_qualification_completed": false,
+  "future_qualification_revision": "tool-roundtrip-v3",
+  "inference_during_report_replay": 0,
+  "all_retained_v2_first_calls_exact": true,
+  "all_retained_v2_followups_usable_under_v3_checker": true,
+  "original_v2_failed_verdicts_preserved": true,
+  "readback_exactness_is_not_general_task_accuracy": true,
+  "development_attempts": [
+    {
+      "directory": "output\\granite-format-cpu-qualification-2026-11-08-v1",
+      "result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 2,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": true
+      },
+      "manifest": {
+        "sha256": "fe884e1605e258746a4ef371eb08288646ed58f463fd49e75ac97151de4604d1",
+        "bytes": 3944
+      }
+    },
+    {
+      "directory": "output\\qwen-tool-roundtrip-cpu-qualification-2026-11-08-v1",
+      "result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 0,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": false
+      },
+      "manifest": {
+        "sha256": "a70602139a2f0a85bec562b265f26db26fb7d20f89e2f9e6e48e40108c16fbb6",
+        "bytes": 1046
+      }
+    },
+    {
+      "directory": "output\\qwen-tool-roundtrip-cpu-qualification-2026-11-08-v2",
+      "result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 2,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": true
+      },
+      "manifest": {
+        "sha256": "1e59d096b5a3ff38d0ec0f7c6104bc1d36422b35fca6b1f84c09c64bbf58dad1",
+        "bytes": 3944
+      }
+    },
+    {
+      "directory": "output\\llama-tool-roundtrip-cpu-qualification-2026-11-08-v1",
+      "result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 2,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": false
+      },
+      "manifest": {
+        "sha256": "09b6822e5059affb207faa08255feaa6a24ccd2312fbba2c9578058eb421600e",
+        "bytes": 4066
+      }
+    }
+  ],
+  "retained_v2_prompt_records": [
+    {
+      "family": "qwen",
+      "source_directory": "output\\qwen-native-roundtrip-cpu-qualification-2026-11-08-v2",
+      "original_v2_result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 2,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": true
+      },
+      "first_parsed_turn": {
+        "finish_reason": "tool_calls",
+        "latency_s": 11.453000000001339,
+        "replay_items": [],
+        "text": "",
+        "tool_calls": [
+          {
+            "arguments": "{\"name\":\"test-item\"}",
+            "id": "7zeYVDCz2NM2yavVJ2LSZQMXib8JIoB0",
+            "name": "lookup_echo"
+          }
+        ],
+        "usage": {
+          "cached_tokens": 0,
+          "input_tokens": 184,
+          "output_tokens": 21,
+          "reasoning_tokens": 0
+        }
+      },
+      "followup_parsed_turn": {
+        "finish_reason": "stop",
+        "latency_s": 1.985000000000582,
+        "replay_items": [],
+        "text": "test-item",
+        "tool_calls": [],
+        "usage": {
+          "cached_tokens": 204,
+          "input_tokens": 227,
+          "output_tokens": 3,
+          "reasoning_tokens": 0
+        }
+      },
+      "v3_checker_replay_on_retained_response": {
+        "usable_native_response": true,
+        "nonempty_text": true,
+        "structurally_usable_tool_calls": 0,
+        "exact_name_readback": true,
+        "no_extra_tool_calls": true,
+        "scope": "Transport usability only; semantic accuracy and instruction adherence are separate diagnostics"
+      },
+      "sealed_files_verified": 29,
+      "plan": {
+        "sha256": "4e76790794c2cea0b7969c0c614e10abc25f68e9a1c4fd8abf7e616c7befde2e",
+        "bytes": 1697
+      },
+      "manifest": {
+        "sha256": "478bac273d3008bc00b6bb455365957d1a1ec337e08cd0f11fd938cb2b166bae",
+        "bytes": 3944
+      }
+    },
+    {
+      "family": "llama",
+      "source_directory": "output\\llama-native-roundtrip-cpu-qualification-2026-11-08-v2",
+      "original_v2_result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 2,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": true
+      },
+      "first_parsed_turn": {
+        "finish_reason": "tool_calls",
+        "latency_s": 6.9210000000002765,
+        "replay_items": [],
+        "text": "",
+        "tool_calls": [
+          {
+            "arguments": "{\"name\":\"test-item\"}",
+            "id": "call_9islugtb",
+            "name": "lookup_echo"
+          }
+        ],
+        "usage": {
+          "cached_tokens": 0,
+          "input_tokens": 186,
+          "output_tokens": 14,
+          "reasoning_tokens": 0
+        }
+      },
+      "followup_parsed_turn": {
+        "finish_reason": "stop",
+        "latency_s": 1.75,
+        "replay_items": [],
+        "text": "test-item",
+        "tool_calls": [],
+        "usage": {
+          "cached_tokens": 82,
+          "input_tokens": 131,
+          "output_tokens": 3,
+          "reasoning_tokens": 0
+        }
+      },
+      "v3_checker_replay_on_retained_response": {
+        "usable_native_response": true,
+        "nonempty_text": true,
+        "structurally_usable_tool_calls": 0,
+        "exact_name_readback": true,
+        "no_extra_tool_calls": true,
+        "scope": "Transport usability only; semantic accuracy and instruction adherence are separate diagnostics"
+      },
+      "sealed_files_verified": 29,
+      "plan": {
+        "sha256": "f047cc35321e321dd840f0145f09e6462d7c95b0f74de543d2a7f5883f7b997c",
+        "bytes": 1699
+      },
+      "manifest": {
+        "sha256": "fdf92bd3b380d6c19841321f3d3d23ca6daf704e211b33c64a33132ca985657b",
+        "bytes": 3944
+      }
+    },
+    {
+      "family": "granite",
+      "source_directory": "output\\granite-native-roundtrip-cpu-qualification-2026-11-08-v2",
+      "original_v2_result": {
+        "CPU_engineering_check_only": true,
+        "GPU_qualification_completed": false,
+        "automatic_retries": 0,
+        "maximum_model_calls": 2,
+        "model_invocations": 2,
+        "native_tasks": 0,
+        "normal_service_modified": false,
+        "passed": false
+      },
+      "first_parsed_turn": {
+        "finish_reason": "tool_calls",
+        "latency_s": 7.344000000000051,
+        "replay_items": [],
+        "text": "",
+        "tool_calls": [
+          {
+            "arguments": "{\"name\":\"test-item\"}",
+            "id": "call_6phmxo96",
+            "name": "lookup_echo"
+          }
+        ],
+        "usage": {
+          "cached_tokens": 0,
+          "input_tokens": 176,
+          "output_tokens": 22,
+          "reasoning_tokens": 0
+        }
+      },
+      "followup_parsed_turn": {
+        "finish_reason": "stop",
+        "latency_s": 3.2969999999995707,
+        "replay_items": [],
+        "text": "The result name value for \"test-item\" is \"test-item\".",
+        "tool_calls": [],
+        "usage": {
+          "cached_tokens": 177,
+          "input_tokens": 218,
+          "output_tokens": 17,
+          "reasoning_tokens": 0
+        }
+      },
+      "v3_checker_replay_on_retained_response": {
+        "usable_native_response": true,
+        "nonempty_text": true,
+        "structurally_usable_tool_calls": 0,
+        "exact_name_readback": false,
+        "no_extra_tool_calls": true,
+        "scope": "Transport usability only; semantic accuracy and instruction adherence are separate diagnostics"
+      },
+      "sealed_files_verified": 30,
+      "plan": {
+        "sha256": "c558cd2eede1c833e46dd9e9b9332e7b8f7732d2456ae7e51319c1495ed6624b",
+        "bytes": 1703
+      },
+      "manifest": {
+        "sha256": "3d725a437642e78443b2c784fada9f3c46ad2137e8c12bc439955a41ad7a1199",
+        "bytes": 4066
+      }
+    }
+  ]
+}

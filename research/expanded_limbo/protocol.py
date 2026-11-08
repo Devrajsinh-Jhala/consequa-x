@@ -230,13 +230,39 @@ def validate_models(models):
     keys = {"id", "family", "checkpoint", "quantization", "weights", "tokenizer",
             "chat_template", "license", "context_tokens", "transport_preflight"}
     for model in models:
-        require(type(model) is dict and set(model) == keys, "Model binding inventory differs")
+        require(type(model) is dict and set(model) in (keys, keys | {"provider_template_condition"}),
+                "Model binding inventory differs")
         require(all(isinstance(model[k], str) and model[k]
                     for k in ("id", "family", "checkpoint", "quantization")), "Missing model identity")
         require(type(model["context_tokens"]) is int and model["context_tokens"] >= 8192,
                 "Model needs a validated context of at least 8192 tokens")
         for key in ("weights", "tokenizer", "chat_template", "license", "transport_preflight"):
             _binding(model[key], model["id"] + " " + key)
+        if "provider_template_condition" in model:
+            condition = model["provider_template_condition"]
+            require(type(condition) is dict and set(condition) == {
+                "schema", "id", "original_template", "patched_template", "native_gguf_template",
+                "applies_to_all_arms", "model_weights_changed", "native_message_history_rewritten",
+                "independent_offline_parity_claim"}, "Provider template condition inventory differs")
+            require(model["family"] == "granite"
+                    and condition["schema"] == "conseqax-granite-provider-template-condition-v1"
+                    and condition["id"] == "granite-custom-system-format-v1",
+                    "Unsupported provider template condition")
+            for key in ("original_template", "patched_template", "native_gguf_template"):
+                _binding(condition[key], model["id"] + " " + key)
+            require(condition["original_template"] == {
+                "sha256": "3da071a01bbe5a1aa1e9766149ff67ed2b232f63d55e6ed50e3777b74536a67f", "bytes": 6560}
+                and condition["patched_template"] == {
+                "sha256": "18d85e85522dce58d0d31f5a5d953e5897f25fb8e1fba18426a3bce73c7747ab", "bytes": 7042}
+                and condition["native_gguf_template"] == {
+                "sha256": "8a58e18acd9ca00a43a285fe6ba3760efbda06b5ab7fb57875bfacd72957ed5e", "bytes": 4571}
+                and model["chat_template"] == condition["patched_template"],
+                "Granite template repair bytes differ from the declared condition")
+            require(condition["applies_to_all_arms"] is True
+                    and condition["model_weights_changed"] is False
+                    and condition["native_message_history_rewritten"] is False
+                    and condition["independent_offline_parity_claim"] is False,
+                    "Provider template condition changes the declared comparison scope")
     require(len({m["context_tokens"] for m in models}) == 1,
             "All model candidates require the same prospectively fixed context budget")
 

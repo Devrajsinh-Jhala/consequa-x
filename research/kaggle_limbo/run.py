@@ -19,10 +19,36 @@ import uuid
 from .bundle import binding, verify
 from .checkpoint import CheckpointStore, SessionBudget, atomic_bytes, canonical, load
 
+QUALIFICATION_REVISION = "tool-roundtrip-v3"
+QUALIFICATION_SYSTEM = (
+    "Call lookup_echo exactly once with the requested name. After receiving its tool result, "
+    "reply with the result name value only and do not call any tool again."
+)
+
 
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def followup_qualification_checks(turn):
+    """Separate a usable native response channel from model behavior accuracy.
+
+    A readable text response or structurally usable tool call establishes only
+    a completed native transport turn. It does not establish that the model
+    followed the readback instruction, stopped calling tools, or chose correctly.
+    """
+    usable_calls = 0
+    for call in turn.tool_calls:
+        arguments, error = call.parsed_arguments()
+        if isinstance(call.name, str) and call.name.strip() and isinstance(arguments, dict) and error is None:
+            usable_calls += 1
+    nonempty_text = isinstance(turn.text, str) and bool(turn.text.strip())
+    exact_readback = not turn.tool_calls and isinstance(turn.text, str) and turn.text.strip() == "test-item"
+    return {"usable_native_response": nonempty_text or usable_calls > 0,
+            "nonempty_text": nonempty_text, "structurally_usable_tool_calls": usable_calls,
+            "exact_name_readback": exact_readback, "no_extra_tool_calls": not turn.tool_calls,
+            "scope": "Transport usability only; semantic accuracy and instruction adherence are separate diagnostics"}
 
 
 def protocol_from(study):
@@ -198,7 +224,7 @@ def execute_episode(study, output, slot, lineage, runtime, devices, timeout, gpu
 
 
 def preflight(study, root, protocol, setup):
-    """Task-independent GPU render and tiny live tool-call tests, excluded from outcomes."""
+    """Task-independent two-turn qualification, excluded from measured outcomes."""
     from .runtime import load_model, save
     from .transport import KaggleGPUClient
     from research.limbo_agent.harness import plain
@@ -210,19 +236,65 @@ def preflight(study, root, protocol, setup):
     session_root.mkdir(parents=True, exist_ok=False)
     for model in protocol["models"]:
         current = session_root / model["family"]
-        lease = load_model(setup["server"], model, current / "lease")
-        with KaggleGPUClient(lease, current / "client", condition=setup["condition"],
-                gpu_devices=setup["gpu_devices"], gpu_load_proof=load(current / "lease/gpu-load-proof.json"),
-                max_requests=1, max_output_tokens=128,
-                request_timeout_s=300, temperature=.2, seed=2501) as client:
-            turn = client.complete("Call lookup_echo exactly once with the requested name. Do not answer in prose.",
-                [{"role": "user", "content": "Call lookup_echo with name test-item"}], [tool])
-            save(current / "parsed-turn.json", plain(turn))
-            require(len(turn.tool_calls) == 1 and turn.tool_calls[0].name == "lookup_echo"
-                    and turn.tool_calls[0].parsed_arguments() == ({"name": "test-item"}, None),
-                    "Model/tool transport preflight failed; no measured episodes were started")
-        save(current / "preflight.json", {"passed": True, "native_tasks": 0,
-            "actual_model_dispatches": 1, "condition": setup["condition"], "model_id": model["id"]})
+        current.mkdir(parents=True, exist_ok=False)
+        client, attempted = None, 0
+        verdict = {"passed": False, "native_tasks": 0, "automatic_retries": 0,
+            "condition": setup["condition"], "model_id": model["id"], "model_family": model["family"],
+            "qualification_revision": QUALIFICATION_REVISION,
+            "stage": "model_load", "observed": {}, "evidence_directory": str(current),
+            "expectation": {"first_tool_call": {"name": "lookup_echo", "arguments": {"name": "test-item"}},
+                            "followup": {"required": "Nonempty native text or a structurally usable tool call",
+                                         "diagnostic_exact_name": "test-item", "diagnostic_tool_call_count": 0},
+                            "system": QUALIFICATION_SYSTEM, "followup_last_role": "tool",
+                            "scope": "Invented transport/capability qualification only; no semantic accuracy claim; measured task prompts are unchanged"}}
+        try:
+            lease = load_model(setup["server"], model, current / "lease")
+            verdict["stage"] = "client_setup"
+            with KaggleGPUClient(lease, current / "client", condition=setup["condition"],
+                    gpu_devices=setup["gpu_devices"], gpu_load_proof=load(current / "lease/gpu-load-proof.json"),
+                    max_requests=2, max_output_tokens=128,
+                    request_timeout_s=300, temperature=.2, seed=2501) as client:
+                system = QUALIFICATION_SYSTEM
+                conversation = [{"role": "user", "content": "Call lookup_echo with name test-item"}]
+                verdict["stage"] = "first_tool_call"
+                attempted += 1
+                turn = client.complete(system, conversation, [tool])
+                save(current / "parsed-turn.json", plain(turn))
+                verdict["observed"]["first_tool_call"] = {
+                    "finish_reason": turn.finish_reason, "tool_call_count": len(turn.tool_calls),
+                    "text_length": len(turn.text), "tool_calls": plain(turn.tool_calls),
+                    "parsed_turn": "parsed-turn.json"}
+                require(len(turn.tool_calls) == 1 and turn.tool_calls[0].name == "lookup_echo"
+                        and turn.tool_calls[0].parsed_arguments() == ({"name": "test-item"}, None),
+                        "Expected exactly lookup_echo with name test-item")
+                call = turn.tool_calls[0]
+                conversation.extend([
+                    {"role": "assistant", "content": turn.text, "tool_calls": [asdict(call)]},
+                    {"role": "tool", "tool_call_id": call.id, "content": '{"name":"test-item","ok":true}'},
+                ])
+                verdict["stage"] = "tool_result_followup"
+                attempted += 1
+                followup = client.complete(system, conversation, [tool])
+                save(current / "followup-parsed-turn.json", plain(followup))
+                verdict["observed"]["tool_result_followup"] = {
+                    "finish_reason": followup.finish_reason, "tool_call_count": len(followup.tool_calls),
+                    "text_length": len(followup.text), "text": followup.text,
+                    "parsed_turn": "followup-parsed-turn.json"}
+                checks = followup_qualification_checks(followup)
+                verdict["observed"]["tool_result_followup"]["checks"] = checks
+                require(checks["usable_native_response"],
+                        "Expected nonempty native text or a structurally usable tool call after the tool result")
+            verdict.update(passed=True, stage="complete")
+        except BaseException as exc:
+            verdict["error"] = {"type": type(exc).__name__, "message": str(exc)}
+            if isinstance(exc, (KeyboardInterrupt, SystemExit)):
+                raise
+            raise ValueError(f"{model['family']} model/tool preflight failed at {verdict['stage']}; "
+                f"see {current / 'preflight.json'}. No measured episodes were started.") from exc
+        finally:
+            verdict["model_invocations_attempted"] = attempted
+            verdict["actual_model_dispatches"] = getattr(client, "_dispatches", 0)
+            save(current / "preflight.json", verdict)
         records[model["id"]] = binding(current / "preflight.json")
     return records
 

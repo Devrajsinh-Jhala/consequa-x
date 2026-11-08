@@ -9,13 +9,15 @@ No separate study Input or recovery snippets are needed.
 Import it into a **fresh Kaggle notebook/session**, enable **GPU + Internet**,
 and choose **Save Version → Save & Run All once**. For continuation, attach the
 **entire latest saved output** as an Input before starting the next fresh
-session. The embedded source and checkpoint lineage are unchanged from the
-2026-11-08 bundle. Actual GPU execution remains subject to the live preflight.
+session. The current version declares the Granite native-format correction as
+a new source/template condition. Preserve the earlier failed qualification
+output separately; its zero-start checkpoint is not an Input for the first
+corrected run. Actual GPU execution remains subject to the live preflight.
 
 The separate-bundle notebook below remains available for advanced use.
 
 Use [the notebook](ConseqaX_Full_Benchmark_Kaggle.ipynb) with the matching
-[small study bundle](../output/kaggle-benchmark-2026-11-08/conseqax-kaggle-benchmark.zip).
+[small study bundle](../output/kaggle-format-repair-2026-11-08/conseqax-kaggle-benchmark.zip).
 The bundle contains the fixed 3,456-slot design, code, model identities and
 research wheel. Setup downloads the pinned model weights and Linux GPU runtime.
 
@@ -76,8 +78,9 @@ conditions × four policies × two seeds. It is not 3,456 independent tasks.
 The notebook does not promise completion in one session.
 
 The source, packaging, native replay, checkpoint continuation and notebook
-bootstrap passed **262 focused offline tests**. Actual Kaggle GPU compatibility
-and throughput are checked by the first run and have not been measured here.
+bootstrap passed **323 focused offline tests**. The revised condition's GPU
+qualification and measured benchmark throughput are still pending. Retained
+local CPU tool-roundtrip checks are engineering evidence, not native task results.
 GitHub Actions remains disabled; no human evaluation or paid inference is used.
 
 See [the execution and audit details](../docs/KAGGLE_BENCHMARK.md).

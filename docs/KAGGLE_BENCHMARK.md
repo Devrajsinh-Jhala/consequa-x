@@ -14,6 +14,34 @@ retain every scheduled disposition, including interrupted and unavailable ones.
 
 ## Run the delivered notebook
 
+Prefer the complete single-cell notebook with the study ZIP embedded. A separate
+Input study ZIP is optional for the advanced notebook only. The version declared
+as `granite-custom-system-format-v1` restores Granite's native tool-call format
+instructions when a custom system message is supplied, using a new pinned OCI
+template/config/manifest. It applies consistently to all four arms; GGUF weights
+and native task messages are unchanged. Original provider metadata and the
+failed qualification are retained separately. This source/template revision
+must not import the prior failed qualification as its active checkpoint. The
+prior saved run contains zero started native episodes.
+
+Each candidate now undergoes `tool-roundtrip-v3`: the requested structured tool
+call, followed by a usable native response to the observed tool result. The
+common qualification system specifies both stages from the outset, and the
+followup ends at the tool result, matching the native conversation structure.
+Exact bare-name readback and extra calls are behavioral diagnostics; they are
+not transport readiness or general task accuracy. Empty/invalid-only followups
+and failure to make the first required tool call still stop before measured
+reservations. Failures save the model, stage and parsed evidence. Development
+checks that failed an earlier exact-wording gate remain unchanged. Local CPU
+checks and replay of retained responses cannot grant the new GPU condition
+readiness.
+
+Provider templates differ. In particular, the pinned Llama template includes
+tool definitions in its last-user rendering branch and handles tool-result
+messages through its native `ipython` role. This is a serving condition to
+report, not evidence of cross-model prompt/tokenizer parity. No additional user
+reminder is inserted after a tool result to influence tool selection.
+
 1. Import `ConseqaX_Full_Benchmark_Kaggle.ipynb` into Kaggle. Enable an NVIDIA GPU
    and Internet access. Attach the matching `conseqax-kaggle-benchmark.zip` as an
    Input. Use the released notebook with its archive hash and source commit

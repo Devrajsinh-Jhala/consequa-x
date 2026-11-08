@@ -1,0 +1,127 @@
+{
+  "all_retained_qualification_turns_passed": false,
+  "archive": {
+    "bytes": 627298,
+    "sha256": "fe021dc3109fe0f2c2881f19a37a51fc08654c5470dee857cb461d10db924f95"
+  },
+  "byte_consistency_passed": true,
+  "checkpoint_files_verified": 54,
+  "checkpoint_state": {
+    "last_event_sha256": "af7c189b7429828c6572bf0a6c0c7aafe69581c07685e0b57bb4e885eafd927e",
+    "pending": [],
+    "planned": 3456,
+    "started": 0,
+    "statuses": {
+      "completed": 0,
+      "failed": 0,
+      "interrupted": 0,
+      "native_error_return": 0,
+      "refused": 0
+    },
+    "terminal": 0,
+    "unstarted": 3456
+  },
+  "condition": {
+    "archive_sha256": "1e8ad2d2a394efdd235bee74deec237badd95142ffba77588140ab2a9ecec227",
+    "compute_capability": "7.5",
+    "driver_version": "580.178.04",
+    "gpu_name": "Tesla T4",
+    "library_versions": {
+      "consequa-x": "2.1.1",
+      "psutil": "7.0.0",
+      "zstandard": "0.23.0"
+    },
+    "python_version": "3.13.16",
+    "runtime_version": "0.40.10"
+  },
+  "event_chain_and_schedule_verified": true,
+  "models": [
+    {
+      "context_fits": true,
+      "context_tokens": 8192,
+      "exact_required_tool_call": false,
+      "failure_class": "empty_api_response_without_tool_call",
+      "family": "granite",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "model_id": "conseqax-kaggle-granite2b:full-v1",
+      "offloaded_layers": 41,
+      "parsed_tool_calls": 0,
+      "pass_receipt_present": false,
+      "prompt_tokens": 94,
+      "raw_api_content_characters": 0,
+      "raw_api_content_empty": true,
+      "raw_api_tool_calls": 0,
+      "reported_output_tokens": 22,
+      "required_context_tokens": 286,
+      "response_binding": {
+        "bytes": 353,
+        "sha256": "9a0a04e8eddfcc9d39b26c5a9d4bd4e597e6830a972db179098fdc1c3e30c811"
+      },
+      "session_path": "sessions/609fbd3e8fbe4969ba427c0848ee72c5/granite",
+      "total_layers": 41
+    },
+    {
+      "context_fits": true,
+      "context_tokens": 8192,
+      "exact_required_tool_call": true,
+      "failure_class": null,
+      "family": "llama",
+      "finish_reason": "tool_calls",
+      "http_status": 200,
+      "model_id": "conseqax-kaggle-llama3b:full-v1",
+      "offloaded_layers": 29,
+      "parsed_tool_calls": 1,
+      "pass_receipt_present": true,
+      "prompt_tokens": 171,
+      "raw_api_content_characters": 0,
+      "raw_api_content_empty": true,
+      "raw_api_tool_calls": 1,
+      "reported_output_tokens": 18,
+      "required_context_tokens": 363,
+      "response_binding": {
+        "bytes": 497,
+        "sha256": "1c82dcf778b640b78fbc453fb083e8920858194c61708c3d9e907f5331b489b1"
+      },
+      "session_path": "sessions/609fbd3e8fbe4969ba427c0848ee72c5/llama",
+      "total_layers": 29
+    },
+    {
+      "context_fits": true,
+      "context_tokens": 8192,
+      "exact_required_tool_call": true,
+      "failure_class": null,
+      "family": "qwen",
+      "finish_reason": "tool_calls",
+      "http_status": 200,
+      "model_id": "conseqax-kaggle-qwen4b:full-v1",
+      "offloaded_layers": 37,
+      "parsed_tool_calls": 1,
+      "pass_receipt_present": true,
+      "prompt_tokens": 169,
+      "raw_api_content_characters": 0,
+      "raw_api_content_empty": true,
+      "raw_api_tool_calls": 1,
+      "reported_output_tokens": 21,
+      "required_context_tokens": 361,
+      "response_binding": {
+        "bytes": 515,
+        "sha256": "d9f3e1842221adcfdf3a3f7fe37d26beeccb801d056101240c0612c26114e514"
+      },
+      "session_path": "sessions/609fbd3e8fbe4969ba427c0848ee72c5/qwen",
+      "total_layers": 37
+    }
+  ],
+  "raw_output_matches_exported_snapshot": true,
+  "schema": "conseqax-kaggle-qualification-audit-v1",
+  "scope": {
+    "archive_code_executed": false,
+    "fresh_inference_calls": 0,
+    "independent_hardware_authentication": false,
+    "native_episode_audit_performed": false,
+    "raw_API_empty_does_not_establish_the_model_generated_no_tokens": true,
+    "scientific_task_outcomes_claimed": false,
+    "underlying_generated_text_before_provider_parser_available": false
+  },
+  "study_source_commit": "793f797c4940668918ea8a18c16d6fc7a2a6fa34"
+}

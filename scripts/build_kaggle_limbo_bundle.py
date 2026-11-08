@@ -6,6 +6,7 @@ The bundle excludes model weights, credentials, CPU results and runtime logs.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -93,7 +94,66 @@ def make_exposure(original_path):
         "by_template": {r["template"]: sorted({0, 1, r["index"]}) for r in rows}}
 
 
-def package_model(root, payload, slug, family, registry_name, requirement_binding):
+def _write_blob(directory, raw):
+    digest = hashlib.sha256(raw).hexdigest()
+    path = directory / ("sha256-" + digest)
+    with path.open("xb") as stream:
+        stream.write(raw)
+    return path, {"sha256": digest, "bytes": len(raw)}
+
+
+def _json_bytes(value):
+    return (json.dumps(value, sort_keys=True, separators=(",", ":"),
+                       ensure_ascii=False, allow_nan=False) + "\n").encode("utf-8")
+
+
+def _package_granite_variant(destination, acquired, image):
+    """Build new hash-addressed OCI metadata; do not patch an installed alias."""
+    from research.kaggle_limbo.granite_format import repair_template
+    templates = [layer for layer in image["layers"]
+                 if layer["mediaType"] == "application/vnd.ollama.image.template"]
+    require(len(templates) == 1, "Granite format repair requires one original template layer")
+    original_layer = templates[0]
+    upstream = destination / "upstream"
+    original_template = upstream / ("sha256-" + original_layer["digest"][7:])
+    repaired = repair_template(original_template.read_bytes())
+    require(repaired["original"] == acquired["chat_template"], "Granite acquisition template differs")
+    native_template = acquired.get("gguf_chat_template")
+    require(type(native_template) is dict and set(native_template) == {"sha256", "bytes"},
+            "Granite derivative must retain the native GGUF template binding")
+    _, patched = _write_blob(destination, repaired["template"].encode("utf-8"))
+    require(patched == repaired["patched"], "Granite repaired template binding differs")
+    original_config = upstream / ("sha256-" + image["config"]["digest"][7:])
+    config = load(original_config)
+    rootfs = config.get("rootfs", {})
+    expected_diff_ids = [layer["digest"] for layer in image["layers"]]
+    require(rootfs.get("type") == "layers" and rootfs.get("diff_ids") == expected_diff_ids,
+            "Granite original OCI config layer inventory differs")
+    rootfs["diff_ids"] = ["sha256:" + patched["sha256"] if value == original_layer["digest"]
+                          else value for value in expected_diff_ids]
+    _, config_binding = _write_blob(destination, _json_bytes(config))
+    variant = json.loads(json.dumps(image))
+    variant["config"].update(digest="sha256:" + config_binding["sha256"], size=config_binding["bytes"])
+    for layer in variant["layers"]:
+        if layer["mediaType"] == "application/vnd.ollama.image.template":
+            layer.update(digest="sha256:" + patched["sha256"], size=patched["bytes"])
+    with (destination / "registry-manifest.json").open("xb") as stream:
+        stream.write(_json_bytes(variant))
+    condition = {"schema": "conseqax-granite-provider-template-condition-v1",
+        "id": "granite-custom-system-format-v1", "original_template": repaired["original"],
+        "patched_template": patched, "native_gguf_template": native_template,
+        "applies_to_all_arms": True, "model_weights_changed": False,
+        "native_message_history_rewritten": False, "independent_offline_parity_claim": False}
+    write_new(destination / "provider-template-condition.json", {
+        "condition": condition, "original_registry_manifest": file_binding(upstream / "registry-manifest.json"),
+        "active_registry_manifest": file_binding(destination / "registry-manifest.json"),
+        "original_config": file_binding(original_config), "active_config": config_binding,
+        "gpu_qualification_completed": False, "native_tasks_or_generations_during_packaging": 0})
+    return condition
+
+
+def package_model(root, payload, slug, family, registry_name, requirement_binding, *,
+                  granite_custom_system_format=False):
     acquired_path = root / f"output/expanded-model-{slug}-2026-10-25/acquisition.json"
     acquired = load(acquired_path)
     manifest_path = Path(acquired["manifest"]["path"])
@@ -101,7 +161,11 @@ def package_model(root, payload, slug, family, registry_name, requirement_bindin
             "Model OCI manifest changed: " + family)
     image = load(manifest_path)
     destination = payload / "assets/models" / family
-    copy_new(manifest_path, destination / "registry-manifest.json")
+    variant = granite_custom_system_format and family == "granite"
+    if variant:
+        require(slug == "granite2b" and registry_name == "granite3.3"
+                and acquired["tag"] == "granite3.3:2b", "Unsupported Granite format-repair checkpoint")
+    copy_new(manifest_path, destination / ("upstream" if variant else "") / "registry-manifest.json")
     weights = []
     for layer in [image["config"], *image["layers"]]:
         digest = layer["digest"]
@@ -113,19 +177,27 @@ def package_model(root, payload, slug, family, registry_name, requirement_bindin
         require(0 < layer["size"] <= 16 * 1024**2, "Refuse unexpectedly large model metadata layer")
         blob = Path(acquired["weights_path"]).parent / ("sha256-" + digest[7:])
         require(file_binding(blob) == expected, "Model metadata blob changed")
-        copy_new(blob, destination / blob.name)
+        original_only = variant and layer["mediaType"] in {
+            "application/vnd.docker.container.image.v1+json", "application/vnd.ollama.image.template"}
+        copy_new(blob, destination / ("upstream" if original_only else "") / blob.name)
     require(weights == [acquired["weights"]], "OCI and acquired weight identities differ")
-    model_id = f"conseqax-kaggle-{slug}:full-v1"
+    condition = _package_granite_variant(destination, acquired, image) if variant else None
+    model_id = f"conseqax-kaggle-{slug}:" + ("format-repair-v1" if variant else "full-v1")
     record = {"id": model_id, "family": family, "checkpoint": acquired["tag"],
         "quantization": acquired["details"]["quantization_level"], "weights": acquired["weights"],
         "tokenizer": acquired["tokenizer"], "chat_template": acquired["chat_template"],
         "license": acquired["license"], "context_tokens": 8192,
         "transport_preflight": requirement_binding}
+    if condition:
+        record["chat_template"] = condition["patched_template"]
+        record["provider_template_condition"] = condition
     catalog = {"family": family, "registry_name": registry_name, "original_tag": acquired["tag"],
         "registry_manifest": (destination / "registry-manifest.json").relative_to(payload).as_posix(),
         "registry_manifest_binding": file_binding(destination / "registry-manifest.json"),
         "weights": acquired["weights"], "model_weights_included": False,
         "preflight_binding_scope": "Requirement document only; GPU readiness not completed in this proposal"}
+    if condition:
+        catalog["provider_template_condition"] = condition
     return record, catalog
 
 
@@ -141,7 +213,8 @@ def deterministic_zip(payload, archive):
             output.writestr(info, path.read_bytes(), compress_type=zipfile.ZIP_DEFLATED, compresslevel=6)
 
 
-def build(root, native_root, commit, output, *, engineering=False):
+def build(root, native_root, commit, output, *, engineering=False,
+          granite_custom_system_format=False):
     root, native_root, output = [Path(p).resolve() for p in (root, native_root, output)]
     require(not output.exists(), "Refuse an existing release output")
     names = selected_sources(root)
@@ -168,7 +241,8 @@ def build(root, native_root, commit, output, *, engineering=False):
         "scope": "This file is a requirement binding, never evidence that GPU preflight passed"})
     models, catalog = [], {}
     for slug, family, registry_name in MODELS:
-        model, item = package_model(root, payload, slug, family, registry_name, file_binding(requirement))
+        model, item = package_model(root, payload, slug, family, registry_name, file_binding(requirement),
+                                   granite_custom_system_format=granite_custom_system_format)
         models.append(model)
         catalog[model["id"]] = item
     write_new(payload / "assets/model-catalog.json", catalog)
@@ -185,13 +259,20 @@ def build(root, native_root, commit, output, *, engineering=False):
     require(proposal["counts"]["planned_slots"] == 3456, "The full matrix must retain all 3456 slots")
     write_new(payload / "study-design.json", proposal)
     write_new(payload / "assets/exposure-ledger.json", exposure)
-    write_new(payload / "assets/study-scope.json", {"schema": "conseqax-kaggle-proposal-scope-v1",
+    scope = {"schema": "conseqax-kaggle-proposal-scope-v1",
         "source_commit": commit, "engineering_only": engineering, "uncommitted_source_paths": mismatch,
         "measured_generations": 0, "gpu_preflight_passed": False, "measured_protocol_frozen": False,
         "proposal_readiness": None, "counts": proposal["counts"],
         "historical_CPU_results_included_or_pooled": False,
         "model_preflight_fields_bind_requirements_not_completed_proof": True,
-        "before_first_measured_generation": "Validate actual GPU preflight; bind actual GPU condition, static source/runtime/model identities and completed readiness in a separate immutable execution declaration"})
+        "before_first_measured_generation": "Validate actual GPU preflight; bind actual GPU condition, static source/runtime/model identities and completed readiness in a separate immutable execution declaration"}
+    if granite_custom_system_format:
+        scope.update(provider_template_revision="granite-custom-system-format-v1",
+            provider_template_conditions={m["id"]: m["provider_template_condition"]
+                for m in models if "provider_template_condition" in m},
+            previous_failed_gpu_qualification_pooled=False,
+            qualification_scope="Prospective provider-format correction; CPU checks do not grant GPU readiness")
+    write_new(payload / "assets/study-scope.json", scope)
     files = {p.relative_to(payload).as_posix(): file_binding(p)
              for p in sorted(payload.rglob("*")) if p.is_file()}
     write_new(payload / "bundle-manifest.json", {"schema": "conseqax-kaggle-source-bundle-v1",
@@ -217,9 +298,11 @@ def main():
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--engineering", action="store_true",
         help="Allow uncommitted engineering sources; mark bundle nonfinal and unsuitable for measured use")
+    parser.add_argument("--granite-custom-system-format", action="store_true",
+        help="Declare a new immutable Granite template condition retaining native format guidance with custom system messages")
     args = parser.parse_args()
     receipt = build(args.root, args.native_root, args.source_commit, args.output,
-                    engineering=args.engineering)
+                    engineering=args.engineering, granite_custom_system_format=args.granite_custom_system_format)
     print(json.dumps(receipt))
 
 

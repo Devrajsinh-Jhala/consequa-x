@@ -79,6 +79,51 @@ def test_every_model_seed_world_has_all_paired_arms(proposal_inputs):
     assert len({canonical(r["spec"]) for r in protocol["schedule"]}) == 3456
 
 
+def granite_condition():
+    return {"schema": "conseqax-granite-provider-template-condition-v1",
+        "id": "granite-custom-system-format-v1",
+        "original_template": {"sha256": "3da071a01bbe5a1aa1e9766149ff67ed2b232f63d55e6ed50e3777b74536a67f", "bytes": 6560},
+        "patched_template": {"sha256": "18d85e85522dce58d0d31f5a5d953e5897f25fb8e1fba18426a3bce73c7747ab", "bytes": 7042},
+        "native_gguf_template": {"sha256": "8a58e18acd9ca00a43a285fe6ba3760efbda06b5ab7fb57875bfacd72957ed5e", "bytes": 4571},
+        "applies_to_all_arms": True, "model_weights_changed": False,
+        "native_message_history_rewritten": False, "independent_offline_parity_claim": False}
+
+
+def test_declared_granite_template_variant_preserves_complete_paired_design(proposal_inputs):
+    granite = next(m for m in proposal_inputs["models"] if m["family"] == "granite")
+    granite["provider_template_condition"] = granite_condition()
+    granite["chat_template"] = granite_condition()["patched_template"]
+    protocol = build_protocol(**proposal_inputs)
+    verify_protocol_structure(protocol)
+    assert protocol["counts"]["planned_slots"] == 3456
+    rows = [r for r in protocol["schedule"] if r["model_family"] == "granite"]
+    assert len(rows) == 1152 and {r["arm"] for r in rows} == set(ARMS)
+
+
+@pytest.mark.parametrize("change", ["scope", "native_template", "patched_template", "model_template",
+                                    "wrong_family", "unknown_field"])
+def test_granite_template_condition_rejects_undeclared_or_asymmetric_scope(proposal_inputs, change):
+    models = proposal_inputs["models"]
+    granite = next(m for m in models if m["family"] == "granite")
+    condition = granite_condition()
+    granite["provider_template_condition"] = condition
+    granite["chat_template"] = deepcopy(condition["patched_template"])
+    if change == "scope":
+        condition["applies_to_all_arms"] = False
+    elif change == "native_template":
+        condition["native_gguf_template"] = binding()
+    elif change == "patched_template":
+        condition["patched_template"] = binding()
+    elif change == "model_template":
+        granite["chat_template"] = binding()
+    elif change == "wrong_family":
+        models[0]["provider_template_condition"] = granite.pop("provider_template_condition")
+    else:
+        condition["accept_plain_json_as_tool_call"] = True
+    with pytest.raises(ValueError):
+        validate_models(models)
+
+
 def test_static_blocks_cover_every_slot_once_and_one_model(proposal_inputs):
     protocol = build_protocol(**proposal_inputs)
     covered = []

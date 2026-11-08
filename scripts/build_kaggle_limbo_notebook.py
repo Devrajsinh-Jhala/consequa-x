@@ -554,6 +554,8 @@ def build_self_contained_notebook(bundle_path: Path, *, bundle_sha256: str,
         raise ValueError("Embedded bundle SHA256 differs from the release pin")
     with zipfile.ZipFile(io.BytesIO(payload)) as archive:
         manifest_bytes = archive.read("conseqax-kaggle-study/bundle-manifest.json")
+        scope_name = "conseqax-kaggle-study/assets/study-scope.json"
+        study_scope = json.loads(archive.read(scope_name)) if scope_name in archive.namelist() else {}
     if hashlib.sha256(manifest_bytes).hexdigest() != manifest_sha256:
         raise ValueError("Embedded manifest SHA256 differs from the release pin")
     manifest = json.loads(manifest_bytes)
@@ -638,6 +640,19 @@ print("Embedded study verified. No separate study Input is required.", flush=Tru
     ]
     notebook["metadata"]["conseqax"].update(self_contained=True, executable_cells=1,
         embedded_bundle_bytes=len(payload), requires_separate_study_input=False)
+    revision = study_scope.get("provider_template_revision")
+    if revision:
+        notebook["metadata"]["conseqax"]["provider_template_revision"] = revision
+        note = (
+            "\n\n**Granite format correction:** this version retains Granite's native tool-format "
+            "instructions alongside the benchmark system message, consistently across all four arms. "
+            "It is a new frozen template/source condition. Keep the earlier failed qualification "
+            "output separately; it had zero started episodes and is not a continuation input for "
+            "this first corrected run. For later sessions, attach only this version's latest output. "
+            "Before any measured episode, each model must make the required real tool call and return a "
+            "usable response to the tool result. Exact wording and extra calls remain separate behavior diagnostics.\n"
+        )
+        notebook["cells"][0]["source"].extend(note.splitlines(keepends=True))
     return notebook
 
 

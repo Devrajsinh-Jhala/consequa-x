@@ -4,6 +4,15 @@ Status: the full GPU study is not qualified. Do not describe the offline test
 count, successful installation or a parsed model response as a completed GPU
 benchmark. No measured episode starts until the three-model preflight passes.
 
+Follow-up: the supplied `results.zip` has now been independently checked for
+byte/history consistency. It confirms Granite is the failed family and Qwen
+and Llama passed. No measured slot started. The audit and preserved local
+engineering outcomes are in
+`output/kaggle-qualification-audit-2026-11-08/`. A prospective Granite format
+correction has produced correct actual tool calls locally; this does not grant
+the revised GPU condition readiness. The following triage notes preserve the
+earlier evidence and its original uncertainty.
+
 The reported run reached the exact `lookup_echo(name="test-item")` assertion
 in `research/kaggle_limbo/run.py`, after `client.complete` returned and the
 collector saved `sessions/<session>/<family>/parsed-turn.json`. Reaching that

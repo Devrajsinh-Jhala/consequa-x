@@ -1,0 +1,25 @@
+ConseqaX Kaggle benchmark: 2026-11-08 download recovery update
+
+The previous HTTP504 occurred during runtime installation, before any benchmark slot started.
+Use BOTH updated files together; do not edit the notebook integrity pins or the old extracted source.
+
+1. Import ConseqaX_Full_Benchmark_Kaggle.ipynb into a NEW Kaggle notebook/session.
+2. Upload conseqax-kaggle-benchmark.zip as a new/updated Input dataset. Attach only this matching study bundle.
+   Kaggle may automatically unpack it; this is supported.
+3. Enable GPU and Internet. Leave SESSION_HOURS=7.
+4. Choose Save Version -> Save & Run All ONCE.
+
+Setup now retries temporary downloads, uses an official GitHub asset fallback, prints progress,
+and safely resumes partial files. All files must pass the same exact SHA256 and size checks.
+If the new setup still fails in an active interactive session, rerun ONLY its setup cell
+within the original seven-hour budget. Use a fresh session once that budget has elapsed.
+
+There are 3,456 scheduled episodes; expect multiple sessions. Total duration depends on observed GPU speed.
+For every continuation, keep the SAME updated notebook/bundle and attach the ENTIRE latest saved output.
+The latest raw ledger takes precedence over an older checkpoint ZIP. Started slots are never rerun.
+
+If any collection actually ran under an older source bundle, preserve its output separately.
+Do not mix old-source results into this updated-source study; their immutable lineages differ.
+
+252 offline tests passed. Full Kaggle GPU execution remains unvalidated locally.
+GitHub Actions remains disabled. No human evaluation or paid inference is involved.

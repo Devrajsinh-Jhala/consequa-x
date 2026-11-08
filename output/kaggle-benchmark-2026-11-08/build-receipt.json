@@ -1,0 +1,28 @@
+{
+  "GPU_readiness_or_measured_freeze_completed": false,
+  "archive": {
+    "bytes": 594900,
+    "name": "conseqax-kaggle-benchmark.zip",
+    "sha256": "9c07f2f9f4acc3b1fbcbf3c2abf13032c176410c85b69aec7b4f2959047d3c27"
+  },
+  "bound_payload_files": 79,
+  "counts": {
+    "arms": 4,
+    "assigned_worlds": 144,
+    "base_instances": 48,
+    "blocks": 72,
+    "generation_replicates": 2,
+    "models": 3,
+    "planned_slots": 3456,
+    "templates": 12
+  },
+  "engineering_only": false,
+  "measured_generations": 0,
+  "model_weights_included": false,
+  "schema": "conseqax-kaggle-bundle-build-v1",
+  "source_commit": "793f797c4940668918ea8a18c16d6fc7a2a6fa34",
+  "source_manifest": {
+    "bytes": 12792,
+    "sha256": "61b05057a1d592a69e5461b6ee9616ca1effdd163a0deff664843899cc7a39da"
+  }
+}

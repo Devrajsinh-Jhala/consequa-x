@@ -120,4 +120,3 @@ def test_complete_cli_writes_the_embedded_single_cell_notebook(tmp_path):
     notebook = json.loads((output / builder.NOTEBOOK_NAME).read_text(encoding="utf-8"))
     assert notebook == builder.build_self_contained_notebook(bundle, **pins)
     assert cell_source(notebook)
-

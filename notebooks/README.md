@@ -1,7 +1,7 @@
 # Full benchmark on Kaggle GPU
 
 Use [the notebook](ConseqaX_Full_Benchmark_Kaggle.ipynb) with the matching
-[small study bundle](../output/kaggle-benchmark-2026-10-26/conseqax-kaggle-benchmark.zip).
+[small study bundle](../output/kaggle-benchmark-2026-11-08/conseqax-kaggle-benchmark.zip).
 The bundle contains the fixed 3,456-slot design, code, model identities and
 research wheel. Setup downloads the pinned model weights and Linux GPU runtime.
 
@@ -17,6 +17,20 @@ research wheel. Setup downloads the pinned model weights and Linux GPU runtime.
 If you already collected interactively, use **Quick Save with outputs**;
 Save & Run All starts a fresh execution and is not a save-only operation.
 
+Setup downloads several gigabytes before starting any benchmark slot. It prints
+download progress and uses bounded retries for temporary download failures,
+including HTTP 504. Partial downloads resume when the server supports it, and
+the complete bytes must still match the declared size and SHA256 before use.
+These setup retries do not retry model requests or started benchmark slots.
+
+If setup still fails in an active interactive session, keep its original error
+and rerun **only the setup cell** while the original seven-hour budget remains.
+Do not rerun the extraction cell or edit integrity pins. After the budget has
+elapsed, start a fresh Kaggle session; rerunning cells or restarting the kernel
+does not extend the current session. For a failed background version, start a
+fresh session with the same inputs. If any study slots had already started,
+preserve and attach the entire latest saved output before continuing.
+
 Keep the complete ledger, evidence, `checkpoint.zip`, `checkpoint-export.json`
 and `progress.json`. The raw ledger takes precedence over an older ZIP.
 Use the same GPU class and driver for subsequent sessions; incompatible
@@ -27,7 +41,7 @@ conditions × four policies × two seeds. It is not 3,456 independent tasks.
 The notebook does not promise completion in one session.
 
 The source, packaging, native replay, checkpoint continuation and notebook
-bootstrap passed **210 focused offline tests**. Actual Kaggle GPU compatibility
+bootstrap passed **252 focused offline tests**. Actual Kaggle GPU compatibility
 and throughput are checked by the first run and have not been measured here.
 GitHub Actions remains disabled; no human evaluation or paid inference is used.
 

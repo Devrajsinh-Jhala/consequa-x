@@ -3,8 +3,10 @@ from __future__ import annotations
 
 from dataclasses import asdict
 import hashlib
+import http.client
 import importlib.metadata
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -14,6 +16,7 @@ import socket
 import subprocess
 import tarfile
 import time
+import urllib.error
 import urllib.request
 
 import psutil
@@ -25,7 +28,12 @@ VERSION = "0.40.10"
 ARCHIVE_SHA = "1e8ad2d2a394efdd235bee74deec237badd95142ffba77588140ab2a9ecec227"
 ARCHIVE_BYTES = 1509264197
 ARCHIVE_URL = "https://github.com/ollama/ollama/releases/download/v0.40.10/ollama-linux-amd64.tar.zst"
+# This immutable GitHub asset ID declares the same pinned size and SHA256.
+ARCHIVE_API_URL = "https://api.github.com/repos/ollama/ollama/releases/assets/669809428"
+ARCHIVE_FALLBACK_URL = "https://ollama.com/download/ollama-linux-amd64.tar.zst?version=0.40.10"
 BASE = "http://127.0.0.1:11436"
+DOWNLOAD_ATTEMPTS = 5
+RETRY_HTTP_STATUS = frozenset((408, 429, 500, 502, 503, 504))
 
 
 def require(condition, message):
@@ -47,29 +55,134 @@ def save(path, value):
         os.fsync(stream.fileno())
 
 
-def download(url, destination, expected):
-    """Setup-only public download; a partial file is never installed as a model."""
+def _download_time_remaining():
+    """Setup shares the original notebook window; retries cannot extend it."""
+    started = os.environ.get("CONSEQAX_SESSION_START_MONOTONIC")
+    if started is None:
+        return 7 * 3600
+    started = float(started)
+    now = time.monotonic()
+    require(math.isfinite(started) and 0 <= started <= now, "Invalid setup session timer")
+    remaining = 7 * 3600 - (now - started)
+    if remaining <= 0:
+        raise RuntimeError("Setup session deadline reached. Preserve outputs and use a fresh session.")
+    return remaining
+
+
+def _download_part(url, partial, expected):
+    """Append only a matching HTTP range; a server ignoring Range restarts safely."""
+    offset = partial.stat().st_size if partial.exists() else 0
+    headers = {"User-Agent": "ConseqaX-frozen-benchmark", "Accept-Encoding": "identity",
+               "Accept": "application/octet-stream"}
+    if offset:
+        headers["Range"] = f"bytes={offset}-"
+    request = urllib.request.Request(url, headers=headers)
+    timeout = min(180, _download_time_remaining())
+    # Always reopen the original source URL, not a possibly expired signed redirect.
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        status = response.status
+        require(status in (200, 206), "Unexpected setup download response")
+        require(response.headers.get("Content-Encoding", "identity").lower() == "identity",
+                "Encoded download cannot be compared with pinned byte ranges")
+        if status == 206:
+            match = re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)", response.headers.get("Content-Range", ""))
+            require(match is not None, "Download has no valid Content-Range")
+            start, end, total = map(int, match.groups())
+            require(start == offset and start <= end < total == expected["bytes"],
+                    "Download range differs from the pinned offset/size")
+            body_bytes = end - start + 1
+        else:
+            # Some origins ignore Range. Never append their complete response.
+            offset, body_bytes = 0, expected["bytes"]
+        length = response.headers.get("Content-Length")
+        require(length is None or (length.isdecimal() and int(length) == body_bytes),
+                "Download Content-Length differs from pinned response size")
+        mode = "ab" if offset else ("wb" if partial.exists() else "xb")
+        received, reported = 0, time.monotonic()
+        with partial.open(mode) as stream:
+            def write_chunk(chunk):
+                nonlocal received, reported
+                require(received + len(chunk) <= body_bytes
+                        and offset + received + len(chunk) <= expected["bytes"],
+                        "Download exceeds the pinned size")
+                stream.write(chunk)
+                received += len(chunk)
+                if time.monotonic() - reported >= 30:
+                    print(f"  Downloaded {(offset + received) / 1024**2:.0f} / "
+                          f"{expected['bytes'] / 1024**2:.0f} MiB", flush=True)
+                    reported = time.monotonic()
+
+            try:
+                while True:
+                    _download_time_remaining()
+                    try:
+                        chunk = response.read(1024**2)
+                    except http.client.IncompleteRead as exc:
+                        write_chunk(exc.partial)
+                        raise
+                    if not chunk:
+                        break
+                    write_chunk(chunk)
+            finally:
+                stream.flush()
+                os.fsync(stream.fileno())
+        if received != body_bytes or offset + received != expected["bytes"]:
+            raise http.client.IncompleteRead(b"", expected["bytes"] - offset - received)
+
+
+def download(url, destination, expected, *, fallback_urls=()):
+    """Retry setup-only GETs, retaining ranges; never retry a measured model call.
+
+    Only a complete file with the exact frozen SHA256 and size is installed.
+    No response body, signed redirect URL or HTTP error object is logged.
+    """
+    require(set(expected) == {"sha256", "bytes"}
+            and isinstance(expected["sha256"], str)
+            and re.fullmatch(r"[0-9a-f]{64}", expected["sha256"]) is not None
+            and type(expected["bytes"]) is int and expected["bytes"] > 0,
+            "A pinned SHA256 and positive byte length are required")
     destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
+    require(not destination.is_symlink(), "Refuse a linked download destination")
     if destination.exists():
         require(binding(destination) == expected, "Cached download bytes changed")
         return
     partial = destination.with_name(destination.name + ".download")
-    if partial.exists():
-        # Only this owned incomplete download is restarted; no measured episode.
-        partial.unlink()
-    digest, count = hashlib.sha256(), 0
-    request = urllib.request.Request(url, headers={"User-Agent": "ConseqaX-frozen-benchmark"})
-    with urllib.request.urlopen(request, timeout=180) as response, partial.open("xb") as stream:
-        while chunk := response.read(8 * 1024**2):
-            stream.write(chunk)
-            digest.update(chunk)
-            count += len(chunk)
-            require(count <= expected["bytes"], "Download exceeds the pinned size")
-        stream.flush()
-        os.fsync(stream.fileno())
-    require({"sha256": digest.hexdigest(), "bytes": count} == expected, "Download hash/length differs")
-    partial.rename(destination)
+    require(not partial.is_symlink(), "Refuse a linked partial download")
+    sources = (url, *fallback_urls)
+    for attempt in range(DOWNLOAD_ATTEMPTS):
+        _download_time_remaining()
+        count = partial.stat().st_size if partial.exists() else 0
+        require(count <= expected["bytes"], "Partial download exceeds the pinned size")
+        if count != expected["bytes"]:
+            print(f"Setup download {destination.name}: attempt {attempt + 1}/{DOWNLOAD_ATTEMPTS}, "
+                  f"{count / 1024**2:.0f}/{expected['bytes'] / 1024**2:.0f} MiB cached", flush=True)
+            failure = None
+            try:
+                _download_part(sources[attempt % len(sources)], partial, expected)
+            except urllib.error.HTTPError as exc:
+                retryable = exc.code in RETRY_HTTP_STATUS
+                failure = f"HTTP {exc.code}"
+                exc.close()
+                if not retryable:
+                    raise RuntimeError(f"Setup download stopped ({failure}); no model episode was retried.") from None
+            except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead) as exc:
+                failure = type(exc).__name__
+            if failure is not None:
+                if attempt + 1 == DOWNLOAD_ATTEMPTS:
+                    raise RuntimeError(f"Setup download could not finish after {DOWNLOAD_ATTEMPTS} attempts "
+                        f"({failure}). Partial bytes are retained. Rerun only the setup cell within "
+                        "this session's budget, or use a fresh session. No benchmark episode was retried.") from None
+                delay = 2 ** (attempt + 1)
+                print(f"  Temporary setup download failure ({failure}); retrying in {delay}s.", flush=True)
+                if _download_time_remaining() <= delay:
+                    raise RuntimeError("Insufficient setup time to retry. Use a fresh session.") from None
+                time.sleep(delay)
+                continue
+        require(binding(partial) == expected, "Download hash/length differs; unverified bytes were not installed")
+        partial.rename(destination)
+        print(f"Verified setup download {destination.name}", flush=True)
+        return
 
 
 def api(path, payload=None, timeout=300):
@@ -118,7 +231,8 @@ def install_runtime(directory):
         return directory
     directory.mkdir(parents=True, exist_ok=True)
     archive = directory / "ollama-linux-amd64.tar.zst"
-    download(ARCHIVE_URL, archive, {"sha256": ARCHIVE_SHA, "bytes": ARCHIVE_BYTES})
+    download(ARCHIVE_URL, archive, {"sha256": ARCHIVE_SHA, "bytes": ARCHIVE_BYTES},
+             fallback_urls=(ARCHIVE_API_URL, ARCHIVE_FALLBACK_URL))
     import zstandard
     with archive.open("rb") as stream, zstandard.ZstdDecompressor().stream_reader(stream) as decoded:
         with tarfile.open(fileobj=decoded, mode="r|") as source:

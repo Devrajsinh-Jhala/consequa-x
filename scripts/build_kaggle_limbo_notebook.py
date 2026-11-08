@@ -118,6 +118,22 @@ def build_notebook(bundle_sha256: str | None = None,
             identities. A missing GPU, failed download, changed bundle, or incompatible
             continuation stops the study. Do not change model, protocol, precision,
             or runtime settings between sessions.
+
+            **Downloading can take time:** setup fetches several gigabytes before
+            any study slot starts. Download progress and bounded recovery attempts
+            appear below. A temporary **HTTP 504 / Gateway Time-out** is a download
+            failure, not a benchmark result. Setup-only downloads can retry and
+            resume; measured model requests and started slots are never retried.
+
+            **If this setup cell still fails:** keep the error above. In an active
+            interactive session, rerun **only this setup cell** while the original
+            seven-hour budget remains; verified downloads are reused and partial
+            downloads resume when the server supports it. Do not rerun the opening
+            extraction cell or change the integrity pins. If the budget has elapsed,
+            start a fresh Kaggle session. Rerunning a cell or restarting the kernel
+            is not a way to extend the current session's budget. For a failed
+            background version, open a fresh session and rerun with the same inputs;
+            retain and attach the entire latest output if any slots had started.
         ''', "setup-explanation"),
         _cell("code", SETUP, "runtime-setup"),
         _cell("markdown", '''
@@ -441,9 +457,17 @@ print("Output:", OUTPUT_DIR)
 '''
 
 SETUP = r'''
-run_command(["research.kaggle_limbo.setup", "--study-dir", STUDY_DIR,
-             "--runtime-dir", TEMP_ROOT / "conseqax-runtime",
-             "--models-dir", TEMP_ROOT / "conseqax-models"])
+if time.monotonic() - _SESSION_STARTED_AT >= float(SESSION_HOURS) * 3600:
+    raise RuntimeError("The study deadline has been reached. Preserve any outputs and start a fresh Kaggle session; do not reset this session's timer.")
+try:
+    run_command(["research.kaggle_limbo.setup", "--study-dir", STUDY_DIR,
+                 "--runtime-dir", TEMP_ROOT / "conseqax-runtime",
+                 "--models-dir", TEMP_ROOT / "conseqax-models"])
+except subprocess.CalledProcessError:
+    print("Setup failed; the original error is above. This setup cell does not start benchmark slots.")
+    print("For a temporary download timeout, rerun only this setup cell in the same active session if its original seven-hour budget remains. Verified downloads are reused; partial downloads resume when supported.")
+    print("If the budget is exhausted, use a fresh Kaggle session. Preserve and attach the entire latest saved output if any earlier collection started. Do not reset the timer or edit integrity pins.")
+    raise
 print("Runtime setup finished. Continue only if this cell completed successfully.")
 '''
 

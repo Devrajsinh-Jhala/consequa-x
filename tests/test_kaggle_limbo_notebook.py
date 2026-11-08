@@ -4,8 +4,8 @@ from __future__ import annotations
 import ast
 import hashlib
 import json
-from pathlib import Path
 import stat
+import subprocess
 import time
 import zipfile
 
@@ -213,6 +213,49 @@ def test_elapsed_setup_does_not_reset_or_double_subtract_deadline(tmp_path, monk
     with pytest.raises(RuntimeError, match="deadline has been reached"):
         exec(code(notebook_cells["collect"]), scope)
     assert len(scope["COMMAND_PLAN"]) == before
+
+
+def test_setup_download_failure_preserves_original_error_and_recovery_guidance(tmp_path, monkeypatch, capsys):
+    scope, notebook_cells, _ = bootstrap(tmp_path, monkeypatch)
+    failure = subprocess.CalledProcessError(1, ["fixture", "setup"])
+    calls = []
+
+    def fail_setup(arguments):
+        calls.append(arguments)
+        raise failure
+
+    scope["run_command"] = fail_setup
+    started = scope["_SESSION_STARTED_AT"]
+    with pytest.raises(subprocess.CalledProcessError) as raised:
+        exec(code(notebook_cells["runtime-setup"]), scope)
+    assert raised.value is failure
+    assert len(calls) == 1 and calls[0][0] == "research.kaggle_limbo.setup"
+    assert scope["_SESSION_STARTED_AT"] == started
+    printed = capsys.readouterr().out
+    assert "original error is above" in printed
+    assert "rerun only this setup cell" in printed
+    assert "original seven-hour budget" in printed
+    assert "does not start benchmark slots" in printed
+    assert "Runtime setup finished" not in printed
+
+
+def test_expired_budget_refuses_setup_without_any_install_or_download(tmp_path, monkeypatch):
+    scope, notebook_cells, _ = bootstrap(tmp_path, monkeypatch)
+    scope["_SESSION_STARTED_AT"] = time.monotonic() - 7 * 3600 - 1
+    before = list(scope["COMMAND_PLAN"])
+    with pytest.raises(RuntimeError, match="fresh Kaggle session"):
+        exec(code(notebook_cells["runtime-setup"]), scope)
+    assert scope["COMMAND_PLAN"] == before
+
+
+def test_notebook_download_recovery_keeps_setup_and_measured_retries_distinct():
+    notebook_cells = cells(builder.build_notebook(SHA, COMMIT))
+    guidance = code(notebook_cells["setup-explanation"])
+    assert "HTTP 504 / Gateway Time-out" in guidance
+    assert "measured model requests and started slots are never retried" in guidance
+    assert "only this setup cell" in guidance
+    assert "seven-hour budget" in guidance
+    assert "entire latest output" in guidance
 
 
 def test_verified_bundle_extraction_and_no_overwrite(tmp_path, monkeypatch):

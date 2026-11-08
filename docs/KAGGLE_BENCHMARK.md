@@ -52,6 +52,27 @@ This notebook has offline engineering coverage. An actual Kaggle GPU run is
 still required to establish hardware compatibility and throughput. The number
 of sessions needed for all 3,456 dispositions is not guaranteed.
 
+## Download failures during setup
+
+Setup downloads several gigabytes of pinned runtime and model files before any
+benchmark slot starts. The download helper reports progress and makes bounded
+recovery attempts for temporary network errors such as HTTP 504. It preserves
+owned partial downloads and resumes them only with a valid matching byte-range
+response; a server that ignores ranges requires a clean restart of that file.
+No file is installed until its complete declared length and SHA256 match. A
+download error is setup availability, not a measured task outcome. These retries
+apply only to setup files; model requests and started slots retain the original
+no-retry policy.
+
+If the runtime setup cell fails in an active interactive session, retain its
+original error and rerun only that cell while the original seven-hour budget
+remains. Do not rerun extraction or change the release pins. Once the budget
+has elapsed, use a fresh Kaggle session. Restarting a kernel or rerunning cells
+must not be used to reset a running session's timer. A failed background version
+can be launched in a fresh session with the same inputs. Preserve and attach
+the entire latest saved output if any collection had already started; never
+replace a started-slot ledger with an earlier empty history.
+
 ## Before a measured generation
 
 Use an immutable source checkout and the pinned external LIMBO implementation.

@@ -1,5 +1,19 @@
 # Full benchmark on Kaggle GPU
 
+Use the [complete notebook](ConseqaX_Kaggle_COMPLETE.ipynb) for the simplest
+first run. Its one execution cell includes the exact verified study bundle,
+initializes every variable, supplies the native import path, installs the
+runtime/models, checks the GPU, collects episodes and exports the checkpoint.
+No separate study Input or recovery snippets are needed.
+
+Import it into a **fresh Kaggle notebook/session**, enable **GPU + Internet**,
+and choose **Save Version → Save & Run All once**. For continuation, attach the
+**entire latest saved output** as an Input before starting the next fresh
+session. The embedded source and checkpoint lineage are unchanged from the
+2026-11-08 bundle. Actual GPU execution remains subject to the live preflight.
+
+The separate-bundle notebook below remains available for advanced use.
+
 Use [the notebook](ConseqaX_Full_Benchmark_Kaggle.ipynb) with the matching
 [small study bundle](../output/kaggle-benchmark-2026-11-08/conseqax-kaggle-benchmark.zip).
 The bundle contains the fixed 3,456-slot design, code, model identities and
@@ -62,7 +76,7 @@ conditions × four policies × two seeds. It is not 3,456 independent tasks.
 The notebook does not promise completion in one session.
 
 The source, packaging, native replay, checkpoint continuation and notebook
-bootstrap passed **252 focused offline tests**. Actual Kaggle GPU compatibility
+bootstrap passed **262 focused offline tests**. Actual Kaggle GPU compatibility
 and throughput are checked by the first run and have not been measured here.
 GitHub Actions remains disabled; no human evaluation or paid inference is used.
 

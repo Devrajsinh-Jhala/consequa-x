@@ -6,10 +6,14 @@ the study bundle. An unbound engineering notebook deliberately refuses live use.
 from __future__ import annotations
 
 import argparse
+import base64
+import hashlib
+import io
 import json
 from pathlib import Path
 import re
 import textwrap
+import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -530,6 +534,113 @@ print("No result or publication claim is made by this export.")
 '''
 
 
+def build_self_contained_notebook(bundle_path: Path, *, bundle_sha256: str,
+                                  source_commit: str, manifest_sha256: str) -> dict:
+    """Embed one immutable source ZIP and every launch step in one code cell.
+
+    Only source/metadata bytes are embedded. Model weights and the GPU runtime
+    retain their existing pinned setup downloads. No study code is executed here.
+    """
+    if not all((bundle_sha256, source_commit, manifest_sha256)):
+        raise ValueError("A self-contained notebook requires all three release pins")
+    notebook = build_notebook(bundle_sha256, source_commit, manifest_sha256)
+    bundle_path = Path(bundle_path)
+    if not bundle_path.is_file() or bundle_path.is_symlink():
+        raise ValueError("The embedded study bundle must be a regular released ZIP")
+    if bundle_path.stat().st_size > 256 * 1024**2:
+        raise ValueError("Embedded source bundle exceeds the safe size limit")
+    payload = bundle_path.read_bytes()
+    if hashlib.sha256(payload).hexdigest() != bundle_sha256:
+        raise ValueError("Embedded bundle SHA256 differs from the release pin")
+    with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+        manifest_bytes = archive.read("conseqax-kaggle-study/bundle-manifest.json")
+    if hashlib.sha256(manifest_bytes).hexdigest() != manifest_sha256:
+        raise ValueError("Embedded manifest SHA256 differs from the release pin")
+    manifest = json.loads(manifest_bytes)
+    if (manifest.get("schema") != "conseqax-kaggle-source-bundle-v1"
+            or manifest.get("source_commit") != source_commit):
+        raise ValueError("Embedded study source commit or manifest schema differs")
+    encoded = base64.b64encode(payload).decode("ascii")
+    encoded_lines = "\n".join(f"    {part!r}" for part in textwrap.wrap(encoded, 100))
+    embedded = f'''
+from pathlib import Path
+import base64
+import hashlib
+
+# The small frozen study is inside this notebook, so there is no separate Input
+# bundle to upload, select or keep in sync. Its code is verified before execution.
+_EMBEDDED_STUDY_BASE64 = (
+{encoded_lines}
+)
+_embedded_bytes = base64.b64decode(_EMBEDDED_STUDY_BASE64, validate=True)
+if hashlib.sha256(_embedded_bytes).hexdigest() != EXPECTED_BUNDLE_SHA256:
+    raise RuntimeError("The embedded study failed its release SHA256 check. No study code was executed.")
+_embedded_root = Path(os.environ.get("CONSEQAX_NOTEBOOK_TEMP_ROOT", "/kaggle/temp")) / "conseqax-embedded-study"
+_embedded_root.mkdir(parents=True, exist_ok=True)
+_embedded_archive = _embedded_root / "conseqax-kaggle-benchmark.zip"
+if _embedded_archive.is_symlink():
+    raise RuntimeError("Refuse a linked embedded study archive.")
+if _embedded_archive.exists():
+    if hashlib.sha256(_embedded_archive.read_bytes()).hexdigest() != EXPECTED_BUNDLE_SHA256:
+        raise RuntimeError("Cached embedded study bytes changed. Preserve outputs and use a fresh session.")
+else:
+    with _embedded_archive.open("xb") as _archive_out:
+        _archive_out.write(_embedded_bytes)
+        _archive_out.flush()
+        os.fsync(_archive_out.fileno())
+BUNDLE_PATH = str(_embedded_archive)
+del _embedded_bytes, _EMBEDDED_STUDY_BASE64
+print("Embedded study verified. No separate study Input is required.", flush=True)
+'''
+    configuration = next("".join(cell["source"]) for cell in notebook["cells"]
+                         if cell["id"] == "configuration")
+    complete_setup = SETUP.replace(
+        "For a temporary download timeout, rerun only this setup cell in the same active session if its original seven-hour budget remains. Verified downloads are reused; partial downloads resume when supported.",
+        "Setup-only downloads already make bounded recovery attempts. Preserve outputs if setup fails; launch this complete notebook in a fresh session rather than applying isolated repair cells.")
+    complete = _cell("code", "\n\n".join((configuration, embedded, BOOTSTRAP,
+                                          complete_setup, RUN, EXPORT)), "run-complete-study")
+    complete["metadata"] = {"jupyter": {"source_hidden": True}, "collapsed": True}
+    notebook["cells"] = [
+        _cell("markdown", '''
+            # ConseqaX · Complete GPU benchmark
+
+            This is the complete notebook. The matching study bundle and all
+            launch steps are included. **Do not paste repair snippets or upload a
+            separate study bundle.**
+
+            1. Import this notebook into a **fresh Kaggle session**.
+            2. Enable **GPU** and **Internet**.
+            3. Choose **Save Version → Save & Run All once**.
+
+            The one executable cell below prepares the study, downloads the pinned
+            runtime and three model configurations, checks them, and collects the
+            next scheduled episodes. The seven-hour window includes setup and
+            leaves time to save outputs inside an eight-hour session.
+
+            **Continuing an earlier session?** Before launching, attach the
+            **entire latest saved output** as an Input, including the active
+            `conseqax-benchmark` folder, `checkpoint.zip` and supporting files.
+            The latest raw ledger takes precedence over its older ZIP. Started
+            slots are never automatically repeated. Keep the entire output after
+            every session; all **3,456 planned slots** will usually need several
+            sessions. Never run interactively and then use Save & Run All merely
+            as a save button, because that launches a new execution; preserve
+            existing interactive output with Quick Save and attach it next time.
+
+            Output streams below and is also retained in `conseqax-diagnostics`.
+            This notebook includes the missing `limbo` import-path fix. It uses
+            no paid inference, human evaluation or GitHub Actions. The embedded
+            archive and every source file are checked against immutable release
+            hashes before study code runs. Actual GPU compatibility and throughput
+            still depend on the live session; offline checks are not GPU results.
+        ''', "complete-instructions"),
+        complete,
+    ]
+    notebook["metadata"]["conseqax"].update(self_contained=True, executable_cells=1,
+        embedded_bundle_bytes=len(payload), requires_separate_study_input=False)
+    return notebook
+
+
 def kernel_metadata() -> dict:
     # No owner/kernel id: importing or uploading remains a user action.
     return {"title": "ConseqaX · Full Resumable GPU Benchmark", "code_file": NOTEBOOK_NAME,
@@ -543,13 +654,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--bundle-sha256")
     parser.add_argument("--source-commit")
     parser.add_argument("--manifest-sha256")
+    parser.add_argument("--embed-bundle", type=Path,
+                        help="Embed this pinned source ZIP and all launch steps in one executable cell")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "notebooks")
     parser.add_argument("--require-bound", action="store_true")
     args = parser.parse_args(argv)
     if args.require_bound and not (args.source_commit and (args.bundle_sha256 or args.manifest_sha256)):
         parser.error("release generation requires --source-commit and an archive or manifest SHA256")
     try:
-        notebook = build_notebook(args.bundle_sha256, args.source_commit, args.manifest_sha256)
+        if args.embed_bundle:
+            notebook = build_self_contained_notebook(args.embed_bundle,
+                bundle_sha256=args.bundle_sha256, source_commit=args.source_commit,
+                manifest_sha256=args.manifest_sha256)
+        else:
+            notebook = build_notebook(args.bundle_sha256, args.source_commit, args.manifest_sha256)
     except ValueError as exc:
         parser.error(str(exc))
     args.output_dir.mkdir(parents=True, exist_ok=True)
